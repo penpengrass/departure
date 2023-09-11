@@ -1,0 +1,41 @@
+showing{
+    font-size:25px;
+}
+#stationname{
+    font-size:40px;
+    text-align:center;
+    color:green;
+    margin: 5px;
+}
+.koshin{
+    width:90px;
+}
+table{
+    margin:4px;
+}
+.row{
+    display:flex;
+}
+#selectstation{
+    margin:10px;
+}
+input{
+    margin:5px;
+}
+time{
+    border:greenyellow solid;
+    font-size:30px;
+    float: right;
+    position:relative;
+}
+tableline{
+    display:flex;
+    align-items: flex-start;
+}
+@media(max-width:768px){
+    tableline{
+        display:flex;
+        flex-direction: column;/*スマホのときに縦並びにできる?*/
+        align-items: flex-start;
+    }
+}

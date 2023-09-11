@@ -1,0 +1,42 @@
+body{
+    font-family: monospace;
+}
+th{
+    color:white;
+    background-color: gray;
+}
+time{
+    border:green solid;
+    font-size:40px;
+    text-align: right;
+}
+td{               /*データ内*/
+    font-size:30px;
+    height: 30px;
+    color:yellowgreen;
+    border: 5px black solid;  /*表の中の枠色*/
+    font-family: "FM明朝",serif;
+}
+.Destination{
+    color:orange;
+}
+
+table{        /*表全体*/
+    table-layout:fixed;
+    background-color: black;
+    border: 10px gray solid;/*周りの色*/
+    width: 750px; 
+    height:200px;
+    white-space:nowrap;
+    text-align:center;
+}
+.shubetu{
+    font-size:15px;
+}
+p3{
+    font-size:20px;
+}
+.railnumber{
+    color:green;
+    font-weight:900;
+}

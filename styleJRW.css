@@ -1,0 +1,58 @@
+body{
+    font-family: monospace;
+}
+th{
+    color:white;
+    background-color: #606060;
+    height:3px;
+}
+
+/*ブロック要素*/
+td{               /*データ内*/
+    display: table-cell;
+    font-size:30px;/*元々30px 変更すると25px*/
+    height: 30px;
+    color:orange;
+    border: 2px black solid;  /*表の中の枠色*/
+    font-family:Arial,"MS Gothic",monospace;
+    border-left:none;
+    border-right:none;
+    border-bottom:2px gray solid;
+}
+.Destination{
+    color:greenyellow;
+    /*transform:scaleX(0.65) translate(-35%,0%);*/
+}
+table{        /*表全体*/
+    border-collapse: collapse;
+    table-layout:fixed;
+    background-color: black;
+    border: 10px #404040 solid;/*周りの色*/
+    width: 750px; /*元々750px　550px*/
+    /*height:200px; /*元々200px*/
+    white-space:nowrap;
+    text-align:center;
+    border-spacing: 0px;
+}
+
+.shubetu{
+    font-size:15px;
+}
+p3{
+    font-size:20px;
+}
+.railnumber{
+    color:orange;
+}
+.name{
+    text-align:left;
+    color:greenyellow;
+}
+.Ctitle{
+    background-color: #404040;
+    color:white;
+}
+#supplement{
+    color:red;
+    font-size:20px;
+}

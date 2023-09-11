@@ -1,0 +1,30 @@
+.news-banner{
+    display: block;
+    /*height: auto; /* バナーの高さ */
+    width: auto; /* バナーの横幅 */
+    background-color: black; /* バナー背景色 */
+    overflow: hidden; /* はみ出した要素を非表示 */
+}
+/* バナー内コンテンツ */
+.news-banner__content {
+    display: inline-block;
+    color: #fff; /* 文字色 */
+    font-size: 20px;
+    line-height: 20px; /* 行の高さ 大きいほど下 元々は100px */
+    padding-left: 100%; /* テキスト左側の余白 */
+    white-space: nowrap; /* 文字を改行させない */
+    animation: animate-banner 20s linear infinite; /* アニメーションを設定 */
+  }
+  
+  /* バナー内の要素をすべて選択 */
+  .news-banner__content > * {
+    display: inline-block; /* 要素を横並びにする */
+  }
+  @keyframes animate-banner {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }

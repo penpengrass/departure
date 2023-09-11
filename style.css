@@ -1,0 +1,50 @@
+body{
+    font-family: monospace;
+}
+th{
+    color:white;
+    background-color: gray;
+}
+time{
+    border:green solid;
+    font-size:40px;
+    text-align: right;
+}
+td{               /*データ内*/
+    font-size:30px;
+    height: 50px;
+    color:white;
+    border: 1px gray solid;  /*表の中の枠色*/
+    border-spacing: 0px;
+    padding: 2px;
+    border-left:black;
+    border-right:black; 
+}
+table{        /*表全体*/
+    table-layout:fixed;
+    background-color: black;
+    border: 10px gray solid;/*周りの色*/
+    width: 750px; 
+    white-space:nowrap;
+    text-align:center;
+    display:table;
+    border-spacing: 0px;
+}
+tables{
+    display:flex;
+}
+tableline{
+    display:flex;
+    align-items: flex-start;
+}
+p3{
+    font-size:20px;
+}
+.railnumber{
+    background-color: white;
+    color:blue;
+    font-weight: 1000;
+}
+[class^="shubetu"]{
+    letter-spacing: 10px;
+}

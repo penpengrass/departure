@@ -1,0 +1,35 @@
+
+/*ブロック要素*/
+td{               /*データ内*/
+    font-size:18px;/*元々30px 変更すると25px*/
+    height: 30px;
+    color:orange;
+    border: 2px black solid;  /*表の中の枠色*/
+    font-family:Arial,"MS Gothic",monospace;
+    border-left:none;
+    border-right:none;
+    border-bottom:2px gray solid;
+}
+.Destination{
+    color:greenyellow;
+    /*transform:scaleX(0.65) translate(-35%,0%);*/
+}
+th{
+    font-size:7px;
+}
+/*tableの部分はstyleJRW.cssと全く同じ*/
+/*table{        /*表全体*/
+/*}*/
+showing{
+    font-size:20px;
+}
+.shubetu{
+    font-size:15px;
+}
+p3{
+    font-size:20px;
+}
+.name{
+    text-align:center;
+    color:greenyellow;
+}
