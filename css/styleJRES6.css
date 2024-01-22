@@ -1,0 +1,31 @@
+/*.topic{
+    color:white;
+    font-size:20px;
+    background-color: #404040;
+    border:0px none;
+}
+.line{
+    font-size:25px;
+}*/
+.Destination{
+    text-align:left;
+    transform:translate(20%,0);
+}
+.name{
+    text-align: right;
+}
+.green{
+    color:yellowgreen;
+}
+.pink{
+    color:pink;
+}
+.orange{
+    color:orange;
+}
+.brown{
+    color:brown;
+}
+.blue{
+    color:#456f99;
+}

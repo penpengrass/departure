@@ -1,0 +1,11 @@
+company = 'JR四国';
+TableTitle = ['琴平 高知方面', '観音寺 松山方面', '岡山 東京方面', '三本松 徳島方面'];
+var Tyosan = ['松山', '観音寺', '伊予西条'];
+var Thonshu = ['岡山', '東京'];
+var Dtype = [0, 0, 0, 0];
+DestinationDevide(Tyosan, 0, 1);
+DestinationDevide(Thonshu, 0, 2);
+limitedjustnumber(TT[1], 1, '特急いしづち');
+limitednumber(TT[3], 1, '特急うずしお');
+limitednumber(TT[0], 1, '特急しまんと');
+limitednumber(TT[2], 2, 'ﾏﾘﾝﾗｲﾅｰ');

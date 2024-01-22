@@ -1,0 +1,16 @@
+[class^="shubetu"]{
+    text-align:center;
+    /*padding-left:10px;*/
+}
+/*table{
+    border-right:40px #404040 solid;
+}*/
+[class^="Destination"]{
+    text-align: center;
+}
+.topic{
+    color:white;
+    font-size:20px;
+    background-color: #404040;
+    border:0px none;
+}

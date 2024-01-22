@@ -22,18 +22,6 @@ function Shows(hour, order, TT, n, depnum) {
 function koshin() {
     location.reload();
 }
-//1分ごとに更新するが，先発が切り替わるごとに実行したい
-let MinIn=2;
-//setInterval(koshin,MinIn*60000);
-if (Indexfile == 'index5.php') {
-    //間隔(分)
-    MinIn=1;
-    console.log("東急のファイル");
-}else{
-    MinIn=3;
-}
-setInterval(koshin, MinIn * 60000);
-
 //引数a番線以上の場合は別表に分ける bの表を分割したものをcに入れる(cはリセットされる)
 function RailNumberDevide(a, b, c) {
     Tablereset(c);
@@ -77,19 +65,21 @@ function DestinationDevide(station, b, c) {
     //console.log(TT[c]);
     //console.log(TT[0][17][0]);
     let s = 1;
-    //uは時を示すhは1個目の表のh-1本目を示す rは1個目の表の残った本数 sは2つ目の表のs-1本目(hを減らしsを増やすようにする)
+    //uはTTの行を示す
+    //hは1個目の表のh-1本目を示す rは1個目の表の残った本数 sは2つ目の表のs-1本目(hを減らしsを増やすようにする)
     for (var u = 4; u < TT[b].length; u += 4) {//時の切替
         s = 1;
+        let flag = 0;
         for (var h = 1; h < TT[b][u].length; h++) {//列車の切替
-            if (station.includes(TT[b][u-1][h])) {
+            if (station.includes(TT[b][u - 1][h])) {
                 console.log(TT[b].length + ":" + TT[c].length);
                 TT[c][u - 3][s] = TT[b][u - 3][h];
                 TT[c][u - 2][s] = TT[b][u - 2][h];
                 TT[c][u - 1][s] = TT[b][u - 1][h];
                 TT[c][u][s] = TT[b][u][h];
                 s++;
-                for (let r = h; r < TT[b][u].length - 1; r++) {
-                    //console.log((u+20)/4+":"+s+":"+r);
+                for (var r = h; r < TT[b][u].length - 1; r++) {
+                    //console.log((u + 20) / 4 + ":" + s + ":" + r);
                     //console.log(r+"**"+TT[b][u].length);
                     TT[b][u - 3][r] = TT[b][u - 3][r + 1];
                     TT[b][u - 2][r] = TT[b][u - 2][r + 1];
@@ -99,8 +89,11 @@ function DestinationDevide(station, b, c) {
                     TT[b][u - 2][r + 1] = '';
                     TT[b][u - 1][r + 1] = '';
                     TT[b][u][r + 1] = '';
+                    flag++;
                 }
-                h--;
+                if (flag > 0) {
+                    h--;
+                }
             }
         }
     }
@@ -108,16 +101,79 @@ function DestinationDevide(station, b, c) {
 }
 //特急の号数を追加する，2ずつ追加する場合のみ
 function limitednumber(TT, firstlimited, name) {
-    let count = firstlimited;
-    for (let li1 = 1; li1 < TT.length; li1++) {
-        for (let li2 = 1; li2 < TT[li1].length; li2++) {
-            if (TT[li1][li2].includes(name)) {
-                TT[li1][li2] += count + "号";
-                count += 2;
+    var count = firstlimited;
+    for (var td = 1; td < TT.length; td++) {
+        for (var tr = 1; tr < TT[td].length; tr++) {
+            if (TT[td][tr].includes(name)) {
+                if (TT[td][tr].includes('当駅始発')) {
+                    TT[td][tr] = TT[td][tr].slice(0, -6);
+                    if (Indexfile == 'index6.php'||Indexfile == 'index7.php') {
+                        TT[td][tr] += count + "号";
+                        count += 2;
+                        TT[td][tr] += '(当駅始発)';
+                    } else if (Indexfile == 'index4_S2.php'||Indexfile=='index7_S1.php') {
+                        TT[td][tr] += count+"";
+                        count+=2;
+                    }
+                } else {
+                    if (Indexfile == 'index4_S2.php'||Indexfile=='index7_S1.php') {
+                        TT[td][tr] += count+ "";
+                        count+=2;
+                    } else {
+                        TT[td][tr] += count + "号";
+                        count += 2;
+                    }
+                }
             }
+        }
+        if (Indexfile == 'index8.php' && name.includes('エアポート')) {
+            count = 0;
         }
     }
     //console.log(TT);
+}
+function limitedjustnumber(TT, firstlimited, name) {
+    var count = firstlimited;
+    for (var td = 1; td < TT.length; td++) {
+        for (var tr = 1; tr < TT[td].length; tr++) {
+            if (TT[td][tr]==name) {
+                if (TT[td][tr].includes('当駅始発')) {
+                    TT[td][tr] = TT[td][tr].slice(0, -6);
+                    if (Indexfile == 'index6.php') {
+                        TT[td][tr] += count + "号";
+                        count += 2;
+                        TT[td][tr] += '(当駅始発)';
+                    } else if (Indexfile == 'index4_S2.php'||Indexfile=='index7_S1.php') {
+                        TT[td][tr] += count+"";
+                        count+=2;
+                    }
+                } else {
+                    if (Indexfile == 'index4_S2.php'||Indexfile=='index7_S1.php') {
+                        TT[td][tr] += count+ "";
+                        count+=2;
+                    } else {
+                        TT[td][tr] += count + "号";
+                        count += 2;
+                    }
+                }
+            }
+        }
+        if (Indexfile == 'index8.php' && name.includes('エアポート')) {
+            count = 0;
+        }
+    }
+    //console.log(TT);
+}
+function limitednumber2(TT, limitednumberline, name) {
+    var number = 0;
+    for (var td = 1; td < TT.length; td++) {
+        for (var tr = 1; tr < TT[td].length; tr++) {
+            if (TT[td][tr].includes(name)) {
+                TT[td][tr] += limitednumberline[number] + "号";
+                number++;
+            }
+        }
+    }
 }
 //TTをリセットする
 function Tablereset(num) {
@@ -125,5 +181,19 @@ function Tablereset(num) {
         for (let r = 1; r < TT[num][w].length; r++) {
             TT[num][w][r] = "";
         }
+    }
+}
+function reverseLine(hairetsu,before,after){
+    var numberOfHairetsu=hairetsu[before].length;
+    hairetsu[after]=new Array(numberOfHairetsu);
+    for(var a=0;a<numberOfHairetsu;a++){
+        hairetsu[after][numberOfHairetsu-a-1]=hairetsu[before][a];
+    }
+}
+function JRC_station(){
+    if(station=='浜松駅'){
+        location.href='./index7.php';
+    }else if(station=='豊橋駅'){
+        location.href='./index7.php?station=toyohashi';
     }
 }

@@ -1,0 +1,75 @@
+body{
+    font-family: monospace;
+}
+th{
+    color:white;
+    background-color: black;
+}
+time{
+    border:yellowgreen solid;
+    font-size:30px;
+    text-align: right;
+    float: right;
+}
+/*ブロック要素*/
+td{               /*データ内*/
+    font-size:25px;/*元々30px 変更すると25px*/
+    height:40px;
+    color:yellow;
+    background-clip: padding-box;/*背景を内側に設定する*/
+    border: 2px black solid;  /*表の中の枠色*/
+    border-bottom: 2px solid white;
+    border-left:none;
+    border-right:none;
+    border-spacing: 0px;
+    font-family: "TB明朝";
+}
+.Destination{
+    color:white;
+    /*transform:scaleX(0.65) translate(-35%,0%);*/
+}
+table{        /*表全体*/
+    border-collapse: collapse;
+    table-layout:fixed;
+    background-color: black;
+    border: 10px gray solid;/*周りの色*/
+    width: 750px; /*元々750px　550px*/
+    /*height:200px; /*元々200px*/
+    white-space:nowrap;
+    text-align:center;
+    border-spacing: 0;
+}
+.railnumber{
+    font-size:35px;
+}
+.Ctime{
+    font-size:35px;
+}
+tableline{
+    display:flex;
+    align-items: flex-start;
+}
+/*shubetuが前方一致*/
+.shubetu{
+    color:white;
+    height:40px;
+}
+p3{
+    font-size:20px;
+}
+.name{
+    /*transform:scaleX(0.65) translate(-35%,0%);*/
+    text-align:left;
+    color:yellowgreen;
+}
+.Ctitle{
+    background-color: #404040;
+    color:white;
+}
+[id^="WType"]{
+    display: block;
+    border:2px white solid;
+    z-index:-1;
+    padding:1px;
+    margin:6px;
+}

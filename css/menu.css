@@ -1,0 +1,19 @@
+p{
+    display: inline;
+}
+/*select{
+    /*font-size:30px;*/
+/*}*/
+.menutable{
+    display:table-cell;
+    border:2px brown solid;
+}
+table{
+    border-collapse: collapse;
+}
+th{
+    border: 2px black solid;
+}
+td{
+    border:2px black solid;
+}

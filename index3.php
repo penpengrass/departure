@@ -3,81 +3,110 @@
 
 <head>
   <title>JR東日本都心部発車標</title>
-  <link rel="stylesheet" href="styleAll.css">
-  <link rel="stylesheet" href="styleATOS.css">
-  <link rel="stylesheet" href="banner.css">
+  <link rel="stylesheet" href="css/styleAll.css">
+  <link rel="stylesheet" href="css/styleATOS.css">
+  <link rel="stylesheet" href="css/banner.css">
   <?php
   $files = array();
-  $files[2] = 'csv/JRMu/ToChiba.csv';
-  $files[3] = 'csv/JRMu/ToKurihama.csv';
+  $setflag = 0;
   $files[0] = 'csv/JRMu/ToTakasaki.csv';
-  $files[1] = 'csv/JRMu/ToOdawara.csv';
-  require_once('getJRCSV.php');
+  require_once('PHP/variable.php');
+  require_once('PHP/files3.php');
+  if ($setflag == 0) {
+    $files[2] = 'csv/JRMu/ToChiba.csv';
+    $files[3] = 'csv/JRMu/ToKurihama.csv';
+    $files[1] = 'csv/JRMu/ToOdawara.csv';
+  }
+  require_once('getCSV.php');
   ?>
-  <script type="text/javascript" src="js/stationset.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
+  <script type="text/javascript" src="js/stationset3.js"></script>
   <script type="text/javascript" src="js/TTconnect.js"></script>
-  <!--<script type="text/javascript" src="js/variable.js"></script>-->
-  
+  <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
+
 </head>
 
 <body>
+  <div><time>現在時刻:<span id="TTime"></span></time></div>
+  <div>
+    <p id="stationname">広島駅</p>
+  </div>
   <!--駅選択部分-->
   <form action="index3.php" method="POST">
-  <select name="stasele">
-      <option value="csvc/TimeTable.csv">武蔵小杉駅</option>
-      <option value="csvc/TimeTable.csv">横浜駅</option>
+    <select name="stasele">
+      <option value="csv/JRMu/ToTakasaki.csv">武蔵小杉駅</option>
+      <option value="csv/JRE/utsunomiya1.csv">宇都宮駅</option>
+      <option value="csv/JRE/yokohama1.csv">横浜駅</option>
+      <option value="csv/JRE/odawara1.csv">小田原駅</option>
+      <option value="csv/JRE/atami1.csv">熱海駅</option>
     </select>
-    <input type="button" class="koshin" value="更新" onclick="koshin()">
-    <input type="button" onclick="location.href='./index2.php'" value="近鉄へ移動">
-    <input type="button" onclick="location.href='./index4.php'" value="JR西日本へ移動">
-    <input type="button" onclick="location.href='./index5.php'" value="東急へ移動">
-    <input type="button" onclick="location.href='./index6.php'" value="長野駅へ移動">
-    <input type="button" onclick="location.href='./index7.php'" value="JR東海へ移動">
-    <span id="stationname">広島駅</span>
-    <time>現在時刻:<span id="TTime"></span></time>
+    <button type="submit" name="submit">駅変更</button>
+  </form>
+  <form action="select.php" method="POST">
+    <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
+    <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
+    <button type="button" onclick="location.href='./index3_S.php'">新幹線長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
+    <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
+    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6_S.php'">新幹線東京駅へ移動</button>
+    <button type="submit" name="numadu">沼津駅へ移動</button>
+    <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線</button>
+    <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
   </form>
   <!--表をすべて入れる-->
   <tableline>
-  <?php
-  for ($i = 1; $i <= $tablenum; $i++) {
-    print('
- <table>
-<caption><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2>発車案内　</showing></caption>
+    <?php
+    for ($i = 1; $i <= $tablenum; $i++) {
+      print('
+ <table id="TTable' . $i . '">
+<caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
-      <th width="40%">種別</th>
-      <th width="20%">時刻</th>
-      <th width="25%">行先</th>
-      <th width="15%">番線</th>
+      <th width="28%" id="HName' . $i . '"></th>
+      <th width="15%" id="HType' . $i . '"></th>
+      <th width="20%" id="HTime' . $i . '"></th>
+      <th width="20%" id="HDes' . $i . '">行先</th>
+      <th width="10%" id="HCars' . $i . '"></th>
+      <th width="7%" class="HrailNumber" id="HrNumber' . $i . '">のりば</th>
     </tr>
   ');
-    for ($j = 1; $j <= $OrderNum; $j++) {
-      print('
-    <tr>
-      <td class="shubetu' . $i . $j.'"><p2 id="TType' . $i . $j.'"><span id="WType' . $i . $j . '"></span></p2></td>
-      <td><p2 id="THour' . $i . $j.'"></p2>:<p2 id="TMin' . $i . $j.'"></p2></td>
-      <td class="Destination"><p2 id="TDes' . $i . $j.'"></p2></td>
-      <td class="railnumber" id="TNum' . $i . $j.'"></td>
+      for ($j = 1; $j <= $OrderNum; $j++) {
+        print('
+    <tr id="TRow' . $i . $j . '">
+      <td id="TName' . $i . $j . '"></td>
+      <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
+      <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
+      <td class="Destination" id="TDes' . $i . $j . '"></td>
+      <td class="cars" id="TCars' . $i . $j . '"></td>
+      <td class="railnumber" id="TNum' . $i . $j . '"></td>
     </tr>
     ');
-    }
-    print('
+      }
+      print('
 </table>
 ');
-if($i%2==0){
-  print('</tableline>
+      if ($i % 2 == 0) {
+        print('</tableline>
   <tableline>');
-}
-  }
-  ?>
+      }
+    }
+    ?>
   </tableline>
-  </body>
+  <p id="supplement"></p>
+  <h1 class="Cheader">案内</h1>
+  <li>東海道線と横須賀線は熱海・久里浜側が1号車, 4･5号車がグリーン車</li>
+  <li>増結編成は東海道線が高崎・宇都宮側, 横須賀線は逗子・久里浜側(増1~増4)</li>
   <!--ここから内部のこと-->
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>
   <script type="text/javascript" src="js/TimeShow.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
+  <script type="text/javascript" src="js/function2.js"></script>
+  <script type="text/javascript" src="js/functionE2.js"></script>
+  <script type="text/javascript" src="js/Tforshow3.js"></script>
+  <script type="text/javascript" src="js/typeColor.js"></script>
 </body>
 
 </html>

@@ -1,130 +1,268 @@
-//主にJR西日本で使う
-//交互表示
-var countshow = 0;
-function toggleContent(order, Tablenum, originDes, alDes, DesorType) {
-    var show;
-    if (countshow == 0) {
-        countshow++;
-        show = originDes; // 1つ目の表示内容
-    } else {
-        countshow--;
-        show = alDes;
-    }
-    if (DesorType === Des) {
-        //console.log("document");
-        document.getElementById('TDes' + '' + (Tablenum + 1) + '' + (order + 1)).textContent = show;
-        var alterDes=document.getElementById('TDes' + '' + (Tablenum + 1) + '' + (order + 1));
-        console.log(alterDes.textContent);
-        console.log(alterDes.textContent.length);
-        if(alterDes.textContent.length>7){
-            alterDes.style.transform="scaleX(0.80)" + "translate(-15%,0%)";
-        }else{
-            alterDes.style.transform="scaleX(1.00)" + "translate(0%,0%)";
-        }
-    } else {
-        document.getElementById('TType' + '' + (Tablenum + 1) + '' + (order + 1)).textContent = show;
-    }
-}
-function toggleAllinTableContent(Tablenum, originDes, alDes, DesorType, keyword) {
-    console.log("ALL");
-    for (var tr = 0; tr < DesorType.length; tr++) {
-        console.log(DesorType[Tablenum][tr] + ":" + keyword);
-        if (DesorType[Tablenum][tr].includes(keyword)) {
-            console.log("Allif");
-            toggleContent(tr, Tablenum, originDes, alDes, DesorType);
+//JR西日本の特急名を表で分ける関数 index4.phpのみで使用
+function JRLimitedDevide(Tablenum) {
+    for (var tr = 0; tr < Type[Tablenum].length; tr++) {
+        console.log(tr);
+        if (Type[Tablenum][tr].includes('特急')) {
+            var Limited = Type[Tablenum][tr].substr(Type[Tablenum][tr].indexOf('急') + 1);
+            console.log(Tablenum+':'+tr+':'+Limited);
+            document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited;
+            //console.log(document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)));
+            document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = 'center';
+            document.getElementById('TType' + (Tablenum + 1) + '' + (tr + 1)).textContent = '特急';
+            
+            Type[Tablenum][tr] = '特急'
         }
     }
-
+    console.log(Tablenum);
 }
-function alternating2(Tablenum, originDes, alDes, DesorType, keyword) {
-    const alterTimer = setInterval(() => {
-        toggleAllinTableContent(Tablenum, originDes, alDes, DesorType, keyword);
-    }, 1000); // 1秒ごとに実行
-    clearInterval(alterTimer);
-    setInterval(alterTimer);
+function JRATOSDevide(td) {
+    for (var tr = 0; tr < orderNum; tr++) {
+        console.log(Type);
+        if (Type[td][tr].includes('線')) {
+            var Line = Type[td][tr].split('線')[0];
+            var LType = Type[td][tr].split('線')[1];
+            document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = Line + "線";
+            document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.textAlign = 'center';
+            document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = LType;
+            Type[td][tr] = LType;
+        } else if (Type[td][tr].includes('ライン')) {
+            var Line = Type[td][tr].split('ン')[0];
+            var LType = Type[td][tr].split('ン')[1];
+            document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = Line + "ン";
+            document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.textAlign = 'center';
+            document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = LType;
+            Type[td][tr] = LType;
+        } else if (Type[td][tr].includes('ﾗｲﾝ')) {
+            var Line = Type[td][tr].split('ﾝ')[0];
+            var LType = Type[td][tr].split('ﾝ')[1];
+            document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = Line + "ﾝ";
+            document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.textAlign = 'center';
+            document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = LType;
+            Type[td][tr] = LType;
+        }
+    }
 }
-
-function sleep(waitMsec) {
-    var startMsec = new Date();
-
-    // 指定ミリ秒間だけループさせる（CPUは常にビジー状態）
-    while (new Date() - startMsec < waitMsec);
+//特急の列車名の色を変える
+function JRWTrainNameColor(NameColor, NumberColor, GouColor) {
+    for (var td = 0; td < Tablenum; td++) {
+        var LimitedName = new Array(Type[td].length);
+        var matches = new Array(Type[td].length);
+        var newTrainName = new Array(Type[td].length);
+        for (var tr = 0; tr < Type[td].length; tr++) {
+            LimitedName[tr] = document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent;
+            matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
+            if (matches[tr]) {
+                console.log(matches[tr][0] + ":" + tr);
+                console.log(matches[tr][1] + ":" + tr);
+                console.log(matches[tr][2] + ":" + tr);
+                console.log(matches[tr][3] + ":" + tr);
+                newTrainName[tr] = `<span class="NewTrainName">${matches[tr][1]}</span>
+        <span class="NewTrainNumber">${matches[tr][2]}</span><span class="NewGou">${matches[tr][3]}</span>`;
+                document.getElementById('TName' + (td + 1) + '' + (tr + 1)).innerHTML = newTrainName[tr];
+                var list = document.getElementsByClassName('NewTrainName');
+                for (var ts = 0; ts < list.length; ts++) {
+                    document.getElementsByClassName('NewTrainName')[ts].style.color = NameColor;
+                    document.getElementsByClassName('NewTrainNumber')[ts].style.color = NumberColor;
+                    document.getElementsByClassName('NewGou')[ts].style.color = GouColor;
+                }
+            }
+        }
+    }
 }
-//1か所だけランダム変化する
-let alterchange;
-function alternatingOne(Tablenum, DesorType, keyword, alDes) {
-    for (var tr = 0; tr < DesorType[Tablenum].length; tr++) {
-        if (DesorType[Tablenum][tr].includes(keyword)) {
-            setInterval(() => {
+//新幹線と北海道の特急の列車名を分割(引数は表の数)，index3_S.phpを除く
+function JRNameDevide(T = Tablenum) {
+    for (var td = 0; td < T; td++) {
+        var LimitedName = new Array(Type[td].length);
+        var matches = new Array(Type[td].length);
+        for (var tr = 0; tr < Type[td].length; tr++) {
+            LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
+            if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php') {
+                matches[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
+            } else {
+                matches[tr] = LimitedName[tr].match(/([^0-9]+)(\d+)([^0-9]+)/);
+            }
 
-                var d = DesorType[Tablenum][tr];
-                toggleContent(tr, Tablenum, d, alDes, DesorType);
-            }, 5000); // 1秒ごとに実行
-            alterchange=tr;
-            break;
+            if (matches[tr]) {
+                console.log(td+1+'個目の表の'+(tr+1)+'番目の表示はJRLimitedNameとマッチする');
+                console.log(matches[tr][0] + ":" + tr);
+                console.log(matches[tr][1] + ":" + tr);
+                console.log(matches[tr][2] + ":" + tr);
+                console.log(matches[tr][3] + ":" + tr);
+                console.log(matches[tr][1] + matches[tr][1].length);
+                var Mlength = 7;
+                if (Indexfile == 'index6_S.php' || Indexfile == 'index3_S.php') {
+                    Mlength = 9;
+                }
+                if (matches[tr][1].length < Mlength) {
+                    console.log(matches[tr][1]);
+                    document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][1];
+                    if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php'||Indexfile=='index3_S.php') {
+                        document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2];
+                    } else {
+                        document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2] + matches[tr][3];
+                    }
+                    Type[td][tr] = matches[tr][1];
+                    if (Type[td][tr].includes('特急')) {
+                        document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.color = 'red';
+                    }
+                }
+            }
+        }
+    }
+}
+//特急などの列車名を取得
+function JRLimitedName(td, tr) {
+    var LimitedName = new Array(Type[td].length);
+    var matches = new Array(Type[td].length);
+    LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
+    matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
+    if (matches[tr]) {
+        console.log(matches[tr][0] + ":" + tr);
+        console.log(matches[tr][1] + ":" + tr);
+        console.log(matches[tr][2] + ":" + tr);
+        console.log(matches[tr][3] + ":" + tr);
+        console.log(matches[tr][1] + matches[tr][1].length);
+        console.log("Dtypeは" + Dtype);
+        var name = matches[tr][1];
+    }
+    return name;
+}
+//特急等の号数を取得 tdは何番目の表か
+function JRLimitedNumber(td, tr) {
+    var LimitedName = new Array(Type[td].length);
+    var matches = new Array(Type[td].length);
+    LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
+    console.log(LimitedName[tr]);
+    matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
+    if (matches[tr]) {
+        console.log(td+1+'個目の表の'+(tr+1)+'番目はマッチする')
+        console.log(matches[tr][0] + ":" + tr);
+        console.log(matches[tr][1] + ":" + tr);
+        console.log(matches[tr][2] + ":" + tr);
+        console.log(matches[tr][3] + ":" + tr);
+        console.log(matches[tr][1] + matches[tr][1].length);
+        console.log("Dtypeは" + Dtype);
+        var number = matches[tr][2];
+    }
+    return number;
+}
+//表の1番下に文章を入れる
+function BottomBanner(tag, td, tr, colspan,contents) {
+    let element = document.getElementById(tag);
+    while (element.firstChild) {
+        element.removeChild(element.firstChild);
+    }
+    element.innerHTML = '<td id="TBanner' + td + '' + tr + '" colspan="' + colspan + '"><p2 id="TDetail' + td + '' + tr + '" class="news-banner__content">ここに詳細表示</p3></td>';
+    document.getElementById('TBanner' + td + '' + tr).style.overflow = 'hidden';
+    document.getElementById('TDetail' + td + '' + tr).textContent = contents;
+}
+//種別+両数の場合分割
+function CarsDevide(td, Ltag = 'TCars') {
+    for (var tr = 0; tr < orderNum; tr++) {
+        var LType = document.getElementById('TType' + (td + 1) + '' + (tr + 1));
+        var matches = LType.textContent.match(/(\D+)(\d+)両/);
+        var LCars = document.getElementById(Ltag + (td + 1) + '' + (tr + 1));
+        if (matches) {
+            console.log(matches[0]);
+            console.log(matches[1]);
+            console.log(matches[2]);
+            console.log(matches[3]);
+            var number = matches[2];
+            LCars.textContent = matches[2] + '両';
+            LType.textContent = matches[1];
         } else {
+            console.log("CarsDevideにマッチしていない" + tr);
         }
     }
 }
-//交互表示 引数は順に何番目の表か,条件が行先か種別か,交互にする条件,交互にするもう一つのワード
-function alternating(Tablenum, DesorType, keyword, alDes) {
-    console.log("alter");
-    var tr = 0;
-    console.log(tr);
-    if (DesorType[Tablenum][tr].includes(keyword)) {
-        var d = DesorType[Tablenum][tr];
-        function toggleTrValue() {
-            tr = (tr + 1) % DesorType.length; // 0 から DesorType.length - 1 までループ
+//条件で色変更
+//index3.phpのみで使用
+function NameColorchange(td, tag, Name, color) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        var local = document.getElementById(tag + (td + 1) + '' + (tr + 1));
+        if (local.textContent == Name) {
+            local.style.color = color;
         }
-
-        // 5秒ごとに toggleTrValue を呼び出す
-        setInterval(() => {
-            if (DesorType[Tablenum][tr].includes(keyword)) {
-                toggleTrValue();
+    }
+}
+function Bansenshow() {
+    //console.log(doBNumber[1][0].textContent);
+    for (td = 0; td < Tablenum; td++) {
+        for (tr = 0; tr < Tablenums[td]; tr++) {
+            //console.log(doBNumber[td][tr]);
+            if (doBNumber[td][tr].textContent != '') {
+                doBNumber[td][tr].innerHTML += '<span class="bansen">番線</span>';
             }
-        }, 1000);
-
-        // tr の値に応じて処理を行う
-        setInterval(() => {
-            if (DesorType[Tablenum][tr].includes(keyword)) {
-                toggleAllinTableContent(Tablenum + 1, d, alDes, DesorType);
+        }
+    }
+}
+//路線記号追加
+function LineMarkAdd(td, Mark, backColor) {
+    var newElement = document.createElement("span"); // p要素作成
+    var newContent = document.createTextNode(Mark); // テキストノードを作成
+    newElement.appendChild(newContent); // p要素にテキストノードを追加
+    newElement.setAttribute("id", "Linemark" + td); // p要素にidを設定
+    var parentDiv = document.getElementById("kn" + td);
+    // 追加
+    parentDiv.insertBefore(newElement, parentDiv.firstChild);
+    document.getElementById('Linemark' + td).style.display = 'inline-block';
+    document.getElementById('Linemark' + td).style.backgroundColor = backColor;
+    document.getElementById('Linemark' + td).style.marginRight = '15px';
+    document.getElementById('Linemark' + td).style.padding = '3px';
+    document.getElementById('Linemark' + td).style.width = '24px';
+    document.getElementById('Linemark' + td).style.height = '24px';
+}
+//時刻の:を消す
+function TimeMarkErase() {
+    console.log(Tablenums);
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            if (Type[td][tr] == '') {
+                var timeerase = document.getElementById('TTime' + (td + 1) + '' + (tr + 1));
+                console.log("空");
+                while (timeerase.firstChild) {
+                    timeerase.removeChild(timeerase.firstChild);
+                }
             }
-        }, 1000); // 1秒ごとに実行
+        }
     }
-    /*
-    if (tr < DesorType[Tablenum].length) {
-        console.log("tr:" + tr);
-        for (let tr = 0; tr < DesorType.length; tr++) {*/
-    /*
-        if (DesorType[Tablenum][tr].includes(keyword)) {
-            var d = DesorType[Tablenum][tr];
-            //for文の中でsetIntervalを使うにはこうする
-            let intervals = [];
-            (function (index) {
-                const interval = setInterval(() => {
-                    console.log("tr:" + tr);
-                    toggleContent(index, Tablenum + 1, d, alDes, DesorType);
-                }, (index === 0 ? 5000 : 6000)); // 1秒ごとのインターバル
+}
+function rowremove(td, header, text) {
+    document.getElementById(header + (td + 1)).remove();
+    for (var tr = 0; tr < Type[td].length; tr++) {
+        document.getElementById(text + (td + 1) + '' + (tr + 1)).remove();
+    }
+}
+function flagmarkerase(td, tag) {
+    for (tr = 0; tr < Tablenums[td]; tr++) {
+        var str = document.getElementById(tag + (td + 1) + '' + (tr + 1));
+        if (str.textContent.includes('*')) {
+            str.textContent = str.textContent.slice(0, -1);
+        }
+    }
+}
+// 列を入れ替える関数
+function swapColumns(table, col1, col2) {
+    const rows = table.rows;
+    const width1 = table.rows[0].cells[col1].getAttribute("width");
+    const width2 = table.rows[0].cells[col2].getAttribute("width");
+    for (let i = 0; i < rows.length; i++) {
+        const row = rows[i];
+        const cell1 = row.cells[col1];
+        const cell2 = row.cells[col2];
+        const tempHtml = cell1.innerHTML;
+        const tempId = cell1.id;
+        const tempClass = cell1.className;
+        cell1.innerHTML = cell2.innerHTML;
+        cell1.id = cell2.id;
+        cell1.className = cell2.className;
+        cell2.innerHTML = tempHtml;
+        cell2.id = tempId;
+        cell2.className = tempClass;
+        table.rows[0].cells[col1].setAttribute("width", width2);
+        table.rows[0].cells[col2].setAttribute("width", width1);
+    }
+}
 
-                intervals.push(interval); // インターバルの ID を保存
-            })(tr);
-        }
-    /*
-    let interval;
-    for (let tr = 0; tr < DesorType.length; tr++) {
-        (function (index) {
-            interval = setInterval(() => {
-                console.log("tr:" + tr);
-                toggleContent(index, Tablenum + 1, d, alDes, DesorType);
-            }, 1000); //
-        })(tr);
-    }*/
-}
-//alternatingがうまくいかないとき
-function altershow(Tablenum, keyword, alshow, tr) {
-    for (var tr = 0; tr < Des[Tablenum].length; tr++) {
-        if (Des[Tablenum][tr].includes(keyword)) {
-            document.getElementById('TDes' + (Tablenum + 1) + '' + (tr + 1)).textContent = alshow;
-        }
-    }
-}
+TimeMarkErase();
+var comment = document.getElementById('supplement');

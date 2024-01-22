@@ -1,7 +1,7 @@
 'use strict';
 //日付，時，分をそれぞれ取得する
     const now=new Date();
-    //const hour=22;
+    //const hour=(now.getHours()+12)%24;
     const hour=now.getHours();
     const min=now.getMinutes();
     const sec=now.getSeconds();

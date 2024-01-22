@@ -1,0 +1,81 @@
+showing {
+    font-size: 25px;
+    height: 10px;
+}
+
+.Ctitle {
+    font-size: 25px;
+    height: 25px;
+}
+
+#stationname {
+    font-size: 40px;
+    text-align: center;
+    color: green;
+    margin: 5px;
+}
+button {
+    padding-left: 1em;
+    padding-right: 1em;
+    height:30px;
+}
+.bansen{
+    font-size: 15px;
+}
+form {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.koshin {
+    width: 90px;
+}
+.henko{
+    width: 120px;
+}
+
+table {
+    margin: 4px;
+}
+
+.row {
+    display: flex;
+}
+
+#selectstation {
+    margin: 10px;
+}
+
+time {
+    border: greenyellow solid;
+    font-size: 30px;
+    float: right;
+    position: relative;
+}
+
+@media(max-width:1299px) {
+    tableline {
+        display: inline;
+        align-items: flex-start;
+    }
+}
+
+/*PCのみ適用*/
+@media(min-width:1300px) {
+    tableline {
+        display: flex;
+        align-items: flex-start;
+    }
+}
+#supplement {
+    color: red;
+    font-size: 20px;
+}
+.Cheader{
+    background-color: skyblue;
+    font-family: "meiryo";
+}
+li{
+    font-size:15px;
+    font-family: "meiryo";
+}

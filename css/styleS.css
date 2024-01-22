@@ -1,0 +1,49 @@
+body{
+    font-family: monospace;
+}
+th{
+    color:white;
+    background-color: gray;
+}
+td{               /*データ内*/
+    font-size:25px;
+    height: 25px;
+    color:yellow;
+    border: 10px #734e30 solid;  /*表の中の枠色*/
+    border-left:none;
+    border-right:none;
+    font-family: "MS Gothic";
+    padding: 0px;
+}
+table{        /*表全体*/
+    border-collapse: collapse;/*文字を縮小してもボーダーが縮まらない*/
+    table-layout:fixed;
+    background-color: black;
+    border: 15px #734e30 solid;/*周りの色*/
+    width: 600px; 
+    height:150px;
+    white-space:nowrap;
+    text-align:center;
+    margin:3px;
+}
+.tr{
+    display: table;
+}
+p3{
+    font-size:20px;
+}
+.railnumber{
+    color:white;
+    font-weight:900;
+}
+.Ctitle{
+    background-color: #734e30;
+    color:white;
+    padding:0px;
+}
+.CTime{
+    color:white;
+}
+.CDetail{
+    overflow: hidden;
+}
