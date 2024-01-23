@@ -8,6 +8,11 @@ td{               /*データ内*/
     border-right:none;
     border-bottom:2px gray solid;
 }
+@media(max-width:1199px) {
+    td{
+        font-size:30px;
+    }
+}
 .Destination{
     color:greenyellow;
     /*transform:scaleX(0.65) translate(-35%,0%);*/
