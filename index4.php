@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  require('selection.php');
+  
   require_once('PHP/variable.php');
   require_once('PHP/table4.php');
   $files = array();
@@ -14,7 +14,8 @@
     $files[0] = 'csv/JRW/JRS1_H.csv';
     $files[1] = 'csv/JRW/JRS2_H.csv';
   }
-  require_once('PHP/files4.php');
+  require('PHP/files4.php');
+  require('selection.php');
   require('getCSV.php');
   ?>
   <title>JR西日本駅発車標</title>
