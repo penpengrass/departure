@@ -13,7 +13,7 @@
 <h1>発車標選択画面</h1>
 <h1 class="Cheader">概要</h1>
     <div>プログラミング練習を主目的とした鉄道のリアルタイム発車標再現  </div>
-<div>特記のない限りは<span style="color:red;">2023年3月時点</span>での平日ダイヤの発車標をリアルタイムに再現  
+<div>特記のない限りは<span style="color:red;">2023年3月時点</span>での平日ダイヤの発車標をリアルタイムに再現(一部は土日ダイヤにも対応)  
 <div>色や形式をできる限り再現しているが，フォント等はWindowsでデフォルトにあるものを使用 両数は非表示  </div>
 <div>表示駅は随時追加予定  </div>
 <h1>発車標表示駅一覧</h1>
@@ -52,7 +52,7 @@
         <tr>
             <td>在来線</td>
             <td>JR東海</td>
-            <td>沼津駅,静岡駅,浜松駅,豊橋駅,岐阜駅,大垣駅</td>
+            <td>沼津駅,静岡駅,浜松駅,豊橋駅,名古屋駅,岐阜駅,大垣駅</td>
         </tr>
         <tr>
             <td>新幹線</td>
@@ -98,6 +98,7 @@
     <form action="select.php" method="POST" value="gifu1">
         <button type="button" onclick="location.href='./index2.php'" value="近鉄へ移動">近鉄へ移動</button>
         <button type="button" onclick="location.href='./index3.php'" value="JR東日本へ移動">JR東日本へ移動</button>
+        <button type="button" onclick="location.href='./index3_S.php'">新幹線長野駅へ移動</button>
         <button type="button" onclick="location.href='./index4.php'" value="JR西日本へ移動">JR西日本へ移動</button>
         <button type="button" onclick="location.href='./index4_S2.php'" value="JR西日本へ移動">山陽新幹線主要駅へ移動</button>
         <button type="button" onclick="location.href='./index5.php'" value="東急へ移動">東急へ移動</button>
@@ -116,7 +117,7 @@
     <li>JR西日本 大阪駅 新山口駅</li>
     <li>JR九州 小倉駅 博多駅</li>
     <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
-    <li>JR東海 名古屋駅</li>
+    <li>JR東海 中津川駅</li>
     <h1 class="Cheader">今後対応予定</h1>
     <li>一部駅の番線表示</li>
     <li>停車駅表示を柔軟に(同じ列車名は同じ停車駅表示になっている)</li>

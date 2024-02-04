@@ -1,34 +1,28 @@
-//先発と次発と次々発の種別色分けを一気にする,変える余地ありそう
+//先発と次発と次々発の種別色分けを一気にする
 function KTypeColor(Utype, TType, Uobj) {//(種別,その種別の背景色を変える)
-    //console.log(Utype);
-    //console.log(document.getElementById(TType));
-    if (Utype.includes(Uobj.Typea.type)) {
-        
-        document.getElementById(TType).style.backgroundColor = Uobj.Typea.color;
-    } else if (Utype === Uobj.Typeb.type) {
-        document.getElementById(TType).style.backgroundColor = Uobj.Typeb.color;
-    } else if (Utype === Uobj.Typec.type) {
-        document.getElementById(TType).style.backgroundColor = Uobj.Typec.color;
-    } else if (Utype === Uobj.Typed.type) {
-        document.getElementById(TType).style.backgroundColor = Uobj.Typed.color;
-    } else if (Utype === Uobj.Typee.type) {
-        document.getElementById(TType).style.backgroundColor = Uobj.Typee.color;
-    } else {
-        document.getElementById(TType).style.backgroundColor = Uobj.Typef.color;
+    for (key in Uobj) {
+        if (Utype.startsWith(Uobj[key].type)) {
+            document.getElementById(TType).style.backgroundColor = Uobj[key].color;
+            break;
+        }
+    }
+}
+function KJTypeColor(Utype, TType, Uobj) {//(種別,その種別の背景色を変える)
+    for (key in Uobj) {
+        if (Utype.startsWith(Uobj[key].type)) {
+            document.getElementById(TType).style.color = Uobj[key].color;
+            document.getElementById(TType).style.backgroundColor = Uobj[key].Bcolor;
+            break;
+        }
     }
 }
 function JTypeColor(Utype, TType, Uobj) {//(種別,その種別の文字色を変える)
     //console.log(Uobj.Typea);
-    if (Utype.includes(Uobj.Typea.type)) {//
-        document.getElementById(TType).style.color = Uobj.Typea.color;
-    } else if (Utype.includes(Uobj.Typeb.type)) {
-        document.getElementById(TType).style.color = Uobj.Typeb.color;
-    } else if (Utype === Uobj.Typec.type) {
-        document.getElementById(TType).style.color = Uobj.Typec.color;
-    } else if (Utype === Uobj.Typed.type) {
-        document.getElementById(TType).style.color = Uobj.Typed.color;
-    } else if (Utype === Uobj.Typee.type) {
-        document.getElementById(TType).style.color = Uobj.Typee.color;
+    for (key in Uobj) {
+        if (Utype.startsWith(Uobj[key].type)) {
+            document.getElementById(TType).style.color = Uobj[key].color;
+            break;
+        }
     }
 }
 function JTypeIncludeColor(Utype, TType, Uobj) {//(種別,その種別の文字色を変える,'含む')
@@ -113,11 +107,23 @@ function allJRCColor() {
         }
     }
 }
+//JR名古屋駅限定
+function allJRNagoyaColor() {
+    for (let ia = 0; ia < Tablenum; ia++) {
+        for (let ib = 0; ib < Tablenums[ia]; ib++) {
+            if (ia == 2) {
+                KJTypeColor(Type[ia][ib], TType[ia][ib], JRChNobj);
+            } else {
+                KJTypeColor(Type[ia][ib], TType[ia][ib], JRCeNobj);
+            }
+        }
+    }
+}
 //JR東日本ATOSとJR東海在来線とJR北海道在来線(Include)
 function allJRCIncludeColor() {
-    var start=0;
-    if(station=='宇都宮駅'){
-        start=1;
+    var start = 0;
+    if (station == '宇都宮駅') {
+        start = 1;
     }
     for (let ia = start; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
@@ -138,7 +144,7 @@ function allJRTennoujiColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
             /*天王寺駅の特徴のためTTypeをWTypeに書き換える*/
-            KTypeColor(Type[ia][ib], WType[ia][ib], JRWTobj);
+            KTypeColor(Type[ia][ib], TType[ia][ib], JRWTobj);
         }
     }
 }
@@ -161,12 +167,14 @@ console.log(station);
 console.log(CompanyNumber);
 //console.log(Indexfile);
 
-if (station == '天王寺駅'||Indexfile=='index4_T.php') {
+if (station == '天王寺駅' || Indexfile == 'index4_T.php') {
     allJRTennoujiColor();
 } else if (Indexfile == 'index4.php' && JRShinkansenflag == 0) {
     allJRColor();
-} else if (Indexfile == 'index7.php' || Indexfile == 'index3.php' || Indexfile == 'index8.php') {
+} else if (Indexfile == 'index3.php' || Indexfile == 'index8.php') {
     allJRCIncludeColor();
+} else if (Indexfile == 'index7_T.php') {
+    allJRNagoyaColor();
 } else if (CompanyNumber == 5) {
     allTokyuColor();
 } else if (company == '近鉄') {

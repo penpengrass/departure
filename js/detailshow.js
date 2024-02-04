@@ -121,9 +121,12 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
             DetailLine = DetailDecide(Uobj.Typee.detail, Des[td][tr], AType, distance);
         }
     } else if (Utype === Uobj.Typef.type) {
-        DetailLine = "各駅にとまります";
+        if (Indexfile == 'index7_T.php') {
+            DetailLine = DetailDecide(Uobj.Typef.detail, Des[td][tr], AType, distance);
+        } else {
+            DetailLine = "各駅にとまります";
+        }
     } else {
-        DetailLine = "";
     }
     console.log(DetailLine + 'td=' + td + 'tr=' + tr);
     console.log(Detail);
@@ -131,6 +134,7 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
     //document.getElementById(TType).textContent = Detail[td][tr];
     //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = DetailLine;
     console.log(DetailLine);
+    console.log(Detail[td][tr]);
     Detail[td][tr] = DetailLine;
     if (detailflag == 8) {
         console.log(Detail[td][tr]);
@@ -144,6 +148,7 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
 
     //console.log(Detail[td][tr]);
     //console.log(document.getElementById(TType));
+    console.log('----FDetail関数終了----');
 }
 function DetailShow(companyObject, distance) {
     console.log("---ここから1個目の表の詳細表示----");
@@ -196,5 +201,42 @@ if (Indexfile == 'index2.php') {
 } else if (Indexfile == 'index3_S.php') {
     console.log(JRSBobj);
     DetailShow(JRSBobj, "・");
+} else if (Indexfile == 'index7_T.php') {
+    for (var tr = 0; tr < orderNum; tr++) {
+        FDetail(Type[0][tr], JRCeNobj, Dtype[0], 0, tr, "・");
+        if (Detail[0][tr].slice(-1) == '・') {
+            console.log(tr + 'は読点で終わる');
+            Detail[0][tr] = Detail[0][tr].slice(0, -1);
+            document.getElementById('TDetail' + (1) + '' + (tr + 1)).textContent = Detail[0][tr];
+        }
+        if (Type[1][tr].includes('特急') || Type[1][tr].includes('ホームライナー')) {
+            FDetail(Type[1][tr], JRCeNobj, Dtype[0], 1, tr, "・");
+            if (Detail[1][tr].slice(-1) == '・') {
+                console.log(tr + 'は読点で終わる');
+                Detail[1][tr] = Detail[1][tr].slice(0, -1);
+                document.getElementById('TDetail' + (2) + '' + (tr + 1)).textContent = Detail[1][tr];
+            }
+        }
+        if (Type[2][tr].includes('特急') || Type[2][tr].includes('ホームライナー')) {
+            FDetail(Type[2][tr], JRChNobj, Dtype[0], 2, tr, "・");
+            if (Detail[2][tr].slice(-1) == '・') {
+                console.log(tr + 'は読点で終わる');
+                Detail[2][tr] = Detail[2][tr].slice(0, -1);
+                document.getElementById('TDetail' + (3) + '' + (tr + 1)).textContent = Detail[2][tr];
+            }
+        }
+        FDetail(Type[3][tr], JRKaobj, Dtype[0], 3, tr, "・");
+        if (Detail[3][tr].slice(-1) == '・') {
+            console.log(tr + 'は読点で終わる');
+            Detail[3][tr] = Detail[3][tr].slice(0, -1);
+            document.getElementById('TDetail' + (4) + '' + (tr + 1)).textContent = Detail[3][tr];
+        }
+        FDetail(Type[4][tr], JRKaobj, Dtype[0], 4, tr, "・");
+        if (Detail[4][tr].slice(-1) == '・') {
+            console.log(tr + 'は読点で終わる');
+            Detail[4][tr] = Detail[4][tr].slice(0, -1);
+            document.getElementById('TDetail' + (5) + '' + (tr + 1)).textContent = Detail[4][tr];
+        }
+    }
 }
 //先発がないとき次発以降を空白にしたい

@@ -4,19 +4,23 @@ if (station == '熱海駅') {
         list[tr].style.color = 'greenyellow';
     }
     for (var td = 0; td < Tablenum; td++) {
+            swapColumns(table[td], 3, 4);
+            swapColumns(table[td], 2, 3);
         for (var tr = 0; tr < orderNum; tr++) {
             if (Type[td][tr].length > 11) {
                 console.log(Type[td][tr]);
                 console.log(document.getElementById('TType' + (td + 1) + (tr + 1)).textContent);
-                document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
+                //document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
             }
         }
-        rowremove(td, 'HCars', 'TCars');
         rowremove(td, 'HName', 'TName');
-        document.getElementById('HType1').style.width = "45%";
-        document.getElementById('HType2').style.width = "45%";
-        document.getElementById('HType3').style.width = "45%";
+        document.getElementById('HType1').style.width = "35%";
+        document.getElementById('HType2').style.width = "35%";
+        document.getElementById('HType3').style.width = "35%";
     }
+    CarsDevide(0);
+    CarsDevide(1);
+    CarsDevide(2);
 
     document.getElementById('supplement').textContent = '熱海駅は実際の表示と異なる部分がある';
 } else if (station == '小田原駅') {
@@ -100,11 +104,12 @@ if (station == '熱海駅') {
     rowremove(0, 'HCars', 'TCars');
     rowremove(0, 'HType', 'TType');
     if (Type[3][0] == '') {
-        BottomBanner("TRow43", 4, 3, 6,'日光線の運転は終了しました');
+        BottomBanner("TRow43", 4, 3, 6, '日光線の運転は終了しました');
     }
-    if(Type[0][0]==''&&Type[0][1]!=''){
-        BottomBanner("TRow11", 1, 1, 3,'烏山方面へは黒磯行きに乗車のうえ宝積寺でのりかえ');
+    if (Type[0][0] == '' && Type[0][1] != '') {
+        BottomBanner("TRow11", 1, 1, 3, '烏山方面へは黒磯行きに乗車のうえ宝積寺でのりかえ');
     }
+    comment.textContent = '上野東京ラインの両数は今後修正予定';
 } else if (station == '横浜駅') {
     const table1 = document.getElementById("TTable1");
     const table2 = document.getElementById("TTable2");
@@ -165,5 +170,5 @@ if (station == '熱海駅') {
     }
     NameColorchange(4, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
     NameColorchange(5, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
+    comment.textContent = '両数表示は今後更新';
 }
-comment.textContent = '両数表示は今後更新';

@@ -17,7 +17,7 @@ function JRCZTable($i,$tablenums,$column){
     <tr>
       <td class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
       <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="Destination"><p2 id="TDes' . $i . $j . '"></p2></td>
+      <td class="Destination" id="TDes' . $i . $j . '"></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>
     </tr>
     ');

@@ -15,7 +15,7 @@
   $tablenum=2;
   $OrderNum=3;
   require('PHP/table7.php');
-  require('PHP/file7_S.php');
+  require('PHP/files7_S.php');
   require('getCSV.php');
   ?>
   <title>JR東海駅発車標</title>
@@ -34,10 +34,10 @@
   </div>
   <!--駅選択部分-->
 
-  <form action="index7_S1.php" method="POST" id="selectstation">
-    <select name="stasele">
-      <option value="csv/JRC_S/hamamatsu1.csv">浜松駅</option>
-      <option value="csv/JRC_S/toyohashi1.csv">豊橋駅</option>
+  <form action="PHP/files7_S.php" method="POST" id="selectstation">
+    <select name="staselect7_S">
+      <option value="hamamatsu">浜松駅</option>
+      <option value="toyohashi">豊橋駅</option>
     </select>
     <button type="submit" class="henko" name="submit">駅変更</button>
   </form>

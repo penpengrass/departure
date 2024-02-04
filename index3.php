@@ -8,15 +8,12 @@
   <link rel="stylesheet" href="css/banner.css">
   <?php
   $files = array();
-  $setflag = 0;
   $files[0] = 'csv/JRMu/ToTakasaki.csv';
   require_once('PHP/variable.php');
+  $files[2] = 'csv/JRMu/ToChiba.csv';
+  $files[3] = 'csv/JRMu/ToKurihama.csv';
+  $files[1] = 'csv/JRMu/ToOdawara.csv';
   require_once('PHP/files3.php');
-  if ($setflag == 0) {
-    $files[2] = 'csv/JRMu/ToChiba.csv';
-    $files[3] = 'csv/JRMu/ToKurihama.csv';
-    $files[1] = 'csv/JRMu/ToOdawara.csv';
-  }
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -33,13 +30,13 @@
     <p id="stationname">広島駅</p>
   </div>
   <!--駅選択部分-->
-  <form action="index3.php" method="POST">
-    <select name="stasele">
-      <option value="csv/JRMu/ToTakasaki.csv">武蔵小杉駅</option>
-      <option value="csv/JRE/utsunomiya1.csv">宇都宮駅</option>
-      <option value="csv/JRE/yokohama1.csv">横浜駅</option>
-      <option value="csv/JRE/odawara1.csv">小田原駅</option>
-      <option value="csv/JRE/atami1.csv">熱海駅</option>
+  <form action="PHP/files3.php" method="POST">
+    <select name="staselect3">
+      <option value="musashikosugi">武蔵小杉駅</option>
+      <option value="utsunomiya">宇都宮駅</option>
+      <option value="yokohama">横浜駅</option>
+      <option value="odawara">小田原駅</option>
+      <option value="atami">熱海駅</option>
     </select>
     <button type="submit" name="submit">駅変更</button>
   </form>
