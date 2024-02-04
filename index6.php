@@ -36,11 +36,11 @@
     <p id="stationname">長野駅</p>
   </div>
   <!--駅選択部分-->
-  <form action="index6.php" method="POST">
-    <select name="stasele">
-      <option value="csv/JRE/nagano1.csv">長野駅</option>
-      <option value="csv/JRE/matsumoto1.csv">松本駅</option>
-      <option value="csv/JRE/yokohama1.csv">横浜駅</option>
+  <form action="PHP/files6.php" method="POST">
+    <select name="staselect6">
+      <option value="nagano">長野駅</option>
+      <option value="matsumoto">松本駅</option>
+      <option value="yokohama">横浜駅</option>
     </select>
     <button type="submit" name="submit" >駅変更</button>
 </form>
@@ -59,7 +59,7 @@
   <!--表をすべて入れる-->
   <tableline>
     <?php
-    //$stationnumber = 0;
+    $stationnumber = 0;
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $stasele = $_POST['stasele'];
       if ($stasele == 'csv/JRE/nagano1.csv') {
