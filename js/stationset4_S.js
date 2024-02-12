@@ -1,4 +1,5 @@
 company = '山陽新幹線';
+NonGouflag = 1;
 var JRSBobj = {//色は文字
     Typea: { type: "のぞみ", color: 'yellow', detail: limited, },
     Typeb: { type: "ひかり", color: red, detail: rapid, },
