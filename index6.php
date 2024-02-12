@@ -19,7 +19,7 @@
     print('
         <link rel="stylesheet" href="css/styleMatsumoto.css">
         ');
-  }else if($station=='横浜駅'){
+  } else if ($station == '横浜駅') {
     print('
         <link rel="stylesheet" href="css/styleYokohama6.css">
         ');
@@ -42,17 +42,17 @@
       <option value="matsumoto">松本駅</option>
       <option value="yokohama">横浜駅</option>
     </select>
-    <button type="submit" name="submit" >駅変更</button>
-</form>
-<form action="select.php" method="POST">
+    <button type="submit" name="submit">駅変更</button>
+  </form>
+  <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
     <button type="button" onclick="location.href='./index3.php'">ATOSへ移動</button>
-    <button type="button" onclick="location.href='./index3_S.php'">新幹線長野駅へ移動</button>
-    <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
+    <button type="button" onclick="location.href='./index3_S.php'">JR東日本新幹線へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6_S.php'">東北新幹線へ移動</button>
-    <button type="submit" name="numadu">沼津駅へ移動</button>
+    <button type="button" onclick="location.href='./index7.php?station=numazu'">沼津駅へ移動</button>
+    <button type="button" onclick="location.href='./index7_T.php'">名古屋駅へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線へ移動</button>
     <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
   </form>
@@ -60,13 +60,10 @@
   <tableline>
     <?php
     $stationnumber = 0;
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-      $stasele = $_POST['stasele'];
-      if ($stasele == 'csv/JRE/nagano1.csv') {
-        $stationnumber = 1;
-      } else {
-        $stationnumber = 2;
-      }
+    if ($station == '長野駅') {
+      $stationnumber = 1;
+    } else {
+      $stationnumber = 2;
     }
     for ($i = 1; $i <= $tablenum; $i++) {
       print('
@@ -116,7 +113,7 @@
   </tableline>
   <p id="supplement"></p>
   <?php
-  if($station=='横浜駅'){
+  if ($station == '横浜駅') {
     print('
   <h1 class="Cheader">案内</h1>
     <li>東海道線と横須賀線は熱海・久里浜側が1号車, 4･5号車がグリーン車</li>

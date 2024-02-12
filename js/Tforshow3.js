@@ -3,9 +3,32 @@ if (station == '熱海駅') {
     for (var tr = 0; tr < list.length; tr++) {
         list[tr].style.color = 'greenyellow';
     }
+    for (var tr = 0; tr < orderNum; tr++) {
+        if (Type[0][tr].startsWith('特急踊り子')) {
+            document.getElementById('TCars' + 1 + (tr + 1)).textContent = '9両';
+        } else if (Type[0][tr].startsWith('特急ｻﾌｨｰﾙ')) {
+            document.getElementById('TCars' + 1 + (tr + 1)).textContent = '8両';
+        }
+    }
+    for (var tr = 0; tr < orderNum; tr++) {
+        if (Type[1][tr].startsWith('特急踊り子')) {
+            document.getElementById('TCars' + 2 + (tr + 1)).textContent = '5両';
+        }
+    }
+    for (var tr = 0; tr < orderNum; tr++) {
+        if (Type[2][tr].startsWith('特急踊り子')) {
+            if (Type[2][tr].includes('8') || Type[2][tr].includes('16')||Type[2][tr].includes('12')) {
+                document.getElementById('TCars' + 3 + (tr + 1)).textContent = '14両';
+            }else{
+                document.getElementById('TCars' + 3 + (tr + 1)).textContent = '9両';
+            }
+        } else if (Type[2][tr].startsWith('特急ｻﾌｨｰﾙ')) {
+            document.getElementById('TCars' + 3 + (tr + 1)).textContent = '8両';
+        }
+    }
     for (var td = 0; td < Tablenum; td++) {
-            swapColumns(table[td], 3, 4);
-            swapColumns(table[td], 2, 3);
+        swapColumns(table[td], 3, 4);
+        swapColumns(table[td], 2, 3);
         for (var tr = 0; tr < orderNum; tr++) {
             if (Type[td][tr].length > 11) {
                 console.log(Type[td][tr]);
@@ -22,7 +45,7 @@ if (station == '熱海駅') {
     CarsDevide(1);
     CarsDevide(2);
 
-    document.getElementById('supplement').textContent = '熱海駅は実際の表示と異なる部分がある';
+    document.getElementById('supplement').textContent = '熱海駅は実際の表示と異なる部分がある　土休日ダイヤに対応';
 } else if (station == '小田原駅') {
     // 2列目と3列目を入れ替え
     // 表のIDを取得

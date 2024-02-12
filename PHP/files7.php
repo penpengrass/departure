@@ -3,7 +3,6 @@ require('function1.php');
 $startstation = 'hamamatsu';
 if (isset($_POST['staselect7'])) {
   $test1 = $_POST['staselect7'];
-  echo $test1;
   if ($test1 == $startstation) {
     header('Location: ../index7.php');
     exit();
@@ -28,7 +27,7 @@ if (isset($_GET['station'])) {
   }else if(Inisset('shizuoka')){
     $files[0] = 'csv/JRC/shizuoka1.csv';
     $files[1] = 'csv/JRC/shizuoka2.csv';
-  }else if(Inisset('numadu')){
+  }else if(Inisset('numazu')){
     $files[0] = 'csv/JRC/numazu1.csv';
     $files[1] = 'csv/JRC/numazu2.csv';
     $files[2] = 'csv/JRC/numazu3.csv';

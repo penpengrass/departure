@@ -2,9 +2,8 @@ company = 'JR東日本';
 if (station == '武蔵小杉駅') {
     TableTitle = ['４番線', '３番線'];
 } else if (station == '熱海駅') {
-    TableTitle = ['伊東線', '2・3 東海道線(下り)', '4・5 東海道線上り'];
-    var odoriko2 = [4, 8, 10, 2, 16, 4];
-    limitednumber2(TT[2], odoriko2, '踊り子');
+    //
+    TableTitle = ['伊東線 伊東・伊豆急下田方面', '2・3 東海道線(下り) 三島・沼津・静岡方面', '4・5 (上野東京ライン)東海道線(上り) 小田原・横浜・東京方面'];
     if (holidayflag == 1) {
         //TT[1][5][1]='普通 東海道線 6両';
         TT[1][7][1] = '沼津';

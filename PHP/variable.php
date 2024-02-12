@@ -4,13 +4,21 @@ $dir = basename($_SERVER['SCRIPT_NAME']);
 $holidayflag;
 // 日本の祝日リスト（仮に配列として記述）
 $holidays = array(
-  '2023-11-03',
-  '2023-11-23',
-  '2024-1-1'
+  '2024-02-12',
+  '2024-02-23',
+  '2024-03-20',
+  '2024-04-29',
+  '2024-05-03',
+  '2024-05-04',
+  '2024-05-05',
+  '2024-05-06',
+  '2024-07-15',
+  '2024-08-12',
   // 他の祝日
 );
 // 2時間前の日時を計算
-$twoHoursAgo = new DateTime("-2 hours");
+$timezone = new DateTimeZone('Asia/Tokyo'); // タイムゾーンを適切なものに置き換える
+$twoHoursAgo = new DateTime("-2 hours", $timezone);
 $twoHoursAgoDate = $twoHoursAgo->format('Y-m-d');
 // 曜日を取得 (0: 日曜日, 1: 月曜日, ... 6: 土曜日)
 $dayOfWeek = $twoHoursAgo->format('w');
@@ -44,9 +52,9 @@ $station = '';
 //会社を指定,まだ使っていない
 $CompanyNumber = 0;
 //新幹線付きかどうか
-$JRShinkansenflag=0;
+$JRShinkansenflag = 0;
 if ($dir == 'index2C.php') {
   require('PHP/CSVset2C.php');
-}else if (isset($_POST["stasele"])) {
+} else if (isset($_POST["stasele"])) {
   $files[0] = $_POST["stasele"];
 }

@@ -3,7 +3,6 @@ require('function1.php');
 $startstation = 'musashikosugi';
 if (isset($_POST['staselect3'])) {
   $test1 = $_POST['staselect3'];
-  echo $test1;
   if ($test1 == $startstation) {
     header('Location: ../index3.php');
     exit();
@@ -17,8 +16,13 @@ if (isset($_GET['station'])) {
     $files[0] = 'csv/JRE/atami1.csv';
     $files[1] = 'csv/JRE/atami2.csv';
     $files[2] = 'csv/JRE/atami3.csv';
+    if($holidayflag==1){
+      $files[0] = 'csv/JRE/atami1_H.csv';
+      $files[2] = 'csv/JRE/atami3_H.csv';
+    }
     $tablenum = 3;
     $OrderNum = 2;
+    $station='熱海駅';
   } else if (Inisset('odawara')) {
     $files[0] = 'csv/JRE/odawara1.csv';
     $files[1] = 'csv/JRE/odawara2.csv';

@@ -13,7 +13,7 @@
   $files[2] = 'csv/JRMu/ToChiba.csv';
   $files[3] = 'csv/JRMu/ToKurihama.csv';
   $files[1] = 'csv/JRMu/ToOdawara.csv';
-  require_once('PHP/files3.php');
+  require('PHP/files3.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -46,9 +46,9 @@
     <button type="button" onclick="location.href='./index3_S.php'">新幹線長野駅へ移動</button>
     <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=yokohama'">LCD横浜駅へ移動</button>
     <button type="button" onclick="location.href='./index6_S.php'">新幹線東京駅へ移動</button>
-    <button type="submit" name="numadu">沼津駅へ移動</button>
+    <button type="button" onclick="location.href='./index7.php?station=numazu'">沼津駅へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線</button>
     <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
   </form>
@@ -94,6 +94,14 @@
   <h1 class="Cheader">案内</h1>
   <li>東海道線と横須賀線は熱海・久里浜側が1号車, 4･5号車がグリーン車</li>
   <li>増結編成は東海道線が高崎・宇都宮側, 横須賀線は逗子・久里浜側(増1~増4)</li>
+  <?php
+  if ($station == '熱海駅') {
+    print('
+    <li>伊東線:6両・・・8000系(元東急) 4両・・・3000系(元JR209系)  7両・・・Resort21　ただし，7両が6両に変更になる日があります</li>
+    ');
+  }
+  ?>
+</body>
   <!--ここから内部のこと-->
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>
@@ -104,6 +112,5 @@
   <script type="text/javascript" src="js/functionE2.js"></script>
   <script type="text/javascript" src="js/Tforshow3.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
-</body>
 
 </html>

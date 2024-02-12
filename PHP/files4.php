@@ -14,7 +14,6 @@ exitfilejump(4, 'shimonoseki');*/
 $startstation='kitashinti';
 if (isset($_POST['staselect4'])) {
   $test1 = $_POST['staselect4'];
-  echo $test1;
   if ($test1 == 'tennouji') {
     header("Location: ../index4_T.php");
     exit();

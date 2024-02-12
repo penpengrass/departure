@@ -11,7 +11,7 @@
   $files[1] = 'csv/JRC/hamamatsu2.csv';
   require_once('PHP/variable.php');
   require_once('PHP/table7.php');
-  require_once('PHP/files7.php');
+  require('PHP/files7.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -46,7 +46,7 @@
     <button type="submit" name="atami">熱海駅へ移動</button>
     <button type="submit" name="maibara">米原駅へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">新幹線へ移動</button>
     <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>

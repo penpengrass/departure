@@ -127,6 +127,7 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
             DetailLine = "各駅にとまります";
         }
     } else {
+        DetailLine = "";
     }
     console.log(DetailLine + 'td=' + td + 'tr=' + tr);
     console.log(Detail);

@@ -3,7 +3,6 @@ require('function1.php');
 $startstation = 'hamamatsu';
 if (isset($_POST['staselect7_S'])) {
   $test1 = $_POST['staselect7_S'];
-  echo $test1;
   if ($test1 == $startstation) {
     header('Location: ../index7_S1.php');
     exit();

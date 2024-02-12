@@ -19,6 +19,8 @@
 <h1>発車標表示駅一覧</h1>
     <table class="menutable">
         <caption>表示駅</caption>
+        <p class="chushaku"><span style="color:red;">赤字</span>は土休日ダイヤ対応，もしくは終日ダイヤ  <span style="color:blue;">青字</span>は
+        2024年3月ダイヤ対応  <span style="color:purple;">紫字</span>は土休日ダイヤ，2024年3月ダイヤ対応</p>
         <tr>
             <th>種類</th>
             <th>路線</th>
@@ -27,7 +29,7 @@
         <tr>
             <td>私鉄</td>
             <td>近鉄</td>
-            <td>鶴橋駅,奈良駅,京都駅,名古屋駅 </td>
+            <td>鶴橋駅,<span style="color:red;">奈良駅</span>,<span style="color:red;">京都駅</span>,名古屋駅 </td>
         </tr>
         <tr>
             <td>在来線</td>
@@ -42,7 +44,7 @@
         <tr>
             <td>新幹線</td>
             <td>山陽新幹線</td>
-            <td>姫路駅,広島駅</td>
+            <td>広島駅</td>
         </tr>
         <tr>
             <td>私鉄</td>
@@ -113,8 +115,8 @@
     <h1 class="Cheader">今後追加する駅</h1>
     <li>新幹線 静岡駅 米原駅 岡山駅 博多駅 仙台駅 新青森駅</li>
     <li>JR北海道 旭川駅 </li>
-    <li>JR東日本 赤羽駅 大宮駅 甲府駅 水戸駅 仙台駅 福島駅 </li>
-    <li>JR西日本 大阪駅 新山口駅</li>
+    <li>JR東日本 赤羽駅 東京駅 新宿駅 大宮駅 甲府駅 水戸駅 仙台駅 福島駅 </li>
+    <li>JR西日本 大阪駅 尼崎駅 新山口駅</li>
     <li>JR九州 小倉駅 博多駅</li>
     <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
     <li>JR東海 中津川駅</li>

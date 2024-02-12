@@ -3,7 +3,6 @@ require('function1.php');
 $startstation = 'nagano';
 if (isset($_POST['staselect6'])) {
   $test1 = $_POST['staselect6'];
-  echo $test1;
   if ($test1 == $startstation) {
     header('Location: ../index6.php');
     exit();
