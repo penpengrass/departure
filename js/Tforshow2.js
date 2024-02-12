@@ -33,6 +33,12 @@ for (var td = 0; td < Tablenum; td++) {
         KyotoRenraku(td, tr);
     }
 }
+DetailShow(Kinobj, "　");
+for (var td = 0; td < Tablenum; td++) {
+    for (var tr = 0; tr < orderNum; tr++) {
+        DetailBanner(td, tr, 18);
+    }
+}
 if (station == '京都駅') {
     if (holidayflag == 1) {
         document.getElementById('supplement').innerHTML += '<p>京都駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
