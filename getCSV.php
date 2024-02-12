@@ -1,23 +1,6 @@
 <?php
-if ($files[0] == 'csv/Kintetsu/KiTsu1.csv') {
-  $files[1] = 'csv/Kintetsu/KiTsu2.csv';
-} else if ($files[0] == 'csv/Kintetsu/KiKyo.csv') {
-  $tablenum = 1;
-  $OrderNum = 6;
-  $station = '京都駅';
-  if ($holidayflag == 1) {
-    $files[0] = 'csv/Kintetsu/KiKyo_H.csv';
-  }
-} else if ($files[0] == 'csv/Kintetsu/nara1.csv') {
-  $files[1] == 'csv/Kintetsu/nara1.csv';
-  if ($holidayflag == 1) {
-    $files[0] = 'csv/Kintetsu/nara1_H.csv';
-    $files[1] = 'csv/Kintetsu/nara1_H.csv';
-  }
-  $tablenum = 2;
-  $OrderNum = 3;
-  $station = '奈良駅';
-} else if ($files[0] == 'csv/Tokyu/nikotama1.csv') {
+
+if ($files[0] == 'csv/Tokyu/nikotama1.csv') {
   $files[1] = 'csv/Tokyu/nikotama2.csv';
   $files[2] = 'csv/Tokyu/nikotama3.csv';
   $files[3] = 'csv/Tokyu/nikotama4.csv';
@@ -52,7 +35,7 @@ if ($files[0] == 'csv/Kintetsu/KiTsu1.csv') {
   $files[3] = 'csv/JRH/sapporo3.csv';
   $files[4] = 'csv/JRH/sapporo2.csv';
   $tablenum = 4;
-  $OrderNum = 5;
+  $OrderNum = 4;
 } else if ($files[0] == 'csv/JRS/takamatsu1.csv') {
   $files[1] = 'csv/JRS/takamatsu1.csv';
   $files[2] = 'csv/JRS/takamatsu1.csv';
@@ -169,8 +152,9 @@ $js_array .= ']';
   let company = '';
   //詳細表示があるかどうか
   let detailflag = 0;
+  var NonGouflag = 0;
+  var TwoLetterDisflag = 0;
   var DetailLength = new Array(Tablenum);
-  console.log(Indexfile);
   console.log(title[2].substr(0, 2));
   console.log(TT[0][51][1]);
   console.log(TT[1].length);
