@@ -11,6 +11,7 @@ if (station == '広島駅' && Indexfile == 'index4_S2.php') {
             }
         }
     }
+    Bansenshow(1);
     
 } else if (JRShinkansenflag==1) {
     JRNameDevide(2);

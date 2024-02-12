@@ -41,11 +41,10 @@
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
     <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
-    <button type="submit" name="hiroshima" value="在来線へ移動">在来線へ移動</button>
-    <!--<button type="button" onclick="location.href='./index4.php'">在来線へ移動</button>-->
-    <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index4.php?station=hiroshima'">在来線へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
+    <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線へ移動</button>
     <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>
   </form>
