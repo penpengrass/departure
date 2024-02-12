@@ -166,7 +166,7 @@ function allTokyuColor() {
 console.log(station);
 console.log(CompanyNumber);
 //console.log(Indexfile);
-
+//index7.phpのみTforshow7.jsに移行
 if (station == '天王寺駅' || Indexfile == 'index4_T.php') {
     allJRTennoujiColor();
 } else if (Indexfile == 'index4.php' && JRShinkansenflag == 0) {
