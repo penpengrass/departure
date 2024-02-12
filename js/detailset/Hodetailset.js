@@ -16,6 +16,6 @@ var JRHobj = {//色は文字
     Typec: { type: "特急おおぞら", color: red, detail: oozora, },
     Typed: { type: "快速エアポート", color: orange, detail: airport, },
     Typee: { type: "特急", color: red, detail: express, },
-    Typef: { type: "各駅停車", color: 'lightgreen', detail: local, }
+    Typef: { type: "普通", color: 'lightgreen', detail: local, }
 
 };

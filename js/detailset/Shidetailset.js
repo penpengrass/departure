@@ -28,6 +28,6 @@ var JRSobj = {//色は文字
     Typeb: { type: "特急いしづち", color: red, detail: rapid, },
     Typec: { type: "快速ﾏﾘﾝﾗｲﾅｰ", color: 'skyblue', detail: Mrapid, },
     Typed: { type: "快速ｻﾝﾎﾟｰﾄ", color: 'lightgreen', detail: Jrapid, },
-    Typee: { type: "特急しまんと", color: red, detail: Jsubrapid, },
+    Typee: { type: "特急", color: red, detail: Jsubrapid, },
     Typef: { type: "各駅停車", color: 'lightgreen', detail: local, }
 };

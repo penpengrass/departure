@@ -70,7 +70,8 @@ function DestinationDevide(station, mainTable, subTable) {
         subTaNum = 1;
         let flag = 0;
         for (var mainTaNum = 1; mainTaNum < TT[mainTable][TaRow].length; mainTaNum++) {//列車の切替
-            if (station.includes(TT[mainTable][TaRow - 1][mainTaNum])) {
+            var LoDes = TT[mainTable][TaRow - 1][mainTaNum];
+            if (station.includes(LoDes)) {
                 console.log(TT[mainTable].length + ":" + TT[subTable].length);
                 TT[subTable][TaRow - 3][subTaNum] = TT[mainTable][TaRow - 3][mainTaNum];
                 TT[subTable][TaRow - 2][subTaNum] = TT[mainTable][TaRow - 2][mainTaNum];
@@ -110,7 +111,7 @@ function TrainNameDevide(TrainName, mainTable, subTable) {
         subTaNum = 1;
         let flag = 0;
         for (var mainTaNum = 1; mainTaNum < TT[mainTable][TaRow].length; mainTaNum++) {//列車の切替
-            var LoType=TT[mainTable][TaRow - 3][mainTaNum];
+            var LoType = TT[mainTable][TaRow - 3][mainTaNum];
             if (LoType.includes(TrainName)) {
                 //console.log(TT[mainTable].length + ":" + TT[subTable].length);
                 TT[subTable][TaRow - 3][subTaNum] = TT[mainTable][TaRow - 3][mainTaNum];
@@ -172,27 +173,59 @@ function limitednumber(TT, firstlimited, name) {
     }
     //console.log(TT);
 }
-function limitedjustnumber(TT, firstlimited, name) {
+function limitedjustnumber(TT, firstlimited, name, Des) {
     var count = firstlimited;
-    for (var td = 1; td < TT.length; td++) {
+    var Lname = [];
+    var LDes = [];
+    if (typeof name == 'string') {
+        Lname[0] = name;
+    } else {
+        Lname = name;
+    }
+    if (typeof Des == 'string') {
+        LDes[0] = Des;
+    } else if (typeof Des == 'undefined') {
+        LDes[0] = 'undefined';
+    } else {
+        LDes = Des;
+    }
+    //console.log('---' + Lname + '---');
+    for (var td = 1; td < TT.length; td += 4) {
         for (var tr = 1; tr < TT[td].length; tr++) {
-            if (TT[td][tr] == name) {
-                if (TT[td][tr].includes('当駅始発')) {
-                    TT[td][tr] = TT[td][tr].slice(0, -6);
-                    if (Indexfile == 'index6.php') {
-                        TT[td][tr] += count + "号";
-                        count += 2;
-                        TT[td][tr] += '(当駅始発)';
-                    } else if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php') {
-                        TT[td][tr] += count + "";
-                        count += 2;
-                    }
-                } else {
-                    if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php') {
-                        TT[td][tr] += count + "";
-                        count += 2;
-                    } else {
-                        TT[td][tr] += count + "号";
+            for (var a = 0; a < Lname.length; a++) {
+                for (var b = 0; b < LDes.length; b++) {
+                    if (TT[td][tr] == Lname[a]) {
+                        //console.log(TT[td][tr] + ':' + Lname[a] + ':' + count);
+                        //console.log(count + ' 1');
+                        if (TT[td][tr].includes('当駅始発')) {
+                            TT[td][tr] = TT[td][tr].slice(0, -6);
+                            if (Indexfile == 'index6.php') {
+                                TT[td][tr] += count + "号";
+                                TT[td][tr] += '(当駅始発)';
+                            } else if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php') {
+                                TT[td][tr] += count + "";
+                            }
+                        } else if (TT[td + 2][tr] == LDes[b]) {
+                            //console.log(count + ' 2 ' + TT[td + 2][tr] + ':' + Des);
+                            if (NonGouflag == 1) {
+                                TT[td][tr] += count + "";
+                            } else {
+                                TT[td][tr] += count + "号";
+                            }
+                        } else {
+                            //console.log(count + ' 3' + TT[td + 2][tr] + ':' + Des);
+                            if (LDes[0] == 'undefined') {
+                                //console.log(TT[td][tr]);
+                                if (NonGouflag == 1) {
+                                    TT[td][tr] += count + "";
+                                } else {
+                                    TT[td][tr] += count + "号";
+                                }
+                            } else {
+                                count -= 2;
+                            }
+                        }
+                        //console.log(count);
                         count += 2;
                     }
                 }
@@ -223,6 +256,7 @@ function Tablereset(num) {
         }
     }
 }
+//reverseの代わり
 function reverseLine(hairetsu, before, after) {
     var numberOfHairetsu = hairetsu[before].length;
     hairetsu[after] = new Array(numberOfHairetsu);

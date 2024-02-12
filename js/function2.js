@@ -4,12 +4,12 @@ function JRLimitedDevide(Tablenum) {
         console.log(tr);
         if (Type[Tablenum][tr].includes('特急')) {
             var Limited = Type[Tablenum][tr].substr(Type[Tablenum][tr].indexOf('急') + 1);
-            console.log(Tablenum+':'+tr+':'+Limited);
+            console.log(Tablenum + ':' + tr + ':' + Limited);
             document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited;
             //console.log(document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)));
             document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = 'center';
             document.getElementById('TType' + (Tablenum + 1) + '' + (tr + 1)).textContent = '特急';
-            
+
             Type[Tablenum][tr] = '特急'
         }
     }
@@ -76,14 +76,17 @@ function JRNameDevide(T = Tablenum) {
         var matches = new Array(Type[td].length);
         for (var tr = 0; tr < Type[td].length; tr++) {
             LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
-            if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php') {
+            //index4_S2.phpとindex7_S1とindex3_S.phpは1，その他は0
+            console.log("NonGouflag=" + NonGouflag);
+            //Indexfile=='index4_S2.php'||Indexfile=='index7_S1.php'||Indexfilr=='index3_S.php'
+            if (NonGouflag == 1) {
                 matches[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
             } else {
                 matches[tr] = LimitedName[tr].match(/([^0-9]+)(\d+)([^0-9]+)/);
             }
 
             if (matches[tr]) {
-                console.log(td+1+'個目の表の'+(tr+1)+'番目の表示はJRLimitedNameとマッチする');
+                console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRLimitedNameとマッチする');
                 console.log(matches[tr][0] + ":" + tr);
                 console.log(matches[tr][1] + ":" + tr);
                 console.log(matches[tr][2] + ":" + tr);
@@ -96,7 +99,7 @@ function JRNameDevide(T = Tablenum) {
                 if (matches[tr][1].length < Mlength) {
                     console.log(matches[tr][1]);
                     document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][1];
-                    if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php'||Indexfile=='index3_S.php') {
+                    if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php' || Indexfile == 'index3_S.php') {
                         document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2];
                     } else {
                         document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2] + matches[tr][3];
@@ -106,6 +109,8 @@ function JRNameDevide(T = Tablenum) {
                         document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.color = 'red';
                     }
                 }
+            } else {
+                console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');
             }
         }
     }
@@ -135,7 +140,7 @@ function JRLimitedNumber(td, tr) {
     console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     if (matches[tr]) {
-        console.log(td+1+'個目の表の'+(tr+1)+'番目はマッチする')
+        console.log(td + 1 + '個目の表の' + (tr + 1) + '番目はマッチする')
         console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
         console.log(matches[tr][2] + ":" + tr);
@@ -147,7 +152,7 @@ function JRLimitedNumber(td, tr) {
     return number;
 }
 //表の1番下に文章を入れる
-function BottomBanner(tag, td, tr, colspan,contents) {
+function BottomBanner(tag, td, tr, colspan, contents) {
     let element = document.getElementById(tag);
     while (element.firstChild) {
         element.removeChild(element.firstChild);
@@ -161,8 +166,18 @@ function CarsDevide(td, Ltag = 'TCars') {
     for (var tr = 0; tr < orderNum; tr++) {
         var LType = document.getElementById('TType' + (td + 1) + '' + (tr + 1));
         var matches = LType.textContent.match(/(\D+)(\d+)両/);
+        var matches2 = LType.textContent.match(/(\D+)(\d+)号(\d+)両/);
+        console.log(LType.textContent);
         var LCars = document.getElementById(Ltag + (td + 1) + '' + (tr + 1));
-        if (matches) {
+        if (matches2) {
+            console.log(matches2[0]);
+            console.log(matches2[1]);
+            console.log(matches2[2]);
+            console.log(matches2[3]);
+            var number = matches[2];
+            LCars.textContent = matches2[3] + '両';
+            LType.textContent = matches2[1] + matches2[2] + '号';
+        } else if (matches) {
             console.log(matches[0]);
             console.log(matches[1]);
             console.log(matches[2]);
@@ -185,13 +200,18 @@ function NameColorchange(td, tag, Name, color) {
         }
     }
 }
-function Bansenshow() {
+function Bansenshow(flag = 0) {
     //console.log(doBNumber[1][0].textContent);
     for (td = 0; td < Tablenum; td++) {
         for (tr = 0; tr < Tablenums[td]; tr++) {
             //console.log(doBNumber[td][tr]);
             if (doBNumber[td][tr].textContent != '') {
-                doBNumber[td][tr].innerHTML += '<span class="bansen">番線</span>';
+                var Line = doBNumber[td][tr].textContent;
+                if (flag == 0) {
+                    doBNumber[td][tr].innerHTML = Line + '<span class="bansen">番線</span>';
+                } else if (flag == 1) {
+                    doBNumber[td][tr].innerHTML ='<span class="bansen">のりば</span>'+Line;
+                }
             }
         }
     }
