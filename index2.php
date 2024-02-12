@@ -11,7 +11,7 @@
   $files[0] = 'csv/Kintetsu/KiTsu1.csv';
   $files[1] = 'csv/Kintetsu/KiTsu2.csv';
   require_once('PHP/variable.php');
-  //require_once('PHP/files2.php');
+  require('PHP/files2.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -26,12 +26,12 @@
     <p id="stationname">鶴橋駅</p>
   </div>
   <!--駅選択部分-->
-  <form action="index2.php" method="POST">
-    <select name="stasele">
-      <option value="csv/Kintetsu/KiTsu1.csv">鶴橋駅</option>
-      <option value="csv/Kintetsu/nara1.csv">奈良駅</option>
-      <option value="csv/Kintetsu/KiKyo.csv">京都駅</option>
-      <option value="csv/Kintetsu/kin_nagoya.csv">名古屋駅</option>
+  <form action="PHP/files2.php" method="POST">
+    <select name="staselect2">
+      <option value="tsuruhashi">鶴橋駅</option>
+      <option value="nara">奈良駅</option>
+      <option value="kyoto">京都駅</option>
+      <option value="nagoya">名古屋駅</option>
     </select>
     <button type="submit" name="submit">駅変更</button>
   </form>
@@ -43,7 +43,7 @@
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
-    <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
+    <button type="button" onclick="location.href='./index7_T.php'">JR名古屋駅へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>
   </form>
   
@@ -70,7 +70,7 @@
       <td class="shubetu' . $i . $j . '" id="IType' . $i . $j . '" rowspan="2"><p2 id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '" rowspan="2"><span id="WDes' . $i . $j . '"></span></td>
       <td class="railnumber" id="TNum' . $i . $j . '" rowspan="2"></td>
-      <td class="higherDetail CDetail" ><p3 class="news-banner__content"><p2 id="TDetail' . $i . $j . '">本日の運転は終了しました</p2></p3></td>
+      <td class="higherDetail CDetail" ><p3 class="news-banner__content" id="TDetail' . $i . $j . '">本日の運転は終了しました</p3></td>
       </tr>
       <tr><td class="CDetail"><p2 id="TConnection' . $i . $j . '"></td>
     </tr>
@@ -95,9 +95,10 @@
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
+  <script type="text/javascript" src="js/functionDetail.js"></script>
+  <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/Tforshow2.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
-  <script type="text/javascript" src="js/detailshow.js"></script>
   <!--<script type="text/javascript" src="js/detailStation.js"></script>-->
   
 
