@@ -48,11 +48,11 @@
   <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
-    <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
+    <button type="submit" name="Knagoya">近鉄名古屋駅へ移動</button>
     <button type="submit" name="atami">熱海駅へ移動</button>
     <button type="submit" name="maibara">米原駅へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">新幹線へ移動</button>
     <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>
@@ -77,7 +77,7 @@
         print('
         <tr>
           <td class="shubetu" id="TType' . $i . $j . '" colspan="2"><span id="WType' . $i . $j . '"></span></td>
-          <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
+          <td class="CTime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
           <td class="Destination" id="TDes' . $i . $j . '"></td>
           <td class="railnumber" id="TNum' . $i . $j . '"></td>
         </tr>
@@ -106,10 +106,11 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
 <script type="text/javascript" src="js/function2.js"></script>
+<script type="text/javascript" src="js/function3.js"></script>
 <script type="text/javascript" src="js/functionDetail.js"></script>
 <script type="text/javascript" src="js/detailshow.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
-<script type="text/javascript" src="js/Tforshow7.js"></script>
+<script type="text/javascript" src="js/Tforshow7_T.js"></script>
 </body>
 
 </html>

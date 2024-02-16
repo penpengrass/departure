@@ -109,11 +109,14 @@ function JRNameDevide(T = Tablenum) {
                         document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.color = 'red';
                     }
                 }
+                console.log(ShinNumber);
+                ShinNumber[td][tr] = matches[tr][2];
             } else {
                 console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');
             }
         }
     }
+    console.log(ShinNumber);
 }
 //特急などの列車名を取得
 function JRLimitedName(td, tr) {
@@ -136,9 +139,11 @@ function JRLimitedName(td, tr) {
 function JRLimitedNumber(td, tr) {
     var LimitedName = new Array(Type[td].length);
     var matches = new Array(Type[td].length);
+    var matches2 = new Array(Type[td].length);
     LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
     console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
+    matches2[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
     if (matches[tr]) {
         console.log(td + 1 + '個目の表の' + (tr + 1) + '番目はマッチする')
         console.log(matches[tr][0] + ":" + tr);
@@ -148,6 +153,16 @@ function JRLimitedNumber(td, tr) {
         console.log(matches[tr][1] + matches[tr][1].length);
         console.log("Dtypeは" + Dtype);
         var number = matches[tr][2];
+    }else if (matches2[tr]) {
+        console.log(td + 1 + '個目の表の' + (tr + 1) + '番目はマッチする')
+        console.log(matches2[tr][0] + ":" + tr);
+        console.log(matches2[tr][1] + ":" + tr);
+        console.log(matches2[tr][2] + ":" + tr);
+        console.log(matches2[tr][1] + matches2[tr][1].length);
+        console.log("Dtypeは" + Dtype);
+        var number = matches2[tr][2];
+    }else{
+        console.log("JRLimitedNumberはマッチしない");
     }
     return number;
 }
@@ -200,6 +215,14 @@ function NameColorchange(td, tag, Name, color) {
         }
     }
 }
+//数字を全角に
+function toFullWidth(str) {
+    // 半角英数字を全角に変換
+    str = str.replace(/[0-9]/g, function (s) {
+        return String.fromCharCode(s.charCodeAt(0) + 0xFEE0);
+    });
+    return str;
+}
 function Bansenshow(flag = 0) {
     //console.log(doBNumber[1][0].textContent);
     for (td = 0; td < Tablenum; td++) {
@@ -210,10 +233,16 @@ function Bansenshow(flag = 0) {
                 if (flag == 0) {
                     doBNumber[td][tr].innerHTML = Line + '<span class="bansen">番線</span>';
                 } else if (flag == 1) {
-                    doBNumber[td][tr].innerHTML ='<span class="bansen">のりば</span>'+Line;
+                    doBNumber[td][tr].innerHTML = '<span class="bansen">のりば</span>' + Line;
                 }
             }
         }
+    }
+}
+function TwoLetterDistance(td, tr, Line, Tab, LetterSpacing, Indent) {
+    if (Line[td][tr].length == 2) {
+        document.getElementById(Tab[td][tr]).style.letterSpacing = LetterSpacing + 'em';
+        document.getElementById(Tab[td][tr]).style.textIndent += Indent + 'em';
     }
 }
 //路線記号追加
@@ -253,10 +282,10 @@ function rowremove(td, header, text) {
         document.getElementById(text + (td + 1) + '' + (tr + 1)).remove();
     }
 }
-function flagmarkerase(td, tag) {
+function flagmarkerase(td, tag, mark = '*') {
     for (tr = 0; tr < Tablenums[td]; tr++) {
         var str = document.getElementById(tag + (td + 1) + '' + (tr + 1));
-        if (str.textContent.includes('*')) {
+        if (str.textContent.includes(mark)) {
             str.textContent = str.textContent.slice(0, -1);
         }
     }

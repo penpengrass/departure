@@ -1,7 +1,7 @@
 if (station == '熱海駅') {
     var list = document.getElementsByClassName('Destination');
     for (var tr = 0; tr < list.length; tr++) {
-        list[tr].style.color = 'greenyellow';
+        list[tr].style.color = '#0f0';
     }
     for (var tr = 0; tr < orderNum; tr++) {
         if (Type[0][tr].startsWith('特急踊り子')) {

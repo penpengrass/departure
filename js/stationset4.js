@@ -4,7 +4,7 @@ var JRobj = {//色は文字
     Typeb: { type: "新快速", color: red, detail: rapid, },
     Typec: { type: "快速", color: orange, detail: Jrapid, },
     Typed: { type: "区快", color: orange, detail: Jsubrapid, },
-    Typee: { type: "普通", color: greenyellow, detail: local, }
+    Typee: { type: "普通", color: '#0f0', detail: local, }
 
 };
 //天王寺駅
@@ -19,10 +19,10 @@ var JRWTobj = {//色は文字
 var JRWSobj = {//色は文字
     Typea: { type: "のぞみ", color: orange, detail: limited, },
     Typeb: { type: "ひかり", color: red, detail: rapid, },
-    Typec: { type: "こだま", color: greenyellow, detail: rapid, },
+    Typec: { type: "こだま", color: '#0f0', detail: rapid, },
     Typed: { type: "みずほ", color: orange, detail: Jrapid, },
     Typee: { type: "さくら", color: red, detail: Jsubrapid, },
-    Typef: { type: "つばめ", color: greenyellow, detail: local, }
+    Typef: { type: "つばめ", color: '#0f0', detail: local, }
 };
 if (station == '岡山駅') {
     var selectstation = ['備前片上', '長船', '日生', '播州赤穂', '西大寺'];
@@ -40,7 +40,7 @@ if (station == '岡山駅') {
     limitednumber(TT[3], 1, 'ｽｰﾊﾟｰはくと');
     limitednumber(TT[0], 1, 'はまかぜ');
     limitednumber(TT[1], 2, 'はまかぜ');*/
-    company='JR西日本';
+    company = 'JR西日本';
     TableTitle = ['山陽・東海道新幹線 新大阪・東京方面', '山陽・九州新幹線 博多・鹿児島中央方面'];
     var sakura1 = [541, 543, 545, 549, 551, 553, 555, 565, 569, 571, 573];
     var sakura2 = [548, 560, 564, 568, 570, 572];
@@ -76,9 +76,12 @@ if (station == '岡山駅') {
 } else if (station == '三原駅') {
     TableTitle = ['山陽線 福山 岡山方面', '山陽線 広島 岩国方面', '呉線 広 呉方面'];
 } else if (station == '岩国駅') {
-    TableTitle = ['岩徳線 錦川清流線', '山陽線 宮島口 広島方面', '山陽線 柳井 徳山方面'];
+    TableTitle = ['岩徳線','錦川清流線', '山陽線 宮島口 広島方面', '山陽線 柳井 徳山方面'];
+    var selectstation = ['錦町'];
+    DestinationDevide(selectstation, 0, 1);
 } else if (station == '北新地駅') {
     TableTitle = ['京橋 四条畷 松井山手方面', '尼崎 宝塚 三ノ宮方面'];
+    TwoLetterDisflag = 1;
 } else if (station == '米原駅') {
     TableTitle = ['東海道線 彦根 草津 京都方面', '北陸線 長浜 敦賀 金沢方面', '東海道線 大垣 岐阜方面'];
     var shirasagi = [51, 1, 3, 5, 53, 7, 9, 57, 11, 59, 13, 61, 15, 63, 65];
@@ -95,7 +98,7 @@ if (station == '岡山駅') {
     var kodama1 = [775, 781, 831, 833, 835, 837, 841, 843, 845, 847, 849, 851, 853, 855, 857, 859, 861, 865, 867, 787];
     var nozomi2 = [6, 10, 42, 48];
     var sakura2 = [542, 544, 546, 550, 552, 554, 556, 558, 562, 566, 406];
-    var kodama2=[838,840,842,844,846,848,850,852,854,856,858,860,862,864,866,776,870,874,876];
+    var kodama2 = [838, 840, 842, 844, 846, 848, 850, 852, 854, 856, 858, 860, 862, 864, 866, 776, 870, 874, 876];
     limitednumber2(TT[0], kodama1, 'こだま');
     limitednumber2(TT[1], kodama2, 'こだま');
     limitednumber2(TT[0], sakura1, 'さくら');

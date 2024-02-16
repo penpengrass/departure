@@ -3,7 +3,7 @@
 
 <head>
   <?php
-  
+
   require_once('PHP/variable.php');
   require_once('PHP/table4.php');
   $files = array();
@@ -60,12 +60,12 @@
   <!--表をすべて入れる-->
   <tableline>
     <?php
-    $Tstart=1;
+    $Tstart = 1;
     if ($JRShinkansenflag == 1) {
       for ($i = 1; $i <= 2; $i++) {
         JRWSTable($i, $tablenums, $column);
       }
-      $Tstart=3;
+      $Tstart = 3;
     }
     //表の数
     for ($i = $Tstart; $i <= $tablenum; $i++) {
@@ -75,11 +75,11 @@
       print('
 <caption class="Ctitle"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></caption>
     <tr>
-      <th width="10%">種別</th>
+      <th width="10%" id="HType' . $i . '">種別</th>
       <th width="35%" id="HName' . $i . '">列車名</th>
-      <th width="20%">時刻</th>
-      <th width="25%">行先</th>
-      <th width="10%">番線</th>
+      <th width="20%" id="HTime' . $i . '">時刻</th>
+      <th width="25%" id="HDes' . $i . '">行先</th>
+      <th width="10%" class="CNum" id="HNum' . $i . '">番線</th>
     </tr>
   ');
       //n番目に発車する列車までを表示
@@ -94,7 +94,7 @@
     </tr>
     ');
       }
-      if ($station == '岡山駅' && ($undertable[$i - 1] == 1)) {
+      if (($station == '岡山駅' || $station == '岩国駅') && ($undertable[$i - 1] == 1)) {
         $i++;
         print('
         <th class="Ctitle" colspan="5"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></th>
@@ -131,8 +131,8 @@
   </tableline>
   <p id="supplement"></p>
   <h1 class="Cheader">注釈</h1>
-    <li>糸崎駅 岩国駅 下関駅においては番線の表示は実際と異なる</li>
-    <li>本来山陽地区では種別の横に両数がある</li>
+  <li>糸崎駅 岩国駅 下関駅においては番線の表示は実際と異なる</li>
+  <li>本来山陽地区では種別の横に両数がある</li>
   <!--ここから内部のこと-->
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>

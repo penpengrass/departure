@@ -1,7 +1,6 @@
 JRNameDevide(2);
 for (let te = 0; te < Tablenum; te++) {
     for (let tr = 0; tr < orderNum; tr++) {
-        console.log(Type[te][tr]);
         if (Type[te][tr] === 'undefined') {
             console.log(":");
         } else if (Type[te][tr].length > 7) {
@@ -19,17 +18,19 @@ for (let te = 0; te < Tablenum; te++) {
 function JREScolor(ltd, ltr, name, tag, color) {
     var LName = document.getElementById('TType' + (ltd + 1) + (ltr + 1));
     var Lcolor = document.getElementById('TName' + (ltd + 1) + (ltr + 1));
-    console.log(LName.textContent);
+    //console.log(LName.textContent);
     if (LName.textContent == name) {
         LName.innerHTML = tag;
         Lcolor.style.color = color
     }
 }
 Bansenshow();
+flagmarkerase(0,'TType');
 //種別の色   
 for (var tr = 0; tr < 4; tr++) {
     JREScolor(0, tr, 'やまびこ', '<span class="green">やまびこ</span>', yellowgreen);
     JREScolor(0, tr, 'なすの', '<span class="green">なすの</span>', yellowgreen);
+    JREScolor(0, tr, 'つばさ', '<span class="orange">つばさ</span>', orange);
     JREScolor(0, tr, 'はやぶさ', '<span class="green">はやぶさ</span>', yellowgreen);
     JREScolor(0, tr, 'はやぶさ･こまち', '<span class="green">はやぶさ</span>･<span class="pink">こまち</span>', pink);
     JREScolor(0, tr, 'やまびこ･つばさ', '<span class="green">やまびこ</span>･<span class="orange">つばさ</span>', orange);

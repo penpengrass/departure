@@ -11,13 +11,13 @@ exitfilejump(4, 'iwakuni');
 exitfilejump(4, 'tokuyama');
 exitfilejump(4, 'shimonoseki');*/
 //この後index4.php?station=hogehogeに飛ぶ
-$startstation='kitashinti';
+$startstation = 'kitashinti';
 if (isset($_POST['staselect4'])) {
   $test1 = $_POST['staselect4'];
   if ($test1 == 'tennouji') {
     header("Location: ../index4_T.php");
     exit();
-  }else if($test1==$startstation){
+  } else if ($test1 == $startstation) {
     header('Location: ../index4.php');
     exit();
   } else {
@@ -71,7 +71,6 @@ if (isset($_GET['station'])) {
     $tablenum = 7;
     $station = '岡山駅';
     $tableStrange = 1;
-    $tablenums = [2, 2, 6, 2, 3, 2, 2];
     $undertable = [1, 0, 1, 0, 0, 1, 0];
     $column = 8;
     $tablenums = [2, 3, 2, 2, 6, 2, 2];
@@ -85,16 +84,20 @@ if (isset($_GET['station'])) {
     $station = '新見駅';
   } else if (Inisset('iwakuni')) {
     $files[0] = 'csv/JRW/SanyoArea/iwakuni1.csv';
+    $files[1] = 'csv/JRW/SanyoArea/iwakuni1.csv';
     if ($holidayflag == 0) {
-      $files[1] = 'csv/JRW/SanyoArea/iwakuni3.csv';
-      $files[2] = 'csv/JRW/SanyoArea/iwakuni4.csv';
+      $files[2] = 'csv/JRW/SanyoArea/iwakuni3.csv';
+      $files[3] = 'csv/JRW/SanyoArea/iwakuni4.csv';
     } else {
-      $files[1] = 'csv/JRW/SanyoArea/iwakuni3_H.csv';
-      $files[2] = 'csv/JRW/SanyoArea/iwakuni4_H.csv';
+      $files[2] = 'csv/JRW/SanyoArea/iwakuni3_H.csv';
+      $files[3] = 'csv/JRW/SanyoArea/iwakuni4_H.csv';
     }
-    $tablenum = 3;
+    $tablenum = 4;
+    $undertable = [1, 0, 0, 0];
+    $column = 4;
     $tableStrange = 1;
-    $tablenums = [2, 3, 3];
+    $tablenums = [1, 1, 3, 3];
+    $station = '岩国駅';
   } else if (Inisset('tokuyama')) {
     $files[0] = 'csv/JRW_S/tokuyama1.csv';
     $files[1] = 'csv/JRW_S/tokuyama2.csv';
@@ -106,6 +109,7 @@ if (isset($_GET['station'])) {
     $JRShinkansenflag = 1;
     $tablenums = [3, 3, 2, 2, 2];
     $station = '徳山駅';
+    $column = 5;
   } else if (Inisset('shimonoseki')) {
     $files[0] = 'csv/JRW/SanyoArea/shimonoseki1.csv';
     $files[1] = 'csv/JRW/SanyoArea/shimonoseki2.csv';

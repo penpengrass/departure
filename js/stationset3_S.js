@@ -8,5 +8,5 @@ if (station == '長野駅') {
     limitedjustnumber(TT[0], 551, 'はくたか');
     limitedjustnumber(TT[1], 600, 'あさま');
     limitedjustnumber(TT[1], 552, 'はくたか');
-    limitedjustnumber(TT[1], 502, 'かがやき');
+    limitedjustnumber(TT[1], 500, 'かがやき');
 }

@@ -3,7 +3,7 @@ if (station == '広島駅' && Indexfile == 'index4.php') {
     for (var tr = 0; tr < 3; tr++) {
         if (Type[0][tr] == '普通') {
             document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '山陽線';
-            document.getElementById('TName' + 1 + '' + (tr + 1)).style.color = 'greenyellow';
+            document.getElementById('TName' + 1 + '' + (tr + 1)).style.color = '#0f0';
             document.getElementById('TName' + 1 + '' + (tr + 1)).classList.remove("name");
         }
     }
@@ -43,25 +43,24 @@ if (station == '北新地駅') {
     }
 }
 if (station == '岩国駅') {
-    for (var tr = 0; tr < Des[0].length; tr++) {
-        if (Des[0][tr] == '徳山') {
-            document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '岩徳線';
-            document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'center';
-        } else if (Des[0][tr] == '錦町') {
-            document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '錦川鉄道';
-            document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'center';
-        }
-    }
     document.getElementById('supplement').textContent = '※番線は参考 実際の表示とは異なる ';
     if (holidayflag == 1) {
         document.getElementById('supplement').textContent += station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
     } else if (holidayflag == 0) {
         document.getElementById('supplement').textContent += station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
     }
-    LineMarkAdd(2, "R", 'red');
-    LineMarkAdd(3, " ", 'blue');
-}else if(station=='下関駅'){
-    comment.textContent='※番線は参考 実際の表示とは異なる ';
+    rowremove(0, 'HName', 'TName');
+    rowremove(1, 'HName', 'TName');
+    document.getElementById('TTable' + 1).style.width = '35em';
+    document.getElementById('HType1').style.width = "30%";
+    document.getElementById('HTime1').style.width = "20%";
+    document.getElementById('HDes1').style.width = "40%";
+    LineMarkAdd(1, " ", 'green');
+    LineMarkAdd(2, " ", 'gray');
+    LineMarkAdd(3, "R", 'red');
+    LineMarkAdd(4, " ", 'blue');
+} else if (station == '下関駅') {
+    comment.textContent = '※番線は参考 実際の表示とは異なる ';
 }
 if (station == '新見駅') {
     JRLimitedDevide(0);
@@ -81,6 +80,7 @@ if (station == '米原駅') {
             document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5em';
             document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'left';
         }
+        DesMiddle(0, tr, '方面');
     }
 
     JRWTrainNameColor('orange', 'orange', 'red');
@@ -99,6 +99,8 @@ if (station == '姫路駅') {
             document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).style.fontSize = '1.5em';
             document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).style.textAlign = 'left';
         }
+        DesMiddle(3, tr, '経由');
+        DesMiddle(3, tr, '方面');
     }
     /*
     document.getElementById('HName' + 3).remove();
@@ -107,9 +109,9 @@ if (station == '姫路駅') {
     }
     */
     for (var tr = 0; tr < Type[3].length; tr++) {
-        if (Type[Shinkansenflag+3][tr] == '快速') {
-            document.getElementById('TType' + (Shinkansenflag+4) + '' + (tr + 1)).textContent = '普通';
-            Type[Shinkansenflag+3][tr] = '普通';
+        if (Type[Shinkansenflag + 3][tr] == '快速') {
+            document.getElementById('TType' + (Shinkansenflag + 4) + '' + (tr + 1)).textContent = '普通';
+            Type[Shinkansenflag + 3][tr] = '普通';
         }
     }
     document.getElementById('supplement').textContent = '※スーパーはくと6号 9号は土休日のみ運転(表示ダイヤは平日)';
@@ -117,10 +119,6 @@ if (station == '姫路駅') {
 if (station == '糸崎駅') {
     for (var td = 0; td < Tablenum; td++) {
         rowremove(td, 'HName', 'TName');
-        /*document.getElementById('HName' + (td + 1)).remove();
-        for (var tr = 0; tr < Type[td].length; tr++) {
-            document.getElementById('TName' + (td + 1) + '' + (tr + 1)).remove();
-        }*/
         //表のサイズを小さくする
         document.getElementById('TTable' + (td + 1)).style.width = '30em';
         document.getElementById('TTable' + (td + 1)).style.marginLeft = '8em';
@@ -145,7 +143,7 @@ if (station == '岡山駅') {
                 document.getElementById('TName' + 5 + '' + (tr + 1)).textContent = '瀬戸大橋線';
             }
 
-            document.getElementById('TName' + 5 + '' + (tr + 1)).style.color = 'greenyellow';
+            document.getElementById('TName' + 5 + '' + (tr + 1)).style.color = '#0f0';
             document.getElementById('TName' + 5 + '' + (tr + 1)).classList.remove("name");
         } else if (Type[4][tr].includes('特急')) {
             /*var Limited = Type[4][tr].substr(Type[4][tr].indexOf('急') + 1);
@@ -154,10 +152,10 @@ if (station == '岡山駅') {
             Type[4][tr] = '特急'*/
             //JRLimitedDevide(4);
             var Name = document.getElementById('TName' + 5 + (tr + 1)).textContent;
-            console.log(Name.length+':'+tr);
+            console.log(Name.length + ':' + tr);
             if (Name.length > 8) {
                 document.getElementById('TName' + 5 + (tr + 1)).style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
-            }else if(Name.length>6){
+            } else if (Name.length > 6) {
                 document.getElementById('TName' + 5 + (tr + 1)).style.transform = "scaleX(0.85)" + "translate(-10%,0%)";
             }
         } else if (Type[4][tr].includes('快速ﾏﾘﾝﾗｲﾅｰ')) {
@@ -165,20 +163,63 @@ if (station == '岡山駅') {
             document.getElementById('TName' + 5 + '' + (tr + 1)).textContent = Rapid;
             document.getElementById('TType' + 5 + '' + (tr + 1)).textContent = '快速';
             Type[4][tr] = '快速';
-        }else if (Type[4][tr].includes('臨時')) {
+        } else if (Type[4][tr].includes('臨時')) {
             var Rapid = Type[4][tr].substr(Type[4][tr].indexOf('時') + 1);
             document.getElementById('TName' + 5 + '' + (tr + 1)).textContent = Rapid;
             document.getElementById('TType' + 5 + '' + (tr + 1)).textContent = '臨時';
-            document.getElementById('TName' + 5 + '' + (tr + 1)).style.color='orange';
+            document.getElementById('TName' + 5 + '' + (tr + 1)).style.color = 'orange';
             Type[4][tr] = '臨時';
         }
     }
-    JRWTrainNameColor('orange', 'greenyellow', 'greenyellow');
+    JRWTrainNameColor('orange', '#0f0', '#0f0');
+}
+function DesMiddle(td, tr, word) {
+    var matches = new Array(orderNum);
+    var Desword = new RegExp("(\\D+)" + word + "(\\D+)");
+    console.log(Desword);
+    console.log(Des[td][tr]);
+    //(/(\D+)(\d+)両/);
+    //matches[tr] = Des[td][tr].match(/(\D+)連絡(\D+)/);
+    matches[tr] = Des[td][tr].match(Desword);
+    console.log(matches[tr]);
+    if (matches[tr]) {
+        /*console.log(matches[tr][0] + ":" + tr);
+        console.log(matches[tr][1] + ":" + tr);
+        console.log(matches[tr][2] + ":" + tr);*/
+        document.getElementById('TDes' + (td + 1) + (tr + 1)).innerHTML =
+            '<span class="DesLeft">' + matches[tr][1] + '</span>' + '<span class="DesMiddle">' + word + '</span>' + '<span id="DesRight' + (td + 1) + (tr + 1) + '">' + matches[tr][2] + '</span>';
+        var DesRight = document.getElementById('DesRight' + (td + 1) + (tr + 1));
+        //console.log(DesRight.textContent.length);
+        if (DesRight.textContent.length > 3) {
+            console.log(DesRight.textContent.length);
+            DesRight.style.display = 'inline-block';
+            DesRight.style.transform = "scaleX(0.75)" + "translate(-20%,0%)";
+        }
+    } else {
+        //console.log(td + ':' + tr + word + 'はマッチしない');
+    }
+
+}
+if (station == '北新地駅') {
+    for (var tr = 0; tr < orderNum; tr++) {
+        DesMiddle(1, tr, '方面');
+    }
+}
+if (station == '徳山駅') {
+    rowremove(4, 'HName', 'TName');
+    document.getElementById('TTable5').style.width = '40em';
+    document.getElementById('HType5').style.width = "15%";
+    document.getElementById('HTime5').style.width = "25%";
+    document.getElementById('HDes5').style.width = "40%";
 }
 if (station == '三原駅') {
+    for (var tr = 0; tr < orderNum; tr++) {
+        //DesMiddle(0, tr, '連絡');
+        console.log(Des[0][tr].length);
+    }
     alternatingOne(0, Des, '連絡', '糸崎');
     for (var tr = alterchange + 1; tr < Des[0].length; tr++) {
-        //alternating2(0,Des[0][t],'糸崎',Des, '連絡');
+        alternating2(0, Des[0][tr], '糸崎', Des, '連絡');
         altershow(0, '連絡', '糸崎', tr);
     }
 }

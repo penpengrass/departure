@@ -150,7 +150,7 @@ $js_array .= ']';
   let dir2 = title2[2].substr(0, 2);
   let MinIn = 2;
   let company = '';
-  //詳細表示があるかどうか
+  //詳細表示がいくつあるか(0~2)
   let detailflag = 0;
   var NonGouflag = 0;
   var TwoLetterDisflag = 0;

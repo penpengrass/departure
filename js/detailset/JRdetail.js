@@ -21,6 +21,6 @@ var JRCobj = {//色は文字
     Typec: { type: "ホームライナー", color: red, detail: Jrapid, },
     Typed: { type: "快速", color: orange, detail: Jsubrapid, },
     Typee: { type: "特快", color: orange, detail: Jsubrapid, },
-    Typef: { type: "普通", color: greenyellow, detail: local, }
+    Typef: { type: "普通", color: '#0f0', detail: local, }
 
 };

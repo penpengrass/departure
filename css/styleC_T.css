@@ -7,12 +7,15 @@ th{
     border-bottom: 1px white solid;
 }
 td{               /*データ内*/
-    font-size:30px;
+    font-size:35px;
     height: 45px;
     color:white;
-    border:1px black solid;  /*表の中の枠色*/
-    font-family: "meiryo",serif;
+    border:none;  /*表の中の枠色*/
+    font-family: "ＭＳ ゴシック",serif;
     font-weight: 500;
+}
+.CTime{
+    font-family: "meiryo",serif;
 }
 table{        /*表全体*/
     table-layout:fixed;
@@ -28,10 +31,11 @@ span{
     display: inline-block;
 }
 .shubetu{
-    border-radius: 10px;
+    border-radius: 5px;
 }
 .railnumber{
     font-weight:700;
+    font-size:35px;
     background-color: white;
     color:black;
     font-family: Arial,"MS Gothic",monospace;
@@ -46,4 +50,7 @@ span{
     height:30px;
     font-size:25px;
     overflow: hidden;
+}
+.twoChairs{
+    text-indent: 0.4em;
 }

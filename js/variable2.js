@@ -18,6 +18,7 @@ let doBNumber = new Array(Tablenum);
 let doType = new Array(Tablenum);
 let Connecting = new Array(Tablenum);
 const table = new Array(Tablenum);
+var ShinNumber = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
     shubetu[tr] = new Array(Tablenums[tr]);
     IType[tr] = new Array(Tablenums[tr]);
@@ -26,6 +27,7 @@ for (let tr = 0; tr < Tablenum; tr++) {
     doBNumber[tr] = new Array(Tablenums[tr]);
     doType[tr] = new Array(Tablenums[tr]);
     Des[tr] = new Array(Tablenums[tr]);
+    ShinNumber[tr] = new Array(Tablenums[tr]);
     table[tr] = document.getElementById("TTable" + (tr + 1));
     if (company == '近鉄' || detailflag == 2) {
         Detail[tr] = new Array(Tablenums[tr]);
@@ -42,10 +44,10 @@ for (let tr = 0; tr < Tablenum; tr++) {
     WType[tr] = new Array(Tablenums[tr]);
 }
 console.log(Detail);
+console.log(ShinNumber);
 //外側は表の数，内側はオーダーの数で種別，行先，種別の場所(色分けのため)，詳細表示の場所を取得
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
-        shubetu[td][tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
         Type[td][tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
         Des[td][tr] = document.getElementById('TDes' + (td + 1) + '' + (tr + 1)).textContent;
         TableHour[td][tr] = document.getElementById('THour' + (td + 1) + '' + (tr + 1)).textContent;
@@ -68,4 +70,4 @@ for (var td = 0; td < Tablenum; td++) {
         WType[td][tr] = 'WType' + (td + 1) + '' + (tr + 1);
     }
 }
-console.log(Connecting);
+console.log(Type);

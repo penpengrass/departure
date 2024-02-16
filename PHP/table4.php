@@ -30,7 +30,7 @@ print('
       print('
         </table>
 ');
-      if ($i % $column == 0) {
+      if ($i % 2 == 0) {
         print('
         </tableline>
   <tableline id="tableline' . $i . '">');

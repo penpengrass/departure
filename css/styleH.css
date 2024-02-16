@@ -8,7 +8,7 @@ th{
 td{               /*データ内*/
     font-size:25px;
     height: 38px;
-    color:greenyellow;
+    color:#0f0;
     border: 5px black solid;  /*表の中の枠色*/
     border-left:none;
     border-right:none;
@@ -55,6 +55,7 @@ p3{
     font-size:18px;
     height:25px;
     border-bottom-color:#000070;
+    text-align: left;
 }
 .Cstops{
     color:#f80;

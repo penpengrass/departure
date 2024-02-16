@@ -13,15 +13,12 @@ time{
 }
 td{               /*データ内*/
     font-size:30px;
-    height: 48px;
+    height:45px;
     color:#0f0;
-    font-family: "FM明朝",serif;
-    padding:0;
-    border:1px black solid;
-    margin:0;
-}
-.Destination{
-    color:orange;
+    font-family: "ＭＳ 明朝","FM明朝",serif;
+    padding:2px;
+    border:none;
+    margin:2px;
 }
 
 table{        /*表全体*/
@@ -34,6 +31,12 @@ table{        /*表全体*/
     text-align:center;
     border-spacing: 0px;
 }
+.Ctime{
+    font-size:35px;
+}
+.name{
+    font-size:35px;
+}
 .Ctitle{
     background-color:gray;
     height:40px;
@@ -42,11 +45,13 @@ table{        /*表全体*/
 .shubetu{ 
     font-size:15px;
 }
-p3{
-    font-size:20px;
-}
 .railnumber{
+    font-size:35px;
     font-weight:900;
+    color:orange;
+}
+.topic{
+    color:orange;
 }
 .HrailNumber{
     text-align: left;
@@ -54,6 +59,12 @@ p3{
 .CDetail{
     overflow: hidden;
     text-align: left;
+}
+.CDetailtitle{
+    background-color: #0f0;
+    color:black;
+    font-weight:900;
+    margin-right:50px;
 }
 .news-banner__content {
     font-size:30px;

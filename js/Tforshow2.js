@@ -19,13 +19,9 @@ function KyotoRenraku(td, tr) {
 }
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
+        LowerDetail(td, tr);
         if (Des[td][tr].length > 4) {
             document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-5%,0%)";
-        } else if (Des[td][tr].length < 3) {
-            document.getElementById('TDes' + (td + 1) + (tr + 1)).style.letterSpacing = '1em';
-            document.getElementById('TDes' + (td + 1) + (tr + 1)).style.textIndent = '0.9em';
-        } else if (Des[td][tr].length < 4) {
-            console.log(td + ":" + tr);
         }
         if (Type[td][tr].length > 2) {
             document.getElementById('IType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.75)" + "translate(-0%,0%)";
@@ -37,6 +33,7 @@ DetailShow(Kinobj, "　");
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         DetailBanner(td, tr, 18);
+        TwoLetterDistance(td,tr,Des,TDes,1,0.9);
     }
 }
 if (station == '京都駅') {

@@ -10,7 +10,7 @@
   $files[0] = 'csv/JRH/sapporo1.csv';
   $files[1] = 'csv/JRH/sapporo2.csv';
   require_once('PHP/variable.php');
-  //require_once('PHP/files7.php');
+  require_once('PHP/files8.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -28,10 +28,10 @@
     <p id="stationname">札幌駅</p>
   </div>
   <!--駅選択部分-->
-  <form action="index8.php" method="POST">
-    <select name="stasele">
-      <option value="csv/JRH/sapporo1.csv">札幌駅</option>
-      <option value="csv/JRH/shinhokuto1.csv">新函館北斗駅</option>
+  <form action="PHP/files8.php" method="POST">
+    <select name="staselect8">
+      <option value="sapporo">札幌駅</option>
+      <option value="hokuto">新函館北斗駅</option>
     </select>
     <button type="submit" name="submit">駅変更</button>
   </form>
@@ -101,7 +101,7 @@
         if ($j == 1 && $station != '新函館北斗駅') {
           print('
       <tr>
-      <td class="CDetail" colspan="5"><p3 class="news-banner__content" colspan="5"><p2 id="TDetail' . $i. '" >本日の運転は終了しました</p2></p3></td>
+      <td class="CDetail" colspan="5"><p2 class="news-banner__content" colspan="5" id="TDetail' . $i. '" >本日の運転は終了しました</p2></td>
       </tr>
       ');
         }
@@ -125,9 +125,10 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
 <script type="text/javascript" src="js/function2.js"></script>
+<script type="text/javascript" src="js/functionDetail.js"></script>
 <script type="text/javascript" src="js/detailfunction.js"></script>
-<script type="text/javascript" src="js/Tforshow8.js"></script>
 <script type="text/javascript" src="js/detailset/Hodetailchange.js"></script>
+<script type="text/javascript" src="js/Tforshow8.js"></script>
 <script type="text/javascript" src="js/detailshow.js"></script>
 <script type="text/javascript" src="js/detailonce8.js"></script>
 

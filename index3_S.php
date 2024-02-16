@@ -5,7 +5,7 @@
   <title>JR東日本北信越発車標</title>
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/banner6.css">
-  <link rel="stylesheet" href="css/styleATOS.css">
+  <link rel="stylesheet" href="css/styleATOS_S.css">
   
   <?php
   $files = array();
@@ -71,14 +71,14 @@
     <tr id="TLine' . $i . $j . '">
       <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><p2 id="WType' . $i . $j . '"></p2></td>
       <td class="name" id="TName' . $i . $j . '"></td>
-      <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
+      <td class="Ctime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>
       <td class="topic" id="Ttopic' . $i . $j . '"></td>
     </tr>
     <tr>
-      <td width="10%" class="CDetail" id="TDetailtitle' . $i . $j .'"></td>
-      <td width="90%" class="CDetail" colspan="5"><p3 class="news-banner__content"><p2 id="TDetail' . $i . $j . '"></p2></p3></td>
+      <td><p3 class="CDetailtitle" id="TDetailtitle' . $i . $j .'"></p3></td>
+      <td class="CDetail" colspan="5"><p2 class="news-banner__content" id="TDetail' . $i . $j . '"></p2></td>
       </tr>
       ');
       }
@@ -101,7 +101,11 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
 <script type="text/javascript" src="js/function2.js"></script>
+<script type="text/javascript" src="js/function3.js"></script>
 <script type="text/javascript" src="js/functionE2.js"></script>
+<script type="text/javascript" src="js/functionColor.js"></script>
+<script type="text/javascript" src="js/functionDetail.js"></script>
+<script type="text/javascript" src="js/detailfunction.js"></script>
 <script type="text/javascript" src="js/detailset/JREShindetailset.js"></script>
 <script type="text/javascript" src="js/detailshow.js"></script>
 <script type="text/javascript" src="js/Tforshow3_S.js"></script>

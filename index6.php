@@ -47,7 +47,7 @@
   <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
-    <button type="button" onclick="location.href='./index3.php'">ATOSへ移動</button>
+    <button type="button" onclick="location.href='./index3.php?station=yokohama'">ATOS横浜駅へ移動</button>
     <button type="button" onclick="location.href='./index3_S.php'">JR東日本新幹線へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6_S.php'">東北新幹線へ移動</button>
