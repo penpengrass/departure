@@ -24,7 +24,6 @@ td{               /*データ内*/
 }
 .name{
     text-align:center;
-    background-color: orange;
 }
 .CDetail{
     text-align: left;
@@ -47,7 +46,6 @@ table{        /*表全体*/
 }
 .shubetu{
     text-align: left;
-    background-color: orange;
     color:white;
     font-weight:650;
 }
