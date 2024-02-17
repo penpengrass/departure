@@ -30,12 +30,15 @@ if (station == '新函館北斗駅') {
     }
     if (Type[3][0].includes('快速エアポート')) {
         document.getElementById('TDetail' + 4).innerHTML = HokkaidoCars('６') + '　' + Useat('４') + "　<span class='Cstops'>停車駅は琴似・手稲・小樽築港・南小樽です。</span>";
+    }else if(Type[3][0].includes('快速ニセコライナー')){
+        document.getElementById('TDetail' + 4).innerHTML =  HokkaidoCars('６')+'　'+"　<span class='Cstops'>停車駅は琴似・手稲・小樽築港・南小樽・小樽・小樽から各駅です。</span>"
     }
+    var dToAsahi = document.getElementById('TDetail' + 3);
     if (Des[2][0] == '旭川' && Type[2][0].includes('特急')) {
         console.log(Type[2][0]);
         var cars = '５';
         var cardetail = Useat('４');
-        var dToAsahi = document.getElementById('TDetail' + 3);
+        console.log(dToAsahi);
         if (Type[2][0].includes('ライラック')) {
             cars = '６';
             cardetail = 'グリーン車は１号車です';
@@ -68,7 +71,7 @@ if (station == '新函館北斗駅') {
     } else if (Des[0][0] == '東室蘭' && Type[0][0] != '普通') {
         document.getElementById('TDetail' + 1).innerHTML = Useat('３号車と４') + '　 '+"<span class='Cstops'>停車駅は新札幌・千歳・南千歳・沼ノ端・苫小牧・白老・登別・幌別・鷲別です。</span>";
     }
-    document.getElementById('supplement').textContent = '札幌駅の一部表示は省略(今後は未定)';
+    //document.getElementById('supplement').textContent = '';
     for (var td = 0; td < Tablenum; td++) {
         DetailBannerOnce(td, 20);
     }
