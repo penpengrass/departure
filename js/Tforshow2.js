@@ -30,12 +30,6 @@ for (var td = 0; td < Tablenum; td++) {
     }
 }
 DetailShow(Kinobj, "　");
-for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < orderNum; tr++) {
-        DetailBanner(td, tr, 18);
-        TwoLetterDistance(td,tr,Des,TDes,1,0.9);
-    }
-}
 if (station == '京都駅') {
     if (holidayflag == 1) {
         document.getElementById('supplement').innerHTML += '<p>京都駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
@@ -44,12 +38,21 @@ if (station == '京都駅') {
     }
     //高の原駅停車を追加
     for (var tr = 0; tr < orderNum; tr++) {
-        if (Type[0][tr].includes('特急') && TableHour[0][tr] > 15) {
-            console.log("高の原停車");
-            limited[5].splice(2, 0, '高の原');
-            limited[6].splice(2, 0, '高の原');
-            limited[7].splice(2, 0, '高の原');
-            break;
+        var LType = Type[0][tr];
+        var tr_hour = TableHour[0][tr];
+        var tr_min = TableMin[0][tr];
+        if (LType.includes('特急')) {
+            if (LType != '特急A' && (tr_hour > 14)) {
+                console.log(tr + "は高の原停車");
+                DetailReplace(0, tr, '丹波橋', '丹波橋　高の原');
+            } else if (tr_hour > 9 && LType != '特急S' && Des[0][tr] == '橿原神宮前') {
+                DetailReplace(0, tr, '大和西大寺', '大和西大寺　西ノ京');
+            }
+        } else if (LType == '急行') {
+            if (whetherStop(9, 40, tr_hour, tr_min, 16, 4)) {
+            } else {
+                DetailReplace(0, tr, '西ノ京　', '');
+            }
         }
     }
 }
@@ -58,5 +61,32 @@ if (station == '奈良駅') {
         document.getElementById('supplement').innerHTML += '<p>奈良駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
     } else if (holidayflag == 0) {
         document.getElementById('supplement').innerHTML += '<p>奈良駅のみ土休日ダイヤに対応(表示は平日ダイヤ)</p>';
+    }
+    for (var tr = 0; tr < orderNum; tr++) {
+        var LType = Type[1][tr];
+        var tr_hour = TableHour[1][tr];
+        var tr_min = TableMin[1][tr];
+        if (LType.includes('特急')) {
+            if (LType != '特急A' && whetherStop(5, 0, tr_hour, tr_min, 12, 3)) {
+                DetailReplace(1, tr, '丹波橋', '高の原　丹波橋');
+            }
+        }
+    }
+}
+if (station == '名古屋駅') {
+    for (var tr = 0; tr < orderNum; tr++) {
+        var LType = Type[1][tr];
+        var LDes = Des[1][tr];
+        var tr_hour = TableHour[1][tr];
+        var tr_min = TableMin[1][tr];
+        if (LDes != '大阪難波' && whetherStop(17, 40, tr_hour, tr_min, 23, 30)) {
+            DetailReplace(1, tr, '伊勢中川', '久居　伊勢中川');
+        }
+    }
+}
+for (var td = 0; td < Tablenum; td++) {
+    for (var tr = 0; tr < orderNum; tr++) {
+        DetailBanner(td, tr, 18);
+        TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
     }
 }

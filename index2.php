@@ -95,6 +95,7 @@
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
+  <script type="text/javascript" src="js/function3.js"></script>
   <script type="text/javascript" src="js/functionDetail.js"></script>
   <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/Tforshow2.js"></script>
