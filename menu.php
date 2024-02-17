@@ -21,7 +21,8 @@
             <caption>表示駅</caption>
             <p class="chushaku"><span style="color:red;">赤字</span>は土休日ダイヤ対応，もしくは終日ダイヤ<br>
              <span style="color:blue;">青字</span>は2024年3月ダイヤ対応 <br>
-             <span style="color:purple;">紫字</span>は土休日ダイヤ，2024年3月ダイヤ対応<br></p>
+             <span style="color:purple;">紫字</span>は土休日ダイヤ，2024年3月ダイヤ対応<br>
+             黒字は2023年3月ダイヤ，平日ダイヤのみ <br></p>
             <p class="chushaku">()は未完成</p>
             <tr>
                 <th>種類</th>
@@ -51,7 +52,7 @@
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:red;">北新地駅</span></td>
-                <td>米原駅,姫路駅,岡山駅,糸崎駅,三原駅,<span style="color:red;">広島駅</span>,新見駅,<span style="color:red;">岩国駅</span>,徳山駅,下関駅</td>
+                <td>米原駅,<span style="color:red;">三ノ宮駅</span>,姫路駅,岡山駅,糸崎駅,三原駅,<span style="color:red;">広島駅</span>,新見駅,<span style="color:red;">岩国駅</span>,徳山駅,下関駅</td>
             </tr>
             <tr>
                 <td>JR西日本LCD</td>
@@ -60,10 +61,10 @@
                 <td></td>
             </tr>
             <tr>
-                <td>山陽新幹線主要駅</td>
+                <td>JR西日本新幹線主要駅</td>
                 <td><button type="button" onclick="location.href='./index4_S2.php'">移動</button></td>
                 <td>広島駅</td>
-                <td></td>
+                <td><span style="color:blue;">博多駅</span></td>
             </tr>
             <tr>
                 <td>東急</td>
@@ -74,7 +75,7 @@
             <tr>
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
-                <td>長野駅</td>
+                <td><span style="color:red;">長野駅</span></td>
                 <td>松本駅,横浜駅</td>
             </tr>
             <tr>
@@ -104,7 +105,7 @@
             <tr>
                 <td>JR北海道</td>
                 <td><button type="button" onclick="location.href='./index8.php'">移動</button></td>
-                <td>(札幌駅)</td>
+                <td>札幌駅</td>
                 <td>新函館北斗駅</td>
             </tr>
             <tr>
@@ -114,28 +115,14 @@
                 <td></td>
             </tr>
         </table>
-        <p>JR西日本とJR東海の選択画面を表示</p>
+        <p>JR西日本の選択画面を表示</p>
         <div>
             <p>JR西日本の選択肢</p>
             <?php JRWStaSele('JR西日本駅選択');
             ?>
         </div>
-        <div>
-            <p>JR東海の選択肢</p>
-            <form action="index7.php" method="POST">
-                <select name="stasele">
-                    <option value="csv/JRC/numazu1.csv">沼津駅</option>
-                    <option value="csv/JRC/shizuoka1.csv">静岡駅</option>
-                    <option value="csv/JRC/hamamatsu1.csv">浜松駅</option>
-                    <option value="csv/JRC/toyohashi1.csv">豊橋駅</option>
-                    <option value="csv/JRC/gifu1.csv">岐阜駅</option>
-                    <option value="csv/JRC/ogaki1.csv">大垣駅</option>
-                </select>
-                <button type="submit" name="submit">JR東海駅選択</button>
-            </form>
-        </div>
         <h1 class="Cheader">今後追加する駅</h1>
-        <li>新幹線 静岡駅 米原駅 岡山駅 博多駅 仙台駅 新青森駅</li>
+        <li>新幹線 静岡駅 米原駅 岡山駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
         <li>JR東日本 赤羽駅 東京駅 新宿駅 大宮駅 甲府駅 水戸駅 仙台駅 福島駅 </li>
         <li>JR西日本 大阪駅 尼崎駅 新山口駅</li>
@@ -148,12 +135,7 @@
         <h1 class="Cheader">対応しない</h1>
         <li>英語表示</li>
         <li>一部駅の両数表示</li>
-        <h1 class="Cheader">土休日ダイヤ対応駅</h1>
-        <li>近鉄・・・京都駅 奈良駅</li>
-        <li>JR西日本・・・北新地駅 広島駅 岩国駅</li>
-        <li>JR東日本・・・長野駅 (松本駅)</l1><br>
-            今後追加予定
-            <h1 class="Cheader">2024年3月改正対応駅</h1>
+        <h1 class="Cheader">2024年3月改正対応駅</h1>
             なし
 </body>
 
