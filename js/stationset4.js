@@ -82,6 +82,13 @@ if (station == '岡山駅') {
 } else if (station == '北新地駅') {
     TableTitle = ['京橋 四条畷 松井山手方面', '尼崎 宝塚 三ノ宮方面'];
     TwoLetterDisflag = 1;
+} else if (station == '三ノ宮駅') {
+    TableTitle = ['尼崎 大阪 京都方面', '西明石 姫路方面'];
+    limitedjustnumber(TT[0], 2, '特急はまかぜ');
+    limitedjustnumber(TT[1], 1, '特急はまかぜ');
+    limitedjustnumber(TT[0], 2, '特急ｽｰﾊﾟｰはくと');
+    limitedjustnumber(TT[1], 1, '特急ｽｰﾊﾟｰはくと');
+    TwoLetterDisflag = 1;
 } else if (station == '米原駅') {
     TableTitle = ['東海道線 彦根 草津 京都方面', '北陸線 長浜 敦賀 金沢方面', '東海道線 大垣 岐阜方面'];
     var shirasagi = [51, 1, 3, 5, 53, 7, 9, 57, 11, 59, 13, 61, 15, 63, 65];

@@ -60,6 +60,16 @@ if (isset($_GET['station'])) {
     $files[1] = 'csv/JRW/maibara2.csv';
     $files[2] = 'csv/JRW/maibara3.csv';
     $tablenum = 3;
+  } else if (Inisset('sannomiya')) {
+    if ($holidayflag == 1) {
+      $files[0] = 'csv/JRW/sannomiya1_H.csv';
+      $files[1] = 'csv/JRW/sannomiya2_H.csv';
+    } else {
+      $files[0] = 'csv/JRW/sannomiya1.csv';
+      $files[1] = 'csv/JRW/sannomiya2.csv';
+    }
+    $OrderNum = 4;
+    $station = '三ノ宮駅';
   } else if (Inisset('okayama')) {
     $files[0] = 'csv/JRW/SanyoArea/okayama_sanyo1.csv';
     $files[2] = 'csv/JRW/SanyoArea/okayama_sanyo2.csv';

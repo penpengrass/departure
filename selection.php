@@ -9,6 +9,7 @@ function JRWStaSele($Select){
                     <option value="kitashinti">北新地駅</option>
                     <option value="maibara">米原駅</option>
                     <option value="tennouji">天王寺駅</option>
+                    <option value="sannomiya">三ノ宮駅</option>
                     <option value="himeji">姫路駅</option>
                     <option value="okayama">岡山駅</option>
                     <option value="itozaki">糸崎駅</option>

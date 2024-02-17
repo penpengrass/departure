@@ -41,6 +41,15 @@ if (station == '北新地駅') {
     } else if (holidayflag == 0) {
         document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
     }
+} else if (station == '三ノ宮駅') {
+    LineMarkAdd(1, "A", 'blue');
+    LineMarkAdd(2, "A", 'blue');
+    if (holidayflag == 1) {
+        document.getElementById('supplement').innerHTML += station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)<br>';
+    } else if (holidayflag == 0) {
+        document.getElementById('supplement').innerHTML += station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)<br>';
+    }
+    document.getElementById('supplement').innerHTML += '一部の快速の番線は不正確';
 }
 if (station == '岩国駅') {
     document.getElementById('supplement').textContent = '※番線は参考 実際の表示とは異なる ';
@@ -176,12 +185,12 @@ if (station == '岡山駅') {
 function DesMiddle(td, tr, word) {
     var matches = new Array(orderNum);
     var Desword = new RegExp("(\\D+)" + word + "(\\D+)");
-    console.log(Desword);
-    console.log(Des[td][tr]);
+    //console.log(Desword);
+    //console.log(Des[td][tr]);
     //(/(\D+)(\d+)両/);
     //matches[tr] = Des[td][tr].match(/(\D+)連絡(\D+)/);
     matches[tr] = Des[td][tr].match(Desword);
-    console.log(matches[tr]);
+    //console.log(matches[tr]);
     if (matches[tr]) {
         /*console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
@@ -199,6 +208,16 @@ function DesMiddle(td, tr, word) {
         //console.log(td + ':' + tr + word + 'はマッチしない');
     }
 
+}
+if (station == '三ノ宮駅') {
+    JRLimitedDevide(0);
+    JRLimitedDevide(1);
+    JRWTrainNameColor('orange', 'orange', 'red');
+    for (var tr = 0; tr < orderNum; tr++) {
+        DesMiddle(0, tr, '方面');
+        DesMiddle(0, tr, '経由');
+        DesMiddle(1, tr, '方面');
+    }
 }
 if (station == '北新地駅') {
     for (var tr = 0; tr < orderNum; tr++) {
@@ -223,7 +242,13 @@ if (station == '三原駅') {
         altershow(0, '連絡', '糸崎', tr);
     }
 }
-
+if (TwoLetterDisflag == 1) {
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < orderNum; tr++) {
+            TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+        }
+    }
+}
 
 if (station == '天王寺駅') {
     let TenDes = new Array(orderNum);
