@@ -286,7 +286,7 @@ function flagmarkerase(td, tag, mark = '*') {
     for (tr = 0; tr < Tablenums[td]; tr++) {
         var str = document.getElementById(tag + (td + 1) + '' + (tr + 1));
         if (str.textContent.includes(mark)) {
-            str.textContent = str.textContent.slice(0, -1);
+            str.textContent = str.textContent.replace(mark, '');
         }
     }
 }

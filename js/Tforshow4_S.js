@@ -1,18 +1,23 @@
 
-if (station == '広島駅' && Indexfile == 'index4_S2.php') {
+if (Indexfile == 'index4_S2.php') {
     JRNameDevide(2);
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
             console.log(Type[td][tr]);
             if (Type[td][tr] == 'のぞみ' || Type[td][tr] == 'ひかり') {
                 document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = '16両編成';
-            } else if (Type[td][tr] != '') {
+            }else if (Type[td][tr].includes('*')) {
+                document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = '6両編成';
+            }else if (Type[td][tr] != '') {
                 document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = '8両編成';
             }
         }
     }
+    flagmarkerase(1,'TType','*');
     Bansenshow(1);
-    
+    if(station=='博多駅'){
+        document.getElementById('supplement').textContent+=' 2024年3月16日以降';
+    }
 } else if (JRShinkansenflag==1) {
     JRNameDevide(2);
     for (var td = 0; td < 2; td++) {

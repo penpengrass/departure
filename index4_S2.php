@@ -10,7 +10,8 @@
   if (isset($_POST["stasele"])) {
     $files[0] = $_POST["stasele"];
   }
-  //require_once('PHP/files4.php');
+  require_once('PHP/variable.php');
+  require('PHP/files4_S.php');
   $OrderNum=4;
   require('getCSV.php');
   ?>
@@ -30,9 +31,10 @@
   </div>
   <!--駅選択部分-->
 
-  <form action="index4_S2.php" method="POST" id="selectstation">
-    <select name="stasele">
-      <option value="csv/JRW/hiroshima_S1.csv">広島駅</option>
+  <form action="PHP/files4_S.php" method="POST" id="selectstation">
+    <select name="staselect4">
+      <option value="hiroshima">広島駅</option>
+      <option value="hakata">博多駅</option>
     </select>
     <button type="submit" class="henko" name="submit">駅変更</button>
   </form>
@@ -41,7 +43,7 @@
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
     <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
-    <button type="button" onclick="location.href='./index4.php?station=hiroshima'">在来線へ移動</button>
+    <button type="button" onclick="location.href='./index4.php?station=hiroshima'">広島駅在来線へ移動</button>
     <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線へ移動</button>
@@ -89,7 +91,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">臨時列車の有無や号数は不正確</p>
+  <p id="supplement">臨時列車の有無や号数, 番線は不正確</p>
   <!--ここから内部のこと-->
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>
