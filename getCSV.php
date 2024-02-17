@@ -34,7 +34,8 @@ if ($files[0] == 'csv/Tokyu/nikotama1.csv') {
   $files[2] = 'csv/JRH/sapporo2.csv';
   $files[3] = 'csv/JRH/sapporo3.csv';
   $files[4] = 'csv/JRH/sapporo2.csv';
-  $tablenum = 4;
+  $files[5] = 'csv/JRH/sapporo5.csv';
+  $tablenum = 5;
   $OrderNum = 4;
 } else if ($files[0] == 'csv/JRS/takamatsu1.csv') {
   $files[1] = 'csv/JRS/takamatsu1.csv';

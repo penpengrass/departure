@@ -4,7 +4,7 @@ var Dtype = new Array(Tablenum);
 Dtype[0] = 0;
 detailflag = 8;
 if (station == '札幌駅') {
-    TableTitle = ['苫小牧 東室蘭 函館 帯広 釧路方面', '新千歳空港方面', '岩見沢 旭川 網走 稚内方面', '手稲 小樽 倶知安方面'];
+    TableTitle = ['苫小牧 東室蘭 函館 帯広 釧路方面', '新千歳空港方面', '岩見沢 旭川 網走 稚内方面', '手稲 小樽 倶知安方面','あいの里教育大 当別方面'];
     var selectstation = ['新千歳空港'];
     var selectstation2 = ['新千歳空港', '苫小牧', '千歳', '札幌'];
     var kamui = [7, 17, 19, 31, 33, 43, 45, 47];
@@ -14,6 +14,8 @@ if (station == '札幌駅') {
     //Tablereset(1);
     DestinationDevide(selectstation, 0, 1);
     DestinationDevide(selectstation2, 2, 4);
+    Tablereset(4);
+    TT[4]=TT[5];
     for (var td = 1; td < TT[0].length; td += 4) {
         for (var tr = 0; tr < TT[0][td].length; tr++) {
             if (TT[0][td][tr] == '特急') {

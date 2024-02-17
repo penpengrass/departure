@@ -10,7 +10,7 @@
   $files[0] = 'csv/JRH/sapporo1.csv';
   $files[1] = 'csv/JRH/sapporo2.csv';
   require_once('PHP/variable.php');
-  require_once('PHP/files8.php');
+  require('PHP/files8.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -94,14 +94,14 @@
       <td width="20%" class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
       <td width="20%" class="name" id="TName' . $i . $j . '"><span id="WName' . $i . $j . '"></span></td>
       <td width="25%" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td width="20%" class="Destination"><p2 id="TDes' . $i . $j . '"></p2></td>
+      <td width="20%" class="Destination" id="TDes' . $i . $j . '"></td>
       <td width="15%" class="railnumber" id="TNum' . $i . $j . '"></td>
     </tr>
     ');
         if ($j == 1 && $station != '新函館北斗駅') {
           print('
       <tr>
-      <td class="CDetail" colspan="5"><p2 class="news-banner__content" colspan="5" id="TDetail' . $i. '" >本日の運転は終了しました</p2></td>
+      <td class="CDetail" colspan="5"><p2 class="news-banner__content" colspan="5" id="TDetail' . $i . '" >本日の運転は終了しました</p2></td>
       </tr>
       ');
         }
