@@ -19,6 +19,10 @@ if (isset($_GET['station'])) {
     $files[3] = 'csv/JRE/matsumoto3.csv';
     $station = '松本駅';
     $tablenum = 4;
+    if ($holidayflag == 1) {
+      $files[0] = 'csv/JRE/matsumoto1_H.csv';
+      $files[1] = 'csv/JRE/matsumoto1_H.csv';
+    }
   } else if (Inisset('yokohama')) {
     $files[0] = 'csv/JRE/yokohama1.csv';
     $files[1] = 'csv/JRE/yokohama2.csv';

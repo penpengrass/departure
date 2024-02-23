@@ -67,7 +67,7 @@ if (station == '奈良駅') {
 } else if (station == '名古屋駅') {
     reverseLine(Hinotori,1,3);
 }
-var Kinobj = {//色は背景
+const Kinobj = {//色は背景
     Typea: { type: "特急H", color: red, detail: Hilimited, },
     Typef: { type: "特急", color: red, detail: limited, },
     Typeb: { type: "快急", color: red, detail: rapid, },

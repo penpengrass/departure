@@ -53,7 +53,7 @@ for (var tr = 0; tr < orderNum; tr++) {
     console.log("Dtype[" + "]=" + Dtype);
     FDetail(Type[4][tr], JRKaobj, Dtype[4], 4, tr, "・");
     LastLetterRemove(4, tr, '・');
-    console.log(HidaNumber);
+    //console.log(HidaNumber);
     if (HidaNumber == 7 || HidaNumber == 13) {
         DetailReplace(4, tr, '越中八尾', '越中八尾・速星');
     } else if (HidaNumber == 15) {
@@ -107,6 +107,10 @@ for (let te = 0; te < Tablenum; te++) {
             document.getElementById('WType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-0%,0%)";
         }
         DetailBanner(te, tr, 23);
+        if (Type[te][tr] == '') {
+            document.getElementById('TNum' + (te + 1) + (tr + 1)).style.backgroundColor = 'black';
+            document.getElementById('TDetailtitle' + (te + 1) + (tr + 1)).textContent = '';
+        }
     }
 }
 

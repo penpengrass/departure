@@ -36,7 +36,7 @@ for (var td = 0; td < Tablenum; td++) {
         Lname[td] = new Array(orderNum);
     }
     for (var tr = 0; tr < orderNum; tr++) {
-        if (detailflag > 1) {
+        if (detailflag > 1 && detailflag != 8) {
             number[td][tr] = Number.parseInt(JRLimitedNumber(td, tr));
             console.log(typeof number[td][tr]);
             Lname[td][tr] = JRLimitedName(td, tr);

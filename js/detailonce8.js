@@ -44,6 +44,7 @@ if (station == '新函館北斗駅') {
             cardetail = 'グリーン車は１号車です';
         }
         dToAsahi.innerHTML = HokkaidoCars(cars) + "　<span class='CLapidcolor'>" + cardetail + "</span>　<span class='Cstops'>停車駅は岩見沢・美唄・砂川・滝川・深川です。</span>";
+        console.log(number[2]);
         if (number[2] == 13) {
             dToAsahi.innerHTML += '  この列車は旭川で網走行き<span class="CLapidcolor">特急大雪1号</span>に接続します';
         } else if (number[2] == 15) {

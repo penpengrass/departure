@@ -15,6 +15,7 @@ function JRLimitedDevide(Tablenum) {
     }
     console.log(Tablenum);
 }
+//路線名と種別を分割(湘南新宿ラインなど)
 function JRATOSDevide(td) {
     for (var tr = 0; tr < orderNum; tr++) {
         console.log(Type);
@@ -76,15 +77,11 @@ function JRNameDevide(T = Tablenum) {
         var matches = new Array(Type[td].length);
         for (var tr = 0; tr < Type[td].length; tr++) {
             LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
-            //index4_S2.phpとindex7_S1とindex3_S.phpは1，その他は0
-            console.log("NonGouflag=" + NonGouflag);
-            //Indexfile=='index4_S2.php'||Indexfile=='index7_S1.php'||Indexfilr=='index3_S.php'
             if (NonGouflag == 1) {
                 matches[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
             } else {
                 matches[tr] = LimitedName[tr].match(/([^0-9]+)(\d+)([^0-9]+)/);
             }
-
             if (matches[tr]) {
                 console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRLimitedNameとマッチする');
                 console.log(matches[tr][0] + ":" + tr);
@@ -263,12 +260,10 @@ function LineMarkAdd(td, Mark, backColor) {
 }
 //時刻の:を消す
 function TimeMarkErase() {
-    console.log(Tablenums);
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < Tablenums[td]; tr++) {
             if (Type[td][tr] == '') {
                 var timeerase = document.getElementById('TTime' + (td + 1) + '' + (tr + 1));
-                console.log("空");
                 while (timeerase.firstChild) {
                     timeerase.removeChild(timeerase.firstChild);
                 }

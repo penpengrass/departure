@@ -76,7 +76,7 @@
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
                 <td><span style="color:red;">長野駅</span></td>
-                <td>松本駅,横浜駅</td>
+                <td><span style="color:red;">松本駅</span>,横浜駅</td>
             </tr>
             <tr>
                 <td>JR東日本新幹線フルカラー</td>
@@ -135,8 +135,6 @@
         <h1 class="Cheader">対応しない</h1>
         <li>英語表示</li>
         <li>一部駅の両数表示</li>
-        <h1 class="Cheader">2024年3月改正対応駅</h1>
-            なし
 </body>
 
 </html>

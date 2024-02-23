@@ -46,11 +46,11 @@
     <button type="button" onclick="location.href='./menu.php'">メニューへ</button>
     <button type="button" onclick="location.href='./index2.php'">近鉄へ</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ</button>
-    <button type="button" onclick="location.href='./index4.php'">JR西日本へ</button>
+    <button type="button" onclick="location.href='./index4.php?station=maibara'">米原駅へ</button>
     <!--<button type="button" onclick="location.href='./index4.php'">在来線へ</button>-->
     <button type="button" onclick="location.href='./index4_S2.php'">山陽新幹線へ</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ</button>
+    <button type="button" onclick="location.href='./index6.php?station=yokohama'">横浜駅へ</button>
     <button type="button" onclick="JRC_station(station)">在来線へ</button>
     <button type="button" onclick="location.href='./index8.php'">JR北海道へ</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ</button>

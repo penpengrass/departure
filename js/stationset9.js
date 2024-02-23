@@ -1,8 +1,10 @@
 company = 'JR四国';
+detailflag = 9;
 TableTitle = ['琴平 高知方面', '観音寺 松山方面', '岡山 東京方面', '三本松 徳島方面'];
 var Tyosan = ['松山', '観音寺', '伊予西条'];
 var Thonshu = ['岡山', '東京'];
 var Dtype = [0, 0, 0, 0];
+limitednumber(TT[0], 3, '快速ｻﾝﾎﾟｰﾄ南風');
 DestinationDevide(Tyosan, 0, 1);
 DestinationDevide(Thonshu, 0, 2);
 limitedjustnumber(TT[1], 1, '特急いしづち');

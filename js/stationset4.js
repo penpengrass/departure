@@ -66,6 +66,7 @@ if (station == '岡山駅') {
     limitednumber(TT[3], 2, 'はまかぜ');
 } else if (station == '広島駅') {
     TableTitle = ['山陽線 宮島口 岩国方面', '可部線 緑井 あき亀山方面', '山陽線 西条 三原方面', '呉線 呉 広方面', '芸備線 下深川 三次方面'];
+    TwoLetterDisflag = 1;
 } else if (station == '新見駅') {
     TableTitle = ['伯備線 岡山方面', '伯備線 米子 出雲市方面', '芸備線 東城 備後落合方面', '姫新線 中国勝山 津山方面'];
     limitednumber(TT[0], 2, 'やくも');
@@ -76,13 +77,14 @@ if (station == '岡山駅') {
 } else if (station == '三原駅') {
     TableTitle = ['山陽線 福山 岡山方面', '山陽線 広島 岩国方面', '呉線 広 呉方面'];
 } else if (station == '岩国駅') {
-    TableTitle = ['岩徳線','錦川清流線', '山陽線 宮島口 広島方面', '山陽線 柳井 徳山方面'];
+    TableTitle = ['岩徳線', '錦川清流線', '山陽線 宮島口 広島方面', '山陽線 柳井 徳山方面'];
     var selectstation = ['錦町'];
     DestinationDevide(selectstation, 0, 1);
 } else if (station == '北新地駅') {
     TableTitle = ['京橋 四条畷 松井山手方面', '尼崎 宝塚 三ノ宮方面'];
     TwoLetterDisflag = 1;
 } else if (station == '三ノ宮駅') {
+    MinIn = 1;
     TableTitle = ['尼崎 大阪 京都方面', '西明石 姫路方面'];
     limitedjustnumber(TT[0], 2, '特急はまかぜ');
     limitedjustnumber(TT[1], 1, '特急はまかぜ');

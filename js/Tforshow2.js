@@ -88,5 +88,8 @@ for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         DetailBanner(td, tr, 18);
         TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+        if (Type[td][tr] == '') {
+            document.getElementById('TNum' + (td + 1) + (tr + 1)).style.backgroundColor = 'black';
+        }
     }
 }

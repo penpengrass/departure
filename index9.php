@@ -54,17 +54,18 @@
       for ($j = 1; $j <= 2; $j++) {
         print('
     <tr>
-      <td width="40%" class="shubetu" id="TType' . $i . $j . '" colspan="2"><span id="WType' . $i . $j . '"></span></td>
-      <td width="25%" class="CTime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
+      <td width="10%" class="shubetu" id="TType' . $i . $j . '" colspan="1"><span id="WType' . $i . $j . '"></span></td>
+      <td width="40%" class="CName" id="TName' . $i . $j . '" colspan="5"></td>
+      <td width="20%" class="CTime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td width="20%" class="Destination"><p2 id="TDes' . $i . $j . '"></p2></td>
-      <td width="15%" class="railnumber" id="TNum' . $i . $j . '"></td>
+      <td width="10%" class="railnumber" id="TNum' . $i . $j . '"></td>
     </tr>
     ');
         if ($j == 1) {
           print('
       <tr>
-      <td width="10%" class="CDetail" id="TDetailtitle' . $i . '"></td>
-      <td width="90%" class="CDetail" colspan="4"><p3 class="news-banner__content"><p2 id="TDetail' . $i . $j . '">ここに詳細表示</p2></p3></td>
+      <td width="15%" class="CDetail" id="TDetailtitle' . $i . '"colspan="2"></td>
+      <td width="85%" class="CDetail" colspan="7"><p3 id="TDetail' . $i . $j . '" class="news-banner__content"></p3></td>
       </tr>
       ');
         }
@@ -88,10 +89,13 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
 <script type="text/javascript" src="js/function2.js"></script>
+<script type="text/javascript" src="js/functionColor.js"></script>
+<script type="text/javascript" src="js/functionDetail.js"></script>
 <script type="text/javascript" src="js/detailfunction.js"></script>
 <script type="text/javascript" src="js/detailset/Shidetailchange.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
 <script type="text/javascript" src="js/detailshow.js"></script>
+<script type="text/javascript" src="js/Tforshow9.js"></script>
 </body>
 
 </html>

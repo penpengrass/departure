@@ -14,3 +14,7 @@
     background-color: #404040;
     border:0px none;
 }
+.topic {
+    font-size: 25px;
+    transform: scaleX(1.0) translate(0%, 0);
+}

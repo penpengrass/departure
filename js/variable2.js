@@ -43,8 +43,7 @@ for (let tr = 0; tr < Tablenum; tr++) {
     TableMin[tr] = new Array(Tablenums[tr]);
     WType[tr] = new Array(Tablenums[tr]);
 }
-console.log(Detail);
-console.log(ShinNumber);
+//console.log(ShinNumber);
 //外側は表の数，内側はオーダーの数で種別，行先，種別の場所(色分けのため)，詳細表示の場所を取得
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
@@ -70,4 +69,3 @@ for (var td = 0; td < Tablenum; td++) {
         WType[td][tr] = 'WType' + (td + 1) + '' + (tr + 1);
     }
 }
-console.log(Type);

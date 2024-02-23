@@ -28,7 +28,7 @@ var JRCeNobj = {//色は文字
 };
 var JRChNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: Slimited, },
-    Typeb: { type: "ホームライナー", Bcolor: red, color: white, detail: Homerapid, },
+    Typeb: { type: "ﾎｰﾑﾗｲﾅｰ", Bcolor: red, color: white, detail: Homerapid, },
     Typee: { type: "快速", Bcolor: blue, color: white, detail: Jsubrapid, },
     Typef: { type: "区間快速", Bcolor: green, color: white, detail: Jsubrapid, },
     Typelocal: { type: "普通", Bcolor: white, color: black, detail: local, }

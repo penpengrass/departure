@@ -65,7 +65,7 @@ function DestinationDevide(station, mainTable, subTable) {
     //console.log(TT[0][17][0]);
     let subTaNum = 1;
     //TaRowはTTの行を示す
-    //mainTaNumはmainの表の何本目を示す rは1個目の表の残った本数 sは2つ目の表のs-1本目(hを減らしsを増やすようにする)
+    //mainTaNumはmainの表の何本目を示す mainTaNumは1個目の表の残った本数 subTaNumは2つ目の表のs-1本目(hを減らしsを増やすようにする)
     for (var TaRow = 4; TaRow < TT[mainTable].length; TaRow += 4) {//時の切替
         subTaNum = 1;
         let flag = 0;
@@ -242,6 +242,17 @@ function limitednumber2(TT, limitednumberline, name) {
     for (var td = 1; td < TT.length; td++) {
         for (var tr = 1; tr < TT[td].length; tr++) {
             if (TT[td][tr].includes(name)) {
+                TT[td][tr] += limitednumberline[number] + "号";
+                number++;
+            }
+        }
+    }
+}
+function limitedjustnumber2(TT, limitednumberline, name) {
+    var number = 0;
+    for (var td = 1; td < TT.length; td++) {
+        for (var tr = 1; tr < TT[td].length; tr++) {
+            if (TT[td][tr]==name) {
                 TT[td][tr] += limitednumberline[number] + "号";
                 number++;
             }

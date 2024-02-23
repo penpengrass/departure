@@ -91,7 +91,7 @@ let AType = "";
 var DetailLine = '';
 //3つまとめて種別に案内を対応させる　変える余地ありそう(種別ごとに関数を作るとか)
 function FDetail(Utype, Uobj, n, td, tr, distance, BeforeDetailShowing, AfterDetailShowing) {
-    //console.log(Utype + ':' + td + ':' + tr);
+    console.log(Utype + ':' + td + ':' + tr);
     //console.log(Uobj.Typeb.detail);
     if (Utype == '') {
         DetailLine = '';
