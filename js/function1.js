@@ -252,8 +252,12 @@ function limitedjustnumber2(TT, limitednumberline, name) {
     var number = 0;
     for (var td = 1; td < TT.length; td++) {
         for (var tr = 1; tr < TT[td].length; tr++) {
-            if (TT[td][tr]==name) {
-                TT[td][tr] += limitednumberline[number] + "号";
+            if (TT[td][tr] == name) {
+                if (Indexfile == 'index4_Tsuruga.php') {
+                    TT[td][tr] += limitednumberline[number];
+                } else {
+                    TT[td][tr] += limitednumberline[number] + "号";
+                }
                 number++;
             }
         }
@@ -281,4 +285,8 @@ function JRC_station() {
     } else if (station == '豊橋駅') {
         location.href = './index7.php?station=toyohashi';
     }
+}
+function LineCopy(conLine) {
+    var NewLine = JSON.parse(JSON.stringify(conLine));
+    return NewLine;
 }

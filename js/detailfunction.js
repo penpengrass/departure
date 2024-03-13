@@ -20,12 +20,6 @@ function DeleteStopping(TrainType, BeforeStation, LDtype = 0) {
     //limited[5].splice(2, 0, '高の原');
     TrainType[LDtype].splice(Deletenumber, 1);
 }
-function BeforeDetailShowing(SpecialStopping) {
-    SpecialStopping();
-}
-function AfterDetailShowing(Resetfunction) {
-    Resetfunction();
-}
 //特急によって停車駅が異なるときの処理
 //numberは号数 Lnameは列車名
 var number = new Array(Tablenum);

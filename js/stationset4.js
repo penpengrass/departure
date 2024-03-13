@@ -24,6 +24,23 @@ var JRWSobj = {//色は文字
     Typee: { type: "さくら", color: red, detail: Jsubrapid, },
     Typef: { type: "つばめ", color: '#0f0', detail: local, }
 };
+var JRWA_Bobj = {//色は文字
+    Typea: { type: "特急", color: 'red', detail: limited, },
+    Typeb: { type: "新快速", color: blue, detail: rapid, },
+    Typec: { type: "快速", color: 'orange', detail: rapid, },
+    Typed: { type: "区間快速", color: orange, detail: Jrapid, },
+    Typee: { type: "さくら", color: '#FF6FFF', detail: Jsubrapid, },
+    Typef: { type: "普通", color: black, detail: local, }
+};
+//大阪駅など
+var JRWA_obj = {//色は文字
+    Typea: { type: "特急", color: white, detail: limited, },
+    Typeb: { type: "新快速", color: white, detail: rapid, },
+    Typec: { type: "快速", color: black, detail: rapid, },
+    Typed: { type: "区間快速", color: black, detail: Jrapid, },
+    Typee: { type: "さくら", color: white, detail: Jsubrapid, },
+    Typef: { type: "普通", color: white, detail: local, }
+};
 if (station == '岡山駅') {
     var selectstation = ['備前片上', '長船', '日生', '播州赤穂', '西大寺'];
     DestinationDevide(selectstation, 2, 3);

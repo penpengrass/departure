@@ -1,6 +1,9 @@
-var Dtype = [0, 0];
+var Dtype = [0, 1];
 detailflag = 2;
 NonGouflag = 1;
+for (var td = 0; td < Tablenum; td++) {
+    DetailLength[td]=orderNum;
+}
 if (station == '長野駅') {
     TableTitle = ['金沢 富山方面', '東京方面'];
     company = '北陸新幹線';

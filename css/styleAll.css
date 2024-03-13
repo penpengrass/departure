@@ -17,7 +17,10 @@ showing {
 button {
     padding-left: 1em;
     padding-right: 1em;
-    height:30px;
+    margin-left:0.5em;
+    margin-right:0.5em;
+    height:40px;
+    font-size:15px;
 }
 .bansen{
     font-size: 15px;
@@ -52,16 +55,27 @@ time {
     float: right;
     position: relative;
 }
-
-@media(max-width:1299px) {
+select{
+    height:30px;
+    font-size:15px;
+}
+@media(max-width:1199px) {
     tableline {
         display: inline;
         align-items: flex-start;
     }
+    button {
+        height:60px;
+        font-size:20px;
+    }
+    select{
+        height:40px;
+        font-size:20px;
+    }
 }
 
 /*PCのみ適用*/
-@media(min-width:1300px) {
+@media(min-width:1200px) {
     tableline {
         display: flex;
         align-items: flex-start;

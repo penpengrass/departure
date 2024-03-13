@@ -13,7 +13,6 @@ td{               /*データ内*/
     height: 43px;
     color:yellow;
     border: 10px #404040 solid;  /*表の中の枠色 */
-    font-family:Arial,"MS Gothic",monospace;
     font-family: "meiryo";
     border-left:none;
     border-right:none;
@@ -21,9 +20,6 @@ td{               /*データ内*/
 }
 .Destination{
     color:white;
-}
-.name{
-    text-align:center;
 }
 .CDetail{
     text-align: left;
@@ -47,17 +43,18 @@ table{        /*表全体*/
 .shubetu{
     text-align: left;
     color:white;
-    font-weight:650;
+    font-weight:500;
 }
 p3{
-    font-size:20px;
+    font-size:25px;
 }
 .railnumber{
     color:yellow;
 }
 .name{
-    text-align:center;
-    color:greenyellow;
+    text-align:right;
+    color:white;
+    padding-right:5px;
     border-left:0;
 }
 .Ctitle{

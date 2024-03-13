@@ -141,6 +141,7 @@
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/altershow.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
+  <script type="text/javascript" src="js/functionW.js"></script>
   <script type="text/javascript" src="js/Tforshow4.js"></script>
   <script type="text/javascript" src="js/Tforshow4_S.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>

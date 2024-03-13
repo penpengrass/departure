@@ -163,9 +163,10 @@ function FDetail(Utype, Uobj, n, td, tr, distance, BeforeDetailShowing, AfterDet
     DtypePlusCount = 0;
     console.log(Dtype[td_detail]);
 }
-function DetailShow(companyObject, distance) {
+function DetailShow(companyObject, distance, LLength = Tablenum) {
     console.log("---ここから1個目の表の詳細表示----");
-    for (var td = 0; td < Tablenum; td++) {
+    for (var td = 0; td < LLength; td++) {
+        console.log(DetailLength[td]);
         for (var tr = 0; tr < DetailLength[td]; tr++) {
             //console.log("Dtype[" + td + "]=" + Dtype[td]);
             FDetail(Type[td][tr], companyObject, Dtype[td], td, tr, distance);
@@ -176,4 +177,3 @@ function DetailShow(companyObject, distance) {
         //stationN = stationN2;
     }
 }
-console.log(Dtype[0]);

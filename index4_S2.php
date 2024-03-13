@@ -4,15 +4,16 @@
 <head>
   <?php
   require_once('PHP/variable.php');
+  require('PHP/table4.php');
   $files = array();
   $files[0] = 'csv/JRW_S/hiroshima_S1.csv';
   $files[1] = 'csv/JRW_S/hiroshima_S2.csv';
   if (isset($_POST["stasele"])) {
     $files[0] = $_POST["stasele"];
   }
-  require_once('PHP/variable.php');
+  $OrderNum = 4;
   require('PHP/files4_S.php');
-  $OrderNum=4;
+
   require('getCSV.php');
   ?>
   <title>JR西日本駅発車標</title>
@@ -20,7 +21,7 @@
   <link rel="stylesheet" href="css/styleJRW_S2.css">
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
-  <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
+  <script type="text/javascript" src="js/detailset/JRHoShindetailset.js"></script>
   <script type="text/javascript" src="js/stationset4_S.js"></script>
 </head>
 
@@ -55,39 +56,7 @@
     <?php
     //表の数
     for ($i = 1; $i <= $tablenum; $i++) {
-      print('
- <table id="TTable' . $i . '">');
-      print('
-<caption class="Ctitle"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></caption>
-    <tr>
-      <th width="25%" colspan="2">種別</th>
-      <th width="15%">時刻</th>
-      <th width="20%">行先</th>
-      <th width="15%">のりば</th>
-      <th width="25%">編成/遅れ</th>
-    </tr>
-  ');
-      //n番目に発車する列車までを表示
-      for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
-        print('
-    <tr id="TTLine' . $i . $j . '"><p10 id="TTLineContents' . $i . $j . '"></p10>
-      <td width="50%" class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
-      <td width="50%" class="name" id="TName' . $i . $j . '"><span class="Wname" id="WName' . $i . $j . '"></span></td>
-      <td class="Ctime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></span></td>
-      <td class="railnumber" id="TNum' . $i . $j . '"></td>
-      <td class="CDetail" id="TDetail' . $i . $j . '"></td>
-    </tr>
-    ');
-      }
-      print('
-        </table>
-');
-      if ($i % $column == 0) {
-        print('
-        </tableline>
-  <tableline id="tableline' . $i . '">');
-      }
+      JRWSTable2($i, $tablenums, $detaillength, 2);
     }
     ?>
   </tableline>
@@ -100,8 +69,10 @@
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/altershow.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
-  <script type="text/javascript" src="js/Tforshow4_S.js"></script>
+  <script type="text/javascript" src="js/functionDetail.js"></script>
+  <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
+  <script type="text/javascript" src="js/Tforshow4_S.js"></script>
 </body>
 
 </html>

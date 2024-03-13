@@ -1,9 +1,7 @@
 p{
     display: inline;
 }
-/*select{
-    /*font-size:30px;*/
-/*}*/
+
 .menutable{
     display:table-cell;
     border:2px brown solid;
@@ -16,6 +14,26 @@ th{
 }
 td{
     border:2px black solid;
+    height:30px;
+    font-size:20px;
+}
+button{
+    height:40px;
+    width:120px;
+    font-size:20px;
+}
+@media(max-width:1199px) {
+    td{
+        border:2px black solid;
+        height:30px;
+        font-size:20px;
+    }
+}
+.mainstation{
+    width:8em;
+}
+.staselection{
+    width:200px;
 }
 .chushaku{
     font-weight: 600;

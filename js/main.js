@@ -1,6 +1,6 @@
 'use strict';
 //駅名の表示
-document.getElementById('stationname').textContent = company+' '+station;
+document.getElementById('stationname').textContent = company + ' ' + station;
 let countTable = 0;
 let countOrder = 2;
 //console.log(TT[2][51][1]);
@@ -10,8 +10,14 @@ let countOrder = 2;
 for (var TN = 0; TN < Tablenum; TN++) {
     //表のタイトル表示
     if (TableTitle[TN] != '') {
-        console.log('表のタイトル' + TableTitle[TN]);
+        //console.log('表のタイトル' + TableTitle[TN]);
         document.getElementById('kn' + (TN + 1)).textContent = TableTitle[TN];
+    }
+    if (station == '敦賀駅') {
+        BackTime();
+        if (TN == 1 || TN == 2) {
+            Delay(15);
+        }
     }
     //先発表示
     FShow(TT[TN], TN + 1);

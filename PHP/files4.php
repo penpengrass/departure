@@ -17,6 +17,9 @@ if (isset($_POST['staselect4'])) {
   if ($test1 == 'tennouji') {
     header("Location: ../index4_T.php");
     exit();
+  }else if($test1=='tsuruga'){
+    header("Location: ../index4_Tsuruga.php");
+    exit();
   } else if ($test1 == $startstation) {
     header('Location: ../index4.php');
     exit();

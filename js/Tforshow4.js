@@ -182,39 +182,18 @@ if (station == '岡山駅') {
     }
     JRWTrainNameColor('orange', '#0f0', '#0f0');
 }
-function DesMiddle(td, tr, word) {
-    var matches = new Array(orderNum);
-    var Desword = new RegExp("(\\D+)" + word + "(\\D+)");
-    //console.log(Desword);
-    //console.log(Des[td][tr]);
-    //(/(\D+)(\d+)両/);
-    //matches[tr] = Des[td][tr].match(/(\D+)連絡(\D+)/);
-    matches[tr] = Des[td][tr].match(Desword);
-    //console.log(matches[tr]);
-    if (matches[tr]) {
-        /*console.log(matches[tr][0] + ":" + tr);
-        console.log(matches[tr][1] + ":" + tr);
-        console.log(matches[tr][2] + ":" + tr);*/
-        document.getElementById('TDes' + (td + 1) + (tr + 1)).innerHTML =
-            '<span class="DesLeft">' + matches[tr][1] + '</span>' + '<span class="DesMiddle">' + word + '</span>' + '<span id="DesRight' + (td + 1) + (tr + 1) + '">' + matches[tr][2] + '</span>';
-        var DesRight = document.getElementById('DesRight' + (td + 1) + (tr + 1));
-        //console.log(DesRight.textContent.length);
-        if (DesRight.textContent.length > 3) {
-            console.log(DesRight.textContent.length);
-            DesRight.style.display = 'inline-block';
-            DesRight.style.transform = "scaleX(0.75)" + "translate(-20%,0%)";
-        }
-    } else {
-        //console.log(td + ':' + tr + word + 'はマッチしない');
-    }
 
-}
 if (station == '三ノ宮駅') {
+    var TozaiLine = ['四条畷', '松井山手', '京田辺', '同志社前', '木津', '放出'];
     JRLimitedDevide(0);
     JRLimitedDevide(1);
     JRWTrainNameColor('orange', 'orange', 'red');
     for (var tr = 0; tr < orderNum; tr++) {
         DesMiddle(0, tr, '方面');
+        if (TozaiLine.includes(Des[0][tr])) {
+            document.getElementById('TName' + 1 + (tr + 1)).innerText = '東西線経由';
+            document.getElementById('TName' + 1 + (tr + 1)).style.textAlign = 'center';
+        }
         DesMiddle(0, tr, '経由');
         DesMiddle(1, tr, '方面');
     }
@@ -233,23 +212,34 @@ if (station == '徳山駅') {
 }
 if (station == '三原駅') {
     for (var tr = 0; tr < orderNum; tr++) {
-        //DesMiddle(0, tr, '連絡');
-        console.log(Des[0][tr].length);
+        DesMiddle(0, tr, '連絡');
+        DesMiddle(1, tr, '方面');
     }
-    alternatingOne(0, Des, '連絡', '糸崎');
-    for (var tr = alterchange + 1; tr < Des[0].length; tr++) {
-        alternating2(0, Des[0][tr], '糸崎', Des, '連絡');
-        altershow(0, '連絡', '糸崎', tr);
-    }
+    setInterval(allswitch, 5000);
 }
 if (TwoLetterDisflag == 1) {
     for (var td = 0; td < Tablenum; td++) {
-        for (var tr = 0; tr < orderNum; tr++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         }
     }
 }
-
+if (Indexfile == 'index4_A.php') {
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            TwoLetterDistance(td, tr, Type, TType, 0.60, 0);
+            var LType = document.getElementById('WType' + (td + 1) + (tr + 1));
+            var LocalType = document.getElementById('TType' + (td + 1) + (tr + 1));
+            if (Type[td][tr] == '普通') {
+                LType.style.display = 'inline';
+                LType.style.borderColor = 'white';
+            } else if (LType != null) {
+                LType.style.display = 'inline';
+                LType.style.border='none';
+            }
+        }
+    }
+}
 if (station == '天王寺駅') {
     let TenDes = new Array(orderNum);
     let TenType = new Array(orderNum);
@@ -280,3 +270,23 @@ if (station == '天王寺駅') {
         }
     }
 }
+/*function switchTrainInfo() {
+    var SanyoCell = document.getElementById("TName11");
+    var SaninCell = document.getElementById("TName31");
+
+    // 表示を切り替える
+    if (SanyoCell.innerText === "山陽線") {
+        SanyoCell.innerText = "4両"
+    } else {
+        SanyoCell.innerText = "山陽線";
+    }
+    if (SaninCell.innerText === "山陰線") {
+        SaninCell.innerText = "2両";
+    } else {
+        SaninCell.innerText = "山陰線";
+    }
+}
+if (station == '下関駅') {
+    // 10秒ごとに表示を切り替える
+    setInterval(switchTrainInfo, 3000);
+}*/

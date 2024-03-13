@@ -15,20 +15,6 @@ if ($files[0] == 'csv/Tokyu/nikotama1.csv') {
   $station = '武蔵小杉駅';
   $tablenum = 4;
   $CompanyNumber = 5;
-} else if ($files[0] == 'csv/JRMu/ToTakasaki.csv') {
-  $files[2] = 'csv/JRMu/ToChiba.csv';
-  $files[3] = 'csv/JRMu/ToKurihama.csv';
-  $files[1] = 'csv/JRMu/ToOdawara.csv';
-  $filetablegap = 2;
-} else if ($files[0] == 'csv/JRE/yokohama1.csv') {
-  $files[1] = 'csv/JRE/yokohama2.csv';
-  $files[2] = 'csv/JRE/yokohama3.csv';
-  $files[3] = 'csv/JRE/yokohama4.csv';
-  $files[4] = 'csv/JRE/yokohama5.csv';
-  $files[5] = 'csv/JRE/yokohama6.csv';
-  $tablenum = 6;
-  $OrderNum = 2;
-  $station = '横浜駅';
 } else if ($files[0] == 'csv/JRH/sapporo1.csv') {
   $files[1] = 'csv/JRH/sapporo1.csv';
   $files[2] = 'csv/JRH/sapporo2.csv';
@@ -43,13 +29,6 @@ if ($files[0] == 'csv/Tokyu/nikotama1.csv') {
   $files[3] = 'csv/JRS/takamatsu2.csv';
   $tablenum = 4;
   $OrderNum = 2;
-} else if ($files[0] == 'csv/JRH/shinhokuto1.csv') {
-  $files[1] = 'csv/JRH/shinhokuto2.csv';
-  $files[2] = 'csv/JRH/shinhokuto3.csv';
-  $tablenum = 2;
-  $tableStrange = 1;
-  $tablenums = [2, 3];
-  $station = '新函館北斗駅';
 }
 //ここからgetCSVとしたい
 //表示数が全部同じ場合
@@ -137,12 +116,14 @@ $js_array .= ']';
   console.log(title);
   console.log(title2);
   let CompanyNumber = '<?php echo $CompanyNumber; ?>';
+  //詳細表示がいくつあるか(0~2)PHPも使う
+  var detailflag='<?php echo $detailflag; ?>';
   let station = '<?php echo $station; ?>';
   if (station == '') {
     station = title[1];
   }
   console.log("駅名は" + station);
-  console.log(TT.length);
+  console.log("TT.length=" + TT.length);
   let station2 = title2[1];
   let stationN = station.slice(0, -1);
   let stationN2 = station2.slice(0, -1);
@@ -151,8 +132,6 @@ $js_array .= ']';
   let dir2 = title2[2].substr(0, 2);
   let MinIn = 2;
   let company = '';
-  //詳細表示がいくつあるか(0~2)
-  let detailflag = 0;
   var NonGouflag = 0;
   var TwoLetterDisflag = 0;
   var DetailLength = new Array(Tablenum);

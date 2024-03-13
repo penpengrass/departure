@@ -7,6 +7,7 @@ function JRWStaSele($Select){
     echo '<form action="PHP/files4.php" method="POST" id="selectstation">
                 <select name="staselect4">
                     <option value="kitashinti">北新地駅</option>
+                    <option value="tsuruga">敦賀駅</option>
                     <option value="maibara">米原駅</option>
                     <option value="tennouji">天王寺駅</option>
                     <option value="sannomiya">三ノ宮駅</option>
@@ -20,7 +21,7 @@ function JRWStaSele($Select){
                     <option value="tokuyama">徳山駅</option>
                     <option value="shimonoseki">下関駅</option>
                 </select>
-                <button type="submit" name="submit">'.$Select.'</button>
+                <button type="submit" name="submit" class="staselection">'.$Select.'</button>
             </form>';
 }
 ?>

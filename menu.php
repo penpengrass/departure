@@ -27,20 +27,20 @@
             <tr>
                 <th>種類</th>
                 <th>移動</th>
-                <th>メイン駅名</th>
+                <th class="mainstation">メイン駅名</th>
                 <th>その他の駅名</th>
             </tr>
             <tr>
                 <td>近鉄LCD</td>
                 <td><button type="button" onclick="location.href='./index2.php'">移動</button></td>
                 <td>鶴橋駅</td>
-                <td><span style="color:red;">奈良駅</span>,<span style="color:red;">京都駅</span>,名古屋駅 </td>
+                <td><span style="color:red;">奈良駅</span>, <span style="color:red;">京都駅</span>, 名古屋駅 </td>
             </tr>
             <tr>
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td>(武蔵小杉駅)</td>
-                <td>横浜駅,小田原駅,<span style="color:red;">熱海駅</span>,宇都宮駅</td>
+                <td>横浜駅, 小田原駅, <span style="color:red;">熱海駅</span>, 宇都宮駅</td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
@@ -52,12 +52,18 @@
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:red;">北新地駅</span></td>
-                <td>米原駅,<span style="color:red;">三ノ宮駅</span>,姫路駅,岡山駅,糸崎駅,三原駅,<span style="color:red;">広島駅</span>,新見駅,<span style="color:red;">岩国駅</span>,徳山駅,下関駅</td>
+                <td class="long">米原駅, <span style="color:red;">三ノ宮駅</span>, 姫路駅, 岡山駅, 糸崎駅, 三原駅, <span style="color:red;">広島駅</span>, 新見駅, <span style="color:red;">岩国駅</span>, 徳山駅, 下関駅</td>
             </tr>
             <tr>
                 <td>JR西日本LCD</td>
                 <td><button type="button" onclick="location.href='./index4_T.php'">移動</button></td>
                 <td>(天王寺駅)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>JR西日本北陸</td>
+                <td><button type="button" onclick="location.href='./index4_Tsuruga.php'">移動</button></td>
+                <td><span style="color:blue;">敦賀駅</span></td>
                 <td></td>
             </tr>
             <tr>
@@ -76,7 +82,7 @@
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
                 <td><span style="color:red;">長野駅</span></td>
-                <td><span style="color:red;">松本駅</span>,横浜駅</td>
+                <td><span style="color:red;">松本駅</span>, 横浜駅</td>
             </tr>
             <tr>
                 <td>JR東日本新幹線フルカラー</td>
@@ -88,19 +94,19 @@
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
                 <td>浜松駅</td>
-                <td>沼津駅,静岡駅,豊橋駅,岐阜駅,大垣駅</td>
-            </tr>
-            <tr>
-                <td>東海道新幹線一般駅</td>
-                <td><button type="button" onclick="location.href='./index7_S1.php'">移動</button></td>
-                <td>浜松駅</td>
-                <td>豊橋駅</td>
+                <td>沼津駅, 静岡駅, 豊橋駅, 岐阜駅, 大垣駅</td>
             </tr>
             <tr>
                 <td>JR東海LCD</td>
                 <td><button type="button" onclick="location.href='./index7_T.php'">移動</button></td>
                 <td>名古屋駅</td>
                 <td>なし</td>
+            </tr>
+            <tr>
+                <td>東海道新幹線一般駅</td>
+                <td><button type="button" onclick="location.href='./index7_S1.php'">移動</button></td>
+                <td>浜松駅</td>
+                <td>豊橋駅</td>
             </tr>
             <tr>
                 <td>JR北海道</td>

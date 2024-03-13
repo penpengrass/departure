@@ -96,10 +96,10 @@ function JRNameDevide(T = Tablenum) {
                 if (matches[tr][1].length < Mlength) {
                     console.log(matches[tr][1]);
                     document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][1];
-                    if (Indexfile == 'index4_S2.php' || Indexfile == 'index7_S1.php' || Indexfile == 'index3_S.php') {
+                    if (NonGouflag == 1) {
                         document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2];
                     } else {
-                        document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2] + matches[tr][3];
+                        document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2] + '号';
                     }
                     Type[td][tr] = matches[tr][1];
                     if (Type[td][tr].includes('特急')) {
@@ -150,7 +150,7 @@ function JRLimitedNumber(td, tr) {
         console.log(matches[tr][1] + matches[tr][1].length);
         console.log("Dtypeは" + Dtype);
         var number = matches[tr][2];
-    }else if (matches2[tr]) {
+    } else if (matches2[tr]) {
         console.log(td + 1 + '個目の表の' + (tr + 1) + '番目はマッチする')
         console.log(matches2[tr][0] + ":" + tr);
         console.log(matches2[tr][1] + ":" + tr);
@@ -158,7 +158,7 @@ function JRLimitedNumber(td, tr) {
         console.log(matches2[tr][1] + matches2[tr][1].length);
         console.log("Dtypeは" + Dtype);
         var number = matches2[tr][2];
-    }else{
+    } else {
         console.log("JRLimitedNumberはマッチしない");
     }
     return number;
@@ -220,9 +220,9 @@ function toFullWidth(str) {
     });
     return str;
 }
-function Bansenshow(flag = 0) {
+function Bansenshow(flag = 0,LLength=Tablenum) {
     //console.log(doBNumber[1][0].textContent);
-    for (td = 0; td < Tablenum; td++) {
+    for (td = 0; td < LLength; td++) {
         for (tr = 0; tr < Tablenums[td]; tr++) {
             //console.log(doBNumber[td][tr]);
             if (doBNumber[td][tr].textContent != '') {

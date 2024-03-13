@@ -45,21 +45,27 @@ function allKinColor() {
     }
 }
 //JR西日本在来線
-function allJRColor() {
-    for (let ia = 0; ia < Tablenum; ia++) {
+function allJRColor(start = 0) {
+    for (let ia = start; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
             JTypeColor(Type[ia][ib], TType[ia][ib], JRobj);
         }
     }
 }
-//JR西日本新幹線主要駅(広島駅など)
-function allJRSSColor() {
+//JR西日本新幹線主要駅(広島駅や敦賀駅など)
+function allJRSSColor(object = JRSSobj, LLength = Tablenum) {
+    for (let ia = 0; ia < LLength; ia++) {
+        for (let ib = 0; ib < Tablenums[ia]; ib++) {
+            KJTypeColor(Type[ia][ib], TType[ia][ib], object);
+            KJTypeColor(Type[ia][ib], TName[ia][ib], object);
+        }
+    }
+}
+function allJROsakaColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            KTypeColor(Type[ia][ib], TType[ia][ib], JRSBobj);
-            KTypeColor(Type[ia][ib], TName[ia][ib], JRSBobj);
-            JTypeColor(Type[ia][ib], TType[ia][ib], JRSSobj);
-            JTypeColor(Type[ia][ib], TName[ia][ib], JRSSobj);
+            KTypeColor(Type[ia][ib], TType[ia][ib], JRWA_Bobj);
+            JTypeColor(Type[ia][ib], TType[ia][ib], JRWA_obj);
         }
     }
 }
@@ -181,10 +187,10 @@ if (station == '天王寺駅' || Indexfile == 'index4_T.php') {
     allKinColor();
 } else if (Indexfile == 'index9.php') {
     allJRSIncludeColor();
-} else if (Indexfile == 'index4_S2.php') {
-    allJRSSColor();
 } else if (Indexfile == 'index7_S1.php') {
     allJRCSColor();
 } else if (JRShinkansenflag == 1) {
     allJRWSZColor();
+} else if (Indexfile == 'index4_A.php') {
+    allJROsakaColor();
 }
