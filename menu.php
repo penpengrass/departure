@@ -19,11 +19,12 @@
         <h1>発車標表示駅一覧</h1>
         <table class="menutable">
             <caption>表示駅</caption>
-            <p class="chushaku"><span style="color:red;">赤字</span>は土休日ダイヤ対応，もしくは終日ダイヤ<br>
-             <span style="color:blue;">青字</span>は2024年3月ダイヤ対応 <br>
-             <span style="color:purple;">紫字</span>は土休日ダイヤ，2024年3月ダイヤ対応<br>
-             黒字は2023年3月ダイヤ，平日ダイヤのみ <br></p>
-            <p class="chushaku">()は未完成</p>
+            <p class="chushaku"><span style="color:red;">赤字</span>は2023年3月ダイヤ，土休日ダイヤ対応，もしくは終日ダイヤ<br>
+                <span style="color:blue;">青字</span>は2024年3月ダイヤ対応, 平日ダイヤのみ <br>
+                <span class="orange">橙字</span>は2024年3月ダイヤ対応，土休日ダイヤ<br>
+                黒字は2023年3月ダイヤ，平日ダイヤのみ <br>
+            </p>
+            <p class="chushaku">括弧は未完成</p>
             <tr>
                 <th>種類</th>
                 <th>移動</th>
@@ -34,7 +35,7 @@
                 <td>近鉄LCD</td>
                 <td><button type="button" onclick="location.href='./index2.php'">移動</button></td>
                 <td>鶴橋駅</td>
-                <td><span style="color:red;">奈良駅</span>, <span style="color:red;">京都駅</span>, 名古屋駅 </td>
+                <td><span style="color:red;">奈良駅</span>, <span style="color:red;">京都駅</span>, <span style="color:blue;">名古屋駅</span> </td>
             </tr>
             <tr>
                 <td>JR東日本ATOS</td>
@@ -45,14 +46,23 @@
             <tr>
                 <td>JR東日本新幹線</td>
                 <td><button type="button" onclick="location.href='./index3_S.php'">移動</button></td>
-                <td>長野駅</td>
+                <td><span style="color:blue;">長野駅</span></td>
                 <td></td>
             </tr>
             <tr>
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:red;">北新地駅</span></td>
-                <td class="long">米原駅, <span style="color:red;">三ノ宮駅</span>, 姫路駅, 岡山駅, 糸崎駅, 三原駅, <span style="color:red;">広島駅</span>, 新見駅, <span style="color:red;">岩国駅</span>, 徳山駅, 下関駅</td>
+                <td class="long"><span class="orange">米原駅</span>, <span class="orange">三ノ宮駅</span>, 姫路駅, 岡山駅, 糸崎駅, 三原駅,
+                    <span style="color:red;">広島駅</span>, <span style="color:blue;">新見駅</span>, <span style="color:red;">岩国駅</span>, 徳山駅,
+                    <span style="color:blue;">下関駅</span>
+                </td>
+            </tr>
+            <tr>
+                <td>JR西日本フルカラーLED</td>
+                <td><button type="button" onclick="location.href='./index4_A.php'">移動</button></td>
+                <td><span class="orange">大阪駅</span></td>
+                <td></td>
             </tr>
             <tr>
                 <td>JR西日本LCD</td>
@@ -63,7 +73,7 @@
             <tr>
                 <td>JR西日本北陸</td>
                 <td><button type="button" onclick="location.href='./index4_Tsuruga.php'">移動</button></td>
-                <td><span style="color:blue;">敦賀駅</span></td>
+                <td><span class="orange">敦賀駅</span></td>
                 <td></td>
             </tr>
             <tr>
@@ -82,12 +92,12 @@
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
                 <td><span style="color:red;">長野駅</span></td>
-                <td><span style="color:red;">松本駅</span>, 横浜駅</td>
+                <td><span class="orange">松本駅</span>, 横浜駅</td>
             </tr>
             <tr>
                 <td>JR東日本新幹線フルカラー</td>
                 <td><button type="button" onclick="location.href='./index6_S.php'">移動</button></td>
-                <td>東京駅</td>
+                <td><span style="color:blue;">東京駅</span></td>
                 <td></td>
             </tr>
             <tr>
@@ -130,8 +140,8 @@
         <h1 class="Cheader">今後追加する駅</h1>
         <li>新幹線 静岡駅 米原駅 岡山駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
-        <li>JR東日本 赤羽駅 東京駅 新宿駅 大宮駅 甲府駅 水戸駅 仙台駅 福島駅 </li>
-        <li>JR西日本 大阪駅 尼崎駅 新山口駅</li>
+        <li>JR東日本 赤羽駅 東京駅 新宿駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
+        <li>JR西日本 尼崎駅 新山口駅</li>
         <li>JR九州 小倉駅 博多駅</li>
         <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
         <li>JR東海 中津川駅</li>

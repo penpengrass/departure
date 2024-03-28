@@ -127,10 +127,10 @@ if (station == '熱海駅') {
     rowremove(0, 'HCars', 'TCars');
     rowremove(0, 'HType', 'TType');
     if (Type[3][0] == '') {
-        BottomBanner("TRow43", 4, 3, 6, '日光線の運転は終了しました');
+        BottomBanner("TRow", 4, 3, 6, '日光線の運転は終了しました');
     }
     if (Type[0][0] == '' && Type[0][1] != '') {
-        BottomBanner("TRow11", 1, 1, 3, '烏山方面へは黒磯行きに乗車のうえ宝積寺でのりかえ');
+        BottomBanner("TRow", 1, 1, 3, '烏山方面へは黒磯行きに乗車のうえ宝積寺でのりかえ');
     }
     comment.textContent = '上野東京ラインの両数は今後修正予定';
 } else if (station == '横浜駅') {

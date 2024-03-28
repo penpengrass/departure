@@ -14,17 +14,20 @@ showing {
     color: green;
     margin: 5px;
 }
+
 button {
     padding-left: 1em;
     padding-right: 1em;
-    margin-left:0.5em;
-    margin-right:0.5em;
-    height:40px;
-    font-size:15px;
-}
-.bansen{
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    height: 40px;
     font-size: 15px;
 }
+
+.bansen {
+    font-size: 15px;
+}
+
 form {
     display: inline-block;
     margin-bottom: 20px;
@@ -33,7 +36,8 @@ form {
 .koshin {
     width: 90px;
 }
-.henko{
+
+.henko {
     width: 120px;
 }
 
@@ -55,22 +59,26 @@ time {
     float: right;
     position: relative;
 }
-select{
-    height:30px;
-    font-size:15px;
+
+select {
+    height: 30px;
+    font-size: 15px;
 }
+
 @media(max-width:1199px) {
     tableline {
         display: inline;
         align-items: flex-start;
     }
+
     button {
-        height:60px;
-        font-size:20px;
+        height: 60px;
+        font-size: 20px;
     }
-    select{
-        height:40px;
-        font-size:20px;
+
+    select {
+        height: 40px;
+        font-size: 20px;
     }
 }
 
@@ -81,15 +89,22 @@ select{
         align-items: flex-start;
     }
 }
+
 #supplement {
     color: red;
     font-size: 20px;
 }
-.Cheader{
+
+.Cheader {
     background-color: skyblue;
     font-family: "meiryo";
 }
-li{
-    font-size:15px;
+
+li {
+    font-size: 15px;
     font-family: "meiryo";
+}
+
+.orange {
+    color: orange;
 }

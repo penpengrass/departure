@@ -1,68 +1,86 @@
-body{
+body {
     font-family: monospace;
 }
-th{
-    color:white;
+
+th {
+    color: white;
     background-color: gray;
 }
-time{
-    border:green solid;
-    font-size:40px;
-    text-align: right;
-}
-td{               /*データ内*/
+
+td {
+    /*データ内*/
     display: table-cell;
-    font-size:30px;
+    font-size: 30px;
     height: 25px;
-    color:white;
-    border: 1px black solid;  /*表の中の枠色 */
+    color: white;
+    border: 1px black solid;
+    /*表の中の枠色 */
     padding: 2px;
     /*border-left:none;
     border-right:none; */
-    border-bottom:2px gray solid;
+    border-bottom: 2px gray solid;
 }
-table{        /*表全体*/
-    border-collapse: collapse;/*文字を縮小してもボーダーが縮まらない*/
-    table-layout:fixed;
+
+table {
+    /*表全体*/
+    border-collapse: collapse;
+    /*文字を縮小してもボーダーが縮まらない*/
+    table-layout: fixed;
     background-color: black;
-    border: 10px gray solid;/*周りの色*/
-    width: 750px; 
-    white-space:nowrap;
-    text-align:center;
-    display:table;
+    border: 10px gray solid;
+    /*周りの色*/
+    width: 750px;
+    white-space: nowrap;
+    text-align: center;
+    display: table;
     border-spacing: 0px;
 }
-.CDetail{
-    font-size:20px;
+
+.CDetail {
+    font-size: 20px;
     text-align: left;
-    color:white;
+    color: white;
     overflow: hidden;
 }
-.higherDetail{
+
+.higherDetail {
     border-bottom-color: black;
 }
-tables{
-    display:flex;
+
+tables {
+    display: flex;
 }
-.Ctitle{
+
+.Ctitle {
     background-color: gray;
-    color:white;
+    color: white;
 }
-p3{
-    font-size:20px;
+
+p3 {
+    font-size: 20px;
 }
-.railnumber{
+
+.railnumber {
     background-color: white;
-    color:blue;
-    font-family:"meiryo";
+    color: blue;
+    font-family: "meiryo";
     font-weight: 800;
+    padding:0px 9px;
+    border-radius: 10%;
 }
-[class^="shubetu"]{
+
+[class^="shubetu"] {
     letter-spacing: 10px;
 }
-.KinLocolor{
+
+.CWType {
+    padding: 3px;
+}
+
+.KinLocolor {
     background-color: blue;
 }
-.KinExcolor{
+
+.KinExcolor {
     background-color: orange;
 }

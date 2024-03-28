@@ -65,11 +65,11 @@ for (var tr = 0; tr < 3; tr++) {
     if (Type[4][tr] == '新快速') {
         dName.textContent += '湖西経由近江舞子まで各停';
         dName.style.fontSize = '18px';
-        dName.style.transform = "scalex(0.90)"+"translate(10%,0%)";
+        dName.style.transform = "scalex(0.90)" + "translate(10%,0%)";
     } else if (Type[4][tr] == '新快速*') {
         dName.textContent += '米原経由米原まで各駅停車';
         dName.style.fontSize = '18px';
-        dName.style.transform = "scalex(0.90)"+"translate(10%,0%)";
+        dName.style.transform = "scalex(0.90)" + "translate(10%,0%)";
         document.getElementById('TType' + 5 + (tr + 1)).textContent = '新快速';
     }
 }
@@ -78,7 +78,12 @@ for (var td = 2; td < Tablenum; td++) {
         TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
     }
 }
-JRWTrainNameColor('red', 'red', 'red');
+if (holidayflag == 1) {
+    document.getElementById('supplement').innerHTML += station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
+} else if (holidayflag == 0) {
+    document.getElementById('supplement').innerHTML += station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
+}
+allJRWTrainNameColor('red', 'red', 'red', 2);
 DetailBanner(0, 0, 25);
 DetailBanner(0, 1, 25);
 for (var tr = 0; tr < orderNum; tr++) {

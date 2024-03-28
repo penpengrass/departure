@@ -26,7 +26,7 @@
     <p id="stationname">鶴橋駅</p>
   </div>
   <!--駅選択部分-->
-  <form action="PHP/files2.php" method="POST">
+  <form action="PHP/files2.php" method="POST" class="staselection">
     <select name="staselect2">
       <option value="tsuruhashi">鶴橋駅</option>
       <option value="nara">奈良駅</option>
@@ -55,11 +55,11 @@
  <table>
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
-      <th width="10%">時刻</th>
+      <th width="12%">時刻</th>
       <th width="15%"> 種別</th>
-      <th width="20%">行先</th>
-      <th width="5%">のりば</th>
-      <th width="50%">案内</th>
+      <th width="18%">行先</th>
+      <th width="7%">のりば</th>
+      <th width="48%">案内</th>
     </tr>
     <showing>
   ');
@@ -67,9 +67,9 @@
         print('
     <tr>
       <td rowspan="2" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="shubetu' . $i . $j . '" id="IType' . $i . $j . '" rowspan="2"><p2 id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></p2></td>
+      <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '" rowspan="2"><span class="CWType" id="WType' . $i . $j . '"></span></td>
       <td class="Destination" id="TDes' . $i . $j . '" rowspan="2"><span id="WDes' . $i . $j . '"></span></td>
-      <td class="railnumber" id="TNum' . $i . $j . '" rowspan="2"></td>
+      <td rowspan="2"><span class="railnumber" id="TNum' . $i . $j . '"></span></td>
       <td class="higherDetail CDetail" ><p3 class="news-banner__content" id="TDetail' . $i . $j . '">本日の運転は終了しました</p3></td>
       </tr>
       <tr><td class="CDetail"><p2 id="TConnection' . $i . $j . '"></td>
@@ -98,8 +98,9 @@
   <script type="text/javascript" src="js/function3.js"></script>
   <script type="text/javascript" src="js/functionDetail.js"></script>
   <script type="text/javascript" src="js/detailshow.js"></script>
-  <script type="text/javascript" src="js/Tforshow2.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
+  <script type="text/javascript" src="js/Tforshow2.js"></script>
+  
   <!--<script type="text/javascript" src="js/detailStation.js"></script>-->
   
 

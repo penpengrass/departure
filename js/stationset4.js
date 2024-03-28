@@ -1,12 +1,5 @@
 company = 'JR西日本';
-var JRobj = {//色は文字
-    Typea: { type: "特急", color: red, detail: limited, },
-    Typeb: { type: "新快速", color: red, detail: rapid, },
-    Typec: { type: "快速", color: orange, detail: Jrapid, },
-    Typed: { type: "区快", color: orange, detail: Jsubrapid, },
-    Typee: { type: "普通", color: '#0f0', detail: local, }
-
-};
+NonGouflag = 0;
 //天王寺駅
 var JRWTobj = {//色は文字
     Typea: { type: "特急", color: red, detail: limited, },
@@ -42,6 +35,7 @@ var JRWA_obj = {//色は文字
     Typef: { type: "普通", color: white, detail: local, }
 };
 if (station == '岡山駅') {
+    TwoLetterDisflag = 1;
     var selectstation = ['備前片上', '長船', '日生', '播州赤穂', '西大寺'];
     DestinationDevide(selectstation, 2, 3);
     TableTitle = ['山陽本線  倉敷，福山方面', '伯備線 倉敷 新見 米子方面', '山陽本線  和気，姫路方面', '赤穂線 西大寺 播州赤穂方面', '瀬戸大橋線 茶屋町 児島 四国方面',
@@ -57,6 +51,7 @@ if (station == '岡山駅') {
     limitednumber(TT[3], 1, 'ｽｰﾊﾟｰはくと');
     limitednumber(TT[0], 1, 'はまかぜ');
     limitednumber(TT[1], 2, 'はまかぜ');*/
+    TwoLetterDisflag = 1;
     company = 'JR西日本';
     TableTitle = ['山陽・東海道新幹線 新大阪・東京方面', '山陽・九州新幹線 博多・鹿児島中央方面'];
     var sakura1 = [541, 543, 545, 549, 551, 553, 555, 565, 569, 571, 573];
@@ -109,8 +104,10 @@ if (station == '岡山駅') {
     limitedjustnumber(TT[1], 1, '特急ｽｰﾊﾟｰはくと');
     TwoLetterDisflag = 1;
 } else if (station == '米原駅') {
+    TwoLetterDisflag = 1;
     TableTitle = ['東海道線 彦根 草津 京都方面', '北陸線 長浜 敦賀 金沢方面', '東海道線 大垣 岐阜方面'];
-    var shirasagi = [51, 1, 3, 5, 53, 7, 9, 57, 11, 59, 13, 61, 15, 63, 65];
+    var shirasagi = [51, 1, 3, 5, 53, 7, 55, 9, 57, 11, 59, 13, 61, 15, 63];
+    //var shirasagi = [51, 1, 3, 5, 53, 7, 9, 57, 11, 59, 13, 61, 15, 63, 65];
     limitednumber2(TT[1], shirasagi, 'しらさぎ');
     limitednumber(TT[2], 2, 'しらさぎ');
 } else if (station == '天王寺駅') {
@@ -133,4 +130,32 @@ if (station == '岡山駅') {
     limitednumber2(TT[1], nozomi2, 'のぞみ');
 } else if (station == '下関駅') {
     TableTitle = ['山陽本線 新山口 岩国方面', '山陽本線 門司 九州方面', '山陰本線 小串 長門市方面'];
+} else if (station == '大阪駅') {
+    TableTitle = ['大阪環状線 奈良・関西空港・和歌山方面', 'JR宝塚線 宝塚・三田・城崎温泉・倉吉方面',
+        'JR神戸線 三ノ宮・西明石・姫路方面', 'JR京都線 新大阪・高槻・京都方面', '福井・金沢・富山(敦賀のりかえ)方面'];
+    var Fukuchiyama = ['宝塚', '新三田', '篠山口']
+    TrainNameDevide('特急', 0, 7);
+    TrainNameDevide('普通', 0, 7);
+    limitednumber(TT[1], 1, '特急こうのとり');
+    limitednumber(TT[2], 1, '特急ｽｰﾊﾟｰはくと');
+    limitednumber(TT[2], 1, '特急はまかぜ');
+    DestinationDevide(Fukuchiyama, 2, 7);
+    TrainNameDevide('新快速', 4, 7);
+    TrainNameDevide('特急', 2, 8);
+    console.log(TT[1]);
+    TT[8].pop();
+    TT[8].pop();
+    TT[8].pop();
+    TT[8].pop();
+    console.log(TT[8]);
+    TT[9] = makeemptyTable(TT[1], TT[8]);
+    TTconnect(TT[1], TT[8], TT[9]);
+    TT[1] = TT[9];
+    TrainNameDevide('特急', 3, 5);
+    limitednumber(TT[4], 1, '特急ｻﾝﾀﾞｰﾊﾞｰﾄﾞ');
+    TT[6] = makeemptyTable(TT[4], TT[5]);
+    TT[5].splice(1, 4);
+    TTconnect(TT[4], TT[5], TT[6]);
+    TT[4] = TT[6];
+    RailNumberDevide(14, 4, 5);
 }

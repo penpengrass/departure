@@ -6,31 +6,31 @@ let countOrder = 2;
 //console.log(TT[2][51][1]);
 
 //document.getElementById('kn1').textContent =dir;
-//TNは表番号・ONは何番目に出発するか
-for (var TN = 0; TN < Tablenum; TN++) {
+//td_mainは表番号・ONは何番目に出発するか
+for (var td_main = 0; td_main < Tablenum; td_main++) {
     //表のタイトル表示
-    if (TableTitle[TN] != '') {
-        //console.log('表のタイトル' + TableTitle[TN]);
-        document.getElementById('kn' + (TN + 1)).textContent = TableTitle[TN];
+    if (TableTitle[td_main] != '') {
+        //console.log('表のタイトル' + TableTitle[td_main]);
+        document.getElementById('kn' + (td_main + 1)).textContent = TableTitle[td_main];
     }
     if (station == '敦賀駅') {
         BackTime();
-        if (TN == 1 || TN == 2) {
+        if (td_main == 1 || td_main == 2) {
             Delay(15);
         }
     }
     //先発表示
-    FShow(TT[TN], TN + 1);
-    console.log((TN + 1) + "番目の表の" + "1番目に出発する列車の表示完了");
-    for (var ON = 2; ON < Tablenums[TN] + 1; ON++) {
+    FShow(TT[td_main], td_main + 1);
+    console.log((td_main + 1) + "番目の表の" + "1番目に出発する列車の表示完了");
+    for (var ON = 2; ON < Tablenums[td_main] + 1; ON++) {
         if (next != 1) {
-            FSTShow(TT[TN], Shows, orders[ON - 1], TN + 1, ON);
-            console.log((TN + 1) + "番目の表の" + (ON) + "番目に出発する列車の表示完了");
+            FSTShow(TT[td_main], Shows, orders[ON - 1], td_main + 1, ON);
+            console.log((td_main + 1) + "番目の表の" + (ON) + "番目に出発する列車の表示完了");
         } else {
             break;
         }
     }
-    console.log((TN + 1) + "番目の表表示完了");
+    console.log((td_main + 1) + "番目の表表示完了");
 }
 var testflag = 0;
 if (testflag == 0) {

@@ -52,8 +52,8 @@
     <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
     <button type="button" onclick="location.href='./index4_S2.php'">山陽新幹線主要駅へ移動</button>
-    <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index7_S1.php'">東海道へ移動</button>
     <button type="submit" name="ogaki">大垣駅へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>
   </form>
@@ -141,10 +141,19 @@
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/altershow.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
+  <script type="text/javascript" src="js/function3.js"></script>
+  <script type="text/javascript" src="js/detailfunction.js"></script>
+  <script type="text/javascript" src="js/functionDetail_B.js"></script>
+  <script type="text/javascript" src="js/functionDetail.js"></script>
+  <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
+  <script type="text/javascript" src="js/detailset/JRNadetailset.js"></script>
+  <script type="text/javascript" src="js/typeColor.js"></script>
+  <script type="text/javascript" src="js/detailshow.js"></script>
+  <script type="text/javascript" src="js/alterdetail.js"></script>
   <script type="text/javascript" src="js/functionW.js"></script>
   <script type="text/javascript" src="js/Tforshow4.js"></script>
   <script type="text/javascript" src="js/Tforshow4_S.js"></script>
-  <script type="text/javascript" src="js/typeColor.js"></script>
+  
 </body>
 
 </html>

@@ -18,6 +18,7 @@
   <title></title>
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/styleJRW_T.css">
+  <link rel="stylesheet" href="css/banner.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
@@ -57,27 +58,39 @@
       //for($k=1;$k<3;$k++){
       print('
 <caption class="Ctitle"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></caption>
-    <tr>
+    <tr class="Rtitle">
     ');
       print('
-      <th width="22%">種別</th>
-      <th width="22%">遅れ</th>
-      <th width="22%">時刻</th>
-      <th width="22%">行先</th>
-      <th width="12%">のりば</th>
+      <th width="23%" colspan="2">種別</th>
+      <th width="23%">遅れ</th>
+      <th width="23%">時刻</th>
+      <th width="23%">行先</th>
+      <th width="8%">のりば</th>
     </tr>
   ');
       //n番目に発車する列車までを表示
       for ($j = 1; $j <= $OrderNum; $j++) {
         print('
-    <tr id="TTLine' . $i . $j . '"><p10 id="TTLineContents' . $i . $j . '"></p10>
-      <td class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
+    <tr class="CLine' . $j . '" id="TTLine' . $i . $j . '"><p10 id="TTLineContents' . $i . $j . '"></p10>
+      <td class="shubetu" id="TType' . $i . $j . '" colspan="2"><span class="CWType" id="WType' . $i . $j . '"></span></td>
       <td class="name" id="TName' . $i . $j . '"><span id="WName' . $i . $j . '"></span></td>
       <td class="Ctime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></span></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>
     </tr>
     ');
+        if ($j == 1) {
+          print('
+      <tr>
+      <td class="Dtitle1"><span class="SDtitle">停車駅</span></td>
+      <td class="CDetail1" colspan="5"><p3 class="news-banner__content" id="TDetail' . $i . $j . '"></p3></td>
+      </tr>
+      <tr>
+      <td class="Dtitle2"><span class="SDtitle">ご案内</span></td>
+      <td class="CDetail2" colspan="5"><p3 class="news-banner__content"  id="TExplain' . $i . $j . '"></p3></td>
+      </tr>
+      ');
+        }
       }
     }
     print('
@@ -90,7 +103,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement"></p>
+  <p id="supplement">停車駅表示は未実装(常に空白)</p>
   <h1 class="Cheader">注釈</h1>
   <li>糸崎駅 岩国駅 下関駅においては番線の表示は実際と異なる</li>
   <li>本来山陽地区では種別の横に両数がある</li>
@@ -102,9 +115,10 @@
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/altershow.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
-  <script type="text/javascript" src="js/Tforshow4.js"></script>
-  <!--<script type="text/javascript" src="js/Tforshow4_S.js"></script>-->
+  <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
+  <script type="text/javascript" src="js/Tforshow4_T.js"></script>
+  <!--<script type="text/javascript" src="js/Tforshow4_S.js"></script>-->
 </body>
 
 </html>

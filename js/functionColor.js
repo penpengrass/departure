@@ -8,3 +8,9 @@ function TypeColorChange(td, tr, Type, Color) {
         }
     }
 }
+function TypeBackColorChange(td, tr, Type, Color) {
+    var LType=document.getElementById('TType' + (td + 1) + (tr + 1));
+    if (LType.textContent.includes(Type)) {
+        document.getElementById('TType' + (td + 1) + (tr + 1)).style.backgroundColor = Color;
+    }
+}

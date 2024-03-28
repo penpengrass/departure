@@ -89,7 +89,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">金沢―敦賀間開業前　臨時列車の有無や号数は不正確 2024年3月前後が混在</p>
+  <p id="supplement">臨時列車の有無や号数，番線は不正確 2024年3月改正後</p>
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>

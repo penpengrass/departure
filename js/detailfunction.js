@@ -24,6 +24,7 @@ function DeleteStopping(TrainType, BeforeStation, LDtype = 0) {
 //numberは号数 Lnameは列車名
 var number = new Array(Tablenum);
 var Lname = new Array(Tablenum);
+console.log(detailflag);
 for (var td = 0; td < Tablenum; td++) {
     if (detailflag > 1) {
         number[td] = new Array(orderNum);

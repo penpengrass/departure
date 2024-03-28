@@ -92,7 +92,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">金沢―敦賀間開業前，号数や臨時列車の有無，停車駅，番線は不正確</p>
+  <p id="supplement">号数や臨時列車の有無，停車駅，番線は不正確</p>
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>

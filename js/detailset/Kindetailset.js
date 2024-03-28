@@ -34,9 +34,9 @@ var Hsubsemiexpress = new Array(5);
 Hsubsemiexpress[0] = ["布施　八尾  以遠各駅"];
 Hsubsemiexpress[1] = ["布施 河内小阪 東花園 以遠各駅"];
 var Rsubsemiexpress = new Array(3);
-Rsubsemiexpress[0] = ["東花園までの各駅と　河内小阪　布施　鶴橋　以遠各駅"];
+Rsubsemiexpress[1] = ["東花園までの各駅と　河内小阪　布施　鶴橋　以遠各駅"];
 var Rsemiexpress = new Array(3);
-Rsemiexpress[0] = ["石切までの各駅と　東花園　河内小阪　布施　鶴橋　以遠各駅"];
+Rsemiexpress[1] = ["石切までの各駅と　東花園　河内小阪　布施　鶴橋　以遠各駅"];
 var Hlimited = ['大和高田　大和八木　榛原　名張　青山町　伊勢中川　松阪　伊勢市　宇治山田　五十鈴川　鳥羽　志摩磯部　鵜方', '生駒　学園前　大和西大寺',
     '大和八木　大和高田　鶴橋'];
 var Hrapid = ["五位堂　大和高田　大和八木　榛原　室生口大野　赤目口　名張　桔梗が丘　美旗　青山町　榊原温泉口　伊勢中川　松阪　伊勢市　宇治山田　五十鈴川　朝熊　池の浦",
@@ -45,7 +45,8 @@ var Hlocal = new Array(4);
 for (var i = 0; i < 4; i++) {
     Hlocal[i] = "各駅停車";
 }
-Hinotori = [[],['大阪難波', '大阪上本町', '鶴橋', '大和八木', '津', '名古屋']];
+Hinotori = [[], ['大阪難波', '大阪上本町', '鶴橋', '大和八木', '津', '名古屋']];
+reverseLine(Hinotori, 1, 0);
 var staflag = 0;
 var express = SHexpress;
 var subexpress = Hsubexpress;
@@ -63,9 +64,12 @@ if (station == '奈良駅') {
     SHrapid[1] = SHrapid[1].reverse();
     subsemiexpress = Rsubsemiexpress;
     subexpress = Rsemiexpress;
-    //console.log(express);
+    console.log(express);
+    limited = LineCopy(SHlimited);
+    console.log(limited);
+    console.log(rapid);
 } else if (station == '名古屋駅') {
-    reverseLine(Hinotori,1,3);
+    reverseLine(Hinotori, 1, 3);
 }
 const Kinobj = {//色は背景
     Typea: { type: "特急H", color: red, detail: Hilimited, },

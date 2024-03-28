@@ -1,19 +1,25 @@
-//JR西日本の特急名を表で分ける関数 index4.phpのみで使用
+//JR西日本の特急名を表で分ける関数 index4.phpとindex3.phpで使用
+var LiName = new Array(Tablenum);
+for (var td = 0; td < Tablenum; td++) {
+    LiName[td] = '';
+}
 function JRLimitedDevide(Tablenum) {
     for (var tr = 0; tr < Type[Tablenum].length; tr++) {
-        console.log(tr);
         if (Type[Tablenum][tr].includes('特急')) {
             var Limited = Type[Tablenum][tr].substr(Type[Tablenum][tr].indexOf('急') + 1);
-            console.log(Tablenum + ':' + tr + ':' + Limited);
+            //console.log(Tablenum + ':' + tr + ':' + Limited);
             document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited;
+            if (Limited != '' && tr == 0) {
+                LiName[Tablenum] = Limited;
+            }
+            //console.log(LiName);
             //console.log(document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)));
             document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = 'center';
             document.getElementById('TType' + (Tablenum + 1) + '' + (tr + 1)).textContent = '特急';
-
             Type[Tablenum][tr] = '特急'
         }
     }
-    console.log(Tablenum);
+    //console.log(Tablenum);
 }
 //路線名と種別を分割(湘南新宿ラインなど)
 function JRATOSDevide(td) {
@@ -43,33 +49,7 @@ function JRATOSDevide(td) {
         }
     }
 }
-//特急の列車名の色を変える
-function JRWTrainNameColor(NameColor, NumberColor, GouColor) {
-    for (var td = 0; td < Tablenum; td++) {
-        var LimitedName = new Array(Type[td].length);
-        var matches = new Array(Type[td].length);
-        var newTrainName = new Array(Type[td].length);
-        for (var tr = 0; tr < Type[td].length; tr++) {
-            LimitedName[tr] = document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent;
-            matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
-            if (matches[tr]) {
-                console.log(matches[tr][0] + ":" + tr);
-                console.log(matches[tr][1] + ":" + tr);
-                console.log(matches[tr][2] + ":" + tr);
-                console.log(matches[tr][3] + ":" + tr);
-                newTrainName[tr] = `<span class="NewTrainName">${matches[tr][1]}</span>
-        <span class="NewTrainNumber">${matches[tr][2]}</span><span class="NewGou">${matches[tr][3]}</span>`;
-                document.getElementById('TName' + (td + 1) + '' + (tr + 1)).innerHTML = newTrainName[tr];
-                var list = document.getElementsByClassName('NewTrainName');
-                for (var ts = 0; ts < list.length; ts++) {
-                    document.getElementsByClassName('NewTrainName')[ts].style.color = NameColor;
-                    document.getElementsByClassName('NewTrainNumber')[ts].style.color = NumberColor;
-                    document.getElementsByClassName('NewGou')[ts].style.color = GouColor;
-                }
-            }
-        }
-    }
-}
+
 //新幹線と北海道の特急の列車名を分割(引数は表の数)，index3_S.phpを除く
 function JRNameDevide(T = Tablenum) {
     for (var td = 0; td < T; td++) {
@@ -127,7 +107,6 @@ function JRLimitedName(td, tr) {
         console.log(matches[tr][2] + ":" + tr);
         console.log(matches[tr][3] + ":" + tr);
         console.log(matches[tr][1] + matches[tr][1].length);
-        console.log("Dtypeは" + Dtype);
         var name = matches[tr][1];
     }
     return name;
@@ -148,7 +127,6 @@ function JRLimitedNumber(td, tr) {
         console.log(matches[tr][2] + ":" + tr);
         console.log(matches[tr][3] + ":" + tr);
         console.log(matches[tr][1] + matches[tr][1].length);
-        console.log("Dtypeは" + Dtype);
         var number = matches[tr][2];
     } else if (matches2[tr]) {
         console.log(td + 1 + '個目の表の' + (tr + 1) + '番目はマッチする')
@@ -162,16 +140,6 @@ function JRLimitedNumber(td, tr) {
         console.log("JRLimitedNumberはマッチしない");
     }
     return number;
-}
-//表の1番下に文章を入れる
-function BottomBanner(tag, td, tr, colspan, contents) {
-    let element = document.getElementById(tag);
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-    element.innerHTML = '<td id="TBanner' + td + '' + tr + '" colspan="' + colspan + '"><p2 id="TDetail' + td + '' + tr + '" class="news-banner__content">ここに詳細表示</p3></td>';
-    document.getElementById('TBanner' + td + '' + tr).style.overflow = 'hidden';
-    document.getElementById('TDetail' + td + '' + tr).textContent = contents;
 }
 //種別+両数の場合分割
 function CarsDevide(td, Ltag = 'TCars') {
@@ -220,7 +188,7 @@ function toFullWidth(str) {
     });
     return str;
 }
-function Bansenshow(flag = 0,LLength=Tablenum) {
+function Bansenshow(flag = 0, LLength = Tablenum) {
     //console.log(doBNumber[1][0].textContent);
     for (td = 0; td < LLength; td++) {
         for (tr = 0; tr < Tablenums[td]; tr++) {
@@ -258,16 +226,26 @@ function LineMarkAdd(td, Mark, backColor) {
     document.getElementById('Linemark' + td).style.width = '24px';
     document.getElementById('Linemark' + td).style.height = '24px';
 }
+function holiday_F(station) {
+    if (holidayflag == 1) {
+        document.getElementById('supplement').innerHTML += station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
+    } else if (holidayflag == 0) {
+        document.getElementById('supplement').innerHTML += station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
+    }
+}
 //時刻の:を消す
-function TimeMarkErase() {
+function TimeMarkErase(td, tr) {
+    if (Type[td][tr] == '') {
+        var timeerase = document.getElementById('TTime' + (td + 1) + '' + (tr + 1));
+        while (timeerase.firstChild) {
+            timeerase.removeChild(timeerase.firstChild);
+        }
+    }
+}
+function allTimeMarkErase() {
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < Tablenums[td]; tr++) {
-            if (Type[td][tr] == '') {
-                var timeerase = document.getElementById('TTime' + (td + 1) + '' + (tr + 1));
-                while (timeerase.firstChild) {
-                    timeerase.removeChild(timeerase.firstChild);
-                }
-            }
+            TimeMarkErase(td, tr);
         }
     }
 }
@@ -308,5 +286,5 @@ function swapColumns(table, col1, col2) {
     }
 }
 
-TimeMarkErase();
+allTimeMarkErase();
 var comment = document.getElementById('supplement');

@@ -40,9 +40,9 @@ if (station == '名古屋駅') {
     TableTitle = ['京都線 新田辺 大和西大寺 奈良方面'];
     Dtype[0] = 5;
 } else if (station == '奈良駅') {
-    TableTitle = ['大阪方面', '京都方面'];
+    TableTitle = ['奈良線 大阪難波 尼崎 甲子園 神戸三宮方面', '京都線 新田辺 京都方面'];
     var KyotoDes = ['京都', '新田辺', '国際会館'];
     DestinationDevide(KyotoDes, 0, 1);
-    Dtype[0] = 0;
-    Dtype[1] = 0;
+    Dtype[0] = 1;
+    Dtype[1] = 5;
 }

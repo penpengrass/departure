@@ -12,6 +12,7 @@ if (station == '札幌駅') {
     limitednumber2(TT[2], kamui, '特急カムイ');
     limitednumber2(TT[2], lilac, '特急ライラック');
     //Tablereset(1);
+    console.log(TT.length);
     DestinationDevide(selectstation, 0, 1);
     DestinationDevide(selectstation2, 2, 4);
     Tablereset(4);

@@ -39,7 +39,7 @@ function JTypeIncludeColor(Utype, TType, Uobj) {//(種別,その種別の文字�
 function allKinColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            KTypeColor(Type[ia][ib], TType[ia][ib], Kinobj);
+            KTypeColor(Type[ia][ib], WType[ia][ib], Kinobj);
             //KTypeColor(Type[ia][ib], shubetu[ia][ib], Kinobj);
         }
     }
@@ -64,8 +64,12 @@ function allJRSSColor(object = JRSSobj, LLength = Tablenum) {
 function allJROsakaColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            KTypeColor(Type[ia][ib], TType[ia][ib], JRWA_Bobj);
-            JTypeColor(Type[ia][ib], TType[ia][ib], JRWA_obj);
+            if (station == '大阪駅' && ia == 0) {
+                KTypeColor(Type[ia][ib], TType[ia][ib], JRWTobj);
+            } else {
+                KTypeColor(Type[ia][ib], TType[ia][ib], JRWA_Bobj);
+                JTypeColor(Type[ia][ib], TType[ia][ib], JRWA_obj);
+            }
         }
     }
 }
@@ -150,7 +154,7 @@ function allJRTennoujiColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
             /*天王寺駅の特徴のためTTypeをWTypeに書き換える*/
-            KTypeColor(Type[ia][ib], TType[ia][ib], JRWTobj);
+            KTypeColor(Type[ia][ib], WType[ia][ib], JRWTobj);
         }
     }
 }
@@ -169,28 +173,22 @@ function allTokyuColor() {
     }
 }
 //駅によって会社を分類している
-console.log(station);
-console.log(CompanyNumber);
+//console.log(station);
+//console.log(CompanyNumber);
 //console.log(Indexfile);
 //index7.phpのみTforshow7.jsに移行
 if (station == '天王寺駅' || Indexfile == 'index4_T.php') {
     allJRTennoujiColor();
-} else if (Indexfile == 'index4.php' && JRShinkansenflag == 0) {
-    allJRColor();
 } else if (Indexfile == 'index3.php' || Indexfile == 'index8.php') {
     allJRCIncludeColor();
 } else if (Indexfile == 'index7_T.php') {
     allJRNagoyaColor();
 } else if (CompanyNumber == 5) {
     allTokyuColor();
-} else if (company == '近鉄') {
-    allKinColor();
 } else if (Indexfile == 'index9.php') {
     allJRSIncludeColor();
 } else if (Indexfile == 'index7_S1.php') {
     allJRCSColor();
-} else if (JRShinkansenflag == 1) {
-    allJRWSZColor();
 } else if (Indexfile == 'index4_A.php') {
     allJROsakaColor();
 }

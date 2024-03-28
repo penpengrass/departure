@@ -97,7 +97,7 @@ function DestinationDevide(station, mainTable, subTable) {
             }
         }
     }
-    console.log(TT[mainTable][17][0]);
+    //console.log(TT[mainTable][17][0]);
 }
 //種別で分ける
 function TrainNameDevide(TrainName, mainTable, subTable) {
@@ -265,6 +265,7 @@ function limitedjustnumber2(TT, limitednumberline, name) {
 }
 //TTをリセットする
 function Tablereset(num) {
+    console.log(num);
     for (let row = 1; row < TT[num].length; row++) {
         for (let Tcolumn = 1; Tcolumn < TT[num][row].length; Tcolumn++) {
             TT[num][row][Tcolumn] = "";

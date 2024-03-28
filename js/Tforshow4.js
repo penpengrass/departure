@@ -74,7 +74,7 @@ if (station == '岩国駅') {
 if (station == '新見駅') {
     JRLimitedDevide(0);
     JRLimitedDevide(1);
-    JRWTrainNameColor('orange', 'orange', 'red');
+    allJRWTrainNameColor('orange', 'orange', 'red');
 }
 if (station == '米原駅') {
     JRLimitedDevide(0);
@@ -88,18 +88,32 @@ if (station == '米原駅') {
             document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '高槻から快速';
             document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5em';
             document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'left';
+        } else if (Type[0][tr] == '快速*') {
+            document.getElementById('TType' + 1 + '' + (tr + 1)).textContent = '普通';
+            Type[0][tr] = '普通';
+            document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '京都から快速';
+            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5em';
+            document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'left';
+        }
+        if (Type[2][tr] == '特別快速') {
+            document.getElementById('TType' + 3 + '' + (tr + 1)).style.color = 'red';
         }
         DesMiddle(0, tr, '方面');
+        DesMiddle(2, tr, '方面');
     }
-
-    JRWTrainNameColor('orange', 'orange', 'red');
+    allJRWTrainNameColor('orange', 'orange', 'red');
+    if (holidayflag == 1) {
+        document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
+    } else if (holidayflag == 0) {
+        document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
+    }
+    document.getElementById('supplement').textContent += ' 停車駅表示は一部不正確';
 }
 if (station == '姫路駅') {
     Shinkansenflag = 2;
     JRLimitedDevide(Shinkansenflag + 0);
     JRLimitedDevide(Shinkansenflag + 1);
     JRLimitedDevide(Shinkansenflag + 3);
-    JRWTrainNameColor('orange', 'orange', 'red');
     for (var tr = 0; tr < Type[0].length; tr++) {
         if (Type[Shinkansenflag + 1][tr] == '快速') {
             document.getElementById('TType' + (Shinkansenflag + 2) + '' + (tr + 1)).textContent = '普通';
@@ -111,6 +125,7 @@ if (station == '姫路駅') {
         DesMiddle(3, tr, '経由');
         DesMiddle(3, tr, '方面');
     }
+    allJRWTrainNameColor('orange', 'orange', 'red');
     /*
     document.getElementById('HName' + 3).remove();
     for (var tr = 0; tr < Type[2].length; tr++) {
@@ -180,14 +195,14 @@ if (station == '岡山駅') {
             Type[4][tr] = '臨時';
         }
     }
-    JRWTrainNameColor('orange', '#0f0', '#0f0');
+    allJRWTrainNameColor('orange', '#0f0', '#0f0');
 }
 
 if (station == '三ノ宮駅') {
     var TozaiLine = ['四条畷', '松井山手', '京田辺', '同志社前', '木津', '放出'];
     JRLimitedDevide(0);
     JRLimitedDevide(1);
-    JRWTrainNameColor('orange', 'orange', 'red');
+    allJRWTrainNameColor('orange', 'orange', 'red');
     for (var tr = 0; tr < orderNum; tr++) {
         DesMiddle(0, tr, '方面');
         if (TozaiLine.includes(Des[0][tr])) {
@@ -217,6 +232,22 @@ if (station == '三原駅') {
     }
     setInterval(allswitch, 5000);
 }
+for (var td = 0; td < Tablenum; td++) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        var L_TrainName = document.getElementById('TName' + (td + 1) + '' + (tr + 1));
+        if (L_TrainName != null) {
+            Ex_Name[td][tr] = L_TrainName.textContent;
+        }
+    }
+}
+if (Indexfile == 'index4.php') {
+    if (JRShinkansenflag == 0) {
+        allJRColor();
+    } else if (JRShinkansenflag == 1) {
+        allJRWSZColor();
+    }
+}
+
 if (TwoLetterDisflag == 1) {
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < Tablenums[td]; tr++) {
@@ -224,52 +255,20 @@ if (TwoLetterDisflag == 1) {
         }
     }
 }
-if (Indexfile == 'index4_A.php') {
-    for (var td = 0; td < Tablenum; td++) {
-        for (var tr = 0; tr < Tablenums[td]; tr++) {
-            TwoLetterDistance(td, tr, Type, TType, 0.60, 0);
-            var LType = document.getElementById('WType' + (td + 1) + (tr + 1));
-            var LocalType = document.getElementById('TType' + (td + 1) + (tr + 1));
-            if (Type[td][tr] == '普通') {
-                LType.style.display = 'inline';
-                LType.style.borderColor = 'white';
-            } else if (LType != null) {
-                LType.style.display = 'inline';
-                LType.style.border='none';
-            }
-        }
-    }
+if (station == '北新地駅') {
+    //setInterval(allswitch_detail, 3000);
+    setInterval(function () {
+        allswitch_detail(Kitashinchi_Banner)
+    }, 20000);
+    //setInterval(switchdetail("TTLine", 1, 3, 5), 5000);
+} else if (station == '米原駅') {
+    //setInterval(allswitch_detail, 20000);
+    setInterval(function () {
+        allswitch_detail(Maibara_Banner)
+    }, 20000);
 }
-if (station == '天王寺駅') {
-    let TenDes = new Array(orderNum);
-    let TenType = new Array(orderNum);
-    let WoType = new Array(orderNum);
-    let space = 0;
-    //document.getElementsByTagName('table')[0].style.borderSpacing='10px';
-    console.log(document.getElementsByTagName('th').length);
-    for (let te = 0; te < Tablenum; te++) {
-        for (let tr = 0; tr < orderNum; tr++) {
-            TenDes[tr] = document.getElementById('TDes' + (te + 1) + (tr + 1)).textContent;
-            WoType[tr] = document.getElementById('WType' + (te + 1) + (tr + 1)).textContent;
-            space = 56 - 14 * WoType[tr].length;
-            if (space < 0) {
-                space = 0;
-            }
-            //document.getElementById('WType' + (te + 1) + (tr + 1)).style.letterSpacing = space + "px";
-            if (TenDes[tr].length > 7) {
-                //文字の大きさを取得する
-                document.getElementById('TDes' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.7)" + "translate(-15%,0%)";
-            }
-            TenType[tr] = document.getElementById('TType' + (te + 1) + (tr + 1)).textContent;
-            if (TenType[tr].length > 5) {
-                document.getElementById('WType' + (te + 1) + (tr + 1)).style.textAlign = "center";
-                document.getElementById('TType' + (te + 1) + (tr + 1)).style.boxSizing = "border-box";
-                document.getElementById('WType' + (te + 1) + (tr + 1)).style.display = "inline-block";
-                document.getElementById('WType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.70)" + "translate(-20%,0%)";
-            }
-        }
-    }
-}
+
+
 /*function switchTrainInfo() {
     var SanyoCell = document.getElementById("TName11");
     var SaninCell = document.getElementById("TName31");

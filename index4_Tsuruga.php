@@ -14,6 +14,11 @@
     $files[4] = 'csv/JRW/tsuruga1.csv';
     $files[5] = 'csv/JRW/tsuruga2.csv';
     $files[6] = 'csv/JRW/tsuruga3.csv';
+    if ($holidayflag == 1) {
+        $files[3] = 'csv/JRW/tsuruga1_H.csv';
+        $files[4] = 'csv/JRW/tsuruga1_H.csv';
+        $files[6] = 'csv/JRW/tsuruga3_H.csv';
+    }
     $tablenum = 7;
     $OrderNum = 3;
     $detailflag = 2;
@@ -39,7 +44,7 @@
     </div>
     <!--駅選択部分-->
     <?php JRWStaSele('駅変更');
-  ?>
+    ?>
     <form action="select.php" method="POST" id="selectstation">
         <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
         <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
@@ -66,7 +71,7 @@
 
         ?>
     </tableline>
-    <p id="supplement">臨時列車の有無や号数, 番線や停車駅は不正確 2024年3月16日以降</p>
+    <p id="supplement">臨時列車の有無や号数, 番線や停車駅は不正確<br></p>
     <!--ここから内部のこと-->
     <script type="text/javascript" src="js/Time.js"></script>
     <script type="text/javascript" src="js/Timer.js"></script>
@@ -78,6 +83,7 @@
     <script type="text/javascript" src="js/detailfunction.js"></script>
     <script type="text/javascript" src="js/functionW.js"></script>
     <script type="text/javascript" src="js/functionDetail.js"></script>
+    <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
     <script type="text/javascript" src="js/detailshow.js"></script>
     <script type="text/javascript" src="js/typeColor.js"></script>
     <script type="text/javascript" src="js/Tforshow4_S.js"></script>

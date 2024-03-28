@@ -5,6 +5,7 @@ let shubetu = new Array(Tablenum);
 let IType = new Array(Tablenum);
 let Tshubetu = new Array(Tablenum);
 let Type = new Array(Tablenum);
+let Ex_Name = new Array(Tablenum);
 let Des = new Array(Tablenum);
 let TDes = new Array(Tablenum);
 let TType = new Array(Tablenum);
@@ -24,6 +25,7 @@ for (let tr = 0; tr < Tablenum; tr++) {
     IType[tr] = new Array(Tablenums[tr]);
     Tshubetu[tr] = new Array(Tablenums[tr]);
     Type[tr] = new Array(Tablenums[tr]);
+    Ex_Name[tr] = new Array(Tablenums[tr]);
     doBNumber[tr] = new Array(Tablenums[tr]);
     doType[tr] = new Array(Tablenums[tr]);
     Des[tr] = new Array(Tablenums[tr]);
@@ -31,7 +33,7 @@ for (let tr = 0; tr < Tablenum; tr++) {
     table[tr] = document.getElementById("TTable" + (tr + 1));
     if (company == '近鉄' || detailflag == 2) {
         Detail[tr] = new Array(Tablenums[tr]);
-    } else if (Indexfile == 'index9.php' || Indexfile == 'index8.php') {
+    } else if (Indexfile == 'index9.php' || Indexfile == 'index8.php' || Indexfile == 'index4.php') {
         Detail[tr] = new Array(2);
     }
     TName[tr] = new Array(Tablenums[tr]);

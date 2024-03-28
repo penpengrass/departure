@@ -7,11 +7,11 @@ function KyotoRenraku(td, tr) {
     if (Type[td][tr] == '急普') {
         Connecting[td][tr] = ExpressMsg;
         Type[td][tr] = '急行';
-        document.getElementById('TType' + 1 + (tr + 1)).textContent = '急行';
+        document.getElementById('WType' + 1 + (tr + 1)).textContent = '急行';
     } else if (Type[td][tr] == '普急') {
         Connecting[td][tr] = LocalMsg;
         Type[td][tr] = '普通';
-        document.getElementById('TType' + 1 + (tr + 1)).textContent = '普通';
+        document.getElementById('WType' + 1 + (tr + 1)).textContent = '普通';
     }
     if (Connecting[td][tr] !== undefined) {
         document.getElementById('TConnection' + (td + 1) + (tr + 1)).innerHTML = Connecting[td][tr];
@@ -24,7 +24,7 @@ for (var td = 0; td < Tablenum; td++) {
             document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-5%,0%)";
         }
         if (Type[td][tr].length > 2) {
-            document.getElementById('IType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.75)" + "translate(-0%,0%)";
+            document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-5%,0%)";
         }
         KyotoRenraku(td, tr);
     }
@@ -72,6 +72,8 @@ if (station == '奈良駅') {
             }
         }
     }
+    LineMarkAdd(1, "A", 'red');
+    LineMarkAdd(2, "B", 'orange');
 }
 if (station == '名古屋駅') {
     for (var tr = 0; tr < orderNum; tr++) {
@@ -84,12 +86,18 @@ if (station == '名古屋駅') {
         }
     }
 }
+allKinColor();
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         DetailBanner(td, tr, 18);
-        TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+        TwoLetterDistance(td, tr, Des, TDes, 1, 0.6);
+        var color = document.getElementById('WType' + (td + 1) + (tr + 1)).style.backgroundColor;
         if (Type[td][tr] == '') {
             document.getElementById('TNum' + (td + 1) + (tr + 1)).style.backgroundColor = 'black';
+        } else if (Type[td][tr].includes('特急')) {
+            document.getElementById('WType' + (td + 1) + (tr + 1)).style.border = 'white 3px solid';
+        } else {
+            document.getElementById('WType' + (td + 1) + (tr + 1)).style.border = color + ' 3px solid';
         }
     }
 }

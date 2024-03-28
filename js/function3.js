@@ -13,10 +13,17 @@ function whetherStop(start_hour, start_min, hour, min, end_hour, end_min) {
     }
 }
 //停車駅置換(時間で変わる場合に使う，高の原，久居など)
-function DetailReplace(td, tr, Before, After) {
-    var LDetail = document.getElementById('TDetail' + (td + 1) + '' + (tr + 1));
-    Detail[td][tr] = Detail[td][tr].replace(Before, After);
-    LDetail.textContent = LDetail.textContent.replace(Before, After);
+function DetailReplace(td, tr, Before, After, flag = 0) {
+    var LDetail;
+    if (flag == 0) {
+        LDetail = document.getElementById('TDetail' + (td + 1) + '' + (tr + 1));
+        Detail[td][tr] = Detail[td][tr].replace(Before, After);
+        LDetail.textContent = LDetail.textContent.replace(Before, After);
+    } else {
+        LDetail = Detail[td][tr];
+        Detail[td][tr] = Detail[td][tr].replace(Before, After);
+    }
+    
 }
 
 //簡易版追加停車駅(表番号,種別の(),前の停車駅,追加停車駅,停車駅間の記号)，名古屋地区の特別停車など

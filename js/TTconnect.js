@@ -7,9 +7,9 @@
 //時の部分は数字を入れる
 function makeemptyTable(TTLeft, TTRight) {
     console.log(TTLeft.length + ":" + TTRight.length);
-    var TT3 = new Array(TTLeft.length);
+    let TT3 = new Array(TTLeft.length);
     console.log(TT3.length);
-    for (var td = 0; td < TTLeft.length; td++) {
+    for (let td = 0; td < TTLeft.length; td++) {
         console.log(TTLeft[td].length + ":" + TTRight[td].length)
         TT3[td] = new Array(TTLeft[td].length + TTRight[td].length);
         if (TTLeft[td][0] == TTRight[td][0] && TTLeft[td][0] != '') {
@@ -20,19 +20,21 @@ function makeemptyTable(TTLeft, TTRight) {
 }
 //TTLeftとTTRightを合わせてTTSumに入れる
 function TTconnect(TTLeft, TTRight, TTSum) {
-    var left_count = 1;//
-    var right_count = 1;
-    var Sum_TSum = 1;
+    let left_count = 1;//
+    let right_count = 1;
+    let Sum_TSum = 1;
     //console.log(TTLeft);
-    console.log(TTLeft.length);
-    console.log(TTLeft[10].length);
+    console.log("TTLeft.length=" + TTLeft.length + ":TTRight.length=" + TTRight.length);
     console.log(Math.max(TTLeft.length, TTRight.length));
-    for (var TaRow = 2; TaRow < Math.max(TTLeft.length, TTRight.length); TaRow += 4) {
+    for (let TaRow = 2; TaRow < Math.max(TTLeft.length, TTRight.length); TaRow += 4) {
         //TaRow = 34;
         //console.log(TTLeft[TaRow]);
         //console.log(TaRow + ":*" + (TTLeft[TaRow].length + TTRight[TaRow].length));
         TTSum[TaRow] = new Array(TTLeft[TaRow].length + TTRight[TaRow].length);
         //console.log(TTLeft[TaRow].length);
+        if (TTLeft[TaRow - 1][0] == TTRight[TaRow - 1][0]) {
+            TTSum[TaRow - 1][0] = TTLeft[TaRow - 1][0];
+        }
         let connect_count = 0;
         Sum_TSum = 1;
         left_count = 1;

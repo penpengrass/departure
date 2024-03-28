@@ -12,5 +12,5 @@ if (station == '東京駅') {
     limitedjustnumber(TT[1], 401, 'たにがわ');
     limitednumber(TT[2], 601, 'あさま');
     limitednumber(TT[2], 551, 'はくたか');
-    limitednumber(TT[2], 501, 'かがやき');
+    limitedjustnumber(TT[2], 501, 'かがやき');
 }
