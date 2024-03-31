@@ -13,7 +13,8 @@
     <h1>リアルタイム鉄道発車標</h1>
     <h1 class="Cheader">概要</h1>
     <div>プログラミング練習を主目的とした鉄道のリアルタイム発車標再現 </div>
-    <div>特記のない限りは<span style="color:red;">2023年3月時点</span>での平日ダイヤの発車標をリアルタイムに再現(一部は土日ダイヤにも対応)
+    <div>特記のない限りは<span style="color:red;">2023年3月時点</span>での平日ダイヤの発車標をリアルタイムに再現
+    <div>土休日ダイヤ対応の駅は実際の土休日や祝日と表示ダイヤが連動している</div>
         <div>色や形式をできる限り再現しているが，フォント等はWindowsでデフォルトにあるものを使用 両数は非表示 </div>
         <div>表示駅は随時追加予定 </div>
         <h1>発車標表示駅一覧</h1>
@@ -21,7 +22,7 @@
             <caption>表示駅</caption>
             <p class="chushaku"><span style="color:red;">赤字</span>は2023年3月ダイヤ，土休日ダイヤ対応，もしくは終日ダイヤ<br>
                 <span style="color:blue;">青字</span>は2024年3月ダイヤ対応, 平日ダイヤのみ <br>
-                <span class="orange">橙字</span>は2024年3月ダイヤ対応，土休日ダイヤ<br>
+                <span class="orange">橙字</span>は2024年3月ダイヤ対応，土休日ダイヤ対応<br>
                 黒字は2023年3月ダイヤ，平日ダイヤのみ <br>
             </p>
             <p class="chushaku">括弧は未完成</p>
@@ -53,9 +54,9 @@
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:red;">北新地駅</span></td>
-                <td class="long"><span class="orange">米原駅</span>, <span class="orange">三ノ宮駅</span>, 姫路駅, 岡山駅, 糸崎駅, 三原駅,
-                    <span style="color:red;">広島駅</span>, <span style="color:blue;">新見駅</span>, <span style="color:red;">岩国駅</span>, 徳山駅,
-                    <span style="color:blue;">下関駅</span>
+                <td class="long"><span class="orange">米原駅</span>, <span class="orange">三ノ宮駅</span>, <span style="color:blue;">姫路駅</span>, 
+                岡山駅, 糸崎駅, 三原駅,<span style="color:red;">広島駅</span>, <span style="color:blue;">新見駅</span>, 
+                <span style="color:red;">岩国駅</span>, 徳山駅,<span style="color:blue;">下関駅</span>
                 </td>
             </tr>
             <tr>
@@ -91,7 +92,7 @@
             <tr>
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
-                <td><span style="color:red;">長野駅</span></td>
+                <td><span class="orange">長野駅</span></td>
                 <td><span class="orange">松本駅</span>, 横浜駅</td>
             </tr>
             <tr>
@@ -104,7 +105,7 @@
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
                 <td>浜松駅</td>
-                <td>沼津駅, 静岡駅, 豊橋駅, 岐阜駅, 大垣駅</td>
+                <td>沼津駅, 静岡駅, 豊橋駅, 岐阜駅, <span style="color:blue;">大垣駅</span></td>
             </tr>
             <tr>
                 <td>JR東海LCD</td>
@@ -141,6 +142,7 @@
         <li>新幹線 静岡駅 米原駅 岡山駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
         <li>JR東日本 赤羽駅 東京駅 新宿駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
+        <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 尼崎駅 新山口駅</li>
         <li>JR九州 小倉駅 博多駅</li>
         <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
