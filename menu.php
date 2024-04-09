@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/styleAll.css">
     <link rel="stylesheet" href="css/menu.css">
     <?php
-    require('selection.php');
+    require('PHP/select4.php');
     ?>
 </head>
 
@@ -36,7 +36,7 @@
                 <td>近鉄LCD</td>
                 <td><button type="button" onclick="location.href='./index2.php'">移動</button></td>
                 <td>鶴橋駅</td>
-                <td><span style="color:red;">奈良駅</span>, <span style="color:red;">京都駅</span>, <span style="color:blue;">名古屋駅</span> </td>
+                <td><span style="color:red;">奈良駅</span>, <span style="color:red;">京都駅</span>, <span class="orange">名古屋駅</span> </td>
             </tr>
             <tr>
                 <td>JR東日本ATOS</td>
@@ -128,7 +128,13 @@
             <tr>
                 <td>JR四国</td>
                 <td><button type="button" onclick="location.href='./index9.php'">移動</button></td>
-                <td>高松駅 </td>
+                <td>高松駅</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>JR九州</td>
+                <td><button type="button" onclick="location.href='./index10.php'">移動</button></td>
+                <td><span style="color:blue;">小倉駅</span></td>
                 <td></td>
             </tr>
         </table>
@@ -143,8 +149,8 @@
         <li>JR北海道 旭川駅 </li>
         <li>JR東日本 赤羽駅 東京駅 新宿駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
         <li>北陸地方 福井駅 金沢駅</li>
-        <li>JR西日本 尼崎駅 新山口駅</li>
-        <li>JR九州 小倉駅 博多駅</li>
+        <li>JR西日本 京都駅 尼崎駅 新山口駅</li>
+        <li>JR九州 博多駅</li>
         <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
         <li>JR東海 中津川駅</li>
         <h1 class="Cheader">今後対応予定</h1>

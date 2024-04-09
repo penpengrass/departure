@@ -204,8 +204,8 @@ function Bansenshow(flag = 0, LLength = Tablenum) {
         }
     }
 }
-function TwoLetterDistance(td, tr, Line, Tab, LetterSpacing, Indent) {
-    if (Line[td][tr].length == 2) {
+function TwoLetterDistance(td, tr, Line, Tab, LetterSpacing, Indent, Letters = 2) {
+    if (Line[td][tr].length == Letters) {
         document.getElementById(Tab[td][tr]).style.letterSpacing = LetterSpacing + 'em';
         document.getElementById(Tab[td][tr]).style.textIndent += Indent + 'em';
     }

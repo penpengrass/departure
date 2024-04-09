@@ -19,13 +19,11 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_Tsuruga.php') {
             } else if (Type[td][tr] != '') {
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '8両編成';
             }
+            TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         }
     }
     flagmarkerase(1, 'TType', '*');
     Bansenshow(1, 2);
-    if (station == '博多駅') {
-        document.getElementById('supplement').textContent += ' 2024年3月16日以降';
-    }
     if (station != '敦賀駅') {
         allJRSSColor();
     }

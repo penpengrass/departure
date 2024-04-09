@@ -48,7 +48,7 @@ function Maibara_Banner(td) {
             stationN = '大垣';
             Des[2][0] = Des_Banner[2];
             FDetail(Type[td - 1][0], JRCeNobj, Dtype[0], td - 1, 0, "・");
-            DetailReplace(2, 0, '岐阜', '大垣までの各駅・岐阜', 1);
+            DetailReplace(2, 0, '岐阜', '岐阜までの各駅', 1);
             Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
             Detail_contents[td - 1] = Detail[2][0];
             stationN = '米原';

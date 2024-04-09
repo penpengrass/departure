@@ -19,6 +19,8 @@ function LastLetterRemove(td, tr, mark) {
     if (Detail[td][tr].slice(-1) == mark) {
         console.log(tr + 'は読点で終わる');
         Detail[td][tr] = Detail[td][tr].slice(0, -1);
-        document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = Detail[td][tr];
+        if (Indexfile != 'index7.php') {
+            document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = Detail[td][tr];
+        }
     }
 }

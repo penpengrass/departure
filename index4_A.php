@@ -30,7 +30,7 @@
   $station = '大阪駅';
   $tablenum = 5;
   $OrderNum = 4;
-  require('selection.php');
+  require('PHP/select4.php');
   require('getCSV.php');
   ?>
   <title>JR西日本駅発車標</title>
@@ -70,7 +70,7 @@
     <button type="button" onclick="location.href='./index4_S2.php'">山陽新幹線主要駅へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
-    <button type="submit" name="ogaki">大垣駅へ移動</button>
+    <button type="button" onclick="location.href='./index7.php?station=ogaki'">大垣駅へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>
   </form>
   <!--表をすべて入れる-->

@@ -1,37 +1,110 @@
-if (station != '名古屋駅') {
-    for (let te = 0; te < Tablenum; te++) {
-        for (let tr = 0; tr < orderNum; tr++) {
-            console.log(Type[te][tr]);
-            TypeColorChange(te, tr, '快速', 'orange');
-            TypeColorChange(te, tr, '特急', 'red');
-            TypeColorChange(te, tr, 'ホームライナー', 'red');
-            TypeColorChange(te, tr, '快特', 'red');
-            if (Type[te][tr] === 'undefined') {
-                console.log(":");
-            } else if (Type[te][tr].length > 12) {
-                document.getElementById('WType' + (te + 1) + (tr + 1)).style.textAlign = "center";
-                document.getElementById('TType' + (te + 1) + (tr + 1)).style.boxSizing = "border-box";
-                document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-45%,0%)";
-            } else if (Type[te][tr].length > 10) {
-                document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
-                //document.getElementsByClassName('shubetu' + (te + 1) + (tr + 1))[0].style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
-            } else if (Type[te][tr].length > 8) {
-                document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.65)" + "translate(-15%,0%)";
-            } else if (Type[te][tr].length > 7) {
-                document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-0%,0%)";
-            }
+for (let te = 0; te < Tablenum; te++) {
+    for (let tr = 0; tr < orderNum; tr++) {
+        //console.log(Type[te][tr]);
+        TypeColorChange(te, tr, '快速', 'orange');
+        TypeColorChange(te, tr, '特急', 'red');
+        TypeColorChange(te, tr, 'ホームライナー', 'red');
+        TypeColorChange(te, tr, '快特', 'red');
+        if (Type[te][tr] === 'undefined') {
+            console.log(":");
+        } else if (Type[te][tr].length > 12) {
+            document.getElementById('WType' + (te + 1) + (tr + 1)).style.textAlign = "center";
+            document.getElementById('TType' + (te + 1) + (tr + 1)).style.boxSizing = "border-box";
+            document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-45%,0%)";
+        } else if (Type[te][tr].length > 10) {
+            document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
+            //document.getElementsByClassName('shubetu' + (te + 1) + (tr + 1))[0].style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
+        } else if (Type[te][tr].length > 8) {
+            document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.65)" + "translate(-15%,0%)";
+        } else if (Type[te][tr].length > 7) {
+            document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-0%,0%)";
         }
     }
 }
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
-        if (Type[td][tr].length == 2) {
-            document.getElementById('TType' + (td + 1) + (tr + 1)).style.letterSpacing = '1em';
-            document.getElementById('TType' + (td + 1) + (tr + 1)).style.textIndent = '1em';
+        TwoLetterDistance(td, tr, Type, TType, 1, 1);
+        TwoLetterDistance(td, tr, Des, TDes, 1, 1);
+    }
+}
+if (station == '大垣駅') {
+    if (Type[0][0].includes('特急')) {
+        FDetail(Type[0][0], JRCeNobj, Dtype[0], 0, 0, "・");
+    } else if (Type[0][0] != '') {
+        Detail[0][0] = Des[0][0] + 'までの各駅';
+    }
+    FDetail(Type[1][0], JRCeNobj, Dtype[1], 1, 0, "・");
+    if (Type[1][0].includes('快速')) {
+        Detail[1][0] = '穂積・西岐阜・' + Detail[1][0];
+    }
+}
+if (station == '岐阜駅') {
+    if (Type[0][0].includes('特急')) {
+        FDetail(Type[0][0], JRCeNobj, Dtype[0], 0, 0, "・");
+    } else if (Type[0][0] != '') {
+        Detail[0][0] = Des[0][0] + 'までの各駅';
+    }
+    var HidaNumber = JRLimitedNumber(1, 0);
+    //console.log(HidaNumber);
+    if (Type[1][0].includes('特急')) {
+        FDetail(Type[1][0], JRKaobj, Dtype[1], 1, 0, "・");
+        console.log(Detail[1][0]);
+    } else if (Type[1][0] != '') {
+        Detail[1][0] = Des[1][0] + 'までの各駅';
+    }
+    console.log(Detail[1][0]);
+    if (HidaNumber == 7 || HidaNumber == 13) {
+        DetailReplace(1, 0, '越中八尾', '越中八尾・速星',1);
+    } else if (HidaNumber == 15) {
+        DetailReplace(1, 0, '飛騨萩原・飛騨小坂・久々野', '飛騨萩原',1);
+    }
+    FDetail(Type[2][0], JRCeNobj, Dtype[2], 2, 0, "・");
+}
+if (station == '豊橋駅') {
+    document.getElementById('Detail_Banner1').remove();
+    document.getElementById('Detail_Banner2').remove();
+    FDetail(Type[1][0], Meiobj, Dtype[1], 1, 0, "・");
+    Detail[1][0] = Detail[1][0].replace('須ケ口・', '');
+    LastLetterRemove(1, 0, '・');
+    if (Type[1][0] != '') {
+        BottomBanner("TRow", 2, 3, 5, '停車駅は<span class="orange">' + Detail[1][0] + '</span>です');
+    }
+    if (Type[2][0] != '') {
+        document.getElementById('TDetail3').innerHTML = '車内への危険物の持ち込みは禁止されております';
+    }
+    Detail[3][0] = FDetail(Type[3][0], JRCeNobj, Dtype[3], 3, 0, "・");
+    LastLetterRemove(3, 0, '・');
+    if (Detail[3][0] == '各駅にとまります') {
+        Detail[3][0] = Des[3][0] + 'までの各駅';
+    }
+    if (Type[3][0] != '') {
+        document.getElementById('TDetail' + (3 + 1)).innerHTML =
+            '<span id="Detail_Type' + (3 + 1) + '">' + Type[3][0] + '</span> ' + Des[3][0] + '行きの停車駅は' +
+            '<span class="orange">' + Detail[3][0] + '</span>です';
+    }
+    TypeColorChange2(3, 'Detail_Type', '特急', 'red');
+    TypeColorChange2(3, 'Detail_Type', '快速', 'orange');
+}
+if (TokaiDetailflag == 1) {
+    for (var td = 0; td < Tablenum; td++) {
+        LastLetterRemove(td, 0, '・');
+        if (Type[td][0].includes('当駅始発')) {
+            Type[td][0] = Type[td][0].replace('(当駅始発)', '');
         }
-        if (Des[td][tr].length == 2) {
-            document.getElementById('TDes' + (td + 1) + (tr + 1)).style.letterSpacing = '1em';
-            document.getElementById('TDes' + (td + 1) + (tr + 1)).style.textIndent = '1em';
+        if (Detail[td][0] == '各駅にとまります') {
+            Detail[td][0] = Des[td][0] + 'までの各駅';
         }
+        if (Type[td][0] != '') {
+            document.getElementById('TDetail' + (td + 1)).innerHTML =
+                '<span id="Detail_Type' + (td + 1) + '">' + Type[td][0] + '</span> ' + Des[td][0] + '行きの停車駅は' +
+                '<span class="orange">' + Detail[td][0] + '</span>です';
+        }
+        TypeColorChange2(td, 'Detail_Type', '特急', 'red');
+        TypeColorChange2(td, 'Detail_Type', 'ホームライナー', 'red');
+        TypeColorChange2(td, 'Detail_Type', '快速', 'orange');
+    }
+} else if (TokaiDetailflag == 0) {
+    for (var td = 0; td < Tablenum; td++) {
+        document.getElementById('Detail_Banner' + (td + 1)).remove();
     }
 }

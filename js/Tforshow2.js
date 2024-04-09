@@ -24,7 +24,7 @@ for (var td = 0; td < Tablenum; td++) {
             document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-5%,0%)";
         }
         if (Type[td][tr].length > 2) {
-            document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-5%,0%)";
+            document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.77)" + "translate(-6%,0%)";
         }
         KyotoRenraku(td, tr);
     }
@@ -76,6 +76,11 @@ if (station == '奈良駅') {
     LineMarkAdd(2, "B", 'orange');
 }
 if (station == '名古屋駅') {
+    if (holidayflag == 1) {
+        document.getElementById('supplement').innerHTML += '<p>名古屋駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
+    } else if (holidayflag == 0) {
+        document.getElementById('supplement').innerHTML += '<p>名古屋駅のみ土休日ダイヤに対応(表示は平日ダイヤ)</p>';
+    }
     for (var tr = 0; tr < orderNum; tr++) {
         var LType = Type[1][tr];
         var LDes = Des[1][tr];

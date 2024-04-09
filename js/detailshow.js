@@ -10,6 +10,8 @@ var DtypePlusCount = 0;
 //詳細表示
 //出発駅または行先駅が配列内(外側)に含まれているかどうかを判定する(無ければ-1)
 function StationInLine(station, TypeLine, startDtypenumber) {
+    //console.log(startDtypenumber);
+    //console.log(TypeLine.length);
     for (var p = startDtypenumber; p < TypeLine.length; p++) {
         //console.log("startDtypenumber=" + startDtypenumber);
         //console.log(TypeLine);
@@ -24,7 +26,7 @@ function StationInLine(station, TypeLine, startDtypenumber) {
     //console.log(-1);
     return -1;
 }
-function DetailDecide(Type_Line, Des, Sentence, distance) {//引数1つ目に路線の種別の配列，3つ目は空でいい
+function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1つ目に路線の種別の配列，3つ目は空でいい
     //前にDtypeが別の配列に移行していた場合戻す
     //console.log("Dtype[td_detail]=" + Dtype[td_detail]);
     Dtype[td_detail] = Dtype[td_detail] - DtypePlusCount;
@@ -33,6 +35,7 @@ function DetailDecide(Type_Line, Des, Sentence, distance) {//引数1つ目に路
     //配列内の駅探索
     let DLine_in = 0;
     let Dflag = 0;//行先が違う配列の場合に使いたい
+    //console.log(Dtype);
     //console.log(Type_Line);
     //console.log(StationInLine('奈良', Type_Line, Dtype[td_detail]));
     while (Sentence == '' && Dtype[td_detail] < 10 && Dflag < 200) {
@@ -45,16 +48,16 @@ function DetailDecide(Type_Line, Des, Sentence, distance) {//引数1つ目に路
                 //console.log("詳細表示は書けない");
                 break;
             } else {
-                //console.log("出発駅がないのでDtypeをプラスする");
+                console.log("出発駅がないのでDtypeをプラスする");
                 Dtype[td_detail]++;
                 DtypePlusCount++;
                 continue;
             }
         } else {
-            console.log("関数の結果出発駅が何番目の配列か=" + StationInLine(stationN, Type_Line, Dtype[td_detail]));
+            //console.log("関数の結果出発駅が何番目の配列か=" + StationInLine(stationN, Type_Line, Dtype[td_detail]));
         }
         //出発駅が配列部分に出てくるまでwhileを繰り返す
-        //console.log(Dtype[td_detail]);
+        //console.log(Dtype[td_detail] + ':' + td_detail);
         DtypePlusCount += StationInLine(stationN, Type_Line, Dtype[td_detail]) - Dtype[td_detail];
         Dtype[td_detail] = StationInLine(stationN, Type_Line, Dtype[td_detail]);
         while (stationN != Type_Line[Dtype[td_detail]][DLine_in] && DLine_in < 50) {
@@ -97,22 +100,22 @@ let AType = "";
 var DetailLine = '';
 //3つまとめて種別に案内を対応させる　変える余地ありそう(種別ごとに関数を作るとか)
 function FDetail(Utype, Uobj, n, td, tr, distance) {
-    //console.log(Utype + ':' + td + ':' + tr);
+    console.log(Utype + ':' + td + ':' + tr);
     //console.log(Uobj.Typeb.detail);
     if (Utype == '') {
         DetailLine = '';
     } else if (Utype.includes(Uobj.Typea.type)) {
         if (staflag == 0) {
-            DetailLine = DetailDecide(Uobj.Typea.detail, Des[td][tr], AType, distance);//特急
+            DetailLine = DetailDecide(Uobj.Typea.detail, td, Des[td][tr], AType, distance);//特急
         } else {
             console.log('staflagが0でない');
             DetailLine = Uobj.Typea.detail[n];
         }
     } else if (Utype.startsWith(Uobj.Typeb.type)) {
-        DetailLine = DetailDecide(Uobj.Typeb.detail, Des[td][tr], AType, distance);;//快急
+        DetailLine = DetailDecide(Uobj.Typeb.detail, td, Des[td][tr], AType, distance);;//快急
     } else if (Utype.startsWith(Uobj.Typec.type)) {
         if (staflag == 0) {
-            DetailLine = DetailDecide(Uobj.Typec.detail, Des[td][tr], AType, distance);
+            DetailLine = DetailDecide(Uobj.Typec.detail, td, Des[td][tr], AType, distance);
             //console.log(DetailLine);
         } else {
             console.log('staflagが0でない');
@@ -124,17 +127,18 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
             DetailLine = Uobj.Typed.detail[n];
             console.log(DetailLine);
         } else {
-            DetailLine = DetailDecide(Uobj.Typed.detail, Des[td][tr], AType, distance);
+            DetailLine = DetailDecide(Uobj.Typed.detail, td, Des[td][tr], AType, distance);
         }
     } else if (Utype.startsWith(Uobj.Typee.type)) {
+        console.log(Utype);
         if (Indexfile == 'index2.php') {
             DetailLine = Uobj.Typee.detail[n];
         } else {
-            DetailLine = DetailDecide(Uobj.Typee.detail, Des[td][tr], AType, distance);
+            DetailLine = DetailDecide(Uobj.Typee.detail, td, Des[td][tr], AType, distance);
         }
     } else if (Utype.startsWith(Uobj.Typef.type)) {
-        if (Indexfile == 'index7_T.php' || Indexfile == 'index2.php') {
-            DetailLine = DetailDecide(Uobj.Typef.detail, Des[td][tr], AType, distance);
+        if (Indexfile == 'index7_T.php' || Indexfile == 'index2.php' || Indexfile == 'index7.php') {
+            DetailLine = DetailDecide(Uobj.Typef.detail, td, Des[td][tr], AType, distance);
         } else {
             DetailLine = "各駅にとまります";
         }
@@ -149,8 +153,9 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
     //document.getElementById(TType).textContent = Detail[td][tr];
     //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = DetailLine;
     //console.log(DetailLine);
+    //console.log(Detail);
     Detail[td][tr] = DetailLine;
-    if (detailflag == 8 || Indexfile == 'index4.php') {
+    if (detailflag == 8 || Indexfile == 'index4.php' || Indexfile == 'index7.php') {
         //console.log(Detail[td][tr]);
         //document.getElementById('TDetail' + (td + 1)).textContent = Detail[td][tr];
     } else {
@@ -167,6 +172,9 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
     Dtype[td_detail] = Dtype[td_detail] - DtypePlusCount;
     DtypePlusCount = 0;
     //console.log(Dtype[td_detail]);
+    if (Indexfile == 'index7.php') {
+        return DetailLine;
+    }
 }
 function DetailShow(companyObject, distance, LLength = Tablenum) {
     console.log("---ここから1個目の表の詳細表示----");

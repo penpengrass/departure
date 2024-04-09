@@ -33,7 +33,7 @@ for (let tr = 0; tr < Tablenum; tr++) {
     table[tr] = document.getElementById("TTable" + (tr + 1));
     if (company == '近鉄' || detailflag == 2) {
         Detail[tr] = new Array(Tablenums[tr]);
-    } else if (Indexfile == 'index9.php' || Indexfile == 'index8.php' || Indexfile == 'index4.php') {
+    } else if (Indexfile == 'index9.php' || Indexfile == 'index8.php' || Indexfile == 'index4.php' || Indexfile == 'index7.php') {
         Detail[tr] = new Array(2);
     }
     TName[tr] = new Array(Tablenums[tr]);

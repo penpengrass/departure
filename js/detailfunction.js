@@ -36,8 +36,7 @@ for (var td = 0; td < Tablenum; td++) {
             console.log(typeof number[td][tr]);
             Lname[td][tr] = JRLimitedName(td, tr);
         } else {
-            number[td] = JRLimitedNumber(td, tr);
-            Lname[td] = JRLimitedName(td, tr);
+            number[td] = Number.parseInt(JRLimitedNumber(td, tr));
             break;
         }
     }

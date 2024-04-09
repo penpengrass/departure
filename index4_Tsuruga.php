@@ -4,7 +4,7 @@
 <head>
     <?php
     require_once('PHP/variable.php');
-    require('selection.php');
+    require('PHP/select4.php');
     require('PHP/table4.php');
     $files = array();
     $files[0] = 'csv/JRW_SH/tsuruga.csv';
@@ -53,7 +53,7 @@
         <button type="button" onclick="location.href='./index4.php?station=maibara'">米原駅へ移動</button>
         <button type="button" onclick="location.href='./index4_S2.php'">広島駅へ移動</button>
         <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
-        <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
+        <button type="button" onclick="location.href='./index7.php?station=ogaki'">大垣駅へ移動</button>
         <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線へ移動</button>
         <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
         <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>

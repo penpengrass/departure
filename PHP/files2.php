@@ -27,6 +27,8 @@ if (isset($_GET['station'])) {
         if ($holidayflag == 1) {
             $files[0] = 'csv/Kintetsu/nara1_H.csv';
             $files[1] = 'csv/Kintetsu/nara1_H.csv';
+            $files[0] = 'csv/Kintetsu/kin_nagoya_H.csv';
+            $files[1] = 'csv/Kintetsu/kin_nagoya_H.csv';
         }
         $tablenum = 2;
         $OrderNum = 3;
@@ -37,5 +39,9 @@ if (isset($_GET['station'])) {
         $tablenum = 2;
         $OrderNum = 3;
         $station = '名古屋駅';
+        if ($holidayflag == 1) {
+            $files[0] = 'csv/Kintetsu/kin_nagoya_H.csv';
+            $files[1] = 'csv/Kintetsu/kin_nagoya_H.csv';
+        }
     }
 }
