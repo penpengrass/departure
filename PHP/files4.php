@@ -55,10 +55,10 @@ if (isset($_GET['station'])) {
   } else if (Inisset('himeji')) {
     $files[0] = 'csv/JRW_S/himeji_S1.csv';
     $files[1] = 'csv/JRW_S/himeji_S2.csv';
-    $files[2] = 'csv/JRW/himeji1.csv';
-    $files[3] = 'csv/JRW/himeji3.csv';
-    $files[4] = 'csv/JRW/himeji4.csv';
-    $files[5] = 'csv/JRW/himeji2.csv';
+    $files[2] = 'csv/JRW/himeji_bantan.csv'; //1_bantan
+    $files[3] = 'csv/JRW/himeji_akashi.csv'; //3_akashi
+    $files[4] = 'csv/JRW/himeji_kishin.csv'; //4_kishin
+    $files[5] = 'csv/JRW/himeji_aboshi.csv'; //2_aboshi
     $tablenum = 6;
     $JRShinkansenflag = 1;
   } else if (Inisset('maibara')) {
