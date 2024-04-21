@@ -14,13 +14,13 @@ time{
 td{               /*データ内*/
     font-size:30px;
     height: 48px;
-    color:#0f0;
-    font-family: "FM明朝",serif;
+    color:white;
+    font-family:Arial,"MS Gothic",monospace;
     padding:0;
     border:solid 3px;  /*表の中の枠色*/
     border-left:none;
     border-right:none;
-    border-color:#303030;
+    border-color:white;
     margin:0;
 }
 table{        /*表全体*/
@@ -40,22 +40,21 @@ table{        /*表全体*/
     }
 }
 .Ctitle{
-    background-color:#303030;
+    background-color:yellow;
     height:40px;
-    color:white;
+    color:black;
 }
 .shubetu{ 
+    text-align: left;
+}
+.Destination{
     text-align: left;
 }
 p3{
     font-size:20px;
 }
 .railnumber{
-    font-weight:900;
-    color:red;
-}
-.HrailNumber{
-    text-align: left;
+    font-weight:600;
 }
 .CDetail{
     overflow: hidden;

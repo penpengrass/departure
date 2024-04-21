@@ -105,7 +105,7 @@ table {
     td {
         /*データ内*/
         display: table-cell;
-        font-size: 30px;
+        font-size: 2vw;
         /*元々30px 変更すると25px*/
         height: 43px;
         color: yellow;
@@ -116,7 +116,11 @@ table {
         border-right: none;
         /*border-bottom:2px gray solid; */
     }
-
+    @media(max-width:1199px) {
+        td{
+            font-size:30px;
+        }
+    }
     .Destination {
         color: white;
     }

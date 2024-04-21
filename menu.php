@@ -55,8 +55,8 @@
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:red;">北新地駅</span></td>
                 <td class="long"><span class="orange">米原駅</span>, <span class="orange">三ノ宮駅</span>, <span style="color:blue;">姫路駅</span>, 
-                岡山駅, 糸崎駅, 三原駅,<span style="color:red;">広島駅</span>, <span style="color:blue;">新見駅</span>, 
-                <span style="color:red;">岩国駅</span>, 徳山駅,<span style="color:blue;">下関駅</span>
+                岡山駅, 糸崎駅, 三原駅, <span style="color:red;">広島駅</span>, <span style="color:blue;">新見駅</span>, 
+                <span class="orange">岩国駅</span>, <span style="color:blue;">徳山駅</span>, <span style="color:blue;">下関駅</span>
                 </td>
             </tr>
             <tr>
@@ -105,7 +105,7 @@
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
                 <td>浜松駅</td>
-                <td>沼津駅, 静岡駅, 豊橋駅, 岐阜駅, <span style="color:blue;">大垣駅</span></td>
+                <td>沼津駅, 静岡駅, 豊橋駅, <span style="color:blue;">岐阜駅</span>, <span style="color:blue;">大垣駅</span></td>
             </tr>
             <tr>
                 <td>JR東海LCD</td>
@@ -137,6 +137,12 @@
                 <td><span style="color:blue;">小倉駅</span></td>
                 <td></td>
             </tr>
+            <tr>
+                <td>JR九州LCD</td>
+                <td><button type="button" onclick="location.href='./index10_H.php'">移動</button></td>
+                <td><span style="color:blue;">博多駅</span></td>
+                <td>なし</td>
+            </tr>
         </table>
         <p>JR西日本の選択画面を表示</p>
         <div>
@@ -150,7 +156,7 @@
         <li>JR東日本 赤羽駅 東京駅 新宿駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 新山口駅</li>
-        <li>JR九州 博多駅</li>
+        <li>JR九州 鳥栖駅</li>
         <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
         <li>JR東海 中津川駅</li>
         <h1 class="Cheader">今後対応予定</h1>

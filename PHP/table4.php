@@ -82,7 +82,7 @@ function JRWSTable2($i, $tablenums, $detaillength, $column = 2)
   print('
 <caption class="Ctitle"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></caption>
     <tr>
-      <th width="25%" colspan="2">種別</th>
+      <th width="25%" colspan="3">種別</th>
       <th width="15%">時刻</th>
       <th width="20%">行先</th>
       <th width="15%">のりば</th>
@@ -93,7 +93,7 @@ function JRWSTable2($i, $tablenums, $detaillength, $column = 2)
   for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
     print('
     <tr id="TTLine' . $i . $j . '"><p10 id="TTLineContents' . $i . $j . '"></p10>
-      <td width="50%" class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
+      <td width="50%" class="shubetu" id="TType' . $i . $j . '"colspan="2"><span id="WType' . $i . $j . '"></span></td>
       <td width="50%" class="name" id="TName' . $i . $j . '"><span class="Wname" id="WName' . $i . $j . '"></span></td>
       <td class="Ctime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></span></td>
@@ -104,7 +104,7 @@ function JRWSTable2($i, $tablenums, $detaillength, $column = 2)
     if ($detaillength >= $j) {
       print('
     <tr>
-    <td><p3 class="CDetailtitle" id="TDetailtitle' . $i . $j . '"></p3></td>
+    <td colspan="2"><p3 class="CDetailtitle" id="TDetailtitle' . $i . $j . '"></p3></td>
     <td class="CDetail" colspan="5"><p2 class="news-banner__content" id="TDetail' . $i . $j . '"></p2></td>
     </tr>
     ');

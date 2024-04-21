@@ -32,6 +32,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
   <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
+  <script type="text/javascript" src="js/detailset/JRW_S.js"></script>
   <script type="text/javascript" src="js/stationset4.js"></script>
 </head>
 

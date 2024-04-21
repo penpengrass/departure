@@ -63,7 +63,7 @@ function JRNameDevide(T = Tablenum) {
                 matches[tr] = LimitedName[tr].match(/([^0-9]+)(\d+)([^0-9]+)/);
             }
             if (matches[tr]) {
-                console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRLimitedNameとマッチする');
+                console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチする');
                 console.log(matches[tr][0] + ":" + tr);
                 console.log(matches[tr][1] + ":" + tr);
                 console.log(matches[tr][2] + ":" + tr);
@@ -112,11 +112,11 @@ function JRLimitedName(td, tr) {
     return name;
 }
 //特急等の号数を取得 tdは何番目の表か
-function JRLimitedNumber(td, tr) {
+function JRLimitedNumber(td, tr, Tab = 'TType') {
     var LimitedName = new Array(Type[td].length);
     var matches = new Array(Type[td].length);
     var matches2 = new Array(Type[td].length);
-    LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
+    LimitedName[tr] = document.getElementById(Tab + (td + 1) + '' + (tr + 1)).textContent;
     console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     matches2[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
@@ -199,6 +199,8 @@ function Bansenshow(flag = 0, LLength = Tablenum) {
                     doBNumber[td][tr].innerHTML = Line + '<span class="bansen">番線</span>';
                 } else if (flag == 1) {
                     doBNumber[td][tr].innerHTML = '<span class="bansen">のりば</span>' + Line;
+                } else if (flag == 2) {
+                    doBNumber[td][tr].innerHTML = Line + '<span class="bansen">のりば</span>';
                 }
             }
         }
@@ -208,6 +210,13 @@ function TwoLetterDistance(td, tr, Line, Tab, LetterSpacing, Indent, Letters = 2
     if (Line[td][tr].length == Letters) {
         document.getElementById(Tab[td][tr]).style.letterSpacing = LetterSpacing + 'em';
         document.getElementById(Tab[td][tr]).style.textIndent += Indent + 'em';
+    }
+}
+function allTwoLettersDistance(Line, Tab, LetterSpacing, Indent, Letters = 2) {
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < tablenums[td]; tr++) {
+            TwoLetterDistance(td, tr, Line, Tab, LetterSpacing, Indent, Letters = 2);
+        }
     }
 }
 //路線記号追加

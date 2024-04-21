@@ -1,22 +1,43 @@
-var Dtype = [0, 0];
+var Dtype = new Array(Tablenum);
+for (var td = 0; td < Tablenum; td++) {
+    Dtype[td] = 0;
+}
 var staflag = 0;
-let TSperapid = [['大垣','岐阜','尾張一宮','名古屋', '金山', '刈谷', '安城', '岡崎', '蒲郡', '豊橋', '豊橋から各駅', '浜松']];
-let TNewrapid = [['大垣','岐阜','尾張一宮','名古屋', '金山', '大府', '刈谷', '安城', '岡崎', '蒲郡', '豊橋', '豊橋から各駅', '浜松']];
-let Trapid = [['大垣','岐阜','尾張一宮','名古屋', '金山', '共和', '大府', '刈谷', '安城', '岡崎', '蒲郡', '豊橋', '豊橋から各駅', '浜松']];
-let Cesubrapid = [['大垣','岐阜','尾張一宮','名古屋', '金山', '共和', '大府', '刈谷', '安城', '岡崎から各駅', '豊橋'], ['岐阜','尾張一宮','名古屋', '金山', '共和', '大府', '大府から武豊線に入ります', '武豊']];
+let TSperapid = [['大垣', '岐阜', '尾張一宮', '名古屋', '金山', '刈谷', '安城', '岡崎', '蒲郡', '豊橋', '豊橋から各駅', '浜松']];
+let TNewrapid = [['大垣', '岐阜', '尾張一宮', '名古屋', '金山', '大府', '刈谷', '安城', '岡崎', '蒲郡', '豊橋', '豊橋から各駅', '浜松']];
+let Trapid = [['大垣', '岐阜', '尾張一宮', '名古屋', '金山', '共和', '大府', '刈谷', '安城', '岡崎', '蒲郡', '豊橋', '豊橋から各駅', '浜松']];
+let Cesubrapid = [['大垣', '岐阜', '尾張一宮', '名古屋', '金山', '共和', '大府', '刈谷', '安城', '岡崎から各駅', '豊橋'], ['岐阜', '尾張一宮', '名古屋', '金山', '共和', '大府', '大府から武豊線に入ります', '武豊']];
 let Shilimited = [['名古屋', '金山', '千種', '多治見', '中津川', '木曽福島', '塩尻', '松本', '篠ノ井', '長野']];
 let CHomerapid = [['名古屋', '金山', '鶴舞', '千種', '大曽根', '高蔵寺', '多治見', '土岐市', '瑞浪']];
-let HomeOgaki = [['名古屋', '尾張一宮', '岐阜', '穂積', '岐阜']];
-let Shirasagi = [['名古屋', '尾張一宮', '岐阜', '大垣', '米原', '敦賀', '武生', '鯖江', '福井', '芦原温泉', '加賀温泉', '小松', '金沢']];
+let HomeOgaki = [['名古屋', '尾張一宮', '岐阜', '穂積', '大垣']];
+let Shirasagi = [['名古屋', '尾張一宮', '岐阜', '大垣', '米原', '敦賀', '武生', '鯖江', '福井', '芦原温泉', '加賀温泉', '小松', '金沢'], [],
+['岐阜', '大垣', '米原', '草津', '京都', '新大阪', '大阪']];
+reverseLine(Shirasagi, 0, 1);
+reverseLine(TNewrapid, 0, 1);
+reverseLine(Trapid, 0, 1);
+reverseLine(TSperapid, 0, 1);
+reverseLine(Cesubrapid, 0, 1);
+reverseLine(HomeOgaki, 0, 1);
+TNewrapid[1][TNewrapid[1].length - 1] = '岐阜から各駅';
+TNewrapid[1].push('関ケ原', '米原');
+Trapid[1][Trapid[1].length - 1] = '岐阜から各駅';
+Trapid[1].push('関ケ原', '米原');
+TSperapid[1][TSperapid[1].length - 1] = '岐阜から各駅';
+Cesubrapid[1][Cesubrapid[1].length - 1] = '岐阜から各駅';
+Cesubrapid[1].push('関ケ原', '米原');
+TSperapid[1].push('関ケ原', '米原');
+Cesubrapid[1][1] = '岡崎までの各駅';
+console.log(TNewrapid);
+Slimited = Shilimited.slice();
 let Sperapid = TSperapid.slice();
 let Newrapid = TNewrapid.slice();
-Slimited = Shilimited.slice();
 let Homerapid = CHomerapid.slice();
 rapid = Trapid.slice();
 Jrapid = HomeOgaki.slice();
 Jsubrapid = Cesubrapid.slice();
 limited = Shirasagi.slice();
 local = [['各駅にとまります']];
+console.log(Newrapid);
 var JRCeNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: limited, },
     Typeb: { type: "ﾎｰﾑﾗｲﾅｰ", Bcolor: red, color: white, detail: Jrapid, },
@@ -26,6 +47,10 @@ var JRCeNobj = {//色は文字
     Typef: { type: "区間快速", Bcolor: green, color: white, detail: Jsubrapid, },
     Typelocal: { type: "普通", Bcolor: white, color: black, detail: local, }
 };
+if (station != '名古屋駅') {
+    JRCeNobj.Typeb.type = 'ホームライナー';
+    console.log(JRCeNobj);
+}
 var JRChNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: Slimited, },
     Typeb: { type: "ﾎｰﾑﾗｲﾅｰ", Bcolor: red, color: white, detail: Homerapid, },

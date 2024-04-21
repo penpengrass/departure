@@ -26,11 +26,16 @@ table{        /*表全体*/
     table-layout:fixed;
     background-color: black;
     border: 10px #404040 solid;/*周りの色*/
-    width: 750px; /*元々750px　550px*/
+    width: 50%; /*元々750px　550px*/
     /*height:200px; /*元々200px*/
     white-space:nowrap;
     text-align:center;
     border-spacing: 0px;
+}
+@media(max-width:1199px) {
+    table{   
+        width: 750px;
+    }
 }
 .Ctime{
     color:orange;

@@ -17,7 +17,7 @@ time {
 
 td {
     /*データ内*/
-    font-size: 30px;
+    /*font-size: 30px;*/
     height: 45px;
     color: white;
     padding: 0.5px;
@@ -37,11 +37,15 @@ table {
     border: 40px #404040 solid;
     /*周りの色*/
     border-width: 10px 20px 20px 20px;
-    width: 750px;
+    width: 50%;
     white-space: nowrap;
     text-align: center;
 }
-
+@media(max-width:1199px) {
+    table{   
+        width: 750px;
+    }
+}
 .Ctitle {
     background-color: gray;
     height: 40px;

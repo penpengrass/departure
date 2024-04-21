@@ -73,6 +73,7 @@ select {
     td {
         font-size: 30px;
     }
+
     tableline {
         display: inline;
         align-items: flex-start;

@@ -25,6 +25,16 @@ function JTypeColor(Utype, TType, Uobj) {//(種別,その種別の文字色を�
         }
     }
 }
+//博多駅限定
+function J_hakataTypeColor(Utype, TType, Uobj) {//(種別,その種別の文字色を変える)
+    //console.log(Uobj.Typea);
+    for (key in Uobj) {
+        if (Utype.startsWith(Uobj[key].type)) {
+            document.getElementById(TType).style.color = Uobj[key].Bcolor;
+            break;
+        }
+    }
+}
 function JTypeIncludeColor(Utype, TType, Uobj) {//(種別,その種別の文字色を変える,'含む')
     for (key in Uobj) {
         if (Utype.includes(Uobj[key].type)) {

@@ -9,7 +9,7 @@ th{
 /*ブロック要素*/
 td{               /*データ内*/
     display: table-cell;
-    font-size:30px;/*元々30px 変更すると25px*/
+    /*font-size:30px;/*元々30px 変更すると25px*/
     height: 43px;
     color:yellow;
     border: 10px #404040 solid;  /*表の中の枠色 */
@@ -56,6 +56,10 @@ p3{
     color:white;
     padding-right:5px;
     border-left:0;
+}
+.CDetail{
+    overflow: hidden;
+    text-align: left;
 }
 .Ctitle{
     background-color: #404040;

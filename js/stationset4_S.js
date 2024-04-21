@@ -1,13 +1,5 @@
 company = '山陽新幹線';
 NonGouflag = 1;
-var JRSSobj = {//色は文字
-    Typea: { type: "のぞみ", Bcolor: 'yellow', color: black, detail: limited, },
-    Typeb: { type: "ひかり", Bcolor: red, color: white, detail: rapid, },
-    Typec: { type: "こだま", Bcolor: '#3050FF', color: white, detail: rapid, },
-    Typed: { type: "みずほ", Bcolor: orange, color: black, detail: Jrapid, },
-    Typee: { type: "さくら", Bcolor: '#FF6FFF', color: white, detail: Jsubrapid, },
-    Typef: { type: "つばめ", Bcolor: 'skyblue', color: black, detail: local, }
-};
 
 var Shinkansenflag = 0;
 
@@ -25,6 +17,8 @@ if (station == '広島駅') {
     limitedjustnumber(TT[0], 836, 'こだま');
 }
 else if (station == '博多駅') {
+    detailLength_one = 2;
+    detailflag = 2;
     TableTitle = ['山陽・東海道新幹線 新大阪・東京方面', '九州新幹線 熊本・鹿児島中央方面'];
     limitedjustnumber(TT[1], 1, 'のぞみ');
     limitedjustnumber(TT[0], 2, 'のぞみ');
@@ -36,9 +30,9 @@ else if (station == '博多駅') {
     company = '北陸新幹線';
     var staflag = 0;
     var Dtype = [1];
-    TableTitle = ['北陸新幹線 金沢 富山方面', '北陸新幹線 当駅止め', '当駅止め','特急列車 大阪 名古屋方面', '北陸本線 湖西線', 'ハピラインふくい', '小浜線'];
+    TableTitle = ['北陸新幹線 金沢 富山方面', '北陸新幹線 当駅止め', '当駅止め', '特急列車 大阪 名古屋方面', '北陸本線 湖西線', 'ハピラインふくい', '小浜線'];
     var Tshirasagi = [2, 52, 4, 54, 6, 56, 8, 58, 10, 12, 60, 14, 62, 16, 64];
-    var Tshirasagi2 = [51, 1,3,5, 53, 7, 55, 9, 57, 11, 59, 13, 61, 15, 63];
+    var Tshirasagi2 = [51, 1, 3, 5, 53, 7, 55, 9, 57, 11, 59, 13, 61, 15, 63];
     TrainNameDevide('特急', 4, 3);
     limitedjustnumber(TT[0], 2, 'つるぎ');
     limitedjustnumber(TT[0], 560, 'はくたか');

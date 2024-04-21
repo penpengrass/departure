@@ -2,25 +2,32 @@
 <html>
 
 <head>
-    <title>JR東日本都心部発車標</title>
+    <title>JR九州発車標</title>
     <link rel="stylesheet" href="css/styleAll.css">
-    <link rel="stylesheet" href="css/styleJRK.css">
+    <link rel="stylesheet" href="css/styleJRK_H.css">
     <link rel="stylesheet" href="css/banner.css">
     <?php
     $files = array();
-    $files[0] = 'csv/JRK/kokura1.csv';
     require_once('PHP/variable.php');
-    $files[1] = 'csv/JRK/kokura2.csv';
-    $files[2] = 'csv/JRK/kokura3.csv';
-    require('PHP/files10.php');
-    $tablenum = 3;
-    $station='小倉駅';
+    $files[0] = 'csv/JRW_S/hakata1.csv';
+    $files[1] = 'csv/JRW_S/hakata2.csv';
+    $files[2] = 'csv/JRK/hakata1.csv';
+    $files[3] = 'csv/JRK/hakata1.csv';
+    $files[4] = 'csv/JRK/hakata2.csv';
+    $files[5] = 'csv/JRK/hakata3.csv';
+    $tablenum = 6;
+    $column = 4;
+    $tableStrange = 1;
+    $tablenums = [4, 3, 5, 2, 5, 2];
+    $undertable = [1, 0, 1, 0, 1, 0];
+    $station = '博多駅';
     require_once('getCSV.php');
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
     <script type="text/javascript" src="js/function1.js"></script>
     <script type="text/javascript" src="js/stationset10.js"></script>
     <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
+    <script type="text/javascript" src="js/detailset/JRW_S.js"></script>
 
 </head>
 
@@ -56,28 +63,52 @@
  <table id="TTable' . $i . '">
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
-      <th width="38%" id="HType' . $i . '"></th>
+      <th width="15%" id="HType' . $i . '"></th>
+      <th width="25%" id="HName' . $i . '"></th>
       <th width="20%" id="HTime' . $i . '"></th>
-      <th width="20%" id="HDes' . $i . '"></th>
-      <th width="10%" id="HCars' . $i . '"></th>
-      <th width="12%" class="HrailNumber" id="HrNumber' . $i . '"></th>
+      <th width="25%" id="HDes' . $i . '"></th>
+      <th width="15%" class="HrailNumber" id="HrNumber' . $i . '"></th>
     </tr>
   ');
-            for ($j = 1; $j <= $OrderNum; $j++) {
+            for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
                 print('
     <tr id="TRow' . $i . $j . '">
       <td class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
+      <td class="name" id="TName' . $i . $j . '"><span id="WName' . $i . $j . '"></span></td>
       <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"></td>
-      <td class="cars" id="TCars' . $i . $j . '"></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>
     </tr>
     ');
             }
-            print('
+            if ($undertable[$i - 1] == 1) {
+                $i++;
+                print('
+                <th class="Ctitle" colspan="5"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></th>
+                <tr>
+                <th width="15%" id="HType' . $i . '"></th>
+                <th width="25%" id="HName' . $i . '"></th>
+                <th width="20%" id="HTime' . $i . '"></th>
+                <th width="25%" id="HDes' . $i . '"></th>
+                <th width="15%" class="HrailNumber" id="HrNumber' . $i . '"></th>
+              </tr>
+              ');
+                for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
+                    print('
+                    <tr id="TRow' . $i . $j . '">
+                    <td class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
+                    <td class="name" id="TName' . $i . $j . '"><span id="WName' . $i . $j . '"></span></td>
+                    <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
+                    <td class="Destination" id="TDes' . $i . $j . '"></td>
+                    <td class="railnumber" id="TNum' . $i . $j . '"></td>
+                  </tr>
+            ');
+                }
+                print('
 </table>
 ');
-            if ($i % 2 == 0) {
+            }
+            if ($i % $column == 0) {
                 print('</tableline>
   <tableline>');
             }
@@ -95,7 +126,8 @@
 <script type="text/javascript" src="js/function2.js"></script>
 <script type="text/javascript" src="js/functionColor.js"></script>
 <script type="text/javascript" src="js/functionDetail_B.js"></script>
-<script type="text/javascript" src="js/Tforshow10.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
+<script type="text/javascript" src="js/Tforshow10_H.js"></script>
+
 
 </html>
