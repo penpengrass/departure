@@ -23,9 +23,14 @@ function DetailReplace(td, tr, Before, After, flag = 0) {
         LDetail = Detail[td][tr];
         Detail[td][tr] = Detail[td][tr].replace(Before, After);
     }
-    
-}
 
+}
+//新幹線の追加停車
+function DetailReplace_Set(td, tr, Line, Before, After) {
+    if (Line.includes(number[td][tr])) {
+        DetailReplace(td, tr, Before, After);
+    }
+}
 //簡易版追加停車駅(表番号,種別の(),前の停車駅,追加停車駅,停車駅間の記号)，名古屋地区の特別停車など
 function SpecialStop(td, last, Lstation, AddStation, distance, Indent) {
     for (var tr = 0; tr < orderNum; tr++) {

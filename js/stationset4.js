@@ -1,5 +1,6 @@
 company = 'JR西日本';
 NonGouflag = 0;
+detailLength_one = 1;
 //天王寺駅
 var JRWTobj = {//色は文字
     Typea: { type: "特急", color: red, detail: limited, },
@@ -55,20 +56,17 @@ if (station == '岡山駅') {
     company = 'JR西日本';
     TableTitle = ['山陽・東海道新幹線 新大阪・東京方面', '山陽・九州新幹線 博多・鹿児島中央方面'];
     var sakura1 = [541, 543, 545, 549, 551, 553, 555, 565, 569, 571, 573];
-    var sakura2 = [548, 560, 564, 568, 570, 572];
     var mizuho1 = [601, 609, 613];
-    var mizuho2 = [600, 602, 604, 606, 614];
-    var nozomi = [68, 70, 72, 76, 78, 82, 84, 88, 90, 92, 94, 96, 98, 100, 40, 46, 52, 58];
     var kodama1 = [837, 839, 841, 845, 847, 849, 861, 865, 867, 869, 871, 873, 875, 877];
     var kodama2 = [830, 832, 834, 836, 840, 842, 854, 856, 858, 860, 862, 866, 868, 870];
     limitednumber2(TT[1], mizuho1, 'みずほ');
-    limitednumber2(TT[0], mizuho2, 'みずほ');
+    limitednumber2(TT[0], M_Himeji2, 'みずほ');
     limitednumber2(TT[1], kodama1, 'こだま');
     limitednumber2(TT[0], kodama2, 'こだま');
     limitednumber2(TT[1], sakura1, 'さくら');
-    limitednumber2(TT[0], sakura2, 'さくら');
+    limitednumber2(TT[0], S_Himeji2, 'さくら');
     limitedjustnumber(TT[1], 61, 'のぞみ');
-    limitednumber2(TT[0], nozomi, 'のぞみ');
+    limitednumber2(TT[0], N_Himeji2, 'のぞみ');
     limitedjustnumber(TT[0], 500, 'ひかり');
     limitedjustnumber(TT[1], 501, 'ひかり');
     TableTitle.push('播但線 寺前 和田山方面', 'JR神戸線 三ノ宮 大阪方面', '姫新線 播磨新宮 佐用方面', '山陽線 相生 播州赤穂 上郡 岡山方面');
@@ -86,6 +84,7 @@ if (station == '岡山駅') {
     RailNumberDevide(2, 2, 1);
 } else if (station == '糸崎駅') {
     TableTitle = ['山陽線 福山 岡山方面', '山陽線 三原 広島方面'];
+    TT[0][6][2] = '44';
 } else if (station == '三原駅') {
     TableTitle = ['山陽線 福山 岡山方面', '山陽線 広島 岩国方面', '呉線 広 呉方面'];
 } else if (station == '岩国駅') {
@@ -119,15 +118,13 @@ if (station == '岡山駅') {
     var sakura1 = [401, 543, 553, 555, 557, 559, 561, 569, 571];
     var nozomi1 = [99, 13, 41, 45, 59];
     var kodama1 = [775, 781, 831, 833, 835, 837, 841, 843, 845, 847, 849, 851, 853, 855, 857, 859, 861, 865, 867, 787];
-    var nozomi2 = [6, 10, 42, 48];
-    var sakura2 = [542, 544, 546, 550, 552, 554, 556, 558, 562, 566, 406];
     var kodama2 = [838, 840, 842, 844, 846, 848, 850, 852, 854, 856, 858, 860, 862, 864, 866, 776, 870, 874, 876];
     limitednumber2(TT[0], kodama1, 'こだま');
     limitednumber2(TT[1], kodama2, 'こだま');
     limitednumber2(TT[0], sakura1, 'さくら');
-    limitednumber2(TT[1], sakura2, 'さくら');
+    limitednumber2(TT[1], S_Tokuyama2, 'さくら');
     limitednumber2(TT[0], nozomi1, 'のぞみ');
-    limitednumber2(TT[1], nozomi2, 'のぞみ');
+    limitednumber2(TT[1], N_Tokuyama2, 'のぞみ');
 } else if (station == '下関駅') {
     TableTitle = ['山陽本線 新山口 岩国方面', '山陽本線 門司 九州方面', '山陰本線 小串 長門市方面'];
 } else if (station == '大阪駅') {

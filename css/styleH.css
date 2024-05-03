@@ -9,14 +9,15 @@ td{               /*データ内*/
     font-size:25px;
     height: 38px;
     color:#0f0;
-    border: 5px black solid;  /*表の中の枠色*/
+    border:solid 5px;  /*表の中の枠色*/
     border-left:none;
     border-right:none;
-    border-bottom:2px #000070 solid;
+    border-color:#000070;
     font-family: "meiryo";
     padding: 0px;
 }
 table{        /*表全体*/
+    border-collapse: collapse;/*文字を縮小してもボーダーが縮まらない*/
     table-layout:fixed;
     background-color: black;
     border: 15px #000070 solid;/*周りの色*/

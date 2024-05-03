@@ -2,9 +2,11 @@ company = 'JR北海道';
 var staflag = 0;
 var Dtype = new Array(Tablenum);
 Dtype[0] = 0;
+Dtype[1] = 0;
 detailflag = 8;
+detailLength_one = 1;
 if (station == '札幌駅') {
-    TableTitle = ['苫小牧 東室蘭 函館 帯広 釧路方面', '新千歳空港方面', '岩見沢 旭川 網走 稚内方面', '手稲 小樽 倶知安方面','あいの里教育大 当別方面'];
+    TableTitle = ['苫小牧 東室蘭 函館 帯広 釧路方面', '新千歳空港方面', '岩見沢 旭川 網走 稚内方面', '手稲 小樽 倶知安方面', 'あいの里教育大 当別方面'];
     var selectstation = ['新千歳空港'];
     var selectstation2 = ['新千歳空港', '苫小牧', '千歳', '札幌'];
     var kamui = [7, 17, 19, 31, 33, 43, 45, 47];
@@ -16,7 +18,7 @@ if (station == '札幌駅') {
     DestinationDevide(selectstation, 0, 1);
     DestinationDevide(selectstation2, 2, 4);
     Tablereset(4);
-    TT[4]=TT[5];
+    TT[4] = TT[5];
     for (var td = 1; td < TT[0].length; td += 4) {
         for (var tr = 0; tr < TT[0][td].length; tr++) {
             if (TT[0][td][tr] == '特急') {
@@ -50,7 +52,7 @@ if (station == '札幌駅') {
     limitednumber(TT[0], 2, '特急北斗');
     limitednumber(TT[0], 1, '特急おおぞら');
     limitednumber(TT[0], 1, '特急とかち');
-    limitednumber(TT[1], 0, '快速エアポート');
+    limitednumber(TT[1], 10, 'エアポート');
     var airportO = [85, 91, 95, 101, 105, 111, 115, 121, 125, 131, 135, 141, 145, 151, 155, 161, 165, 169, 175, 179, 185, 189];
     limitednumber2(TT[3], airportO, '快速エアポート')
 } else if (station == '新函館北斗駅') {

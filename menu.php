@@ -53,10 +53,11 @@
             <tr>
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
-                <td><span style="color:red;">北新地駅</span></td>
+                <td><span class="orange">北新地駅</span></td>
                 <td class="long"><span class="orange">米原駅</span>, <span class="orange">三ノ宮駅</span>, <span style="color:blue;">姫路駅</span>, 
-                岡山駅, 糸崎駅, 三原駅, <span style="color:red;">広島駅</span>, <span style="color:blue;">新見駅</span>, 
-                <span class="orange">岩国駅</span>, <span style="color:blue;">徳山駅</span>, <span style="color:blue;">下関駅</span>
+                <span style="color:blue;">岡山駅</span>, <span class="orange">糸崎駅</span>, <span class="orange">三原駅</span>, <span class="orange">広島駅</span>, 
+                <span style="color:blue;">新見駅</span>, <span class="orange">岩国駅</span>, <span style="color:blue;">徳山駅</span>, 
+                <span style="color:blue;">下関駅</span>
                 </td>
             </tr>
             <tr>
@@ -80,7 +81,7 @@
             <tr>
                 <td>JR西日本新幹線主要駅</td>
                 <td><button type="button" onclick="location.href='./index4_S2.php'">移動</button></td>
-                <td>広島駅</td>
+                <td><span style="color:blue;">広島駅</span></td>
                 <td><span style="color:blue;">博多駅</span></td>
             </tr>
             <tr>
@@ -110,7 +111,7 @@
             <tr>
                 <td>JR東海LCD</td>
                 <td><button type="button" onclick="location.href='./index7_T.php'">移動</button></td>
-                <td>名古屋駅</td>
+                <td><span style="color:blue;">名古屋駅</span></td>
                 <td>なし</td>
             </tr>
             <tr>

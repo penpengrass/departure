@@ -9,7 +9,9 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_Tsuruga.php') {
     }
     for (var td = 0; td < TablenumSub; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
-            console.log(Type[td][tr]);
+            if (Type[td][tr] != '' && station == '博多駅' && tr < 2) {
+                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
+            }
             if (Type[td][tr] == 'のぞみ' || Type[td][tr] == 'ひかり') {
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '16両編成';
             } else if (Type[td][tr].includes('*')) {
@@ -45,5 +47,34 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_Tsuruga.php') {
             }
         }
     }
-
+}
+if (station == '博多駅') {
+    staflag = 0;
+    Dtype = [1, 0];
+    for (var td = 0; td < TablenumSub; td++) {
+        for (var tr = 0; tr < 2; tr++) {
+            FDetail(Type[td][tr], JRSSobj, Dtype[td], td, tr, "・");
+            if (Type[td][tr] == 'こだま') {
+                document.getElementById('TDetail' + (td + 1) + (tr + 1)).textContent = '各駅にとまります';
+            }
+            if (Des[td][tr] == '小倉') {
+                document.getElementById('TDetail' + (td + 1) + (tr + 1)).textContent = '小倉までとまりません';
+            }
+            DetailBanner(td, tr, 25);
+            LastLetterRemove(td, tr, '・');
+        }
+    }
+    for (var tr = 0; tr < 2; tr++) {
+        DetailReplace_Set(0, tr, N_Yamaguchi2, '小倉', '小倉・新山口');
+        DetailReplace_Set(0, tr, M_Fukuyama2, '広島', '広島・福山');
+        DetailReplace_Set(1, tr, S_Yatsushiro1, '川内', '新八代・新水俣・出水・川内');
+        DetailReplace_Set(0, tr, S_Shimonoseki, '広島', '新下関・広島');
+        DetailReplace_Set(0, tr, S_Yamaguchi2, '広島', '新山口・広島');
+        DetailReplace_Set(0, tr, S_Tokuyama2, '広島', '徳山・広島');
+        DetailReplace_Set(0, tr, S_Himeji2, '新神戸', '姫路・新神戸');
+        DetailReplace_Set(0, tr, N_Himeji2, '新神戸', '姫路・新神戸');
+        DetailReplace_Set(0, tr, M_Himeji2, '新神戸', '姫路・新神戸');
+        DetailReplace_Set(0, tr, N_Fukuyama2, '岡山', '福山・岡山');
+    }
+    console.log(number);
 }

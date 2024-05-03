@@ -11,21 +11,26 @@ td{               /*データ内*/
     height: 45px;
     color:white;
     border:none;  /*表の中の枠色*/
-    font-family: "ＭＳ ゴシック",serif;
+    font-family:Arial,"MS Gothic",monospace;
     font-weight: 500;
 }
 .CTime{
-    font-family: "meiryo",serif;
+    font-family: "meiryo","Roboto","Yu Gothic";
 }
 table{        /*表全体*/
     table-layout:fixed;
     background-color: black;
     border: 10px gray solid;/*周りの色*/
-    width: 750px; 
+    width: 50%; 
     height:200px;
     white-space:nowrap;
     text-align:center;
-    margin:15px;
+    margin:5px;
+}
+@media(max-width:1199px) {
+    table{   
+        width: 750px;
+    }
 }
 span{
     display: inline-block;
@@ -35,7 +40,6 @@ span{
 }
 .railnumber{
     font-weight:700;
-    font-size:35px;
     background-color: white;
     color:black;
     font-family: Arial,"MS Gothic",monospace;

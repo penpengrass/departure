@@ -138,7 +138,6 @@ if (station == '姫路駅') {
             Type[Shinkansenflag + 3][tr] = '普通';
         }
     }
-    document.getElementById('supplement').textContent = '※スーパーはくと6号 9号は土休日のみ運転(表示ダイヤは平日)';
 }
 if (station == '糸崎駅') {
     for (var td = 0; td < Tablenum; td++) {
@@ -146,7 +145,17 @@ if (station == '糸崎駅') {
         //表のサイズを小さくする
         document.getElementById('TTable' + (td + 1)).style.width = '30em';
         document.getElementById('TTable' + (td + 1)).style.marginLeft = '8em';
+        for (var tr = 0; tr < orderNum; tr++) {
+            TwoLetterDistance(td, tr, Des, TDes, 1, 0.7);
+            DesMiddle(td, tr, '方面');
+        }
     }
+    if (holidayflag == 1) {
+        document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
+    } else if (holidayflag == 0) {
+        document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
+    }
+
 }
 if (station == '岡山駅') {
     //スーパーいなば
@@ -231,6 +240,11 @@ if (station == '三原駅') {
         DesMiddle(1, tr, '方面');
     }
     setInterval(allswitch, 5000);
+    if (holidayflag == 1) {
+        document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
+    } else if (holidayflag == 0) {
+        document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
+    }
 }
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
