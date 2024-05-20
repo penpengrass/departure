@@ -26,6 +26,8 @@ if (station == '北新地駅') {
     } else if (Des[1][0] == '神戸方面西明石') {
         Des[1][0] == '西明石';
         Detail_contents[1] = '西明石までの各駅';
+    }else if(Type[1][0]=='普通'){
+        Detail_contents[1] = Des[1][0] + 'までの各駅';
     }
 }
 if (station == '米原駅') {

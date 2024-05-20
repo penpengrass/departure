@@ -17,9 +17,9 @@ if (station == '熱海駅') {
     }
     for (var tr = 0; tr < orderNum; tr++) {
         if (Type[2][tr].startsWith('特急踊り子')) {
-            if (Type[2][tr].includes('8') || Type[2][tr].includes('16')||Type[2][tr].includes('12')) {
+            if (Type[2][tr].includes('4') || Type[2][tr].includes('10')) {
                 document.getElementById('TCars' + 3 + (tr + 1)).textContent = '14両';
-            }else{
+            } else {
                 document.getElementById('TCars' + 3 + (tr + 1)).textContent = '9両';
             }
         } else if (Type[2][tr].startsWith('特急ｻﾌｨｰﾙ')) {
@@ -58,22 +58,58 @@ if (station == '熱海駅') {
     document.getElementById('HDes1').style.width = "40%";
     JRLimitedDevide(0);
     JRLimitedDevide(1);
-    JRATOSDevide(1);
+    CarsDevide(0);
+    CarsDevide(1);
+    CarsDevide(1, 'TCars', 'TName');
+    //JRATOSDevide(1);
+    //console.log(JRLimitedNumber(1, 1, 'TName'));
     swapColumns(table2, 0, 1);
     document.getElementById('HType2').style.width = "15%";
     document.getElementById('HName2').style.width = "30%";
     for (var tr = 0; tr < orderNum; tr++) {
         console.log(Type[1][tr]);
+        let LType = document.getElementById('TType2' + (tr + 1));
+        let LDes = document.getElementById('TDes1' + (tr + 1));
+        let LName = document.getElementById('TName2' + (tr + 1));
+        let LCars = document.getElementById('TCars1' + (tr + 1));
+        let LCars2 = document.getElementById('TCars2' + (tr + 1));
         if (Type[1][tr] == '特別快速') {
             console.log('特別快速' + tr);
-            document.getElementById('TType2' + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-0%,0%)";
+            document.getElementById('TType2' + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-7%,0%)";
+        }
+        if (Type[1][tr].startsWith('始発')) {
+            document.getElementById('TType2' + (tr + 1)).innerHTML = '<span style="color:orange;">始発</span>';
+        }
+        JRLineName(1, tr, '普通', '上野東京ﾗｲﾝ', 1);
+        JRLineName(1, tr, '快速', '湘南新宿ﾗｲﾝ', 1);
+        if (Des[0][tr] == '伊豆急下田/修善寺' || Des[0][tr] == '伊豆急下田･修善寺') {
+            LDes.style.transform = "scaleX(0.65)" + "translate(-0%,0%)";
+            LCars.textContent = '14両';
+        }
+        if (Type[1][tr].includes('特急') && LName.textContent.includes('湘南')) {
+            if (JRLimitedNumber(1, tr, 'TName') == 4 || JRLimitedNumber(1, tr, 'TName') == 12) {
+                LCars2.textContent = '14両';
+            }else{
+                LCars2.textContent = '9両';
+            }
+        }else if(Type[1][tr].includes('特急')&&LName.textContent.includes('踊り子')){
+            if (JRLimitedNumber(1, tr, 'TName') == 4 || JRLimitedNumber(1, tr, 'TName') == 10) {
+                LCars2.textContent = '14両';
+            }else{
+                LCars2.textContent = '9両';
+            }
+
         }
     }
+    setInterval(allswitchOdawara, 5000);
+    allTwoLettersDistance(Des, TDes, 1, 0.8);
+    comment.textContent = '両数や番線は不正確';
 } else if (station == '武蔵小杉駅') {
     JRATOSDevide(0);
     JRATOSDevide(1);
     NameColorchange(0, 'TName', '湘南新宿ライン', 'orange');
     NameColorchange(1, 'TName', '湘南新宿ライン', 'orange');
+    allTwoLettersDistance(Des, TDes, 1, 0.8);
 } else if (station == '宇都宮駅') {
     JRATOSDevide(2);
     for (var td = 0; td < Tablenum; td++) {

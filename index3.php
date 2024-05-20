@@ -110,7 +110,9 @@
   <script type="text/javascript" src="js/TimeShow.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
+  <script type="text/javascript" src="js/altershow.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
+  <script type="text/javascript" src="js/functionDetail_B.js"></script>
   <script type="text/javascript" src="js/functionE2.js"></script>
   <script type="text/javascript" src="js/Tforshow3.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>

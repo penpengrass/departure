@@ -13,16 +13,17 @@
     <h1>リアルタイム鉄道発車標</h1>
     <h1 class="Cheader">概要</h1>
     <div>プログラミング練習を主目的とした鉄道のリアルタイム発車標再現 </div>
-    <div>特記のない限りは<span style="color:red;">2023年3月時点</span>での平日ダイヤの発車標をリアルタイムに再現
+    <div>発車標をリアルタイムに再現
     <div>土休日ダイヤ対応の駅は実際の土休日や祝日と表示ダイヤが連動している</div>
         <div>色や形式をできる限り再現しているが，フォント等はWindowsでデフォルトにあるものを使用 両数は非表示 </div>
         <div>表示駅は随時追加予定 </div>
         <h1>発車標表示駅一覧</h1>
         <table class="menutable">
             <caption>表示駅</caption>
-            <p class="chushaku"><span style="color:red;">赤字</span>は2023年3月ダイヤ，土休日ダイヤ対応，もしくは終日ダイヤ<br>
+            <p class="chushaku">
                 <span style="color:blue;">青字</span>は2024年3月ダイヤ対応, 平日ダイヤのみ <br>
-                <span class="orange">橙字</span>は2024年3月ダイヤ対応，土休日ダイヤ対応<br>
+                <span class="orange">橙字</span>は2024年3月ダイヤ対応，土休日ダイヤ対応(終日共通の場合あり)<br>
+                <span style="color:red;">赤字</span>は2023年3月ダイヤ，土休日ダイヤ対応，もしくは終日ダイヤ<br>
                 黒字は2023年3月ダイヤ，平日ダイヤのみ <br>
             </p>
             <p class="chushaku">括弧は未完成</p>
@@ -36,13 +37,13 @@
                 <td>近鉄LCD</td>
                 <td><button type="button" onclick="location.href='./index2.php'">移動</button></td>
                 <td>鶴橋駅</td>
-                <td><span style="color:red;">奈良駅</span>, <span style="color:red;">京都駅</span>, <span class="orange">名古屋駅</span> </td>
+                <td><span style="color:red;">奈良駅</span>, <span class="orange">京都駅</span>, <span class="orange">名古屋駅</span> </td>
             </tr>
             <tr>
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td>(武蔵小杉駅)</td>
-                <td>横浜駅, 小田原駅, <span style="color:red;">熱海駅</span>, 宇都宮駅</td>
+                <td>横浜駅, <span style="color:blue;">小田原駅</span>, <span class="orange">熱海駅</span>, 宇都宮駅</td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
@@ -105,8 +106,8 @@
             <tr>
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
-                <td>浜松駅</td>
-                <td>沼津駅, 静岡駅, 豊橋駅, <span style="color:blue;">岐阜駅</span>, <span style="color:blue;">大垣駅</span></td>
+                <td><span style="color:blue;">浜松駅</span></td>
+                <td><span style="color:blue;">沼津駅</span>, <span style="color:blue;">静岡駅</span>, <span style="color:blue;">豊橋駅</span>, <span style="color:blue;">岐阜駅</span>, <span style="color:blue;">大垣駅</span></td>
             </tr>
             <tr>
                 <td>JR東海LCD</td>
@@ -117,8 +118,8 @@
             <tr>
                 <td>東海道新幹線一般駅</td>
                 <td><button type="button" onclick="location.href='./index7_S1.php'">移動</button></td>
-                <td>浜松駅</td>
-                <td>豊橋駅</td>
+                <td><span class="orange">浜松駅</span></td>
+                <td><span class="orange">豊橋駅</span></td>
             </tr>
             <tr>
                 <td>JR北海道</td>
@@ -129,7 +130,7 @@
             <tr>
                 <td>JR四国</td>
                 <td><button type="button" onclick="location.href='./index9.php'">移動</button></td>
-                <td>高松駅</td>
+                <td><span style="color:blue;">高松駅</span></td>
                 <td></td>
             </tr>
             <tr>

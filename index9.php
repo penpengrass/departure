@@ -37,11 +37,11 @@
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
     <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
-    <button type="submit" name="okayama">岡山駅へ移動</button>
+    <button type="button" onclick="location.href='./index4.php?station=okayama'">岡山駅へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
-    <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
+    <button type="button" onclick="location.href='./index10.php'">JR九州へ移動</button>
   </form>
   <!--表をすべて入れる-->
   <tableline>
@@ -80,7 +80,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement"></p>
+  <p id="supplement">停車駅は不正確</p>
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>

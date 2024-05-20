@@ -9,7 +9,7 @@ th {
 
 td {
     /*データ内*/
-    font-size: 30px;
+    /*font-size: 30px;*/
     height: 48px;
     color: #0f0;
     border: 0px black solid;
@@ -25,12 +25,16 @@ table {
     background-color: black;
     border: 10px gray solid;
     /*周りの色*/
-    width: 750px;
+    width:50%;
     height: 200px;
     white-space: nowrap;
     text-align: center;
 }
-
+@media(max-width:1199px) {
+    table{   
+        width: 750px;
+    }
+}
 .CDetail {
     overflow: hidden;
     font-family: "MS Gothic";

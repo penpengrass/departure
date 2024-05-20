@@ -7,6 +7,7 @@ function JRLimitedDevide(Tablenum) {
     for (var tr = 0; tr < Type[Tablenum].length; tr++) {
         if (Type[Tablenum][tr].includes('特急')) {
             var Limited = Type[Tablenum][tr].substr(Type[Tablenum][tr].indexOf('急') + 1);
+            var Limited2=Type[Tablenum][tr].replace(Limited,'');
             //console.log(Tablenum + ':' + tr + ':' + Limited);
             document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited;
             if (Limited != '' && tr == 0) {
@@ -15,11 +16,25 @@ function JRLimitedDevide(Tablenum) {
             //console.log(LiName);
             //console.log(document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)));
             document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = 'center';
-            document.getElementById('TType' + (Tablenum + 1) + '' + (tr + 1)).textContent = '特急';
-            Type[Tablenum][tr] = '特急'
+            document.getElementById('TType' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited2;
+            Type[Tablenum][tr] = Limited2;
         }
     }
     //console.log(Tablenum);
+}
+//種別の条件によって路線名をnameに入れる(ATOSや岡山駅など)
+function JRLineName(td, tr, F_Type, Name, flag) {
+    let LType = document.getElementById('TType' + (td + 1) + (tr + 1));
+    let LName = document.getElementById('TName' + (td + 1) + (tr + 1));
+    if (flag == 0) {
+        if (LType.textContent.includes(F_Type)) {
+            LName.textContent = Name;
+        }
+    } else if (flag == 1) {
+        if (Type[td][tr].includes(F_Type)) {
+            LName.textContent = Name;
+        }
+    }
 }
 //路線名と種別を分割(湘南新宿ラインなど)
 function JRATOSDevide(td) {
@@ -142,13 +157,14 @@ function JRLimitedNumber(td, tr, Tab = 'TType') {
     return number;
 }
 //種別+両数の場合分割
-function CarsDevide(td, Ltag = 'TCars') {
+function CarsDevide(td, LCarsTag = 'TCars',LTypeTag='TType') {
     for (var tr = 0; tr < orderNum; tr++) {
-        var LType = document.getElementById('TType' + (td + 1) + '' + (tr + 1));
+        var LType = document.getElementById(LTypeTag + (td + 1) + '' + (tr + 1));
         var matches = LType.textContent.match(/(\D+)(\d+)両/);
         var matches2 = LType.textContent.match(/(\D+)(\d+)号(\d+)両/);
+        var matches3= LType.textContent.match(/(\D+)(\d+)両(\d+)号/);
         console.log(LType.textContent);
-        var LCars = document.getElementById(Ltag + (td + 1) + '' + (tr + 1));
+        var LCars = document.getElementById(LCarsTag + (td + 1) + '' + (tr + 1));
         if (matches2) {
             console.log(matches2[0]);
             console.log(matches2[1]);
@@ -157,6 +173,14 @@ function CarsDevide(td, Ltag = 'TCars') {
             var number = matches[2];
             LCars.textContent = matches2[3] + '両';
             LType.textContent = matches2[1] + matches2[2] + '号';
+        }else if (matches3) {
+            console.log(matches3[0]);
+            console.log(matches3[1]);
+            console.log(matches3[2]);
+            console.log(matches3[3]);
+            var number = matches3[2];
+            LCars.textContent = matches3[2] + '両';
+            LType.textContent = matches[1]+matches3[3]+'号';
         } else if (matches) {
             console.log(matches[0]);
             console.log(matches[1]);
@@ -165,6 +189,7 @@ function CarsDevide(td, Ltag = 'TCars') {
             var number = matches[2];
             LCars.textContent = matches[2] + '両';
             LType.textContent = matches[1];
+            Type[td][tr]=matches[1];
         } else {
             console.log("CarsDevideにマッチしていない" + tr);
         }
@@ -214,8 +239,8 @@ function TwoLetterDistance(td, tr, Line, Tab, LetterSpacing, Indent, Letters = 2
 }
 function allTwoLettersDistance(Line, Tab, LetterSpacing, Indent, Letters = 2) {
     for (var td = 0; td < Tablenum; td++) {
-        for (var tr = 0; tr < tablenums[td]; tr++) {
-            TwoLetterDistance(td, tr, Line, Tab, LetterSpacing, Indent, Letters = 2);
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            TwoLetterDistance(td, tr, Line, Tab, LetterSpacing, Indent, Letters);
         }
     }
 }
