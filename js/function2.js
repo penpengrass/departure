@@ -7,7 +7,7 @@ function JRLimitedDevide(Tablenum) {
     for (var tr = 0; tr < Type[Tablenum].length; tr++) {
         if (Type[Tablenum][tr].includes('特急')) {
             var Limited = Type[Tablenum][tr].substr(Type[Tablenum][tr].indexOf('急') + 1);
-            var Limited2=Type[Tablenum][tr].replace(Limited,'');
+            var Limited2 = Type[Tablenum][tr].replace(Limited, '');
             //console.log(Tablenum + ':' + tr + ':' + Limited);
             document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited;
             if (Limited != '' && tr == 0) {
@@ -23,16 +23,20 @@ function JRLimitedDevide(Tablenum) {
     //console.log(Tablenum);
 }
 //種別の条件によって路線名をnameに入れる(ATOSや岡山駅など)
-function JRLineName(td, tr, F_Type, Name, flag) {
+function JRLineName(td, tr, F_Type, Name, flag, Replace_Flag = 0) {
     let LType = document.getElementById('TType' + (td + 1) + (tr + 1));
     let LName = document.getElementById('TName' + (td + 1) + (tr + 1));
     if (flag == 0) {
         if (LType.textContent.includes(F_Type)) {
-            LName.textContent = Name;
+            if (Replace_Flag == 1 || (Replace_Flag == 0 && LName.textContent == '')) {
+                LName.textContent = Name;
+            }
         }
     } else if (flag == 1) {
         if (Type[td][tr].includes(F_Type)) {
-            LName.textContent = Name;
+            if (Replace_Flag == 1 || (Replace_Flag == 0 && LName.textContent == '')) {
+                LName.textContent = Name;
+            }
         }
     }
 }
@@ -157,12 +161,12 @@ function JRLimitedNumber(td, tr, Tab = 'TType') {
     return number;
 }
 //種別+両数の場合分割
-function CarsDevide(td, LCarsTag = 'TCars',LTypeTag='TType') {
+function CarsDevide(td, LCarsTag = 'TCars', LTypeTag = 'TType') {
     for (var tr = 0; tr < orderNum; tr++) {
         var LType = document.getElementById(LTypeTag + (td + 1) + '' + (tr + 1));
         var matches = LType.textContent.match(/(\D+)(\d+)両/);
         var matches2 = LType.textContent.match(/(\D+)(\d+)号(\d+)両/);
-        var matches3= LType.textContent.match(/(\D+)(\d+)両(\d+)号/);
+        var matches3 = LType.textContent.match(/(\D+)(\d+)両(\d+)号/);
         console.log(LType.textContent);
         var LCars = document.getElementById(LCarsTag + (td + 1) + '' + (tr + 1));
         if (matches2) {
@@ -173,14 +177,14 @@ function CarsDevide(td, LCarsTag = 'TCars',LTypeTag='TType') {
             var number = matches[2];
             LCars.textContent = matches2[3] + '両';
             LType.textContent = matches2[1] + matches2[2] + '号';
-        }else if (matches3) {
+        } else if (matches3) {
             console.log(matches3[0]);
             console.log(matches3[1]);
             console.log(matches3[2]);
             console.log(matches3[3]);
             var number = matches3[2];
             LCars.textContent = matches3[2] + '両';
-            LType.textContent = matches[1]+matches3[3]+'号';
+            LType.textContent = matches[1] + matches3[3] + '号';
         } else if (matches) {
             console.log(matches[0]);
             console.log(matches[1]);
@@ -189,7 +193,7 @@ function CarsDevide(td, LCarsTag = 'TCars',LTypeTag='TType') {
             var number = matches[2];
             LCars.textContent = matches[2] + '両';
             LType.textContent = matches[1];
-            Type[td][tr]=matches[1];
+            Type[td][tr] = matches[1];
         } else {
             console.log("CarsDevideにマッチしていない" + tr);
         }

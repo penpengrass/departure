@@ -14,14 +14,14 @@ function JRETypeSelectAdd(td, LType, Deshairetsu, line1, line2, index = 6) {
                     Type[td][tr] += line1;
                     doType[td][tr].textContent += line1;
                 } else if (index == 3) {
-                    document.getElementById('TName' + (td + 1) + (tr + 1)).textContent += line1;
+                    document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = line1;
                 }
             } else if (Des[td][tr] != '') {
                 if (index == 6) {
                     Type[td][tr] += line2;
                     doType[td][tr].textContent += line2;
                 } else if (index == 3) {
-                    document.getElementById('TName' + (td + 1) + (tr + 1)).textContent += line2;
+                    document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = line2;
                 }
             }
         }

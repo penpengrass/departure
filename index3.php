@@ -6,13 +6,22 @@
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/styleATOS.css">
   <link rel="stylesheet" href="css/banner.css">
+  <!--タブのアイコンを変えたいが、公式HPと混同しそうなので保留-->
+  <!--<link rel="icon" href="PNG/favicon.ico" id="favicon">
+  <link rel="apple-touch-icon" sizes="180x180" href="PNG/apple-touch-icon-180x180.png">
+  <link rel="icon" href="PNG/JR東日本マーク.png" id="favicon">-->
   <?php
   $files = array();
-  $files[0] = 'csv/JRMu/ToTakasaki.csv';
   require_once('PHP/variable.php');
-  $files[2] = 'csv/JRMu/ToChiba.csv';
-  $files[3] = 'csv/JRMu/ToKurihama.csv';
-  $files[1] = 'csv/JRMu/ToOdawara.csv';
+  $files[0] = 'csv/JRE/Musashi_Tokyo.csv';
+  $files[2] = 'csv/JRE/Musashi_Shinjuku.csv';
+  //$files[0] = 'csv/JRMu/ToTakasaki.csv';
+  //$files[2] = 'csv/JRMu/ToChiba.csv';
+  $files[3] = 'csv/JRE/Musashi_Zushi.csv';
+  $files[1] = 'csv/JRE/Musashi_shonan.csv';
+  $files[4]='csv/JRE/Musashi_Ebina.csv';
+  //$files[3] = 'csv/JRE/ToKurihama.csv';
+  //$files[1] = 'csv/JRMu/ToOdawara.csv';
   require('PHP/files3.php');
   require_once('getCSV.php');
   ?>
@@ -114,7 +123,7 @@
   <script type="text/javascript" src="js/function2.js"></script>
   <script type="text/javascript" src="js/functionDetail_B.js"></script>
   <script type="text/javascript" src="js/functionE2.js"></script>
-  <script type="text/javascript" src="js/Tforshow3.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
+  <script type="text/javascript" src="js/Tforshow3.js"></script>
 
 </html>

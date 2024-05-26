@@ -42,8 +42,8 @@
             <tr>
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
-                <td>(武蔵小杉駅)</td>
-                <td>横浜駅, <span style="color:blue;">小田原駅</span>, <span class="orange">熱海駅</span>, 宇都宮駅</td>
+                <td><span style="color:blue;">武蔵小杉駅</span></td>
+                <td>横浜駅, <span style="color:blue;">小田原駅</span>, <span class="orange">熱海駅</span>, <span style="color:blue;">宇都宮駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
@@ -125,7 +125,7 @@
                 <td>JR北海道</td>
                 <td><button type="button" onclick="location.href='./index8.php'">移動</button></td>
                 <td>札幌駅</td>
-                <td>新函館北斗駅</td>
+                <td><span style="color:blue;">新函館北斗駅</span></td>
             </tr>
             <tr>
                 <td>JR四国</td>

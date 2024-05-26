@@ -189,7 +189,7 @@ function allTokyuColor() {
 //index7.phpのみTforshow7.jsに移行
 if (station == '天王寺駅' || Indexfile == 'index4_T.php') {
     allJRTennoujiColor();
-} else if (Indexfile == 'index3.php' || Indexfile == 'index8.php') {
+} else if (Indexfile == 'index8.php') {
     allJRCIncludeColor();
 } else if (Indexfile == 'index7_T.php') {
     allJRNagoyaColor();

@@ -99,25 +99,28 @@ function TTconnect(TTLeft, TTRight, TTSum) {
 }
 console.log(TT.length);
 if (station == '武蔵小杉駅') {
-    console.log(TT[4]);
-    TT[4] = makeemptyTable(TT[0], TT[2]);
+    console.log(TT[6]);
+    TT[6] = makeemptyTable(TT[0], TT[2]);
     TT[5] = makeemptyTable(TT[1], TT[3]);
     //Tablereset(4);
     //Tablereset(5);
-    console.log(TT[4]);
+    console.log(TT[6]);
     console.log("---1回目のconnect始まり");
-    TTconnect(TT[0], TT[2], TT[4]);
+    TTconnect(TT[0], TT[2], TT[6]);
     console.log("---1回目のconnect終わり");
     TTconnect(TT[1], TT[3], TT[5]);
+    TT[7] = makeemptyTable(TT[4], TT[5]);
+    TTconnect(TT[4], TT[5], TT[7]);
     //console.log(TT[4]);
     //console.log(TT[5]);
     for (let z = 0; z < 6; z++) {
         console.log(z + ":" + TT[z].length);
     }
     //console.log(TT[4][1][0]);
-    TT[1] = TT[5];
-    TT[0] = TT[4];
+    TT[1] = TT[7];
+    TT[0] = TT[6];
     //console.log(TT[0][1][0]);
+    console.log(TT[1]);
 } else if (station == '新函館北斗駅') {
     console.log(TT[1]);
     console.log(TT[3]);

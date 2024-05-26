@@ -1,3 +1,8 @@
+function FourLetters(td, tr, reduction, translate) {
+    if (Type[td][tr].length == 4) {
+        document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(" + reduction + ")" + "translate(-" + translate + "%,0%)";
+    }
+}
 if (station == '熱海駅') {
     var list = document.getElementsByClassName('Destination');
     for (var tr = 0; tr < list.length; tr++) {
@@ -44,8 +49,8 @@ if (station == '熱海駅') {
     CarsDevide(0);
     CarsDevide(1);
     CarsDevide(2);
-
     document.getElementById('supplement').textContent = '熱海駅は実際の表示と異なる部分がある　土休日ダイヤに対応';
+    allJRCIncludeColor();
 } else if (station == '小田原駅') {
     // 2列目と3列目を入れ替え
     // 表のIDを取得
@@ -85,17 +90,19 @@ if (station == '熱海駅') {
         if (Des[0][tr] == '伊豆急下田/修善寺' || Des[0][tr] == '伊豆急下田･修善寺') {
             LDes.style.transform = "scaleX(0.65)" + "translate(-0%,0%)";
             LCars.textContent = '14両';
+        } else if (Des[0][tr] == '伊豆急下田') {
+            LCars.textContent = '9両';
         }
         if (Type[1][tr].includes('特急') && LName.textContent.includes('湘南')) {
             if (JRLimitedNumber(1, tr, 'TName') == 4 || JRLimitedNumber(1, tr, 'TName') == 12) {
                 LCars2.textContent = '14両';
-            }else{
+            } else {
                 LCars2.textContent = '9両';
             }
-        }else if(Type[1][tr].includes('特急')&&LName.textContent.includes('踊り子')){
+        } else if (Type[1][tr].includes('特急') && LName.textContent.includes('踊り子')) {
             if (JRLimitedNumber(1, tr, 'TName') == 4 || JRLimitedNumber(1, tr, 'TName') == 10) {
                 LCars2.textContent = '14両';
-            }else{
+            } else {
                 LCars2.textContent = '9両';
             }
 
@@ -104,12 +111,44 @@ if (station == '熱海駅') {
     setInterval(allswitchOdawara, 5000);
     allTwoLettersDistance(Des, TDes, 1, 0.8);
     comment.textContent = '両数や番線は不正確';
+    allJRCIncludeColor();
 } else if (station == '武蔵小杉駅') {
     JRATOSDevide(0);
     JRATOSDevide(1);
-    NameColorchange(0, 'TName', '湘南新宿ライン', 'orange');
-    NameColorchange(1, 'TName', '湘南新宿ライン', 'orange');
+    var Shonan1 = ['籠原', '宇都宮', '小金井', '古河', '高崎','前橋'];
+    var Saikyo1 = ['新宿', '池袋', '大宮', '川越', '指扇'];
+    var Saikyo2 = ['海老名'];
+    JRLimitedDevide(0);
+    JRLimitedDevide(1);
+    for (var tr = 0; tr < orderNum; tr++) {
+        if (Shonan1.includes(Des[0][tr])) {
+            JRLineName(0, tr, '', '湘南新宿ﾗｲﾝ', 0, 0);
+        } else if (Saikyo1.includes(Des[0][tr])) {
+            JRLineName(0, tr, '', '埼京線', 0, 0);
+        } else if (Des[0][tr] != '') {
+            JRLineName(0, tr, '', '横須賀線', 0, 0);
+        }
+        JRLineName(1, tr, '普通', '横須賀線', 0, 0);
+        if (Saikyo2.includes(Des[1][tr])) {
+            JRLineName(1, tr, '', '相鉄線', 0, 1);
+        }
+        JRLineName(1, tr, '快速', '湘南新宿ﾗｲﾝ', 0, 0);
+        FourLetters(0, tr, 0.7, 7);
+        FourLetters(1, tr, 0.7, 7);
+    }
+    NameColorchange(0, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
+    NameColorchange(1, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
+    NameColorchange(0, 'TType', '普通', 'orange');
+    NameColorchange(1, 'TType', '普通', 'orange');
+    NameColorchange(0, 'TType', '特別快速', 'orange');
+    NameColorchange(1, 'TType', '特別快速', 'orange');
+    NameColorchange(0, 'TType', '快速', 'red');
+    NameColorchange(1, 'TType', '快速', 'red');
+    NameColorchange(0, 'TType', '特急', 'red');
+    NameColorchange(1, 'TType', '特急', 'red');
+    NameColorchange(1, 'TName', '相鉄線', 'orange');
     allTwoLettersDistance(Des, TDes, 1, 0.8);
+    comment.textContent = '両数は今後追加予定, 特急表示は不正確';
 } else if (station == '宇都宮駅') {
     JRATOSDevide(2);
     for (var td = 0; td < Tablenum; td++) {
@@ -123,6 +162,8 @@ if (station == '熱海駅') {
         document.getElementById('HName' + (2 + 1)).style.width = "25%";
         document.getElementById('HDes' + (td + 1)).style.width = "30%";
     }
+    document.getElementById('HCars' + (2 + 1)).style.width = "20%";
+    document.getElementById('HDes' + (2 + 1)).style.width = "25%";
     for (var tr = 0; tr < orderNum; tr++) {
         if (Type[1][tr] != '') {
             document.getElementById('TCars2' + (tr + 1)).textContent = '4ﾄﾞｱ';
@@ -142,6 +183,8 @@ if (station == '熱海駅') {
                     } else {
                         Name.textContent = '宇都宮線';
                     }
+                }else if(Des[2][tr] == '大船' || Des[2][tr] == '逗子'){
+                    Name.textContent = '湘南新宿ﾗｲﾝ';
                 } else if (Des[2][tr] != '') {
                     Name.textContent = '上野東京ﾗｲﾝ';
                 }
@@ -169,6 +212,8 @@ if (station == '熱海駅') {
         BottomBanner("TRow", 1, 1, 3, '烏山方面へは黒磯行きに乗車のうえ宝積寺でのりかえ');
     }
     comment.textContent = '上野東京ラインの両数は今後修正予定';
+    allTwoLettersDistance(Des, TDes, 1, 1);
+    allJRCIncludeColor();
 } else if (station == '横浜駅') {
     const table1 = document.getElementById("TTable1");
     const table2 = document.getElementById("TTable2");
@@ -230,4 +275,5 @@ if (station == '熱海駅') {
     NameColorchange(4, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
     NameColorchange(5, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
     comment.textContent = '両数表示は今後更新';
+    allJRCIncludeColor();
 }
