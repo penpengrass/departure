@@ -6,11 +6,6 @@ th{
     background-color:  black;
     height:3px;
 }
-time{
-    border:green solid;
-    font-size:40px;
-    text-align: right;
-}
 td{               /*データ内*/
     font-size:30px;
     height: 25px;
@@ -18,9 +13,9 @@ td{               /*データ内*/
     border: 1px solid;  /*表の中の枠色*/
     border-color: gray black;
     font-family: "Bridge BRG","MS Gothic";
-}
-.Destination{
-    color:orange;
+    border-left:none;
+    border-right:none;
+    border-bottom:1px gray solid; 
 }
 table{        /*表全体*/
     table-layout:fixed;

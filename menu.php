@@ -88,8 +88,8 @@
             <tr>
                 <td>東急</td>
                 <td><button type="button" onclick="location.href='./index5.php'">移動</button></td>
-                <td>二子玉川駅</td>
-                <td>武蔵小杉駅 </td>
+                <td><span style="color:blue;">二子玉川駅</span></td>
+                <td><span style="color:blue;">武蔵小杉駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本24ドット</td>

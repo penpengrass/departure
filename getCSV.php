@@ -1,21 +1,6 @@
 <?php
 
-if ($files[0] == 'csv/Tokyu/nikotama1.csv') {
-  $files[1] = 'csv/Tokyu/nikotama2.csv';
-  $files[2] = 'csv/Tokyu/nikotama3.csv';
-  $files[3] = 'csv/Tokyu/nikotama4.csv';
-  $tablenum = 4;
-  $column = 2;
-  $station = '二子玉川駅';
-  $CompanyNumber = 5;
-} else if ($files[0] == 'csv/Tokyu/ToMu1.csv') {
-  $files[1] = 'csv/Tokyu/ToMu2.csv';
-  $files[2] = 'csv/Tokyu/ToMu3.csv';
-  $files[3] = 'csv/Tokyu/ToMu4.csv';
-  $station = '武蔵小杉駅';
-  $tablenum = 4;
-  $CompanyNumber = 5;
-} else if ($files[0] == 'csv/JRH/sapporo1.csv') {
+if ($files[0] == 'csv/JRH/sapporo1.csv') {
   $files[1] = 'csv/JRH/sapporo1.csv';
   $files[2] = 'csv/JRH/sapporo2.csv';
   $files[3] = 'csv/JRH/sapporo3.csv';
@@ -119,9 +104,11 @@ $js_array .= ']';
   //詳細表示がいくつあるか(0~2)PHPも使う
   var detailflag='<?php echo $detailflag; ?>';
   let station = '<?php echo $station; ?>';
+  let dayOfWeek='<?php echo $dayOfWeek; ?>';
   if (station == '') {
     station = title[1];
   }
+  console.log("曜日番号は"+dayOfWeek);
   console.log("駅名は" + station);
   console.log("TT.length=" + TT.length);
   let station2 = title2[1];
@@ -134,6 +121,7 @@ $js_array .= ']';
   let company = '';
   var NonGouflag = 0;
   var TwoLetterDisflag = 0;
+  var detailLength_one=0;
   var DetailLength = new Array(Tablenum);
   console.log(title[2].substr(0, 2));
   console.log(TT[1].length);
