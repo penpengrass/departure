@@ -45,7 +45,7 @@ var Hlocal = new Array(4);
 for (var i = 0; i < 4; i++) {
     Hlocal[i] = "各駅停車";
 }
-Hinotori = [[], ['大阪難波', '大阪上本町', '鶴橋', '大和八木', '津', '名古屋']];
+Hinotori = [[], ['大阪難波', '大阪上本町', '鶴橋', '大和八木', '津', '名古屋'],["大阪難波", "大阪上本町", "鶴橋", "生駒", "学園前", "大和西大寺", "奈良"]];
 reverseLine(Hinotori, 1, 0);
 var staflag = 0;
 var express = SHexpress;
@@ -62,6 +62,7 @@ if (station == '奈良駅') {
     SHlimited[2] = SHlimited[2].reverse();
     SHlimited[5] = SHlimited[5].reverse();
     SHrapid[1] = SHrapid[1].reverse();
+    reverseLine(Hinotori, 2, 3);
     subsemiexpress = Rsubsemiexpress;
     subexpress = Rsemiexpress;
     console.log(express);

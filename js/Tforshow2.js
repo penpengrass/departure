@@ -49,9 +49,16 @@ if (station == '京都駅') {
                 DetailReplace(0, tr, '大和西大寺', '大和西大寺　西ノ京');
             }
         } else if (LType == '急行') {
-            if (whetherStop(9, 40, tr_hour, tr_min, 16, 4)) {
-            } else {
-                DetailReplace(0, tr, '西ノ京　', '');
+            if (holidayflag == 0) {
+                if (whetherStop(9, 40, tr_hour, tr_min, 16, 4)) {
+                } else {
+                    DetailReplace(0, tr, '西ノ京　', '');
+                }
+            } else if (holidayflag == 1) {
+                if (whetherStop(8, 10, tr_hour, tr_min, 16, 44)) {
+                } else {
+                    DetailReplace(0, tr, '西ノ京　', '');
+                }
             }
         }
     }
@@ -74,6 +81,12 @@ if (station == '奈良駅') {
     }
     LineMarkAdd(1, "A", 'red');
     LineMarkAdd(2, "B", 'orange');
+} else if (station == '鶴橋駅') {
+    for (tr = 0; tr < orderNum; tr++) {
+        if (Type[1][tr] == '準急' && Des[1][tr] == '高安') {
+            document.getElementById('TDetail2' + (tr + 1)).textContent = '布施　八尾　河内山本';
+        }
+    }
 }
 if (station == '名古屋駅') {
     if (holidayflag == 1) {
@@ -106,3 +119,4 @@ for (var td = 0; td < Tablenum; td++) {
         }
     }
 }
+comment.innerHTML+='停車駅は不正確';

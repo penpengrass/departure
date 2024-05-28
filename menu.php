@@ -23,7 +23,7 @@
             <p class="chushaku">
                 <span style="color:blue;">青字</span>は2024年3月ダイヤ対応, 平日ダイヤのみ <br>
                 <span class="orange">橙字</span>は2024年3月ダイヤ対応，土休日ダイヤ対応(終日共通の場合あり)<br>
-                <span style="color:red;">赤字</span>は2023年3月ダイヤ，土休日ダイヤ対応，もしくは終日ダイヤ<br>
+                <span style="color:red;">赤字</span>は2023年3月ダイヤ，土休日ダイヤ対応，もしくは終日ダイヤ(該当駅なし)<br>
                 黒字は2023年3月ダイヤ，平日ダイヤのみ <br>
             </p>
             <p class="chushaku">括弧は未完成</p>
@@ -36,8 +36,8 @@
             <tr>
                 <td>近鉄LCD</td>
                 <td><button type="button" onclick="location.href='./index2.php'">移動</button></td>
-                <td>鶴橋駅</td>
-                <td><span style="color:red;">奈良駅</span>, <span class="orange">京都駅</span>, <span class="orange">名古屋駅</span> </td>
+                <td><span style="color:blue;">鶴橋駅</span></td>
+                <td><span class="orange">奈良駅</span>, <span class="orange">京都駅</span>, <span class="orange">名古屋駅</span> </td>
             </tr>
             <tr>
                 <td>JR東日本ATOS</td>
@@ -124,7 +124,7 @@
             <tr>
                 <td>JR北海道</td>
                 <td><button type="button" onclick="location.href='./index8.php'">移動</button></td>
-                <td>札幌駅</td>
+                <td><span style="color:blue;">札幌駅</span></td>
                 <td><span style="color:blue;">新函館北斗駅</span></td>
             </tr>
             <tr>
