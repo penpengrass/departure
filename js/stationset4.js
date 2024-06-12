@@ -2,14 +2,8 @@ company = 'JR西日本';
 NonGouflag = 0;
 detailLength_one = 1;
 //天王寺駅
-var JRWTobj = {//色は文字
-    Typea: { type: "特急", color: red, detail: limited, },
-    Typeb: { type: "関空快速", color: blue, detail: rapid, },
-    Typec: { type: "大和路快速", color: green, detail: rapid, },
-    Typed: { type: "快速", color: orange, detail: Jrapid, },
-    Typee: { type: "区間快速", color: green, detail: Jsubrapid, },
-    Typef: { type: "普通", color: black, detail: local, }
-};
+var Tennoji_inner_Table = 3
+var Tennoji_outer_Table = 2;
 var JRWSobj = {//色は文字
     Typea: { type: "のぞみ", color: orange, detail: limited, },
     Typeb: { type: "ひかり", color: red, detail: rapid, },
@@ -34,6 +28,15 @@ var JRWA_obj = {//色は文字
     Typed: { type: "区間快速", color: black, detail: Jrapid, },
     Typee: { type: "さくら", color: white, detail: Jsubrapid, },
     Typef: { type: "普通", color: white, detail: local, }
+};
+var JRWALobj = {//色は文字
+    Typea: { type: "特急", color: red, detail: limited, },
+    Typeb: { type: "関空快速", color: blue, detail: rapid, },
+    Typec: { type: "大和路快速", color: green, detail: rapid, },
+    Typed: { type: "快速", color: orange, detail: Jrapid, },
+    Typee: { type: "区間快速", color: green,  detail: Jsubrapid, },
+    Typef: { type: "普通", color: black,  detail: local, },
+    Typelocal: { type: "普通", color: white,  detail: local, }
 };
 if (station == '岡山駅') {
     TwoLetterDisflag = 1;
@@ -110,9 +113,17 @@ if (station == '岡山駅') {
     limitednumber2(TT[1], shirasagi, 'しらさぎ');
     limitednumber(TT[2], 2, 'しらさぎ');
 } else if (station == '天王寺駅') {
-    TableTitle = ['阪和線 関西空港 和歌山方面', '大和路線 王寺 奈良 加茂方面'];
-    limitednumber(TT[0], 1, '特急はるか');
-    limitednumber(TT[0], 1, '特急くろしお');
+    TableTitle = ['大和路線 王寺 奈良 加茂方面', 'JR難波 京都方面', '西九条方面', '鶴橋 京橋方面', '特急はるか くろしお', '阪和線 関西空港 和歌山方面'];
+    TrainNameDevide('特急', 5, 4);
+    limitednumber(TT[4], 1, '特急はるか');
+    limitednumber(TT[4], 1, '特急くろしお');
+    TT[6] = makeemptyTable(TT[1], TT[2]);
+    TTconnect(TT[1],TT[2],TT[6]);
+    TT[2]=TT[6];
+    var NoLoop=['ＪＲ難波','新大阪','京都','野洲'];
+    DestinationDevide(NoLoop,2,1);
+    limitednumber(TT[1], 2, '特急はるか');
+    limitednumber(TT[1], 2, '特急くろしお');
 } else if (station == '徳山駅') {
     TableTitle = ['山陽新幹線 博多 鹿児島中央方面', '山陽新幹線 新大阪 東京方面', '山陽線 新山口 下関方面', '山陽線 岩国方面', '岩徳線 岩国方面'];
     var sakura1 = [401, 543, 553, 555, 557, 559, 561, 569, 571];

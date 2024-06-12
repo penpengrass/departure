@@ -7,10 +7,16 @@
   require_once('PHP/variable.php');
   require_once('PHP/table4.php');
   $files = array();
-  $files[0] = 'csv/JRW/tennoji1.csv';
-  $files[1] = 'csv/JRW/tennoji2.csv';
-  $tablenum = 2;
+  $files[0] = 'csv/JRW/tennoji_Nara.csv';
+  $files[1] = 'csv/JRW/tennoji_Namba.csv';
+  $files[2] = 'csv/JRW/tennoji_outer.csv';
+  $files[3] = 'csv/JRW/tennoji_inner.csv';
+  $files[4] = 'csv/JRW/tennoji_hanwa.csv';
+  $files[5] = 'csv/JRW/tennoji_hanwa.csv';
+  $files[6] = 'csv/JRW/tennoji_Namba.csv';
+  $tablenum = 6;
   $OrderNum = 4;
+  $column=2;
   $tableStrange = 0;
   $station = '天王寺駅';
   require('getCSV.php');
@@ -22,7 +28,8 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
-  <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
+  <script type="text/javascript" src="js/TTconnect.js"></script>
+  <script type="text/javascript" src="js/detailset/JRTennojidetail.js"></script>
   <script type="text/javascript" src="js/stationset4.js"></script>
 </head>
 
@@ -61,11 +68,11 @@
     <tr class="Rtitle">
     ');
       print('
-      <th width="23%" colspan="2">種別</th>
-      <th width="23%">遅れ</th>
-      <th width="23%">時刻</th>
-      <th width="23%">行先</th>
-      <th width="8%">のりば</th>
+      <th width="25%" colspan="2">種別</th>
+      <th width="20%">遅れ</th>
+      <th width="20%">時刻</th>
+      <th width="25%">行先</th>
+      <th width="10%">のりば</th>
     </tr>
   ');
       //n番目に発車する列車までを表示
@@ -92,7 +99,6 @@
       ');
         }
       }
-    }
     print('
         </table>
 ');
@@ -101,9 +107,10 @@
         </tableline>
   <tableline id="tableline' . $i . '">');
     }
+  }
     ?>
   </tableline>
-  <p id="supplement">停車駅表示は未実装(常に空白)</p>
+  <p id="supplement">停車駅表示は未実装(常に空白), 番線は不正確</p>
   <h1 class="Cheader">注釈</h1>
   <li>糸崎駅 岩国駅 下関駅においては番線の表示は実際と異なる</li>
   <li>本来山陽地区では種別の横に両数がある</li>
@@ -115,7 +122,9 @@
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/altershow.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
+  <script type="text/javascript" src="js/functionDetail.js"></script>
   <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
+  <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/Tforshow4_T.js"></script>
   <!--<script type="text/javascript" src="js/Tforshow4_S.js"></script>-->

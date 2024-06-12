@@ -1,8 +1,13 @@
-function FourLetters(td, tr, reduction, translate) {
-    if (Type[td][tr].length == 4) {
-        document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(" + reduction + ")" + "translate(-" + translate + "%,0%)";
-    }
+const ATOStable = new Array(Tablenum);
+for (var td = 0; td < Tablenum; td++) {
+    ATOStable[td] = document.getElementById("TATOSTable" + (td + 1));
 }
+const table1 = document.getElementById("TATOSTable1");
+const table2 = document.getElementById("TATOSTable2");
+const table3 = document.getElementById("TATOSTable3");
+const table4 = document.getElementById("TATOSTable4");
+const table5 = document.getElementById("TATOSTable5");
+const table6 = document.getElementById("TATOSTable6");
 if (station == '熱海駅') {
     var list = document.getElementsByClassName('Destination');
     for (var tr = 0; tr < list.length; tr++) {
@@ -54,8 +59,8 @@ if (station == '熱海駅') {
 } else if (station == '小田原駅') {
     // 2列目と3列目を入れ替え
     // 表のIDを取得
-    const table1 = document.getElementById("TTable1");
-    const table2 = document.getElementById("TTable2");
+    const table1 = document.getElementById("TATOSTable1");
+    const table2 = document.getElementById("TATOSTable2");
     swapColumns(table1, 0, 1);
     swapColumns(table1, 1, 2);
     document.getElementById('HType1').style.width = "10%";
@@ -115,8 +120,8 @@ if (station == '熱海駅') {
 } else if (station == '武蔵小杉駅') {
     JRATOSDevide(0);
     JRATOSDevide(1);
-    var Shonan1 = ['籠原', '宇都宮', '小金井', '古河', '高崎','前橋'];
-    var Saikyo1 = ['新宿', '池袋', '大宮', '川越', '指扇'];
+    var Shonan1 = ['籠原', '宇都宮', '小金井', '古河', '高崎', '前橋'];
+    var Saikyo1 = ['新宿', '池袋', '大宮', '川越', '指扇', '赤羽'];
     var Saikyo2 = ['海老名'];
     JRLimitedDevide(0);
     JRLimitedDevide(1);
@@ -149,13 +154,17 @@ if (station == '熱海駅') {
     NameColorchange(1, 'TName', '相鉄線', 'orange');
     allTwoLettersDistance(Des, TDes, 1, 0.8);
     comment.textContent = '両数は今後追加予定, 特急表示は不正確';
+    for (var td = 0; td < Tablenum; td++) {
+        document.getElementsByClassName('Ctitle').item(td).style.paddingBottom = '36px';
+        document.getElementsByClassName('Ctitle').item(td).style.paddingTop = '4px';
+    }
 } else if (station == '宇都宮駅') {
     JRATOSDevide(2);
     for (var td = 0; td < Tablenum; td++) {
-        swapColumns(table[td], 3, 4);
-        swapColumns(table[td], 2, 3);
+        swapColumns(ATOStable[td], 3, 4);
+        swapColumns(ATOStable[td], 2, 3);
         if (td != 2) {
-            swapColumns(table[td], 0, 1);
+            swapColumns(ATOStable[td], 0, 1);
             document.getElementById('HName' + (td + 1)).style.width = "15%";
         }
         document.getElementById('HCars' + (td + 1)).style.width = "15%";
@@ -183,7 +192,7 @@ if (station == '熱海駅') {
                     } else {
                         Name.textContent = '宇都宮線';
                     }
-                }else if(Des[2][tr] == '大船' || Des[2][tr] == '逗子'){
+                } else if (Des[2][tr] == '大船' || Des[2][tr] == '逗子') {
                     Name.textContent = '湘南新宿ﾗｲﾝ';
                 } else if (Des[2][tr] != '') {
                     Name.textContent = '上野東京ﾗｲﾝ';
@@ -198,10 +207,10 @@ if (station == '熱海駅') {
             document.getElementById('TCars4' + (tr + 1)).textContent = '4ﾄﾞｱ';
         }
     }
-    document.getElementById('TTable' + 1).style.width = '25em';
-    document.getElementById('TTable' + 2).style.width = '40em';
-    document.getElementById('TTable' + 4).style.width = '40em';
-    document.getElementById('TTable' + 1).style.marginLeft = '8em';
+    document.getElementById('TATOSTable' + 1).style.width = '25em';
+    document.getElementById('TATOSTable' + 2).style.width = '40em';
+    document.getElementById('TATOSTable' + 4).style.width = '40em';
+    document.getElementById('TATOSTable' + 1).style.marginLeft = '8em';
     rowremove(0, 'HName', 'TName');
     rowremove(0, 'HCars', 'TCars');
     rowremove(0, 'HType', 'TType');
@@ -215,12 +224,6 @@ if (station == '熱海駅') {
     allTwoLettersDistance(Des, TDes, 1, 1);
     allJRCIncludeColor();
 } else if (station == '横浜駅') {
-    const table1 = document.getElementById("TTable1");
-    const table2 = document.getElementById("TTable2");
-    const table3 = document.getElementById("TTable3");
-    const table4 = document.getElementById("TTable4");
-    const table5 = document.getElementById("TTable5");
-    const table6 = document.getElementById("TTable6");
     swapColumns(table1, 0, 1);
     swapColumns(table2, 0, 1);
     swapColumns(table3, 0, 1);

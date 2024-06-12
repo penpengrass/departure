@@ -75,7 +75,7 @@ function allJROsakaColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
             if (station == '大阪駅' && ia == 0) {
-                KTypeColor(Type[ia][ib], TType[ia][ib], JRWTobj);
+                KTypeColor(Type[ia][ib], TType[ia][ib], JRWALobj);
             } else {
                 KTypeColor(Type[ia][ib], TType[ia][ib], JRWA_Bobj);
                 JTypeColor(Type[ia][ib], TType[ia][ib], JRWA_obj);
@@ -164,7 +164,7 @@ function allJRTennoujiColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
             /*天王寺駅の特徴のためTTypeをWTypeに書き換える*/
-            KTypeColor(Type[ia][ib], WType[ia][ib], JRWTobj);
+            KJTypeColor(Type[ia][ib], WType[ia][ib], JRWTobj);
         }
     }
 }
@@ -187,9 +187,7 @@ function allTokyuColor() {
 //console.log(CompanyNumber);
 //console.log(Indexfile);
 //index7.phpのみTforshow7.jsに移行
-if (station == '天王寺駅' || Indexfile == 'index4_T.php') {
-    allJRTennoujiColor();
-} else if (Indexfile == 'index8.php') {
+if (Indexfile == 'index8.php') {
     allJRCIncludeColor();
 } else if (Indexfile == 'index7_T.php') {
     allJRNagoyaColor();
