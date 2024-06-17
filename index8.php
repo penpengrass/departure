@@ -10,6 +10,8 @@
   $files[0] = 'csv/JRH/sapporo1.csv';
   $files[1] = 'csv/JRH/sapporo2.csv';
   require_once('PHP/variable.php');
+  $tablenum=5;
+  $OrderNum=4;
   require('PHP/files8.php');
   require_once('getCSV.php');
   ?>
@@ -42,7 +44,7 @@
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
     <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6.php'">新宿駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>
   </form>

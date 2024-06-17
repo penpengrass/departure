@@ -48,4 +48,17 @@ if (station == '長野駅') {
     limitednumber2(TT[4], NexOfuna1, '成田ｴｸｽﾌﾟﾚｽ');
     var NexOfuna2 = [1, 3, 5, 7, 13, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 53];
     limitednumber2(TT[5], NexOfuna2, '成田ｴｸｽﾌﾟﾚｽ');
+} else if (station == '東京駅') {
+    TableTitle = ['上野東京ライン発車時刻', '東海道線発車時刻'];
+    limitednumber(TT[0], 1, 'ひたち');
+    limitednumber(TT[0], 51, 'ときわ');
+    limitednumber(TT[1], 2, 'ひたち');
+    limitednumber(TT[1], 52, 'ときわ');
+} else if (station == '新宿駅') {
+    TrainNameDevide('特急', 2, 4);
+    limitednumber(TT[4], 1, ['特急あずさ', '特急かいじ']);
+    limitednumber(TT[4], 1, 'はちおうじ');
+    limitednumber(TT[4], 1, 'おうめ');
+    TableTitle = ['三鷹方面', '千葉方面', '高尾方面', '東京方面', '中央線特急 松本方面', '成田エクスプレス',
+        '埼京線 池袋 大宮方面', '湘南新宿ライン 大宮方面', '埼京線 新木場方面', '湘南新宿ライン 小田原方面'];
 }

@@ -42,7 +42,7 @@
     <button type="button" onclick="location.href='./index3.php'">ATOSへ移動</button>
     <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">在来線へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=nagano'">在来線へ移動</button>
     <button type="button" onclick="location.href='./index6_S.php'">東京駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線へ移動</button>

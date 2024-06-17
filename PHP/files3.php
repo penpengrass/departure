@@ -6,7 +6,11 @@ if (isset($_POST['staselect3'])) {
   if ($test1 == $startstation) {
     header('Location: ../index3.php');
     exit();
-  } else {
+  } else if($test1 == 'shinjuku'){
+    header('Location: ../index6.php');
+  } else if($test1 == 'tokyo'){
+    header('Location: ../index6.php?station=tokyo');
+  }else{
     header('Location: ../index3.php?station=' . $test1);
     exit();
   }

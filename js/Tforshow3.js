@@ -37,8 +37,8 @@ if (station == '熱海駅') {
         }
     }
     for (var td = 0; td < Tablenum; td++) {
-        swapColumns(table[td], 3, 4);
-        swapColumns(table[td], 2, 3);
+        swapColumns(ATOStable[td], 3, 4);
+        swapColumns(ATOStable[td], 2, 3);
         for (var tr = 0; tr < orderNum; tr++) {
             if (Type[td][tr].length > 11) {
                 console.log(Type[td][tr]);

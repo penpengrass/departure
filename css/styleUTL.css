@@ -1,0 +1,16 @@
+.Ctitle{
+    font-size: 40px;
+    padding: 10px;
+}
+td {
+    font-size:25px;
+    height: 35px;
+    /*表の中の枠色*/
+    border-bottom: 10px #202020 solid;
+}
+.shubetu{
+    text-align: center;
+}
+.bansen {
+    font-size: 25px;
+}

@@ -42,7 +42,8 @@
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td><span style="color:black;">武蔵小杉駅</span></td>
-                <td>横浜駅, <span style="color:black;">小田原駅</span>, <span style="color:red;">熱海駅</span>, <span style="color:black;">宇都宮駅</span></td>
+                <td>横浜駅, <span style="color:black;">小田原駅</span>, <span style="color:red;">熱海駅</span>, 
+                <span style="color:black;">宇都宮駅</sp></td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
@@ -54,10 +55,10 @@
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:red;">北新地駅</span></td>
-                <td class="long"><span style="color:red;">米原駅</span>, <span style="color:red;">三ノ宮駅</span>, <span style="color:black;">姫路駅</span>, 
-                <span style="color:black;">岡山駅</span>, <span style="color:red;">糸崎駅</span>, <span style="color:red;">三原駅</span>, <span style="color:red;">広島駅</span>, 
-                <span style="color:black;">新見駅</span>, <span style="color:red;">岩国駅</span>, <span style="color:black;">徳山駅</span>, 
-                <span style="color:black;">下関駅</span>
+                <td class="long"><span style="color:red;">米原駅</span>, <span style="color:red;">三ノ宮駅</span>, 
+                <span style="color:black;">姫路駅</span>, <span style="color:black;">岡山駅</span>, <span style="color:red;">糸崎駅</span>, 
+                <span style="color:red;">三原駅</span>, <span style="color:red;">広島駅</span>, <span style="color:black;">新見駅</span>, 
+                <span style="color:red;">岩国駅</span>, <span style="color:black;">徳山駅</span>, <span style="color:black;">下関駅</span>
                 </td>
             </tr>
             <tr>
@@ -93,8 +94,8 @@
             <tr>
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
-                <td><span style="color:red;">長野駅</span></td>
-                <td><span style="color:red;">松本駅</span>, 横浜駅</td>
+                <td>新宿駅</td>
+                <td> 東京駅, 横浜駅, <span style="color:red;">長野駅</span>, <span style="color:red;">松本駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本新幹線フルカラー</td>
@@ -154,7 +155,7 @@
         <h1 class="Cheader">今後追加する駅</h1>
         <li>新幹線 静岡駅 米原駅 岡山駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
-        <li>JR東日本 品川駅 赤羽駅 東京駅 新宿駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
+        <li>JR東日本 赤羽駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 新山口駅</li>
         <li>JR九州 鳥栖駅</li>

@@ -22,6 +22,8 @@
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/banner.css">
   <link rel="stylesheet" href="css/styleJRW.css">
+<!--タブのアイコンを変えたいが、公式HPと混同しそうなので保留-->
+<!--<link rel="icon" href="PNG/JR西日本マーク.png" id="favicon">-->
   <?php
   if ($station == '岡山駅') {
     print('
@@ -43,7 +45,9 @@
   </div>
   <!--駅選択部分-->
   <?php JRWStaSele('駅変更');
+        JRWSStaSele('新幹線駅変更');
   ?>
+  
   <form action="select.php" method="POST" id="selectstation">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <?php
@@ -53,7 +57,7 @@
     <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
     <button type="button" onclick="location.href='./index4_S2.php'">山陽新幹線主要駅へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">東海道へ移動</button>
     <button type="button" onclick="location.href='./index7.php?station=ogaki'">大垣駅へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>

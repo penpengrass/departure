@@ -1,6 +1,6 @@
 <?php
 require('function1.php');
-$startstation = 'nagano';
+$startstation = 'shinjuku';
 if (isset($_POST['staselect6'])) {
   $test1 = $_POST['staselect6'];
   if ($test1 == $startstation) {
@@ -12,16 +12,18 @@ if (isset($_POST['staselect6'])) {
   }
 }
 if (isset($_GET['station'])) {
+  $column = 2;
+  $OrderNum = 3;
   if (Inisset('matsumoto')) {
-    $files[0] = 'csv/JRE/matsumoto1.csv';
-    $files[1] = 'csv/JRE/matsumoto1.csv';
-    $files[2] = 'csv/JRE/matsumoto2.csv';
-    $files[3] = 'csv/JRE/matsumoto3.csv';
+    $files[0] = 'csv/JRNagano/matsumoto1.csv';
+    $files[1] = 'csv/JRNagano/matsumoto1.csv';
+    $files[2] = 'csv/JRNagano/matsumoto2.csv';
+    $files[3] = 'csv/JRNagano/matsumoto3.csv';
     $station = '松本駅';
     $tablenum = 4;
     if ($holidayflag == 1) {
-      $files[0] = 'csv/JRE/matsumoto1_H.csv';
-      $files[1] = 'csv/JRE/matsumoto1_H.csv';
+      $files[0] = 'csv/JRNagano/matsumoto1_H.csv';
+      $files[1] = 'csv/JRNagano/matsumoto1_H.csv';
     }
   } else if (Inisset('yokohama')) {
     $files[0] = 'csv/JRE/yokohama1.csv';
@@ -33,17 +35,52 @@ if (isset($_GET['station'])) {
     $tablenum = 6;
     $OrderNum = 2;
     $station = '横浜駅';
+  }else if (Inisset('tokyo')) {
+    $files[0] = 'csv/JRE/Tokyo1.csv';
+    $files[1] = 'csv/JRE/Tokyo2.csv';
+    $tablenum = 2;
+    $OrderNum = 6;
+    $station='東京駅';
+  }else if(Inisset('shinjuku')){
+    $files[0] = 'csv/JRE/shinjuku_mitaka.csv';
+    $files[1] = 'csv/JRE/shinjuku_chiba.csv';
+    $files[2] = 'csv/JRE/shinjuku_takao.csv';
+    $files[3] = 'csv/JRE/shinjuku_tokyo.csv';
+    $files[4] = 'csv/JRE/shinjuku_takao.csv';
+    $files[5] = 'csv/JRE/shinjuku_narita.csv';
+    $files[6] = 'csv/JRE/shinjuku_musashi.csv';
+    $files[7] = 'csv/JRE/shinjuku_takasaki.csv';
+    $files[8] = 'csv/JRE/shinjuku_shinkiba.csv';
+    $files[9] = 'csv/JRE/shinjuku_odawara.csv';
+    $tablenum = 10;
+    $OrderNum = 2;
+    $column=6;
+    $station = '新宿駅';
+  }else if(Inisset('nagano')){
+    $files[0] = 'csv/JRNagano/nagano1.csv';
+    $files[1] = 'csv/JRNagano/nagano2.csv';
+    $files[2] = 'csv/JRNagano/nagano2.csv';
+    $station = '長野駅';
+    $tablenum = 3;
+    $OrderNum = 3;
+    $column = 2;
+    $stationnumber = 1;
+    if ($holidayflag == 1) {
+      $files[0] == 'csv/JRNagano/nagano1_H.csv';
+      $files[1] = 'csv/JRNagano/nagano2_H.csv';
+      $files[2] = 'csv/JRNagano/nagano2_H.csv';
+    }
   }
 }
-if ($files[0] == 'csv/JRE/nagano1.csv') {
-  $files[1] = 'csv/JRE/nagano2.csv';
-  $files[2] = 'csv/JRE/nagano2.csv';
+if ($files[0] == 'csv/JRNagano/nagano1.csv') {
+  $files[1] = 'csv/JRNagano/nagano2.csv';
+  $files[2] = 'csv/JRNagano/nagano2.csv';
   $station = '長野駅';
   $tablenum = 3;
   $stationnumber = 1;
   if ($holidayflag == 1) {
-    $files[0] == 'csv/JRE/nagano1_H.csv';
-    $files[1] = 'csv/JRE/nagano2_H.csv';
-    $files[2] = 'csv/JRE/nagano2_H.csv';
+    $files[0] == 'csv/JRNagano/nagano1_H.csv';
+    $files[1] = 'csv/JRNagano/nagano2_H.csv';
+    $files[2] = 'csv/JRNagano/nagano2_H.csv';
   }
 }

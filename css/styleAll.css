@@ -6,6 +6,7 @@ showing {
 .Ctitle {
     font-size: 25px;
     height: 25px;
+    font-weight: 700;
 }
 
 #stationname {
@@ -37,10 +38,6 @@ form {
     width: 90px;
 }
 
-.henko {
-    width: 120px;
-}
-
 td {
     font-size: 2vw;
 }
@@ -67,6 +64,15 @@ time {
 select {
     height: 30px;
     font-size: 20px;
+}
+.CWType{
+    display: inline-block;
+}
+.CWName{
+    display: inline-block;
+}
+.selecttext{
+    font-size:20px;
 }
 
 @media(max-width:1199px) {

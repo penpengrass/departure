@@ -11,7 +11,7 @@ for (var td_main = 0; td_main < Tablenum; td_main++) {
     //表のタイトル表示
     if (TableTitle[td_main] != '') {
         //console.log('表のタイトル' + TableTitle[td_main]);
-        document.getElementById('kn' + (td_main + 1)).textContent = TableTitle[td_main];
+        document.getElementById('kn' + (td_main + 1)).innerHTML = TableTitle[td_main];
     }
     if (station == '敦賀駅') {
         BackTime();

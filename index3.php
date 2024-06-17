@@ -43,7 +43,9 @@
     <select name="staselect3">
       <option value="musashikosugi">武蔵小杉駅</option>
       <option value="utsunomiya">宇都宮駅</option>
-      <option value="yokohama">横浜駅</option>
+      <option value="tokyo">東京駅</option>
+      <option value="shinjuku">新宿駅</option>
+      <option value="yokohama">横浜駅(ATOS)</option>
       <option value="odawara">小田原駅</option>
       <option value="atami">熱海駅</option>
     </select>
@@ -66,8 +68,8 @@
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
       print('
- <table id="TTable' . $i . '">
-<caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
+ <table id="TATOSTable' . $i . '">
+<caption class="Ctitle" id="kn' . $i . '"></caption>
     <tr>
       <th width="28%" id="HName' . $i . '"></th>
       <th width="15%" id="HType' . $i . '"></th>

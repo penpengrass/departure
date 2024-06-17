@@ -3,7 +3,7 @@ var LiName = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
     LiName[td] = '';
 }
-function JRLimitedDevide(Tablenum) {
+function JRLimitedDevide(Tablenum, align = 'center') {
     for (var tr = 0; tr < Type[Tablenum].length; tr++) {
         if (Type[Tablenum][tr].includes('特急')) {
             var Limited = Type[Tablenum][tr].substr(Type[Tablenum][tr].indexOf('急') + 1);
@@ -15,7 +15,7 @@ function JRLimitedDevide(Tablenum) {
             }
             //console.log(LiName);
             //console.log(document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)));
-            document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = 'center';
+            document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = align;
             document.getElementById('TType' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited2;
             Type[Tablenum][tr] = Limited2;
         }
@@ -115,10 +115,15 @@ function JRNameDevide(T = Tablenum) {
     console.log(ShinNumber);
 }
 //特急などの列車名を取得
-function JRLimitedName(td, tr) {
+function JRLimitedName(td, tr, flag = 0) {
     var LimitedName = new Array(Type[td].length);
     var matches = new Array(Type[td].length);
-    LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
+    if (flag == 0) {
+        LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
+    } else if (flag == 1) {
+        LimitedName[tr] = Type[td][tr];
+    }
+    console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     if (matches[tr]) {
         console.log(matches[tr][0] + ":" + tr);
@@ -248,6 +253,21 @@ function allTwoLettersDistance(Line, Tab, LetterSpacing, Indent, Letters = 2) {
         }
     }
 }
+function FourLetters(td, tr, reduction, translate, Tab = 'TType',Letters=4) {
+    var dType = document.getElementById(Tab + (td + 1) + (tr + 1));
+    if (dType.textContent.length == Letters) {
+        dType.style.transform = "scaleX(" + reduction + ")" + "translate(-" + translate + "%,0%)";
+    }
+}
+function AllWordChange(td, tr, Tab, Before, After, line_flag, line) {
+    var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
+    if (LTab.textContent == Before) {
+        LTab.textContent = After;
+    }
+    if (line_flag == 1) {
+        line[td][tr] = After;
+    }
+}
 //路線記号追加
 function LineMarkAdd(td, Mark, backColor) {
     var newElement = document.createElement("span"); // p要素作成
@@ -310,6 +330,9 @@ function swapColumns(table, col1, col2) {
         const row = rows[i];
         const cell1 = row.cells[col1];
         const cell2 = row.cells[col2];
+        if (typeof cell2 == 'undefined') {
+            continue;
+        }
         const tempHtml = cell1.innerHTML;
         const tempId = cell1.id;
         const tempClass = cell1.className;

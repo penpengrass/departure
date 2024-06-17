@@ -39,9 +39,9 @@
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
-    <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
+    <button type="button" onclick="location.href='./index4_A.php'">JR西日本へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
     <button type="button" onclick="location.href='./index7_T.php'">JR名古屋駅へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>

@@ -69,7 +69,7 @@
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
     <button type="button" onclick="location.href='./index4_S2.php'">山陽新幹線主要駅へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php?station=ogaki'">大垣駅へ移動</button>
     <button type="button" onclick="location.href='./index9.php'">JR四国へ移動</button>
   </form>

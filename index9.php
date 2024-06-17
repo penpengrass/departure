@@ -38,6 +38,7 @@
     <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
     <button type="button" onclick="location.href='./index4.php?station=okayama'">岡山駅へ移動</button>
+    <button type="button" onclick="location.href='./index4_S2.php'">山陽新幹線へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>

@@ -47,3 +47,14 @@ function JRSanyoStaSele($Select)
                 <button type="submit" name="submit" class="staselection">' . $Select . '</button>
             </form>';
 }
+function JRWSStaSele($Select)
+{
+    echo '<span class="selecttext">新幹線駅</span>
+    <form action="PHP/files4_S.php" method="POST" id="selectstation">
+    <select name="staselect4">
+      <option value="hiroshima">広島駅</option>
+      <option value="hakata">博多駅</option>
+    </select>
+    <button type="submit" class="henko" name="submit">'.$Select .'</button>
+  </form>';
+}
