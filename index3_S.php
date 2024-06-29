@@ -14,7 +14,8 @@
   require_once('PHP/variable.php');
   $tablenum = 2;
   $OrderNum = 3;
-  //require_once('PHP/files6.php');
+  require('PHP/files3_S.php');
+  require('PHP/select3.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -29,17 +30,13 @@
     <p id="stationname">長野駅</p>
   </div>
   <!--駅選択部分-->
-  <form action="index6_S.php" method="POST">
-    <select name="stasele">
-      <option value="csv/JRE_S/nagano1.csv">長野駅</option>
-    </select>
-    <button type="submit" name="submit">駅変更</button>
-  </form>
+  <?php
+  JRATOS_SStaSele('駅変更')
+  ?>
   <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
-    <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
-    <button type="button" onclick="location.href='./index3.php'">ATOSへ移動</button>
+    <button type="button" onclick="location.href='./index3.php?station=utsunomiya'">宇都宮駅へ移動</button>
     <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6.php?station=nagano'">在来線へ移動</button>
@@ -92,7 +89,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">号数や臨時列車の有無，停車駅，番線は不正確</p>
+  <p id="supplement">号数や臨時列車の有無，停車駅，両数は不正確</p>
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>

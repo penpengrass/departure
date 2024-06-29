@@ -21,3 +21,12 @@ function TypeBackColorChange(td, tr, Type, Color) {
         document.getElementById('TType' + (td + 1) + (tr + 1)).style.backgroundColor = Color;
     }
 }
+function JREScolor(ltd, ltr, name, tag, color) {
+    var LName = document.getElementById('TType' + (ltd + 1) + (ltr + 1));
+    var Lcolor = document.getElementById('TName' + (ltd + 1) + (ltr + 1));
+    //console.log(LName.textContent);
+    if (LName.textContent == name) {
+        LName.innerHTML = tag;
+        Lcolor.style.color = color
+    }
+}

@@ -18,16 +18,17 @@ reverseLine(TNewrapid, 0, 1);
 reverseLine(Trapid, 0, 1);
 reverseLine(TSperapid, 0, 1);
 reverseLine(Cesubrapid, 0, 2);
+reverseLine(Cesubrapid, 1, 3);
 reverseLine(HomeOgaki, 0, 1);
 TNewrapid[1][TNewrapid[1].length - 1] = '岐阜から各駅';
 TNewrapid[1].push('関ケ原', '米原');
 Trapid[1][Trapid[1].length - 1] = '岐阜から各駅';
 Trapid[1].push('関ケ原', '米原');
 TSperapid[1][TSperapid[1].length - 1] = '岐阜から各駅';
-Cesubrapid[1][Cesubrapid[1].length - 1] = '岐阜から各駅';
-Cesubrapid[1].push('関ケ原', '米原');
+Cesubrapid[3][Cesubrapid[1].length - 1] = '岐阜から各駅';
+Cesubrapid[3].push('関ケ原', '米原');
 TSperapid[1].push('関ケ原', '米原');
-Cesubrapid[1][1] = '岡崎までの各駅';
+Cesubrapid[3][1] = '岡崎までの各駅';
 console.log(TNewrapid);
 Slimited = Shilimited.slice();
 let Sperapid = TSperapid.slice();
@@ -39,6 +40,7 @@ Jsubrapid = Cesubrapid.slice();
 limited = Shirasagi.slice();
 local = [['各駅にとまります']];
 console.log(Newrapid);
+console.log(Cesubrapid);
 var JRCeNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: limited, },
     Typeb: { type: "ﾎｰﾑﾗｲﾅｰ", Bcolor: red, color: white, detail: Jrapid, },

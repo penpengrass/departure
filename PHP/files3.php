@@ -49,5 +49,9 @@ if (isset($_GET['station'])) {
     $tablenum = 6;
     $OrderNum = 2;
     $station = '横浜駅';
+  }else if (Inisset('kuroiso')) {
+    $files[0] = 'csv/JRE/kuroiso1.csv';
+    $files[1] = 'csv/JRE/kuroiso2.csv';
+    $OrderNum = 2;
   }
 }

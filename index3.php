@@ -15,14 +15,11 @@
   require_once('PHP/variable.php');
   $files[0] = 'csv/JRE/Musashi_Tokyo.csv';
   $files[2] = 'csv/JRE/Musashi_Shinjuku.csv';
-  //$files[0] = 'csv/JRMu/ToTakasaki.csv';
-  //$files[2] = 'csv/JRMu/ToChiba.csv';
   $files[3] = 'csv/JRE/Musashi_Zushi.csv';
   $files[1] = 'csv/JRE/Musashi_shonan.csv';
   $files[4]='csv/JRE/Musashi_Ebina.csv';
-  //$files[3] = 'csv/JRE/ToKurihama.csv';
-  //$files[1] = 'csv/JRMu/ToOdawara.csv';
   require('PHP/files3.php');
+  require('PHP/select3.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -39,18 +36,10 @@
     <p id="stationname">広島駅</p>
   </div>
   <!--駅選択部分-->
-  <form action="PHP/files3.php" method="POST">
-    <select name="staselect3">
-      <option value="musashikosugi">武蔵小杉駅</option>
-      <option value="utsunomiya">宇都宮駅</option>
-      <option value="tokyo">東京駅</option>
-      <option value="shinjuku">新宿駅</option>
-      <option value="yokohama">横浜駅(ATOS)</option>
-      <option value="odawara">小田原駅</option>
-      <option value="atami">熱海駅</option>
-    </select>
-    <button type="submit" name="submit">駅変更</button>
-  </form>
+  <?php
+  JRATOSStaSele('駅変更');
+  JRATOS_SStaSele('駅変更');
+  ?>
   <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>

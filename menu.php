@@ -43,13 +43,13 @@
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td><span style="color:black;">武蔵小杉駅</span></td>
                 <td>横浜駅, <span style="color:black;">小田原駅</span>, <span style="color:red;">熱海駅</span>, 
-                <span style="color:black;">宇都宮駅</sp></td>
+                <span style="color:black;">宇都宮駅</span>, 黒磯駅</td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
                 <td><button type="button" onclick="location.href='./index3_S.php'">移動</button></td>
                 <td><span style="color:black;">長野駅</span></td>
-                <td></td>
+                <td>宇都宮駅</td>
             </tr>
             <tr>
                 <td>JR西日本</td>

@@ -260,23 +260,37 @@ if (station == '熱海駅') {
     JRLimitedDevide(4);
     JRLimitedDevide(5);
     flagmarkerase(4, 'TDes');
-    for (tr = 0; tr < orderNum; tr++) {
+    for (var tr = 0; tr < orderNum; tr++) {
         if (Des[5][tr].length > 6) {
             document.getElementById('TDes6' + (tr + 1)).style.transform = "scaleX(0.5)" + "translate(-40%,0%)";
         }
-    }
-    for (var tr = 0; tr < orderNum; tr++) {
-        if (Type[4][tr] == '特別快速') {
-            document.getElementById('TType5' + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-0%,0%)";
-        }
-    }
-    for (var tr = 0; tr < orderNum; tr++) {
-        if (Type[5][tr] == '特別快速') {
-            document.getElementById('TType6' + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-0%,0%)";
-        }
+        FourLetters(5, tr, 0.5, -40, 'TDes', 6);
+        FourLetters(0, tr, 0.7, 5);
+        FourLetters(1, tr, 0.7, 5);
+        FourLetters(4, tr, 0.7, 5);
+        FourLetters(5, tr, 0.7, 5);
     }
     NameColorchange(4, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
     NameColorchange(5, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
     comment.textContent = '両数表示は今後更新';
     allJRCIncludeColor();
+} else if (station == '黒磯駅') {
+    rowremove(0, 'HName', 'TName');
+    rowremove(0, 'HCars', 'TCars');
+    rowremove(1, 'HName', 'TName');
+    rowremove(1, 'HCars', 'TCars');
+    document.getElementById('HDes2').textContent = '';
+    document.getElementById('HDes1').textContent = '';
+    document.getElementById('HrNumber2').textContent = '';
+    document.getElementById('HrNumber1').textContent = '';
+    allTwoLettersDistance(Type, TType, 0.6, 0);
+    comment.textContent = '番線は不正確';
+    Bansenshow();
+    for (var td = 0; td < 2; td++) {
+        for (var tr = 0; tr < 2; tr++) {
+            if (Type[td][tr] != '') {
+                document.getElementsByClassName('bansen')[td + tr * 2].style.fontSize = '2vw';
+            }
+        }
+    }
 }
