@@ -70,9 +70,11 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
 <script type="text/javascript" src="js/function2.js"></script>
+<script type="text/javascript" src="js/function3.js"></script>
 <script type="text/javascript" src="js/functionColor.js"></script>
 <script type="text/javascript" src="js/functionDetail.js"></script>
 <script type="text/javascript" src="js/functionDetail_B.js"></script>
+<script type="text/javascript" src="js/detailfunction.js"></script>
 <script type="text/javascript" src="js/detailshow.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
 <script type="text/javascript" src="js/Tforshow7.js"></script>

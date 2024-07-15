@@ -42,3 +42,7 @@ caption{
     color:white;
     background-color: gray;
 }
+.CDetail{
+    color:greenyellow;
+    overflow: hidden;
+}

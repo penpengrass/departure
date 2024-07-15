@@ -22,7 +22,11 @@ function DetailReplace(td, tr, Before, After, flag = 0) {
     } else if (flag == 2) {
         LDetail = document.getElementById('TDetail' + (td + 1) + '' + (tr + 1));
         LDetail.textContent = LDetail.textContent.replace(Before, After);
-    } else {
+    } else if (flag == 3) {
+        LDetail = document.getElementById('TDetail' + (td + 1));
+        LDetail.textContent = LDetail.textContent.replace(Before, After);
+    }
+    else {
         LDetail = Detail[td][tr];
         Detail[td][tr] = Detail[td][tr].replace(Before, After);
     }
@@ -33,6 +37,17 @@ function DetailReplace_Set(td, tr, Line, Before, After) {
     if (Line.includes(number[td][tr])) {
         DetailReplace(td, tr, Before, After);
     }
+}
+//所要時間表示(実際の表示にはない, ここで表示を完結させる)
+function SpendingTime(td, tr, Destination, Minutes, className) {
+    if (tr != '') {
+        document.getElementById('TDetail' + (td + 1) + (tr + 1)).innerHTML
+            = Destination + 'までの所要時間は<span class=' + className + '>' + Minutes + '分</span>です';
+    } else if (tr == '') {
+        document.getElementById('TDetail' + (td + 1)).innerHTML
+            = Destination + 'までの所要時間は<span class=' + className + '>' + Minutes + '分</span>です';
+    }
+    Detail[td][0] = '';
 }
 //簡易版追加停車駅(表番号,種別の(),前の停車駅,追加停車駅,停車駅間の記号)，名古屋地区の特別停車限定
 function SpecialStop(td, last, Lstation, AddStation, distance, Indent) {

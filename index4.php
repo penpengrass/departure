@@ -151,8 +151,8 @@
   <script type="text/javascript" src="js/detailfunction.js"></script>
   <script type="text/javascript" src="js/functionDetail_B.js"></script>
   <script type="text/javascript" src="js/functionDetail.js"></script>
-  <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
   <script type="text/javascript" src="js/detailset/JRNadetailset.js"></script>
+  <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/alterdetail.js"></script>

@@ -3,19 +3,19 @@ var LiName = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
     LiName[td] = '';
 }
-function JRLimitedDevide(Tablenum, align = 'center') {
+function JRLimitedDevide(Tablenum, align = 'center', Tab = 'TName') {
     for (var tr = 0; tr < Type[Tablenum].length; tr++) {
         if (Type[Tablenum][tr].includes('特急')) {
             var Limited = Type[Tablenum][tr].substr(Type[Tablenum][tr].indexOf('急') + 1);
             var Limited2 = Type[Tablenum][tr].replace(Limited, '');
             //console.log(Tablenum + ':' + tr + ':' + Limited);
-            document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited;
+            document.getElementById(Tab + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited;
             if (Limited != '' && tr == 0) {
                 LiName[Tablenum] = Limited;
             }
             //console.log(LiName);
             //console.log(document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)));
-            document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = align;
+            document.getElementById(Tab + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = align;
             document.getElementById('TType' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited2;
             Type[Tablenum][tr] = Limited2;
         }
@@ -253,7 +253,7 @@ function allTwoLettersDistance(Line, Tab, LetterSpacing, Indent, Letters = 2) {
         }
     }
 }
-function FourLetters(td, tr, reduction, translate, Tab = 'TType',Letters=4) {
+function FourLetters(td, tr, reduction, translate, Tab = 'TType', Letters = 4) {
     var dType = document.getElementById(Tab + (td + 1) + (tr + 1));
     if (dType.textContent.length == Letters) {
         dType.style.transform = "scaleX(" + reduction + ")" + "translate(-" + translate + "%,0%)";
@@ -263,9 +263,9 @@ function AllWordChange(td, tr, Tab, Before, After, line_flag, line) {
     var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
     if (LTab.textContent == Before) {
         LTab.textContent = After;
-    }
-    if (line_flag == 1) {
-        line[td][tr] = After;
+        if (line_flag == 1) {
+            line[td][tr] = After;
+        }
     }
 }
 //路線記号追加

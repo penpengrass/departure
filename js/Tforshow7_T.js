@@ -87,7 +87,7 @@ for (var tr = 0; tr < orderNum; tr++) {
 }
 SpecialStop(0, '(幸)', '岡崎', '幸田', '・', 0.8);
 SpecialStop(0, '(三)', '蒲郡', '三河三谷', '・', 0.8);
-SpecialStop(0, '(稲)', '名古屋', '稲沢', '・', 0.8);
+SpecialStop(1, '(稲)', '名古屋', '稲沢', '・', 0.8);
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         TwoLetterDistance(td, tr, Type, TType, 1, 0.4);

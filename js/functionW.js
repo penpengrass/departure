@@ -21,6 +21,9 @@ function DesMiddle(td, tr, word) {
             //console.log(DesRight.textContent.length);
             DesRight.style.display = 'inline-block';
             DesRight.style.transform = "scaleX(0.75)" + "translate(-20%,0%)";
+        } else if (station == '糸崎駅') {
+            DesRight.style.display = 'inline-block';
+            DesRight.style.transform = "scaleX(0.65)" + "translate(-25%,0%)";
         }
         if (DesLeft.textContent.length > 2) {
             //console.log(DesRight.textContent.length);
@@ -48,9 +51,11 @@ function Maibara_Banner(td) {
             stationN = '大垣';
             Des[2][0] = Des_Banner[2];
             FDetail(Type[td - 1][0], JRCeNobj, Dtype[0], td - 1, 0, "・");
+            console.log(Dtype);
             DetailReplace(2, 0, '岐阜', '岐阜までの各駅', 1);
             Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
             Detail_contents[td - 1] = Detail[2][0];
+            console.log(Detail[2][0]);
             stationN = '米原';
         }
     }

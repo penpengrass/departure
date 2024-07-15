@@ -138,8 +138,8 @@ if (station == '松本駅') {
         JRE6ColorPlusName(4, tr, '横須賀線', 'blue', 1);
         JRE6ColorPlusName(5, tr, '湘南新宿ﾗｲﾝ', '#e21f26', 1);
         JRE6ColorPlusName(5, tr, '横須賀線', 'blue', 1);
-        JRE6ColorPlusName(4,tr, '特急', 'red');
-        JRE6ColorPlusName(5,tr, '特急', 'red');
+        JRE6ColorPlusName(4, tr, '特急', 'red');
+        JRE6ColorPlusName(5, tr, '特急', 'red');
     }
     for (var td = 0; td < 6; td++) {
         document.getElementsByClassName('HDes')[td].style.paddingRight = "1.5em";
@@ -157,8 +157,8 @@ if (station == '松本駅') {
 } else if (station == '新宿駅') {
     const table7 = document.getElementById("TLCDTable7");
     const table9 = document.getElementById("TLCDTable9");
-    JRLimitedDevide(4, 'left');
-    JRLimitedDevide(5, 'left');
+    JRLimitedDevide(4, 'left', 'WName');
+    JRLimitedDevide(5, 'left', 'WName');
     rowremove(4, 'Htopic', 'Ttopic');
     //rowremove(6, 'Htopic', 'Ttopic');
     //rowremove(8, 'Htopic', 'Ttopic');
@@ -188,6 +188,7 @@ if (station == '松本駅') {
     document.getElementById('Htopic9').style.width = '8%';
     for (var tr = 0; tr < 2; tr++) {
         ShihatsuMove(6, tr, 'Ttopic');
+        ShihatsuMove(7, tr, 'Ttopic');
         ShihatsuMove(8, tr, 'Ttopic');
         ShihatsuMove(9, tr, 'Ttopic');
         AllWordChange(3, tr, 'WType', 'かいじ', '特急', 1, Type);
@@ -196,12 +197,17 @@ if (station == '松本駅') {
         AllWordChange(6, tr, 'WType', '普通', '各駅停車', 1, Type);
         var yokosuka = ['逗子', '大船'];
         var utsunomiya = ['宇都宮', '小金井', '古河'];
+        console.log(Type[6][0]);
         if (Type[6][tr] != '') {
             document.getElementById('TName7' + (tr + 1)).textContent = '埼京線';
             JRE6ColorPlusName(6, tr, '', '#00AC9A');
         }
         if (Type[7][tr] != '') {
-            if (utsunomiya.includes(Des[7][tr])) {
+            if (Type[7][tr] != '普通' && Type[7][tr] != '快速' && Type[7][tr] != '特別快速') {
+                document.getElementById('WName8' + (tr + 1)).textContent = Type[7][tr].replace('始発', '');
+                document.getElementById('WType8' + (tr + 1)).textContent = '特急';
+                JRE6ColorPlusName(7, tr, '', 'red');
+            } else if (utsunomiya.includes(Des[7][tr])) {
                 document.getElementById('TName8' + (tr + 1)).textContent = '宇都宮線';
                 JRE6ColorPlusName(7, tr, '', 'orange');
             } else {
@@ -224,7 +230,7 @@ if (station == '松本駅') {
                 document.getElementById('WType10' + (tr + 1)).textContent = '特急';
                 document.getElementById('WName10' + (tr + 1)).textContent = Type[9][tr];
                 JRE6ColorPlusName(9, tr, '', 'red');
-            }else if (yokosuka.includes(Des[9][tr])) {
+            } else if (yokosuka.includes(Des[9][tr])) {
                 document.getElementById('WName10' + (tr + 1)).textContent = '横須賀線';
                 JRE6ColorPlusName(9, tr, '', 'blue');
             } else {
@@ -236,6 +242,9 @@ if (station == '松本駅') {
     for (var td = 2; td < 4; td++) {
         for (var tr = 0; tr < 2; tr++) {
             var LimitedType = document.getElementById('TType' + (td + 3) + (tr + 1));
+            var LimitedName = document.getElementById('WName' + (td + 3) + (tr + 1));
+            var LDes = document.getElementById('TDes' + (td + 3) + (tr + 1));
+            var LDes2 = document.getElementById('TDes' + (td + 5) + (tr + 1));
             document.getElementById('TType' + (td - 1) + (tr + 1)).style.color = 'yellow';
             if (Type[td][tr] != '') {
                 document.getElementById('TType' + (td + 1) + (tr + 1)).style.backgroundColor = 'red';
@@ -245,7 +254,16 @@ if (station == '松本駅') {
                 LimitedType.textContent = '特急';
                 JRE6ColorPlusName(td + 2, tr, '特急', 'red');
             }
-            FourLetters(td, tr, 0.5, 50, 'TDes',5);
+            if (LimitedName.textContent.length > 6) {
+                LimitedName.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
+            }
+            if (LDes.textContent.length > 4) {
+                LDes.style.transform = "scaleX(0.70)" + "translate(-20%,0%)";
+            }
+            if (LDes2.textContent.length > 4) {
+                LDes2.style.transform = "scaleX(0.90)" + "translate(-5%,0%)";
+            }
+            FourLetters(td, tr, 0.5, 50, 'TDes', 5);
             FourLetters(td, tr, 0.5, 50, 'WType');
             FourLetters(td + 4, tr, 0.75, 0, 'WType');
             FourLetters(td + 6, tr, 0.75, 0, 'WType');
