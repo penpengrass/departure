@@ -74,7 +74,7 @@
       <td class="shubetu' . $i . $j . '" ><p2 id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></span></td>
       <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="news-banner"><p3 class="news-banner__content"><p2 id="TDetail' . $i . $j . '"></p2></p3></td>
+      <td class="CDetail"><p3 class="news-banner__content"><p2 id="TDetail' . $i . $j . '"></p2></p3></td>
     </tr>
     ');
             }
@@ -97,7 +97,7 @@
     <script type="text/javascript" src="js/variable2.js"></script>
     <script type="text/javascript" src="js/function2.js"></script>
     <script type="text/javascript" src="js/typeColor.js"></script>
-    <script type="text/javascript" src="js/oimachi.js"></script>
+    <script type="text/javascript" src="js/Tforshow5.js"></script>
     <!--<script type="text/javascript" src="js/detailshow.js"></script>-->
 
 </body>

@@ -13,5 +13,9 @@ if (station == '二子玉川駅') {
             document.getElementById('TDetail3' + (oi + 1)).textContent = '二子新地 高津停車';
         }
     }
+    let Interval = TableMin[0][1] - TableMin[0][0];
+    if (Type[0][0] == '各停' && Type[0][1] == '急行' && Interval < 5) {
+        document.getElementById('TDetail11').textContent = '桜新町で急行の通過待ち';
+    }
 }
 allTwoLettersDistance(Des, TDes, 1, 1);
