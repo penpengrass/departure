@@ -40,7 +40,7 @@
     <button type="button" onclick="location.href='./index4.php?station=okayama'">岡山駅へ移動</button>
     <button type="button" onclick="location.href='./index4_S2.php'">山陽新幹線へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">長野駅へ移動</button>
+    <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
     <button type="button" onclick="location.href='./index10.php'">JR九州へ移動</button>
   </form>
@@ -58,7 +58,7 @@
       <td width="10%" class="shubetu" id="TType' . $i . $j . '" colspan="1"><span id="WType' . $i . $j . '"></span></td>
       <td width="40%" class="CName" id="TName' . $i . $j . '" colspan="5"></td>
       <td width="20%" class="CTime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td width="20%" class="Destination"><p2 id="TDes' . $i . $j . '"></p2></td>
+      <td width="20%" class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></p2></td>
       <td width="10%" class="railnumber" id="TNum' . $i . $j . '"></td>
     </tr>
     ');

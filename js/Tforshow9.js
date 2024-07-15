@@ -71,5 +71,6 @@ for (var td = 0; td < Tablenum; td++) {
             dName.style.fontSize = '15px';
             dName.style.fontWeight = '800px';
         }
+        TwoLetterDistance(td, tr, Des, TDes, 1,0.6);   
     }
 }
