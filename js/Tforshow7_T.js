@@ -17,10 +17,15 @@ for (var tr = 0; tr < orderNum; tr++) {
             Detail[1][tr] = Detail[1][tr].slice(0, -1);
             document.getElementById('TDetail' + (2) + '' + (tr + 1)).textContent = Detail[1][tr];
         }
+        if (Nagahama.includes(number[1][tr])) {
+            console.log(number[1][tr]);
+            DetailReplace(1, tr, '米原', '米原・長浜', 2);
+        }
     }
 }
 td_detail++;
 for (var tr = 0; tr < orderNum; tr++) {
+    var ShinanoNumber = JRLimitedNumber(2, tr);
     if (Type[2][tr].includes('特急') || Type[2][tr].includes('ﾎｰﾑﾗｲﾅｰ')) {
         FDetail(Type[2][tr], JRChNobj, Dtype[0], 2, tr, "・");
         if (Detail[2][tr].slice(-1) == '・') {
@@ -28,6 +33,14 @@ for (var tr = 0; tr < orderNum; tr++) {
             Detail[2][tr] = Detail[2][tr].slice(0, -1);
             document.getElementById('TDetail' + (3) + '' + (tr + 1)).textContent = Detail[2][tr];
         }
+        console.log(number);
+        //特急しなのの停車駅変更
+        DetailReplace_Set(2, tr, Kanayama, '千種', '金山・千種');
+        DetailReplace_Set(2, tr, Ena, '中津川', '恵那・中津川');
+        DetailReplace_Set(2, tr, Nagiso, '中津川', '中津川・南木曽');
+        DetailReplace_Set(2, tr, Agematsu, '木曽福島', '上松・木曽福島');
+        DetailReplace_Set(2, tr, Akashina, '松本', '松本・明科');
+        DetailReplace_Set(2, tr, Hijirikogen, '篠ノ井', '聖高原・篠ノ井');
     }
 }
 td_detail++;
@@ -112,7 +125,7 @@ for (let te = 0; te < Tablenum; te++) {
             document.getElementById('WType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.60)" + "translate(-15%,0%)";
             //document.getElementsByClassName('shubetu' + (te + 1) + (tr + 1))[0].style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
         } else if (Type[te][tr].length > 8) {
-            document.getElementById('WType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.65)" + "translate(-15%,0%)";
+            document.getElementById('WType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.65)" + "translate(-25%,0%)";
         } else if (Type[te][tr].length > 7) {
             document.getElementById('WType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.75)" + "translate(-12%,0%)";
         }
@@ -123,5 +136,5 @@ for (let te = 0; te < Tablenum; te++) {
         }
     }
 }
-
+holiday_F(station);
 

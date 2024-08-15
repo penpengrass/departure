@@ -1,6 +1,6 @@
 function allJRC_Reduction() {
     for (let te = 0; te < Tablenum; te++) {
-        for (let tr = 0; tr < orderNum; tr++) {
+        for (let tr = 0; tr < Tablenums[te]; tr++) {
             //console.log(Type[te][tr]);
             TypeColorChange(te, tr, '快速', 'orange');
             TypeColorChange(te, tr, '特急', 'red');
@@ -20,22 +20,19 @@ function allJRC_Reduction() {
             } else if (Type[te][tr].length > 7) {
                 document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-0%,0%)";
             }
+            TwoLetterDistance(te, tr, Type, TType, 1, 1);
+            TwoLetterDistance(te, tr, Des, TDes, 1, 1);
         }
     }
 }
-for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < orderNum; tr++) {
-        TwoLetterDistance(td, tr, Type, TType, 1, 1);
-        TwoLetterDistance(td, tr, Des, TDes, 1, 1);
-    }
-}
+
 if (station == '大垣駅') {
     if (Type[0][0].includes('特急')) {
         FDetail(Type[0][0], JRCeNobj, Dtype[0], 0, 0, "・");
         console.log(number[0]);
         if (Nagahama.includes(number[0])) {
             console.log(number[0]);
-            Detail[0][0]+='長浜';
+            Detail[0][0] += '長浜';
             //DetailReplace(0,'', '米原', '米原・長浜', 3);
         }
     } else if (Type[0][0] != '') {
@@ -61,7 +58,7 @@ if (station == '岐阜駅') {
         FDetail(Type[0][0], JRCeNobj, Dtype[0], 0, 0, "・");
         if (Nagahama.includes(number[0])) {
             console.log(number[0]);
-            Detail[0][0]+='長浜';
+            Detail[0][0] += '長浜';
             //DetailReplace(0,'', '米原', '米原・長浜', 3);
         }
     } else if (Type[0][0] != '') {
@@ -85,14 +82,28 @@ if (station == '岐阜駅') {
     SpecialStop(2, '(幸)', '岡崎', '幸田', '・', 0.8);
     SpecialStop(2, '(三)', '蒲郡', '三河三谷', '・', 0.8);
 }
-allJRC_Reduction();
 if (station == '豊橋駅') {
-    document.getElementById('Detail_Banner1').remove();
-    document.getElementById('Detail_Banner2').remove();
+    AllWordReplace(1, 0, 'TType', '特急', '特急(一部特別車)', 1, Type);
+    AllWordReplace(1, 0, 'TType', '快特', '快特(一部特別車)', 1, Type);
+    AllWordReplace(1, 1, 'TType', '特急', '特急(一部特別車)', 1, Type);
+    AllWordReplace(1, 1, 'TType', '快特', '快特(一部特別車)', 1, Type);
+    FDetail(Type[3][0], JRCeNobj, Dtype[3], 3, 0, "・");
+    console.log(Detail[3][0]);
     AllWordChange(1, 0, 'TDes', '名鉄名古屋', '名古屋', 1, Des);
     FDetail(Type[1][0], Meiobj, Dtype[1], 1, 0, "・");
     Detail[1][0] = Detail[1][0].replace('須ケ口・', '');
     AllWordChange(1, 0, 'TDes', '名古屋', '名鉄名古屋', 1, Des);
+    SpecialStop(1, '(須)', '名古屋', '須ケ口', '・', 0.8);
+    SpecialStop(1, '(新)', '東岡崎', '新安城', '・', 0.8);
+    SpecialStop(1, '(国)(伊)', '豊橋', '伊奈・国府', '・', 0.8);
+    SpecialStop(1, '(国)', '豊橋', '国府', '・', 0.8);
+    SpecialStop(1, '(伊)', '豊橋', '伊奈', '・', 0.8);
+    SpecialStop(3, '(稲)', '名古屋', '稲沢', '・', 0.8);
+    SpecialStop(3,'(幸)','蒲郡','幸田','・',0.8);
+    SpecialStop(3, '(三)', '豊橋', '三河三谷', '・', 0.8);
+    document.getElementById('Detail_Banner1').remove();
+    document.getElementById('Detail_Banner2').remove();
+    Tablenums=[3,2,3,3];
     LastLetterRemove(1, 0, '・');
     if (Type[1][0] == '急行(東岡崎から準急)') {
         DetailReplace(1, 0, '東岡崎', '東岡崎・矢作橋', 1);
@@ -105,7 +116,6 @@ if (station == '豊橋駅') {
         SpendingTime(2, '', '浜松', 'およそ35', 'orange');
         //document.getElementById('TDetail3').innerHTML = '浜松までの所要時間は<span class="orange">およそ35分</span>です';
     }
-    Detail[3][0] = FDetail(Type[3][0], JRCeNobj, Dtype[3], 3, 0, "・");
     LastLetterRemove(3, 0, '・');
     if (Detail[3][0] == '各駅にとまります') {
         Detail[3][0] = Des[3][0] + 'までの各駅';
@@ -117,6 +127,10 @@ if (station == '豊橋駅') {
     }
     TypeColorChange2(3, 'Detail_Type', '特急', 'red');
     TypeColorChange2(3, 'Detail_Type', '快速', 'orange');
+}
+allJRC_Reduction();
+if (holiday_able == 1) {
+    holiday_F(station);
 }
 //index7.phpではDetail[]に入れた後フォーマットに停車駅を入れる。
 if (TokaiDetailflag == 1) {

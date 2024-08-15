@@ -61,7 +61,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">停車駅や番線は不正確</p>
+  <p id="supplement">停車駅や番線は不正確<br></p>
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>

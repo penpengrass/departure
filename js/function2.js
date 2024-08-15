@@ -261,13 +261,25 @@ function FourLetters(td, tr, reduction, translate, Tab = 'TType', Letters = 4) {
 }
 function AllWordChange(td, tr, Tab, Before, After, line_flag, line) {
     var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
-    if (LTab.textContent == Before) {
+    if (LTab.textContent==Before) {
         LTab.textContent = After;
         if (line_flag == 1) {
             line[td][tr] = After;
         }
     }
 }
+function AllWordReplace(td, tr, Tab, keyword, AfterWord, line_flag, line) {
+    var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
+    if (LTab.textContent.includes(keyword)) {
+        LTab.textContent = LTab.textContent.replace(keyword,AfterWord);
+        if (line_flag == 1) {
+            line[td][tr] = line[td][tr].replace(keyword,AfterWord);
+        }
+    }
+    console.log(Type[td][tr]+'td='+td+'tr='+tr);
+    console.log(LTab.textContent);
+}
+
 //路線記号追加
 function LineMarkAdd(td, Mark, backColor) {
     var newElement = document.createElement("span"); // p要素作成

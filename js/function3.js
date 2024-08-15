@@ -32,7 +32,7 @@ function DetailReplace(td, tr, Before, After, flag = 0) {
     }
 
 }
-//新幹線の追加停車
+//新幹線や有料特急の追加停車
 function DetailReplace_Set(td, tr, Line, Before, After) {
     if (Line.includes(number[td][tr])) {
         DetailReplace(td, tr, Before, After);
@@ -53,13 +53,14 @@ function SpendingTime(td, tr, Destination, Minutes, className) {
 function SpecialStop(td, last, Lstation, AddStation, distance, Indent) {
     for (var tr = 0; tr < orderNum; tr++) {
         //console.log(Detail);
+        console.log(TokaiDetailflag);
         var LType = document.getElementById('TType' + (td + 1) + '' + (tr + 1));
-        if (tr > 0 && TokaiDetailflag == 1) {
+        if (tr > 0 && (TokaiDetailflag == 1 || TokaiDetailflag == 2)) {
             LType.textContent = LType.textContent.replace(last, '');
             Type[td][tr] = Type[td][tr].replace(last, '');
             continue;
         }
-        if (TokaiDetailflag == 1) {
+        if (TokaiDetailflag == 1 || TokaiDetailflag == 2) {
             var LDetail = document.getElementById('TDetail' + (td + 1));
         } else {
             var LDetail = document.getElementById('TDetail' + (td + 1) + '' + (tr + 1));
@@ -72,9 +73,9 @@ function SpecialStop(td, last, Lstation, AddStation, distance, Indent) {
             console.log(matches[2]);
             if (Type[td][tr].endsWith(last)) {
                 var LineDetail = Detail[td][tr];
-                console.log(station + ':' + Lstation);
+                console.log(Detail[td][tr] + 'td=' + td + 'tr=' + tr);
                 if (station == Lstation + '駅') {
-                    LineDetail = AddStation + '・' + LineDetail;
+                    LineDetail = AddStation + distance + LineDetail;
                 } else if (Detail[td][tr].includes(Lstation)) {
                     LineDetail = LineDetail.replace(Lstation, Lstation + distance + AddStation);
                 }

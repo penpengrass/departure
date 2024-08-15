@@ -77,6 +77,8 @@ $js_array .= ']';
   console.log(fileNum + "←ファイルの数");
   let filetablegap = <?php echo $filetablegap; ?>;
   let holidayflag = <?php echo $holidayflag; ?>;
+  let holiday_able = <?php echo $holiday_able; ?>;
+  let holiday_correspond = 0;
   var TT = <?php echo $js_array; ?>;
   if (filetablegap > 0) {
     //TT[4] = TT[0];

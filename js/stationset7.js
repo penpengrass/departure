@@ -29,11 +29,15 @@ if (station == '豊橋駅') {
     limitednumber(TT[1], 2, 'ホームライナー大垣');
 } else if (station == '名古屋駅') {
     detailflag = 2;
+    TokaiDetailflag = 3;
     TableTitle = ['東海道線(豊橋・武豊方面)', '東海道線(岐阜・大垣方面)', '中央線(多治見・中津川方面)', '関西線(四日市・松阪方面)', '高山線(美濃太田・高山方面)'];
     TrainNameDevide('特急ひだ', 1, 4);
     limitednumber(TT[2], 1, '特急しなの');
     limitednumber(TT[3], 1, '特急南紀');
-    limitednumber(TT[3], 1, '快速みえ');
+    limitedjustnumber(TT[3], 1, '快速みえ');
     limitednumber(TT[1], 1, '特急しらさぎ');
     limitednumber(TT[4], 1, '特急ひだ');
+}
+if (TokaiDetailflag == 1) {
+    detailLength_one = 1;
 }

@@ -107,12 +107,13 @@
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
                 <td><span style="color:black;">浜松駅</span></td>
-                <td><span style="color:black;">沼津駅</span>, <span style="color:black;">静岡駅</span>, <span style="color:black;">豊橋駅</span>, <span style="color:black;">岐阜駅</span>, <span style="color:black;">大垣駅</span></td>
+                <td><span style="color:black;">沼津駅</span>, <span style="color:black;">静岡駅</span>, <span style="color:red;">豊橋駅</span>, 
+                <span style="color:red;">岐阜駅</span>, <span style="color:red;">大垣駅</span></td>
             </tr>
             <tr>
                 <td>JR東海LCD</td>
                 <td><button type="button" onclick="location.href='./index7_T.php'">移動</button></td>
-                <td><span style="color:black;">名古屋駅</span></td>
+                <td><span style="color:red;">名古屋駅</span></td>
                 <td>なし</td>
             </tr>
             <tr>
@@ -155,7 +156,7 @@
         <h1 class="Cheader">今後追加する駅</h1>
         <li>新幹線 静岡駅 米原駅 岡山駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
-        <li>JR東日本 赤羽駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
+        <li>JR東日本 赤羽駅 千葉駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 新山口駅</li>
         <li>JR九州 鳥栖駅</li>

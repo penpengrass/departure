@@ -13,6 +13,15 @@
   $files[3] = 'csv/JRC/nagoya4.csv';
   $files[4] = 'csv/JRC/nagoya2.csv';
   require_once('PHP/variable.php');
+  if($holidayflag==1){
+    $files[0] = 'csv/JRC/nagoya1_H.csv';
+    $files[1] = 'csv/JRC/nagoya2_H.csv';
+    $files[2] = 'csv/JRC/nagoya3_H.csv';
+    $files[3] = 'csv/JRC/nagoya4_H.csv';
+    $files[4] = 'csv/JRC/nagoya2_H.csv';
+    $holiday_able = 1;
+  }
+  
   $tablenum = 5;
   //$column = 3;
   require_once('PHP/table7.php');
@@ -82,7 +91,7 @@
           <td class="railnumber" id="TNum' . $i . $j . '"></td>
         </tr>
         <tr>
-        <td class="Cdetail" width="10%">停車駅:</td>
+        <td class="Cdetail" width="10%" id="TDetailtitle' . $i . $j . '">停車駅:</td>
         <td colspan="5" width="90%" class="Cdetail"><p3 id="TDetail' . $i . $j . '" class="news-banner__content"></p3></td>
         </tr>
         ');
@@ -97,7 +106,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">番線や特別停車は不正確</p>
+  <p id="supplement">番線や停車駅は不正確<br></p>
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>
@@ -108,6 +117,7 @@
 <script type="text/javascript" src="js/function2.js"></script>
 <script type="text/javascript" src="js/function3.js"></script>
 <script type="text/javascript" src="js/functionDetail.js"></script>
+<script type="text/javascript" src="js/detailfunction.js"></script>
 <script type="text/javascript" src="js/detailshow.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
 <script type="text/javascript" src="js/Tforshow7_T.js"></script>
