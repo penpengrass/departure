@@ -67,7 +67,7 @@
         print('
     <tr id="TLine' . $i . $j . '">
       <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><p2 id="WType' . $i . $j . '"></p2></td>
-      <td class="name" id="TName' . $i . $j . '"></td>
+      <td class="name" id="TName' . $i . $j . '"><p2 id="WName' . $i . $j . '"></p2></td>
       <td class="Ctime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>

@@ -61,9 +61,9 @@
       print('
         <th width="15%">時刻</th>
       <th width="20%">列車名</th>
-      <th width="10%">番号</th>
-      <th width="30%" class="HDes">行先</th>
-      <th width="5%">番線</th>
+      <th width="12%">番号</th>
+      <th width="25%" class="HDes">行先</th>
+      <th width="8%">番線</th>
       <th width="20%">記事</th>
     </tr>
   ');
@@ -71,8 +71,8 @@
         print('
     <tr id="TLine' . $i . $j . '">
     <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><p2 id="WType' . $i . $j . '"></p2></td>
-      <td class="name" id="TName' . $i . $j . '"></td>
+      <td class="shubetu" id="TType' . $i . $j . '"><p2 id="WType' . $i . $j . '"></p2></td>
+      <td class="name" id="TName' . $i . $j . '"><p2 id="WName' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>
       <td class="topic" id="Ttopic' . $i . $j . '"></td>
@@ -89,7 +89,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">臨時列車の有無や号数，番線は不正確 2024年3月改正後</p>
+  <p id="supplement">臨時列車の有無や号数，番線は不正確 </p>
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>
@@ -99,6 +99,7 @@
 <script type="text/javascript" src="js/variable2.js"></script>
 <script type="text/javascript" src="js/function2.js"></script>
 <script type="text/javascript" src="js/functionE2.js"></script>
+<script type="text/javascript" src="js/functionColor.js"></script>
 <script type="text/javascript" src="js/Tforshow6_S.js"></script>
 </body>
 

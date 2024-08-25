@@ -11,6 +11,8 @@ let TDes = new Array(Tablenum);
 let TType = new Array(Tablenum);
 let TName = new Array(Tablenum);
 let WType = new Array(Tablenum);
+let WName=new Array(Tablenum);
+let BType = new Array(Tablenum);
 let TDetail = new Array(Tablenum);
 let Detail = new Array(Tablenum);
 let TableHour = new Array(Tablenum);
@@ -18,6 +20,7 @@ let TableMin = new Array(Tablenum);
 let doBNumber = new Array(Tablenum);
 let doType = new Array(Tablenum);
 let Connecting = new Array(Tablenum);
+let Cars=new Array(Tablenum);
 const table = new Array(Tablenum);
 var ShinNumber = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
@@ -33,7 +36,7 @@ for (let tr = 0; tr < Tablenum; tr++) {
     table[tr] = document.getElementById("TTable" + (tr + 1));
     if (company == '近鉄' || detailflag == 2) {
         Detail[tr] = new Array(Tablenums[tr]);
-    } else if (Indexfile == 'index9.php' || Indexfile == 'index8.php' || Indexfile == 'index4.php' || Indexfile == 'index7.php') {
+    } else if (detailLength_one = 1 || detailLength_one == 2) {
         Detail[tr] = new Array(2);
     }
     TName[tr] = new Array(Tablenums[tr]);
@@ -44,6 +47,9 @@ for (let tr = 0; tr < Tablenum; tr++) {
     TableHour[tr] = new Array(Tablenums[tr]);
     TableMin[tr] = new Array(Tablenums[tr]);
     WType[tr] = new Array(Tablenums[tr]);
+    WName[tr]=new Array(Tablenums[tr]);
+    BType[tr] = new Array(Tablenums[tr]);
+    Cars[tr]=new Array(Tablenums[tr]);
 }
 //console.log(ShinNumber);
 //外側は表の数，内側はオーダーの数で種別，行先，種別の場所(色分けのため)，詳細表示の場所を取得
@@ -66,8 +72,11 @@ for (var td = 0; td < Tablenum; td++) {
         Tshubetu[td][tr] = 'shubetu' + (td + 1) + '' + (tr + 1);
         TType[td][tr] = 'TType' + (td + 1) + '' + (tr + 1);
         TName[td][tr] = 'TName' + (td + 1) + '' + (tr + 1);
+        WName[td][tr] = 'WName' + (td + 1) + '' + (tr + 1);
         TDes[td][tr] = 'TDes' + (td + 1) + '' + (tr + 1);
         TDetail[td][tr] = 'TDetail' + (td + 1) + '' + (tr + 1);
         WType[td][tr] = 'WType' + (td + 1) + '' + (tr + 1);
+        BType[td][tr] = 'BType' + (td + 1) + '' + (tr + 1);
     }
 }
+console.log(Cars);

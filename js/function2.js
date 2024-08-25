@@ -89,16 +89,17 @@ function JRNameDevide(T = Tablenum) {
                 console.log(matches[tr][3] + ":" + tr);
                 console.log(matches[tr][1] + matches[tr][1].length);
                 var Mlength = 7;
-                if (Indexfile == 'index6_S.php' || Indexfile == 'index3_S.php') {
+                if (Indexfile == 'index6_S.php' || Indexfile == 'index3_S.php' || Indexfile == 'index6_Chiba.php') {
                     Mlength = 9;
                 }
+                console.log(matches[tr][1].length);
                 if (matches[tr][1].length < Mlength) {
                     console.log(matches[tr][1]);
-                    document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][1];
+                    document.getElementById('WType' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][1];
                     if (NonGouflag == 1) {
-                        document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2];
+                        document.getElementById('WName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2];
                     } else {
-                        document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2] + '号';
+                        document.getElementById('WName' + (td + 1) + '' + (tr + 1)).textContent = matches[tr][2] + '号';
                     }
                     Type[td][tr] = matches[tr][1];
                     if (Type[td][tr].includes('特急')) {
@@ -108,7 +109,7 @@ function JRNameDevide(T = Tablenum) {
                 console.log(ShinNumber);
                 ShinNumber[td][tr] = matches[tr][2];
             } else {
-                console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');
+                //console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');
             }
         }
     }
@@ -123,7 +124,7 @@ function JRLimitedName(td, tr, flag = 0) {
     } else if (flag == 1) {
         LimitedName[tr] = Type[td][tr];
     }
-    console.log(LimitedName[tr]);
+    //console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     if (matches[tr]) {
         console.log(matches[tr][0] + ":" + tr);
@@ -141,7 +142,7 @@ function JRLimitedNumber(td, tr, Tab = 'TType') {
     var matches = new Array(Type[td].length);
     var matches2 = new Array(Type[td].length);
     LimitedName[tr] = document.getElementById(Tab + (td + 1) + '' + (tr + 1)).textContent;
-    console.log(LimitedName[tr]);
+    //console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     matches2[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
     if (matches[tr]) {
@@ -261,7 +262,7 @@ function FourLetters(td, tr, reduction, translate, Tab = 'TType', Letters = 4) {
 }
 function AllWordChange(td, tr, Tab, Before, After, line_flag, line) {
     var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
-    if (LTab.textContent==Before) {
+    if (LTab.textContent == Before) {
         LTab.textContent = After;
         if (line_flag == 1) {
             line[td][tr] = After;
@@ -271,12 +272,12 @@ function AllWordChange(td, tr, Tab, Before, After, line_flag, line) {
 function AllWordReplace(td, tr, Tab, keyword, AfterWord, line_flag, line) {
     var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
     if (LTab.textContent.includes(keyword)) {
-        LTab.textContent = LTab.textContent.replace(keyword,AfterWord);
+        LTab.textContent = LTab.textContent.replace(keyword, AfterWord);
         if (line_flag == 1) {
-            line[td][tr] = line[td][tr].replace(keyword,AfterWord);
+            line[td][tr] = line[td][tr].replace(keyword, AfterWord);
         }
     }
-    console.log(Type[td][tr]+'td='+td+'tr='+tr);
+    console.log(Type[td][tr] + 'td=' + td + 'tr=' + tr);
     console.log(LTab.textContent);
 }
 
