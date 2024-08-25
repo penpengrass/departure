@@ -112,8 +112,8 @@
             <tr>
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
-                <td><span style="color:black;">浜松駅</span></td>
-                <td><span style="color:black;">沼津駅</span>, <span style="color:black;">静岡駅</span>, <span style="color:red;">豊橋駅</span>, 
+                <td><span style="color:red;">浜松駅</span></td>
+                <td><span style="color:red;">沼津駅</span>, <span style="color:red;">静岡駅</span>, <span style="color:red;">豊橋駅</span>, 
                 <span style="color:red;">岐阜駅</span>, <span style="color:red;">大垣駅</span></td>
             </tr>
             <tr>
@@ -166,7 +166,7 @@
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 新山口駅</li>
-        <li>JR九州 鳥栖駅</li>
+        <li>JR九州 鳥栖駅 熊本駅 鹿児島中央駅</li>
         <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
         <li>JR東海 中津川駅</li>
         <h1 class="Cheader">今後対応予定</h1>

@@ -7,9 +7,15 @@
   <link rel="stylesheet" href="css/styleC.css">
   <link rel="stylesheet" href="css/banner.css">
   <?php
-  $files[0] = 'csv/JRC/hamamatsu1.csv';
-  $files[1] = 'csv/JRC/hamamatsu2.csv';
   require_once('PHP/variable.php');
+  if ($holidayflag == 1) {
+    $files[0] = 'csv/JRC/hamamatsu1_H.csv';
+    $files[1] = 'csv/JRC/hamamatsu2_H.csv';
+  }else{
+    $files[0] = 'csv/JRC/hamamatsu1.csv';
+    $files[1] = 'csv/JRC/hamamatsu2.csv';
+  }
+  $holiday_able = 1;
   require_once('PHP/table7.php');
   require('PHP/files7.php');
   require_once('getCSV.php');

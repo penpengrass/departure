@@ -16,8 +16,14 @@ if (isset($_POST['staselect7'])) {
 }
 if (isset($_GET['station'])) {
   if (Inisset('hamamatsu')) {
-    $files[0] = 'csv/JRC/hamamatsu1.csv';
-    $files[1] = 'csv/JRC/hamamatsu2.csv';
+    if ($holidayflag == 1) {
+      $files[0] = 'csv/JRC/hamamatsu1_H.csv';
+    $files[1] = 'csv/JRC/hamamatsu2_H.csv';
+    }else{
+      $files[0] = 'csv/JRC/hamamatsu1.csv';
+      $files[1] = 'csv/JRC/hamamatsu2.csv';
+    }
+    $holiday_able = 1;
   } else if (Inisset('toyohashi')) {
     if ($holidayflag == 1) {
       $files[0] = 'csv/JRC/toyohashi1_H.csv';
@@ -31,14 +37,27 @@ if (isset($_GET['station'])) {
     $files[3] = 'csv/JRC/toyohashi4.csv';
     }
     $tablenum = 4;
-    $holiday_able=1;
+    $holiday_able = 1;
   } else if (Inisset('shizuoka')) {
-    $files[0] = 'csv/JRC/shizuoka1.csv';
-    $files[1] = 'csv/JRC/shizuoka2.csv';
+    if ($holidayflag == 1) {
+      $files[0] = 'csv/JRC/shizuoka1.csv';
+      $files[1] = 'csv/JRC/shizuoka2.csv';
+    }else{
+      $files[0] = 'csv/JRC/shizuoka1.csv';
+      $files[1] = 'csv/JRC/shizuoka2.csv';
+    }
+    $holiday_able = 1;
   } else if (Inisset('numazu')) {
+    if ($holidayflag == 1) {
+      $files[0] = 'csv/JRC/numazu1_H.csv';
+      $files[1] = 'csv/JRC/numazu2_H.csv';
+      $files[2] = 'csv/JRC/numazu3_H.csv';
+    }else{  
     $files[0] = 'csv/JRC/numazu1.csv';
     $files[1] = 'csv/JRC/numazu2.csv';
     $files[2] = 'csv/JRC/numazu3.csv';
+    }
+    $holiday_able = 1;
     $tablenum = 3;
   } else if (Inisset('gifu')) {
     if ($holidayflag == 1) {
