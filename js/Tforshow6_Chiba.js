@@ -58,7 +58,7 @@ for (var td = 0; td < 6; td++) {
             L_WType.style.transform = "scaleX(0.40)" + "translate(-75%,0%)";
         }
     }
-    flagmarkerase(td, 'TDes');
+    flagmarkerase(td, 'WDes');
     flagmarkerase(td, 'WType');
 }
 setInterval(allswitchChiba, 5000);

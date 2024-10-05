@@ -35,17 +35,22 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
     //配列内の駅探索
     let DLine_in = 0;
     let Dflag = 0;//行先が違う配列の場合に使いたい
-    //console.log(Dtype);
-    //console.log(Type_Line);
-    //console.log(StationInLine('奈良', Type_Line, Dtype[td_detail]));
+    console.log(Dtype);
+    /*console.log(td_detail);
+    console.log(Dtype);
+    console.log(Dtype[td_detail]);*/
+    console.log(Type_Line);
+    //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
     while (Sentence == '' && Dtype[td_detail] < 10 && Dflag < 200) {
         DLine_in = 0;
         //console.log("td_detail=" + td_detail);
-        //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
+        console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
+        Dflag++;
+        console.log(Dflag);
         if (StationInLine(stationN, Type_Line, Dtype[td_detail]) == -1) {
-            //console.log("DetailDecideで出発駅がない(外側)" + stationN + Des);
+            console.log("DetailDecideで出発駅がない(外側)" + stationN + Des);
             if (Dtype[td_detail] > Type_Line.length) {
-                //console.log("詳細表示は書けない");
+                console.log("詳細表示は書けない");
                 break;
             } else {
                 console.log("出発駅がないのでDtypeをプラスする");
@@ -64,7 +69,7 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
             //console.log("出発駅を検索:" + Type_Line[Dtype[td_detail]][DLine_in] + ":" + DLine_in);
             DLine_in++;
             if (Type_Line[Dtype[td_detail]].length <= DLine_in) {//配列内に出発駅がない場合
-                //console.log("DetailDecideで出発駅がない(内側)" + stationN);
+                console.log("DetailDecideで出発駅がない(内側)" + stationN);
                 break;
             }
         }
@@ -100,7 +105,7 @@ let AType = "";
 var DetailLine = '';
 //3つまとめて種別に案内を対応させる　変える余地ありそう(種別ごとに関数を作るとか)
 function FDetail(Utype, Uobj, n, td, tr, distance) {
-    console.log(Utype + ':' + td + ':' + tr);
+    //console.log(Utype + ':' + td + ':' + tr);
     //console.log(Uobj.Typeb.detail);
     if (Utype == '') {
         DetailLine = '';
@@ -122,7 +127,7 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
             DetailLine = Uobj.Typec.detail[n];
         }
     } else if (Utype.startsWith(Uobj.Typed.type)) {
-        console.log(Utype);
+        //console.log(Utype);
         if (Indexfile == 'index2.php') {
             DetailLine = Uobj.Typed.detail[n];
             console.log(DetailLine);
@@ -130,14 +135,14 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
             DetailLine = DetailDecide(Uobj.Typed.detail, td, Des[td][tr], AType, distance);
         }
     } else if (Utype.startsWith(Uobj.Typee.type)) {
-        console.log(Utype);
+        //console.log(Utype);
         if (Indexfile == 'index2.php') {
             DetailLine = Uobj.Typee.detail[n];
         } else {
             DetailLine = DetailDecide(Uobj.Typee.detail, td, Des[td][tr], AType, distance);
         }
     } else if (Utype.startsWith(Uobj.Typef.type)) {
-        if (Indexfile == 'index7_T.php' || Indexfile == 'index2.php' || Indexfile == 'index7.php') {
+        if (Uobj.Typef.type != '普通' && Uobj.Typef.type != '各駅停車') {
             DetailLine = DetailDecide(Uobj.Typef.detail, td, Des[td][tr], AType, distance);
         } else {
             DetailLine = "各駅にとまります";

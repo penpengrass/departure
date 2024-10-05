@@ -40,8 +40,8 @@ if (isset($_GET['station'])) {
     $holiday_able = 1;
   } else if (Inisset('shizuoka')) {
     if ($holidayflag == 1) {
-      $files[0] = 'csv/JRC/shizuoka1.csv';
-      $files[1] = 'csv/JRC/shizuoka2.csv';
+      $files[0] = 'csv/JRC/shizuoka1_H.csv';
+      $files[1] = 'csv/JRC/shizuoka2_H.csv';
     }else{
       $files[0] = 'csv/JRC/shizuoka1.csv';
       $files[1] = 'csv/JRC/shizuoka2.csv';

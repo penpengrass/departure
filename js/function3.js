@@ -15,6 +15,17 @@ function whetherStop(start_hour, start_min, hour, min, end_hour, end_min) {
 //停車駅置換(時間で変わる場合に使う，高の原，久居など)
 function DetailReplace(td, tr, Before, After, flag = 0) {
     var LDetail;
+    if (After.includes(Des[td][tr])) {
+        console.log(Des[td][tr] + ":" + (td + 1) + ":" + (tr + 1));
+        LDetail = document.getElementById('TDetail' + (td + 1) + '' + (tr + 1));
+        if (Detail[td][tr] == "") {
+            Detail[td][tr] += Des[td][tr];
+            LDetail.textContent += Des[td][tr];
+        } else {
+            Detail[td][tr] += "・" + Des[td][tr];
+            LDetail.textContent += "・" + Des[td][tr];
+        }
+    }
     if (flag == 0) {
         LDetail = document.getElementById('TDetail' + (td + 1) + '' + (tr + 1));
         Detail[td][tr] = Detail[td][tr].replace(Before, After);
@@ -30,7 +41,11 @@ function DetailReplace(td, tr, Before, After, flag = 0) {
         LDetail = Detail[td][tr];
         Detail[td][tr] = Detail[td][tr].replace(Before, After);
     }
-
+    if (Indexfile != 'index3_S.php') {
+        Detail[td][tr] = Detail[td][tr].replace(Des[td][tr], "");
+        LDetail.textContent = LDetail.textContent.replace(Des[td][tr], "");
+        LastLetterRemove(td, tr, '・');
+    }
 }
 //新幹線や有料特急の追加停車
 function DetailReplace_Set(td, tr, Line, Before, After) {

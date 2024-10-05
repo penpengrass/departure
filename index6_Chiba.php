@@ -93,7 +93,7 @@
       <tr>
       <td class="BWhite"></td>
       <td class="First" id="TTime' . $i . $j . '" colspan="2"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="Destination First" id="TDes' . $i . $j . '"colspan="3"></td>
+      <td class="Destination First" id="TDes' . $i . $j . '"colspan="3"><span class="CWDes" id="WDes' . $i . $j . '"></span></td>
       <td class="BWhite"></td>
     </tr>');
         }else{
@@ -103,7 +103,7 @@
       <td class="shubetu" id="TType' . $i . $j . '"><span class="CWType" id="WType' . $i . $j . '"></span></td>
       <td class="CName" id="TName' . $i . $j . '"><span  class="CWName" id="WName' . $i . $j . '"></span></td>
       <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="Destination" id="TDes' . $i . $j . '"></td>
+      <td class="Destination" id="TDes' . $i . $j . '"><span class="CWDes" id="WDes' . $i . $j . '"></span></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>
       <td class="BWhite"></td>
     </tr>

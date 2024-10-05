@@ -66,6 +66,9 @@ td::before {
 .railnumber {
     color: white;
 }
+.CWDes{
+    display: inline-block;
+}
 
 .Ctitle {
     background-color: #404040;

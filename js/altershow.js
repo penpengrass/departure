@@ -84,7 +84,7 @@ function allswitchOdawara() {
 }
 function allswitchChiba() {
     for (var tr = 0; tr < orderNum; tr++) {
-        ChibaSwitch2(TDes[0][tr], tr, Des[0][tr], ['久里浜', '大船', '横須賀', '逗子', '品川'], '東京方面');
+        ChibaSwitch2(WDes[0][tr], tr, Des[0][tr], ['久里浜', '大船', '横須賀', '逗子', '品川'], '東京方面');
         ATOSShihatsuSwitch(WName[0][tr], 0, tr, '当駅始発', '当駅始発', Cars[0][tr]);
         ATOSShihatsuSwitch(WName[2][tr], 2, tr, '当駅始発', '当駅始発', Cars[2][tr]);
         ATOSShihatsuSwitch(WName[3][tr], 3, tr, '当駅始発', '当駅始発', Cars[3][tr]);
@@ -97,19 +97,25 @@ function allswitchChiba() {
         ChibaSwitch(WType[5][tr], tr, Type[5][tr], '成田エクスプレス', '特急');
         ChibaSwitch(WType[0][tr], tr, Type[0][tr], 'しおさい', '特急');
         ChibaSwitch(WType[4][tr], tr, Type[4][tr], 'しおさい', '特急');
-        ChibaSwitch2(TDes[3][tr], tr, Des[3][tr], ['成東','東金'], '大網回り');
-        ChibaSwitch2(TDes[4][tr], tr, Des[4][tr], ['銚子'], '八街回り');
-        //ChibaSwitch(TDes[4][tr], tr, Des[4][tr], Des[4][tr], '八街回り');
-        ChibaSwitch2(TDes[5][tr], tr, Des[5][tr], ['銚子', '銚子*', '成東'], '成田回り');
+        ChibaSwitch2(WDes[3][tr], tr, Des[3][tr], ['成東','東金'], '大網回り');
+        ChibaSwitch2(WDes[4][tr], tr, Des[4][tr], ['銚子'], '八日市場回り');
+        ChibaSwitch2(WDes[4][tr], tr, Des[4][tr], ['成東'], '八街回り');
+        ChibaSwitch2(WDes[5][tr], tr, Des[5][tr], ['銚子', '銚子*'], '成田回り');
     }
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
             var LType = document.getElementById('WType' + (td + 1) + (tr + 1));
             var LName = document.getElementById('WName' + (td + 1) + (tr + 1));
+            var LDes=document.getElementById('WDes' + (td + 1) + (tr + 1));
             if (LType.textContent.length > 5) {
                 LType.style.transform = "scaleX(0.40)" + "translate(-75%,0%)";
             } else {
                 LType.style.transform = "scaleX(1.00)" + "translate(0%,0%)";
+            }
+            if (LDes.textContent.length > 5) {
+                LDes.style.transform = "scaleX(0.80)" + "translate(-15%,0%)";
+            } else {
+                LDes.style.transform = "scaleX(1.00)" + "translate(0%,0%)";
             }
             if (LName.textContent == '当駅始発') {
                 LName.style.transform = "scaleX(0.60)" + "translate(-0%,0%)";

@@ -41,6 +41,7 @@ if (station == '大阪駅') {
             LType.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
             LType.style.padding = '0px';
         }
+        AllWordReplace(4,tr,'TType','寝台','',1,Type);
     }
     holiday_F(station);
 }

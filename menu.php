@@ -83,7 +83,7 @@
                 <td>JR西日本新幹線主要駅</td>
                 <td><button type="button" onclick="location.href='./index4_S2.php'">移動</button></td>
                 <td><span style="color:black;">広島駅</span></td>
-                <td><span style="color:black;">博多駅</span></td>
+                <td><span style="color:black;">岡山駅</span>, <span style="color:black;">博多駅</span></td>
             </tr>
             <tr>
                 <td>東急</td>
@@ -160,7 +160,7 @@
             ?>
         </div>
         <h1 class="Cheader">今後追加する駅</h1>
-        <li>新幹線 静岡駅 米原駅 岡山駅 仙台駅 新青森駅</li>
+        <li>新幹線 静岡駅 米原駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
         <li>JR東日本 赤羽駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
         <li>東武鉄道 浅草駅 北千住駅</li>

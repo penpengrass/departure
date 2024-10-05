@@ -26,7 +26,26 @@ else if (station == '博多駅') {
     limitedjustnumber(TT[1], 601, 'みずほ');
     limitedjustnumber(TT[0], 838, 'こだま');
     limitedjustnumber(TT[0], 540, 'さくら');
-} else if (station == '敦賀駅') {
+} else if (station == '岡山駅') {
+    detailLength_one = 2;
+    detailflag = 2;
+    TableTitle = ['山陽・東海道新幹線 新大阪・東京方面', '山陽・九州新幹線 博多・鹿児島中央方面'];
+    let kodama2 = [830, 832, 834, 836, 840, 842, 854, 856, 858, 860, 862, 866, 868, 870];
+    let hikari1=[591,531,533,535];
+    limitednumber2(TT[1], hikari1, 'ひかり');
+    limitednumber2(TT[0], kodama2, 'こだま');
+    limitednumber(TT[1], 831, 'こだま');
+    limitednumber(TT[1], 541, 'さくら');
+    limitednumber(TT[0], 540, 'さくら');
+    limitedjustnumber(TT[0], 500, 'ひかり');
+    limitedjustnumber(TT[1], 61, 'のぞみ', '広島');
+    limitedjustnumber(TT[1], 1, 'のぞみ', '博多');
+    limitedjustnumber(TT[0], 600, 'みずほ');
+    limitedjustnumber(TT[1], 601, 'みずほ');
+    limitedjustnumber(TT[0], 70, 'のぞみ*');
+    limitedjustnumber(TT[0], 2, 'のぞみ');
+}
+else if (station == '敦賀駅') {
     company = '北陸新幹線';
     var staflag = 0;
     var Dtype = [1];
