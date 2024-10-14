@@ -86,13 +86,13 @@ if (station == '米原駅') {
             document.getElementById('TType' + 1 + '' + (tr + 1)).textContent = '普通';
             Type[0][tr] = '普通';
             document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '高槻から快速';
-            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5em';
+            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5vw';
             document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'left';
         } else if (Type[0][tr] == '快速*') {
             document.getElementById('TType' + 1 + '' + (tr + 1)).textContent = '普通';
             Type[0][tr] = '普通';
             document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '京都から快速';
-            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5em';
+            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5vw';
             document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'left';
         }
         if (Type[2][tr] == '特別快速') {
@@ -119,7 +119,7 @@ if (station == '姫路駅') {
             document.getElementById('TType' + (Shinkansenflag + 2) + '' + (tr + 1)).textContent = '普通';
             Type[(Shinkansenflag + 1)][tr] = '普通';
             document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).textContent = '西明石から快速';
-            document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).style.fontSize = '1.5em';
+            document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).style.fontSize = '1.5vw';
             document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).style.textAlign = 'left';
         }
         DesMiddle(3, tr, '経由');
@@ -147,7 +147,10 @@ if (station == '糸崎駅') {
         document.getElementById('TTable' + (td + 1)).style.marginLeft = '8em';
         for (var tr = 0; tr < orderNum; tr++) {
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.7);
+            AllWordChange(1,tr,'TDes','大野浦','広島方面大野浦',1,Des);
+            AllWordChange(1,tr,'TDes','五日市','広島方面五日市',1,Des);
             DesMiddle(td, tr, '方面');
+            DesMiddle(td, tr, '経由');
         }
     }
     if (holidayflag == 1) {
@@ -236,10 +239,12 @@ if (station == '徳山駅') {
 }
 if (station == '三原駅') {
     for (var tr = 0; tr < orderNum; tr++) {
+        AllWordChange(1,tr,'TDes','大野浦','広島方面大野浦',1,Des);
+        AllWordChange(1,tr,'TDes','五日市','広島方面五日市',1,Des);
         DesMiddle(0, tr, '連絡');
         DesMiddle(1, tr, '方面');
     }
-    setInterval(allswitch, 5000);
+    setInterval(allswitchMihara, 5000);
     if (holidayflag == 1) {
         document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
     } else if (holidayflag == 0) {

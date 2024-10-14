@@ -38,10 +38,10 @@ function DetailReplace(td, tr, Before, After, flag = 0) {
         LDetail.textContent = LDetail.textContent.replace(Before, After);
     }
     else {
-        LDetail = Detail[td][tr];
         Detail[td][tr] = Detail[td][tr].replace(Before, After);
     }
-    if (Indexfile != 'index3_S.php') {
+    if (Indexfile != 'index3_S.php'&&flag!=1) {
+        LDetail = document.getElementById('TDetail' + (td + 1) + '' + (tr + 1));
         Detail[td][tr] = Detail[td][tr].replace(Des[td][tr], "");
         LDetail.textContent = LDetail.textContent.replace(Des[td][tr], "");
         LastLetterRemove(td, tr, '・');

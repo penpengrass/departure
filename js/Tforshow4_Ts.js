@@ -64,11 +64,13 @@ for (var tr = 0; tr < 3; tr++) {
     let dName = document.getElementById('TName' + 5 + (tr + 1));
     if (Type[4][tr] == '新快速') {
         dName.textContent += '湖西経由近江舞子まで各停';
-        dName.style.fontSize = '18px';
+        dName.style.color='orange';
+        dName.style.fontSize = '1.2vw';
         dName.style.transform = "scalex(0.90)" + "translate(10%,0%)";
     } else if (Type[4][tr] == '新快速*') {
         dName.textContent += '米原経由米原まで各駅停車';
-        dName.style.fontSize = '18px';
+        dName.style.color='orange';
+        dName.style.fontSize = '1.2vw';
         dName.style.transform = "scalex(0.90)" + "translate(10%,0%)";
         document.getElementById('TType' + 5 + (tr + 1)).textContent = '新快速';
     }

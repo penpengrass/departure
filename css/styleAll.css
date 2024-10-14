@@ -1,10 +1,10 @@
 showing {
-    font-size: 25px;
+    font-size: 1.6vw;
     height: 10px;
 }
 
 .Ctitle {
-    font-size: 25px;
+    font-size: 1.6vw;
     height: 25px;
     font-weight: 700;
 }
@@ -76,6 +76,16 @@ select {
 }
 
 @media(max-width:1199px) {
+    showing {
+        font-size: 25px;
+        height: 10px;
+    }
+    
+    .Ctitle {
+        font-size: 25px;
+        height: 25px;
+        font-weight: 700;
+    }
     td {
         font-size: 30px;
     }

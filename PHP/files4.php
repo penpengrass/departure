@@ -145,6 +145,7 @@ if (isset($_GET['station'])) {
     if ($holidayflag == 1) {
       $files[1] = 'csv/JRW_Sanyo/itozaki2_H.csv';
     }
+    $OrderNum = 2;
   } else if (Inisset('mihara')) {
     $files[0] = 'csv/JRW_Sanyo/mihara1.csv';
     $files[1] = 'csv/JRW_Sanyo/mihara2.csv';
