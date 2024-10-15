@@ -54,6 +54,7 @@ if (station == '熱海駅') {
     CarsDevide(0);
     CarsDevide(1);
     CarsDevide(2);
+    allTwoLettersDistance(Des, TDes, 1, 1);
     document.getElementById('supplement').textContent = '熱海駅は実際の表示と異なる部分がある　土休日ダイヤに対応';
     allJRCIncludeColor();
 } else if (station == '小田原駅') {
@@ -115,7 +116,9 @@ if (station == '熱海駅') {
     }
     setInterval(allswitchOdawara, 5000);
     allTwoLettersDistance(Des, TDes, 1, 0.8);
-    comment.textContent = '両数や番線は不正確';
+    holiday_F(station);
+    comment.innerHTML += '<br>特急の臨時列車は不正確';
+
     allJRCIncludeColor();
 } else if (station == '武蔵小杉駅') {
     JRATOSDevide(0);
