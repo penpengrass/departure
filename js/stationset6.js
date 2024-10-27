@@ -54,6 +54,18 @@ if (station == '長野駅') {
     limitednumber(TT[0], 51, 'ときわ');
     limitednumber(TT[1], 2, 'ひたち');
     limitednumber(TT[1], 52, 'ときわ');
+    limitednumber(TT[1], 1, '湘南');
+    detailflag = 2;
+}else if(station=='品川駅'){
+    TableTitle = ['東海道線発車時刻','上野東京ライン発車時刻','総武快速線','横須賀線'];
+    limitednumber(TT[1], 1, 'ひたち');
+    limitednumber(TT[1], 51, 'ときわ');
+    limitednumber(TT[0], 2, 'ひたち');
+    limitednumber(TT[0], 52, 'ときわ');
+    limitednumber(TT[0], 1, '湘南');
+    limitednumber(TT[2], 2, '成田ｴｸｽﾌﾟﾚｽ');
+    limitednumber(TT[3], 1, '成田ｴｸｽﾌﾟﾚｽ');
+    detailflag = 2;
 } else if (station == '新宿駅') {
     TrainNameDevide('特急', 2, 4);
     limitednumber(TT[4], 1, ['特急あずさ', '特急かいじ']);

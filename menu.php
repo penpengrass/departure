@@ -23,7 +23,7 @@
             <p class="chushaku">
                 <span style="color:red;">赤字</span>は土休日ダイヤ対応，もしくは終日ダイヤ<br>
                 黒字は平日ダイヤのみ <br>
-                ただし、横浜駅は2023年3月の平日ダイヤ、四国の2024年9月ダイヤは未対応
+                ただし、四国の2024年9月ダイヤは未対応
             </p>
             <p class="chushaku"></p>
             <tr>
@@ -95,7 +95,13 @@
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
                 <td>新宿駅</td>
-                <td> 東京駅, 横浜駅, <span style="color:red;">長野駅</span>, <span style="color:red;">松本駅</span></td>
+                <td>横浜駅, <span style="color:red;">長野駅</span>, <span style="color:red;">松本駅</span></td>
+            </tr>
+            <tr>
+                <td>JR東日本UTL</td>
+                <td><button type="button" onclick="location.href='./index6_U.php'">移動</button></td>
+                <td>東京駅</td>
+                <td>品川駅</td>
             </tr>
             <tr>
                 <td>JR東日本千葉駅</td>
@@ -162,7 +168,7 @@
         <h1 class="Cheader">今後追加する駅</h1>
         <li>新幹線 静岡駅 米原駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
-        <li>JR東日本 赤羽駅 大宮駅 水戸駅 品川駅 仙台駅 福島駅 </li>
+        <li>JR東日本 赤羽駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 新山口駅</li>

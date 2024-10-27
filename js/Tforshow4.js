@@ -86,13 +86,13 @@ if (station == '米原駅') {
             document.getElementById('TType' + 1 + '' + (tr + 1)).textContent = '普通';
             Type[0][tr] = '普通';
             document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '高槻から快速';
-            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5vw';
+            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '20px';
             document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'left';
         } else if (Type[0][tr] == '快速*') {
             document.getElementById('TType' + 1 + '' + (tr + 1)).textContent = '普通';
             Type[0][tr] = '普通';
             document.getElementById('TName' + 1 + '' + (tr + 1)).textContent = '京都から快速';
-            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '1.5vw';
+            document.getElementById('TName' + 1 + '' + (tr + 1)).style.fontSize = '20px';
             document.getElementById('TName' + 1 + '' + (tr + 1)).style.textAlign = 'left';
         }
         if (Type[2][tr] == '特別快速') {
@@ -119,7 +119,7 @@ if (station == '姫路駅') {
             document.getElementById('TType' + (Shinkansenflag + 2) + '' + (tr + 1)).textContent = '普通';
             Type[(Shinkansenflag + 1)][tr] = '普通';
             document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).textContent = '西明石から快速';
-            document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).style.fontSize = '1.5vw';
+            document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).style.fontSize = '20px';
             document.getElementById('TName' + (Shinkansenflag + 2) + '' + (tr + 1)).style.textAlign = 'left';
         }
         DesMiddle(3, tr, '経由');

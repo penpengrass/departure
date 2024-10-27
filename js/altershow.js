@@ -128,3 +128,19 @@ function allswitchChiba() {
         }
     }
 }
+function allswitch_UTL(){
+    for (var tr = 0; tr < orderNum; tr++) {
+        ATOSShihatsuSwitch(WName[0][tr], 0, tr, '始発', '始発', Cars[0][tr]);
+        ATOSShihatsuSwitch(WName[1][tr], 1, tr, '始発', '始発', Cars[1][tr]);
+        ChibaSwitch_LiNum(WName[0][tr], 0, tr, number[0][tr] + '号', number[0][tr] + '号', Cars[0][tr]);
+        ChibaSwitch_LiNum(WName[1][tr], 1, tr, number[1][tr] + '号', number[1][tr] + '号', Cars[1][tr]);
+        ChibaSwitch(WType[0][tr], tr, Type[0][tr], 'ひたち', '特急');
+        ChibaSwitch(WType[1][tr], tr, Type[1][tr], 'ひたち', '特急');
+        ChibaSwitch(WType[0][tr], tr, Type[0][tr], 'ときわ', '特急');
+        ChibaSwitch(WType[1][tr], tr, Type[1][tr], 'ときわ', '特急');
+        ChibaSwitch(WType[0][tr], tr, Type[0][tr], '踊り子', '特急');
+        ChibaSwitch(WType[1][tr], tr, Type[1][tr], '踊り子', '特急');
+        ChibaSwitch(WType[0][tr], tr, Type[0][tr], '湘南', '特急');
+        ChibaSwitch(WType[1][tr], tr, Type[1][tr], '湘南', '特急');
+    }
+}

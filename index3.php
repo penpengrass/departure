@@ -57,7 +57,7 @@
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
       print('
- <table id="TATOSTable' . $i . '">
+ <table class="CATOSTable" id="TATOSTable' . $i . '">
 <caption class="Ctitle" id="kn' . $i . '"></caption>
     <tr>
       <th width="28%" id="HName' . $i . '"></th>

@@ -24,10 +24,9 @@ if (station == '武蔵小杉駅') {
     TableTitle = ['東海道線 熱海方面', '東海道線 東京方面'];
     var shonan = [4, 22, 6, 8, 24, 10, 26, 12];
     limitednumber2(TT[1], shonan, '特急湘南');
-    var odoriko1 = [3, 7, 13, 15];
-    limitednumber2(TT[0], odoriko1, '踊り子');
-    var odoriko2 = [2, 4, 6, 10];
-    limitednumber2(TT[1], odoriko2, '踊り子');
+    var odoriko1 = [1, 5, 9, 11];
+    limitedjustnumber2(TT[0], odoriko1, '特急踊り子');
+    limitedjustnumber(TT[1], 2, '特急踊り子');
 } else if (station == '横浜駅') {
     TableTitle = ['根岸線 磯子 大船方面', '京浜東北線 東京方面 横浜線 八王子方面', '東海道線 小田原方面', '上野東京ライン 東京 上野方面', '横須賀線 久里浜方面 湘南新宿ライン 小田原方面', '横須賀線 東京 千葉方面 湘南新宿ライン 新宿 池袋方面'];
     var odoriko1 = [3, 7, 1, 13, 15];

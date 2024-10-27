@@ -2,15 +2,39 @@
     font-size: 40px;
     padding: 10px;
 }
-td {
-    font-size:25px;
+.CLCDTable td {
+    font-size:1.6vw;
     height: 35px;
     /*表の中の枠色*/
     border-bottom: 10px #202020 solid;
+}
+@media(max-width:1199px) {
+    .CLCDTable td {
+        font-size:25px;
+    }
+    table{
+        width:750px;
+    }
 }
 .shubetu{
     text-align: center;
 }
 .bansen {
-    font-size: 25px;
+    font-size: 20px;
+    color:yellow;
+}
+.CName{
+    text-align: center;
+}
+.CDep{
+    text-align: left;
+}
+.CATOSTable .topic{
+    color:white;
+    background-color: gray;
+    border:1px gray solid;
+    transform: scaleX(1.0) translate(0%, 0);
+}
+.CATOSTable .HrailNumber{
+    text-align: center;
 }

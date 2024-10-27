@@ -13,19 +13,28 @@ function JRE6Color_one(td, tr, LType, color) {
 function JRE6ColorPlusName(td, tr, LoType, color, Nameflag = 0) {
     var LType = document.getElementById('TType' + (td + 1) + (tr + 1));
     var LName = document.getElementById('TName' + (td + 1) + (tr + 1));
+    var LDep = document.getElementById('TDep' + (td + 1) + (tr + 1));
     if (Nameflag == 0) {
         if (Type[td][tr].includes(LoType)) {
             LType.style.backgroundColor = color;
             LName.style.backgroundColor = color;
+            if (LDep != null) {
+                LDep.style.backgroundColor = color;
+            }
+
         }
     } else if (Nameflag == 1) {
         if (LName.textContent.includes(LoType)) {
             LType.style.backgroundColor = color;
             LName.style.backgroundColor = color;
+            if (LDep != null) {
+                LDep.style.backgroundColor = color;
+            }
         }
     }
 }
-function allalterUTL_setting(keyword) {
+
+/*function allalterUTL_setting(keyword) {
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
             var LType = document.getElementById('TType' + (td + 1) + (tr + 1));
@@ -69,7 +78,8 @@ function allUTL() {
             alterUTL(td, tr, '特急');
         }
     }
-}
+}*/
+
 function ShihatsuMove(td, tr, Place) {
     if (Type[td][tr].includes('始発')) {
         var LoType = document.getElementById('WType' + (td + 1) + (tr + 1));
@@ -79,6 +89,15 @@ function ShihatsuMove(td, tr, Place) {
         LoName.textContent += '始発';
     }
 
+}
+function Type_Cars(td, tr, L_Type, Cars, Tag, LineSetFlag = 0) {
+    if (Type[td][tr].includes(L_Type)) {
+        document.getElementById(Tag + (td + 1) + (tr + 1)).textContent = Cars + '両';
+    }
+    if (LineSetFlag == 1) {
+        //配列を設定する
+        //GCarsLine[td][tr]=Cars;
+    }
 }
 //条件付き路線名追加(2種類)
 function JRETypeSelectAdd(td, LType, Deshairetsu, line1, line2, index = 6) {

@@ -9,7 +9,7 @@ if (isset($_POST['staselect3'])) {
   } else if($test1 == 'shinjuku'){
     header('Location: ../index6.php');
   } else if($test1 == 'tokyo'){
-    header('Location: ../index6.php?station=tokyo');
+    header('Location: ../index6_U.php');
   }else{
     header('Location: ../index3.php?station=' . $test1);
     exit();
@@ -28,8 +28,13 @@ if (isset($_GET['station'])) {
     $OrderNum = 2;
     $station='熱海駅';
   } else if (Inisset('odawara')) {
-    $files[0] = 'csv/JRE/odawara1.csv';
-    $files[1] = 'csv/JRE/odawara2.csv';
+    if($holidayflag==1){
+      $files[0] = 'csv/JRE/odawara1_H.csv';
+      $files[1] = 'csv/JRE/odawara2_H.csv';
+    }else{
+      $files[0] = 'csv/JRE/odawara1.csv';
+     $files[1] = 'csv/JRE/odawara2.csv';
+    }
     $tablenum = 2;
     $OrderNum = 4;
   } else if (Inisset('utsunomiya')) {
