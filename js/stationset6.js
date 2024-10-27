@@ -57,7 +57,7 @@ if (station == '長野駅') {
     limitednumber(TT[1], 1, '湘南');
     detailflag = 2;
 }else if(station=='品川駅'){
-    TableTitle = ['東海道線発車時刻','上野東京ライン発車時刻','総武快速線','横須賀線'];
+    TableTitle = ['東海道線発車時刻','上野東京ライン発車時刻','横須賀線','総武快速線'];
     limitednumber(TT[1], 1, 'ひたち');
     limitednumber(TT[1], 51, 'ときわ');
     limitednumber(TT[0], 2, 'ひたち');
