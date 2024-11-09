@@ -39,8 +39,10 @@
   <form action="PHP/files6.php" method="POST">
     <select name="staselect6">
     <option value="shinjuku">新宿駅</option>
+    <option value="ueno">上野駅</option>
       <option value="tokyo">東京駅</option>
       <option value="chiba">千葉駅</option>
+      <option value="shinagawa">品川駅</option>
       <option value="yokohama">横浜駅</option>
       <option value="nagano">長野駅</option>
       <option value="matsumoto">松本駅</option>

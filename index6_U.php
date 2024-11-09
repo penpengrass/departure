@@ -36,6 +36,7 @@
   <form action="PHP/files6.php" method="POST">
     <select name="staselect6">
     <option value="shinjuku">新宿駅</option>
+    <option value="ueno">上野駅</option>
       <option value="tokyo">東京駅</option>
       <option value="chiba">千葉駅</option>
       <option value="shinagawa">品川駅</option>
@@ -61,7 +62,14 @@
   <tableline>
     <?php
     $stationnumber = 0;
-    for ($i = 1; $i <= 2; $i++) {
+    if($station=='上野駅'){
+      $LCDNumber = 1;
+    }else{
+      $LCDNumber = 2;
+    }
+   
+
+    for ($i = 1; $i <= $LCDNumber; $i++) {
       print('
  <table class="CLCDTable" id="TLCDTable' . $i . '">
 <caption class="Ctitle" id="Tstation' . $i . '"><p2 id="kn' . $i . '"></p2></caption>
@@ -96,7 +104,7 @@
   <tableline>');
       }
     }
-      for ($i = 3; $i <= $tablenum; $i++) {
+      for ($i = $LCDNumber+1; $i <= $tablenum; $i++) {
         print('
    <table class="CATOSTable" id="TATOSTable' . $i . '">
   <caption class="Ctitle" id="kn' . $i . '"></caption>

@@ -101,7 +101,7 @@
                 <td>JR東日本UTL</td>
                 <td><button type="button" onclick="location.href='./index6_U.php'">移動</button></td>
                 <td>東京駅</td>
-                <td>品川駅</td>
+                <td>品川駅, 上野駅</td>
             </tr>
             <tr>
                 <td>JR東日本千葉駅</td>

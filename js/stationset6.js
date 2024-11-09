@@ -66,6 +66,14 @@ if (station == '長野駅') {
     limitednumber(TT[2], 2, '成田ｴｸｽﾌﾟﾚｽ');
     limitednumber(TT[3], 1, '成田ｴｸｽﾌﾟﾚｽ');
     detailflag = 2;
+}else if(station=='上野駅'){
+    TableTitle = ['上野東京ライン発車時刻','宇都宮線','高崎線','常磐線','常磐線特急'];
+    TrainNameDevide('特急',3,4);
+    limitednumber(TT[4], 1, 'ひたち');
+    limitednumber(TT[4], 51, 'ときわ');
+    limitednumber(TT[0], 2, 'ひたち');
+    limitednumber(TT[0], 52, 'ときわ');
+    limitednumber(TT[2],1,'あかぎ');
 } else if (station == '新宿駅') {
     TrainNameDevide('特急', 2, 4);
     limitednumber(TT[4], 1, ['特急あずさ', '特急かいじ']);

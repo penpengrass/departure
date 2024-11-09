@@ -21,5 +21,10 @@ if (isset($_GET['station'])) {
         $files[1] = 'csv/JRW_S/hakata2.csv';
         $detailflag = 0;
         $detaillength = 2;
+    }else if (Inisset('okayama')) {
+        $files[0] = 'csv/JRW_S/okayama1.csv';
+        $files[1] = 'csv/JRW_S/okayama2.csv';
+        $detailflag = 0;
+        $detaillength = 2;
     }
 }

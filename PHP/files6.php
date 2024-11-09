@@ -10,6 +10,8 @@ if (isset($_POST['staselect6'])) {
     header('Location: ../index6_Chiba.php');
   }else if($test1=='shinagawa'){
     header('Location: ../index6_U.php?station=shinagawa');
+  }else if($test1=='ueno'){
+    header('Location: ../index6_U.php?station=ueno');
   } else if($test1=='tokyo'){
     header('Location: ../index6_U.php');
   } 
@@ -58,6 +60,15 @@ if (isset($_GET['station'])) {
     $tableStrange = 1;
     $tablenums = [5, 5, 2, 2];
     $station='品川駅';
+  }else if (Inisset('ueno')) {
+      $files[0] = 'csv/JRE/ueno1.csv';
+      $files[1] = 'csv/JRE/ueno2.csv';
+      $files[2] = 'csv/JRE/ueno3.csv';
+      $files[3] = 'csv/JRE/ueno4.csv';
+      $files[4] = 'csv/JRE/ueno4.csv';
+      $tablenum = 5;
+      $OrderNum = 6;
+      $station='上野駅';
   }else if(Inisset('shinjuku')){
     $files[0] = 'csv/JRE/shinjuku_mitaka.csv';
     $files[1] = 'csv/JRE/shinjuku_chiba.csv';
