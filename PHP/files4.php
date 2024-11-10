@@ -82,13 +82,23 @@ if (isset($_GET['station'])) {
     $OrderNum = 4;
     $station = '三ノ宮駅';
   } else if (Inisset('okayama')) {
-    $files[0] = 'csv/JRW_Sanyo/okayama_sanyo1.csv';
-    $files[2] = 'csv/JRW_Sanyo/okayama_sanyo2.csv';
-    $files[4] = 'csv/JRW_Sanyo/okayama_uno.csv';
-    $files[5] = 'csv/JRW_Sanyo/okayama_tsuyama.csv';
-    $files[1] = 'csv/JRW_Sanyo/okayama_hakubi.csv';
-    $files[3] = 'csv/JRW_Sanyo/okayama_sanyo2.csv';
-    $files[6] = 'csv/JRW_Sanyo/okayama_kibi.csv';
+    if ($holidayflag == 1) {
+      $files[0] = 'csv/JRW_Sanyo/okayama_sanyo1_H.csv';
+      $files[2] = 'csv/JRW_Sanyo/okayama_sanyo2_H.csv';
+      $files[4] = 'csv/JRW_Sanyo/okayama_uno.csv';
+      $files[5] = 'csv/JRW_Sanyo/okayama_tsuyama_H.csv';
+      $files[1] = 'csv/JRW_Sanyo/okayama_hakubi_H.csv';
+      $files[3] = 'csv/JRW_Sanyo/okayama_sanyo2_H.csv';
+      $files[6] = 'csv/JRW_Sanyo/okayama_kibi_H.csv';
+    } else {
+      $files[0] = 'csv/JRW_Sanyo/okayama_sanyo1.csv';
+      $files[2] = 'csv/JRW_Sanyo/okayama_sanyo2.csv';
+      $files[4] = 'csv/JRW_Sanyo/okayama_uno.csv';
+      $files[5] = 'csv/JRW_Sanyo/okayama_tsuyama.csv';
+      $files[1] = 'csv/JRW_Sanyo/okayama_hakubi.csv';
+      $files[3] = 'csv/JRW_Sanyo/okayama_sanyo2.csv';
+      $files[6] = 'csv/JRW_Sanyo/okayama_kibi.csv';
+    }
     $tablenum = 7;
     $station = '岡山駅';
     $tableStrange = 1;

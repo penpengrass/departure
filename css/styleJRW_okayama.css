@@ -1,7 +1,7 @@
 
 /*ブロック要素*/
 td{               /*データ内*/
-    font-size:18px;/*元々30px 変更すると25px*/
+    font-size:1.2vw;/*元々30px 変更すると25px*/
     height: 30px;
     color:orange;
     border-left:none;

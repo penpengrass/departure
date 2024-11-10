@@ -164,7 +164,7 @@ if (station == '岡山駅') {
     //スーパーいなば
     JRLimitedDevide(1, tr);
     for (var tr = 0; tr < Type[2].length; tr++) {
-        document.getElementById('TName' + 3 + '' + (tr + 1)).style.transform = "scaleX(0.70)" + "translate(-15%,0%)";
+        document.getElementById('TName' + 3 + '' + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-5%,0%)";
     }
 
     JRLimitedDevide(2);
@@ -191,8 +191,6 @@ if (station == '岡山駅') {
             console.log(Name.length + ':' + tr);
             if (Name.length > 8) {
                 document.getElementById('TName' + 5 + (tr + 1)).style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
-            } else if (Name.length > 6) {
-                document.getElementById('TName' + 5 + (tr + 1)).style.transform = "scaleX(0.85)" + "translate(-10%,0%)";
             }
         } else if (Type[4][tr].includes('快速ﾏﾘﾝﾗｲﾅｰ')) {
             var Rapid = Type[4][tr].substr(Type[4][tr].indexOf('速') + 1);
@@ -207,7 +205,19 @@ if (station == '岡山駅') {
             Type[4][tr] = '臨時';
         }
     }
+    for (var tr = 0; tr < Type[5].length; tr++) {
+        if (Type[5][tr].includes('快速')) {
+            document.getElementById('TName' + 6 + '' + (tr + 1)).textContent = 'ことぶき';
+            document.getElementById('TType' + 6 + '' + (tr + 1)).textContent = '快速';
+            document.getElementById('TName' + 6 + '' + (tr + 1)).style.color = 'orange';
+        }
+    }
     allJRWTrainNameColor('orange', '#0f0', '#0f0');
+    if (holidayflag == 1) {
+        document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
+    } else if (holidayflag == 0) {
+        document.getElementById('supplement').textContent = station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
+    }
 }
 
 if (station == '三ノ宮駅') {
