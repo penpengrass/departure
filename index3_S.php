@@ -16,6 +16,7 @@
   $OrderNum = 3;
   require('PHP/files3_S.php');
   require('PHP/select3.php');
+  require('PHP/table3.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -49,43 +50,7 @@
   <tableline>
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
-      print('
- <table>
-<caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
-    <tr>
-    ');
-      print('
-      <th width="20%">列車名</th>
-      <th width="10%">番号</th>
-      <th width="15%">時刻</th>
-      <th width="20%" class="HDes">行先</th>
-      <th width="5%">番線</th>
-      <th width="30%">記事</th>
-    </tr>
-  ');
-      for ($j = 1; $j <= $OrderNum; $j++) {
-        print('
-    <tr id="TLine' . $i . $j . '">
-      <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><p2 id="WType' . $i . $j . '"></p2></td>
-      <td class="name" id="TName' . $i . $j . '"><p2 id="WName' . $i . $j . '"></p2></td>
-      <td class="Ctime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="Destination" id="TDes' . $i . $j . '"></td>
-      <td class="railnumber" id="TNum' . $i . $j . '"></td>
-      <td class="topic" id="Ttopic' . $i . $j . '"></td>
-    </tr>
-    <tr>
-      <td><p3 class="CDetailtitle" id="TDetailtitle' . $i . $j .'"></p3></td>
-      <td class="CDetail" colspan="5"><p2 class="news-banner__content" id="TDetail' . $i . $j . '"></p2></td>
-      </tr>
-      ');
-      }
-      print('
-</table>
-');
-      if ($i % $column == 0) {
-        print('</tableline>
-  <tableline>');
-      }
+      JRE_STable($i,$tablenums);
     }
     ?>
   </tableline>

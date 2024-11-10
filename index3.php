@@ -20,6 +20,7 @@
   $files[4]='csv/JRE/Musashi_Ebina.csv';
   require('PHP/files3.php');
   require('PHP/select3.php');
+  require('PHP/table3.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -56,37 +57,7 @@
   <tableline>
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
-      print('
- <table class="CATOSTable" id="TATOSTable' . $i . '">
-<caption class="Ctitle" id="kn' . $i . '"></caption>
-    <tr>
-      <th width="28%" id="HName' . $i . '"></th>
-      <th width="15%" id="HType' . $i . '"></th>
-      <th width="20%" id="HTime' . $i . '"></th>
-      <th width="20%" id="HDes' . $i . '">行先</th>
-      <th width="10%" id="HCars' . $i . '"></th>
-      <th width="7%" class="HrailNumber" id="HrNumber' . $i . '">のりば</th>
-    </tr>
-  ');
-      for ($j = 1; $j <= $OrderNum; $j++) {
-        print('
-    <tr id="TRow' . $i . $j . '">
-      <td id="TName' . $i . $j . '"></td>
-      <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
-      <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="Destination" id="TDes' . $i . $j . '"></td>
-      <td class="cars" id="TCars' . $i . $j . '"></td>
-      <td class="railnumber" id="TNum' . $i . $j . '"></td>
-    </tr>
-    ');
-      }
-      print('
-</table>
-');
-      if ($i % 2 == 0) {
-        print('</tableline>
-  <tableline>');
-      }
+      JRATOSTable($i,$tablenums);
     }
     ?>
   </tableline>
