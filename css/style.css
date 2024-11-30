@@ -11,7 +11,7 @@ td {
     /*データ内*/
     display: table-cell;
     /*font-size: 30px;*/
-    height: 25px;
+    height: 20px;
     color: white;
     border: 1px black solid;
     /*表の中の枠色 */
@@ -29,7 +29,7 @@ table {
     background-color: black;
     border: 10px gray solid;
     /*周りの色*/
-    width: 750px;
+    width: 50%;
     white-space: nowrap;
     text-align: center;
     display: table;
@@ -37,12 +37,19 @@ table {
 }
 
 .CDetail {
-    font-size: 20px;
+    font-size: 1vw;
     text-align: left;
     color: white;
-    overflow: hidden;
+    overflow:hidden;
 }
-
+@media(max-width:1199px) {
+    .CDetail {
+        font-size: 20px;
+    }
+    table{
+        width:750px;
+    }
+}
 .higherDetail {
     border-bottom-color: black;
 }
@@ -54,10 +61,6 @@ tables {
 .Ctitle {
     background-color: gray;
     color: white;
-}
-
-p3 {
-    font-size: 20px;
 }
 
 .railnumber {
