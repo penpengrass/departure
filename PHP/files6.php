@@ -44,6 +44,21 @@ if (isset($_GET['station'])) {
     $tablenum = 6;
     $OrderNum = 2;
     $station = '横浜駅';
+  } else if (Inisset('akabane')) {
+    $files[0] = 'csv/JRE/akabane_isogo.csv';
+    $files[1] = 'csv/JRE/akabane_kawaguchi.csv';
+    $files[2] = 'csv/JRE/akabane_ueno.csv';
+    $files[3] = 'csv/JRE/akabane_zushi.csv';
+    $files[4] = 'csv/JRE/akabane_takasaki.csv';
+    $files[5] = 'csv/JRE/akabane_utsunomiya.csv';
+    $files[6] = 'csv/JRE/akabane_shinkiba.csv';
+    $files[7] = 'csv/JRE/akabane_kawagoe.csv';
+    $files[8] = 'csv/JRE/akabane_urawa.csv';
+    $files[9] = 'csv/JRE/akabane_urawa.csv';
+    $tablenum = 8;
+    $OrderNum = 2;
+    $column=4;
+    $station = '赤羽駅';
   }else if (Inisset('tokyo')) {
     $files[0] = 'csv/JRE/Tokyo1.csv';
     $files[1] = 'csv/JRE/Tokyo2.csv';

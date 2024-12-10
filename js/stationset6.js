@@ -56,8 +56,8 @@ if (station == '長野駅') {
     limitednumber(TT[1], 52, 'ときわ');
     limitednumber(TT[1], 1, '湘南');
     detailflag = 2;
-}else if(station=='品川駅'){
-    TableTitle = ['東海道線発車時刻','上野東京ライン発車時刻','横須賀線','総武快速線'];
+} else if (station == '品川駅') {
+    TableTitle = ['東海道線発車時刻', '上野東京ライン発車時刻', '横須賀線', '総武快速線'];
     limitednumber(TT[1], 1, 'ひたち');
     limitednumber(TT[1], 51, 'ときわ');
     limitednumber(TT[0], 2, 'ひたち');
@@ -66,14 +66,14 @@ if (station == '長野駅') {
     limitednumber(TT[2], 2, '成田ｴｸｽﾌﾟﾚｽ');
     limitednumber(TT[3], 1, '成田ｴｸｽﾌﾟﾚｽ');
     detailflag = 2;
-}else if(station=='上野駅'){
-    TableTitle = ['上野東京ライン発車時刻','宇都宮線','高崎線','常磐線','常磐線特急'];
-    TrainNameDevide('特急',3,4);
+} else if (station == '上野駅') {
+    TableTitle = ['上野東京ライン発車時刻', '宇都宮線', '高崎線', '常磐線', '常磐線特急'];
+    TrainNameDevide('特急', 3, 4);
     limitednumber(TT[4], 1, 'ひたち');
     limitednumber(TT[4], 51, 'ときわ');
     limitednumber(TT[0], 2, 'ひたち');
     limitednumber(TT[0], 52, 'ときわ');
-    limitednumber(TT[2],1,'あかぎ');
+    limitednumber(TT[2], 1, 'あかぎ');
 } else if (station == '新宿駅') {
     TrainNameDevide('特急', 2, 4);
     limitednumber(TT[4], 1, ['特急あずさ', '特急かいじ']);
@@ -82,6 +82,23 @@ if (station == '長野駅') {
     limitednumber(TT[9], 21, '湘南');
     TableTitle = ['三鷹方面', '千葉方面', '高尾方面', '東京方面', '中央線特急 松本方面', '成田エクスプレス',
         '埼京線 池袋 大宮方面', '湘南新宿ライン 大宮方面', '埼京線 新木場方面', '湘南新宿ライン 小田原方面'];
+} else if (station == '赤羽駅') {
+    TableTitle = ['上野･東京･横浜･磯子方面', '南浦和･大宮方面', '上野方面', '逗子方面', '高崎方面', '宇都宮方面', '新木場方面', '川越方面'];
+    var Takasaki = ['宇都宮', '小金井', '古河'];
+    limitednumber(TT[2], 2, '草津･四万');
+    limitednumber(TT[4], 1, '草津･四万');
+    limitednumber(TT[2], 2, 'あかぎ');
+    limitednumber(TT[4], 1, 'あかぎ');
+    DestinationDevide(Takasaki, 8, 9);
+    TT[10] = makeemptyTable(TT[4], TT[8]);
+    TT[11] = makeemptyTable(TT[5], TT[9]);
+    TTconnect(TT[4], TT[8], TT[10]);
+    TTconnect(TT[5], TT[9], TT[11]);
+    TT[4] = TT[10];
+    TT[5] = TT[11];
+    console.log(TT[4]);
+    console.log(TT[5]);
+    
 } else if (station == '千葉駅') {
     TableTitle = ['横須賀 総武線(快速)',
         '中央･総武線(各駅停車)', '内房線', '外房線', '総武本線', '成田線'];

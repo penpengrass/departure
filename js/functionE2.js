@@ -17,18 +17,22 @@ function JRE6ColorPlusName(td, tr, LoType, color, Nameflag = 0) {
     if (Nameflag == 0) {
         if (Type[td][tr].includes(LoType)) {
             LType.style.backgroundColor = color;
-            LName.style.backgroundColor = color;
             if (LDep != null) {
                 LDep.style.backgroundColor = color;
+            }
+            if (LName !=null) {
+                LName.style.backgroundColor = color;
             }
 
         }
     } else if (Nameflag == 1) {
         if (LName.textContent.includes(LoType)) {
             LType.style.backgroundColor = color;
-            LName.style.backgroundColor = color;
             if (LDep != null) {
                 LDep.style.backgroundColor = color;
+            }
+            if (LName !=null) {
+                LName.style.backgroundColor = color;
             }
         }
     }

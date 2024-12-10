@@ -1,3 +1,5 @@
+let Saikyo_Color = '#00AC9A';
+let Keihin_Color = '#00b2e5';
 if (station == '長野駅') {
     for (let tr = 0; tr < 3; tr++) {
         console.log(Type[0][tr]);
@@ -154,6 +156,66 @@ if (station == '松本駅') {
         }
     }
     comment.textContent = '両数表示は今後更新';
+} else if (station == '赤羽駅') {
+    rowremove(0, 'HName', 'TName');
+    rowremove(1, 'HName', 'TName');
+    rowremove(6, 'HName', 'TName');
+    rowremove(7, 'HName', 'TName');
+    function AkabaneSize(td) {
+        rowsize(td, 'HType', 'TType', '25%');
+        rowsize(td, 'HTime', 'TTime', '25%');
+        rowsize(td, 'HDes', 'TDes', '25%');
+        rowsize(td, 'HNumber', 'TNum', '15%');
+        rowsize(td, 'Htopic', 'Ttopic', '5%');
+        document.getElementById('TLCDTable' + (td + 1)).style.width = '600px';
+    }
+    AkabaneSize(0);
+    AkabaneSize(6);
+    //rowsize(1, 'HType', 'TType', '15%');
+    rowsize(2, 'HName', 'TName', '15%');
+    rowsize(3, 'HName', 'TName', '15%');
+    rowsize(4, 'HName', 'TName', '15%');
+    rowsize(5, 'HName', 'TName', '15%');
+    for (var tr = 0; tr < 2; tr++) {
+        AllWordChange(0, tr, 'WType', '普通', '各駅停車', 1, Type);
+        AllWordChange(1, tr, 'WType', '普通', '各駅停車', 1, Type);
+        AllWordChange(3, tr, 'WType', '快速:大宮から小山間', '普通', 1, Type);
+        AllWordChange(5, tr, 'WType', '快速:大宮から小山間', '快速', 1, Type);
+        AllWordChange(4, tr, 'WType', '快速', '普通', 1, Type);
+        JRE6ColorPlusName(0, tr, '各駅停車', Keihin_Color);
+        JRE6ColorPlusName(1, tr, '各駅停車', Keihin_Color);
+        JRE6ColorPlusName(0, tr, '快速', Keihin_Color);
+        JRE6ColorPlusName(1, tr, '快速', Keihin_Color);
+        JRE6ColorPlusName(2, tr, '普通', 'orange');
+        JRE6ColorPlusName(3, tr, '普通', 'orange');
+        JRE6ColorPlusName(4, tr, '普通', 'orange');
+        JRE6ColorPlusName(5, tr, '普通', 'orange');
+        JRE6ColorPlusName(2, tr, '快速', 'orange');
+        JRE6ColorPlusName(3, tr, '快速', 'orange');
+        JRE6ColorPlusName(4, tr, '快速', 'orange');
+        JRE6ColorPlusName(5, tr, '快速', 'orange');
+        JRE6ColorPlusName(2, tr, 'あかぎ', 'red');
+        JRE6ColorPlusName(4, tr, 'あかぎ', 'red');
+        JRE6ColorPlusName(2, tr, '草津･四万', 'red');
+        JRE6ColorPlusName(4, tr, '草津･四万', 'red');
+        JRE6ColorPlusName(6, tr, '', Saikyo_Color);
+        JRE6ColorPlusName(7, tr, '', Saikyo_Color);
+    }
+    for (var td = 0; td < 8; td++) {
+        document.getElementsByClassName('HDes')[td].style.paddingRight = "1.5em";
+        for (var tr = 0; tr < 2; tr++) {
+            //console.log(document.getElementById('Ttopic'+(td+1)+(tr+1)));
+            FourLetters(td, tr, 0.8, 0, 'WType');
+            document.getElementById('Ttopic' + (td + 1) + (tr + 1)).innerHTML += '<span class="bansen">番線</span>';
+            //document.getElementById('TDes' + (td + 1) + (tr + 1)).style.paddingRight = "1em";
+            if (Des[td][tr].length > 6) {
+                document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.5)" + "translate(-50%,0%)";
+            }
+            document.getElementById('TType' + (td + 1) + (tr + 1)).style.textAlign = 'center';
+        }
+    }
+    setInterval(allswitch_Akabane, 5000);
+    comment.textContent+='一部表示不正確';
 } else if (station == '新宿駅') {
     const table7 = document.getElementById("TLCDTable7");
     const table9 = document.getElementById("TLCDTable9");

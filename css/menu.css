@@ -8,6 +8,7 @@ p{
 }
 table{
     border-collapse: collapse;
+    width:100%;
 }
 th{
     border: 2px black solid;
@@ -21,13 +22,17 @@ button{
     height:40px;
     width:120px;
     font-size:20px;
-    margin:5px;
+    margin:10px;
 }
 @media(max-width:1199px) {
     td{
         border:2px black solid;
         height:30px;
-        font-size:20px;
+        font-size:25px;
+    }
+    button{
+        margin:15px;
+        border-radius: 10px;
     }
 }
 .mainstation{

@@ -13,7 +13,7 @@
     <h1>リアルタイム鉄道発車標</h1>
     <h1 class="Cheader">概要</h1>
     <div>プログラミング練習を主目的とした鉄道のリアルタイム発車標再現 </div>
-    <div>2024年3月ダイヤの発車標をリアルタイムに再現
+    <div>2024年3月(もしくは9月)ダイヤの発車標をリアルタイムに再現</div>
     <div>土休日ダイヤ対応の駅は実際の土休日や祝日と表示ダイヤが連動している</div>
         <div>色や形式をできる限り再現しているが，フォント等はWindowsでデフォルトにあるものを使用 両数は非表示 </div>
         <div>表示駅は随時追加予定 </div>
@@ -23,7 +23,6 @@
             <p class="chushaku">
                 <span style="color:red;">赤字</span>は土休日ダイヤ対応，もしくは終日ダイヤ<br>
                 黒字は平日ダイヤのみ <br>
-                ただし、四国の2024年9月ダイヤは未対応
             </p>
             <p class="chushaku"></p>
             <tr>
@@ -56,7 +55,7 @@
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:red;">北新地駅</span></td>
                 <td class="long"><span style="color:red;">米原駅</span>, <span style="color:red;">三ノ宮駅</span>, 
-                <span style="color:black;">姫路駅</span>, <span style="color:black;">岡山駅</span>, <span style="color:red;">糸崎駅</span>, 
+                <span style="color:black;">姫路駅</span>, <span style="color:red;">岡山駅</span>, <span style="color:red;">糸崎駅</span>, 
                 <span style="color:red;">三原駅</span>, <span style="color:red;">広島駅</span>, <span style="color:black;">新見駅</span>, 
                 <span style="color:red;">岩国駅</span>, <span style="color:black;">徳山駅</span>, <span style="color:black;">下関駅</span>
                 </td>
@@ -95,7 +94,7 @@
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
                 <td>新宿駅</td>
-                <td>横浜駅, <span style="color:red;">長野駅</span>, <span style="color:red;">松本駅</span></td>
+                <td>赤羽駅, 横浜駅, <span style="color:red;">長野駅</span>, <span style="color:red;">松本駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本UTL</td>
@@ -168,13 +167,14 @@
         <h1 class="Cheader">今後追加する駅</h1>
         <li>新幹線 静岡駅 米原駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
-        <li>JR東日本 赤羽駅 大宮駅 水戸駅 仙台駅 福島駅 </li>
+        <li>JR東日本 大宮駅 高崎駅 水戸駅 仙台駅 福島駅 </li>
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 新山口駅</li>
         <li>JR九州 鳥栖駅 熊本駅 鹿児島中央駅</li>
         <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
         <li>JR東海 中津川駅</li>
+        <li>その他 京急品川駅 京成青砥駅</li>
         <h1 class="Cheader">今後対応予定</h1>
         <li>一部駅の番線や両数の表示修正</li>
         <li>停車駅表示を柔軟に(特別停車など)</li>

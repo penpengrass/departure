@@ -144,3 +144,11 @@ function allswitch_UTL(){
         ChibaSwitch(WType[1][tr], tr, Type[1][tr], '湘南', '特急');
     }
 }
+function allswitch_Akabane(){
+    for (var tr = 0; tr < orderNum; tr++) {
+        ChibaSwitch(WType[2][tr], tr, Type[2][tr], 'あかぎ', '特急');
+        ChibaSwitch(WType[2][tr], tr, Type[2][tr], '草津･四万', '特急');
+        ChibaSwitch(WType[4][tr], tr, Type[4][tr], 'あかぎ', '特急');
+        ChibaSwitch(WType[4][tr], tr, Type[4][tr], '草津･四万', '特急');
+    }
+}

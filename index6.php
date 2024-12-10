@@ -31,7 +31,7 @@
     print('
         <link rel="stylesheet" href="css/styleMatsumoto.css">
         ');
-  } else if ($station == '横浜駅') {
+  } else if ($station == '横浜駅'||$station=='赤羽駅') {
     print('
         <link rel="stylesheet" href="css/styleYokohama6.css">
         ');
@@ -43,6 +43,7 @@
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
+  <script type="text/javascript" src="js/TTconnect.js"></script>
   <script type="text/javascript" src="js/stationset6.js"></script>
 </head>
 
@@ -55,6 +56,7 @@
   <form action="PHP/files6.php" method="POST">
     <select name="staselect6">
     <option value="shinjuku">新宿駅</option>
+    <option value="akabane">赤羽駅</option>
     <option value="ueno">上野駅</option>
       <option value="tokyo">東京駅</option>
       <option value="chiba">千葉駅</option>
@@ -97,7 +99,7 @@
       <th width="10%" id="HType' . $i . '">種別</th>
       <th width="30%" id="HName' . $i . '"></th>
       <th width="15%" id="HTime' . $i . '">時刻</th>
-      <th width="15%">行先</th>
+      <th width="15%" class="HDes" id="HDes' . $i . '">行先</th>
       <th width="10%">番線</th>
       <th width="20%">記事</th>
     </tr>
@@ -125,7 +127,7 @@
     </tr>
     ');
       }
-      if ($station == '新宿駅') {
+      if ($station == '新宿駅'|| $station=='赤羽駅') {
         $i++;
         print('
         <th class="Ctitle_P" colspan="6"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></th>
@@ -133,7 +135,7 @@
       <th width="10%">種別</th>
       <th width="35%" id="HName' . $i . '">列車名</th>
       <th width="20%">時刻</th>
-      <th width="25%">行先</th>
+      <th width="25%" class="HDes" id="HDes' . $i . '">行先</th>
       <th width="7%">番線</th>
       <th width="3%" id="Htopic' . $i . '"></th>
       </tr>

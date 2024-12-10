@@ -24,7 +24,11 @@ function TTconnect(TTLeft, TTRight, TTSum) {
     let right_count = 1;
     let Sum_TSum = 1;
     //console.log(TTLeft);
+    //console.log(TT[6]);
     console.log("TTLeft.length=" + TTLeft.length + ":TTRight.length=" + TTRight.length);
+    if (TTLeft.length != TTRight.length) {
+        throw TypeError("表を合体できません");
+    }
     console.log(Math.max(TTLeft.length, TTRight.length));
     for (let TaRow = 2; TaRow < Math.max(TTLeft.length, TTRight.length); TaRow += 4) {
         //TaRow = 34;
@@ -32,6 +36,7 @@ function TTconnect(TTLeft, TTRight, TTSum) {
         //console.log(TaRow + ":*" + (TTLeft[TaRow].length + TTRight[TaRow].length));
         TTSum[TaRow] = new Array(TTLeft[TaRow].length + TTRight[TaRow].length);
         //console.log(TTLeft[TaRow].length);
+        //時の部分を入れる
         if (TTLeft[TaRow - 1][0] == TTRight[TaRow - 1][0]) {
             TTSum[TaRow - 1][0] = TTLeft[TaRow - 1][0];
         }
@@ -83,6 +88,13 @@ function TTconnect(TTLeft, TTRight, TTSum) {
                 TTSum[TaRow - 1][Sum_TSum] = TTLeft[TaRow - 1][left_count];
                 TTSum[TaRow + 1][Sum_TSum] = TTLeft[TaRow + 1][left_count];
                 TTSum[TaRow + 2][Sum_TSum] = TTLeft[TaRow + 2][left_count];
+                if (TTLeft[TaRow + 2][left_count] != TTRight[TaRow + 2][right_count]) {
+                    Sum_TSum++;
+                    TTSum[TaRow][Sum_TSum] = TTRight[TaRow][right_count];
+                    TTSum[TaRow - 1][Sum_TSum] = TTRight[TaRow - 1][right_count];
+                    TTSum[TaRow + 1][Sum_TSum] = TTRight[TaRow + 1][right_count];
+                    TTSum[TaRow + 2][Sum_TSum] = TTRight[TaRow + 2][right_count];
+                }
                 //console.log(TTLeft[TaRow][left_count]);
                 //console.log(Sum_TSum + "0");
                 Sum_TSum++;
@@ -127,7 +139,7 @@ if (station == '武蔵小杉駅') {
     TT[3] = makeemptyTable(TT[1], TT[2]);
     TTconnect(TT[1], TT[2], TT[3]);
     TT[1] = TT[3];
-} else if (station == '東京駅') {
+} else if (station == '東京駅' && Indexfile == 'index6_S.php') {
     console.log(TT[1]);
     console.log(TT[3]);
     TT[3] = makeemptyTable(TT[1], TT[2]);

@@ -26,7 +26,7 @@ td {
     border-bottom: 3px #202020 solid;
     border-left:none;
     border-right:none;
-    font-family: "meiryo";
+    font-family: "meiryo",monospace;
 }
 
 table {
@@ -43,9 +43,18 @@ table {
     white-space: nowrap;
     text-align: center;
 }
+.Ctitle_P{
+    background-color: #404040;
+    height: 40px;
+    color: white;
+    font-size: 1.6vw;
+}
 @media(max-width:1199px) {
     table{   
         width: 750px;
+    }
+    .Ctitle_P{
+        font-size: 25px;
     }
 }
 .Ctitle {
@@ -53,12 +62,7 @@ table {
     height: 40px;
     color: white;
 }
-.Ctitle_P{
-    background-color: #404040;
-    height: 40px;
-    color: white;
-    font-size: 25px;
-}
+
 [class^="Destination"] {
     text-align: left;
 }
