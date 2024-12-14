@@ -35,18 +35,18 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
     //配列内の駅探索
     let DLine_in = 0;
     let Dflag = 0;//行先が違う配列の場合に使いたい
-    console.log(Dtype);
+    //console.log(Dtype);
     /*console.log(td_detail);
     console.log(Dtype);
     console.log(Dtype[td_detail]);*/
-    console.log(Type_Line);
+    //console.log(Type_Line);
     //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
     while (Sentence == '' && Dtype[td_detail] < 10 && Dflag < 200) {
         DLine_in = 0;
         //console.log("td_detail=" + td_detail);
-        console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
+        //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
         Dflag++;
-        console.log(Dflag);
+        //console.log(Dflag);
         if (StationInLine(stationN, Type_Line, Dtype[td_detail]) == -1) {
             console.log("DetailDecideで出発駅がない(外側)" + stationN + Des);
             if (Dtype[td_detail] > Type_Line.length) {

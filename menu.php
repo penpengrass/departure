@@ -143,7 +143,7 @@
                 <td>JR四国</td>
                 <td><button type="button" onclick="location.href='./index9.php'">移動</button></td>
                 <td><span style="color:black;">高松駅</span></td>
-                <td></td>
+                <td>松山駅</td>
             </tr>
             <tr>
                 <td>JR九州</td>
@@ -172,7 +172,7 @@
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 新山口駅</li>
         <li>JR九州 鳥栖駅 熊本駅 鹿児島中央駅</li>
-        <li>JR四国 徳島駅 阿波池田駅 松山駅 高知駅</li>
+        <li>JR四国 徳島駅 阿波池田駅 高知駅</li>
         <li>JR東海 中津川駅</li>
         <li>その他 京急品川駅 京成青砥駅</li>
         <h1 class="Cheader">今後対応予定</h1>

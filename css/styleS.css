@@ -4,8 +4,8 @@ body {
 
 td {
     /*データ内*/
-    font-size: 25px;
-    height: 25px;
+    font-size: 30px;
+    height: 35px;
     color: yellow;
     border: 10px #734e30 solid;
     /*表の中の枠色*/
@@ -23,14 +23,12 @@ table {
     background-color: black;
     border: 15px #734e30 solid;
     /*周りの色*/
-    width: 550px;
+    width: 610px;
     height: 150px;
     white-space: nowrap;
     text-align: center;
     margin: 3px;
-    border-top: 1px;
 }
-
 th {
     background-color: #734e30;
     height: 1px;
@@ -40,19 +38,19 @@ th {
     display: table;
 }
 
-p3 {
-    font-size: 20px;
-}
-
 .railnumber {
     color: white;
     font-weight: 900;
 }
 
 .Ctitle {
+    height:auto;
     background-color: #734e30;
     color: white;
     padding: 0px;
+}
+showing{
+    font-size: 30px;
 }
 
 .CTime {
@@ -60,17 +58,13 @@ p3 {
 }
 
 .CDetail {
+    font-size: 25px;
     overflow: hidden;
 }
 
 .name {
     border-bottom-color: black;
 }
-
-.Cminiletter {
-    /*font-size:10px;*/
-}
-
 .CName {
     line-height: 0.6;
 }
@@ -84,4 +78,10 @@ p3 {
 
 .red {
     color: red;
+}
+.blue {
+    color: skyblue;
+}
+.white {
+    color: white;
 }

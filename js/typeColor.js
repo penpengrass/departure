@@ -152,10 +152,10 @@ function allJRCIncludeColor() {
     }
 }
 //JR四国
-function allJRSIncludeColor() {
+function allJRSIncludeColor(obj) {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            JTypeIncludeColor(Type[ia][ib], TType[ia][ib], JRSobj);
+            JTypeIncludeColor(Type[ia][ib], TType[ia][ib], obj);
         }
     }
 }
@@ -193,8 +193,6 @@ if (Indexfile == 'index8.php') {
     allJRNagoyaColor();
 } else if (CompanyNumber == 5) {
     allTokyuColor();
-} else if (Indexfile == 'index9.php') {
-    allJRSIncludeColor();
 } else if (Indexfile == 'index7_S1.php') {
     allJRCSColor();
 } else if (Indexfile == 'index4_A.php') {

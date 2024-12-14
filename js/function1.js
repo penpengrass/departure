@@ -22,7 +22,17 @@ function Shows(hour, Table_Column, TT, TableNumber, depnum) {
     orders[depnum] = Table_Column + 1;
     return;
 }
-
+function NotShows(hour,Table_Column, TT,TableNumber, depnum){
+    PlusHour[depnum-1] = TT[hour][0];
+    PlusMin[depnum-1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
+    PlusType[depnum-1] = TT[hour][Table_Column];
+    PlusDes[depnum-1]= TT[hour + 2][Table_Column];
+    //document.getElementById('TNum' + TableNumber + '' + depnum).textContent = TT[hour + 3][Table_Column];
+    //ここで次発のために変数に入れる
+    orders[depnum - 1] = Table_Column;
+    orders[depnum] = Table_Column + 1;
+    return;
+}
 function koshin() {
     location.reload();
 }
@@ -66,6 +76,7 @@ class TableDevide {
         //console.log("これからprocess部分実行");
         let subTaNum = 1;
         var flag = 0;
+        //console.log(TT[this.mainTable]);
         Tablereset(this.subTable);
         //TaRowは時を示す, mainTaNumはmainの表の何本目を示す rは1個目の表の残った本数 subTaNumは2つ目の表のs-1本目(hを減らしsを増やすようにする)
         for (let TaRow = 4; TaRow < TT[this.mainTable].length; TaRow += 4) {//時の切替
@@ -74,7 +85,7 @@ class TableDevide {
             var count = TT[this.mainTable][TaRow].length - 1;
             for (let mainTaNum = 1; mainTaNum < TT[this.mainTable][TaRow].length; mainTaNum++) {//列車の切替
                 if (condition_F(TaRow, mainTaNum)) {
-                    //console.log(TT[this.mainTable].length + ":" + TT[this.subTable].length);
+                    console.log(TT[this.mainTable].length + ":" + TT[this.subTable].length);
                     flag++;
                     this.main_to_sub(TaRow, mainTaNum, subTaNum);
                     subTaNum++;
@@ -112,7 +123,7 @@ function DestinationDevide(station, mainTable, subTable) {
 function TrainNameDevide(trainName, mainTable, subTable) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, subTable);
-    tableDevide.process((TaRow, mainTaNum) => TT[mainTable][TaRow - 3][mainTaNum].includes(trainName));
+    tableDevide.process((TaRow, mainTaNum) => trainName.includes(TT[mainTable][TaRow - 3][mainTaNum]));
 }
 class TrainNumber {
     constructor(TT, name) {

@@ -40,7 +40,7 @@ function DetailReplace(td, tr, Before, After, flag = 0) {
     else {
         Detail[td][tr] = Detail[td][tr].replace(Before, After);
     }
-    if (Indexfile != 'index3_S.php'&&flag!=1) {
+    if (Indexfile != 'index3_S.php' && Indexfile != 'index11.php' && flag != 1) {
         LDetail = document.getElementById('TDetail' + (td + 1) + '' + (tr + 1));
         Detail[td][tr] = Detail[td][tr].replace(Des[td][tr], "");
         LDetail.textContent = LDetail.textContent.replace(Des[td][tr], "");
@@ -48,9 +48,9 @@ function DetailReplace(td, tr, Before, After, flag = 0) {
     }
 }
 //新幹線や有料特急の追加停車
-function DetailReplace_Set(td, tr, Line, Before, After) {
+function DetailReplace_Set(td, tr, Line, Before, After, flag = 0) {
     if (Line.includes(number[td][tr])) {
-        DetailReplace(td, tr, Before, After);
+        DetailReplace(td, tr, Before, After, flag);
     }
 }
 //所要時間表示(実際の表示にはない, ここで表示を完結させる)
