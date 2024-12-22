@@ -277,8 +277,19 @@ function AllWordReplace(td, tr, Tab, keyword, AfterWord, line_flag, line) {
             line[td][tr] = line[td][tr].replace(keyword, AfterWord);
         }
     }
-    console.log(Type[td][tr] + 'td=' + td + 'tr=' + tr);
-    console.log(LTab.textContent);
+    //console.log(Type[td][tr] + 'td=' + td + 'tr=' + tr);
+    //console.log(LTab.textContent);
+}
+function AllStartWordReplace(td, tr, Tab, keyword, AfterWord, line_flag, line) {
+    var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
+    if (LTab.textContent.startsWith(keyword)) {
+        LTab.textContent = LTab.textContent.replace(keyword, AfterWord);
+        if (line_flag == 1) {
+            line[td][tr] = line[td][tr].replace(keyword, AfterWord);
+        }
+    }
+    //console.log(Type[td][tr] + 'td=' + td + 'tr=' + tr);
+    //console.log(LTab.textContent);
 }
 
 //路線記号追加

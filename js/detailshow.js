@@ -44,7 +44,7 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
     while (Sentence == '' && Dtype[td_detail] < 10 && Dflag < 200) {
         DLine_in = 0;
         //console.log("td_detail=" + td_detail);
-        //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
+        console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
         Dflag++;
         //console.log(Dflag);
         if (StationInLine(stationN, Type_Line, Dtype[td_detail]) == -1) {
@@ -59,7 +59,7 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
                 continue;
             }
         } else {
-            //console.log("関数の結果出発駅が何番目の配列か=" + StationInLine(stationN, Type_Line, Dtype[td_detail]));
+            console.log("関数の結果出発駅が何番目の配列か=" + StationInLine(stationN, Type_Line, Dtype[td_detail]));
         }
         //出発駅が配列部分に出てくるまでwhileを繰り返す
         //console.log(Dtype[td_detail] + ':' + td_detail);
@@ -73,20 +73,20 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
                 break;
             }
         }
-        //console.log("出発駅仮確定 出発駅=" + Type_Line[Dtype[td_detail]][DLine_in] + ":DLine_in=" + DLine_in);
+        console.log("出発駅仮確定 出発駅=" + Type_Line[Dtype[td_detail]][DLine_in] + ":DLine_in=" + DLine_in);
         DLine_in++;
         while (Type_Line[Dtype[td_detail]][DLine_in - 1] != "以遠各駅" && !Type_Line[Dtype[td_detail]][DLine_in - 1].includes("から各駅") && Type_Line[Dtype[td_detail]][DLine_in] !== Des && Dflag < 200) {
             Sentence += Type_Line[Dtype[td_detail]][DLine_in] + distance;
             DLine_in++;
             //console.log(Des + "が" + Type_Line + "の中に含まれているか " + Dtype[td_detail]);
-            /*if(StationInLine(Des,Type_Line,Dtype[td_detail])==-1){
-                console.log("DetailDecide後半で例外a:" + Type_Line.length + ":" + Des);
+            if(StationInLine(Des,Type_Line,Dtype[td_detail])==-1){
+                //console.log("DetailDecide後半で例外a:" + Type_Line.length + ":" + Des);
             }else{
-                console.log("DetailDecide後半で例外なし:" + Type_Line.length + ":" + Des);
-            }*/
+                //console.log("DetailDecide後半で例外なし:" + Type_Line.length + ":" + Des);
+            }
             if (Type_Line[Dtype[td_detail]].length <= DLine_in) {//配列内に終着駅がない場合(以遠を除く)      
                 Sentence = '';//ここに分岐している場合を記述
-                //console.log("DetailDecideで終着駅がないのでDtypeプラス:" + Type_Line[Dtype[td_detail]].length + ":" + Des);
+                console.log("DetailDecideで終着駅がないのでDtypeプラス:" + Type_Line[Dtype[td_detail]].length + ":" + Dtype[td_detail]);
                 Dtype[td_detail]++;
                 //console.log("Dtypeの結果" + Dtype[td_detail]);
                 DtypePlusCount++;

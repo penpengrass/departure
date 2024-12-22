@@ -6,6 +6,7 @@ var Ishiduti=new Array(2);
 var Sunport=new Array(2);
 var Uzushio=new Array(2);
 var Shimanto=new Array(2);
+var Nampu=new Array(2);
 var Shiokaze=new Array(2);
 var Uwakai=new Array(2);
 Mrapid[0]=['高松','坂出','児島','茶屋町','妹尾','岡山'];
@@ -16,11 +17,14 @@ Uzushio[0]=['高松','栗林','屋島','志度','三本松','引田','板野','�
 Uzushio[1]=['高松','坂出','宇多津','児島','岡山'];
 Sunport[0]=['高松','端岡','坂出','以遠各駅','今治','松山'];
 Shimanto[0]=['高松','坂出','宇多津','丸亀','多度津','善通寺','琴平','阿波池田','大歩危','大杉','土佐山田','後免','高知','旭','朝倉','伊野','佐川','須崎','土佐久礼','窪川','土佐佐賀','土佐上川口','土佐入野','中村'];
-Shimanto[1]=['高松','坂出','児島','岡山','姫路','三ノ宮','大阪','静岡','富士','沼津','熱海','横浜','東京'];
+Shimanto[2]=['高松','坂出','児島','岡山','姫路','三ノ宮','大阪','静岡','富士','沼津','熱海','横浜','東京'];
+Nampu[0]=['岡山','児島','宇多津','丸亀','多度津','善通寺','琴平','阿波池田','大歩危','土佐山田','後免','高知']
 Uwakai[0]=['宇和島','伊予吉田','卯之町','八幡浜','伊予大洲','内子','伊予市','松山'];
 reverseLine(Ishiduti, 0, 1);
 reverseLine(Shiokaze, 0, 1);
+reverseLine(Shimanto, 0, 1);
 reverseLine(Uwakai, 0, 1);
+reverseLine(Nampu, 0, 1);
 var limited=Uzushio.slice();
 var staflag=0;
 var rapid=Ishiduti.slice();
@@ -35,6 +39,15 @@ var JRSMobj={
     Typeb: { type: "特急いしづち", color: red, detail: rapid, },
     Typec: { type: "特急宇和海", color: red, detail: Uwakai, },
     Typed: { type: "快速ｻﾝﾎﾟｰﾄ", color: 'white', detail: Jrapid, },
+    Typee: { type: "特急", color: red, detail: Jsubrapid, },
+    Typef: { type: "各駅停車", color: 'white', detail: local, },
+    Typelocal: { type: "普通", color: 'white', detail: local, }
+};
+var JRSKobj={
+    Typea: { type: "特急しまんと･南風", color: red, detail: Nampu, },
+    Typeb: { type: "特急しまんと", color: red, detail: rapid, },
+    Typec: { type: "特急南風", color: red, detail: Nampu, },
+    Typed: { type: "特急あしずり", color: 'white', detail: Shimanto, },
     Typee: { type: "特急", color: red, detail: Jsubrapid, },
     Typef: { type: "各駅停車", color: 'white', detail: local, },
     Typelocal: { type: "普通", color: 'white', detail: local, }

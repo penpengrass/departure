@@ -123,7 +123,7 @@ function DestinationDevide(station, mainTable, subTable) {
 function TrainNameDevide(trainName, mainTable, subTable) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, subTable);
-    tableDevide.process((TaRow, mainTaNum) => trainName.includes(TT[mainTable][TaRow - 3][mainTaNum]));
+    tableDevide.process((TaRow, mainTaNum) =>  TT[mainTable][TaRow - 3][mainTaNum].includes(trainName));
 }
 class TrainNumber {
     constructor(TT, name) {

@@ -12,7 +12,7 @@
   require_once('PHP/variable.php');
   require_once('PHP/files9.php');
   require_once('getCSV.php');
-  if($station=='松山駅'){
+  if($station=='松山駅'||$station=='高知駅'){
     print('<link rel="stylesheet" href="css/styleS_Matsuyama.css">');
   }
   ?>
@@ -34,6 +34,7 @@
     <select name="staselect9">
       <option value="takamatsu">高松駅</option>
       <option value="matsuyama">松山駅</option>
+      <option value="kouchi">高知駅</option>
     </select>
     <button type="submit" name="submit">駅変更</button>
   </form>

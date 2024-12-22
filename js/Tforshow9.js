@@ -1,12 +1,14 @@
 
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
-        if (Des[td][tr] == '岡山･高松') {
+        if (Des[td][tr] == '岡山･高松' || Des[td][tr] == '高松･岡山') {
             Des[td][tr] = '岡山';
         }
         AllWordChange(td, tr, 'TType', '内子線経由普通', '各停(内子経由)', 1, Type);
         AllWordChange(td, tr, 'TType', '内子線経由普通', '各停(内子経由)', 1, Type);
-        TypeColorChange(td, tr, '特急', 'red');
+        AllWordReplace(td, tr, 'TType', 'あしずり', '特急あしずり', 1, Type);
+        AllWordReplace(td, tr, 'TType', 'しまんと', '特急しまんと', 1, Type);
+        AllStartWordReplace(td, tr, 'TType', '南風', '特急南風', 1, Type);
     }
 }
 if (station == '高松駅') {
@@ -15,11 +17,20 @@ if (station == '高松駅') {
 } else if (station == '松山駅') {
     allJRSIncludeColor(JRSMobj);
     DetailShow(JRSMobj, "、");
+} else if (station == '高知駅') {
+    allJRSIncludeColor(JRSKobj);
+    DetailShow(JRSKobj, "、");
 }
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         if (Des[td][tr] == '岡山' && station == '松山駅') {
             Des[td][tr] = '岡山･高松';
+        } else if (Type[td][tr].includes('しまんと･南風')) {
+            Des[td][tr] = '高松･岡山'
+        }
+        if (station == '高知駅') {
+            TypeColorChange(td, tr, '特急', 'red');
+            TypeBackColorChange(td, tr, '特急', '#202020');
         }
     }
 }
@@ -69,6 +80,11 @@ if (station == '高松駅') {
     } else if (number[0][0] == 104) {
         Detail1.innerHTML += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
     }
+} else if (station == '高知駅') {
+    var Detail1 = document.getElementById('TDetail11');
+    if (Des[0][0] == '高松･岡山') {
+        Detail1.textContent = '南風号は' + Detail1.textContent + 'しまんと号は宇多津発車後坂出に停車します';
+    }
 }
 //JRLimitedDevide(1);
 //JRLimitedDevide(3);
@@ -96,7 +112,7 @@ for (var td = 0; td < Tablenum; td++) {
                     Detaila.innerHTML = ' <span class="red">愛ある伊予灘線</span><span class="blue">伊予長浜経由</span><span class="white">の普通列車です</span>';
                     Detaila.innerHTML += '  伊予市で内子経由伊予大洲行きに接続します。';
                     Detail_title.textContent = '接続案内';
-                }else if(Des[td][tr].includes('+')){
+                } else if (Des[td][tr].includes('+')) {
                     Detaila.innerHTML = ' <span class="blue">内子線</span><span class="blue">内子経由</span><span class="white">の普通列車です</span>';
                     Detaila.innerHTML += '  伊予市で<span class="red">愛ある伊予灘線</span><span class="blue">伊予長浜経由</span>八幡浜行きに接続します。';
                     Detail_title.textContent = '接続案内';
@@ -119,8 +135,10 @@ for (var td = 0; td < Tablenum; td++) {
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = Type[td][tr].slice(2);
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'left';
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = color;
-            dType.style.backgroundColor = 'red';
-            dType.style.color = 'white';
+            if (station != '高知駅') {
+                dType.style.backgroundColor = 'red';
+                dType.style.color = 'white';
+            }
         }
         var dName = document.getElementById('TName' + (td + 1) + (tr + 1));
         if (dName.textContent.startsWith('しおかぜ･いしづち')) {
@@ -134,5 +152,5 @@ for (var td = 0; td < Tablenum; td++) {
 }
 flagmarkerase(0, 'TDes');
 flagmarkerase(1, 'TDes');
-flagmarkerase(0, 'TDes','+');
-flagmarkerase(1, 'TDes','+');
+flagmarkerase(0, 'TDes', '+');
+flagmarkerase(1, 'TDes', '+');
