@@ -7,7 +7,9 @@ for (var td = 0; td < Tablenum; td++) {
         AllWordChange(td, tr, 'TType', '内子線経由普通', '各停(内子経由)', 1, Type);
         AllWordChange(td, tr, 'TType', '内子線経由普通', '各停(内子経由)', 1, Type);
         AllWordReplace(td, tr, 'TType', 'あしずり', '特急あしずり', 1, Type);
-        AllWordReplace(td, tr, 'TType', 'しまんと', '特急しまんと', 1, Type);
+        if (station == '高知駅') {
+            AllWordReplace(td, tr, 'TType', 'しまんと', '特急しまんと', 1, Type);
+        }
         AllStartWordReplace(td, tr, 'TType', '南風', '特急南風', 1, Type);
     }
 }
