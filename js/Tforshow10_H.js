@@ -3,6 +3,7 @@ JRLimitedDevide(2);
 JRLimitedDevide(3);
 JRLimitedDevide(4);
 JRLimitedDevide(5);
+allLastShow();
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (td < 2) {
@@ -37,20 +38,21 @@ for (var td = 0; td < Tablenum; td++) {
 for (var tr = 0; tr < 2; tr++) {
     var dName = document.getElementById('TName' + 4 + (tr + 1));
     var dDes = document.getElementById('TDes' + 4 + (tr + 1));
-    var number = JRLimitedNumber(3, tr, 'TName');
+    var number = JRLimitedNumber(3, tr, 1);
     console.log(dName);
-    if (dName.textContent.includes('･')) {  
+    if (dName.textContent.includes('･')) {
         dName.innerHTML = 'ハウステンボス' + number + '<span class="gou">号</span><br>みどり' + number + '号';
         dName.style.fontSize = '20px';
         dName.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
         dName.style.fontWeight = '800px';
     }
-    if(dDes.textContent.includes('･')){
-        dDes.innerHTML = 'ハウステンボス'+'<br>'+'佐世保';
+    if (dDes.textContent.includes('･')) {
+        dDes.innerHTML = 'ハウステンボス' + '<br>' + '佐世保';
         dDes.style.fontSize = '20px';
         dDes.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
         dDes.style.fontWeight = '800px';
     }
 }
+
 flagmarkerase(1, 'TType', '*');
 Bansenshow(2);

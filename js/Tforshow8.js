@@ -1,5 +1,5 @@
 JRNameDevide();
-Bansenshow();
+allLastShow();
 if (station == '新函館北斗駅') {
     for (var tr = 1; tr < 3; tr++) {
         if (Type[0][tr - 1] != '') {
@@ -30,3 +30,5 @@ if (station == '新函館北斗駅') {
     }
     comment.textContent = 'ライラックの運転日には非対応';
 }
+
+Bansenshow();

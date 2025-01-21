@@ -29,6 +29,9 @@
 .CDep{
     text-align: left;
 }
+.CATOSTable td {
+    height:48px
+}
 .CATOSTable .topic{
     color:white;
     background-color: gray;

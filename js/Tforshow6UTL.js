@@ -107,13 +107,13 @@ for (var td = 0; td < Tablenum; td++) {
                 var LName = document.getElementById('TName' + (td + 1) + (tr + 1));
                 document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = Type[td][tr];
                 if (station == '上野駅' && (Type[td][tr].startsWith('ラビット') || Type[td][tr].startsWith('アーバン'))) {
-                    document.getElementById('TType' + (td + 1) + (tr + 1)).textContent = '快速';
-                    document.getElementById('TType' + (td + 1) + (tr + 1)).style.color = 'orange';
+                    Type[td][tr]= '快速';
+                    document.getElementById('WType' + (td + 1) + (tr + 1)).style.color = 'orange';
                     LName.textContent = LName.textContent.replace('快速', '');
                     document.getElementById('TCars' + (td + 1) + (tr + 1)).textContent = '15両';
                 } else {
-                    document.getElementById('TType' + (td + 1) + (tr + 1)).textContent = '特急';
-                    document.getElementById('TType' + (td + 1) + (tr + 1)).style.color = 'red';
+                    Type[td][tr] = '特急';
+                    document.getElementById('WType' + (td + 1) + (tr + 1)).style.color = 'red';
                     LName.textContent = LName.textContent.replace('特急', '');
                 }
             }
@@ -126,6 +126,8 @@ for (var td = 0; td < Tablenum; td++) {
 
     }
 }
+console.log(Type);
+allLastShow();
 comment.innerHTML = '両数や番線など一部表示不正確<br>';
 //allalterUTL_setting('特急');
 Bansenshow(0, LCDNumber);

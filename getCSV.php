@@ -104,13 +104,13 @@ $js_array .= ']';
   console.log(title2);
   let CompanyNumber = '<?php echo $CompanyNumber; ?>';
   //詳細表示がいくつあるか(0~2)PHPも使う
-  var detailflag='<?php echo $detailflag; ?>';
+  var detailflag = '<?php echo $detailflag; ?>';
   let station = '<?php echo $station; ?>';
-  let dayOfWeek='<?php echo $dayOfWeek; ?>';
+  let dayOfWeek = '<?php echo $dayOfWeek; ?>';
   if (station == '') {
     station = title[1];
   }
-  console.log("曜日番号は"+dayOfWeek);
+  console.log("曜日番号は" + dayOfWeek);
   console.log("駅名は" + station);
   console.log("TT.length=" + TT.length);
   let station2 = title2[1];
@@ -123,10 +123,11 @@ $js_array .= ']';
   let company = '';
   var NonGouflag = 0;
   var TwoLetterDisflag = 0;
-  var detailLength_one=0;
+  var detailLength_one = 0;
   var DetailLength = new Array(Tablenum);
   console.log(title[2].substr(0, 2));
   console.log(TT[1].length);
+  let LastShowFlag = 0;
   let red = 'red';
   let orange = 'orange';
   let yellowgreen = 'yellowgreen';

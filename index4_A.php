@@ -137,7 +137,7 @@
   <script type="text/javascript" src="js/functionW.js"></script>
   <script type="text/javascript" src="js/Tforshow4_A.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
-
+  <script type="text/javascript" src="js/LastShow.js"></script>
 </body>
 
 </html>

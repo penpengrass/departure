@@ -50,6 +50,7 @@ for (var td = 0; td < Tablenum; td++) {
         }
     }
 }
+allLastShow();
 let TenDes = new Array(orderNum);
 let TenType = new Array(orderNum);
 let space = 0;

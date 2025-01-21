@@ -87,5 +87,5 @@
   <script type="text/javascript" src="js/functionE2.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/Tforshow3.js"></script>
-
+  <script type="text/javascript" src="js/LastShow.js"></script>
 </html>

@@ -1,7 +1,6 @@
 function allJRC_Reduction() {
     for (let te = 0; te < Tablenum; te++) {
         for (let tr = 0; tr < Tablenums[te]; tr++) {
-            //console.log(Type[te][tr]);
             TypeColorChange(te, tr, '快速', 'orange');
             TypeColorChange(te, tr, '特急', 'red');
             TypeColorChange(te, tr, 'ホームライナー', 'red');
@@ -83,16 +82,16 @@ if (station == '岐阜駅') {
     SpecialStop(2, '(三)', '蒲郡', '三河三谷', '・', 0.8);
 }
 if (station == '豊橋駅') {
-    AllWordReplace(1, 0, 'TType', '特急', '特急(一部特別車)', 1, Type);
-    AllWordReplace(1, 0, 'TType', '快特', '快特(一部特別車)', 1, Type);
-    AllWordReplace(1, 1, 'TType', '特急', '特急(一部特別車)', 1, Type);
-    AllWordReplace(1, 1, 'TType', '快特', '快特(一部特別車)', 1, Type);
+    AllWordReplace(1, 0, Type, '特急', '特急(一部特別車)');
+    AllWordReplace(1, 0, Type, '快特', '快特(一部特別車)');
+    AllWordReplace(1, 1, Type, '特急', '特急(一部特別車)');
+    AllWordReplace(1, 1, Type, '快特', '快特(一部特別車)');
     FDetail(Type[3][0], JRCeNobj, Dtype[3], 3, 0, "・");
-    console.log(Detail[3][0]);
-    AllWordChange(1, 0, 'TDes', '名鉄名古屋', '名古屋', 1, Des);
+    console.log(Type[1][0]);
+    AllWordChange(1, 0, Des, '名鉄名古屋', '名古屋');
     FDetail(Type[1][0], Meiobj, Dtype[1], 1, 0, "・");
     Detail[1][0] = Detail[1][0].replace('須ケ口・', '');
-    AllWordChange(1, 0, 'TDes', '名古屋', '名鉄名古屋', 1, Des);
+    AllWordChange(1, 0, Des, '名古屋', '名鉄名古屋');
     SpecialStop(1, '(須)', '名古屋', '須ケ口', '・', 0.8);
     SpecialStop(1, '(新)', '東岡崎', '新安城', '・', 0.8);
     SpecialStop(1, '(国)(伊)', '豊橋', '伊奈・国府', '・', 0.8);
@@ -106,8 +105,8 @@ if (station == '豊橋駅') {
     Tablenums=[3,2,3,3];
     LastLetterRemove(1, 0, '・');
     if (Type[1][0] == '急行(東岡崎から準急)') {
-        DetailReplace(1, 0, '東岡崎', '東岡崎・矢作橋', 1);
-        DetailReplace(1, 0, '前後', '豊明・前後・有松・中京競馬場前', 1);
+        DetailReplace(1, 0, '東岡崎', '東岡崎・矢作橋',1);
+        DetailReplace(1, 0, '前後', '豊明・前後・有松・中京競馬場前',1);
     }
     if (Type[1][0] != '') {
         BottomBanner("TRow", 2, 3, 5, '停車駅は<span class="orange">' + Detail[1][0] + '</span>です');
@@ -159,3 +158,4 @@ if (TokaiDetailflag == 1) {
         document.getElementById('Detail_Banner' + (td + 1)).remove();
     }
 }
+allLastShow();

@@ -18,6 +18,8 @@
   <script type="text/javascript" src="js/function1.js"></script>
   <script type="text/javascript" src="js/stationset2.js"></script>
   <script type="text/javascript" src="js/detailset/Kindetailset.js"></script>
+  <script type="text/javascript" src="js/Time.js"></script>
+  <script type="text/javascript" src="js/Timer.js"></script>
 </head>
 
 <body>
@@ -66,12 +68,13 @@
       for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {//<td class="news-banner"><p3 class="news-banner__content">
         print('
     <tr>
-      <td rowspan="2" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
-      <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '" rowspan="2"><span class="CWType" id="WType' . $i . $j . '"></span></td>
-      <td class="Destination" id="TDes' . $i . $j . '" rowspan="2"><span id="WDes' . $i . $j . '"></span></td>
-      <td rowspan="2"><span class="railnumber" id="TNum' . $i . $j . '"></span></td>
+      <td rowspan="3" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
+      <td rowspan="3" class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><span class="CWType" id="WType' . $i . $j . '"></span></td>
+      <td rowspan="3" class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></span></td>
+      <td rowspan="3"><span class="railnumber" id="TNum' . $i . $j . '"></span></td>
       <td class="higherDetail CDetail" ><p3 class="news-banner__content" id="TDetail' . $i . $j . '">本日の運転は終了しました</p3></td>
       </tr>
+      <tr><td class="higherDetail CDetail"></td></tr>
       <tr><td class="CDetail"><p2 id="TConnection' . $i . $j . '"></td>
     </tr>
     ');
@@ -89,8 +92,7 @@
   </tableline>
   <p id="supplement"></p>
   <!--ここから内部のこと-->
-  <script type="text/javascript" src="js/Time.js"></script>
-  <script type="text/javascript" src="js/Timer.js"></script>
+  
   <script type="text/javascript" src="js/TimeShow.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
@@ -100,6 +102,7 @@
   <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/Tforshow2.js"></script>
+  <script type="text/javascript" src="js/LastShow.js"></script>
   
   <!--<script type="text/javascript" src="js/detailStation.js"></script>-->
   

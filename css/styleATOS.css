@@ -7,7 +7,7 @@ body{
     background-color: black;
     border: 10px gray solid;/*周りの色*/
     border-top:0px;
-    width: 750px; 
+    width: 50%; 
     white-space:nowrap;
     text-align:center;
     border-spacing: 0px;
@@ -20,20 +20,12 @@ body{
         /*font-size:30px;*/
         height: 48px;
         color:#0f0;
-        font-family: "FM明朝",serif;
+        font-family: "ＭＳ 明朝","meiryo",serif;
         padding:0;
         border:1px black solid;
-        margin:0;
     }
     .Destination{
         color:orange;
-    }
-
-   
-    @media(max-width:1199px) {
-        .CATOSTable{   
-            width: 750px;
-        }
     }
     .Ctitle{
         background-color:gray;
@@ -71,5 +63,10 @@ body{
     .news-banner__content {
         font-size:30px;
         color:#0f0;
+    }
+}
+@media(max-width:1199px) {
+    .CATOSTable{   
+        width: 750px;
     }
 }

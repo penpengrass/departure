@@ -8,12 +8,12 @@ th{
 }
 /*ブロック要素*/
 td{               /*データ内*/
-    display: table-cell;
+    /*display: table-cell;*/
     /*font-size:30px;/*元々30px 変更すると25px*/
-    height: 48px;
+    height: 60px;
     color:yellow;
     border: 10px #404040 solid;  /*表の中の枠色 */
-    font-family: "meiryo",monospace;
+    font-family: "MS　ゴシック",monospace;
     border-left:none;
     border-right:none;
     /*border-bottom:2px gray solid; */
@@ -37,9 +37,15 @@ table{        /*表全体*/
     text-align:center;
     border-spacing: 0px;
 }
+p3{
+    font-size:1.5vw;
+}
 @media(max-width:1199px) {
     .CDetail{
         font-size:20px;
+    }
+    p3{
+        font-size:25px;
     }
     table{
         width:750px;
@@ -53,9 +59,7 @@ table{        /*表全体*/
     color:white;
     font-weight:500;
 }
-p3{
-    font-size:25px;
-}
+
 .railnumber{
     color:yellow;
 }

@@ -6,16 +6,11 @@ th{
     background-color: gray;
     height:1px;
 }
-time{
-    border:green solid;
-    font-size:40px;
-    text-align: right;
-}
 td{               /*データ内*/
-    font-size:30px;
+    /*font-size:30px;*/
     height:45px;
     color:#0f0;
-    font-family: "ＭＳ 明朝","FM明朝",serif;
+    font-family: "FM明朝","ＭＳ 明朝",serif;
     padding:2px;
     border:none;
     margin:2px;
@@ -26,16 +21,16 @@ table{        /*表全体*/
     background-color: black;
     border: 10px gray solid;/*周りの色*/
     border-top:0px;
-    width: 750px; 
+    width: 50%; 
     white-space:nowrap;
     text-align:center;
     border-spacing: 0px;
 }
 .Ctime{
-    font-size:35px;
+    font-size:2.1vw;
 }
 .name{
-    font-size:35px;
+    font-size:2.1vw;
 }
 .Ctitle{
     background-color:gray;
@@ -66,7 +61,26 @@ table{        /*表全体*/
     font-weight:900;
     margin-right:50px;
 }
-.news-banner__content {
-    font-size:30px;
-    color:#0f0;
+.red{
+    color:red;
+}
+.green{
+    color:yellowgreen;
+}
+.pink{
+    color:pink;
+}
+.orange{
+    color:orange;
+}
+@media(max-width:1199px) {
+    table{        /*表全体*/
+        width: 750px; 
+    }
+    .Ctime{
+        font-size:35px;
+    }
+    .name{
+        font-size:35px;
+    }
 }

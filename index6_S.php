@@ -5,6 +5,7 @@
   <title>JR東日本北信越発車標</title>
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/styleNagano.css">
+  <link rel="stylesheet" href="css/styleJRES6.css">
   <link rel="stylesheet" href="css/banner6.css">
   <?php
   $files = array();
@@ -17,7 +18,6 @@
   //require_once('PHP/files6.php');
   require_once('getCSV.php');
   ?>
-  <link rel="stylesheet" href="css/styleJRES6.css">
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
   <script type="text/javascript" src="js/stationset6_S.js"></script>
@@ -62,8 +62,8 @@
         <th width="15%">時刻</th>
       <th width="20%">列車名</th>
       <th width="12%">番号</th>
-      <th width="25%" class="HDes">行先</th>
-      <th width="8%">番線</th>
+      <th width="23%" class="HDes">行先</th>
+      <th width="10%">番線</th>
       <th width="20%">記事</th>
     </tr>
   ');
@@ -101,6 +101,7 @@
 <script type="text/javascript" src="js/functionE2.js"></script>
 <script type="text/javascript" src="js/functionColor.js"></script>
 <script type="text/javascript" src="js/Tforshow6_S.js"></script>
+<script type="text/javascript" src="js/LastShow.js"></script>
 </body>
 
 </html>

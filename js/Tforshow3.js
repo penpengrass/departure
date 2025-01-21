@@ -79,17 +79,17 @@ if (station == '熱海駅') {
     document.getElementById('HName2').style.width = "30%";
     for (var tr = 0; tr < orderNum; tr++) {
         console.log(Type[1][tr]);
-        let LType = document.getElementById('TType2' + (tr + 1));
+        let LType = document.getElementById('WType2' + (tr + 1));
         let LDes = document.getElementById('TDes1' + (tr + 1));
         let LName = document.getElementById('TName2' + (tr + 1));
         let LCars = document.getElementById('TCars1' + (tr + 1));
         let LCars2 = document.getElementById('TCars2' + (tr + 1));
         if (Type[1][tr] == '特別快速') {
             console.log('特別快速' + tr);
-            document.getElementById('TType2' + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-7%,0%)";
+            document.getElementById('WType2' + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-7%,0%)";
         }
         if (Type[1][tr].startsWith('始発')) {
-            document.getElementById('TType2' + (tr + 1)).innerHTML = '<span style="color:orange;">始発</span>';
+            document.getElementById('WType2' + (tr + 1)).innerHTML = '<span style="color:orange;">始発</span>';
         }
         JRLineName(1, tr, '普通', '上野東京ﾗｲﾝ', 1);
         JRLineName(1, tr, '快速', '湘南新宿ﾗｲﾝ', 1);
@@ -118,7 +118,16 @@ if (station == '熱海駅') {
     allTwoLettersDistance(Des, TDes, 1, 0.8);
     holiday_F(station);
     comment.innerHTML += '<br>特急の臨時列車は不正確';
-
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            LastShows(td, tr);
+            if (Type[td][tr].includes('始発')) {
+                let LType = document.getElementById('TType' + (td + 1) + (tr + 1));
+                LType.textContent = LType.textContent.replace('始発', '');
+            }
+        }
+    }
+    LastShowFlag = 1;
     allJRCIncludeColor();
 } else if (station == '武蔵小杉駅') {
     JRATOSDevide(0);
@@ -129,6 +138,8 @@ if (station == '熱海駅') {
     JRLimitedDevide(0);
     JRLimitedDevide(1);
     for (var tr = 0; tr < orderNum; tr++) {
+        LastShows(0, tr);
+        LastShows(1, tr);
         if (Shonan1.includes(Des[0][tr])) {
             JRLineName(0, tr, '', '湘南新宿ﾗｲﾝ', 0, 0);
         } else if (Saikyo1.includes(Des[0][tr])) {
@@ -144,6 +155,7 @@ if (station == '熱海駅') {
         FourLetters(0, tr, 0.7, 7);
         FourLetters(1, tr, 0.7, 7);
     }
+    LastShowFlag = 1;
     NameColorchange(0, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
     NameColorchange(1, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
     NameColorchange(0, 'TType', '普通', 'orange');
@@ -158,7 +170,7 @@ if (station == '熱海駅') {
     allTwoLettersDistance(Des, TDes, 1, 0.8);
     comment.textContent = '両数は今後追加予定, 特急表示は不正確';
     for (var td = 0; td < Tablenum; td++) {
-        document.getElementsByClassName('Ctitle').item(td).style.paddingBottom = '36px';
+        document.getElementsByClassName('Ctitle').item(td).style.paddingBottom = '50px';
         document.getElementsByClassName('Ctitle').item(td).style.paddingTop = '4px';
     }
 } else if (station == '宇都宮駅') {
@@ -186,7 +198,7 @@ if (station == '熱海駅') {
         if (Type[2][tr] != '') {
             document.getElementById('TCars3' + (tr + 1)).textContent = '15両4ﾄﾞｱ';
             var Name = document.getElementById('TName3' + (tr + 1));
-            var TypeIn = document.getElementById('TType3' + (tr + 1));
+            var TypeIn = document.getElementById('WType3' + (tr + 1));
             if (Name.textContent == '') {
                 if (Des[2][tr] == '上野' || Des[2][tr] == '大宮') {
                     if (TypeIn.textContent.includes('ﾗﾋﾞｯﾄ')) {
@@ -205,18 +217,20 @@ if (station == '熱海駅') {
         }
     }
     for (var tr = 0; tr < orderNum; tr++) {
+        LastShows(0, tr);
+        LastShows(1, tr);
+        LastShows(2, tr);
+        LastShows(3, tr);
         if (Type[3][tr] != '') {
             document.getElementById('TName4' + (tr + 1)).textContent = '3両';
             document.getElementById('TCars4' + (tr + 1)).textContent = '4ﾄﾞｱ';
         }
     }
-    document.getElementById('TATOSTable' + 1).style.width = '25em';
-    document.getElementById('TATOSTable' + 2).style.width = '40em';
-    document.getElementById('TATOSTable' + 4).style.width = '40em';
+    LastShowFlag = 1;
+    document.getElementById('TATOSTable' + 1).style.width = '30em';
+    document.getElementById('TATOSTable' + 2).style.width = '45em';
+    document.getElementById('TATOSTable' + 4).style.width = '45em';
     document.getElementById('TATOSTable' + 1).style.marginLeft = '8em';
-    rowremove(0, 'HName', 'TName');
-    rowremove(0, 'HCars', 'TCars');
-    rowremove(0, 'HType', 'TType');
     if (Type[3][0] == '') {
         BottomBanner("TRow", 4, 3, 6, '日光線の運転は終了しました');
     }
@@ -224,8 +238,12 @@ if (station == '熱海駅') {
         BottomBanner("TRow", 1, 1, 3, '烏山方面へは黒磯行きに乗車のうえ宝積寺でのりかえ');
     }
     comment.textContent = '上野東京ラインの両数は今後修正予定';
-    allTwoLettersDistance(Des, TDes, 1, 1);
+    allTwoLettersDistance(Des, TDes, 1, 0.8);
     allJRCIncludeColor();
+    allTimeMarkErase();
+    rowremove(0, 'HName', 'TName');
+    rowremove(0, 'HCars', 'TCars');
+    rowremove(0, 'HType', 'TType');
 } else if (station == '横浜駅') {
     swapColumns(table1, 0, 1);
     swapColumns(table2, 0, 1);
@@ -267,7 +285,13 @@ if (station == '熱海駅') {
         if (Des[5][tr].length > 6) {
             document.getElementById('TDes6' + (tr + 1)).style.transform = "scaleX(0.5)" + "translate(-40%,0%)";
         }
-        FourLetters(5, tr, 0.5, -40, 'TDes', 6);
+        if(Type[4][tr].includes('*')){
+            Type[4][tr]=Type[4][tr].replace('*','');
+        }
+        if(Des[4][tr].includes('*')){
+            Des[4][tr]=Des[4][tr].replace('*','');
+        }
+        FourLetters(5, tr, 0.5, -40, 'TDes', Des, 6);
         FourLetters(0, tr, 0.7, 5);
         FourLetters(1, tr, 0.7, 5);
         FourLetters(4, tr, 0.7, 5);

@@ -4,13 +4,13 @@ for (var td = 0; td < Tablenum; td++) {
         if (Des[td][tr] == '岡山･高松' || Des[td][tr] == '高松･岡山') {
             Des[td][tr] = '岡山';
         }
-        AllWordChange(td, tr, 'TType', '内子線経由普通', '各停(内子経由)', 1, Type);
-        AllWordChange(td, tr, 'TType', '内子線経由普通', '各停(内子経由)', 1, Type);
-        AllWordReplace(td, tr, 'TType', 'あしずり', '特急あしずり', 1, Type);
+        AllWordChange(td, tr, Type, '内子線経由普通', '各停(内子経由)');
+        AllWordChange(td, tr, Type, '内子線経由普通', '各停(内子経由)');
+        AllWordReplace(td, tr, Type, 'あしずり', '特急あしずり', 1, Type);
         if (station == '高知駅') {
-            AllWordReplace(td, tr, 'TType', 'しまんと', '特急しまんと', 1, Type);
+            AllWordReplace(td, tr, Type, 'しまんと', '特急しまんと');
         }
-        AllStartWordReplace(td, tr, 'TType', '南風', '特急南風', 1, Type);
+        AllStartWordReplace(td, tr, Type, '南風', '特急南風');
     }
 }
 if (station == '高松駅') {
@@ -19,16 +19,18 @@ if (station == '高松駅') {
 } else if (station == '松山駅') {
     allJRSIncludeColor(JRSMobj);
     DetailShow(JRSMobj, "、");
+
 } else if (station == '高知駅') {
     allJRSIncludeColor(JRSKobj);
     DetailShow(JRSKobj, "、");
 }
+console.log(Type);
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         if (Des[td][tr] == '岡山' && station == '松山駅') {
             Des[td][tr] = '岡山･高松';
         } else if (Type[td][tr].includes('しまんと･南風')) {
-            Des[td][tr] = '高松･岡山'
+            Des[td][tr] = '高松･岡山';
         }
         if (station == '高知駅') {
             TypeColorChange(td, tr, '特急', 'red');
@@ -36,26 +38,25 @@ for (var td = 0; td < Tablenum; td++) {
         }
     }
 }
+console.log(Des[0][1]);
 console.log(Detail);
-for (var tr = 0; tr < Detail.length; tr++) {
+for (var td = 0; td < Tablenum; td++) {
     //console.log(Detail[tr][0].slice(-1));
-    if (Detail[tr][0].slice(-1) == '、') {
-        console.log(tr + 'は読点で終わる');
-        Detail[tr][0] = Detail[tr][0].slice(0, -1);
-        Detail[tr][0] += 'に停車します。';
-        document.getElementById('TDetail' + (tr + 1) + '' + 1).textContent = Detail[tr][0];
+    LastLetterRemove(td, 0, '、');
+    if (Detail[td][0] != '各駅にとまります' && Detail[td][0] != '') {
+        Detail[td][0] += 'に停車します。';
     }
+    document.getElementById('TDetail' + (td + 1) + '' + 1).textContent = Detail[td][0];
+
 }
 for (var td = 0; td < 2; td++) {
     if (Type[td][0].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
-        var LType = document.getElementById('TType' + (td + 1) + '' + 1);
-        var matches = LType.textContent.match(/(\D+)(\d+)号/);
+        var matches = Type[td][0].match(/(\D+)(\d+)号/);
         var NampuNumber = Number(matches[2]);
         if (NampuNumber == 21) {
             NampuNumber += 2;
         }
         document.getElementById('TDetail' + (td + 1) + '' + 1).innerHTML += ' <font color="red">丸亀駅</font>で<font color="red">特急南風' + NampuNumber + '号 高知行き</font>に接続します';
-        document.getElementById('TType' + (td + 1) + 2).textContent = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
         Type[td][0] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
     }
 }
@@ -68,7 +69,6 @@ if (station == '高松駅') {
     //
     for (var td = 0; td < 2; td++) {
         if (Type[td][1].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
-            document.getElementById('TType' + (td + 1) + 2).textContent = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
             Type[td][1] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
         }
     }
@@ -86,8 +86,15 @@ if (station == '高松駅') {
     var Detail1 = document.getElementById('TDetail11');
     if (Des[0][0] == '高松･岡山') {
         Detail1.textContent = '南風号は' + Detail1.textContent + 'しまんと号は宇多津発車後坂出に停車します';
+    } else if (Des[0][0] == '岡山') {
+        Detail1.innerHTML += '多度津で<span class="lightgreen">快速「サンポート南風リレー号」</span>高松行きに接続します。';
+    } else if (Type[0][0] == '特急しまんと8号') {
+        Detail1.textContent = Detail1.textContent.replace('宇多津、坂出', '坂出');
+        Detail1.innerHTML += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
     }
 }
+console.log(TableHour);
+allLastShow();
 //JRLimitedDevide(1);
 //JRLimitedDevide(3);
 for (var td = 0; td < Tablenum; td++) {
@@ -97,12 +104,12 @@ for (var td = 0; td < Tablenum; td++) {
         console.log(Type[td][tr]);
         if (Type[td][tr] == '各駅停車' || Type[td][tr] == '普通') {
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = '各駅停車';
-            document.getElementById('TType' + (td + 1) + (tr + 1)).textContent = '';
+            document.getElementById('WType' + (td + 1) + (tr + 1)).textContent = '';
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'left';
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = color;
         } else if (Type[td][tr].startsWith('各停')) {
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = Type[td][tr];
-            document.getElementById('TType' + (td + 1) + (tr + 1)).textContent = '';
+            document.getElementById('WType' + (td + 1) + (tr + 1)).textContent = '';
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'left';
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = 'skyblue';
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
@@ -136,10 +143,12 @@ for (var td = 0; td < Tablenum; td++) {
             dType.textContent = '特急';
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = Type[td][tr].slice(2);
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'left';
-            document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = color;
+            document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = 'red';
             if (station != '高知駅') {
                 dType.style.backgroundColor = 'red';
                 dType.style.color = 'white';
+            } else {
+                dType.style.color = 'red';
             }
         }
         var dName = document.getElementById('TName' + (td + 1) + (tr + 1));
@@ -149,9 +158,13 @@ for (var td = 0; td < Tablenum; td++) {
             dName.style.fontSize = '15px';
             dName.style.fontWeight = '800px';
         }
+        if (Des[td][tr].length > 5) {
+            document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.60)" + "translate(-30%,0%)";
+        }
         TwoLetterDistance(td, tr, Des, TDes, 1, 0.4);
     }
 }
+
 flagmarkerase(0, 'TDes');
 flagmarkerase(1, 'TDes');
 flagmarkerase(0, 'TDes', '+');

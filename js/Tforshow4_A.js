@@ -18,7 +18,7 @@ for (var td = 0; td < Tablenum; td++) {
         }
         DesMiddle(td, tr, '経由');
         DesMiddle(td, tr, '方面');
-        if (LocalDes.textContent.length > 7) {
+        if (Des[td][tr].length > 7) {
             LocalDes.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
         }
     }
@@ -27,8 +27,8 @@ if (station == '大阪駅') {
     document.getElementById('HType' + 1).style.width = "25%";
     document.getElementById('HName' + 1).style.width = "25%";
     for (var tr = 0; tr < Tablenums[1]; tr++) {
-        var LType = document.getElementById('WType' + 2 + (tr + 1));
-        var LTType = document.getElementById('TType' + 2 + (tr + 1));
+        let LType = document.getElementById('WType' + 2 + (tr + 1));
+        let LTType = document.getElementById('TType' + 2 + (tr + 1));
         if (Type[1][tr] == '普通') {
             //LType.style.paddingLeft = '16px';
             //LType.style.paddingRight = '6px';
@@ -36,14 +36,14 @@ if (station == '大阪駅') {
             LType.style.display = 'inline-block';
             LType.style.transform = "scaleX(0.60)" + "translate(-30%,0%)";
             LType.style.padding = '0px';
-            TypeBackColorChange(1, tr, '丹波路', 'yellow');
-            TypeColorChange(1, tr, '丹波路', 'black');
+            LTType.style.color = 'black';
+            LTType.style.backgroundColor = 'yellow';
         } else if (Type[1][tr] == '区間快速') {
             LType.style.display = 'inline-block';
             LType.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
             LType.style.padding = '0px';
         }
-        AllWordReplace(4,tr,'TType','寝台','',1,Type);
+        AllWordReplace(4, tr, Type, '寝台', '');
     }
     holiday_F(station);
 }

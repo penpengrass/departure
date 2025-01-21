@@ -14,9 +14,11 @@ if (station == '長野駅') {
                 if (Des[0][tr].includes('*')) {
                     document.getElementById('Ttopic' + 1 + (tr + 1)).textContent = '越後川口行き接続';
                     document.getElementById('Ttopic' + 1 + (tr + 1)).style.transform = "scaleX(0.65)" + "translate(-20%,0%)";
+                    Des[0][tr] = Des[0][tr].replace('*', '');
                 } else if (Des[0][tr].includes('+')) {
                     document.getElementById('Ttopic' + 1 + (tr + 1)).textContent = '森宮野原行き接続';
                     document.getElementById('Ttopic' + 1 + (tr + 1)).style.transform = "scaleX(0.65)" + "translate(-20%,0%)";
+                    Des[0][tr] = Des[0][tr].replace('+', '');
                 }
             }
         } else if (Type[0][tr].startsWith('快速軽井沢')) {
@@ -38,9 +40,10 @@ if (station == '長野駅') {
             if (Des[1][tr].includes('*')) {
                 document.getElementById('Ttopic' + 2 + (tr + 1)).textContent = '軽井沢行き接続';
                 document.getElementById('Ttopic' + 2 + (tr + 1)).style.transform = "scaleX(0.7)" + "translate(-20%,0%)";
+                Des[1][tr] = Des[1][tr].replace('*', '');
             }
         } else if (Type[1][tr] == '快速しなの') {
-            document.getElementById('TType' + 2 + '' + (tr + 1)).textContent = '快速';
+            Type[1][tr] = '快速';
             document.getElementById('TName' + 2 + '' + (tr + 1)).textContent = 'しなのｻﾝｾｯﾄ';
             JRE6ColorPlusName(1, tr, '快速', '#bb0000');
         } else if (Type[1][tr].startsWith('快速軽井沢')) {
@@ -62,10 +65,8 @@ if (station == '長野駅') {
         document.getElementById('supplement').textContent = '長野駅のみ土休日ダイヤに対応(表示は平日ダイヤ)';
     }
     JRLimitedDevide(2, 'left');
+    allLastShow();
     Bansenshow();
-    flagmarkerase(0, 'TDes', '*');
-    flagmarkerase(0, 'TDes', '+');
-    flagmarkerase(1, 'TDes', '*');
 }
 if (station == '松本駅') {
     for (var td = 0; td < 4; td++) {
@@ -80,7 +81,7 @@ if (station == '松本駅') {
         if (Type[1][tr].includes('普通')) {
             document.getElementById('TType' + 2 + '' + (tr + 1)).style.backgroundColor = '#ffa500';
             if (Type[1][tr].includes('(東)')) {
-                document.getElementById('TType' + 2 + '' + (tr + 1)).textContent = '普通';
+                Type[1][tr] = '普通';
             }
         }
         JRE6Color(2, '普通', '#ff6e00');
@@ -177,11 +178,11 @@ if (station == '松本駅') {
     rowsize(4, 'HName', 'TName', '15%');
     rowsize(5, 'HName', 'TName', '15%');
     for (var tr = 0; tr < 2; tr++) {
-        AllWordChange(0, tr, 'WType', '普通', '各駅停車', 1, Type);
-        AllWordChange(1, tr, 'WType', '普通', '各駅停車', 1, Type);
-        AllWordChange(3, tr, 'WType', '快速:大宮から小山間', '普通', 1, Type);
-        AllWordChange(5, tr, 'WType', '快速:大宮から小山間', '快速', 1, Type);
-        AllWordChange(4, tr, 'WType', '快速', '普通', 1, Type);
+        AllWordChange(0, tr, Type, '普通', '各駅停車');
+        AllWordChange(1, tr, Type, '普通', '各駅停車');
+        AllWordChange(3, tr, Type, '快速:大宮から小山間', '普通');
+        AllWordChange(5, tr, Type, '快速:大宮から小山間', '快速');
+        AllWordChange(4, tr, Type, '快速', '普通');
         JRE6ColorPlusName(0, tr, '各駅停車', Keihin_Color);
         JRE6ColorPlusName(1, tr, '各駅停車', Keihin_Color);
         JRE6ColorPlusName(0, tr, '快速', Keihin_Color);
@@ -215,7 +216,7 @@ if (station == '松本駅') {
         }
     }
     setInterval(allswitch_Akabane, 5000);
-    comment.textContent+='一部表示不正確';
+    comment.textContent += '一部表示不正確';
 } else if (station == '新宿駅') {
     const table7 = document.getElementById("TLCDTable7");
     const table9 = document.getElementById("TLCDTable9");
@@ -236,8 +237,8 @@ if (station == '松本駅') {
     document.getElementById('HDes3').style.width = '30%';
     document.getElementById('HNumber1').style.width = '10%';
     document.getElementById('HNumber3').style.width = '10%';
-    document.getElementById('TLCDTable1').style.width = '375px';
-    document.getElementById('TLCDTable3').style.width = '375px';
+    document.getElementById('TLCDTable1').style.width = '450px';
+    document.getElementById('TLCDTable3').style.width = '450px';
     swapColumns(table7, 0, 1);
     swapColumns(table9, 0, 1);
     swapColumns(table7, 4, 5);
@@ -253,10 +254,10 @@ if (station == '松本駅') {
         ShihatsuMove(7, tr, 'Ttopic');
         ShihatsuMove(8, tr, 'Ttopic');
         ShihatsuMove(9, tr, 'Ttopic');
-        AllWordChange(3, tr, 'WType', 'かいじ', '特急', 1, Type);
-        AllWordChange(3, tr, 'WType', 'あずさ', '特急', 1, Type);
-        AllWordChange(3, tr, 'WType', '通勤特別快速', '通勤特快', 1, Type);
-        AllWordChange(6, tr, 'WType', '普通', '各駅停車', 1, Type);
+        AllWordChange(3, tr, Type, 'かいじ', '特急');
+        AllWordChange(3, tr, Type, 'あずさ', '特急');
+        AllWordChange(3, tr, Type, '通勤特別快速', '通勤特快');
+        AllWordChange(6, tr, Type, '普通', '各駅停車');
         var yokosuka = ['逗子', '大船'];
         var utsunomiya = ['宇都宮', '小金井', '古河'];
         console.log(Type[6][0]);
@@ -301,6 +302,7 @@ if (station == '松本駅') {
             }
         }
     }
+    console.log(Type);
     for (var td = 2; td < 4; td++) {
         for (var tr = 0; tr < 2; tr++) {
             var LimitedType = document.getElementById('TType' + (td + 3) + (tr + 1));
@@ -313,7 +315,8 @@ if (station == '松本駅') {
             }
             //console.log(Type[td + 2][tr]);
             if (Type[td + 2][tr] != '') {
-                LimitedType.textContent = '特急';
+                //LimitedType.textContent = '特急';
+                Type[td + 2][tr] = '特急';
                 JRE6ColorPlusName(td + 2, tr, '特急', 'red');
             }
             if (LimitedName.textContent.length > 6) {
@@ -325,7 +328,7 @@ if (station == '松本駅') {
             if (LDes2.textContent.length > 4) {
                 LDes2.style.transform = "scaleX(0.90)" + "translate(-5%,0%)";
             }
-            FourLetters(td, tr, 0.5, 50, 'TDes', 5);
+            FourLetters(td, tr, 0.5, 50, 'TDes', Des, 5);
             FourLetters(td, tr, 0.5, 50, 'WType');
             FourLetters(td + 4, tr, 0.75, 0, 'WType');
             FourLetters(td + 6, tr, 0.75, 0, 'WType');

@@ -2,7 +2,7 @@ company = 'JR四国';
 detailflag = 9;
 detailLength_one = 1;
 if (station == '高松駅') {
-    TableTitle = ['琴平 高知方面', '観音寺 松山方面', '岡山 東京方面', '三本松 徳島方面'];
+    TableTitle = ['琴平 高知方面', '観音寺 松山方面', '児島 岡山方面', '三本松 徳島方面'];
     var Tyosan = ['松山', '観音寺', '伊予西条'];
     var Thonshu = ['岡山', '東京'];
     var Dtype = [0, 0, 0, 0];
@@ -15,7 +15,7 @@ if (station == '高松駅') {
     limitednumber(TT[2], 2, 'ﾏﾘﾝﾗｲﾅｰ');
 } else if (station == '松山駅' || station == '高知駅') {
     TableTitle = ['1･2のりば', '3･4のりば'];
-    if (station = '高知駅') {
+    if (station == '高知駅') {
         var Dtype = [0, 0];
     } else {
         var Dtype = [1, 0];

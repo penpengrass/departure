@@ -99,7 +99,7 @@
     <script type="text/javascript" src="js/typeColor.js"></script>
     <script type="text/javascript" src="js/Tforshow5.js"></script>
     <!--<script type="text/javascript" src="js/detailshow.js"></script>-->
-
+    <script type="text/javascript" src="js/LastShow.js"></script>
 </body>
 
 </html>

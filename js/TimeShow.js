@@ -2,8 +2,8 @@ let next = 0;//終電の時1にする
 let TaRow = 1;//TaRowは縦のセル番号-1
 let Sempatsu_flag = 0;//先発が決定したら1にする
 let exception = 0;
-function FShow(TT, TableNumber) {
-    console.log(TableNumber + "番目の表の先発表示");
+function FShow(TT, TableNumber,funcShow) {
+    console.log("-------" + TableNumber + "番目の表の先発表示------");
     Sempatsu_flag = 0;
     next = 0;
     TaRow = 1;
@@ -34,12 +34,11 @@ function FShow(TT, TableNumber) {
         while (k < 40 && typeof (TT[TaRow + 1][k]) !== 'undefined') {
             //console.log(k + "何本目かの表示");
             //console.log(TT[TaRow+1][k]);
-            console.log("L_min:"+L_min);
+            //console.log("L_min:"+L_min);
             if (L_min <= TT[TaRow + 1][k] && TT[TaRow + 1][k]) {
-                //列車情報入力
-                Shows(TaRow, k, TT, TableNumber, 1);
-                //FirstShow(TaRow, k, TT, TableNumber);
-                console.log("先発決定1:" + TT[51][1]);
+                //先発の列車情報入力
+                funcShow(TaRow, k, TT, TableNumber, 1);
+                console.log(TableNumber + "番目の表の先発決定");
                 Sempatsu_flag = 1;
                 break;
             } else {
@@ -57,6 +56,7 @@ function FShow(TT, TableNumber) {
             } catch (e) {
                 console.log("運転終了");
                 next = 1;
+                break;
             }
             //console.log(TT[TaRow+4][1]);
             if (next == 1) {
@@ -64,26 +64,28 @@ function FShow(TT, TableNumber) {
             } else if (TT[TaRow + 4][1] == '' || typeof (TT[TaRow + 4][1]) === 'undefined') {//1時間空く場合
                 console.log("先発が1時間空く");
                 console.log(lasttrain(TT, TaRow));
-                if (lasttrain(TT, TaRow) == 0) {
+                if (lasttrain(TT, TaRow) == 1) {
+                    console.log("終電ではない");
+                    while (TaRow < 120) {
+                        TaRow += 4;
+                        console.log("TaRow=" + TaRow + ':' + TT[TaRow][1]);
+                        if (TT[TaRow][1] != "") {
+                            console.log(TT[TaRow][0] + "時にあり" + TT[TaRow][1]);
+                            funcShow(TaRow, 1, TT, TableNumber, 1)
+                            break;
+                        }
+                    }
+                } else {
                     console.log("終電終了");
                     next = 1;
-                } else if (TT[TaRow + 8][1] == '') {
-                    console.log("2時間空く");
-                    Shows(TaRow + 12, 1, TT, TableNumber, 1);
-                    TaRow = TaRow + 12;
-                } else {
-                    Shows(TaRow + 8, 1, TT, TableNumber, 1);
-                    TaRow = TaRow + 8;
                 }
-            } else if (TT[TaRow + 4][0] == "") {//0時59分の場合
-                console.log("0時59分あたりのときのみ表示");
+                break;
             } else {
                 console.log("次の時間にはある");
-                Shows(TaRow + 4, 1, TT, TableNumber, 1)
+                funcShow(TaRow + 4, 1, TT, TableNumber, 1)
                 //FirstShow(TaRow + 4, 1, TT, TableNumber);
                 TaRow = TaRow + 4;
             }
-            break;
         } else {
             console.log("先発決定済み" + TableNumber + ":" + TaRow);
         }
@@ -146,7 +148,7 @@ function FSTShow(TT, STShow, Order, TableNumber, depnum) {
 function lasttrain(TT, Lone) {
     for (let last = Lone + 4; last < TT.length; last++) {
         console.log(TT[last][1]);
-        if (TT[last][1] == '' || TT[last][1] === 'undefined') {
+        if (TT[last][1] == '' || typeof TT[last][1] === 'undefined') {
         } else {
             console.log("lasttrainは1");
             return 1;

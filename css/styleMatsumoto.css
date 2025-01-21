@@ -5,6 +5,10 @@
 /*table{
     border-right:40px #404040 solid;
 }*/
+td {
+    border-left:3px black solid;
+    border-right:3px black solid;
+}
 [class^="Destination"]{
     text-align: center;
 }

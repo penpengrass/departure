@@ -1,5 +1,6 @@
+allLastShow();
 for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < orderNum; tr++) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
         TypeColorChange(td, tr, '快速', 'orange');
         TypeColorChange(td, tr, '特急', 'red');
         TwoLetterDistance(td, tr, Type, TType, 1, 0);
@@ -21,4 +22,5 @@ for (var td = 0; td < Tablenum; td++) {
         }
     }
 }
+
 Bansenshow(1);

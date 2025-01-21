@@ -32,7 +32,7 @@ table {
         /*データ内*/
         display: table-cell;
         /*元々30px 変更すると25px*/
-        height: 35px;
+        height: 45px;
         color: #0f0;
         border: 2px black solid;
         /*表の中の枠色 */
@@ -110,30 +110,34 @@ table {
         display: table-cell;
         font-size: 2vw;
         /*元々30px 変更すると25px*/
-        height: 43px;
+        height: 48px;
         color: yellow;
         border: 10px #404040 solid;
         /*表の中の枠色 */
-        font-family: "meiryo";
+        font-family: "MS　ゴシック",monospace;
         border-left: none;
         border-right: none;
         /*border-bottom:2px gray solid; */
     }
+    .CDetail {
+        overflow: hidden;
+        text-align: left;
+        color: white;
+        font-size: 1.3vw;
+    }
     @media(max-width:1199px) {
         td{
             font-size:30px;
+        }
+        .CDetail{
+            font-size: 20px;
         }
     }
     .Destination {
         color: white;
     }
 
-    .CDetail {
-        overflow: hidden;
-        text-align: left;
-        color: white;
-        font-size: 20px;
-    }
+    
     .Ctime {
         text-align: right;
     }
@@ -158,5 +162,16 @@ table {
         color: white;
         text-align: center;
         width: 100%;
+    }
+    
+}
+.LocalDetail{
+    color:red;
+    font-size:1.2vw;
+    transform:scalex(0.90) translate(-10%,0%);
+}
+@media(max-width:1199px) {
+    .LocalDetail{
+        font-size:20px;
     }
 }

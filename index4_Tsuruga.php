@@ -88,6 +88,7 @@
     <script type="text/javascript" src="js/typeColor.js"></script>
     <script type="text/javascript" src="js/Tforshow4_S.js"></script>
     <script type="text/javascript" src="js/Tforshow4_Ts.js"></script>
+    <script type="text/javascript" src="js/LastShow.js"></script>
 </body>
 
 </html>

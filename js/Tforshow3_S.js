@@ -48,7 +48,7 @@ if (station == '長野駅') {
             if (Type[td][0] == '') {
                 console.log(td + ':' + tr);
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
-                document.getElementById('TDetail' + (td + 1) + (tr + 1)).textContent = '本日の運転は終了しました';
+                Detail[td][0] = '本日の運転は終了しました';
                 break;
             } else if (Type[td][tr] != '') {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
@@ -57,7 +57,10 @@ if (station == '長野駅') {
             TypeColorChange(td, tr, 'かがやき', 'orange');
             TypeColorChange(td, tr, 'はくたか', 'orange');
             TypeColorChange(td, tr, 'あさま', 'red');
-            DetailBanner(td, tr, 18);
+            //DetailBanner(td, tr, 18);
+            if(Detail[td][tr]!=''){
+                Detail[td][tr]+=Des[td][tr];
+            }
             TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
         }
     }
@@ -66,15 +69,14 @@ if (station == '長野駅') {
         if (Type[1][tr] != '') {
             //console.log(number[1][tr]);
             if (number[1][tr] > 199 || number[1][tr] == 68) {
-                document.getElementById('TDetail' + (1 + 1) + (tr + 1)).textContent = '小山・大宮・上野・東京';
+                Detail[1][tr] = '小山・大宮・上野・東京';
             } else {
-                document.getElementById('TDetail' + (1 + 1) + (tr + 1)).textContent = '大宮・上野・東京';
+                Detail[1][tr] = '大宮・上野・東京';
             }
         }
         if (Type[0][tr] != '') {
             //console.log(number[0][tr]);
             var LDes = Des[0][tr];
-            var LDetail = document.getElementById('TDetail' + (0 + 1) + (tr + 1));
             var LNumber = document.getElementById('TName' + (0 + 1) + (tr + 1));
             if (LNumber.textContent > 130 && LNumber.textContent < 200) {
                 number[0][tr] += 2;
@@ -82,52 +84,59 @@ if (station == '長野駅') {
             }
             //console.log(LNumber);
             if (LDes == '那須塩原') {
-                LDetail.textContent = '次の那須塩原までです';
+                Detail[0][tr] = '次の那須塩原までです';
             } else if (LDes == '郡山') {
-                LDetail.textContent = '那須塩原・新白河・郡山';
+                Detail[0][tr] = '那須塩原・新白河・郡山';
             } else if (LDes.includes('新庄')) {
-                LDetail.textContent = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形・天童・さくらんぼ東根・村山・大石田・新庄';
-            }else if(LDes.includes('山形')){
-                LDetail.textContent = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形';
+                Detail[0][tr] = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形・天童・さくらんぼ東根・村山・大石田・新庄';
+            } else if (LDes.includes('山形')) {
+                Detail[0][tr] = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形';
             } else if (number[0][tr] > 200) {
-                LDetail.textContent = '那須塩原・新白河・郡山・福島・仙台';
+                Detail[0][tr] = '那須塩原・新白河・郡山・福島・仙台';
             } else if (number[0][tr] < 100) {
-                LDetail.textContent = '郡山・福島・仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
-            }else if(number[0][tr] > 100){
-                LDetail.textContent = '郡山・福島・仙台';
+                Detail[0][tr] = '郡山・福島・仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
+            } else if (number[0][tr] > 100) {
+                Detail[0][tr] = '郡山・福島・仙台';
             }
         }
         console.log(Type[0][tr]);
         if (YamagataRapid.includes(number[0][tr])) {
-            LDetail.textContent = '郡山・福島・米沢・山形・天童・さくらんぼ東根・村山・大石田・新庄';
+            Detail[0][tr] = '郡山・福島・米沢・山形・天童・さくらんぼ東根・村山・大石田・新庄';
         }
-        if (Zaou.includes(number[0][tr])&&!Type[0][tr].includes('つばさ')) {
-            DetailReplace(0, tr, '福島', '福島・白石蔵王', 2);
-        }else if(Zaou.includes(number[0][tr])){
-            LDetail.textContent+='　やまびこは福島発車後白石蔵王にも停まります';
+        if (Zaou.includes(number[0][tr]) && !Type[0][tr].includes('つばさ')) {
+            DetailReplace(0, tr, '福島', '福島・白石蔵王');
+        } else if (Zaou.includes(number[0][tr])) {
+            Detail[0][tr] += '　やまびこは福島発車後白石蔵王にも停まります';
+        }
+    }
+
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < orderNum; tr++) {
+            if (Type[td][0] == '') {
+                console.log(td + ':' + tr);
+                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
+                Detail[td][0] = '本日の運転は終了しました';
+                break;
+            }else if(Type[td][tr]=='やまびこ･つばさ'){
+                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
+                document.getElementById('Ttopic' + (td + 1) + (tr + 1)).textContent = '１７両編成';
+            } 
+            else if (Type[td][tr] != '') {
+                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
+                document.getElementById('Ttopic' + (td + 1) + (tr + 1)).textContent = '１０両編成';
+            }
+            TypeColorChange(td, tr, 'なすの', 'orange');
+            TypeColorChange(td, tr, 'つばさ', 'orange');
+            TypeColorChange(td, tr, 'やまびこ', 'red');
+            JREScolor(td, tr, 'やまびこ･つばさ', '<span class="red">やまびこ</span>･<span class="orange">つばさ</span>', orange);
+            FourLetters(td, tr, 0.6, 30, 'TType',Type, 8);
+            TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
         }
     }
 }
-for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < orderNum; tr++) {
-        if (Type[td][0] == '') {
-            console.log(td + ':' + tr);
-            document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
-            document.getElementById('TDetail' + (td + 1) + (tr + 1)).textContent = '本日の運転は終了しました';
-            break;
-        } else if (Type[td][tr] != '') {
-            document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
-            document.getElementById('Ttopic' + (td + 1) + (tr + 1)).textContent = '１０両編成';
-        }
-        TypeColorChange(td, tr, 'なすの', 'orange');
-        TypeColorChange(td, tr, 'つばさ', 'orange');
-        TypeColorChange(td, tr, 'やまびこ', 'red');
-        JREScolor(td, tr, 'やまびこ･つばさ', '<span class="red">やまびこ</span>･<span class="orange">つばさ</span>', orange);
-        FourLetters(td, tr, 0.6, 30, 'TType', 8);
-        DetailBanner(td, tr, 18);
-        TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
-    }
-}
+console.log(document.getElementById('WType12'));
+allLastShow();
+doallDetailShow(18);
 flagmarkerase(0, 'TType');
 flagmarkerase(1, 'TType');
 flagmarkerase(1, 'TType', '+');

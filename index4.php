@@ -56,7 +56,6 @@
     <!--<button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>-->
     <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
-    <button type="button" onclick="location.href='./index4_S2.php'">山陽新幹線主要駅へ移動</button>
     <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">東海道へ移動</button>
     <button type="button" onclick="location.href='./index7.php?station=ogaki'">大垣駅へ移動</button>
@@ -159,7 +158,7 @@
   <script type="text/javascript" src="js/functionW.js"></script>
   <script type="text/javascript" src="js/Tforshow4.js"></script>
   <script type="text/javascript" src="js/Tforshow4_S.js"></script>
-  
+  <script type="text/javascript" src="js/LastShow.js"></script>
 </body>
 
 </html>

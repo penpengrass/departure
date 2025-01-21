@@ -7,6 +7,7 @@ document.getElementById("WDir3").textContent = "君津方面";
 document.getElementById("WDir4").textContent = "大網方面";
 document.getElementById("WDir5").textContent = "佐倉･銚子方面";
 document.getElementById("WDir6").textContent = "成田空港･銚子方面";
+allLastShow();
 for (var tr = 0; tr < 3; tr++) {
     JRE6ColorPlusName(0, tr, '快速', 'blue');
     JRE6ColorPlusName(2, tr, '快速', 'blue');

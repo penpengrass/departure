@@ -63,16 +63,20 @@ for (var tr = 0; tr < 3; tr++) {
 for (var tr = 0; tr < 3; tr++) {
     let dName = document.getElementById('TName' + 5 + (tr + 1));
     if (Type[4][tr] == '新快速') {
-        dName.textContent += '湖西経由近江舞子まで各停';
-        dName.style.color='orange';
-        dName.style.fontSize = '1.2vw';
+        dName.innerHTML += '<span class="LocalDetail">湖西経由近江舞子まで各停</span>';
+        /*dName.style.color='red';
+        dName.style.fontSize = '1.2vw';*/
         dName.style.transform = "scalex(0.90)" + "translate(10%,0%)";
     } else if (Type[4][tr] == '新快速*') {
-        dName.textContent += '米原経由米原まで各駅停車';
-        dName.style.color='orange';
-        dName.style.fontSize = '1.2vw';
+        dName.innerHTML += '<span class="LocalDetail">米原経由米原まで各駅停車</span>';
+        /*dName.style.color='red';
+        dName.style.fontSize = '1.2vw';*/
         dName.style.transform = "scalex(0.90)" + "translate(10%,0%)";
-        document.getElementById('TType' + 5 + (tr + 1)).textContent = '新快速';
+        Type[4][tr] = '新快速';
+        document.getElementById('WType' + 5 + (tr + 1)).textContent = '新快速';
+    } else if (Des[4][tr] == '京都') {
+        dName.textContent = '湖西線経由';
+        dName.style.color = 'red';
     }
 }
 for (var td = 2; td < Tablenum; td++) {
@@ -86,8 +90,9 @@ if (holidayflag == 1) {
     document.getElementById('supplement').innerHTML += station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
 }
 allJRWTrainNameColor('red', 'red', 'red', 2);
-DetailBanner(0, 0, 25);
-DetailBanner(0, 1, 25);
+doallDetailShow(25);
+//DetailBanner(0, 0, 25);
+//DetailBanner(0, 1, 25);
 for (var tr = 0; tr < orderNum; tr++) {
     DesMiddle(3, tr, '方面');
 }

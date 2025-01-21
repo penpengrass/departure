@@ -7,9 +7,14 @@
 .line{
     font-size:25px;
 }*/
+td{
+    border-bottom: 5px #202020 solid;
+    height:60px;
+    padding:1px;
+}
 .Destination{
     text-align:left;
-    transform:translate(20%,0);
+    transform:translate(10%,0);
 }
 .name{
     text-align: right;

@@ -31,8 +31,8 @@ for (var tr = 0; tr < orderNum; tr++) {
         if (Detail[2][tr].slice(-1) == '・') {
             console.log(tr + 'は読点で終わる');
             Detail[2][tr] = Detail[2][tr].slice(0, -1);
-            document.getElementById('TDetail' + (3) + '' + (tr + 1)).textContent = Detail[2][tr];
         }
+        document.getElementById('TDetail' + (3) + '' + (tr + 1)).textContent = Detail[2][tr];
         console.log(number);
         //特急しなのの停車駅変更
         DetailReplace_Set(2, tr, Kanayama, '千種', '金山・千種');
@@ -60,8 +60,9 @@ for (var tr = 0; tr < orderNum; tr++) {
 td_detail++;
 var HidaDtype = 0;
 console.log("-----ここから高山方面の詳細表示-----");
+console.log(number);
 for (var tr = 0; tr < orderNum; tr++) {
-    var HidaNumber = JRLimitedNumber(4, tr);
+    var HidaNumber = number[4][tr];
     if (HidaNumber == 9) {
         Dtype[4] = 1;
     } else {
@@ -83,6 +84,7 @@ for (var tr = 0; tr < orderNum; tr++) {
     if (HidaNumber == 9) {
         DetailReplace(4, tr, '美濃太田', '美濃太田・飛騨金山');
     }
+    document.getElementById('TDetail5' + (tr + 1)).textContent = Detail[4][tr];
 }
 for (var tr = 0; tr < orderNum; tr++) {
     if (Type[1][tr].includes('快速')) {
@@ -101,12 +103,7 @@ for (var tr = 0; tr < orderNum; tr++) {
 SpecialStop(0, '(幸)', '岡崎', '幸田', '・', 0.8);
 SpecialStop(0, '(三)', '蒲郡', '三河三谷', '・', 0.8);
 SpecialStop(1, '(稲)', '名古屋', '稲沢', '・', 0.8);
-for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < orderNum; tr++) {
-        TwoLetterDistance(td, tr, Type, TType, 1, 0.4);
-        TwoLetterDistance(td, tr, Des, TDes, 1, 1);
-    }
-}
+
 for (let te = 0; te < Tablenum; te++) {
     for (let tr = 0; tr < orderNum; tr++) {
         if (Type[te][tr].includes('普通')) {
@@ -136,5 +133,13 @@ for (let te = 0; te < Tablenum; te++) {
         }
     }
 }
+for (var td = 0; td < Tablenum; td++) {
+    for (var tr = 0; tr < orderNum; tr++) {
+        LastShows(td, tr);
+        TwoLetterDistance(td, tr, Type, TType, 1, 0.4);
+        TwoLetterDistance(td, tr, Des, TDes, 1, 1);
+    }
+}
+allTimeMarkErase();
 holiday_F(station);
 
