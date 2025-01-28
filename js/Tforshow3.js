@@ -79,14 +79,12 @@ if (station == '熱海駅') {
     document.getElementById('HName2').style.width = "30%";
     for (var tr = 0; tr < orderNum; tr++) {
         console.log(Type[1][tr]);
-        let LType = document.getElementById('WType2' + (tr + 1));
         let LDes = document.getElementById('TDes1' + (tr + 1));
         let LName = document.getElementById('TName2' + (tr + 1));
         let LCars = document.getElementById('TCars1' + (tr + 1));
         let LCars2 = document.getElementById('TCars2' + (tr + 1));
-        if (Type[1][tr] == '特別快速') {
-            console.log('特別快速' + tr);
-            document.getElementById('WType2' + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-7%,0%)";
+        if (Type[1][tr].includes('特別快速')) {
+            document.getElementById('TType2' + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-7%,0%)";
         }
         if (Type[1][tr].startsWith('始発')) {
             document.getElementById('WType2' + (tr + 1)).innerHTML = '<span style="color:orange;">始発</span>';
@@ -114,7 +112,6 @@ if (station == '熱海駅') {
 
         }
     }
-    setInterval(allswitchOdawara, 5000);
     allTwoLettersDistance(Des, TDes, 1, 0.8);
     holiday_F(station);
     comment.innerHTML += '<br>特急の臨時列車は不正確';
@@ -128,6 +125,7 @@ if (station == '熱海駅') {
         }
     }
     LastShowFlag = 1;
+    setInterval(allswitchOdawara, 5000);
     allJRCIncludeColor();
 } else if (station == '武蔵小杉駅') {
     JRATOSDevide(0);
@@ -285,11 +283,11 @@ if (station == '熱海駅') {
         if (Des[5][tr].length > 6) {
             document.getElementById('TDes6' + (tr + 1)).style.transform = "scaleX(0.5)" + "translate(-40%,0%)";
         }
-        if(Type[4][tr].includes('*')){
-            Type[4][tr]=Type[4][tr].replace('*','');
+        if (Type[4][tr].includes('*')) {
+            Type[4][tr] = Type[4][tr].replace('*', '');
         }
-        if(Des[4][tr].includes('*')){
-            Des[4][tr]=Des[4][tr].replace('*','');
+        if (Des[4][tr].includes('*')) {
+            Des[4][tr] = Des[4][tr].replace('*', '');
         }
         FourLetters(5, tr, 0.5, -40, 'TDes', Des, 6);
         FourLetters(0, tr, 0.7, 5);

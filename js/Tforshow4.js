@@ -238,6 +238,16 @@ if (station == '徳山駅') {
     document.getElementById('HType5').style.width = "15%";
     document.getElementById('HTime5').style.width = "25%";
     document.getElementById('HDes5').style.width = "40%";
+    for (var td = 0; td < 2; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+        }
+    }
+    for (var td = 2; td < 5; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            TwoLetterDistance(td, tr, Des, TDes, 1, 0.7);
+        }
+    }
 }
 if (station == '三原駅') {
     for (var tr = 0; tr < orderNum; tr++) {

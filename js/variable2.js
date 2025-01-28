@@ -22,6 +22,7 @@ let doBNumber = new Array(Tablenum);
 let doType = new Array(Tablenum);
 let Connecting = new Array(Tablenum);
 let Cars=new Array(Tablenum);
+let Jiyuseki=new Array(Tablenum);
 const table = new Array(Tablenum);
 var ShinNumber = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
@@ -52,6 +53,7 @@ for (let tr = 0; tr < Tablenum; tr++) {
     WName[tr]=new Array(Tablenums[tr]);
     BType[tr] = new Array(Tablenums[tr]);
     Cars[tr]=new Array(Tablenums[tr]);
+    Jiyuseki[tr]=new Array(Tablenums[tr]);
 }
 //console.log(ShinNumber);
 //外側は表の数，内側はオーダーの数で種別，行先，種別の場所(色分けのため)，詳細表示の場所を取得

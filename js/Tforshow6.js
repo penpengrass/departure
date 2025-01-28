@@ -268,7 +268,7 @@ if (station == '松本駅') {
         if (Type[7][tr] != '') {
             if (Type[7][tr] != '普通' && Type[7][tr] != '快速' && Type[7][tr] != '特別快速') {
                 document.getElementById('WName8' + (tr + 1)).textContent = Type[7][tr].replace('始発', '');
-                document.getElementById('WType8' + (tr + 1)).textContent = '特急';
+                Type[7][tr] = '特急';
                 JRE6ColorPlusName(7, tr, '', 'red');
             } else if (utsunomiya.includes(Des[7][tr])) {
                 document.getElementById('TName8' + (tr + 1)).textContent = '宇都宮線';
@@ -315,17 +315,16 @@ if (station == '松本駅') {
             }
             //console.log(Type[td + 2][tr]);
             if (Type[td + 2][tr] != '') {
-                //LimitedType.textContent = '特急';
                 Type[td + 2][tr] = '特急';
                 JRE6ColorPlusName(td + 2, tr, '特急', 'red');
             }
             if (LimitedName.textContent.length > 6) {
                 LimitedName.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
             }
-            if (LDes.textContent.length > 4) {
+            if (Des[td + 2][tr].length > 4) {
                 LDes.style.transform = "scaleX(0.70)" + "translate(-20%,0%)";
             }
-            if (LDes2.textContent.length > 4) {
+            if (Des[td + 4][tr].length > 4) {
                 LDes2.style.transform = "scaleX(0.90)" + "translate(-5%,0%)";
             }
             FourLetters(td, tr, 0.5, 50, 'TDes', Des, 5);

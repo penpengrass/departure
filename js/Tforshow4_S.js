@@ -1,4 +1,5 @@
 console.log(Type);
+console.log(Cars);
 allLastShow();
 var TablenumSub = Tablenum;
 if (station == '博多駅') {
@@ -31,7 +32,10 @@ if (station == '博多駅') {
         DetailReplace_Set(0, tr, N_Tokuyama2, '広島', '徳山・広島');
         DetailReplace_Set(0, tr, N_Himeji2, '新神戸', '姫路・新神戸');
         DetailReplace_Set(0, tr, M_Himeji2, '新神戸', '姫路・新神戸');
-        DetailReplace_Set(0, tr, N_Fukuyama2, '岡山', '福山・岡山')
+        DetailReplace_Set(0, tr, N_Fukuyama2, '岡山', '福山・岡山');
+        if (Des[0][tr] == '新下関') {
+            Detail[0][tr] = '小倉';
+        }
     }
     console.log(number);
     DetailLength = [2, 2];
@@ -91,36 +95,70 @@ if (station == '博多駅') {
 
 
 }
-
+function ShinDetailSetting(td, tr, Utype, Uobj) {
+    for (key in Uobj) {
+        if (Utype.startsWith(Uobj[key].type)) {
+            Cars[td][tr] = Uobj[key].cars;
+            Jiyuseki[td][tr] = Uobj[key].jiyu;
+            //document.getElementById(TType).style.color = Uobj[key].color;
+        }
+    }
+}
 if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_Tsuruga.php') {
     if (station == '敦賀駅') {
         TablenumSub = 1
         JRNameDevide(2);
     } else {
         JRNameDevide();
+        allJRSSColor();
     }
+
     for (var td = 0; td < TablenumSub; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
+            //この部分は未完成
+            if (station != '敦賀駅') {
+                ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
+                if (Type[td][tr].includes('つばめ*')||Type[td][tr].includes('さくら*')) {
+                    Cars[td][tr] = '6両編成';
+                    Jiyuseki[td][tr] = '自由席1-3,5,6号車'
+                }
+                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = Cars[td][tr];
+            }
             if (Type[td][tr] != '' && (station == '博多駅' || station == '岡山駅') && tr < 2) {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
             }
-            if (Type[td][tr] == 'のぞみ' || Type[td][tr] == 'のぞみ*' || Type[td][tr] == 'ひかり') {
+
+            /*if (Type[td][tr] == 'のぞみ' || Type[td][tr] == 'のぞみ*') {
+                Cars[td][tr] = '16両編成';
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '16両編成';
-            } else if (Type[td][tr].includes('*')) {
+                Jiyuseki[td][tr]='自由席1-3号車'
+            }else if(Type[td][tr] == 'ひかり') {
+                Cars[td][tr] = '16両編成';
+                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '16両編成';
+                Jiyuseki[td][tr]='自由席1-5号車'
+            }else if (Type[td][tr].includes('*')) {
+                Cars[td][tr] = '6両編成';
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '6両編成';
-            } else if (Type[td][tr] == 'かがやき' || Type[td][tr] == 'はくたか' || Type[td][tr] == 'つるぎ') {
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '12両編成';
-            } else if (Type[td][tr] != '') {
+                Jiyuseki[td][tr]='自由席1-3,5,6号車'
+            }  else if (Type[td][tr] != '') {
+                Cars[td][tr] = '8両編成';
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '8両編成';
-            }
+                Jiyuseki[td][tr]='自由席1-3号車'
+            }*/
+
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         }
     }
+    console.log(Cars);
+    console.log(Jiyuseki);
     flagmarkerase(0, 'TType', '*');
     flagmarkerase(1, 'TType', '*');
     Bansenshow(1, 2);
-    if (station != '敦賀駅') {
-        allJRSSColor();
+
+    if (station == '岡山駅' || station == '広島駅') {
+        setInterval(allSanyoShinkansenSwitch, 5000);
+    } else {
+        //setInterval(allTsurugaShinkansenSwitch, 5000);
     }
 } else if (JRShinkansenflag == 1) {
     JRNameDevide(2);

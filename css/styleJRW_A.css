@@ -13,6 +13,7 @@ td{               /*データ内*/
     height: 35px;
     color:white;
     border: 5px #404040 solid;  /*表の中の枠色 */
+    /*font-family: "MS　ゴシック",monospace;*/
     font-family: "FM明朝",serif;
     border-left:none;
     border-right:none;
@@ -39,6 +40,7 @@ table{        /*表全体*/
 }
 .Ctime{
     color:yellow;
+    font-family: "MS　ゴシック",monospace;
 }
 .shubetu{
     text-align: center;

@@ -4,14 +4,14 @@ for (let te = 0; te < Tablenum; te++) {
         if (Type[te][tr] === 'undefined') {
             console.log(":");
         } else if (Type[te][tr].length > 7) {
-            document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-40%,0%)";
+            document.getElementById('TType' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.50)" + "translate(-50%,0%)";
         }
         if (Des[te][tr] === 'undefined') {
             //console.log(":");
         } else if (Des[te][tr].length > 7) {
             document.getElementById('TDes' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.60)" + "translate(-15%,0%)";
         } else if (Des[te][tr].length > 5) {
-            document.getElementById('TDes' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(12%,0%)";
+            document.getElementById('TDes' + (te + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(0%,0%)";
         }
     }
 }

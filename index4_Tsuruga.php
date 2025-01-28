@@ -71,7 +71,7 @@
 
         ?>
     </tableline>
-    <p id="supplement">臨時列車の有無や号数, 番線や停車駅は不正確<br></p>
+    <p id="supplement">臨時列車の有無や番線は不正確<br></p>
     <!--ここから内部のこと-->
     <script type="text/javascript" src="js/Time.js"></script>
     <script type="text/javascript" src="js/Timer.js"></script>
@@ -84,6 +84,7 @@
     <script type="text/javascript" src="js/functionW.js"></script>
     <script type="text/javascript" src="js/functionDetail.js"></script>
     <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
+    <script type="text/javascript" src="js/altershow.js"></script>
     <script type="text/javascript" src="js/detailshow.js"></script>
     <script type="text/javascript" src="js/typeColor.js"></script>
     <script type="text/javascript" src="js/Tforshow4_S.js"></script>

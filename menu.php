@@ -21,8 +21,10 @@
         <table class="menutable">
             <caption>表示駅</caption>
             <p class="chushaku">
-                <span style="color:red;">赤字</span>は土休日ダイヤ対応，もしくは終日ダイヤ<br>
-                黒字は平日ダイヤのみ <br>
+                <span style="color:red;">赤字</span>は土休日ダイヤ対応，もしくは終日ダイヤ(2024年改正)<br>
+                <span style="color:orange;">橙字</span>は土休日ダイヤ対応，もしくは終日ダイヤ(2025年改正)<br>
+                <span style="color:blue;">青字</span>は平日ダイヤのみ(2025年改正)<br>
+                黒字は平日ダイヤのみ(2024年改正)<br>
             </p>
             <p class="chushaku"></p>
             <tr>
@@ -171,6 +173,7 @@
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 新山口駅</li>
+        <li>近鉄 宇治山田駅</li>
         <li>JR九州 鳥栖駅 熊本駅 鹿児島中央駅</li>
         <li>JR四国 徳島駅 阿波池田駅 </li>
         <li>JR東海 中津川駅</li>

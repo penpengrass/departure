@@ -15,12 +15,13 @@ for (var tr = 0; tr < orderNum; tr++) {
         if (Detail[1][tr].slice(-1) == '・') {
             console.log(tr + 'は読点で終わる');
             Detail[1][tr] = Detail[1][tr].slice(0, -1);
-            document.getElementById('TDetail' + (2) + '' + (tr + 1)).textContent = Detail[1][tr];
+            
         }
         if (Nagahama.includes(number[1][tr])) {
             console.log(number[1][tr]);
             DetailReplace(1, tr, '米原', '米原・長浜', 2);
         }
+        document.getElementById('TDetail' + (2) + '' + (tr + 1)).textContent = Detail[1][tr];
     }
 }
 td_detail++;
@@ -32,8 +33,7 @@ for (var tr = 0; tr < orderNum; tr++) {
             console.log(tr + 'は読点で終わる');
             Detail[2][tr] = Detail[2][tr].slice(0, -1);
         }
-        document.getElementById('TDetail' + (3) + '' + (tr + 1)).textContent = Detail[2][tr];
-        console.log(number);
+        //console.log(number);
         //特急しなのの停車駅変更
         DetailReplace_Set(2, tr, Kanayama, '千種', '金山・千種');
         DetailReplace_Set(2, tr, Ena, '中津川', '恵那・中津川');
@@ -41,6 +41,7 @@ for (var tr = 0; tr < orderNum; tr++) {
         DetailReplace_Set(2, tr, Agematsu, '木曽福島', '上松・木曽福島');
         DetailReplace_Set(2, tr, Akashina, '松本', '松本・明科');
         DetailReplace_Set(2, tr, Hijirikogen, '篠ノ井', '聖高原・篠ノ井');
+        document.getElementById('TDetail' + (3) + '' + (tr + 1)).textContent = Detail[2][tr];
     }
 }
 td_detail++;

@@ -16,6 +16,7 @@ class Altershow {
             Cell.innerText = this.Word2;
         } else if (condition) {
             Cell.innerHTML = line;
+            
         }
     }
     Desjudge(Des_Line, line) {
@@ -26,6 +27,21 @@ class Altershow {
             Cell.textContent = line;
         }
     }
+    TwoLineExchange(First,Second){
+        var Cell = document.getElementById(this.Tab);
+        if (Cell.textContent == First) {
+            Cell.innerText = Second;
+        } else if (Cell.textContent==Second) {
+            Cell.innerHTML = First;
+        }
+    }
+}
+//新幹線の自由席と両数を交互に表示させる
+function ShinkansenSwitch(Tab, td, tr, line1, line2) {
+    const altershow = new Altershow(Tab, td, tr,line1,line2);
+    var Cell = document.getElementById(Tab);
+    //console.log(Cell);
+    altershow.TwoLineExchange(line1, line2);
 }
 function DesSwitch(Tab, tr, line, KeyWord, ShorterWord) {
     const altershow = new Altershow(Tab, td, tr, KeyWord, ShorterWord);
@@ -50,6 +66,22 @@ function ChibaSwitch2(Tab, tr, line, Des_Line, Word2) {
     const altershow = new Altershow(Tab, td, tr, Des_Line, Word2);
     var Cell = document.getElementById(Tab);
     altershow.Desjudge(Des_Line, line);
+}
+function allShinSwitch(Tablenum, orderNum, line) {
+    //var Exp = new Array(Tablenum);
+    for (var td = 0; td < Tablenum; td++) {
+        //Exp[td] = new Array(orderNum);
+        for (var tr = 0; tr < orderNum; tr++) {
+            //Exp[td][tr] = document.getElementById('TExplain' + (td + 1) + '' + (tr + 1).textContent);
+            ShinkansenSwitch('TExplain' + (td + 1) + (tr + 1), td, tr, Cars[td][tr], line[td][tr]);
+        }
+    }
+}
+function allSanyoShinkansenSwitch(){
+    allShinSwitch(Tablenum, orderNum, Jiyuseki);
+}
+function allTsurugaShinkansenSwitch(){
+    allShinSwitch(1, orderNum, Jiyuseki);
 }
 function switchTrainInfo2(Tab, tr, line, Longerword, shorterword) {
     var Cell = document.getElementById(Tab);
@@ -97,7 +129,7 @@ function allswitchChiba() {
         ChibaSwitch(WType[5][tr], tr, Type[5][tr], '成田エクスプレス', '特急');
         ChibaSwitch(WType[0][tr], tr, Type[0][tr], 'しおさい', '特急');
         ChibaSwitch(WType[4][tr], tr, Type[4][tr], 'しおさい', '特急');
-        ChibaSwitch2(WDes[3][tr], tr, Des[3][tr], ['成東','東金'], '大網回り');
+        ChibaSwitch2(WDes[3][tr], tr, Des[3][tr], ['成東', '東金'], '大網回り');
         ChibaSwitch2(WDes[4][tr], tr, Des[4][tr], ['銚子'], '八日市場回り');
         ChibaSwitch2(WDes[4][tr], tr, Des[4][tr], ['成東'], '八街回り');
         ChibaSwitch2(WDes[5][tr], tr, Des[5][tr], ['銚子', '銚子*'], '成田回り');
@@ -106,7 +138,7 @@ function allswitchChiba() {
         for (var tr = 0; tr < orderNum; tr++) {
             var LType = document.getElementById('WType' + (td + 1) + (tr + 1));
             var LName = document.getElementById('WName' + (td + 1) + (tr + 1));
-            var LDes=document.getElementById('WDes' + (td + 1) + (tr + 1));
+            var LDes = document.getElementById('WDes' + (td + 1) + (tr + 1));
             if (LType.textContent.length > 5) {
                 LType.style.transform = "scaleX(0.40)" + "translate(-75%,0%)";
             } else {
@@ -128,23 +160,25 @@ function allswitchChiba() {
         }
     }
 }
-function allswitch_UTL(){
+function allswitch_UTL() {
     for (var tr = 0; tr < orderNum; tr++) {
         ATOSShihatsuSwitch(WName[0][tr], 0, tr, '始発', '始発', Cars[0][tr]);
-        ATOSShihatsuSwitch(WName[1][tr], 1, tr, '始発', '始発', Cars[1][tr]);
         ChibaSwitch_LiNum(WName[0][tr], 0, tr, number[0][tr] + '号', number[0][tr] + '号', Cars[0][tr]);
-        ChibaSwitch_LiNum(WName[1][tr], 1, tr, number[1][tr] + '号', number[1][tr] + '号', Cars[1][tr]);
         ChibaSwitch(WType[0][tr], tr, Type[0][tr], 'ひたち', '特急');
-        ChibaSwitch(WType[1][tr], tr, Type[1][tr], 'ひたち', '特急');
         ChibaSwitch(WType[0][tr], tr, Type[0][tr], 'ときわ', '特急');
-        ChibaSwitch(WType[1][tr], tr, Type[1][tr], 'ときわ', '特急');
         ChibaSwitch(WType[0][tr], tr, Type[0][tr], '踊り子', '特急');
-        ChibaSwitch(WType[1][tr], tr, Type[1][tr], '踊り子', '特急');
         ChibaSwitch(WType[0][tr], tr, Type[0][tr], '湘南', '特急');
-        ChibaSwitch(WType[1][tr], tr, Type[1][tr], '湘南', '特急');
+        if (station != '上野駅') {
+            ATOSShihatsuSwitch(WName[1][tr], 1, tr, '始発', '始発', Cars[1][tr]);
+            ChibaSwitch_LiNum(WName[1][tr], 1, tr, number[1][tr] + '号', number[1][tr] + '号', Cars[1][tr]);
+            ChibaSwitch(WType[1][tr], tr, Type[1][tr], 'ひたち', '特急');
+            ChibaSwitch(WType[1][tr], tr, Type[1][tr], 'ときわ', '特急');
+            ChibaSwitch(WType[1][tr], tr, Type[1][tr], '踊り子', '特急');
+            ChibaSwitch(WType[1][tr], tr, Type[1][tr], '湘南', '特急');
+        }
     }
 }
-function allswitch_Akabane(){
+function allswitch_Akabane() {
     for (var tr = 0; tr < orderNum; tr++) {
         ChibaSwitch(WType[2][tr], tr, Type[2][tr], 'あかぎ', '特急');
         ChibaSwitch(WType[2][tr], tr, Type[2][tr], '草津･四万', '特急');

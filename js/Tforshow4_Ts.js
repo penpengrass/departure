@@ -14,6 +14,23 @@ for (var tr = 0; tr < 2; tr++) {
         document.getElementById('TDetailtitle' + (0 + 1) + (tr + 1)).textContent = '停車駅';
     }
 }
+for (var td = 0; td < 1; td++) {
+    for (var tr = 0; tr < 3; tr++) {
+        if (Type[td][tr] == 'かがやき') {
+            Cars[td][tr] = '12両編成';
+            document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '全車指定席';
+        } else if (Type[td][tr] == 'はくたか') {
+            Cars[td][tr] = '12両編成';
+            document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '自由席1-4号車';
+        } else if (Type[td][tr] == 'つるぎ') {
+            Cars[td][tr] = '12両編成';
+            document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '自由席1-2号車';
+            if(number[td][tr]>59){
+                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1)).textContent = '自由席1-4号車';
+            }
+        }
+    }
+}
 for (var tr = 0; tr < 2; tr++) {
     if (takefu.includes(number[0][tr])) {
         DetailReplace(0, tr, '福井', '越前たけふ　福井　芦原温泉　加賀温泉　小松');

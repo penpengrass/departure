@@ -3,6 +3,36 @@ var LiName = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
     LiName[td] = '';
 }
+function LastShows(td, tr) {
+    console.log(TableHour[td][tr]);
+    document.getElementById('THour' + (td + 1) + '' + (tr + 1)).textContent = TableHour[td][tr];
+    document.getElementById('TMin' + (td + 1) + '' + (tr + 1)).textContent = TableMin[td][tr];
+    document.getElementById('WType' + (td + 1) + '' + (tr + 1)).textContent = Type[td][tr];
+    if (Indexfile == 'index6_Chiba.php') {
+        document.getElementById('WDes' + (td + 1) + '' + (tr + 1)).textContent = Des[td][tr];
+    } else {
+        document.getElementById('TDes' + (td + 1) + '' + (tr + 1)).textContent = Des[td][tr];
+    }
+    document.getElementById('TNum' + (td + 1) + '' + (tr + 1)).textContent = TrackNum[td][tr];
+    //ここで次発のために変数に入れる
+    //orders[depnum - 1] = Table_Column;
+    //orders[depnum] = Table_Column + 1;
+    return;
+}
+function allLastShow() {
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            LastShows(td, tr);
+            if (company == 'JR西日本' && Indexfile != 'index4_T.php') {
+                DesMiddle(td, tr, '連絡');
+                DesMiddle(td, tr, '経由');
+                DesMiddle(td, tr, '方面');
+            }
+        }
+    }
+    LastShowFlag = 1;
+    allTimeMarkErase();
+}
 function JRLimitedDevide(Tablenum, align = 'center', Tab = 'TName') {
     for (var tr = 0; tr < Type[Tablenum].length; tr++) {
         if (Type[Tablenum][tr].includes('特急')) {
@@ -16,7 +46,7 @@ function JRLimitedDevide(Tablenum, align = 'center', Tab = 'TName') {
             //console.log(LiName);
             //console.log(document.getElementById('TName' + (Tablenum + 1) + '' + (tr + 1)));
             document.getElementById(Tab + (Tablenum + 1) + '' + (tr + 1)).style.textAlign = align;
-            document.getElementById('TType' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited2;
+            document.getElementById('WType' + (Tablenum + 1) + '' + (tr + 1)).textContent = Limited2;
             Type[Tablenum][tr] = Limited2;
         }
     }
@@ -49,21 +79,21 @@ function JRATOSDevide(td) {
             var LType = Type[td][tr].split('線')[1];
             document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = Line + "線";
             document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.textAlign = 'center';
-            document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = LType;
+            document.getElementById('WType' + (td + 1) + '' + (tr + 1)).textContent = LType;
             Type[td][tr] = LType;
         } else if (Type[td][tr].includes('ライン')) {
             var Line = Type[td][tr].split('ン')[0];
             var LType = Type[td][tr].split('ン')[1];
             document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = Line + "ン";
             document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.textAlign = 'center';
-            document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = LType;
+            document.getElementById('WType' + (td + 1) + '' + (tr + 1)).textContent = LType;
             Type[td][tr] = LType;
         } else if (Type[td][tr].includes('ﾗｲﾝ')) {
             var Line = Type[td][tr].split('ﾝ')[0];
             var LType = Type[td][tr].split('ﾝ')[1];
             document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent = Line + "ﾝ";
             document.getElementById('TName' + (td + 1) + '' + (tr + 1)).style.textAlign = 'center';
-            document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent = LType;
+            document.getElementById('WType' + (td + 1) + '' + (tr + 1)).textContent = LType;
             Type[td][tr] = LType;
         }
     }
@@ -75,7 +105,8 @@ function JRNameDevide(T = Tablenum) {
         var LimitedName = new Array(Type[td].length);
         var matches = new Array(Type[td].length);
         for (var tr = 0; tr < Type[td].length; tr++) {
-            LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
+            LimitedName[tr] = Type[td][tr];
+            //LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
             if (NonGouflag == 1) {
                 matches[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
             } else {
@@ -137,11 +168,15 @@ function JRLimitedName(td, tr, flag = 0) {
     return name;
 }
 //特急等の号数を取得 tdは何番目の表か
-function JRLimitedNumber(td, tr, Tab = 'TType') {
+function JRLimitedNumber(td, tr, flag = 0) {
     var LimitedName = new Array(Type[td].length);
     var matches = new Array(Type[td].length);
     var matches2 = new Array(Type[td].length);
-    LimitedName[tr] = document.getElementById(Tab + (td + 1) + '' + (tr + 1)).textContent;
+    if (flag == 0) {
+        LimitedName[tr] = Type[td][tr];
+    } else {
+        LimitedName[tr] = document.getElementById('TName' + (td + 1) + '' + (tr + 1)).textContent;
+    }
     //console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     matches2[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
@@ -159,21 +194,22 @@ function JRLimitedNumber(td, tr, Tab = 'TType') {
         console.log(matches2[tr][1] + ":" + tr);
         console.log(matches2[tr][2] + ":" + tr);
         console.log(matches2[tr][1] + matches2[tr][1].length);
-        console.log("Dtypeは" + Dtype);
+        //console.log("Dtypeは" + Dtype);
         var number = matches2[tr][2];
     } else {
-        console.log("JRLimitedNumberはマッチしない");
+        //console.log("JRLimitedNumberはマッチしない");
     }
     return number;
 }
 //種別+両数の場合分割
-function CarsDevide(td, LCarsTag = 'TCars', LTypeTag = 'TType') {
+function CarsDevide(td, LCarsTag = 'TCars') {
     for (var tr = 0; tr < orderNum; tr++) {
-        var LType = document.getElementById(LTypeTag + (td + 1) + '' + (tr + 1));
-        var matches = LType.textContent.match(/(\D+)(\d+)両/);
-        var matches2 = LType.textContent.match(/(\D+)(\d+)号(\d+)両/);
-        var matches3 = LType.textContent.match(/(\D+)(\d+)両(\d+)号/);
-        console.log(LType.textContent);
+        //var LType = document.getElementById(LTypeTag + (td + 1) + '' + (tr + 1));
+        var LType = Type[td][tr];
+        var matches = LType.match(/(\D+)(\d+)両/);
+        var matches2 = LType.match(/(\D+)(\d+)号(\d+)両/);
+        var matches3 = LType.match(/(\D+)(\d+)両(\d+)号/);
+        console.log(LType);
         var LCars = document.getElementById(LCarsTag + (td + 1) + '' + (tr + 1));
         if (matches2) {
             console.log(matches2[0]);
@@ -182,7 +218,8 @@ function CarsDevide(td, LCarsTag = 'TCars', LTypeTag = 'TType') {
             console.log(matches2[3]);
             var number = matches[2];
             LCars.textContent = matches2[3] + '両';
-            LType.textContent = matches2[1] + matches2[2] + '号';
+            LType = matches2[1] + matches2[2] + '号';
+            Type[td][tr] = matches[1];
         } else if (matches3) {
             console.log(matches3[0]);
             console.log(matches3[1]);
@@ -190,7 +227,8 @@ function CarsDevide(td, LCarsTag = 'TCars', LTypeTag = 'TType') {
             console.log(matches3[3]);
             var number = matches3[2];
             LCars.textContent = matches3[2] + '両';
-            LType.textContent = matches[1] + matches3[3] + '号';
+            LType = matches[1] + matches3[3] + '号';
+            Type[td][tr] = matches[1];
         } else if (matches) {
             console.log(matches[0]);
             console.log(matches[1]);
@@ -198,7 +236,7 @@ function CarsDevide(td, LCarsTag = 'TCars', LTypeTag = 'TType') {
             console.log(matches[3]);
             var number = matches[2];
             LCars.textContent = matches[2] + '両';
-            LType.textContent = matches[1];
+            LType = matches[1];
             Type[td][tr] = matches[1];
         } else {
             console.log("CarsDevideにマッチしていない" + tr);
@@ -228,8 +266,8 @@ function Bansenshow(flag = 0, LLength = Tablenum) {
     for (td = 0; td < LLength; td++) {
         for (tr = 0; tr < Tablenums[td]; tr++) {
             //console.log(doBNumber[td][tr]);
-            if (doBNumber[td][tr].textContent != '') {
-                var Line = doBNumber[td][tr].textContent;
+            if (TrackNum[td][tr] != '') {
+                var Line = TrackNum[td][tr];
                 if (flag == 0) {
                     doBNumber[td][tr].innerHTML = Line + '<span class="bansen">番線</span>';
                 } else if (flag == 1) {
@@ -254,39 +292,27 @@ function allTwoLettersDistance(Line, Tab, LetterSpacing, Indent, Letters = 2) {
         }
     }
 }
-function FourLetters(td, tr, reduction, translate, Tab = 'TType', Letters = 4) {
+function FourLetters(td, tr, reduction, translate, Tab = 'TType', Line = Type, Letters = 4) {
     var dType = document.getElementById(Tab + (td + 1) + (tr + 1));
-    if (dType.textContent.length == Letters) {
+    if (Line[td][tr].length == Letters) {
         dType.style.transform = "scaleX(" + reduction + ")" + "translate(-" + translate + "%,0%)";
     }
 }
-function AllWordChange(td, tr, Tab, Before, After, line_flag, line) {
-    var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
-    if (LTab.textContent == Before) {
-        LTab.textContent = After;
-        if (line_flag == 1) {
-            line[td][tr] = After;
-        }
+function AllWordChange(td, tr, line, Before, After) {
+    if (line[td][tr] == Before) {
+        line[td][tr] = After;
     }
 }
-function AllWordReplace(td, tr, Tab, keyword, AfterWord, line_flag, line) {
-    var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
-    if (LTab.textContent.includes(keyword)) {
-        LTab.textContent = LTab.textContent.replace(keyword, AfterWord);
-        if (line_flag == 1) {
-            line[td][tr] = line[td][tr].replace(keyword, AfterWord);
-        }
+function AllWordReplace(td, tr, line, keyword, AfterWord,) {
+    if (line[td][tr].includes(keyword)) {
+        line[td][tr] = line[td][tr].replace(keyword, AfterWord);
     }
     //console.log(Type[td][tr] + 'td=' + td + 'tr=' + tr);
     //console.log(LTab.textContent);
 }
-function AllStartWordReplace(td, tr, Tab, keyword, AfterWord, line_flag, line) {
-    var LTab = document.getElementById(Tab + (td + 1) + (tr + 1));
-    if (LTab.textContent.startsWith(keyword)) {
-        LTab.textContent = LTab.textContent.replace(keyword, AfterWord);
-        if (line_flag == 1) {
-            line[td][tr] = line[td][tr].replace(keyword, AfterWord);
-        }
+function AllStartWordReplace(td, tr, line, keyword, AfterWord) {
+    if (line[td][tr].startsWith(keyword)) {
+        line[td][tr] = line[td][tr].replace(keyword, AfterWord);
     }
     //console.log(Type[td][tr] + 'td=' + td + 'tr=' + tr);
     //console.log(LTab.textContent);
@@ -376,6 +402,4 @@ function swapColumns(table, col1, col2) {
         table.rows[0].cells[col2].setAttribute("width", width1);
     }
 }
-
-allTimeMarkErase();
 var comment = document.getElementById('supplement');

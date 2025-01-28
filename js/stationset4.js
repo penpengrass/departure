@@ -34,15 +34,15 @@ var JRWALobj = {//色は文字
     Typeb: { type: "関空快速", color: blue, detail: rapid, },
     Typec: { type: "大和路快速", color: green, detail: rapid, },
     Typed: { type: "快速", color: orange, detail: Jrapid, },
-    Typee: { type: "区間快速", color: green,  detail: Jsubrapid, },
-    Typef: { type: "普通", color: black,  detail: local, },
-    Typelocal: { type: "普通", color: white,  detail: local, }
+    Typee: { type: "区間快速", color: green, detail: Jsubrapid, },
+    Typef: { type: "普通", color: black, detail: local, },
+    Typelocal: { type: "普通", color: white, detail: local, }
 };
 if (station == '岡山駅') {
     TwoLetterDisflag = 1;
     var selectstation = ['備前片上', '長船', '日生', '播州赤穂', '西大寺'];
     DestinationDevide(selectstation, 2, 3);
-    TableTitle = ['山陽本線  倉敷，福山方面', '伯備線 倉敷 新見 米子方面', '山陽本線  和気，姫路方面', '赤穂線 西大寺 播州赤穂方面', '瀬戸大橋線 茶屋町 児島 四国方面',
+    TableTitle = ['山陽本線  倉敷 福山方面', '伯備線 倉敷 新見 米子方面', '山陽本線  和気 姫路方面', '赤穂線 西大寺 播州赤穂方面', '瀬戸大橋線 茶屋町 児島 四国方面',
         '津山線 福渡 津山方面', '桃太郎線 備中高松 総社方面'];
     limitednumber(TT[2], 1, 'ｽｰﾊﾟｰいなば');
     limitednumber(TT[1], 1, 'やくも');
@@ -118,10 +118,10 @@ if (station == '岡山駅') {
     limitednumber(TT[4], 1, '特急はるか');
     limitednumber(TT[4], 1, '特急くろしお');
     TT[6] = makeemptyTable(TT[1], TT[2]);
-    TTconnect(TT[1],TT[2],TT[6]);
-    TT[2]=TT[6];
-    var NoLoop=['ＪＲ難波','新大阪','京都','野洲'];
-    DestinationDevide(NoLoop,2,1);
+    TTconnect(TT[1], TT[2], TT[6]);
+    TT[2] = TT[6];
+    var NoLoop = ['ＪＲ難波', '新大阪', '京都', '野洲'];
+    DestinationDevide(NoLoop, 2, 1);
     limitednumber(TT[1], 2, '特急はるか');
     limitednumber(TT[1], 2, '特急くろしお');
 } else if (station == '徳山駅') {
@@ -166,4 +166,9 @@ if (station == '岡山駅') {
     TTconnect(TT[4], TT[5], TT[6]);
     TT[4] = TT[6];
     RailNumberDevide(14, 4, 5);
+    //時刻表補完
+    for (var TaRow1 = 65; TaRow1 < 73; TaRow1++) {
+        TT[4][TaRow1][1] = '';
+    }
+    console.log(TT[4]);
 }

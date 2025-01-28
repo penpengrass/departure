@@ -37,6 +37,7 @@
   <form action="PHP/files4_S.php" method="POST" id="selectstation">
     <select name="staselect4">
       <option value="hiroshima">広島駅</option>
+      <option value="okayama">岡山駅</option>
       <option value="hakata">博多駅</option>
     </select>
     <button type="submit" class="henko" name="submit">駅変更</button>
@@ -46,7 +47,7 @@
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
     <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
     <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
-    <button type="button" onclick="location.href='./index4.php?station=hiroshima'">広島駅在来線へ移動</button>
+    <button type="button" onclick="JRW_station(station)">在来線へ移動</button>
     <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線へ移動</button>
@@ -63,7 +64,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">臨時列車の有無や号数, 番線や停車駅は不正確</p>
+  <p id="supplement">臨時列車の有無や号数, 番線や停車駅,自由席は不正確</p>
   <!--ここから内部のこと-->
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>
