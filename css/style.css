@@ -44,7 +44,7 @@ table {
 }
 @media(max-width:1199px) {
     .CDetail {
-        font-size: 20px;
+        font-size: 15px;
     }
     table{
         width:750px;

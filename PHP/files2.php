@@ -14,32 +14,32 @@ if (isset($_POST['staselect2'])) {
 
 if (isset($_GET['station'])) {
     if (Inisset('kyoto')) {
-        $files[0] = 'csv/Kintetsu/KiKyo.csv';
+        $files[0] = 'csv/Kintetsu/Kyoto.csv';
         $tablenum = 1;
         $OrderNum = 6;
         $station = '京都駅';
         if ($holidayflag == 1) {
-            $files[0] = 'csv/Kintetsu/KiKyo_H.csv';
+            $files[0] = 'csv/Kintetsu/Kyoto_H.csv';
         }
     } else if (Inisset('nara')) {
-        $files[0] = 'csv/Kintetsu/nara1.csv';
-        $files[1] = 'csv/Kintetsu/nara1.csv';
+        $files[0] = 'csv/Kintetsu/Nara.csv';
+        $files[1] = 'csv/Kintetsu/Nara.csv';
         if ($holidayflag == 1) {
-            $files[0] = 'csv/Kintetsu/nara1_H.csv';
-            $files[1] = 'csv/Kintetsu/nara1_H.csv';
+            $files[0] = 'csv/Kintetsu/Nara_H.csv';
+            $files[1] = 'csv/Kintetsu/Nara_H.csv';
         }
         $tablenum = 2;
         $OrderNum = 3;
         $station = '奈良駅';
     } else if (Inisset('nagoya')) {
-        $files[0] = 'csv/Kintetsu/kin_nagoya.csv';
-        $files[1] = 'csv/Kintetsu/kin_nagoya.csv';
+        $files[0] = 'csv/Kintetsu/Nagoya.csv';
+        $files[1] = 'csv/Kintetsu/Nagoya.csv';
         $tablenum = 2;
         $OrderNum = 3;
         $station = '名古屋駅';
         if ($holidayflag == 1) {
-            $files[0] = 'csv/Kintetsu/kin_nagoya_H.csv';
-            $files[1] = 'csv/Kintetsu/kin_nagoya_H.csv';
+            $files[0] = 'csv/Kintetsu/Nagoya_H.csv';
+            $files[1] = 'csv/Kintetsu/Nagoya_H.csv';
         }
     }
 }

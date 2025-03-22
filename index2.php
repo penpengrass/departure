@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="css/banner.css">
   <?php
   $files = array();
-  $files[0] = 'csv/Kintetsu/KiTsu1.csv';
-  $files[1] = 'csv/Kintetsu/KiTsu2.csv';
+  $files[0] = 'csv/Kintetsu/Tsuruhashi1.csv';
+  $files[1] = 'csv/Kintetsu/Tsuruhashi2.csv';
   require_once('PHP/variable.php');
   require('PHP/files2.php');
   require_once('getCSV.php');
@@ -72,9 +72,9 @@
       <td rowspan="3" class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><span class="CWType" id="WType' . $i . $j . '"></span></td>
       <td rowspan="3" class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></span></td>
       <td rowspan="3"><span class="railnumber" id="TNum' . $i . $j . '"></span></td>
-      <td class="higherDetail CDetail" ><p3 class="news-banner__content" id="TDetail' . $i . $j . '">本日の運転は終了しました</p3></td>
+      <td class="higherDetail CDetail"><p3 class="news-banner__content" id="TDetail' . $i . $j . '">本日の運転は終了しました</p3></td>
       </tr>
-      <tr><td class="higherDetail CDetail"></td></tr>
+      <tr><td class="higherDetail CDetail" id="TDetailD' . $i . $j . '"></td></tr>
       <tr><td class="CDetail"><p2 id="TConnection' . $i . $j . '"></td>
     </tr>
     ');

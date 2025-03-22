@@ -49,3 +49,4 @@ if (station == '大阪駅') {
 }
 allTwoLettersDistance(Type, TType, 0.60, 0);
 allTwoLettersDistance(Des, TDes, 1, 0.9);
+allLastShow();

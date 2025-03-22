@@ -129,6 +129,7 @@ if (station == '松本駅') {
     JRETypeSelectAdd(5, '普通', shonan2, ' 湘南新宿ﾗｲﾝ', ' 横須賀線');
     JRETypeSelectAdd(5, '快速', shonan2, ' 湘南新宿ﾗｲﾝ', ' 横須賀線');
     for (var tr = 0; tr < 2; tr++) {
+        Des[4][tr] = Des[4][tr].replace('*', '');
         JRE6ColorPlusName(0, tr, '各駅停車', '#00b2e5');
         JRE6ColorPlusName(0, tr, '快速', '#00b2e5');
         JRE6ColorPlusName(1, tr, '京浜東北線', '#00b2e5', 1);
@@ -335,3 +336,4 @@ if (station == '松本駅') {
     }
     comment.textContent = '両数や番線など一部表示不正確';
 }
+allLastShow();

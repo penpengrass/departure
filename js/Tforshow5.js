@@ -19,3 +19,4 @@ if (station == '二子玉川駅') {
     }
 }
 allTwoLettersDistance(Des, TDes, 1, 1);
+allLastShow();
