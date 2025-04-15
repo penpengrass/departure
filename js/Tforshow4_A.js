@@ -44,6 +44,17 @@ if (station == '大阪駅') {
             LType.style.padding = '0px';
         }
         AllWordReplace(4, tr, Type, '寝台', '');
+        AllWordReplace(1, tr, Des, '新三田', '宝塚方面新三田');
+        AllWordReplace(1, tr, Des, '篠山口', '宝塚方面篠山口');
+        AllWordReplace(1, tr, Des, '福知山', '宝塚方面福知山');
+        AllWordReplace(2, tr, Des, '加古川', '神戸方面加古川');
+        AllWordReplace(2, tr, Des, '網干', '姫路方面網干');
+        AllWordReplace(2, tr, Des, '上郡', '姫路方面上郡');
+        AllWordChange(3, tr, Des, '米原', '京都方面米原');
+        AllWordReplace(3, tr, Des, '野洲', '京都方面野洲');
+        AllWordReplace(3, tr, Des, '草津', '京都方面草津');
+        AllWordReplace(3, tr, Des, '長浜', '米原方面長浜');
+        AllWordReplace(3, tr, Des, '近江塩津', '米原方面近江塩津');
     }
     holiday_F(station);
 }

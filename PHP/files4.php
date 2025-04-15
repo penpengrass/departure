@@ -62,8 +62,8 @@ if (isset($_GET['station'])) {
     $tablenum = 6;
     $JRShinkansenflag = 1;
   } else if (Inisset('maibara')) {
-    $files[0] = 'csv/JRW/maibara1_R.csv';
-    $files[1] = 'csv/JRW/maibara2_R.csv';
+    $files[0] = 'csv/JRW/maibara1.csv';
+    $files[1] = 'csv/JRW/maibara2.csv';
     $files[2] = 'csv/JRW/maibara3.csv';
     if ($holidayflag == 1) {
       $files[0] = 'csv/JRW/maibara1_H.csv';

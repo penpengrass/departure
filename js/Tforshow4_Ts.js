@@ -96,11 +96,6 @@ for (var tr = 0; tr < 3; tr++) {
         dName.style.color = 'red';
     }
 }
-for (var td = 2; td < Tablenum; td++) {
-    for (var tr = 0; tr < Tablenums[td]; tr++) {
-        TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
-    }
-}
 if (holidayflag == 1) {
     document.getElementById('supplement').innerHTML += station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
 } else if (holidayflag == 0) {
@@ -111,5 +106,11 @@ doallDetailShow(25);
 //DetailBanner(0, 0, 25);
 //DetailBanner(0, 1, 25);
 for (var tr = 0; tr < orderNum; tr++) {
+    AllWordChange(3, tr, Des, "大阪", "京都方面大阪");
     DesMiddle(3, tr, '方面');
+}
+for (var td = 2; td < Tablenum; td++) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+    }
 }
