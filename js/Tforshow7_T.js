@@ -104,8 +104,14 @@ for (var tr = 0; tr < orderNum; tr++) {
 SpecialStop(0, '(幸)', '岡崎', '幸田', '・', 0.8);
 SpecialStop(0, '(三)', '蒲郡', '三河三谷', '・', 0.8);
 SpecialStop(1, '(稲)', '名古屋', '稲沢', '・', 0.8);
-
+SpecialStop(0, ' 三谷', '蒲郡', '三河三谷', '・', 0.8);
+SpecialStop(0, ' 大塚', '蒲郡', '三河大塚', '・', 0.8);
+SpecialStop(0, ' 幸', '岡崎', '幸田', '・', 0.8);
+SpecialStop(1, ' 稲', '名古屋', '稲沢', '・', 0.8);
+let Class_Bottm=document.getElementsByClassName('Ctitle');
+var bottom_color=['orange','orange','blue','#00A497','brown']
 for (let te = 0; te < Tablenum; te++) {
+    document.getElementsByClassName('Ctitle')[te].style.borderBottomColor=bottom_color[te];
     for (let tr = 0; tr < orderNum; tr++) {
         if (Type[te][tr].includes('普通')) {
             document.getElementById('TDetail' + (te + 1) + (tr + 1)).textContent = '各駅にとまります';

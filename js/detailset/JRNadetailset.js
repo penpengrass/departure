@@ -48,13 +48,14 @@ limited = Shirasagi.slice();
 local = [['各駅にとまります']];
 console.log(Newrapid);
 console.log(Cesubrapid);
+let Cgreen='#39ff14'
 var JRCeNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: limited, },
     Typeb: { type: "ﾎｰﾑﾗｲﾅｰ", Bcolor: red, color: white, detail: Jrapid, },
     Typec: { type: "特別快速", Bcolor: 'yellow', color: black, detail: Sperapid, },
-    Typed: { type: "新快速", Bcolor: orange, color: white, detail: Newrapid, },
-    Typee: { type: "快速", Bcolor: orange, color: white, detail: rapid, },
-    Typef: { type: "区間快速", Bcolor: green, color: white, detail: Jsubrapid, },
+    Typed: { type: "新快速", Bcolor: '#fd7e00', color: white, detail: Newrapid, },
+    Typee: { type: "快速", Bcolor: blue, color: white, detail: rapid, },
+    Typef: { type: "区間快速", Bcolor: Cgreen, color: black, detail: Jsubrapid, },
     Typelocal: { type: "普通", Bcolor: white, color: black, detail: local, }
 };
 if (station != '名古屋駅') {
@@ -63,9 +64,9 @@ if (station != '名古屋駅') {
 }
 var JRChNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: Slimited, },
-    Typeb: { type: "ﾎｰﾑﾗｲﾅｰ", Bcolor: red, color: white, detail: Homerapid, },
+    Typeb: { type: "快速みえ", Bcolor: '#fd7e00', color: white, detail: Homerapid, },
     Typee: { type: "快速", Bcolor: blue, color: white, detail: Jsubrapid, },
-    Typef: { type: "区間快速", Bcolor: green, color: white, detail: Jsubrapid, },
+    Typef: { type: "区間快速", Bcolor: Cgreen, color: black, detail: Jsubrapid, },
     Typelocal: { type: "普通", Bcolor: white, color: black, detail: local, }
 };
 let Nanki = [['名古屋', '桑名', '四日市', '鈴鹿', '津', '松阪', '多気', '三瀬谷', '紀伊長島', '尾鷲', '熊野市', '新宮', '紀伊勝浦']];

@@ -7,8 +7,8 @@ th{
     border-bottom: 1px white solid;
 }
 td{               /*データ内*/
-    font-size:35px;
-    height: 45px;
+    font-size:2vw;
+    height: 60px;
     color:white;
     border:none;  /*表の中の枠色*/
     font-family:Arial,"MS Gothic",monospace;
@@ -17,43 +17,58 @@ td{               /*データ内*/
 .CTime{
     font-family: "meiryo","Roboto","Yu Gothic";
 }
-table{        /*表全体*/
+body table{        /*表全体*/
     table-layout:fixed;
     background-color: black;
-    border: 10px gray solid;/*周りの色*/
+    border: 10px #505050 solid;/*周りの色*/
+    border-top:none;
     width: 50%; 
     height:200px;
     white-space:nowrap;
     text-align:center;
     margin:5px;
 }
-@media(max-width:1199px) {
-    table{   
-        width: 750px;
-    }
-}
-span{
-    display: inline-block;
-}
-.shubetu{
-    border-radius: 5px;
-}
-.railnumber{
-    font-weight:700;
+.Ctitle{
     background-color: white;
     color:black;
-    font-family: Arial,"MS Gothic",monospace;
-}
-.Ctitle{
-    background-color: yellow;
-    color:black;
+    height:35px;
+    border:10px #505050 solid;
     border-bottom:4px orange solid;
 }
 .Cdetail{
     text-align: left;
     height:30px;
-    font-size:25px;
+    font-size:1.5vw;
     overflow: hidden;
+}
+.shubetu{
+    border-radius: 5px;
+    margin:5px;
+}
+.railnumber{
+    font-weight:700;
+    background-color: white;
+    border-radius: 5px;
+    color:black;
+    font-size:2.2vw;
+    font-family: Arial,"MS Gothic",monospace;
+}
+@media(max-width:1199px) {
+    table{   
+        width: 750px;
+    }
+    td{
+        font-size:35px;
+    }
+    .Cdetail{
+        font-size:25px;
+    }
+    .railnumber{
+        font-size:40px;
+    }
+}
+span{
+    display: inline-block;
 }
 .twoChairs{
     text-indent: 0.4em;

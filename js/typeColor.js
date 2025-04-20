@@ -131,7 +131,7 @@ function allJRCColor() {
 function allJRNagoyaColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            if (ia == 2) {
+            if (ia >= 2) {
                 KJTypeColor(Type[ia][ib], TType[ia][ib], JRChNobj);
             } else {
                 KJTypeColor(Type[ia][ib], TType[ia][ib], JRCeNobj);

@@ -126,7 +126,7 @@
             <tr>
                 <td>JR東海LCD</td>
                 <td><button type="button" onclick="location.href='./index7_T.php'">移動</button></td>
-                <td><span style="color:red;">名古屋駅</span></td>
+                <td><span style="color:#FF8C00;">名古屋駅</span></td>
                 <td>なし</td>
             </tr>
             <tr>
