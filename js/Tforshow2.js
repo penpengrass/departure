@@ -149,4 +149,4 @@ if (station == '鶴橋駅') {
         }
     }
 }
-doallDetailShow(22);
+doallDetailShow(20);

@@ -9,7 +9,7 @@ function DetailBanner(td, tr, Letter, flag = 0) {
     //未完成
     if (
       flag == 1 &&
-      LDetail.textContent.length < 50 &&
+      LDetail.textContent.length < 48 &&
       Indexfile == "index2.php"
     ) {
       document

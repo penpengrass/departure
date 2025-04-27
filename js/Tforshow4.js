@@ -11,12 +11,12 @@ if (station == "広島駅" && Indexfile == "index4.php") {
     }
   }
   for (var tr = 0; tr < 2; tr++) {
-    if (Type[1][tr] == "普通") {
+    /*if (Type[1][tr] == "普通") {
       Cars[1][tr] = "4両";
     } else if (Type[1][tr] == "普通*") {
       Cars[1][tr] = "2両";
       Type[1][tr] = "普通";
-    }
+    }*/
     document.getElementById("TName" + 2 + (tr + 1)).textContent = Cars[1][tr];
     document.getElementById("TName" + 2 + (tr + 1)).style.color = "red";
     document.getElementById("TName" + 2 + (tr + 1)).style.textAlign = "right";
@@ -154,6 +154,11 @@ if (station == "姫路駅") {
         "TName" + (Shinkansenflag + 2) + "" + (tr + 1)
       ).style.textAlign = "left";
     }
+    AllWordChange(3, tr, Des, '米原', '京都方面米原');
+    AllWordChange(3, tr, Des, '野洲', '京都方面野洲');
+    AllWordChange(3, tr, Des, '草津', '京都方面草津');
+    AllWordChange(3, tr, Des, '長浜', '米原方面長浜');
+    AllWordChange(3, tr, Des, '近江塩津', '米原方面近江塩津');
     DesMiddle(3, tr, "経由");
     DesMiddle(3, tr, "方面");
   }
