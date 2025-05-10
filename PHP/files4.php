@@ -153,6 +153,7 @@ if (isset($_GET['station'])) {
     $files[1] = 'csv/JRW_Sanyo/itozaki2.csv';
     $tablenum = 2;
     if ($holidayflag == 1) {
+      $files[0] = 'csv/JRW_Sanyo/itozaki1_H.csv';
       $files[1] = 'csv/JRW_Sanyo/itozaki2_H.csv';
     }
     $OrderNum = 2;

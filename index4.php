@@ -136,8 +136,8 @@
   </tableline>
   <p id="supplement"></p>
   <h1 class="Cheader">注釈</h1>
-  <li>糸崎駅 岩国駅 下関駅においては番線の表示は実際と異なる</li>
-  <li>本来山陽地区では種別の横に両数がある</li>
+  <li>新見駅の表示は実際と異なる</li>
+  <li>三原駅, 広島駅, 岩国駅, 徳山駅, 下関駅では本来種別の横に両数がある</li>
   <!--ここから内部のこと-->
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>
@@ -147,6 +147,7 @@
   <script type="text/javascript" src="js/altershow.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
   <script type="text/javascript" src="js/function3.js"></script>
+  <script type="text/javascript" src="js/functionCars.js"></script>
   <script type="text/javascript" src="js/detailfunction.js"></script>
   <script type="text/javascript" src="js/functionDetail_B.js"></script>
   <script type="text/javascript" src="js/functionDetail.js"></script>
