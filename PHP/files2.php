@@ -41,5 +41,17 @@ if (isset($_GET['station'])) {
             $files[0] = 'csv/Kintetsu/Nagoya_H.csv';
             $files[1] = 'csv/Kintetsu/Nagoya_H.csv';
         }
+    } else if (Inisset('nakagawa')) {
+        $files[0] = 'csv/Kintetsu/nakagawa1.csv';
+        $files[1] = 'csv/Kintetsu/nakagawa2.csv';
+        $files[2] = 'csv/Kintetsu/nakagawa3.csv';
+        $tablenum = 3;
+        $OrderNum = 3;
+        $column = 3;
+        if ($holidayflag == 1) {
+            $files[0] = 'csv/Kintetsu/nakagawa1_H.csv';
+            $files[1] = 'csv/Kintetsu/nakagawa2_H.csv';
+            $files[2] = 'csv/Kintetsu/nakagawa3_H.csv';
+        }
     }
 }

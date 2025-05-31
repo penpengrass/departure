@@ -37,7 +37,7 @@
                 <td>近鉄LCD</td>
                 <td><button type="button" onclick="location.href='./index2.php'">移動</button></td>
                 <td><span style="color:blue;">鶴橋駅</span></td>
-                <td><span class="orange">奈良駅</span>, <span class="orange">京都駅</span>, <span class="orange">名古屋駅</span> </td>
+                <td><span class="orange">奈良駅</span>, <span class="orange">京都駅</span>, <span class="orange">名古屋駅</span>, <span class="orange">伊勢中川駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本ATOS</td>
@@ -151,7 +151,7 @@
                 <td>JR九州</td>
                 <td><button type="button" onclick="location.href='./index10.php'">移動</button></td>
                 <td><span style="color:blue;">小倉駅</span></td>
-                <td></td>
+                <td><span style="color:blue;">鳥栖駅</span></td>
             </tr>
             <tr>
                 <td>JR九州LCD</td>
@@ -173,8 +173,8 @@
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 和歌山駅 米子駅 新山口駅</li>
-        <li>近鉄 伊勢中川駅 宇治山田駅</li>
-        <li>JR九州 鳥栖駅 熊本駅 鹿児島中央駅</li>
+        <li>近鉄 宇治山田駅</li>
+        <li>JR九州 熊本駅 鹿児島中央駅</li>
         <li>JR四国 徳島駅 阿波池田駅 </li>
         <li>JR東海 中津川駅</li>
         <li>その他 京急品川駅 京成青砥駅</li>

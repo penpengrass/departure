@@ -34,6 +34,8 @@
       <option value="nara">奈良駅</option>
       <option value="kyoto">京都駅</option>
       <option value="nagoya">名古屋駅</option>
+      <option value="nakagawa">伊勢中川駅</option>
+
     </select>
     <button type="submit" name="submit">駅変更</button>
   </form>
@@ -54,14 +56,14 @@
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
       print('
- <table>
+ <table id="TTable' . $i . '">
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
       <th width="12%">時刻</th>
       <th width="15%"> 種別</th>
       <th width="18%">行先</th>
       <th width="7%">のりば</th>
-      <th width="48%">案内</th>
+      <th width="48%" class="HDetail" id="HDetail' . $i . '">案内</th>
     </tr>
     <showing>
   ');
@@ -72,10 +74,12 @@
       <td rowspan="3" class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><span class="CWType" id="WType' . $i . $j . '"></span></td>
       <td rowspan="3" class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></span></td>
       <td rowspan="3"><span class="railnumber" id="TNum' . $i . $j . '"></span></td>
-      <td class="higherDetail CDetail"><p3 class="news-banner__content" id="TDetail' . $i . $j . '">本日の運転は終了しました</p3></td>
+      <td class="higherDetail CDetail" id="TdDetail' . $i . $j . '"><p3 class="news-banner__content" id="TDetail' . $i . $j . '">本日の運転は終了しました</p3></td>
       </tr>
       <tr><td class="higherDetail CDetail" id="TDetailD' . $i . $j . '"></td></tr>
       <tr><td class="CDetail"><p2 id="TConnection' . $i . $j . '"></td>
+      ');
+      print('
     </tr>
     ');
       }

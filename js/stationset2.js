@@ -45,4 +45,6 @@ if (station == '名古屋駅') {
     DestinationDevide(KyotoDes, 0, 1);
     Dtype[0] = 1;
     Dtype[1] = 5;
+}else if (station == '伊勢中川駅') {
+     TableTitle = ['大阪線 大阪 京都方面', '名古屋線 四日市 名古屋方面','山田線 宇治山田 賢島方面'];
 }

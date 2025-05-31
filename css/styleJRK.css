@@ -12,7 +12,8 @@ time{
     text-align: right;
 }
 td{               /*データ内*/
-    font-size:30px;
+    /*font-size:30px;*/
+    font-size: 1.5vw;
     height: 48px;
     color:#0f0;
     font-family: "FM明朝",serif;
@@ -38,6 +39,9 @@ table{        /*表全体*/
     table{   
         width: 750px;
     }
+    td{
+        font-size:30px;
+    }
 }
 .Ctitle{
     background-color:#303030;
@@ -53,9 +57,6 @@ p3{
 .railnumber{
     font-weight:900;
     color:red;
-}
-.HrailNumber{
-    text-align: left;
 }
 .CDetail{
     overflow: hidden;

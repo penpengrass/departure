@@ -35,6 +35,8 @@ for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         AllWordReplace(td, tr, Type, '快速急行', '快急');
         AllWordReplace(td, tr, Type, '区間準急', '区準');
+        AllWordChange(td, tr, Des, '難波', '大阪難波');
+        AllWordChange(td, tr, Des, '上本町', '大阪上本町');
         LowerDetail(td, tr);
         KyotoRenraku(td, tr);
     }
@@ -119,6 +121,31 @@ if (station == '名古屋駅') {
         }
     }
 }
+if (station == '伊勢中川駅') {
+    //document.getElementsByTagName('th').classList.remove('HDetail');
+    //document.getElementsByTagName('td').classList.remove('CDetail');
+    // CClass クラスを持つすべての <td> を取得
+    const elements = document.querySelectorAll('td.CDetail');
+    const Helements = document.querySelectorAll('th.HDetail');
+    // すべて削除
+    elements.forEach(el => el.remove());
+    Helements.forEach(el => el.remove());
+    for (var td = 0; td < 3; td++) {
+
+        document.getElementById("TTable" + (td + 1)).style.width = "40em";
+        document.getElementById("TTable" + (td + 1)).style.marginLeft = "4em";
+    }
+    /*for (var td = 0; td < 3; td++) {
+        rowremove(td, 'HDetail', 'TdDetail');
+    }*/
+    /*for (var td = 0; td < Helement.length; td++) {
+        Helement[td].remove();
+        rowremove(td, 'HDetail', 'TdDetail');
+    }
+    for (var td = 0; td < Celement.length; td++) {
+        Celement[td].remove();
+    }*/
+}
 allKinColor();
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
@@ -128,7 +155,7 @@ for (var td = 0; td < Tablenum; td++) {
             document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(-5%,0%)";
         }
         if (Type[td][tr].length > 2) {
-            document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.77)" + "translate(-6%,0%)";
+            document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.77)" + "translate(-0%,0%)";
         }
         var color = document.getElementById('WType' + (td + 1) + (tr + 1)).style.backgroundColor;
         if (Type[td][tr] == '') {
@@ -149,4 +176,6 @@ if (station == '鶴橋駅') {
         }
     }
 }
-doallDetailShow(20);
+if (station != '伊勢中川駅') {
+    doallDetailShow(20);
+}

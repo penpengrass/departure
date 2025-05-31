@@ -131,12 +131,13 @@ function FSTShow(TT, STShow, Order, TableNumber, depnum) {
             STShow(TaRow + 8, 1, TT, TableNumber, depnum);
             TaRow = TaRow + 8;
         } else {
-            console.log("3時間以上空いてる");
-            next = 1;
+            
             if (TT.length <= (TaRow + 12)) {
+                console.log("4時間以上空いてる");
+                next = 1;
             } else {
-                //STShow(TaRow + 12, 1, TT, TableNumber, depnum);
-                //TaRow = TaRow + 12;
+                STShow(TaRow + 12, 1, TT, TableNumber, depnum);
+                TaRow = TaRow + 12;
             }
         }
     }
