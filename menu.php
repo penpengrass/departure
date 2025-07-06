@@ -43,7 +43,11 @@
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td><span style="color:black;">武蔵小杉駅</span></td>
+<<<<<<< HEAD
                 <td>横浜駅, <span style="color:red;">小田原駅</span>, <span style="color:red;">熱海駅</span>, 
+=======
+                <td>横浜駅, <span style="color:red;">小田原駅</span>, <span style="color:#FF8C00;">熱海駅</span>, 
+>>>>>>> develop
                 <span style="color:black;">宇都宮駅</span>, 黒磯駅</td>
             </tr>
             <tr>
@@ -120,7 +124,11 @@
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
                 <td><span style="color:#FF8C00;">浜松駅</span></td>
+<<<<<<< HEAD
                 <td><span style="color:red;">沼津駅</span>, <span style="color:red;">静岡駅</span>, <span style="color:#FF8C00;">豊橋駅</span>, 
+=======
+                <td><span style="color:#FF8C00;">沼津駅</span>, <span style="color:#FF8C00;">静岡駅</span>, <span style="color:#FF8C00;">豊橋駅</span>, 
+>>>>>>> develop
                 <span style="color:#FF8C00;">岐阜駅</span>, <span style="color:#FF8C00;">大垣駅</span></td>
             </tr>
             <tr>

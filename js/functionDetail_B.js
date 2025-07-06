@@ -28,7 +28,12 @@ function BottomBanner_Reverse(tag, td, tr) {
     document.getElementById('TNum' + td + tr).textContent = doBNumber[td - 1][tr - 1].textContent;
     document.getElementById('TName' + td + tr).textContent = Ex_Name[td - 1][tr - 1];
     if (Ex_Name[td - 1][tr - 1].includes('から快速')) {
+<<<<<<< HEAD
         document.getElementById('TName' + td + tr).style.fontSize = '1.5em';
+=======
+        document.getElementById('TName' + td + tr).innerHTML = '<span class="PartRapid">' + Ex_Name[td - 1][tr - 1] + '</span>'
+        //document.getElementById('TName' + td + tr).style.fontSize = '1.5em';
+>>>>>>> develop
         document.getElementById('TName' + td + tr).style.textAlign = 'left';
     }
     JTypeColor(Type[td - 1][2], TType[td - 1][2], JRobj);

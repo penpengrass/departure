@@ -40,7 +40,11 @@ if (station == '博多駅') {
     console.log(number);
     DetailLength = [2, 2];
     doallDetailShow(25);
+<<<<<<< HEAD
 } else if (station == '岡山駅') {
+=======
+} else if (station == '岡山駅' && Indexfile == 'index4_S2.php') {
+>>>>>>> develop
     staflag = 0;
     Dtype = [1, 0];
     console.log("--ここから詳細表示--");
@@ -118,7 +122,11 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_Tsuruga.php') {
             //この部分は未完成
             if (station != '敦賀駅') {
                 ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
+<<<<<<< HEAD
                 if (Type[td][tr].includes('つばめ*')||Type[td][tr].includes('さくら*')) {
+=======
+                if (Type[td][tr].includes('つばめ*') || Type[td][tr].includes('さくら*')) {
+>>>>>>> develop
                     Cars[td][tr] = '6両編成';
                     Jiyuseki[td][tr] = '自由席1-3,5,6号車'
                 }

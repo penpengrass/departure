@@ -57,9 +57,15 @@
  <table id="TTable' . $i . '">
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
+<<<<<<< HEAD
       <th width="38%" id="HType' . $i . '"></th>
       <th width="15%" id="HTime' . $i . '"></th>
       <th width="20%" id="HDes' . $i . '"></th>
+=======
+      <th width="30%" id="HType' . $i . '"></th>
+      <th width="15%" id="HTime' . $i . '"></th>
+      <th width="28%" id="HDes' . $i . '"></th>
+>>>>>>> develop
       <th width="10%" id="HCars' . $i . '"></th>
       <th width="17%" class="HrailNumber" id="HrNumber' . $i . '"></th>
     </tr>
@@ -80,9 +86,15 @@
         print('
         <th class="Ctitle" colspan="5"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></th>
         <tr>
+<<<<<<< HEAD
       <th width="38%" id="HType' . $i . '"></th>
       <th width="15%" id="HTime' . $i . '"></th>
       <th width="20%" id="HDes' . $i . '"></th>
+=======
+      <th width="30%" id="HType' . $i . '"></th>
+      <th width="15%" id="HTime' . $i . '"></th>
+      <th width="28%" id="HDes' . $i . '"></th>
+>>>>>>> develop
       <th width="10%" id="HCars' . $i . '"></th>
       <th width="17%" class="HrailNumber" id="HrNumber' . $i . '"></th>
     </tr>
@@ -109,7 +121,11 @@
         }
         ?>
     </tableline>
+<<<<<<< HEAD
     <p id="supplement">番線や号数は不正確、本来は両数表示もある。</p>
+=======
+    <p id="supplement">番線や号数、両数は不正確</p>
+>>>>>>> develop
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>
@@ -118,6 +134,11 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
 <script type="text/javascript" src="js/function2.js"></script>
+<<<<<<< HEAD
+=======
+<script type="text/javascript" src="js/detailfunction.js"></script>
+<script type="text/javascript" src="js/functionCars.js"></script>
+>>>>>>> develop
 <script type="text/javascript" src="js/functionColor.js"></script>
 <script type="text/javascript" src="js/functionDetail_B.js"></script>
 <script type="text/javascript" src="js/Tforshow10.js"></script>

@@ -8,17 +8,37 @@ const table3 = document.getElementById("TATOSTable3");
 const table4 = document.getElementById("TATOSTable4");
 const table5 = document.getElementById("TATOSTable5");
 const table6 = document.getElementById("TATOSTable6");
+<<<<<<< HEAD
+=======
+var UenoLine = ['小金井', '籠原', '宇都宮', '高崎', '古河'];
+>>>>>>> develop
 if (station == '熱海駅') {
     var list = document.getElementsByClassName('Destination');
     for (var tr = 0; tr < list.length; tr++) {
         list[tr].style.color = '#0f0';
     }
+<<<<<<< HEAD
     for (var tr = 0; tr < orderNum; tr++) {
+=======
+
+    for (var tr = 0; tr < orderNum; tr++) {
+        if (Type[0][tr].startsWith('普通')) {
+            Type[0][tr] = Type[0][tr].replace('普通', '伊東線 普通');
+        }
+        for (var td = 1; td < 3; td++) {
+
+            if (Type[td][tr].startsWith('普通')) {
+                if (UenoLine.includes(Des[td][tr])) Type[td][tr] = Type[td][tr].replace('普通', '普通 上野東京ﾗｲﾝ');
+                else if (Des[td][tr] != '') Type[td][tr] = Type[td][tr].replace('普通', '普通 東海道線');
+            }
+        }
+>>>>>>> develop
         if (Type[0][tr].startsWith('特急踊り子')) {
             document.getElementById('TCars' + 1 + (tr + 1)).textContent = '9両';
         } else if (Type[0][tr].startsWith('特急ｻﾌｨｰﾙ')) {
             document.getElementById('TCars' + 1 + (tr + 1)).textContent = '8両';
         }
+<<<<<<< HEAD
     }
     for (var tr = 0; tr < orderNum; tr++) {
         if (Type[1][tr].startsWith('特急踊り子')) {
@@ -26,6 +46,11 @@ if (station == '熱海駅') {
         }
     }
     for (var tr = 0; tr < orderNum; tr++) {
+=======
+        if (Type[1][tr].startsWith('特急踊り子')) {
+            document.getElementById('TCars' + 2 + (tr + 1)).textContent = '5両';
+        }
+>>>>>>> develop
         if (Type[2][tr].startsWith('特急踊り子')) {
             if (Type[2][tr].includes('4') || Type[2][tr].includes('10')) {
                 document.getElementById('TCars' + 3 + (tr + 1)).textContent = '14両';
@@ -57,6 +82,10 @@ if (station == '熱海駅') {
     allTwoLettersDistance(Des, TDes, 1, 1);
     document.getElementById('supplement').textContent = '熱海駅は実際の表示と異なる部分がある　土休日ダイヤに対応';
     allJRCIncludeColor();
+<<<<<<< HEAD
+=======
+    allLastShow();
+>>>>>>> develop
 } else if (station == '小田原駅') {
     // 2列目と3列目を入れ替え
     // 表のIDを取得

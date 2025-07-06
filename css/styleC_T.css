@@ -17,7 +17,11 @@ td{               /*データ内*/
 .CTime{
     font-family: "meiryo","Roboto","Yu Gothic";
 }
+<<<<<<< HEAD
 body table{        /*表全体*/
+=======
+table{        /*表全体*/
+>>>>>>> develop
     table-layout:fixed;
     background-color: black;
     border: 10px #505050 solid;/*周りの色*/

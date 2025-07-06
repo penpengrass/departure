@@ -2,10 +2,17 @@ company = 'JR東日本';
 var NexOfuna1 = [2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 40, 42, 46, 50, 52, 54];
 var NexOfuna2 = [1, 3, 5, 7, 13, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 53];
 if (station == '武蔵小杉駅') {
+<<<<<<< HEAD
     TableTitle = ['横須賀線 総武線(快速)<span class="Mark Bblue"> </span>品川 東京 千葉方面<br>'+
      '湘南新宿ライン<span class="Mark Borange"> </span>渋谷 新宿 大宮方面<br>'+
      '埼京線直通<span class="Mark Bgreen"> </span>渋谷 新宿 武蔵浦和方面',
       '３番線'];
+=======
+    TableTitle = ['横須賀線 総武線(快速)<span class="Mark Bblue"> </span>品川 東京 千葉方面<br>' +
+        '湘南新宿ライン<span class="Mark Borange"> </span>渋谷 新宿 大宮方面<br>' +
+        '埼京線直通<span class="Mark Bgreen"> </span>渋谷 新宿 武蔵浦和方面',
+        '３番線'];
+>>>>>>> develop
     limitednumber2(TT[4], NexOfuna1, '成田ｴｸｽﾌﾟﾚｽ');
     limitednumber2(TT[2], NexOfuna2, '成田ｴｸｽﾌﾟﾚｽ');
 } else if (station == '熱海駅') {
@@ -14,10 +21,13 @@ if (station == '武蔵小杉駅') {
     if (holidayflag == 1) {
         //TT[1][5][1]='普通 東海道線 6両';
         TT[1][7][1] = '沼津';
+<<<<<<< HEAD
         TT[1][25][4] = '特急踊り子9号';
         TT[1][26][4] = '56';
         TT[1][27][4] = '修善寺';
         TT[1][28][4] = '2';
+=======
+>>>>>>> develop
         TT[1][59][4] = '浜松';
     }
 } else if (station == '小田原駅') {
@@ -39,6 +49,11 @@ if (station == '武蔵小杉駅') {
     limitednumber2(TT[5], NexOfuna2, '成田ｴｸｽﾌﾟﾚｽ');
 } else if (station == '宇都宮駅') {
     TableTitle = ['烏山線', '東北本線 黒磯方面', '宇都宮線(東北線) 上野東京ライン', '日光線'];
+<<<<<<< HEAD
 }else if(station=='黒磯駅'){
     TableTitle=['東北本線下り 新白河方面','宇都宮線(東北線)上り 宇都宮方面'];
+=======
+} else if (station == '黒磯駅') {
+    TableTitle = ['東北本線下り 新白河方面', '宇都宮線(東北線)上り 宇都宮方面'];
+>>>>>>> develop
 }

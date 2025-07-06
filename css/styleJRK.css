@@ -48,6 +48,12 @@ table{        /*表全体*/
     height:40px;
     color:white;
 }
+<<<<<<< HEAD
+=======
+.cars{
+    color:orange;
+}
+>>>>>>> develop
 .shubetu{ 
     text-align: left;
 }

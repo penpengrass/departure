@@ -20,6 +20,10 @@ function DeleteStopping(TrainType, BeforeStation, LDtype = 0) {
     //limited[5].splice(2, 0, '高の原');
     TrainType[LDtype].splice(Deletenumber, 1);
 }
+<<<<<<< HEAD
+=======
+console.log(Type);
+>>>>>>> develop
 //特急によって停車駅が異なるときの処理
 //numberは号数 Lnameは列車名
 var number = new Array(Tablenum);
@@ -32,12 +36,19 @@ for (var td = 0; td < Tablenum; td++) {
     }
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (detailflag > 1 && detailflag != 8) {
+<<<<<<< HEAD
+=======
+            console.log(JRLimitedNumber(td, tr)+':'+td+':'+tr)
+>>>>>>> develop
             number[td][tr] = Number.parseInt(JRLimitedNumber(td, tr));
             //console.log(typeof number[td][tr]);
             Lname[td][tr] = JRLimitedName(td, tr);
         } else {
             number[td] = Number.parseInt(JRLimitedNumber(td, tr));
+<<<<<<< HEAD
             break;
+=======
+>>>>>>> develop
         }
     }
 }

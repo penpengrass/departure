@@ -42,7 +42,11 @@ table {
     border: 10px gray solid;
     border-top:none;
     /*周りの色*/
+<<<<<<< HEAD
     width: 750px;
+=======
+    width: 50%;
+>>>>>>> develop
     /*元々750px　550px*/
     /*height:200px; /*元々200px*/
     white-space: nowrap;
@@ -50,6 +54,14 @@ table {
     margin:5px;
     border-spacing: 2px;
 }
+<<<<<<< HEAD
+=======
+@media(max-width:1199px) {
+    table{
+        width:750px;
+    }
+}
+>>>>>>> develop
 .Ctitle {
     background-color: #404040;
     border:10px gray solid;

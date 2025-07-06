@@ -86,9 +86,13 @@ function allUTL() {
 
 function ShihatsuMove(td, tr, Place) {
     if (Type[td][tr].includes('始発')) {
+<<<<<<< HEAD
         var LoType = document.getElementById('WType' + (td + 1) + (tr + 1));
         var LoName = document.getElementById(Place + (td + 1) + (tr + 1));
         LoType.textContent = Type[td][tr].replace('始発', '');
+=======
+        var LoName = document.getElementById(Place + (td + 1) + (tr + 1));
+>>>>>>> develop
         Type[td][tr] = Type[td][tr].replace('始発', '');
         LoName.textContent += '始発';
     }

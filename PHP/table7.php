@@ -1,8 +1,16 @@
 <?php
+<<<<<<< HEAD
 function JRCZTable($i,$tablenums,$column){
     print('
  <table id="TTable' . $i . '">');
     print('
+=======
+function JRCZTable($i, $tablenums, $column)
+{
+  print('
+ <table id="TTable' . $i . '">');
+  print('
+>>>>>>> develop
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
       <th width="30%">種別</th>
@@ -12,15 +20,22 @@ function JRCZTable($i,$tablenums,$column){
       <th width="15%"></th>
     </tr>
   ');
+<<<<<<< HEAD
       for ($j = 1; $j <= $tablenums[$i-1]; $j++) {
         print('
     <tr>
+=======
+  for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
+    print('
+    <tr id="TRow' . $i . $j . '">
+>>>>>>> develop
       <td class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
       <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>
     </tr>
     ');
+<<<<<<< HEAD
       }
       print('
 </table>
@@ -34,6 +49,28 @@ function JRCSTable($i,$tablenums,$column){
     print('
  <table id="TTable' . $i . '">');
       print('
+=======
+  }
+  print('
+      <tr id="Detail_Banner' . $i . '">
+      <td class="CDetail" colspan="5"><p3 id="TDetail' . $i . '" class="news-banner__content"></p3></td>
+      </tr>
+      ');
+
+  print('
+</table>
+');
+  if ($i % $column == 0) {
+    print('</tableline>
+  <tableline>');
+  }
+}
+function JRCSTable($i, $tablenums, $column)
+{
+  print('
+ <table id="TTable' . $i . '">');
+  print('
+>>>>>>> develop
 <caption class="Ctitle"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></caption>
     <tr>
       <th width="15%">列車名</th>
@@ -44,9 +81,15 @@ function JRCSTable($i,$tablenums,$column){
       <th width="30%"></th>
     </tr>
   ');
+<<<<<<< HEAD
       //n番目に発車する列車までを表示
       for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
         print('
+=======
+  //n番目に発車する列車までを表示
+  for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
+    print('
+>>>>>>> develop
     <tr id="TTLine' . $i . $j . '"><p10 id="TTLineContents' . $i . $j . '"></p10>
       <td width="50%" class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
       <td width="50%" class="name" id="TName' . $i . $j . '"><span class="Wname" id="WName' . $i . $j . '"></span></td>
@@ -56,6 +99,7 @@ function JRCSTable($i,$tablenums,$column){
       <td class="CDetail" id="TDetail' . $i . $j . '"></td>
     </tr>
     ');
+<<<<<<< HEAD
       }
       print('
         </table>
@@ -67,3 +111,15 @@ function JRCSTable($i,$tablenums,$column){
       }
     }
     ?>
+=======
+  }
+  print('
+        </table>
+');
+  if ($i % $column == 0) {
+    print('
+        </tableline>
+  <tableline id="tableline' . $i . '">');
+  }
+}
+>>>>>>> develop

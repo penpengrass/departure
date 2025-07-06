@@ -15,6 +15,14 @@ if (isset($_POST['himeji'])) {
     header('Location: index4.php?station=' . $test1);
     exit();
 }
+<<<<<<< HEAD
+=======
+if (isset($_POST['Knagoya'])) {
+    $test1 = 'nagoya';
+    header('Location: index2.php?station=' . $test1);
+    exit();
+}
+>>>>>>> develop
 if (isset($_POST['okayama'])) {
     $test1 = 'okayama';
     header('Location: index4.php?station=' . $test1);

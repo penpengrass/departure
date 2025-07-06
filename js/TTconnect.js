@@ -133,6 +133,18 @@ if (station == '武蔵小杉駅') {
     TT[0] = TT[6];
     //console.log(TT[0][1][0]);
     console.log(TT[1]);
+<<<<<<< HEAD
+=======
+}else if(station=='熱海駅'){
+    TT[3]=undefined;
+    TT[3] = makeemptyTable(TT[1], TT[2]);
+    console.log(TT[1]);
+    TTconnect(TT[1], TT[2], TT[3]);
+    TT[1] = TT[3];
+    RailNumberDevide(4,1,2);
+    console.log(TT[1]);
+    console.log(TT[2]);
+>>>>>>> develop
 } else if (station == '新函館北斗駅') {
     console.log(TT[1]);
     console.log(TT[3]);

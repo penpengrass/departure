@@ -53,6 +53,10 @@ function JRWSStaSele($Select)
     <form action="PHP/files4_S.php" method="POST" id="selectstation">
     <select name="staselect4">
       <option value="hiroshima">広島駅</option>
+<<<<<<< HEAD
+=======
+      <option value="okayama">岡山駅</option>
+>>>>>>> develop
       <option value="hakata">博多駅</option>
     </select>
     <button type="submit" class="henko" name="submit">'.$Select .'</button>
