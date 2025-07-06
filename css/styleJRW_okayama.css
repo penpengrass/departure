@@ -1,0 +1,44 @@
+
+/*ブロック要素*/
+td{               /*データ内*/
+    font-size:1.2vw;/*元々30px 変更すると25px*/
+    height: 30px;
+    color:orange;
+    border-left:none;
+    border-right:none;
+    border-bottom:2px gray solid;
+}
+.Ctitle{
+    font-size:20px;
+    background-color: #404040;
+    font-weight:normal;
+}
+@media(max-width:1199px) {
+    td{
+        font-size:30px;
+    }
+    .Ctitle{
+        font-size:25px;
+    }
+}
+.Destination{
+    color:#0f0;
+    /*transform:scaleX(0.65) translate(-35%,0%);*/
+}
+th{
+    font-size:7px;
+}
+/*tableの部分はstyleJRW.cssと全く同じ*/
+/*表全体*/
+table{        
+    margin-top:1px;
+}
+
+p3{
+    font-size:20px;
+}
+.name{
+    text-align:center;
+    color:#0f0;
+    font-family:monospace;
+}

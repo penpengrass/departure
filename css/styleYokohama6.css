@@ -1,0 +1,14 @@
+.topic {
+    color: white;
+    font-size: 20px;
+    background-color: #404040;
+    border: 0px none;
+}
+
+.line {
+    font-size: 25px;
+}
+
+.topic {
+    transform: scaleX(1.0) translate(0%, 0);
+}

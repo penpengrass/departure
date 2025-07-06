@@ -1,0 +1,71 @@
+body{
+    font-family: monospace;
+}
+th{
+    color:white;
+    background-color: #303030;
+    height:1px;
+}
+time{
+    border:green solid;
+    font-size:40px;
+    text-align: right;
+}
+td{               /*データ内*/
+    /*font-size:30px;*/
+    font-size: 1.5vw;
+    height: 48px;
+    color:#0f0;
+    font-family: "FM明朝",serif;
+    padding:0;
+    border:solid 3px;  /*表の中の枠色*/
+    border-left:none;
+    border-right:none;
+    border-color:#303030;
+    margin:0;
+}
+table{        /*表全体*/
+    border-collapse: collapse;/*文字を縮小してもボーダーが縮まらない*/
+    table-layout:fixed;
+    background-color: black;
+    border: 10px #303030 solid;/*周りの色*/
+    border-top:0px;
+    width: 50%; 
+    white-space:nowrap;
+    text-align:center;
+    border-spacing: 0px;
+}
+@media(max-width:1199px) {
+    table{   
+        width: 750px;
+    }
+    td{
+        font-size:30px;
+    }
+}
+.Ctitle{
+    background-color:#303030;
+    height:40px;
+    color:white;
+}
+.cars{
+    color:orange;
+}
+.shubetu{ 
+    text-align: left;
+}
+p3{
+    font-size:20px;
+}
+.railnumber{
+    font-weight:900;
+    color:red;
+}
+.CDetail{
+    overflow: hidden;
+    text-align: left;
+}
+.news-banner__content {
+    font-size:30px;
+    color:#0f0;
+}

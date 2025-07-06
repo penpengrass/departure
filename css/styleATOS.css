@@ -1,0 +1,72 @@
+body{
+    font-family: monospace;
+}
+
+.CATOSTable{
+    table-layout:fixed;
+    background-color: black;
+    border: 10px gray solid;/*周りの色*/
+    border-top:0px;
+    width: 50%; 
+    white-space:nowrap;
+    text-align:center;
+    border-spacing: 0px;
+    th{
+        color:white;
+        background-color: gray;
+        height:1px;
+    }
+    td{               /*データ内*/
+        /*font-size:30px;*/
+        height: 48px;
+        color:#0f0;
+        font-family: "ＭＳ 明朝","meiryo",serif;
+        padding:0;
+        border:1px black solid;
+    }
+    .Destination{
+        color:orange;
+    }
+    .Ctitle{
+        background-color:gray;
+        height:40px;
+        color:white;
+    }
+    .Mark{
+        padding-left:12px;
+    }
+    .Bblue{
+        background-color: blue;
+    }
+    .Borange{
+        background-color: orange;
+    }
+    .Bgreen{
+        background-color: green;
+    }
+    .shubetu{ 
+        font-size:15px;
+    }
+    p3{
+        font-size:20px;
+    }
+    .railnumber{
+        font-weight:900;
+    }
+    .HrailNumber{
+        text-align: left;
+    }
+    .CDetail{
+        overflow: hidden;
+        text-align: left;
+    }
+    .news-banner__content {
+        font-size:30px;
+        color:#0f0;
+    }
+}
+@media(max-width:1199px) {
+    .CATOSTable{   
+        width: 750px;
+    }
+}

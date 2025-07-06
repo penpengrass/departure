@@ -1,0 +1,87 @@
+body{
+    font-family: monospace;
+}
+th{
+    color:white;
+    background-color: #606060;
+    height:3px;
+}
+/*ブロック要素*/
+td{               /*データ内*/
+    display: table-cell;
+    /*font-size:2vw;/*元々30px 変更すると25px*/
+    height: 45px;
+    color:#0f0;
+    border: 2px black solid;  /*表の中の枠色 */
+    font-family:monospace;
+    border-left:none;
+    border-right:none;
+    border-bottom:2px gray solid; 
+}
+.Destination{
+    color:#0f0;
+}
+table{        /*表全体*/
+    border-collapse: collapse;/*文字を縮小してもボーダーが縮まらない*/
+    table-layout:fixed;
+    background-color: black;
+    border: 10px #404040 solid;/*周りの色*/
+    width: 50%; /*元々750px　550px*/
+    /*height:200px; /*元々200px*/
+    white-space:nowrap;
+    text-align:center;
+    border-spacing: 0px;
+}
+.PartRapid{
+    font-size:1.5vw;
+}
+@media(max-width:1199px) {
+    table{   
+        width: 750px;
+    }
+    .PartRapid{
+        font-size:20px;
+    }
+}
+.Ctime{
+    color:orange;
+}
+.shubetu{
+    text-align: left;
+    font-family: Arial,monospace;
+}
+p3{
+    font-size:20px;
+}
+.railnumber{
+    text-align: right;
+    transform:translate(-10%,0%);
+    color:orange;
+    font-family: Arial;
+}
+.CNum{
+    text-align: right;
+}
+.name{
+    text-align: center;
+    color:#0f0;
+    font-family: Arial,monospace;
+}
+.Ctitle{
+    background-color: #404040;
+    color:white;
+    text-align:center;
+    width:100%;
+}
+td{
+    min-height:80px;
+}
+.DesLeft{
+    display:inline-block;
+    transform:scaleX(0.8) translate(25%,0%); 
+}
+.DesMiddle{
+    display:inline-block;
+    font-size:0.8em;
+    transform:scaleX(0.8) translate(0%,0%);
+}

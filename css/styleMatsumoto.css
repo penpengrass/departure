@@ -1,0 +1,24 @@
+[class^="shubetu"]{
+    text-align:center;
+    /*padding-left:10px;*/
+}
+/*table{
+    border-right:40px #404040 solid;
+}*/
+td {
+    border-left:3px black solid;
+    border-right:3px black solid;
+}
+[class^="Destination"]{
+    text-align: center;
+}
+.topic{
+    color:white;
+    font-size:20px;
+    background-color: #404040;
+    border:0px none;
+}
+.topic {
+    font-size: 25px;
+    transform: scaleX(1.0) translate(0%, 0);
+}

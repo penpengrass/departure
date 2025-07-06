@@ -1,0 +1,18 @@
+td {
+    border: 10px #707070 solid;
+    border-left: none;
+    border-right: none;
+}
+
+table {
+    background-color: #202020;
+    border: 15px #707070 solid;
+}
+th {
+    background-color: #202020
+}
+.Ctitle {
+    background-color: #707070;
+    color: white;
+    padding: 0px;
+}

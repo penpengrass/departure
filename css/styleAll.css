@@ -1,0 +1,136 @@
+showing {
+    font-size: 1.6vw;
+    height: 10px;
+}
+
+.Ctitle {
+    font-size: 1.6vw;
+    height: 25px;
+    font-weight: 700;
+}
+
+#stationname {
+    font-size: 50px;
+    text-align: center;
+    color: green;
+    
+}
+
+button {
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+    height: 40px;
+    font-size: 15px;
+}
+
+.bansen {
+    font-size: 15px;
+}
+
+form {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.koshin {
+    width: 90px;
+}
+
+td {
+    font-size: 2vw;
+}
+
+table {
+    margin: 4px;
+}
+
+.row {
+    display: flex;
+}
+
+#selectstation {
+    margin: 10px;
+}
+
+time {
+    border: greenyellow solid;
+    font-size: 30px;
+    float: right;
+    position: relative;
+}
+
+select {
+    height: 30px;
+    font-size: 20px;
+}
+.CWType{
+    display: inline-block;
+}
+.CWName{
+    display: inline-block;
+}
+.selecttext{
+    font-size:20px;
+}
+
+@media(max-width:1199px) {
+    showing {
+        font-size: 25px;
+        height: 10px;
+    }
+    
+    .Ctitle {
+        font-size: 25px;
+        height: 25px;
+        font-weight: 700;
+    }
+    td {
+        font-size: 30px;
+    }
+
+    tableline {
+        display: inline;
+        align-items: flex-start;
+    }
+
+    button {
+        height: 60px;
+        font-size: 20px;
+        margin:10px;
+        border-radius: 10px;
+    }
+
+    select {
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+/*PCのみ適用*/
+@media(min-width:1200px) {
+    tableline {
+        display: flex;
+        align-items: flex-start;
+    }
+}
+
+#supplement {
+    color: red;
+    font-size: 20px;
+}
+
+.Cheader {
+    background-color: skyblue;
+    font-family: "meiryo";
+}
+
+li {
+    font-size: 15px;
+    font-family: "meiryo";
+}
+
+.orange {
+    color: orange;
+}

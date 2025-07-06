@@ -1,0 +1,89 @@
+body {
+    font-family: monospace;
+}
+
+th {
+    color: white;
+    background-color: gray;
+}
+
+td {
+    /*データ内*/
+    display: table-cell;
+    /*font-size: 30px;*/
+    height: 20px;
+    color: white;
+    border: 1px black solid;
+    /*表の中の枠色 */
+    padding: 2px;
+    /*border-left:none;
+    border-right:none; */
+    border-bottom: 2px gray solid;
+}
+
+table {
+    /*表全体*/
+    border-collapse: collapse;
+    /*文字を縮小してもボーダーが縮まらない*/
+    table-layout: fixed;
+    background-color: black;
+    border: 10px gray solid;
+    /*周りの色*/
+    width: 50%;
+    white-space: nowrap;
+    text-align: center;
+    display: table;
+    border-spacing: 0px;
+}
+
+.CDetail {
+    font-size: 1vw;
+    text-align: left;
+    color: white;
+    overflow:hidden;
+}
+@media(max-width:1199px) {
+    .CDetail {
+        font-size: 15px;
+    }
+    table{
+        width:750px;
+    }
+}
+.higherDetail {
+    border-bottom-color: black;
+}
+
+tables {
+    display: flex;
+}
+
+.Ctitle {
+    background-color: gray;
+    color: white;
+}
+
+.railnumber {
+    background-color: white;
+    color: blue;
+    font-family: "meiryo";
+    font-weight: 800;
+    padding:0px 9px;
+    border-radius: 10%;
+}
+
+[class^="shubetu"] {
+    letter-spacing: 10px;
+}
+
+.CWType {
+    padding: 3px;
+}
+
+.KinLocolor {
+    background-color: blue;
+}
+
+.KinExcolor {
+    background-color: orange;
+}

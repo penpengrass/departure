@@ -1,0 +1,118 @@
+body {
+    font-family: monospace;
+}
+
+th {
+    color: white;
+    height:20px;
+    background-color: black;
+}
+.Rtitle{
+    border-bottom:3px white solid;
+}
+/*ブロック要素*/
+td {
+    /*データ内*/
+    /*font-size: 30px;*/
+    /*元々30px 変更すると25px*/
+    height: 50px;
+    color: yellow;
+    background-clip: padding-box;
+    /*背景を内側に設定する*/
+    border: 2px black solid;
+    /*表の中の枠色*/
+    border-bottom: 2px solid white;
+    border-left: none;
+    border-right: none;
+    border-spacing: 2px;
+    padding:2px;
+    font-family: "TB明朝";
+}
+
+.Destination {
+    color: white;
+    /*transform:scaleX(0.65) translate(-35%,0%);*/
+}
+
+table {
+    /*表全体*/
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: black;
+    border: 10px gray solid;
+    border-top:none;
+    /*周りの色*/
+    width: 50%;
+    /*元々750px　550px*/
+    /*height:200px; /*元々200px*/
+    white-space: nowrap;
+    text-align: center;
+    margin:5px;
+    border-spacing: 2px;
+}
+@media(max-width:1199px) {
+    table{
+        width:750px;
+    }
+}
+.Ctitle {
+    background-color: #404040;
+    border:10px gray solid;
+    border-bottom:none;
+    height:30px;
+    color: white;
+}
+.railnumber {
+    font-size: 30px;
+}
+
+.Ctime {
+    font-size: 30px;
+}
+
+/*tableline{
+    display:flex;
+    align-items: flex-start;
+}*/
+/*shubetuが前方一致*/
+.shubetu {
+    font-size: 25px;
+    color: white;
+}
+
+.CWType {
+    padding: 1px 25px 1px 25px;
+    border: 2px white solid;
+    margin:5px 0px 5px 0px;
+    display: inline-block;
+    text-align: center;
+}
+.Dtitle1{
+    height:15px;
+    border-bottom:1px red solid;
+}
+.SDtitle{
+    background-color: white;
+    font-family:"MS Gothic";
+    font-size: 20px;
+    color:black;
+}
+.CDetail1{
+    height:20px;
+    overflow: hidden;
+    border-bottom:1px black solid;
+    font-family:"MS Gothic";
+    font-size:20px;
+    color:white;
+    text-align: left;
+}
+.CDetail2{
+    height:20px;
+    font-family:"MS Gothic";
+    overflow: hidden;
+    font-size:20px;
+    color:white;
+}
+.CLine1{
+    border-bottom:3px black solid;
+}

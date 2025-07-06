@@ -17,11 +17,34 @@ console.log(TT[0][17][0]);
 //console.log(TT[1][30].length);
 //console.log(TT[1][27][1]);
 //console.log(TT[1].length);
+MinIn = 1;
+company = '近鉄';
+//近鉄は詳細表示の数=order数
+for (var td = 0; td < Tablenum; td++) {
+    DetailLength[td]=orderNum;
+}
+var Dtype = new Array(2);
 if (station == '名古屋駅') {
+    TableTitle = ['名古屋線', '名古屋線特急'];
     RailNumberDevide(4, 0, 1);
-    Dtype1 = 3;
-    Dtype2 = 3;
+    Dtype[0] = 3;
+    Dtype[1] = 3;
     station2 = station;
     stationN2 = stationN;
     dir2 = dir;
-} 
+} else if (station == '鶴橋駅') {
+    TableTitle = ['奈良線 生駒 奈良方面', '大阪線 高安 名古屋 伊勢志摩方面'];
+    Dtype[0] = 1;
+    Dtype[1] = 0;
+} else if (station == '京都駅') {
+    TableTitle = ['京都線 新田辺 大和西大寺 奈良方面'];
+    Dtype[0] = 5;
+} else if (station == '奈良駅') {
+    TableTitle = ['奈良線 大阪難波 尼崎 甲子園 神戸三宮方面', '京都線 新田辺 京都方面'];
+    var KyotoDes = ['京都', '新田辺', '国際会館'];
+    DestinationDevide(KyotoDes, 0, 1);
+    Dtype[0] = 1;
+    Dtype[1] = 5;
+}else if (station == '伊勢中川駅') {
+     TableTitle = ['大阪線 大阪 京都方面', '名古屋線 四日市 名古屋方面','山田線 宇治山田 賢島方面'];
+}
