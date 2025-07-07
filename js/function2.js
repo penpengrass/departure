@@ -4,7 +4,7 @@ for (var td = 0; td < Tablenum; td++) {
     LiName[td] = "";
 }
 function LastShows(td, tr) {
-    console.log(TableHour[td][tr]);
+    //console.log(TableHour[td][tr]);
     document.getElementById("THour" + (td + 1) + "" + (tr + 1)).textContent =
         TableHour[td][tr];
     document.getElementById("TMin" + (td + 1) + "" + (tr + 1)).textContent =
@@ -194,6 +194,7 @@ function JRNameDevide(T = Tablenum) {
 function JRLimitedName(td, tr, flag = 0) {
     var LimitedName = new Array(Type[td].length);
     var matches = new Array(Type[td].length);
+    console.log(Type[td][tr]);
     if (flag == 0) {
         LimitedName[tr] = document.getElementById(
             "TType" + (td + 1) + "" + (tr + 1)
@@ -210,6 +211,8 @@ function JRLimitedName(td, tr, flag = 0) {
         console.log(matches[tr][3] + ":" + tr);
         console.log(matches[tr][1] + matches[tr][1].length);
         var name = matches[tr][1];
+    }else {
+        console.log("JRLimitedNumberはマッチしない");
     }
     return name;
 }
@@ -436,6 +439,7 @@ function flagmarkerase(td, tag, mark = "*") {
 }
 // 列を入れ替える関数
 function swapColumns(table, col1, col2) {
+    console.log(table);
     const rows = table.rows;
     const width1 = table.rows[0].cells[col1].getAttribute("width");
     const width2 = table.rows[0].cells[col2].getAttribute("width");

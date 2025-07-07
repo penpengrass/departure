@@ -38,7 +38,10 @@ for (var td = 0; td < Tablenum; td++) {
             //console.log(typeof number[td][tr]);
             Lname[td][tr] = JRLimitedName(td, tr);
         } else {
-            number[td] = Number.parseInt(JRLimitedNumber(td, tr));
+            console.log(JRLimitedName(td,0,1));
+            number[td] = Number.parseInt(JRLimitedNumber(td, 0));
+            Lname[td] = JRLimitedName(td, 0,1);
+            break;
         }
     }
 }

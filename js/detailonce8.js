@@ -23,12 +23,14 @@ if (station == '新函館北斗駅') {
     }
     for (var td = 0; td < Tablenum; td++) {
         if (Type[td][0] == '普通') {
-            document.getElementById('TDetail' + (td + 1)).textContent = '各駅にとまります';
+            document.getElementById('TDetail' + (td + 1)).textContent = HokkaidoCars(Cars[td][0]);
         }
     }
     if (Type[1][0].includes('快速エアポート')) {
         document.getElementById('TDetail' + 2).innerHTML = HokkaidoCars('６') + '　' 
         + Useat('４') + "　<span class='Cstops'>停車駅は" + Detail[1][0] + "です。</span>";
+    }else if(Type[1][0]=='普通'){
+        document.getElementById('TDetail' + 2).innerHTML = HokkaidoCars('６');
     }
     console.log(number[3]);
     var teine = [35, 47, 59, 71, 83, 95, 117];
@@ -59,12 +61,12 @@ if (station == '新函館北斗駅') {
         + cardetail + "</span>　<span class='Cstops'>停車駅は岩見沢・美唄・砂川・滝川・深川です。</span>";
         console.log(number[2]);
         if (number[2] == 13) {
-            dToAsahi.innerHTML += '  この列車は旭川で網走行き<span class="CLapidcolor">特急大雪1号</span>に接続します';
-        } else if (number[2] == 15) {
+            dToAsahi.innerHTML += '  この列車は旭川で網走行き特別快速大雪に接続します';
+        } else if (number[2] == 17) {
             dToAsahi.innerHTML += '  この列車は旭川で稚内行き<span class="CLapidcolor">特急サロベツ1号</span>に接続します';
-        } else if (number[2] == 25) {
-            dToAsahi.innerHTML += '  この列車は旭川で網走行き<span class="CLapidcolor">特急大雪3号</span>に接続します';
-        } else if (number[2] == 35) {
+        } else if (number[2] == 33) {
+            dToAsahi.innerHTML += '  この列車は旭川で網走行き特別快速大雪に接続します';
+        } else if (number[2] == 37) {
             dToAsahi.innerHTML += '  この列車は旭川で稚内行き<span class="CLapidcolor">特急サロベツ3号</span>に接続します';
         }
     } else if (Des[2][0] == '網走') {

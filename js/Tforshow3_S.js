@@ -39,7 +39,7 @@ if (station == '長野駅') {
         if (onsen.includes(number[0][tr])) {
             DetailReplace(0, tr, '金沢', '金沢・加賀温泉・芦原温泉');
         }
-        if (Ntakasaki.includes(number[0][tr])) {
+        if (takefu.includes(number[0][tr])) {
             DetailReplace(0, tr, '金沢・福井', '金沢・小松・福井・越前たけふ');
         }
     }

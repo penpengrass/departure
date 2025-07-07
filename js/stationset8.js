@@ -9,9 +9,9 @@ if (station == '札幌駅') {
     TableTitle = ['苫小牧 東室蘭 函館 帯広 釧路方面', '新千歳空港方面', '岩見沢 旭川 網走 稚内方面', '手稲 小樽 倶知安方面', 'あいの里教育大 当別方面'];
     var selectstation = ['新千歳空港'];
     var selectstation2 = ['新千歳空港', '苫小牧', '千歳', '札幌'];
-    var kamui = [7, 9, 17, 19, 29, 31, 33, 43, 45, 47];
-    var lilac = [1, 3, 5, 11, 13, 15, 21, 23, 25, 27, 35, 37, 41];
-    limitednumber2(TT[2], kamui, '特急カムイ');
+    var kamui = [7, 19,21, 29, 31, 35, 43, 45];
+    var lilac = [1, 3, 5, 11, 13, 17, 23, 25, 27, 33, 37,39, 41];
+    limitedjustnumber2(TT[2], kamui, '特急カムイ');
     limitednumber2(TT[2], lilac, '特急ライラック');
     limitednumber(TT[2], 1, '特急オホーツク');
     //Tablereset(1);
@@ -49,10 +49,10 @@ if (station == '札幌駅') {
             }
         }
     }
-    limitednumber(TT[0], 2, '特急すずらん');
-    limitednumber(TT[0], 2, '特急北斗');
-    limitednumber(TT[0], 1, '特急おおぞら');
-    limitednumber(TT[0], 1, '特急とかち');
+    limitednumber(TT[0], 2, 'すずらん');
+    limitednumber(TT[0], 2, '北斗');
+    limitednumber(TT[0], 1, 'おおぞら');
+    limitednumber(TT[0], 1, 'とかち');
     limitedjustnumber(TT[1], 10, ['普通', '区間快速エアポート', '快速エアポート', '特別快速エアポート']);
     var airportO = [27, 31, 35, 41, 47, 53, 59, 65, 71, 77, 83, 89, 95, 111, 117, 123, 131, 135, 141, 145, 151, 155];
     limitednumber2(TT[3], airportO, '快速エアポート')

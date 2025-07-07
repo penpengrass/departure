@@ -2,7 +2,7 @@
 function TypeColorChange(td, tr, TypeWord, Color) {
     if (Type[td][tr].includes(TypeWord)) {
         document.getElementById('TType' + (td + 1) + (tr + 1)).style.color = Color;
-        if (Indexfile == 'index3_S.php') {
+        if (Indexfile == 'index3_S.php' || Indexfile == 'index8.php') {
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = Color;
         }
     }

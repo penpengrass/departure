@@ -138,8 +138,8 @@
             <tr>
                 <td>JR北海道</td>
                 <td><button type="button" onclick="location.href='./index8.php'">移動</button></td>
-                <td><span style="color:black;">札幌駅</span></td>
-                <td><span style="color:black;">新函館北斗駅</span></td>
+                <td><span style="color:blue;">札幌駅</span></td>
+                <td><span style="color:blue;">新函館北斗駅</span></td>
             </tr>
             <tr>
                 <td>JR四国</td>
