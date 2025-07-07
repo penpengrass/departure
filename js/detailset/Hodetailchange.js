@@ -14,6 +14,7 @@ if (station == '札幌駅') {
             DeleteStopping(oozora, '新夕張');
             DeleteStopping(oozora, '追分');
             DeleteStopping(oozora, '池田');
+            DeleteStopping(oozora, '白糠');
         } else if (number[0] == 3) {
             AddStopping(oozora, '新夕張', '占冠');
         } else if (number[0] == 1) {
