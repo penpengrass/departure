@@ -319,8 +319,8 @@ if (station == '松本駅') {
                 Type[td + 2][tr] = '特急';
                 JRE6ColorPlusName(td + 2, tr, '特急', 'red');
             }
-            if (LimitedName.textContent.length > 6) {
-                LimitedName.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
+            if (LimitedName.textContent.length > 6 && td == 2) {
+                LimitedName.style.transform = "scaleX(0.75)" + "translate(-20%,0%)";
             }
             if (Des[td + 2][tr].length > 4) {
                 LDes.style.transform = "scaleX(0.70)" + "translate(-20%,0%)";

@@ -5,6 +5,8 @@ for (var td = 0; td < Tablenum; td++) {
 }
 function LastShows(td, tr) {
     //console.log(TableHour[td][tr]);
+    //console.log(document.getElementById("THour" + (td + 1) + "" + (tr + 1)))
+    // console.log(TableHour[td][tr]);
     document.getElementById("THour" + (td + 1) + "" + (tr + 1)).textContent =
         TableHour[td][tr];
     document.getElementById("TMin" + (td + 1) + "" + (tr + 1)).textContent =

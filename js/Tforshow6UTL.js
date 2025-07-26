@@ -76,6 +76,8 @@ for (var td = 0; td < Tablenum; td++) {
         var LoDep = document.getElementById('TDep' + (td + 1) + (tr + 1));
         if (station == '上野駅' && td > 0) {
             ShihatsuMove(td, tr, 'Ttopic');
+        }else if(station=='品川駅' && td > 1){
+
         } else {
             ShihatsuMove(td, tr, 'TDep');
         }
@@ -121,12 +123,16 @@ for (var td = 0; td < Tablenum; td++) {
             //console.log(document.getElementById('Ttopic'+(tr+1)+(ts+1)));
             if (station == '品川駅') {
                 document.getElementById('Ttopic' + (td + 1) + (tr + 1)).innerHTML += '<span class="bansen">番線</span>';
+                if(Des[td][tr].length>8){
+                    document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.65)" + "translate(-15%,0%)";
+                }
             }
         }
 
     }
 }
 console.log(Type);
+
 allLastShow();
 comment.innerHTML = '両数や番線など一部表示不正確<br>';
 //allalterUTL_setting('特急');

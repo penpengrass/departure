@@ -114,8 +114,8 @@ if (station == '長野駅') {
     }
     let Narita = ['佐原', '成田', '鹿島神宮', '成田/鹿島神宮', '成田空港', '銚子*'];
     DestinationDevide(Narita, 4, 5);
-    var NEX_Chiba1 = [1, 3, 5, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 47, 49, 51, 53];
-    var NEX_Chiba2 = [2, 4, 5, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46];
+    var NEX_Chiba1 = [1, 3, 5, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43,45, 47, 49, 51, 53];
+    var NEX_Chiba2 = [2, 4, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50, 52];
     limitednumber2(TT[0], NEX_Chiba2, '成田エクスプレス');
     limitednumber2(TT[5], NEX_Chiba1, '成田エクスプレス');
     limitednumber(TT[0], 2, 'しおさい');

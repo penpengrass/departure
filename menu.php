@@ -42,15 +42,15 @@
             <tr>
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
-                <td><span style="color:black;">武蔵小杉駅</span></td>
-                <td>横浜駅, <span style="color:red;">小田原駅</span>, <span style="color:#FF8C00;">熱海駅</span>, 
-                <span style="color:black;">宇都宮駅</span>, 黒磯駅</td>
+                <td><span style="color:blue;">武蔵小杉駅</span></td>
+                <td><span style="color:blue;">横浜駅</span>, <span style="color:#FF8C00;">小田原駅</span>, <span style="color:#FF8C00;">熱海駅</span>, 
+                <span style="color:blue;">宇都宮駅</span>, <span style="color:blue;">黒磯駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
                 <td><button type="button" onclick="location.href='./index3_S.php'">移動</button></td>
                 <td><span style="color:blue;">長野駅</span></td>
-                <td>宇都宮駅</td>
+                <td><span style="color:blue;">宇都宮駅</span></td>
             </tr>
             <tr>
                 <td>JR西日本</td>
@@ -95,25 +95,25 @@
             <tr>
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
-                <td>新宿駅</td>
-                <td>赤羽駅, 横浜駅, <span style="color:#FF8C00;">長野駅</span>, <span style="color:#FF8C00;">松本駅</span></td>
+                <td><span style="color:blue;">新宿駅</span></td>
+                <td><span style="color:blue;">赤羽駅</span>, <span style="color:blue;">横浜駅</span>, <span style="color:#FF8C00;">長野駅</span>, <span style="color:#FF8C00;">松本駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本UTL</td>
                 <td><button type="button" onclick="location.href='./index6_U.php'">移動</button></td>
-                <td>東京駅</td>
-                <td>品川駅, 上野駅</td>
+                <td><span style="color:blue;">東京駅</span></td>
+                <td><span style="color:blue;">品川駅</span>, <span style="color:blue;">上野駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本千葉駅</td>
                 <td><button type="button" onclick="location.href='./index6_Chiba.php'">移動</button></td>
-                <td>千葉駅</td>
+                <td><span style="color:blue;">千葉駅</span></td>
                 <td>なし</td>
             </tr>
             <tr>
                 <td>JR東日本新幹線フルカラー</td>
                 <td><button type="button" onclick="location.href='./index6_S.php'">移動</button></td>
-                <td><span style="color:black;">東京駅</span></td>
+                <td><span style="color:blue;">東京駅</span></td>
                 <td></td>
             </tr>
             <tr>
