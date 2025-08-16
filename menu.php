@@ -44,7 +44,7 @@
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td><span style="color:blue;">武蔵小杉駅</span></td>
                 <td><span style="color:blue;">横浜駅</span>, <span style="color:#FF8C00;">小田原駅</span>, <span style="color:#FF8C00;">熱海駅</span>, 
-                <span style="color:blue;">宇都宮駅</span>, <span style="color:blue;">黒磯駅</span></td>
+                <span style="color:blue;">大宮駅</span>, <span style="color:blue;">宇都宮駅</span>, <span style="color:blue;">黒磯駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
@@ -169,7 +169,7 @@
         <h1 class="Cheader">今後追加する駅</h1>
         <li>新幹線 静岡駅 米原駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
-        <li>JR東日本 大宮駅 高崎駅 水戸駅 仙台駅 福島駅 </li>
+        <li>JR東日本 高崎駅 水戸駅 仙台駅 福島駅 </li>
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 福井駅 金沢駅</li>
         <li>JR西日本 京都駅 尼崎駅 和歌山駅 米子駅 新山口駅</li>

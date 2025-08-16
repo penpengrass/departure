@@ -62,6 +62,7 @@
     ?>
   </tableline>
   <p id="supplement"></p>
+  <p id="guidance"></p>
   <h1 class="Cheader">案内</h1>
   <li>東海道線と横須賀線は熱海・久里浜側が1号車, 4･5号車がグリーン車</li>
   <li>増結編成は東海道線が高崎・宇都宮側, 横須賀線は逗子・久里浜側(増1~増4)</li>
@@ -83,6 +84,8 @@
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/altershow.js"></script>
   <script type="text/javascript" src="js/function2.js"></script>
+  <script type="text/javascript" src="js/functionCars.js"></script>
+  <script type="text/javascript" src="js/functionColor.js"></script>
   <script type="text/javascript" src="js/functionDetail_B.js"></script>
   <script type="text/javascript" src="js/functionE2.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>

@@ -218,6 +218,14 @@ function JRLimitedName(td, tr, flag = 0) {
     }
     return name;
 }
+function JRLimitedNameDevide(td,tr,name,_type='特急',color='red'){
+    if(Type[td][tr].includes(name)){
+        Type[td][tr]=_type;
+        document.getElementById("TName" + (td + 1) + "" + (tr + 1)).textContent = name;
+        document.getElementById("TType" + (td + 1) + "" + (tr + 1)).style.color = color;
+    
+    }
+}
 //特急等の号数を取得 tdは何番目の表か
 function JRLimitedNumber(td, tr, flag = 0) {
     var LimitedName = new Array(Type[td].length);
@@ -441,7 +449,6 @@ function flagmarkerase(td, tag, mark = "*") {
 }
 // 列を入れ替える関数
 function swapColumns(table, col1, col2) {
-    console.log(table);
     const rows = table.rows;
     const width1 = table.rows[0].cells[col1].getAttribute("width");
     const width2 = table.rows[0].cells[col2].getAttribute("width");

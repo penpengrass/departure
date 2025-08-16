@@ -6,6 +6,8 @@ function JRATOSStaSele($Select)
       <option value="musashikosugi">武蔵小杉駅</option>
       <option value="kuroiso">黒磯駅</option>
       <option value="utsunomiya">宇都宮駅</option>
+      <option value="omiya">大宮駅</option>
+      <option value="akabane">赤羽駅</option>
       <option value="tokyo">東京駅</option>
       <option value="shinjuku">新宿駅</option>
       <option value="yokohama">横浜駅(ATOS)</option>
