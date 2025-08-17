@@ -304,6 +304,7 @@ if (station == '熱海駅') {
         FourLetters(2, tr, 0.7, 10);
         FourLetters(4, tr, 0.7, 10);
         JRLimitedNameDevide(4,tr,'草津・四万');
+        JRLimitedNameDevide(5,tr,'草津・四万');
         JRLimitedNameDevide(3,tr,'きぬがわ');
         JRLimitedNameDevide(2,tr,'ｽﾍﾟｰｼｱ日光');
         JRLimitedNameDevide(3,tr,'ｽﾍﾟｰｼｱ日光');
