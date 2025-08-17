@@ -93,6 +93,19 @@ class TableDevide {
             //console.log("時の区切り");
         }
     }
+    // 新しい処理（削除だけ）
+    process_remove_only(condition_F) {
+        for (let TaRow = 4; TaRow < TT[this.mainTable].length; TaRow += 4) {
+            var count = TT[this.mainTable][TaRow].length - 1;
+            for (let mainTaNum = 1; mainTaNum < TT[this.mainTable][TaRow].length; mainTaNum++) {
+                if (condition_F(TaRow, mainTaNum)) {
+                    this.main_remove(TaRow, mainTaNum);
+                    mainTaNum--; // 詰めた後に次の列をチェックするため
+                }
+                if (--count <= 0) break;
+            }
+        }
+    }
 }
 function RailNumberDevide(minBansen, mainTable, subTable) {
     //インスタンス化
@@ -114,6 +127,22 @@ function TrainNameLineDevide(trainName, mainTable, subTable) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, subTable);
     tableDevide.process((TaRow, mainTaNum) => trainName.includes(TT[mainTable][TaRow - 3][mainTaNum]));
+}
+function DestinationRemove(station, mainTable) {
+    //インスタンス化
+    const tableDevide = new TableDevide(mainTable, null);
+    tableDevide.process_remove_only((TaRow, mainTaNum) => station.includes(TT[mainTable][TaRow - 1][mainTaNum]));
+}
+// TrainNameDevideの実装
+function TrainNameRemove(trainName, mainTable) {
+    //インスタンス化
+    const tableDevide = new TableDevide(mainTable, null);
+    tableDevide.process_remove_only((TaRow, mainTaNum) => TT[mainTable][TaRow - 3][mainTaNum].includes(trainName));
+}
+function TrainNameLineRemove(trainName, mainTable) {
+    //インスタンス化
+    const tableDevide = new TableDevide(mainTable, null);
+    tableDevide.process_remove_only((TaRow, mainTaNum) => trainName.includes(TT[mainTable][TaRow - 3][mainTaNum]));
 }
 class TrainNumber {
     constructor(TT, name) {
