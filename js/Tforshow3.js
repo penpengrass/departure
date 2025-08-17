@@ -326,6 +326,7 @@ if (station == '熱海駅') {
   '<li>11番線　(新宿方面からの)高崎・宇都宮・日光方面</li>'+
   '<li>19・20番線　埼京線武蔵浦和・新木場方面</li>'+
   '<li>21・22番線　埼京線武蔵浦和方面・川越線川越方面</li>';
+  allLastShow();
 } else if (station == '横浜駅') {
     swapColumns(table1, 0, 1);
     swapColumns(table2, 0, 1);
@@ -402,4 +403,5 @@ if (station == '熱海駅') {
             }
         }
     }
+    allLastShow();
 }
