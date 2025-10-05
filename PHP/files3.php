@@ -8,7 +8,9 @@ if (isset($_POST['staselect3'])) {
     exit();
   } else if($test1 == 'shinjuku'){
     header('Location: ../index6.php');
-  } else if($test1 == 'tokyo'){
+  } else if($test1 == 'akabane'){
+    header('Location: ../index6.php?station=akabane');
+  }else if($test1 == 'tokyo'){
     header('Location: ../index6_U.php');
   }else{
     header('Location: ../index3.php?station=' . $test1);
@@ -58,5 +60,16 @@ if (isset($_GET['station'])) {
     $files[0] = 'csv/JRE/kuroiso1.csv';
     $files[1] = 'csv/JRE/kuroiso2.csv';
     $OrderNum = 2;
+  }else if (Inisset('omiya')) {
+    $files[0] = 'csv/JRE/omiya_kawagoe.csv';
+    $files[1] = 'csv/JRE/omiya_shinkiba.csv';
+    $files[2] = 'csv/JRE/omiya_zushi.csv';
+    $files[3] = 'csv/JRE/omiya_utsunomiya.csv';
+    $files[4] = 'csv/JRE/omiya_takasaki.csv';
+    $files[5] = 'csv/JRE/omiya_ueno.csv';
+    //$files[6] = 'csv/JRE/omiya_ueno2.csv';
+    $files[6] = 'csv/JRE/omiya_kawaguchi.csv';
+    $tablenum = 7;
+    $OrderNum = 3;
   }
 }

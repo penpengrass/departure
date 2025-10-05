@@ -9,6 +9,7 @@ const table4 = document.getElementById("TATOSTable4");
 const table5 = document.getElementById("TATOSTable5");
 const table6 = document.getElementById("TATOSTable6");
 var UenoLine = ['小金井', '籠原', '宇都宮', '高崎', '古河'];
+var Guidance = document.getElementById("guidance");
 if (station == '熱海駅') {
     var list = document.getElementsByClassName('Destination');
     for (var tr = 0; tr < list.length; tr++) {
@@ -251,6 +252,110 @@ if (station == '熱海駅') {
     rowremove(0, 'HName', 'TName');
     rowremove(0, 'HCars', 'TCars');
     rowremove(0, 'HType', 'TType');
+} else if (station == '大宮駅') {
+
+    swapColumns(table3, 0, 1);
+    swapColumns(table4, 0, 1);
+    swapColumns(table5, 0, 1);
+    swapColumns(table6, 0, 1);
+    document.getElementById('HType1').style.width = "25%";
+    document.getElementById('HName1').style.width = "20%";
+    document.getElementById('HDes1').style.width = "35%";
+    document.getElementById('HrNumber1').style.width = "10%";
+    document.getElementById('HType2').style.width = "25%";
+    document.getElementById('HName2').style.width = "20%";
+    document.getElementById('HDes2').style.width = "35%";
+    document.getElementById('HrNumber2').style.width = "10%";
+    //document.getElementById('HType2').style.width = "35%";
+    //document.getElementById('HName2').style.width = "10%";
+    document.getElementById('HType3').style.width = "15%";
+    document.getElementById('HName3').style.width = "30%";
+    document.getElementById('HType4').style.width = "15%";
+    document.getElementById('HName4').style.width = "30%";
+    document.getElementById('HType5').style.width = "15%";
+    document.getElementById('HName5').style.width = "30%";
+    document.getElementById('HType6').style.width = "15%";
+    document.getElementById('HName6').style.width = "30%";
+    document.getElementById('TATOSTable1').style.width = '650px';
+    document.getElementById('TATOSTable2').style.width = '650px';
+    document.getElementById('TATOSTable7').style.width = '650px';
+    rowremove(6, 'HName', 'TName');
+    var UenoLine = ['平塚', '小田原', '国府津', '熱海', '伊東', '沼津'];
+    JRETypeSelectAdd(5, '普通', UenoLine, '上野東京ﾗｲﾝ', '');
+    JRETypeAdd(2, '普通', '湘南新宿ﾗｲﾝ', 'orange');
+    JRETypeAdd(2, '快速', '湘南新宿ﾗｲﾝ', 'orange');
+    JRETypeAdd(3, '普通', '宇都宮線', 'orange');
+    JRETypeAdd(3, '快速', '宇都宮線', 'orange');
+    JRETypeAdd(4, '普通', '高崎線', 'orange');
+    JRETypeAdd(4, '快速', '高崎線', 'orange');
+    for (var tr = 0; tr < 3; tr++) {
+        //CarsDefine(2, tr, '普通', '', 15);
+        //CarsInto(2,tr,'TName');
+        AllWordChange(0, tr, Type, '普通', '各駅停車');
+        AllWordChange(0, tr, Type, '快速', '各駅停車');
+        AllWordChange(0, tr, Type, '通勤快速', '各駅停車');
+        AllWordReplace(1, tr, Type, '普通', '各駅停車');
+        AllWordReplace(2, tr, Type, 'スペーシア', 'ｽﾍﾟｰｼｱ');
+        AllWordReplace(3, tr, Type, 'スペーシア', 'ｽﾍﾟｰｼｱ');
+        AllWordChange(4, tr, Type, '快速', '普通');
+        TypeColorChange(1, tr, '快速', 'orange');
+        TypeColorChange(2, tr, '快速', 'orange');
+        TypeColorChange(3, tr, '快速', 'orange');
+        TypeColorChange(4, tr, '快速', 'orange');
+        TypeColorChange(6, tr, '快速', 'orange');
+        document.getElementById('TType1' + (tr + 1)).style.textAlign = "left";
+        document.getElementById('TType2' + (tr + 1)).style.textAlign = "left";
+        ShihatsuMove(0, tr, 'TName');
+        ShihatsuMove(1, tr, 'TName');
+        JRLimitedNameDevide(4, tr, '草津・四万');
+        JRLimitedNameDevide(5, tr, '草津・四万');
+        JRLimitedNameDevide(2, tr, 'きぬがわ');
+        JRLimitedNameDevide(3, tr, 'きぬがわ');
+        JRLimitedNameDevide(2, tr, 'ｽﾍﾟｰｼｱ日光');
+        JRLimitedNameDevide(3, tr, 'ｽﾍﾟｰｼｱ日光');
+        JRLimitedNameDevide(2, tr, 'あかぎ');
+        JRLimitedNameDevide(4, tr, 'あかぎ');
+        JRLimitedNameDevide(4, tr, 'アーバン', '快速', 'orange');
+        JRLimitedNameDevide(3, tr, 'ラビット', '快速', 'orange');
+        JRLimitedNameDevide(5, tr, 'アーバン', '快速', 'orange');
+        JRLimitedNameDevide(5, tr, 'ラビット', '快速', 'orange');
+        JRLimitedNameDevide(5, tr, 'むさしの号', '普通', '#0f0');
+        JRLimitedNameDevide(5, tr, 'しもうさ号', '普通', '#0f0');
+        FourLetters(0, tr, 0.7, 20);
+        FourLetters(1, tr, 0.7, 20);
+        FourLetters(2, tr, 0.7, 10);
+        FourLetters(4, tr, 0.7, 10);
+        NameColorchange(3, 'TName', 'ラビット', 'red');
+        NameColorchange(4, 'TName', 'アーバン', 'red');
+        NameColorchange(5, 'TName', 'しもうさ号', 'red');
+        NameColorchange(5, 'TName', 'むさしの号', 'red');
+        NameColorchange(5, 'TName', '上野東京ﾗｲﾝ', 'orange');
+        if (Type[2][tr] == '特急') {
+            document.getElementById('TName' + (2 + 1) + '' + (tr + 1)).style.color = 'red';
+        }
+        if (Type[3][tr] == '特急') {
+            document.getElementById('TName' + (3 + 1) + '' + (tr + 1)).style.color = 'red';
+        }
+        if (Type[4][tr] == '特急') {
+            document.getElementById('TName' + (4 + 1) + '' + (tr + 1)).style.color = 'red';
+        }
+        if (Type[5][tr] == '特急') {
+            document.getElementById('TName' + (5 + 1) + '' + (tr + 1)).style.color = 'red';
+        }
+    }
+    console.log(Cars);
+    allTwoLettersDistance(Des, TDes, 1, 0.8);
+    comment.textContent = '番線や号数など一部表示は不正確、両数は省略';
+    Guidance.innerHTML += '<h1 class="Cheader">発車番線</h1>' +
+        '<li>1・2番線　京浜東北線</li>' +
+        '<li>3・4番線　(宇都宮方面からの)上野・新宿方面</li>' +
+        '<li>6・7番線　(高崎方面からの)上野・新宿方面</li>' +
+        '<li>8・9番線　(上野方面からの)高崎・宇都宮方面</li>' +
+        '<li>11番線　(新宿方面からの)高崎・宇都宮・日光方面</li>' +
+        '<li>5, 10番線は貨物列車などの回送' +
+        '<li>19・20番線　埼京線武蔵浦和・新木場方面</li>' +
+        '<li>21・22番線　埼京線武蔵浦和方面・川越線川越方面</li>';
+    allLastShow();
 } else if (station == '横浜駅') {
     swapColumns(table1, 0, 1);
     swapColumns(table2, 0, 1);
@@ -327,4 +432,5 @@ if (station == '熱海駅') {
             }
         }
     }
+    allLastShow();
 }
