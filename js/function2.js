@@ -213,17 +213,17 @@ function JRLimitedName(td, tr, flag = 0) {
         console.log(matches[tr][3] + ":" + tr);
         console.log(matches[tr][1] + matches[tr][1].length);
         var name = matches[tr][1];
-    }else {
+    } else {
         console.log("JRLimitedNumberはマッチしない");
     }
     return name;
 }
-function JRLimitedNameDevide(td,tr,name,_type='特急',color='red'){
-    if(Type[td][tr].includes(name)){
-        Type[td][tr]=_type;
-        document.getElementById("TName" + (td + 1) + "" + (tr + 1)).textContent = name;
+function JRLimitedNameDevide(td, tr, name, _type = '特急', color = 'red') {
+    if (Type[td][tr].includes(name)) {
+        document.getElementById("TName" + (td + 1) + "" + (tr + 1)).textContent = Type[td][tr].replace(_type, '');
         document.getElementById("TType" + (td + 1) + "" + (tr + 1)).style.color = color;
-    
+        Type[td][tr] = _type;
+
     }
 }
 //特急等の号数を取得 tdは何番目の表か

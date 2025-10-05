@@ -45,4 +45,5 @@ if (station == '武蔵小杉駅') {
     TrainNameLineRemove(['快速','特別快速'],5);
     DestinationRemove('新宿',5,8);
     DestinationRemove(['逗子','大船'],5);
+    limitednumber(TT[4], 1, 'あかぎ');
 }

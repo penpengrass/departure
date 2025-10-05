@@ -20,7 +20,7 @@ function JRE6ColorPlusName(td, tr, LoType, color, Nameflag = 0) {
             if (LDep != null) {
                 LDep.style.backgroundColor = color;
             }
-            if (LName !=null) {
+            if (LName != null) {
                 LName.style.backgroundColor = color;
             }
 
@@ -31,7 +31,7 @@ function JRE6ColorPlusName(td, tr, LoType, color, Nameflag = 0) {
             if (LDep != null) {
                 LDep.style.backgroundColor = color;
             }
-            if (LName !=null) {
+            if (LName != null) {
                 LName.style.backgroundColor = color;
             }
         }
@@ -102,7 +102,7 @@ function Type_Cars(td, tr, L_Type, Cars, Tag, LineSetFlag = 0) {
     }
 }
 //条件付き路線名追加(2種類)
-function JRETypeSelectAdd(td, LType, Deshairetsu, line1, line2, index = 6) {
+function JRETypeSelectAdd(td, LType, Deshairetsu, line1, line2) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (Type[td][tr].includes(LType)) {
             if (Deshairetsu.includes(Des[td][tr])) {
@@ -114,10 +114,13 @@ function JRETypeSelectAdd(td, LType, Deshairetsu, line1, line2, index = 6) {
     }
 }
 //条件なし路線名追加
-function JRETypeAdd(td, LType, line1, index = 6) {
+function JRETypeAdd(td, LType, line1, color = '') {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (Type[td][tr].includes(LType)) {
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent += line1;
+            if (color != '') {
+                document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = color;
+            }
         }
     }
 }

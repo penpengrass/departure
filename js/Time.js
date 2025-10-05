@@ -2,8 +2,8 @@
 //日付，時，分をそれぞれ取得する
 const now = new Date();
 //const hour=(now.getHours()+12)%24;
-//const hour =19;
-//const min = 44;
+//const hour =20;
+//const min = 0;
 const hour = now.getHours();
 const min = now.getMinutes();
 const sec = now.getSeconds();
