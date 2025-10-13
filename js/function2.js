@@ -220,7 +220,7 @@ function JRLimitedName(td, tr, flag = 0) {
 }
 function JRLimitedNameDevide(td, tr, name, _type = '特急', color = 'red') {
     if (Type[td][tr].includes(name)) {
-        document.getElementById("TName" + (td + 1) + "" + (tr + 1)).textContent = Type[td][tr].replace(_type, '');
+        document.getElementById("WName" + (td + 1) + "" + (tr + 1)).textContent = Type[td][tr].replace(_type, '');
         document.getElementById("TType" + (td + 1) + "" + (tr + 1)).style.color = color;
         Type[td][tr] = _type;
 
@@ -470,6 +470,45 @@ function swapColumns(table, col1, col2) {
         cell2.className = tempClass;
         table.rows[0].cells[col1].setAttribute("width", width2);
         table.rows[0].cells[col2].setAttribute("width", width1);
+    }
+}
+/**
+ * HTMLテーブルの列を移動させる関数
+ * @param {HTMLTableElement} table - 操作対象の<table>要素
+ * @param {number} fromIndex - 移動させる列のインデックス（0から始まる）
+ * @param {number} toIndex - 移動先の列インデックス（0から始まる）
+ */
+function moveTableColumn(table, fromIndex, toIndex) {
+    // 全ての行（ヘッダー、ボディ、フッター）に対する処理
+    // table.rowsは<thead>, <tbody>, <tfoot>内の全ての<tr>要素を含むHTMLCollection
+    for (let i = 0; i < table.rows.length; i++) {
+        const row = table.rows[i];
+        
+        // 移動させるセル（<td>または<th>）を取得
+        // cellsは<tr>内の全てのセル要素を含むHTMLCollection
+        const cellToMove = row.cells[fromIndex];
+        
+        // 移動元インデックスと移動先インデックスが同じ場合は何もしない
+        if (fromIndex === toIndex) {
+            continue;
+        }
+
+        if (cellToMove) {
+            // 移動先のセルを取得
+            const targetCell = row.cells[toIndex];
+
+            if (toIndex < fromIndex) {
+                // 移動先が移動元より前の場合：
+                // 移動先のセルの直前に移動させるセルを挿入
+                // targetCellがnull（インデックスが範囲外）の場合、appendChildと同じ動作
+                row.insertBefore(cellToMove, targetCell);
+            } else {
+                // 移動先が移動元より後の場合：
+                // 移動先のセルの**次の要素**の直前に挿入することで、targetCellの後に配置される
+                // targetCell.nextSibling が null の場合は、末尾に挿入される（appendChildと同じ）
+                row.insertBefore(cellToMove, targetCell ? targetCell.nextElementSibling : null);
+            }
+        }
     }
 }
 var comment = document.getElementById("supplement");

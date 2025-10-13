@@ -14,6 +14,8 @@ if (isset($_POST['staselect6'])) {
     header('Location: ../index6_U.php?station=ueno');
   } else if($test1=='tokyo'){
     header('Location: ../index6_U.php');
+  } else if($test1=='musashikosugi'){
+    header('Location: ../index3.php');
   } 
   else {
     header('Location: ../index6.php?station=' . $test1);
@@ -113,6 +115,16 @@ if (isset($_GET['station'])) {
       $files[1] = 'csv/JRNagano/nagano2_H.csv';
       $files[2] = 'csv/JRNagano/nagano2_H.csv';
     }
+  }else if(Inisset('mito')){
+    $files[0] = 'csv/JRE/mito_iwaki.csv';
+    $files[1]='csv/JRE/mito_ueno.csv';
+    $files[2]='csv/JRE/mito_suigun.csv';
+    $files[3]='csv/JRE/mito_kashima.csv';
+    $station='水戸駅';
+    $tablenum=4;
+    $OrderNum=3;
+    $column=2;
+    $stationnumber=1;
   }
 }
 if ($files[0] == 'csv/JRNagano/nagano1.csv') {

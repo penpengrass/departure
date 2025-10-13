@@ -98,7 +98,7 @@ if (station == '長野駅') {
     TT[5] = TT[11];
     console.log(TT[4]);
     console.log(TT[5]);
-    
+
 } else if (station == '千葉駅') {
     TableTitle = ['横須賀 総武線(快速)',
         '中央･総武線(各駅停車)', '内房線', '外房線', '総武本線', '成田線'];
@@ -114,7 +114,7 @@ if (station == '長野駅') {
     }
     let Narita = ['佐原', '成田', '鹿島神宮', '成田/鹿島神宮', '成田空港', '銚子*'];
     DestinationDevide(Narita, 4, 5);
-    var NEX_Chiba1 = [1, 3, 5, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43,45, 47, 49, 51, 53];
+    var NEX_Chiba1 = [1, 3, 5, 7, 11, 15, 19, 23, 27, 31, 35, 39, 43, 45, 47, 49, 51, 53];
     var NEX_Chiba2 = [2, 4, 6, 10, 14, 18, 22, 26, 30, 34, 38, 42, 46, 50, 52];
     limitednumber2(TT[0], NEX_Chiba2, '成田エクスプレス');
     limitednumber2(TT[5], NEX_Chiba1, '成田エクスプレス');
@@ -122,4 +122,10 @@ if (station == '長野駅') {
     limitednumber(TT[4], 1, 'しおさい');
     //号数を交互表示するため
     detailflag = 2;
+} else if (station == '水戸駅') {
+    TableTitle = ['勝田 高萩 いわき方面', '土浦 上野方面', '常陸大子 郡山方面', '大洗 鹿島方面'];
+    limitednumber(TT[0],1,'ひたち');
+    limitednumber(TT[0],51,'ときわ');
+    limitednumber(TT[1],2,'ひたち');
+    limitednumber(TT[1],52,'ときわ');
 }

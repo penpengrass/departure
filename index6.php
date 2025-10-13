@@ -56,6 +56,7 @@
   <form action="PHP/files6.php" method="POST">
     <select name="staselect6">
     <option value="shinjuku">新宿駅</option>
+    <option value="mito">水戸駅</option>
     <option value="akabane">赤羽駅</option>
     <option value="ueno">上野駅</option>
       <option value="tokyo">東京駅</option>
@@ -101,7 +102,7 @@
       <th width="15%" id="HTime' . $i . '">時刻</th>
       <th width="15%" class="HDes" id="HDes' . $i . '">行先</th>
       <th width="10%">番線</th>
-      <th width="20%">記事</th>
+      <th width="20%" id="Htopic' . $i . '">記事</th>
     </tr>
   ');
       } else {

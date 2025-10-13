@@ -114,6 +114,59 @@ if (station == '松本駅') {
     } else if (holidayflag == 0) {
         document.getElementById('supplement').textContent = '松本駅のみ土休日ダイヤに対応(表示は平日ダイヤ)';
     }
+} else if (station == '水戸駅') {
+    const table = new Array(Tablenum);
+    const topic = new Array(Tablenum);
+    for (var td = 0; td < 2; td++) {
+        rowsize(td, 'HName', 'TName', '25%');
+        rowsize(td, 'Htopic', 'Ttopic', '16%');
+        table[td] = document.getElementById('TLCDTable' + (td + 1));
+        topic[td] = new Array(orderNum);
+        for (var tr = 0; tr < orderNum; tr++) {
+            topic[td][tr] = document.getElementById('Ttopic' + (td + 1) + (tr + 1));
+            topic[td][tr].classList.remove('topic');
+        }
+        moveTableColumn(table[td], 5, 2);
+    }
+    for (var tr = 0; tr < orderNum; tr++) {
+        JRLimitedNameDevide(0, tr, 'ひたち', '特急', 'white');
+        JRLimitedNameDevide(0, tr, 'ときわ', '特急', 'white');
+        JRLimitedNameDevide(1, tr, 'ひたち', '特急', 'white');
+        JRLimitedNameDevide(1, tr, 'ときわ', '特急', 'white');
+        JRE6ColorPlusName(0, tr, '特急', 'red');
+        JRE6ColorPlusName(1, tr, '特急', 'red');
+        JRE6ColorPlusName(0, tr, '普通', 'blue');
+        JRE6ColorPlusName(1, tr, '普通', 'blue');
+        ShihatsuMove(0, tr, 'Ttopic');
+        ShihatsuMove(1, tr, 'Ttopic');
+        CarsDefine(0, tr, '普通', '', 5);
+        CarsDefine(0, tr, '特急', '', '10両');
+        if (Des[1][tr] == '小山' || Des[1][tr] == '下館' || Des[1][tr] == '土浦') {
+            Cars[1][tr] = '5両';
+        } else if (Des[1][tr] == '上野' || Des[1][tr] == '品川' || Des[1][tr] == '我孫子' || Des[1][tr] == '土浦*') {
+            Cars[1][tr] = '10両';
+        }
+        CarsInto(0, tr, 'WName');
+        CarsInto(1, tr, 'WName');
+        const color1 = document.getElementById('TName' + (0 + 1) + (tr + 1)).style.backgroundColor;
+        const color2 = document.getElementById('TName' + (1 + 1) + (tr + 1)).style.backgroundColor;
+        const topic1 = document.getElementById('Ttopic' + (0 + 1) + (tr + 1));
+        const topic2 = document.getElementById('Ttopic' + (1 + 1) + (tr + 1));
+        if (topic1.textContent == '始発' || topic1.textContent == '') {
+            topic1.style.backgroundColor = color1;
+        }
+        if (topic2.textContent == '始発' || topic2.textContent == '') {
+            topic2.style.backgroundColor = color2;
+
+        }
+    }
+    rowremove(2, 'HName', 'TName');
+    rowremove(3, 'HName', 'TName');
+    rowremove(2, 'Htopic', 'Ttopic');
+    rowremove(3, 'Htopic', 'Ttopic');
+    document.getElementById('TLCDTable' + (2 + 1)).style.width = '600px';
+    document.getElementById('TLCDTable' + (3 + 1)).style.width = '600px';
+    console.log(Cars);
 } else if (station == '横浜駅') {
     var yokohama = ['橋本', '八王子'];
     JRETypeSelectAdd(1, '', yokohama, ' 横浜線', ' 京浜東北線');
@@ -336,4 +389,6 @@ if (station == '松本駅') {
     }
     comment.textContent = '両数や番線など一部表示不正確';
 }
-allLastShow();
+if (station != '長野駅') {
+    allLastShow();
+}
