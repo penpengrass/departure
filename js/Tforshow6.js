@@ -137,6 +137,8 @@ if (station == '松本駅') {
         JRE6ColorPlusName(1, tr, '特急', 'red');
         JRE6ColorPlusName(0, tr, '普通', 'blue');
         JRE6ColorPlusName(1, tr, '普通', 'blue');
+        JRE6ColorPlusName(2, tr, '普通', 'olive');
+        JRE6ColorPlusName(3, tr, '普通', 'brown');
         ShihatsuMove(0, tr, 'Ttopic');
         ShihatsuMove(1, tr, 'Ttopic');
         CarsDefine(0, tr, '普通', '', 5);
@@ -166,7 +168,8 @@ if (station == '松本駅') {
     rowremove(3, 'Htopic', 'Ttopic');
     document.getElementById('TLCDTable' + (2 + 1)).style.width = '600px';
     document.getElementById('TLCDTable' + (3 + 1)).style.width = '600px';
-    console.log(Cars);
+    //console.log(Cars);
+    comment.textContent = '実際の表示とは異なる。接続表示は省略。両数や番線など一部表示不正確';
 } else if (station == '横浜駅') {
     var yokohama = ['橋本', '八王子'];
     JRETypeSelectAdd(1, '', yokohama, ' 横浜線', ' 京浜東北線');
