@@ -24,7 +24,7 @@ for (var td = 0; td < 2; td++) {
                 dName.style.fontSize = '18px';
                 dName.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
                 dName.style.fontWeight = '800px';
-            }else if (dName.textContent.includes('スカイツリー')) {
+            } else if (dName.textContent.includes('スカイツリー')) {
                 var Right = dName.textContent.replace('スカイツリー', '');
                 dName.innerHTML = 'スカイツリー<br>' + '<span class="gou">' + Right + '</span>';
                 dName.style.fontSize = '18px';
@@ -40,6 +40,7 @@ for (var tr = 0; tr < orderNum; tr++) {
     document.getElementById('TName1' + (tr + 1)).style.color = 'red';
     document.getElementById('TNumber1' + (tr + 1)).style.color = 'red';
 }
+console.log(Type);
 if (station == '浅草駅') {
     var dDetail1 = document.getElementById('TDetail11');
     var dDetail2 = document.getElementById('TDetail21');
@@ -49,11 +50,11 @@ if (station == '浅草駅') {
     LastLetterRemove(1, 0, '・');
     stationN = '北千住';
     FDetail(Type[2][0], Tobuobj, Dtype[0], 2, 0, "・");
-    if(dDetail1.textContent!=''){
-        dDetail1.textContent='停車駅は '+dDetail1.textContent+'です';
+    if (Detail[0][0] != '' && Type[0][0] != '') {
+        Detail[0][0] = '停車駅は ' + Detail[0][0] + 'です';
     }
-    if(dDetail2.textContent!=''){
-        dDetail2.textContent='停車駅は '+dDetail2.textContent+'です';
+    if (Detail[1][0] != '' && Type[1][0] != '') {
+        Detail[1][0] = '停車駅は ' + Detail[1][0] + 'です';
     }
     if (whetherStop(17, 40, TableHour[0][0], TableMin[0][0], 23, 30)) {
         DetailReplace(0, 0, '北千住', '曳舟・北千住');
@@ -64,7 +65,10 @@ if (station == '浅草駅') {
     var dDetail = document.getElementById('TDetail31');
     if (Type[2][0].includes('区間')) {
         LastLetterRemove(2, 0, '・');
-        dDetail.textContent = '停車駅は 北千住までの各駅・' + dDetail.textContent;
+        Detail[2][0] = '停車駅は 北千住までの各駅・' + Detail[2][0];
+    }
+    for (var td = 0; td < 3; td++) {
+        document.getElementById('TDetail' + (td + 1) + (1)).textContent = Detail[td][0];
     }
     console.log(PlusType);
     console.log(PlusDes);
