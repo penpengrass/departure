@@ -6,12 +6,13 @@ JRLimitedDevide(3);
 //allLastShow();
 TablenumSub = 1
 JRNameDevide(2);
-console.log(Dtype);
+console.log(Detail);
 var takefu = [62, 64, 4, 8, 12, 84, 16, 20, 22, 24, 26, 28, 30, 34, 38, 42, 46, 48, 50, 1, 5, 9, 13, 17, 19, 21, 23, 25, 29, 33, 37, 41, 45, 47, 49, 61];
 var iiyama = [552, 554, 556, 558, 560, 564, 568, 572, 574, 576, 578, 590];
 var k_takefu = [[502, 518], [501, 517]];
 var k_onsen = [[506, 510], [507, 509]];
 for (var tr = 0; tr < 2; tr++) {
+    Detail[1][tr] = "";
     if (Type[0][tr] != '') {
         document.getElementById('TDetailtitle' + (0 + 1) + (tr + 1)).textContent = '停車駅';
     }
