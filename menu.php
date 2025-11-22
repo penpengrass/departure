@@ -76,9 +76,9 @@
             </tr>
             <tr>
                 <td>JR西日本北陸</td>
-                <td><button type="button" onclick="location.href='./index4_Tsuruga.php'">移動</button></td>
+                <td><button type="button" onclick="location.href='./index4_H.php'">移動</button></td>
                 <td><span style="color:#FF8C00;">敦賀駅</span></td>
-                <td></td>
+                <td><span style="color:#FF8C00;">福井駅</span>, <span style="color:#FF8C00;">金沢駅</span></td>
             </tr>
             <tr>
                 <td>JR西日本新幹線主要駅</td>
@@ -171,7 +171,7 @@
         <li>JR北海道 旭川駅 </li>
         <li>JR東日本 高崎駅 仙台駅 福島駅 郡山駅 </li>
         <li>東武鉄道 浅草駅 北千住駅</li>
-        <li>北陸地方 福井駅 金沢駅</li>
+        <li>北陸地方 富山駅</li>
         <li>JR西日本 京都駅 尼崎駅 和歌山駅 米子駅 新山口駅</li>
         <li>近鉄 宇治山田駅</li>
         <li>JR九州 熊本駅 鹿児島中央駅</li>

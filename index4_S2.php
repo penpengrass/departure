@@ -22,7 +22,7 @@
   <link rel="stylesheet" href="css/styleJRW_S2.css">
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
-  <script type="text/javascript" src="js/detailset/JRHoShindetailset.js"></script>
+  <script type="text/javascript" src="js/detailset/JRHokuShindetailset.js"></script>
   <script type="text/javascript" src="js/detailset/JRW_S.js"></script>
   <script type="text/javascript" src="js/stationset4_S.js"></script>
 </head>

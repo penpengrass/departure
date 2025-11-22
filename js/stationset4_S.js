@@ -45,22 +45,3 @@ else if (station == '博多駅') {
     limitedjustnumber(TT[0], 70, 'のぞみ*');
     limitedjustnumber(TT[0], 2, 'のぞみ');
 }
-else if (station == '敦賀駅') {
-    company = '北陸新幹線';
-    var staflag = 0;
-    var Dtype = [1];
-    TableTitle = ['北陸新幹線 金沢 富山方面', '北陸新幹線 当駅止め', '当駅止め', '特急列車 大阪 名古屋方面', '北陸本線 湖西線', 'ハピラインふくい', '小浜線'];
-    var Tshirasagi = [2, 52, 4, 54, 6, 56, 8, 58, 10, 12, 60, 14, 62, 16, 64];
-    var Tshirasagi2 = [51, 1, 3, 5, 53, 7, 55, 9, 57, 11, 59, 13, 61, 15, 63];
-    TrainNameDevide('特急', 4, 3);
-    limitedjustnumber(TT[0], 2, 'つるぎ');
-    limitedjustnumber(TT[0], 560, 'はくたか');
-    limitedjustnumber(TT[0], 502, 'かがやき');
-    limitedjustnumber(TT[1], 1, 'つるぎ');
-    limitedjustnumber(TT[1], 561, 'はくたか');
-    limitedjustnumber(TT[1], 501, 'かがやき');
-    limitedjustnumber2(TT[3], Tshirasagi, '特急しらさぎ');
-    limitedjustnumber(TT[3], 2, '特急ｻﾝﾀﾞｰﾊﾞｰﾄﾞ');
-    limitedjustnumber2(TT[2], Tshirasagi2, '特急しらさぎ');
-    limitedjustnumber(TT[2], 1, '特急ｻﾝﾀﾞｰﾊﾞｰﾄﾞ');
-}

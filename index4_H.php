@@ -23,6 +23,7 @@
     $OrderNum = 3;
     $detailflag = 2;
     $detaillength = 2;
+    require('PHP/files4_H.php');
     require('getCSV.php');
     ?>
     <title>JR西日本駅発車標</title>
@@ -32,9 +33,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
     <script type="text/javascript" src="js/function1.js"></script>
     <script type="text/javascript" src="js/functionTime.js"></script>
-    <script type="text/javascript" src="js/detailset/JRHoShindetailset.js"></script>
+    <script type="text/javascript" src="js/detailset/JRHokuShindetailset.js"></script>
+    <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
     <script type="text/javascript" src="js/stationset4.js"></script>
-    <script type="text/javascript" src="js/stationset4_S.js"></script>
+    <script type="text/javascript" src="js/stationset4_H.js"></script>
 </head>
 
 <body>
@@ -44,6 +46,7 @@
     </div>
     <!--駅選択部分-->
     <?php JRWStaSele('駅変更');
+    HokurikuStaSele('北陸駅変更')
     ?>
     <form action="select.php" method="POST" id="selectstation">
         <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
@@ -66,12 +69,12 @@
             JRWSTable2($i, $tablenums, 2, 2);
         }
         for ($i = 3; $i <= $tablenum; $i++) {
-            JRWZTable($i, 2);
+            JRWZTable($i, 2,$tablenums);
         }
 
         ?>
     </tableline>
-    <p id="supplement">臨時列車の有無や番線は不正確<br></p>
+    <p id="supplement">臨時列車の有無や番線、停車駅は不正確<br></p>
     <!--ここから内部のこと-->
     <script type="text/javascript" src="js/Time.js"></script>
     <script type="text/javascript" src="js/Timer.js"></script>
@@ -83,12 +86,11 @@
     <script type="text/javascript" src="js/detailfunction.js"></script>
     <script type="text/javascript" src="js/functionW.js"></script>
     <script type="text/javascript" src="js/functionDetail.js"></script>
-    <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
     <script type="text/javascript" src="js/altershow.js"></script>
     <script type="text/javascript" src="js/detailshow.js"></script>
     <script type="text/javascript" src="js/typeColor.js"></script>
-    <script type="text/javascript" src="js/Tforshow4_S.js"></script>
-    <script type="text/javascript" src="js/Tforshow4_Ts.js"></script>
+    <script type="text/javascript" src="js/Tforshow3_S.js"></script>
+    <script type="text/javascript" src="js/Tforshow4_H.js"></script>
     <script type="text/javascript" src="js/LastShow.js"></script>
 </body>
 

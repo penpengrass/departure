@@ -59,3 +59,14 @@ function JRWSStaSele($Select)
     <button type="submit" class="henko" name="submit">'.$Select .'</button>
   </form>';
 }
+function HokurikuStaSele($Select){
+    echo '<span class="selecttext">北陸駅</span>
+    <form action="PHP/files4_H.php" method="POST" id="selectstation">
+    <select name="staselect4_H">
+      <option value="tsuruga">敦賀駅</option>
+      <option value="fukui">福井駅</option>
+      <option value="kanazawa">金沢駅</option>
+    </select>
+    <button type="submit" class="henko" name="submit">'.$Select .'</button>
+  </form>';
+}

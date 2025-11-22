@@ -18,7 +18,7 @@ if (isset($_POST['staselect4'])) {
     header("Location: ../index4_T.php");
     exit();
   } else if ($test1 == 'tsuruga') {
-    header("Location: ../index4_Tsuruga.php");
+    header("Location: ../index4_H.php");
     exit();
   } else if ($test1 == 'osaka') {
     header("Location: ../index4_A.php");

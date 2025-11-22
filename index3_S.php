@@ -22,7 +22,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/function1.js"></script>
   <script type="text/javascript" src="js/stationset3_S.js"></script>
-  <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
+
 </head>
 
 <body>
@@ -68,7 +68,7 @@
 <script type="text/javascript" src="js/functionColor.js"></script>
 <script type="text/javascript" src="js/functionDetail.js"></script>
 <script type="text/javascript" src="js/detailfunction.js"></script>
-<script type="text/javascript" src="js/detailset/JREShindetailset.js"></script>
+<script type="text/javascript" src="js/detailset/JRHokuShindetailset.js"></script>
 <script type="text/javascript" src="js/detailshow.js"></script>
 <script type="text/javascript" src="js/Tforshow3_S.js"></script>
 </body>

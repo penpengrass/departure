@@ -45,7 +45,7 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
     while (Sentence == '' && Dtype[td_detail] < 10 && Dflag < 200) {
         DLine_in = 0;
         //console.log("td_detail=" + td_detail);
-        console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
+        //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
         Dflag++;
         //console.log(Dflag);
         if (StationInLine(stationN, Type_Line, Dtype[td_detail]) == -1) {
@@ -60,7 +60,7 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
                 continue;
             }
         } else {
-            console.log("関数の結果出発駅が何番目の配列か=" + StationInLine(stationN, Type_Line, Dtype[td_detail]));
+            //console.log("関数の結果出発駅が何番目の配列か=" + StationInLine(stationN, Type_Line, Dtype[td_detail]));
         }
         //出発駅が配列部分に出てくるまでwhileを繰り返す
         //console.log(Dtype[td_detail] + ':' + td_detail);
@@ -74,7 +74,7 @@ function DetailDecide(Type_Line, td_detail, Des, Sentence, distance) {//引数1�
                 break;
             }
         }
-        console.log("出発駅仮確定 出発駅=" + Type_Line[Dtype[td_detail]][DLine_in] + ":DLine_in=" + DLine_in);
+        //console.log("出発駅仮確定 出発駅=" + Type_Line[Dtype[td_detail]][DLine_in] + ":DLine_in=" + DLine_in);
         DLine_in++;
         while (Type_Line[Dtype[td_detail]][DLine_in - 1] != "以遠各駅" && !Type_Line[Dtype[td_detail]][DLine_in - 1].includes("から各駅") && Type_Line[Dtype[td_detail]][DLine_in] !== Des && Dflag < 200) {
             Sentence += Type_Line[Dtype[td_detail]][DLine_in] + distance;
@@ -158,9 +158,9 @@ function FDetail(Utype, Uobj, n, td, tr, distance) {
     //Detail[td][tr] = DetailLine;
     //document.getElementById(TType).textContent = Detail[td][tr];
     //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = DetailLine;
-    console.log(DetailLine);
+    //console.log(DetailLine);
     Detail[td][tr] = DetailLine;
-    console.log(Detail);
+    //console.log(Detail);
     /*if (detailflag == 8 || Indexfile == 'index4.php' || Indexfile == 'index7.php') {
         //console.log(Detail[td][tr]);
         //document.getElementById('TDetail' + (td + 1)).textContent = Detail[td][tr];
