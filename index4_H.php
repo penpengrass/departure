@@ -52,7 +52,7 @@
         <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
         <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
         <button type="button" onclick="location.href='./index2.php'">近鉄へ移動</button>
-        <button type="button" onclick="location.href='./index3.php'">JR東日本へ移動</button>
+        <button type="button" onclick="location.href='./index3_S.php'">新幹線長野駅へ移動</button>
         <button type="button" onclick="location.href='./index4.php?station=maibara'">米原駅へ移動</button>
         <button type="button" onclick="location.href='./index4_S2.php'">広島駅へ移動</button>
         <button type="button" onclick="location.href='./index6.php?station=matsumoto'">松本駅へ移動</button>
