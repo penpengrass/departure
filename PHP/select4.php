@@ -24,6 +24,7 @@ function JRKinkiStaSele($Select)
                     <option value="mihara">三原駅</option>
                     <option value="hiroshima">広島駅</option>
                     <option value="niimi">新見駅</option>
+                    <option value="yonago">米子駅</option>
                     <option value="iwakuni">岩国駅</option>
                     <option value="tokuyama">徳山駅</option>
                     <option value="shimonoseki">下関駅</option>

@@ -27,13 +27,18 @@ function TTconnect(TTLeft, TTRight, TTSum) {
     //console.log(TT[6]);
     console.log("TTLeft.length=" + TTLeft.length + ":TTRight.length=" + TTRight.length);
     if (TTLeft.length != TTRight.length) {
-        throw TypeError("表を合体できません");
+        if (TTLeft[2][1] == TTRight[2][1]) {
+            throw TypeError("表を合体できますが実装できていません");
+        } else {
+            throw TypeError("表を合体できません");
+        }
     }
     console.log(Math.max(TTLeft.length, TTRight.length));
     for (let TaRow = 2; TaRow < Math.max(TTLeft.length, TTRight.length); TaRow += 4) {
         //TaRow = 34;
         //console.log(TTLeft[TaRow]);
-        //console.log(TaRow + ":*" + (TTLeft[TaRow].length + TTRight[TaRow].length));
+        console.log(TaRow + ":*" + (TTLeft[TaRow].length + TTRight[TaRow].length));
+        console.log(TTSum);
         TTSum[TaRow] = new Array(TTLeft[TaRow].length + TTRight[TaRow].length);
         //console.log(TTLeft[TaRow].length);
         //時の部分を入れる
@@ -133,13 +138,13 @@ if (station == '武蔵小杉駅') {
     TT[0] = TT[6];
     //console.log(TT[0][1][0]);
     console.log(TT[1]);
-}else if(station=='熱海駅'){
-    TT[3]=undefined;
+} else if (station == '熱海駅') {
+    TT[3] = undefined;
     TT[3] = makeemptyTable(TT[1], TT[2]);
     console.log(TT[1]);
     TTconnect(TT[1], TT[2], TT[3]);
     TT[1] = TT[3];
-    RailNumberDevide(4,1,2);
+    RailNumberDevide(4, 1, 2);
     console.log(TT[1]);
     console.log(TT[2]);
 } else if (station == '新函館北斗駅') {

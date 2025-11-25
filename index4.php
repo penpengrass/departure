@@ -35,6 +35,7 @@
   <script type="text/javascript" src="js/function1.js"></script>
   <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
   <script type="text/javascript" src="js/detailset/JRW_S.js"></script>
+  <script type="text/javascript" src="js/TTconnect.js"></script>
   <script type="text/javascript" src="js/stationset4.js"></script>
 </head>
 
@@ -153,6 +154,7 @@
   <script type="text/javascript" src="js/functionDetail.js"></script>
   <script type="text/javascript" src="js/detailset/JRNadetailset.js"></script>
   <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
+    <script type="text/javascript" src="js/detailset/JRSanindetailset.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/alterdetail.js"></script>
