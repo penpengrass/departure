@@ -32,7 +32,7 @@ function BottomBanner_Reverse(tag, td, tr) {
         //document.getElementById('TName' + td + tr).style.fontSize = '1.5em';
         document.getElementById('TName' + td + tr).style.textAlign = 'left';
     }
-    JTypeColor(Type[td - 1][2], TType[td - 1][2], JRobj);
+    JTypeColor(Type[td - 1][orderNum - 1], TType[td - 1][orderNum - 1], JRobj);
     JRWTrainNameColor(td - 1, tr - 1, 'orange', 'orange', 'red');
     TwoLetterDistance(td - 1, tr - 1, Des, TDes, 1, 0.9);
     DesMiddle(td - 1, tr - 1, '方面');

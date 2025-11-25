@@ -45,7 +45,7 @@ function LowerDetail(td, tr) {
   }
 }
 function LastLetterRemove(td, tr, mark) {
-  console.log(Detail);
+  //console.log(Detail);
   if (Detail[td][tr] != null && Detail[td][tr].slice(-1) == mark) {
     //console.log(tr + 'は読点で終わる');
     Detail[td][tr] = Detail[td][tr].slice(0, -1);

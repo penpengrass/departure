@@ -167,5 +167,17 @@ if (isset($_GET['station'])) {
       $files[1] = 'csv/JRW_Sanyo/mihara2_H.csv';
       $files[2] = 'csv/JRW_Sanyo/mihara3_H.csv';
     }
+  } else if (Inisset('yonago')) {
+    $files[0] = 'csv/JRW_Sanin/yonago_hakubi.csv';
+    if ($holidayflag == 1) {
+      $files[1] = 'csv/JRW_Sanin/yonago_matsue_H.csv';
+      $files[3] = 'csv/JRW_Sanin/yonago_sakai_H.csv';
+    } else {
+      $files[1] = 'csv/JRW_Sanin/yonago_matsue.csv';
+      $files[3] = 'csv/JRW_Sanin/yonago_sakai.csv';
+    }
+    $files[2] = 'csv/JRW_Sanin/yonago_tottori.csv';
+    $tablenum = 3;
+    $OrderNum = 2;
   }
 }

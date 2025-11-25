@@ -32,7 +32,7 @@ function switchdetail(Tab, td, tr, colspan, Banner_F, Banner_F_Reverse) {
 function allswitch_detail(Station_Banner) {
     for (var td = 1; td < Tablenum + 1; td++) {
         if (Type[td - 1][0] != '') {
-            switchdetail("TTLine", td, 3, 5, Station_Banner);
+            switchdetail("TTLine", td, orderNum, 5, Station_Banner);
         }
     }
 }

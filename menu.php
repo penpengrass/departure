@@ -58,7 +58,7 @@
                 <td><span style="color:#FF8C00;">北新地駅</span></td>
                 <td class="long"><span style="color:#FF8C00;">米原駅</span>, <span style="color:#FF8C00;">三ノ宮駅</span>, 
                 <span style="color:blue;">姫路駅</span>, <span style="color:#FF8C00;">岡山駅</span>, <span style="color:#FF8C00;">糸崎駅</span>, 
-                <span style="color:#FF8C00;">三原駅</span>, <span style="color:#FF8C00;">広島駅</span>, <span style="color:blue;">新見駅</span>, 
+                <span style="color:#FF8C00;">三原駅</span>, <span style="color:#FF8C00;">広島駅</span>, <span style="color:blue;">新見駅</span>, <span style="color:#FF8C00;">米子駅</span>, 
                 <span style="color:#FF8C00;">岩国駅</span>, <span style="color:#FF8C00;">徳山駅</span>, <span style="color:blue;">下関駅</span>
                 </td>
             </tr>
@@ -172,7 +172,7 @@
         <li>JR東日本 高崎駅 仙台駅 福島駅 郡山駅 </li>
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 富山駅</li>
-        <li>JR西日本 京都駅 尼崎駅 和歌山駅 米子駅 新山口駅</li>
+        <li>JR西日本 京都駅 尼崎駅 和歌山駅 新山口駅</li>
         <li>近鉄 宇治山田駅</li>
         <li>JR九州 熊本駅 鹿児島中央駅</li>
         <li>JR四国 徳島駅 阿波池田駅 </li>

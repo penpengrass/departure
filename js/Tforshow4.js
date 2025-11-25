@@ -390,6 +390,9 @@ if (station == "徳山駅") {
     }
 
     comment.textContent = "両数は不正確";
+} else if (station == '米子駅') {
+    comment.textContent += "一部表示不正確 ";
+    holiday_F(station);
 }
 if (station == "三原駅") {
     for (var tr = 0; tr < orderNum; tr++) {
@@ -446,6 +449,10 @@ if (station == "北新地駅") {
     //setInterval(allswitch_detail, 20000);
     setInterval(function () {
         allswitch_detail(Maibara_Banner);
+    }, 20000);
+} else if (station == '米子駅') {
+    setInterval(function () {
+        allswitch_detail(Yonago_Banner);
     }, 20000);
 }
 
