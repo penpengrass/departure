@@ -12,7 +12,9 @@ var iiyama = [552, 554, 556, 558, 560, 564, 568, 572, 574, 576, 578, 590];
 var k_takefu = [[502, 518], [501, 517]];
 var k_onsen = [[506, 510], [507, 509]];
 for (var tr = 0; tr < 2; tr++) {
-    Detail[1][tr] = "";
+    if (station == '敦賀駅') {
+        Detail[1][tr] = "";
+    }
     if (Type[0][tr] != '') {
         document.getElementById('TDetailtitle' + (0 + 1) + (tr + 1)).textContent = '停車駅';
     }
