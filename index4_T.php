@@ -27,9 +27,9 @@
   <link rel="stylesheet" href="css/banner.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/function1.js"></script>
+  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
   <script type="text/javascript" src="js/TTconnect.js"></script>
-  <script type="text/javascript" src="js/detailset/JRTennojidetail.js"></script>
+  <script type="text/javascript" src="js/detailStopData/JRTennojidetail.js"></script>
   <script type="text/javascript" src="js/stationset4.js"></script>
 </head>
 
@@ -117,13 +117,12 @@
   <!--ここから内部のこと-->
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>
-  <script type="text/javascript" src="js/TimeShow.js"></script>
+  <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/altershow.js"></script>
-  <script type="text/javascript" src="js/function2.js"></script>
-  <script type="text/javascript" src="js/functionDetail.js"></script>
-  <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
+  <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
+    <script type="text/javascript" src="js/detailStopData/JRW_afterset.js"></script>
   <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/Tforshow4_T.js"></script>

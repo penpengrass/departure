@@ -15,9 +15,9 @@
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/function1.js"></script>
+  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
   <script type="text/javascript" src="js/stationset2.js"></script>
-  <script type="text/javascript" src="js/detailset/Kindetailset.js"></script>
+  <script type="text/javascript" src="js/detailStopData/Kindetailset.js"></script>
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>
 </head>
@@ -97,12 +97,11 @@
   <p id="supplement"></p>
   <!--ここから内部のこと-->
   
-  <script type="text/javascript" src="js/TimeShow.js"></script>
+  <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/function2.js"></script>
-  <script type="text/javascript" src="js/function3.js"></script>
-  <script type="text/javascript" src="js/functionDetail.js"></script>
+  <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
+  <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
   <script type="text/javascript" src="js/detailshow.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/Tforshow2.js"></script>

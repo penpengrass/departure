@@ -32,9 +32,9 @@
   }
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/function1.js"></script>
-  <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
-  <script type="text/javascript" src="js/detailset/JRW_S.js"></script>
+  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
+  <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
+  <script type="text/javascript" src="js/detailStopData/JRW_S.js"></script>
   <script type="text/javascript" src="js/TTconnect.js"></script>
   <script type="text/javascript" src="js/stationset4.js"></script>
 </head>
@@ -142,23 +142,21 @@
   <!--ここから内部のこと-->
   <script type="text/javascript" src="js/Time.js"></script>
   <script type="text/javascript" src="js/Timer.js"></script>
-  <script type="text/javascript" src="js/TimeShow.js"></script>
+  <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/altershow.js"></script>
-  <script type="text/javascript" src="js/function2.js"></script>
-  <script type="text/javascript" src="js/function3.js"></script>
-  <script type="text/javascript" src="js/functionCars.js"></script>
-  <script type="text/javascript" src="js/detailfunction.js"></script>
-  <script type="text/javascript" src="js/functionDetail_B.js"></script>
-  <script type="text/javascript" src="js/functionDetail.js"></script>
-  <script type="text/javascript" src="js/detailset/JRNadetailset.js"></script>
-  <script type="text/javascript" src="js/detailset/JRW_afterset.js"></script>
-    <script type="text/javascript" src="js/detailset/JRSanindetailset.js"></script>
+  <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
+  <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
+  <script type="text/javascript" src="js/module/carsEdit.js"></script>
+  <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
+  <script type="text/javascript" src="js/module/detailBannerSwitch.js"></script>
+    <script type="text/javascript" src="js/detailStopData/JRNadetailset.js"></script>
+  <script type="text/javascript" src="js/detailStopData/JRW_afterset.js"></script>
+    <script type="text/javascript" src="js/detailStopData/JRSanindetailset.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/detailshow.js"></script>
-  <script type="text/javascript" src="js/alterdetail.js"></script>
-  <script type="text/javascript" src="js/functionW.js"></script>
+  <script type="text/javascript" src="js/module/displayEdit4.js"></script>
   <script type="text/javascript" src="js/Tforshow4.js"></script>
   <script type="text/javascript" src="js/Tforshow4_S.js"></script>
   <script type="text/javascript" src="js/LastShow.js"></script>

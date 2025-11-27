@@ -16,9 +16,9 @@
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/function1.js"></script>
-  <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
-  <script type="text/javascript" src="js/detailset/Hodetailset.js"></script>
+  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
+  <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
+  <script type="text/javascript" src="js/detailStopData/Hodetailset.js"></script>
   <script type="text/javascript" src="js/stationset8.js"></script>
   <script type="text/javascript" src="js/TTconnect.js"></script>
 
@@ -44,7 +44,7 @@
     <button type="button" onclick="location.href='./index3_S.php?station=utsunomiya'">東北新幹線へ移動</button>
     <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php?station=tokyo'">在来線東京駅へ移動</button>
+    <button type="button" onclick="location.href='./index6_U.php'">在来線東京駅へ移動</button>
     <button type="button" onclick="location.href='./index6_S.php'">新幹線東京駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
   </form>
@@ -123,18 +123,16 @@
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>
 <script type="text/javascript" src="js/Timer.js"></script>
-<script type="text/javascript" src="js/TimeShow.js"></script>
+<script type="text/javascript" src="js/module/timeInfoSet.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
-<script type="text/javascript" src="js/function2.js"></script>
-<script type="text/javascript" src="js/functionDetail.js"></script>
-<script type="text/javascript" src="js/functionColor.js"></script>
-<script type="text/javascript" src="js/detailfunction.js"></script>
-<script type="text/javascript" src="js/detailset/Hodetailchange.js"></script>
+<script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
+<script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
+<script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
+<script type="text/javascript" src="js/detailStopData/Hodetailchange.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
-<script type="text/javascript" src="js/Tforshow8.js"></script>
 <script type="text/javascript" src="js/detailshow.js"></script>
-<script type="text/javascript" src="js/detailonce8.js"></script>
+<script type="text/javascript" src="js/Tforshow8.js"></script>
 
 
 </body>
