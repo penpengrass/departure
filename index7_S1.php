@@ -75,7 +75,7 @@
   <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/altershow.js"></script>
+  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
   <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
   <script type="text/javascript" src="js/Tforshow7_S.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>

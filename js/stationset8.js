@@ -62,4 +62,9 @@ if (station == '札幌駅') {
     limitednumber2(TT[0], hayabusa, 'はやぶさ');
     limitednumber(TT[1], 2, '特急北斗');
     limitednumber(TT[2], 1, '特急北斗');
+    console.log(TT[1]);
+    console.log(TT[3]);
+    TT[3] = makeemptyTable(TT[1], TT[2]);
+    TTconnect(TT[1], TT[2], TT[3]);
+    TT[1] = TT[3];
 }

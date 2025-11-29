@@ -43,7 +43,7 @@
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/TTconnect.js"></script>
+  <script type="text/javascript" src="js/module/connectTable.js"></script>
   <script type="text/javascript" src="js/stationset6.js"></script>
 </head>
 
@@ -184,7 +184,7 @@
 <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
 <script type="text/javascript" src="js/module/carsEdit.js"></script>
 <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-<script type="text/javascript" src="js/altershow.js"></script>
+<script type="text/javascript" src="js/module/displaySwitch.js"></script>
 <script type="text/javascript" src="js/module/displayEdit6.js"></script>
 <script type="text/javascript" src="js/Tforshow6.js"></script>
 <script type="text/javascript" src="js/LastShow.js"></script>

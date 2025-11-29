@@ -46,7 +46,7 @@
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/TTconnect.js"></script>
+  <script type="text/javascript" src="js/module/connectTable.js"></script>
   <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
   <script type="text/javascript" src="js/stationset4.js"></script>
 </head>
@@ -131,7 +131,7 @@
   <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/altershow.js"></script>
+  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
   <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
   <script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
   <script type="text/javascript" src="js/module/displayEdit4.js"></script>

@@ -13,4 +13,9 @@ if (station == '東京駅') {
     limitednumber(TT[2], 601, 'あさま');
     limitednumber(TT[2], 551, 'はくたか');
     limitedjustnumber(TT[2], 501, 'かがやき');
+    console.log(TT[1]);
+    console.log(TT[3]);
+    TT[3] = makeemptyTable(TT[1], TT[2]);
+    TTconnect(TT[1], TT[2], TT[3]);
+    TT[1] = TT[3];
 }

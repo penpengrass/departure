@@ -19,8 +19,9 @@
   <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
   <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
   <script type="text/javascript" src="js/detailStopData/Hodetailset.js"></script>
+  <script type="text/javascript" src="js/module/connectTable.js"></script>
   <script type="text/javascript" src="js/stationset8.js"></script>
-  <script type="text/javascript" src="js/TTconnect.js"></script>
+  
 
 </head>
 
@@ -131,7 +132,7 @@
 <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
 <script type="text/javascript" src="js/detailStopData/Hodetailchange.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
-<script type="text/javascript" src="js/detailshow.js"></script>
+<script type="text/javascript" src="js/module/detailMainPut.js"></script>
 <script type="text/javascript" src="js/Tforshow8.js"></script>
 
 

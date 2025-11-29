@@ -71,11 +71,11 @@
   <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/altershow.js"></script>
+  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
   <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
   <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
   <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-    <script type="text/javascript" src="js/detailshow.js"></script>
+    <script type="text/javascript" src="js/module/detailMainPut.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/Tforshow4_S.js"></script>
 </body>

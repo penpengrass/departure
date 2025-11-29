@@ -102,7 +102,7 @@
   <script type="text/javascript" src="js/variable2.js"></script>
   <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
   <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
-  <script type="text/javascript" src="js/detailshow.js"></script>
+  <script type="text/javascript" src="js/module/detailMainPut.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/Tforshow2.js"></script>
   <script type="text/javascript" src="js/LastShow.js"></script>

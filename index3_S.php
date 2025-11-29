@@ -68,7 +68,7 @@
 <script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
 <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
 <script type="text/javascript" src="js/detailStopData/JRHokuShindetailset.js"></script>
-<script type="text/javascript" src="js/detailshow.js"></script>
+<script type="text/javascript" src="js/module/detailMainPut.js"></script>
 <script type="text/javascript" src="js/Tforshow3_S.js"></script>
 </body>
 

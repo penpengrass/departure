@@ -117,7 +117,7 @@
 <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
 <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
 <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-<script type="text/javascript" src="js/detailshow.js"></script>
+<script type="text/javascript" src="js/module/detailMainPut.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
 <script type="text/javascript" src="js/Tforshow7_T.js"></script>
 </body>

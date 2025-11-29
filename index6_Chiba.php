@@ -143,7 +143,7 @@
 <script type="text/javascript" src="js/module/carsEdit.js"></script>
 <script type="text/javascript" src="js/module/displayEdit6.js"></script>
 <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-<script type="text/javascript" src="js/altershow.js"></script>
+<script type="text/javascript" src="js/module/displaySwitch.js"></script>
 <script type="text/javascript" src="js/Tforshow6_Chiba.js"></script>
 <!--<script type="text/javascript" src="js/Tforshow6UTL.js"></script>-->
 </body>

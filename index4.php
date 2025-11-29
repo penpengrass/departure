@@ -35,7 +35,7 @@
   <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
   <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
   <script type="text/javascript" src="js/detailStopData/JRW_S.js"></script>
-  <script type="text/javascript" src="js/TTconnect.js"></script>
+  <script type="text/javascript" src="js/module/connectTable.js"></script>
   <script type="text/javascript" src="js/stationset4.js"></script>
 </head>
 
@@ -145,7 +145,7 @@
   <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
   <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/altershow.js"></script>
+  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
   <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
   <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
   <script type="text/javascript" src="js/module/carsEdit.js"></script>
@@ -155,7 +155,7 @@
   <script type="text/javascript" src="js/detailStopData/JRW_afterset.js"></script>
     <script type="text/javascript" src="js/detailStopData/JRSanindetailset.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
-  <script type="text/javascript" src="js/detailshow.js"></script>
+  <script type="text/javascript" src="js/module/detailMainPut.js"></script>
   <script type="text/javascript" src="js/module/displayEdit4.js"></script>
   <script type="text/javascript" src="js/Tforshow4.js"></script>
   <script type="text/javascript" src="js/Tforshow4_S.js"></script>

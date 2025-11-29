@@ -85,8 +85,8 @@
     <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
     <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
     <script type="text/javascript" src="js/module/displayEdit4.js"></script>
-        <script type="text/javascript" src="js/altershow.js"></script>
-    <script type="text/javascript" src="js/detailshow.js"></script>
+        <script type="text/javascript" src="js/module/displaySwitch.js"></script>
+    <script type="text/javascript" src="js/module/detailMainPut.js"></script>
     <script type="text/javascript" src="js/typeColor.js"></script>
     <script type="text/javascript" src="js/Tforshow3_S.js"></script>
     <script type="text/javascript" src="js/Tforshow4_H.js"></script>

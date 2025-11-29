@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
   <script type="text/javascript" src="js/detailStopData/Shidetailset.js"></script>
-  <script type="text/javascript" src="js/TTconnect.js"></script>
+  <script type="text/javascript" src="js/module/connectTable.js"></script>
   <script type="text/javascript" src="js/stationset9.js"></script>
 
 </head>
@@ -101,7 +101,7 @@
 <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
 <script type="text/javascript" src="js/detailStopData/Shidetailchange.js"></script>
 <script type="text/javascript" src="js/typeColor.js"></script>
-<script type="text/javascript" src="js/detailshow.js"></script>
+<script type="text/javascript" src="js/module/detailMainPut.js"></script>
 <script type="text/javascript" src="js/Tforshow9.js"></script>
 </body>
 
