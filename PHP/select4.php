@@ -24,6 +24,7 @@ function JRKinkiStaSele($Select)
                     <option value="mihara">三原駅</option>
                     <option value="hiroshima">広島駅</option>
                     <option value="niimi">新見駅</option>
+                    <option value="yonago">米子駅</option>
                     <option value="iwakuni">岩国駅</option>
                     <option value="tokuyama">徳山駅</option>
                     <option value="shimonoseki">下関駅</option>
@@ -55,6 +56,17 @@ function JRWSStaSele($Select)
       <option value="hiroshima">広島駅</option>
       <option value="okayama">岡山駅</option>
       <option value="hakata">博多駅</option>
+    </select>
+    <button type="submit" class="henko" name="submit">'.$Select .'</button>
+  </form>';
+}
+function HokurikuStaSele($Select){
+    echo '<span class="selecttext">北陸駅</span>
+    <form action="PHP/files4_H.php" method="POST" id="selectstation">
+    <select name="staselect4_H">
+      <option value="tsuruga">敦賀駅</option>
+      <option value="fukui">福井駅</option>
+      <option value="kanazawa">金沢駅</option>
     </select>
     <button type="submit" class="henko" name="submit">'.$Select .'</button>
   </form>';

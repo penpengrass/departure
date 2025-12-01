@@ -239,7 +239,7 @@ function JRLimitedNumber(td, tr, flag = 0) {
             "TName" + (td + 1) + "" + (tr + 1)
         ).textContent;
     }
-    //console.log(LimitedName[tr]);
+    console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     matches2[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
     if (matches[tr]) {

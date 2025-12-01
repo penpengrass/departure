@@ -8,10 +8,10 @@ function DesMiddle(td, tr, word) {
     //matches[tr] = Des[td][tr].match(/(\D+)連絡(\D+)/);
     matches[tr] = Des[td][tr].match(Desword);
     var Tag;
-    if(Indexfile=='index4_O.php'){
-        Tag='WDes';
-    }else{
-        Tag='TDes';
+    if (Indexfile == 'index4_O.php') {
+        Tag = 'WDes';
+    } else {
+        Tag = 'TDes';
     }
     //console.log(matches[tr]);
     if (matches[tr]) {
@@ -29,7 +29,7 @@ function DesMiddle(td, tr, word) {
             //console.log(DesRight.textContent.length);
             DesRight.style.display = 'inline-block';
             DesRight.style.transform = "scaleX(0.75)" + "translate(-20%,0%)";
-        } else if (station == '糸崎駅'&&DesRight.textContent.length>2) {
+        } else if (station == '糸崎駅' && DesRight.textContent.length > 2) {
             DesRight.style.display = 'inline-block';
             DesRight.style.transform = "scaleX(0.65)" + "translate(-25%,0%)";
         }
@@ -78,7 +78,22 @@ function Kitashinchi_Banner(td) {
         Detail_contents[td - 1] = Detail[td - 1][0];
     }
 }
-function Nothing() {
+function Yonago_Banner(td) {
+    if (td == 3 && Type[td - 1][0].startsWith('快速')) {
+        return;
+    }
+    FDetail(Type[td - 1][0], JRSaninObj, Dtype[0], td - 1, 0, "・");
+    //ここに追加停車駅を入れる必要がある。
+    JRSaninAddStop(td - 1);
+    LastLetterRemove(td - 1, 0, '・');
+    if (Detail[td - 1][0].includes('各駅')) {
+        if (Des[td - 1][0] == '新見') {
+            Detail[td - 1][0] = '備中神代までの各駅';
+        } else {
+            Detail[td - 1][0] = Des[td - 1][0] + "までの各駅";
+        }
+    }
+    Detail_contents[td - 1] = Detail[td - 1][0];
 }
 //特急の列車名の色を変える
 function JRWTrainNameColor(td, tr, NameColor, NumberColor, GouColor) {

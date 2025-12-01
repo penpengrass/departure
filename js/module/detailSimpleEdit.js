@@ -50,24 +50,28 @@ function whetherStop(start_hour, start_min, hour, min, end_hour, end_min) {
 function DetailReplace(td, tr, Before, After) {
   //var LDetail;
   if (After.includes(Des[td][tr])) {
-    console.log(Des[td][tr] + ":" + (td + 1) + ":" + (tr + 1));
     if (Detail[td][tr] == "") {
       Detail[td][tr] += Des[td][tr];
-    } else {
+    } else if (Indexfile == "index3_S.php" || Indexfile == "index11.php"){
       Detail[td][tr] += "・" + Des[td][tr];
     }
   }
-  console.log(Detail[td][tr]);
-  Detail[td][tr] = Detail[td][tr].replace(Before, After);
-  if (Indexfile != "index3_S.php" && Indexfile != "index11.php") {
-    Detail[td][tr] = Detail[td][tr].replace(Des[td][tr], "");
-    LastLetterRemove(td, tr, "・");
+  if (stationN == Before) {
+    var _NextStop = After.replace(stationN + "・", '');
+    Detail[td][tr] = _NextStop + "・" + Detail[td][tr];
   }
+  Detail[td][tr] = Detail[td][tr].replace(Before, After);
+  LastLetterRemove(td, tr, '・');
 }
 //新幹線や有料特急の追加停車
 function DetailReplace_Set(td, tr, Line, Before, After) {
   if (Line.includes(number[td][tr])) {
     DetailReplace(td, tr, Before, After);
+  }
+}
+function DetailReplace_Set_One(td, Line, Before, After, TypeName = "") {
+  if (Line.includes(number[td]) && Type[td][0].includes(TypeName)) {
+    DetailReplace(td, 0, Before, After);
   }
 }
 //所要時間表示(実際の表示にはない, ここで表示を完結させる)
@@ -130,7 +134,7 @@ function SpecialStop(td, last, Before_station, AddStation, distance, Indent) {
         LType.style.textIndent = Indent + "em";
       }
       Type[td][tr] = Type[td][tr].replace(last, "");
-      console.log(AddStation+"駅に特別停車");
+      console.log(AddStation + "駅に特別停車");
     }
   }
   console.log("---" + AddStation + "駅の追加停車駅処理終了");

@@ -1,3 +1,4 @@
+//JR四国とJR北海道でのみ使用
 //配列(引数1)の中から引数2となる駅を探して，引数3に引数2の次の追加停車駅を入れる関数(ex)limited,'今治','伊予北条')
 function AddStopping(TrainType, BeforeStation, AddStation, LDtype = 0) {
     var Addnumber = -1;

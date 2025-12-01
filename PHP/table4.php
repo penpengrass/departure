@@ -38,7 +38,7 @@ function JRWSTable($i, $tablenums, $column = 2)
   }
 }
 
-function JRWZTable($i, $column)
+function JRWZTable($i, $column, $tablenums)
 {
   print('
  <table class="ZTable" id="TTable' . $i . '">');
@@ -55,7 +55,7 @@ function JRWZTable($i, $column)
     </tr>
   ');
   //n番目に発車する列車までを表示
-  for ($j = 1; $j <= 3; $j++) {
+  for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
     print('
     <tr id="TTLine' . $i . $j . '"><p10 id="TTLineContents' . $i . $j . '"></p10>
       <td class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>

@@ -8,6 +8,28 @@ if (station == '武蔵小杉駅') {
         '３番線'];
     limitednumber2(TT[4], NexOfuna1, '成田ｴｸｽﾌﾟﾚｽ');
     limitednumber2(TT[2], NexOfuna2, '成田ｴｸｽﾌﾟﾚｽ');
+    console.log(TT[6]);
+    TT[6] = makeemptyTable(TT[0], TT[2]);
+    TT[5] = makeemptyTable(TT[1], TT[3]);
+    //Tablereset(4);
+    //Tablereset(5);
+    console.log(TT[6]);
+    console.log("---1回目のconnect始まり");
+    TTconnect(TT[0], TT[2], TT[6]);
+    console.log("---1回目のconnect終わり");
+    TTconnect(TT[1], TT[3], TT[5]);
+    TT[7] = makeemptyTable(TT[4], TT[5]);
+    TTconnect(TT[4], TT[5], TT[7]);
+    //console.log(TT[4]);
+    //console.log(TT[5]);
+    for (let z = 0; z < 6; z++) {
+        console.log(z + ":" + TT[z].length);
+    }
+    //console.log(TT[4][1][0]);
+    TT[1] = TT[7];
+    TT[0] = TT[6];
+    //console.log(TT[0][1][0]);
+    console.log(TT[1]);
 } else if (station == '熱海駅') {
     //
     TableTitle = ['伊東線 伊東・伊豆急下田方面', '2・3 東海道線(下り) 三島・沼津・静岡方面', '4・5 (上野東京ライン)東海道線(上り) 小田原・横浜・東京方面'];
@@ -16,6 +38,14 @@ if (station == '武蔵小杉駅') {
         TT[1][7][1] = '沼津';
         TT[1][59][4] = '浜松';
     }
+    TT[3] = undefined;
+    TT[3] = makeemptyTable(TT[1], TT[2]);
+    console.log(TT[1]);
+    TTconnect(TT[1], TT[2], TT[3]);
+    TT[1] = TT[3];
+    RailNumberDevide(4, 1, 2);
+    console.log(TT[1]);
+    console.log(TT[2]);
 } else if (station == '小田原駅') {
     TableTitle = ['東海道線 熱海方面', '東海道線 東京方面'];
     var shonan = [4, 22, 6, 8, 24, 10, 26, 12];

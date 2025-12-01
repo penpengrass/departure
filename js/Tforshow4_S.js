@@ -104,19 +104,13 @@ function ShinDetailSetting(td, tr, Utype, Uobj) {
         }
     }
 }
-if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_Tsuruga.php') {
-    if (station == '敦賀駅') {
-        TablenumSub = 1
-        JRNameDevide(2);
-    } else {
-        JRNameDevide();
-        allJRSSColor();
-    }
-
+if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
+    JRNameDevide();
+    allJRSSColor();
     for (var td = 0; td < TablenumSub; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
             //この部分は未完成
-            if (station != '敦賀駅') {
+            if (Indexfile != 'index4_H.php') {
                 ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
                 if (Type[td][tr].includes('つばめ*') || Type[td][tr].includes('さくら*')) {
                     Cars[td][tr] = '6両編成';

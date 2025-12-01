@@ -27,13 +27,18 @@ function TTconnect(TTLeft, TTRight, TTSum) {
     //console.log(TT[6]);
     console.log("TTLeft.length=" + TTLeft.length + ":TTRight.length=" + TTRight.length);
     if (TTLeft.length != TTRight.length) {
-        throw TypeError("表を合体できません");
+        if (TTLeft[2][1] == TTRight[2][1]) {
+            throw TypeError("表を合体できますが実装できていません");
+        } else {
+            throw TypeError("表を合体できません");
+        }
     }
     console.log(Math.max(TTLeft.length, TTRight.length));
     for (let TaRow = 2; TaRow < Math.max(TTLeft.length, TTRight.length); TaRow += 4) {
         //TaRow = 34;
         //console.log(TTLeft[TaRow]);
-        //console.log(TaRow + ":*" + (TTLeft[TaRow].length + TTRight[TaRow].length));
+        console.log(TaRow + ":*" + (TTLeft[TaRow].length + TTRight[TaRow].length));
+        console.log(TTSum);
         TTSum[TaRow] = new Array(TTLeft[TaRow].length + TTRight[TaRow].length);
         //console.log(TTLeft[TaRow].length);
         //時の部分を入れる
@@ -110,48 +115,3 @@ function TTconnect(TTLeft, TTRight, TTSum) {
     }
 }
 console.log(TT.length);
-if (station == '武蔵小杉駅') {
-    console.log(TT[6]);
-    TT[6] = makeemptyTable(TT[0], TT[2]);
-    TT[5] = makeemptyTable(TT[1], TT[3]);
-    //Tablereset(4);
-    //Tablereset(5);
-    console.log(TT[6]);
-    console.log("---1回目のconnect始まり");
-    TTconnect(TT[0], TT[2], TT[6]);
-    console.log("---1回目のconnect終わり");
-    TTconnect(TT[1], TT[3], TT[5]);
-    TT[7] = makeemptyTable(TT[4], TT[5]);
-    TTconnect(TT[4], TT[5], TT[7]);
-    //console.log(TT[4]);
-    //console.log(TT[5]);
-    for (let z = 0; z < 6; z++) {
-        console.log(z + ":" + TT[z].length);
-    }
-    //console.log(TT[4][1][0]);
-    TT[1] = TT[7];
-    TT[0] = TT[6];
-    //console.log(TT[0][1][0]);
-    console.log(TT[1]);
-}else if(station=='熱海駅'){
-    TT[3]=undefined;
-    TT[3] = makeemptyTable(TT[1], TT[2]);
-    console.log(TT[1]);
-    TTconnect(TT[1], TT[2], TT[3]);
-    TT[1] = TT[3];
-    RailNumberDevide(4,1,2);
-    console.log(TT[1]);
-    console.log(TT[2]);
-} else if (station == '新函館北斗駅') {
-    console.log(TT[1]);
-    console.log(TT[3]);
-    TT[3] = makeemptyTable(TT[1], TT[2]);
-    TTconnect(TT[1], TT[2], TT[3]);
-    TT[1] = TT[3];
-} else if (station == '東京駅' && Indexfile == 'index6_S.php') {
-    console.log(TT[1]);
-    console.log(TT[3]);
-    TT[3] = makeemptyTable(TT[1], TT[2]);
-    TTconnect(TT[1], TT[2], TT[3]);
-    TT[1] = TT[3];
-}

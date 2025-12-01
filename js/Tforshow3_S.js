@@ -1,14 +1,12 @@
-console.log(JRSBobj);
-console.log(Dtype);
+//console.log(JRSBobj);
+//console.log(Dtype);
+JRNameDevide(2);
 var YamagataRapid = [123, 157];
 var Zaou = [201, 123, 205, 53, 133, 135, 137, 61, 141, 143, 67, 145, 149, 215, 157, 69, 223]
 var annnaka = [602, 604, 608, 610, 612, 614, 618, 622, 626, 628, 630, 632];
 var iiyama = [591, 551, 553, 555, 559, 561, 565, 569, 571, 573, 575, 577];
 var Nhonjou = [600, 604, 628];
 var Nkumagaya = [600, 604, 628];
-var ueda = [552, 554, 556, 558, 568, 570, 572, 574, 576, 578];
-var sakudaira = [552, 554, 556, 558, 570, 572, 574, 576, 578];
-var Ntakasaki = [556];
 var onsen = [507, 509];
 var takefu = [501, 517];
 console.log(number);
@@ -58,8 +56,8 @@ if (station == '長野駅') {
             TypeColorChange(td, tr, 'はくたか', 'orange');
             TypeColorChange(td, tr, 'あさま', 'red');
             //DetailBanner(td, tr, 18);
-            if(Detail[td][tr]!=''){
-                Detail[td][tr]+=Des[td][tr];
+            if (Detail[td][tr] != '') {
+                Detail[td][tr] += Des[td][tr];
             }
             TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
         }
@@ -117,10 +115,10 @@ if (station == '長野駅') {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
                 Detail[td][0] = '本日の運転は終了しました';
                 break;
-            }else if(Type[td][tr]=='やまびこ･つばさ'){
+            } else if (Type[td][tr] == 'やまびこ･つばさ') {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
                 document.getElementById('Ttopic' + (td + 1) + (tr + 1)).textContent = '１７両編成';
-            } 
+            }
             else if (Type[td][tr] != '') {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
                 document.getElementById('Ttopic' + (td + 1) + (tr + 1)).textContent = '１０両編成';
@@ -129,14 +127,16 @@ if (station == '長野駅') {
             TypeColorChange(td, tr, 'つばさ', 'orange');
             TypeColorChange(td, tr, 'やまびこ', 'red');
             JREScolor(td, tr, 'やまびこ･つばさ', '<span class="red">やまびこ</span>･<span class="orange">つばさ</span>', orange);
-            FourLetters(td, tr, 0.6, 30, 'TType',Type, 8);
+            FourLetters(td, tr, 0.6, 30, 'TType', Type, 8);
             TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
         }
     }
 }
 console.log(document.getElementById('WType12'));
 allLastShow();
-doallDetailShow(18);
+if (Indexfile == 'index3_S.php') {
+    doallDetailShow(18);
+}
 flagmarkerase(0, 'TType');
 flagmarkerase(1, 'TType');
 flagmarkerase(1, 'TType', '+');

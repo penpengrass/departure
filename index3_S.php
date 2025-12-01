@@ -20,9 +20,9 @@
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/function1.js"></script>
+  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
   <script type="text/javascript" src="js/stationset3_S.js"></script>
-  <script type="text/javascript" src="js/detailset/JRdetail.js"></script>
+
 </head>
 
 <body>
@@ -38,7 +38,7 @@
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
     <button type="button" onclick="location.href='./index3.php?station=utsunomiya'">宇都宮駅へ移動</button>
-    <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
+    <button type="button" onclick="location.href='./index4_H.php?station=kanazawa'">金沢駅へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6.php?station=nagano'">在来線へ移動</button>
     <button type="button" onclick="location.href='./index6_S.php'">東京駅へ移動</button>
@@ -59,17 +59,16 @@
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>
 <script type="text/javascript" src="js/Timer.js"></script>
-<script type="text/javascript" src="js/TimeShow.js"></script>
+<script type="text/javascript" src="js/module/timeInfoSet.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
-<script type="text/javascript" src="js/function2.js"></script>
-<script type="text/javascript" src="js/function3.js"></script>
-<script type="text/javascript" src="js/functionE2.js"></script>
-<script type="text/javascript" src="js/functionColor.js"></script>
-<script type="text/javascript" src="js/functionDetail.js"></script>
-<script type="text/javascript" src="js/detailfunction.js"></script>
-<script type="text/javascript" src="js/detailset/JREShindetailset.js"></script>
-<script type="text/javascript" src="js/detailshow.js"></script>
+<script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
+<script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
+<script type="text/javascript" src="js/module/displayEdit6.js"></script>
+<script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
+<script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
+<script type="text/javascript" src="js/detailStopData/JRHokuShindetailset.js"></script>
+<script type="text/javascript" src="js/module/detailMainPut.js"></script>
 <script type="text/javascript" src="js/Tforshow3_S.js"></script>
 </body>
 

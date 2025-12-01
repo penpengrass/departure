@@ -280,7 +280,7 @@ function limitedjustnumber2(TT, limitednumberline, name) {
     for (var td = 1; td < TT.length; td++) {
         for (var tr = 1; tr < TT[td].length; tr++) {
             if (TT[td][tr] == name) {
-                if (Indexfile == 'index4_Tsuruga.php') {
+                if (Indexfile == 'index4_H.php') {
                     TT[td][tr] += limitednumberline[number];
                 } else {
                     TT[td][tr] += limitednumberline[number] + "号";

@@ -38,6 +38,7 @@ var JRWALobj = {//色は文字
     Typef: { type: "普通", color: black, detail: local, },
     Typelocal: { type: "普通", color: white, detail: local, }
 };
+var Matsukaze_Masuda = [1, 5, 7, 9];
 if (station == '岡山駅') {
     TwoLetterDisflag = 1;
     var selectstation = ['備前片上', '長船', '日生', '播州赤穂', '西大寺'];
@@ -171,4 +172,16 @@ if (station == '岡山駅') {
         TT[4][TaRow1][1] = '';
     }
     console.log(TT[4]);
+} else if (station == '米子駅') {
+    TableTitle = ['伯備線 境線 新見･岡山･境港方面', '山陰線 松江･出雲市･益田方面', '山陰線 倉吉･鳥取方面'];
+    limitedjustnumber(TT[0], 2, '特急やくも');
+    limitedjustnumber(TT[1], 1, '特急やくも');
+    limitedjustnumber2(TT[1], Matsukaze_Masuda, '特急ｽｰﾊﾟｰまつかぜ');
+    limitedjustnumber(TT[1], 1, '特急ｽｰﾊﾟｰおき');
+    limitedjustnumber(TT[2], 2, '特急ｽｰﾊﾟｰまつかぜ');
+    limitedjustnumber(TT[2], 4, '特急ｽｰﾊﾟｰおき');
+    TwoLetterDisflag = 1;
+    TT[4] = makeemptyTable(TT[0], TT[3]);
+    TTconnect(TT[0], TT[3], TT[4]);
+    TT[0] = TT[4];
 }
