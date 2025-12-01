@@ -373,7 +373,17 @@ if (station == "徳山駅") {
     }
 } else if (station == "下関駅") {
     for (var tr = 0; tr < 2; tr++) {
-        if (Type[0][tr] != "") {
+        if (Type[0][tr] == '快速') {
+            document.getElementById("WName" + (0 + 1) + (tr + 1)).textContent = '〇〇のはなし';
+            document.getElementById("TName" + (0 + 1) + (tr + 1)).style.color = "orange";
+            document.getElementById('TName' + (0 + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(0%,0%)";
+        }
+        if (Type[2][tr] == '快速') {
+            document.getElementById("WName" + (2 + 1) + (tr + 1)).textContent = '〇〇のはなし';
+            document.getElementById("TName" + (2 + 1) + (tr + 1)).style.color = "orange";
+            document.getElementById('TName' + (2 + 1) + (tr + 1)).style.transform = "scaleX(0.80)" + "translate(0%,0%)";
+        }
+        if (Type[0][tr].startsWith('普通')) {
             CarsDefine(0, tr, "普通", "", 4);
             CarsDefine(0, tr, "普通*", "", 2);
             Type[0][tr] = Type[0][tr].replace("*", "");
@@ -384,12 +394,18 @@ if (station == "徳山駅") {
             CarsDefine(1, tr, "普通", "", 4);
             CarsInto(1, tr, "TName");
         }
-        if (Type[2][tr] != "") {
+        if (Type[2][tr] == "普通") {
             document.getElementById("TName" + (2 + 1) + (tr + 1)).textContent = "ワンマン";
         }
     }
-
-    comment.textContent = "両数は不正確";
+    comment.innerHTML = "両数は不正確<br>";
+    if (holidayflag == 1) {
+        document.getElementById("supplement").innerHTML +=
+            station + "のみ土休日ダイヤに対応(表示は土休日ダイヤ)<br>" + "〇〇のはなしは一部休日運休";
+    } else if (holidayflag == 0) {
+        document.getElementById("supplement").innerHTML +=
+            station + "のみ土休日ダイヤに対応(表示は平日ダイヤ)";
+    }
 } else if (station == '米子駅') {
     comment.textContent += "一部表示不正確 ";
     holiday_F(station);

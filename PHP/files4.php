@@ -142,9 +142,16 @@ if (isset($_GET['station'])) {
     $station = '徳山駅';
     $column = 5;
   } else if (Inisset('shimonoseki')) {
-    $files[0] = 'csv/JRW_Sanyo/shimonoseki1.csv';
-    $files[1] = 'csv/JRW_Sanyo/shimonoseki2.csv';
-    $files[2] = 'csv/JRW_Sanyo/shimonoseki3.csv';
+    $holidayflag = 1;
+    if ($holidayflag == 1) {
+      $files[0] = 'csv/JRW_Sanyo/shimonoseki1_H.csv';
+      $files[1] = 'csv/JRW_Sanyo/shimonoseki2.csv';
+      $files[2] = 'csv/JRW_Sanyo/shimonoseki3_H.csv';
+    } else {
+      $files[0] = 'csv/JRW_Sanyo/shimonoseki1.csv';
+      $files[1] = 'csv/JRW_Sanyo/shimonoseki2.csv';
+      $files[2] = 'csv/JRW_Sanyo/shimonoseki3.csv';
+    }
     $tablenum = 3;
     $OrderNum = 2;
     $column = 3;

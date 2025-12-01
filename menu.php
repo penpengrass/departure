@@ -59,7 +59,7 @@
                 <td class="long"><span style="color:#FF8C00;">米原駅</span>, <span style="color:#FF8C00;">三ノ宮駅</span>, 
                 <span style="color:blue;">姫路駅</span>, <span style="color:#FF8C00;">岡山駅</span>, <span style="color:#FF8C00;">糸崎駅</span>, 
                 <span style="color:#FF8C00;">三原駅</span>, <span style="color:#FF8C00;">広島駅</span>, <span style="color:blue;">新見駅</span>, <span style="color:#FF8C00;">米子駅</span>, 
-                <span style="color:#FF8C00;">岩国駅</span>, <span style="color:#FF8C00;">徳山駅</span>, <span style="color:blue;">下関駅</span>
+                <span style="color:#FF8C00;">岩国駅</span>, <span style="color:#FF8C00;">徳山駅</span>, <span style="color:#FF8C00;">下関駅</span>
                 </td>
             </tr>
             <tr>
