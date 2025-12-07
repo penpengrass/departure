@@ -110,6 +110,7 @@
         ?>
     </tableline>
     <p id="supplement">番線や号数、両数は不正確</p>
+    <p id="guidance"></p>
 </body>
 <!--ここから内部のこと-->
 <script type="text/javascript" src="js/Time.js"></script>

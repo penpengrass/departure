@@ -1,5 +1,6 @@
 let EightCars = [15, 17, 19, 21, 25, 27, 29, 31, 33, 35, 37, 39, 41, 47, 49, 51, 107, 109, 111, 55, 57, 61, 65, 18, 20, 22, 24, 26, 28, 30, 32, 34, 60, 62, 64, 66];
 let SixCars = [103, 105, 23, 43, 45, 53, 113, 115, 59, 63, 67, 202, 6, 16, 36, 110, 50, 56, 58];
+var Guidance = document.getElementById("guidance");
 if (station == '鳥栖駅') {
     const table1 = document.getElementById("TTable1");
     const table2 = document.getElementById("TTable3");
@@ -73,5 +74,10 @@ if (station == '鳥栖駅') {
         TypeColorChange(2, tr, '', 'red');
         TypeColorChange(4, tr, '', 'red');
     }
+    Guidance.innerHTML += '<h1 class="Cheader">長崎本線・佐世保線の特急の車両案内</h1>' +
+        '<li>8両みどり、ハウステンボス・・・783系</li>' +
+        '<li>8両リレーかもめ、かささぎ・・・787系</li>' +
+        '<li>6両リレーかもめ、かささぎ、みどり・・・885系</li>' +
+        '<li>ただし、早朝深夜の佐賀発着かささぎ6両は787系</li>';
 }
 Bansenshow(1);
