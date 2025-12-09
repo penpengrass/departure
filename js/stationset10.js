@@ -29,9 +29,9 @@ if (station == '小倉駅') {
         , '鹿児島本線 久留米 由布院方面(特急)', '鹿児島本線 久留米 由布院方面(快速 普通)'];
     NonGouflag = 0;
     let trainName = ['特急リレーかもめ', 'リレーかもめ', '特急ゆふいんの森', '特急かささぎ', 'ハウステンボス･みどり', '特急みどり','みどり(リレーかもめ)','特急ゆふ','特急ゆふ73号'];
-    TrainNameLineDevide(trainName, 1, 0);
-    TrainNameLineDevide(trainName, 3, 2);
-    TrainNameLineDevide(trainName, 5, 4);
+    TrainNameLineIncludeDevide(trainName, 1, 0);
+    TrainNameLineIncludeDevide(trainName, 3, 2);
+    TrainNameLineIncludeDevide(trainName, 5, 4);
     limitedjustnumber(TT[0], 102, '特急かささぎ');
     limitedjustnumber(TT[2], 101, '特急かささぎ');
     limitedjustnumber(TT[0], 2, '特急ゆふ');

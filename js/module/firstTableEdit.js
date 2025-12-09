@@ -7,11 +7,11 @@ for (let or = 0; or < orders.length; or++) {
 //先発表示を関数にするFirhourは時,orderは時の中で何番目列車かFirhourはj or 1(mod 4) order>=1 
 //depnumは先発なら1，次発なら2
 //Showsの引数は(配列の時,時刻表の中で何列目か,時刻表配列,表が何番目か,何番目に出発するか)
-function NotShows(hour,Table_Column, TT,TableNumber, depnum){
-    PlusHour[depnum-1] = TT[hour][0];
-    PlusMin[depnum-1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
-    PlusType[depnum-1] = TT[hour][Table_Column];
-    PlusDes[depnum-1]= TT[hour + 2][Table_Column];
+function NotShows(hour, Table_Column, TT, TableNumber, depnum) {
+    PlusHour[depnum - 1] = TT[hour][0];
+    PlusMin[depnum - 1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
+    PlusType[depnum - 1] = TT[hour][Table_Column];
+    PlusDes[depnum - 1] = TT[hour + 2][Table_Column];
     //document.getElementById('TNum' + TableNumber + '' + depnum).textContent = TT[hour + 3][Table_Column];
     //ここで次発のために変数に入れる
     orders[depnum - 1] = Table_Column;
@@ -127,6 +127,11 @@ function TrainNameLineDevide(trainName, mainTable, subTable) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, subTable);
     tableDevide.process((TaRow, mainTaNum) => trainName.includes(TT[mainTable][TaRow - 3][mainTaNum]));
+}
+function TrainNameLineIncludeDevide(trainNames, mainTable, subTable) {
+    //インスタンス化
+    const tableDevide = new TableDevide(mainTable, subTable);
+    tableDevide.process((TaRow, mainTaNum) => trainNames.some(trainName => TT[mainTable][TaRow - 3][mainTaNum].includes(trainName)));
 }
 function DestinationRemove(station, mainTable) {
     //インスタンス化

@@ -148,11 +148,11 @@ function JRNameDevide(T = Tablenum) {
                     (tr + 1) +
                     "番目の表示はJRNameDevideとマッチする"
                 );
-                console.log(matches[tr][0] + ":" + tr);
+                /*console.log(matches[tr][0] + ":" + tr);
                 console.log(matches[tr][1] + ":" + tr);
                 console.log(matches[tr][2] + ":" + tr);
                 console.log(matches[tr][3] + ":" + tr);
-                console.log(matches[tr][1] + matches[tr][1].length);
+                console.log(matches[tr][1] + matches[tr][1].length);*/
                 var Mlength = 7;
                 if (
                     Indexfile == "index6_S.php" ||
@@ -196,7 +196,7 @@ function JRNameDevide(T = Tablenum) {
 function JRLimitedName(td, tr, flag = 0) {
     var LimitedName = new Array(Type[td].length);
     var matches = new Array(Type[td].length);
-    console.log(Type[td][tr]);
+    //console.log(Type[td][tr]);
     if (flag == 0) {
         LimitedName[tr] = document.getElementById(
             "TType" + (td + 1) + "" + (tr + 1)
@@ -207,14 +207,14 @@ function JRLimitedName(td, tr, flag = 0) {
     //console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     if (matches[tr]) {
-        console.log(matches[tr][0] + ":" + tr);
+        /*console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
         console.log(matches[tr][2] + ":" + tr);
         console.log(matches[tr][3] + ":" + tr);
-        console.log(matches[tr][1] + matches[tr][1].length);
+        console.log(matches[tr][1] + matches[tr][1].length);*/
         var name = matches[tr][1];
     } else {
-        console.log("JRLimitedNumberはマッチしない");
+        //console.log("JRLimitedNumberはマッチしない");
     }
     return name;
 }
@@ -239,29 +239,29 @@ function JRLimitedNumber(td, tr, flag = 0) {
             "TName" + (td + 1) + "" + (tr + 1)
         ).textContent;
     }
-    console.log(LimitedName[tr]);
+    //console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     matches2[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
     if (matches[tr]) {
-        console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
+        /*console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
         console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
         console.log(matches[tr][2] + ":" + tr);
         console.log(matches[tr][3] + ":" + tr);
-        console.log(matches[tr][1] + matches[tr][1].length);
+        console.log(matches[tr][1] + matches[tr][1].length);*/
         number = matches[tr][2];
     } else if (matches2[tr]) {
-        console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
+        /*console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
         console.log(matches2[tr][0] + ":" + tr);
         console.log(matches2[tr][1] + ":" + tr);
         console.log(matches2[tr][2] + ":" + tr);
-        console.log(matches2[tr][1] + matches2[tr][1].length);
+        console.log(matches2[tr][1] + matches2[tr][1].length);*/
         //console.log("Dtypeは" + Dtype);
         number = matches2[tr][2];
     } else {
         //console.log("JRLimitedNumberはマッチしない");
     }
-    console.log(number);
+    //console.log(number);
     return number;
 }
 //種別+両数の場合分割

@@ -1,5 +1,5 @@
 let EightCars = [15, 17, 19, 21, 25, 27, 29, 31, 33, 35, 37, 39, 41, 47, 49, 51, 107, 109, 111, 55, 57, 61, 65, 18, 20, 22, 24, 26, 28, 30, 32, 34, 60, 62, 64, 66];
-let SixCars = [103, 105, 23, 43, 45, 53, 113, 115, 59, 63, 67, 202, 6, 16, 36, 110, 50, 56, 58];
+let SixCars = [103, 105, 23, 43, 45, 53, 113, 115, 59, 63, 67, 201, 202, 6, 16, 36, 110, 50, 56, 58];
 var Guidance = document.getElementById("guidance");
 if (station == '鳥栖駅') {
     const table1 = document.getElementById("TTable1");
@@ -38,10 +38,13 @@ if (station == '鳥栖駅') {
             Cars[3][tr] = '2両';
         }
     }
-}else if(station=='小倉駅'){
-    for(var tr=0;tr<orderNum;tr++){
-        AllWordChange(0,tr,Type,'快速','普通');
-        AllWordChange(0,tr,Type,'区間快速','普通');
+} else if (station == '小倉駅') {
+    for (var tr = 0; tr < orderNum; tr++) {
+        AllWordChange(0, tr, Type, '快速', '普通');
+        AllWordChange(0, tr, Type, '区間快速', '普通');
+        /*if (Des[0][tr] == '下関') {
+            Cars[0][tr] = '4両';
+        }*/
     }
 }
 allLastShow();
