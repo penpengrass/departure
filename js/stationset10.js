@@ -16,7 +16,7 @@ if (station == '小倉駅') {
     limitedjustnumber(TT[0], 838, 'こだま');
     limitedjustnumber(TT[0], 540, 'さくら');
     limitedjustnumber(TT[4], 1, '特急ソニック');
-    limitedjustnumber(TT[4], 1, '特急きらめき');
+    limitedjustnumber(TT[4], 2, '特急きらめき');
     limitedjustnumber(TT[2], 101, '特急かささぎ');
     limitedjustnumber(TT[2], 1, '特急ゆふ');
     limitedjustnumber(TT[2], 1, '特急ゆふいんの森');

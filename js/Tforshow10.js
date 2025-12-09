@@ -38,6 +38,11 @@ if (station == '鳥栖駅') {
             Cars[3][tr] = '2両';
         }
     }
+}else if(station=='小倉駅'){
+    for(var tr=0;tr<orderNum;tr++){
+        AllWordChange(0,tr,Type,'快速','普通');
+        AllWordChange(0,tr,Type,'区間快速','普通');
+    }
 }
 allLastShow();
 

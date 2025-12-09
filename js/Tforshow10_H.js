@@ -39,14 +39,21 @@ for (var tr = 0; tr < 2; tr++) {
     var dName = document.getElementById('TName' + 4 + (tr + 1));
     var dDes = document.getElementById('TDes' + 4 + (tr + 1));
     var number = JRLimitedNumber(3, tr, 1);
-    console.log(dName);
+    if (dName.textContent.includes('みどり(リレーかもめ')) {
+        Des[3][tr] = '佐世保･長崎';
+        dDes.textContent = '佐世保･長崎';
+    }
+    if (Des[3][tr] == '武雄温泉') {
+        Des[3][tr] = '長崎';
+        dDes.textContent = '長崎';
+    }
     if (dName.textContent.includes('･')) {
         dName.innerHTML = 'ハウステンボス' + number + '<span class="gou">号</span><br>みどり' + number + '号';
         dName.style.fontSize = '20px';
         dName.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
         dName.style.fontWeight = '800px';
     }
-    if (dDes.textContent.includes('･')) {
+    if (dDes.textContent.includes('･佐世保')) {
         dDes.innerHTML = 'ハウステンボス' + '<br>' + '佐世保';
         dDes.style.fontSize = '20px';
         dDes.style.transform = "scaleX(1.10)" + "translate(0%,0%)";

@@ -142,7 +142,6 @@ if (isset($_GET['station'])) {
     $station = '徳山駅';
     $column = 5;
   } else if (Inisset('shimonoseki')) {
-    $holidayflag = 1;
     if ($holidayflag == 1) {
       $files[0] = 'csv/JRW_Sanyo/shimonoseki1_H.csv';
       $files[1] = 'csv/JRW_Sanyo/shimonoseki2.csv';
