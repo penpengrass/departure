@@ -1,0 +1,95 @@
+.STable {
+    /*表全体*/
+    border-collapse: collapse;
+    /*文字を縮小してもボーダーが縮まらない*/
+    table-layout: fixed;
+    background-color: black;
+    border: 10px #303030 solid;
+    /*周りの色*/
+    width: 50%;
+    /*元々750px　550px*/
+    /*height:200px; /*元々200px*/
+    white-space: nowrap;
+    text-align: center;
+    border-spacing: 0px;
+    @media(max-width:1199px) {
+        width: 750px;
+    }
+    th {
+        color: white;
+        background-color: #303030;
+        height: 3px;
+    }
+
+    /*ブロック要素*/
+    td {
+        /*データ内*/
+        /*display: table-cell;*/
+        /*font-size:30px;/*元々30px 変更すると25px*/
+        height: 60px;
+        color: greenyellow;
+        border: 10px #303030 solid;
+        /*表の中の枠色 */
+        font-family: "MS Sans Serif", monospace;
+        border-left: none;
+        border-right: none;
+        /*border-bottom:2px gray solid; */
+    }
+
+    .Destination {
+        color: orange;
+    }
+
+    .CDetail {
+        text-align: left;
+        color: greenyellow;
+        font-size: 1.3vw;
+    }
+
+
+    p3 {
+        font-size: 1.5vw;
+    }
+
+    @media(max-width:1199px) {
+        .CDetail {
+            font-size: 20px;
+        }
+
+        p3 {
+            font-size: 25px;
+        }
+    }
+
+    .shubetu {
+        text-align: left;
+        color: orange;
+        font-weight: 500;
+    }
+
+    .railnumber {
+        color: greenyellow;
+    }
+    .Corange{
+        color:orange;
+    }
+    .name {
+        text-align: right;
+        color: orange;
+        padding-right: 5px;
+        border-left: 0;
+        font-family: "MS　ゴシック",monospace;
+    }
+
+    .CDetail {
+        overflow: hidden;
+        text-align: left;
+    }
+
+    .Ctitle {
+        background-color: #303030;
+        color: white;
+        text-align: center;
+        width: 100%;
+    }
+}

@@ -2,9 +2,9 @@ let EightCars = [15, 17, 19, 21, 25, 27, 29, 31, 33, 35, 37, 39, 41, 47, 49, 51,
 let SixCars = [103, 105, 23, 43, 45, 53, 113, 115, 59, 63, 67, 201, 202, 6, 16, 36, 110, 50, 56, 58];
 var Guidance = document.getElementById("guidance");
 if (station == '鳥栖駅') {
-    const table1 = document.getElementById("TTable1");
-    const table2 = document.getElementById("TTable3");
-    const table3 = document.getElementById("TTable5");
+    const table1 = document.getElementById("ZTable1");
+    const table2 = document.getElementById("ZTable3");
+    const table3 = document.getElementById("ZTable5");
     swapColumns(table1, 2, 3);
     swapColumns(table2, 2, 3);
     swapColumns(table3, 2, 3);
@@ -46,6 +46,52 @@ if (station == '鳥栖駅') {
             Cars[0][tr] = '4両';
         }*/
     }
+} else if (station == '長崎駅') {
+    NonGouflag = 0;
+    console.log(NonGouflag);
+    JRNameDevide(1);
+    const elements = document.querySelectorAll('.Destination');
+    elements.forEach(el => {
+        // 直接 style を変更
+        el.style.color = 'orange';
+    });
+    const elements_cars = document.querySelectorAll('.cars');
+    elements_cars.forEach(el => {
+        // 直接 style を変更
+        el.style.color = 'greenyellow';
+    });
+    for (var tr = 0; tr < orderNum; tr++) {
+        FDetail(Type[0][tr], JRK_Nobj, Dtype[0], 0, tr, "、");
+        NagasakiAddStop(tr)
+        LastLetterRemove(0, tr, "、");
+        Detail[0][tr] = "停車駅は、<span class='Corange'>" + Detail[0][tr] + "</span>です"
+        if (number[0][tr] < 99 && number[0][tr] > 0) {
+            document.getElementById('TCars' + (1) + (tr + 1)).textContent = '自由席4-6号車';
+        } else if (number[0][tr] > 99) {
+            document.getElementById('TCars' + (1) + (tr + 1)).textContent = '全車自由席';
+            Detail[0][tr] += "　諫早、新大村方面の<span class='Corange'>最終列車</span>です。";
+        }
+        if (Type[0][tr] != "") document.getElementById('TDetail1' + (tr + 1)).innerHTML = Detail[0][tr];
+        if (Type[1][tr] != "") {
+            if (Type[1][tr].includes('*')) Cars[1][tr] = '3両';
+            else if (Type[1][tr].includes('+')) Cars[1][tr] = '4両';
+            else Cars[1][tr] = '2両';
+            Type[1][tr] = Type[1][tr].replace('*', '');
+            Type[1][tr] = Type[1][tr].replace('+', '');
+        }
+        AllWordChange(1, tr, Type, '長与経由普通', '普通');
+        if (Des[1][tr] != '' && Des[1][tr] != '長与') {
+            Des[1][tr] += '(長与)';
+        }
+        if (Type[2][tr] != "") {
+            if (Type[2][tr].includes('*')) Cars[2][tr] = '3両';
+            else if (Type[2][tr].includes('+')) Cars[2][tr] = '4両';
+            else Cars[2][tr] = '2両';
+            Type[2][tr] = Type[2][tr].replace('*', '');
+            Type[2][tr] = Type[2][tr].replace('+', '');
+        }
+    }
+    if (Type[0][0] != "") document.getElementById('TDetail1' + (3)).innerHTML = "西九州新幹線では、<span class='Corange'>交通系ICカード</span>のご利用はできません。"
 }
 allLastShow();
 
@@ -88,4 +134,6 @@ if (station == '鳥栖駅') {
         '<li>6両リレーかもめ、かささぎ、みどり・・・885系</li>' +
         '<li>ただし、早朝深夜の佐賀発着かささぎ6両は787系</li>';
 }
-Bansenshow(1);
+if (station != '長崎駅') {
+    Bansenshow(1);
+}
