@@ -110,7 +110,7 @@ for (var td = 0; td < Tablenum; td++) {
             document.getElementById('TType' + (td + 1) + (tr + 1)).style.boxSizing = "border-box";
             document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.45)" + "translate(-55%,0%)";
         } else if (Type[td][tr].length > 10) {
-            document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
+            document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.55)" + "translate(-35%,0%)";
             //document.getElementsByClassName('shubetu' + (td + 1) + (tr + 1))[0].style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
         } else if (Type[td][tr].length > 8) {
             document.getElementById('TType' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.65)" + "translate(-25%,0%)";

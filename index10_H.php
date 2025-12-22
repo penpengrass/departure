@@ -42,6 +42,7 @@
             <option value="kokura">小倉駅</option>
             <option value="hakata">博多駅</option>
             <option value="tosu">鳥栖駅</option>
+            <option value="nagasaki">長崎駅</option>
         </select>
         <button type="submit" name="submit">駅変更</button>
     </form>
@@ -64,8 +65,8 @@
  <table id="TTable' . $i . '">
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
-      <th width="15%" id="HType' . $i . '"></th>
-      <th width="25%" id="HName' . $i . '"></th>
+      <th width="12%" id="HType' . $i . '"></th>
+      <th width="28%" id="HName' . $i . '"></th>
       <th width="20%" id="HTime' . $i . '"></th>
       <th width="25%" id="HDes' . $i . '"></th>
       <th width="15%" class="HrailNumber" id="HrNumber' . $i . '"></th>
@@ -87,8 +88,8 @@
                 print('
                 <th class="Ctitle" colspan="5"><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></th>
                 <tr>
-                <th width="15%" id="HType' . $i . '"></th>
-                <th width="25%" id="HName' . $i . '"></th>
+                <th width="12%" id="HType' . $i . '"></th>
+                <th width="28%" id="HName' . $i . '"></th>
                 <th width="20%" id="HTime' . $i . '"></th>
                 <th width="25%" id="HDes' . $i . '"></th>
                 <th width="15%" class="HrailNumber" id="HrNumber' . $i . '"></th>
