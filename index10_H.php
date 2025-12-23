@@ -42,6 +42,7 @@
             <option value="kokura">小倉駅</option>
             <option value="hakata">博多駅</option>
             <option value="tosu">鳥栖駅</option>
+            <option value="nagasaki">長崎駅</option>
         </select>
         <button type="submit" name="submit">駅変更</button>
     </form>

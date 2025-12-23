@@ -24,11 +24,11 @@ if (station == '小倉駅') {
     var selectstation = ['武雄温泉', '佐賀', '肥前鹿島', '佐世保', 'ハウステンボス', '江北', 'ハウステンボス･佐世保'];
     DestinationDevide(selectstation, 2, 3);
 } else if (station == '鳥栖駅') {
-    detailflag=2;
+    detailflag = 2;
     TableTitle = ['鹿児島本線 二日市 博多方面(特急)', '鹿児島本線 二日市 博多方面(快速 普通)', '長崎本線 新鳥栖 佐賀方面(特急)', '長崎本線 新鳥栖 佐賀方面(快速 普通)'
         , '鹿児島本線 久留米 大牟田方面(特急)', '鹿児島本線 久留米 大牟田方面(快速 普通)'];
     NonGouflag = 0;
-    let trainName = ['特急リレーかもめ', 'リレーかもめ', '特急ゆふいんの森', '特急かささぎ', 'ハウステンボス･みどり', '特急みどり','みどり(リレーかもめ)','特急ゆふ','特急ゆふ73号'];
+    let trainName = ['特急リレーかもめ', 'リレーかもめ', '特急ゆふいんの森', '特急かささぎ', 'ハウステンボス･みどり', '特急みどり', 'みどり(リレーかもめ)', '特急ゆふ', '特急ゆふ73号'];
     TrainNameLineIncludeDevide(trainName, 1, 0);
     TrainNameLineIncludeDevide(trainName, 3, 2);
     TrainNameLineIncludeDevide(trainName, 5, 4);
@@ -41,4 +41,13 @@ if (station == '小倉駅') {
     limitedjustnumber(TT[0], 2, ['特急みどり', 'リレーかもめ', 'ハウステンボス', 'ハウステンボス･みどり', 'みどり(リレーかもめ)']);
     limitedjustnumber(TT[2], 1, ['特急みどり', 'リレーかもめ', 'ハウステンボス', 'ハウステンボス･みどり', 'みどり(リレーかもめ)']);
 
+} else if (station == '長崎駅') {
+    var Dtype = [0];
+    detailflag = 2;
+    TableTitle = ['西九州新幹線　佐賀・新鳥栖・博多方面', '長与経由 大村線 長崎本線 ', '市布経由 大村線 長崎本線'];
+    TrainNameDevide('長与', 2, 1);
+    var nagasaki = [2, 4, 8, 12, 14, 18, 22, 26, 30, 34, 38, 42, 46, 48, 50, 52, 54, 56, 58, 60, 64, 66, 102];
+    limitedjustnumber2(TT[0], nagasaki, 'かもめ');
+    NonGouflag == 0
+    staflag = 0;
 }
