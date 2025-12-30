@@ -30,7 +30,8 @@
         color: greenyellow;
         border: 10px #303030 solid;
         /*表の中の枠色 */
-        font-family: "MS Sans Serif", monospace;
+        /*font-family:Arial,"MS Gothic",monospace;*/
+        font-family: "MS Sans Serif","MS Gothic",Arial, monospace;
         border-left: none;
         border-right: none;
         /*border-bottom:2px gray solid; */

@@ -48,7 +48,6 @@ if (station == '鳥栖駅') {
     }
 } else if (station == '長崎駅') {
     NonGouflag = 0;
-    console.log(NonGouflag);
     JRNameDevide(1);
     const elements = document.querySelectorAll('.Destination');
     elements.forEach(el => {
@@ -59,6 +58,11 @@ if (station == '鳥栖駅') {
     elements_cars.forEach(el => {
         // 直接 style を変更
         el.style.color = 'greenyellow';
+    });
+    const elements_time = document.querySelectorAll('.CTime');
+    elements_time.forEach(el => {
+        // 直接 style を変更
+        el.style.color = 'white';
     });
     for (var tr = 0; tr < orderNum; tr++) {
         FDetail(Type[0][tr], JRK_Nobj, Dtype[0], 0, tr, "、");
@@ -83,6 +87,9 @@ if (station == '鳥栖駅') {
         if (Des[1][tr] != '' && Des[1][tr] != '長与') {
             Des[1][tr] += '(長与)';
         }
+        if (Des[2][tr] != '') {
+            Des[2][tr] += '(市布)';
+        }
         if (Type[2][tr] != "") {
             if (Type[2][tr].includes('*')) Cars[2][tr] = '3両';
             else if (Type[2][tr].includes('+')) Cars[2][tr] = '4両';
@@ -91,7 +98,10 @@ if (station == '鳥栖駅') {
             Type[2][tr] = Type[2][tr].replace('+', '');
         }
     }
-    if (Type[0][0] != "") document.getElementById('TDetail1' + (3)).innerHTML = "西九州新幹線では、<span class='Corange'>交通系ICカード</span>のご利用はできません。"
+    if (Type[0][0] != "") document.getElementById('TDetail1' + (3)).innerHTML = "西九州新幹線では、<span class='Corange'>交通系ICカード</span>のご利用はできません。";
+    if (holidayflag == 2) {
+        comment.textContent += " 西九州新幹線の臨時列車の運転日です。";
+    }
 }
 allLastShow();
 
