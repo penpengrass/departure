@@ -14,7 +14,7 @@ function CarsDevideToLine(td) {
             console.log(matches2[3]);*/
             Cars[td][tr] = matches2[3] + "両";
             LType = matches2[1] + matches2[2] + "号";
-            Type[td][tr] = matches2[1];
+            Type[td][tr] = LType;
         } else if (matches3) {
             /*console.log(matches3[0]);
             console.log(matches3[1]);
