@@ -131,8 +131,60 @@ if (station == '長野駅') {
             TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
         }
     }
+} else if (station == '福島駅') {
+    for (var tr = 0; tr < 2; tr++) {
+        if (!Zaou.includes(number[0][tr]) && Des[0][tr] == '仙台') {
+            Detail[0][tr] = 'この列車は仙台まで止まりません。';
+        }
+        if (number[0][tr] < 100) {
+            Detail[0][tr] = '仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
+        } else if (number[0][tr] > 100) {
+            Detail[0][tr] = '仙台';
+        }
+        if (Zaou.includes(number[0][tr])) {
+            DetailReplace(0, tr, '仙台', '白石蔵王・仙台');
+        }
+        if (Detail[0][tr] == '仙台') {
+            Detail[0][tr] = 'この列車は仙台まで止まりません。';
+        }
+        JREScolor(1, tr, 'やまびこ･つばさ', '<span class="green">やまびこ</span>･<span class="orange">つばさ</span>', 'pink');
+        FourLetters(1, tr, 0.6, 30, 'TType', Type, 8);
+        if (Des[1][tr] == '郡山') {
+            Detail[1][tr] = 'この列車は郡山まで止まりません。';
+        } else if (number[1][tr] < 170) {
+            Detail[1][tr] = '郡山・宇都宮・大宮・上野・東京';
+        } else if (number[1][tr] > 199) {
+            Detail[1][tr] = '郡山・新白河・那須塩原・宇都宮・小山・大宮・上野・東京';
+        }
+        if (Type[1][tr] == 'やまびこ･つばさ') {
+            Detail[1][tr] = '郡山・宇都宮・大宮・上野・東京';
+            document.getElementById('TNum2' + (tr + 1)).style.backgroundColor = 'orange';
+            document.getElementById('TNum2' + (tr + 1)).style.color = 'black';
+            document.getElementById('Ttopic2' + (tr + 1)).textContent = '１７両編成';
+        } else if (Type[1][tr] != '') {
+            document.getElementById('Ttopic2' + (tr + 1)).textContent = '１０両編成';
+        }
+        if (Seventeen.includes(number[0][tr])) {
+            document.getElementById('Ttopic1' + (tr + 1)).textContent = '１７両編成';
+        } else if (Type[0][tr] != '') {
+            document.getElementById('Ttopic1' + (tr + 1)).textContent = '１０両編成';
+        }
+        if (Seventeen.includes(number[1][tr])) {
+            document.getElementById('Ttopic2' + (tr + 1)).textContent = '１７両編成';
+        }
+    }
 }
-console.log(document.getElementById('WType12'));
+for (var td = 0; td < 2; td++) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        if (Type[td][0] == '') {
+            document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
+            Detail[td][0] = '本日の運転は終了しました';
+            break;
+        } else if (Type[td][tr] != '') {
+            document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
+        }
+    }
+}
 allLastShow();
 if (Indexfile == 'index3_S.php') {
     doallDetailShow(18);

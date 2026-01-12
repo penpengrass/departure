@@ -53,6 +53,12 @@
                 <td><span style="color:blue;">宇都宮駅</span></td>
             </tr>
             <tr>
+                <td>JR東日本東北</td>
+                <td><button type="button" onclick="location.href='./index3_T.php'">移動</button></td>
+                <td><span style="color:blue;">福島駅</span></td>
+                <td><span style="color:blue;"></span></td>
+            </tr>
+            <tr>
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:#FF8C00;">北新地駅</span></td>
@@ -167,9 +173,9 @@
             ?>
         </div>
         <h1 class="Cheader">今後追加する駅</h1>
-        <li>新幹線 静岡駅 郡山駅 福島駅 仙台駅 新青森駅</li>
+        <li>新幹線 静岡駅 郡山駅 仙台駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
-        <li>JR東日本 高崎駅 仙台駅 福島駅 郡山駅 </li>
+        <li>JR東日本 高崎駅 仙台駅 郡山駅 </li>
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 富山駅</li>
         <li>JR西日本 京都駅 尼崎駅 和歌山駅 新山口駅</li>

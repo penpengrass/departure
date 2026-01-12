@@ -35,7 +35,7 @@ print('
 }
 function JRE_STable($i,$tablenums){
   print('
-  <table>
+  <table class="STable" id="TATOSTable' . $i . '">
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
     ');

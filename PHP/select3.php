@@ -24,6 +24,7 @@ function JRATOS_SStaSele($Select)
     <select name="staselect3_S">
       <option value="nagano">長野駅</option>
       <option value="utsunomiya">宇都宮駅</option>
+      <option value="fukushima">福島駅</option>
     </select>
     <button type="submit" name="submit">'.$Select.'</button>
   </form>';
