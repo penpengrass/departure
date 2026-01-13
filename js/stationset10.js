@@ -1,6 +1,7 @@
 company = 'JR九州';
 NonGouflag = 1;
 if (station == '小倉駅') {
+    detailflag = 2;
     NonGouflag = 0;
     TableTitle = ['鹿児島本線 門司港 下関方面', '鹿児島本線 黒崎 博多方面', '日豊本線 行橋 大分方面'];
     limitednumber(TT[0], 4, '特急きらめき');

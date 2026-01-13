@@ -1,7 +1,7 @@
-let EightCars = [15, 17, 19, 21, 25, 27, 29, 31, 33, 35, 37, 39, 41, 47, 49, 51, 107, 109, 111, 55, 57, 61, 65, 18, 20, 22, 24, 26, 28, 30, 32, 34, 60, 62, 64, 66];
-let SixCars = [103, 105, 23, 43, 45, 53, 113, 115, 59, 63, 67, 201, 202, 6, 16, 36, 110, 50, 56, 58];
 var Guidance = document.getElementById("guidance");
 if (station == '鳥栖駅') {
+    let EightCars = [15, 17, 19, 21, 25, 27, 29, 31, 33, 35, 37, 39, 41, 47, 49, 51, 107, 109, 111, 55, 57, 61, 65, 18, 20, 22, 24, 26, 28, 30, 32, 34, 60, 62, 64, 66];
+    let SixCars = [103, 105, 23, 43, 45, 53, 113, 115, 59, 63, 67, 201, 202, 6, 16, 36, 110, 50, 56, 58];
     const table1 = document.getElementById("ZTable1");
     const table2 = document.getElementById("ZTable3");
     const table3 = document.getElementById("ZTable5");
@@ -39,13 +39,39 @@ if (station == '鳥栖駅') {
         }
     }
 } else if (station == '小倉駅') {
-    for (var tr = 0; tr < orderNum; tr++) {
-        AllWordChange(0, tr, Type, '快速', '普通');
-        AllWordChange(0, tr, Type, '区間快速', '普通');
-        /*if (Des[0][tr] == '下関') {
-            Cars[0][tr] = '4両';
-        }*/
+    let EightCars = [[6, 66], [1, 9, 3], []];
+    let SevenCars = [[], [202, 2, 4, 8, 18, 20, 22, 24, 26, 30, 40, 42, 44, 46, 48, 52, 58, 60], [1, 13, 23, 25, 27, 29, 31, 35, 45, 47, 49, 51, 53, 57]];
+    let SixCars = [[8, 14], [5, 6, 10, 12, 14, 16, 28, 32, 34, 36, 38, 50, 101, 201], [11, 15, 17, 19, 21, 33, 37, 39, 41, 43, 55, 59, 201]];
+    let FourCars = [[10, 12], [], []];
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < orderNum; tr++) {
+            if (SixCars[td].includes(number[td][tr])) {
+                Cars[td][tr] = '6両';
+            } else if (SevenCars[td].includes(number[td][tr])) {
+                Cars[td][tr] = '7両';
+            } else if (EightCars[td].includes(number[td][tr])) {
+                Cars[td][tr] = '8両';
+            } else if (FourCars[td].includes(number[td][tr])) {
+                Cars[td][tr] = '4両';
+            }
+        }
     }
+    for (var tr = 0; tr < orderNum; tr++) {
+        AllWordReplace(0, tr, Type, '区間快速', '普通');
+        AllWordReplace(0, tr, Type, '快速', '普通');
+        if (Des[0][tr] == '下関') {
+            Cars[0][tr] = '4両';
+        }
+
+        if ((Des[2][tr] == '田川後藤寺' || Des[2][tr] == '添田') && Type[2][tr] == '普通') {
+            Cars[2][tr] = '2両';
+        } else if (Type[2][tr] == '普通') {
+            Cars[2][tr] = '3両';
+        }
+    }
+    CarsDevideToLine(0);
+    CarsDevideToLine(1);
+    CarsDevideToLine(2);
 } else if (station == '長崎駅') {
     NonGouflag = 0;
     JRNameDevide(1);
