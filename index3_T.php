@@ -70,7 +70,7 @@
         }
         ?>
     </tableline>
-    <p id="supplement">号数や臨時列車の有無，停車駅，両数は不正確<br></p>
+    <p id="supplement">臨時列車の有無，停車駅など一部表示は不正確<br></p>
     <h1 class="Cheader">案内</h1>
     <p id="guidance"></p>
 </body>

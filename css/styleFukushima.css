@@ -20,12 +20,19 @@
     .Destination {
         color: white;
     }
-    .topic{
-        color:white;
+
+    .orange {
+        color: orange;
     }
-    #guidance{
-        font-size:15px;
+
+    .topic {
+        color: white;
     }
+
+    #guidance {
+        font-size: 15px;
+    }
+
     @media(max-width:1199px) {
         .CDetailtitle {
             font-size: 25px;
@@ -35,5 +42,11 @@
             font-size: 25px;
             color: white;
         }
+    }
+}
+
+.CATOSTable {
+    .HrailNumber {
+        text-align: center;
     }
 }
