@@ -157,11 +157,11 @@ function JRNameDevide(T = Tablenum) {
                 if (
                     Indexfile == "index6_S.php" ||
                     Indexfile == "index3_S.php" ||
-                    Indexfile == "index6_Chiba.php"
+                    Indexfile == "index6_Chiba.php"||Indexfile=="index3_T.php"
                 ) {
                     Mlength = 9;
                 }
-                console.log(matches[tr][1].length);
+                console.log(matches[tr][1].length+":"+Mlength);
                 if (matches[tr][1].length < Mlength) {
                     console.log(matches[tr][1]);
                     document.getElementById(
@@ -184,6 +184,7 @@ function JRNameDevide(T = Tablenum) {
                     }
                 }
                 console.log(ShinNumber);
+                console.log(Type[td]);
                 ShinNumber[td][tr] = matches[tr][2];
             } else {
                 //console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');

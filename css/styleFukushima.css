@@ -1,0 +1,52 @@
+.STable {
+    td {
+        height: 40px;
+    }
+
+    .Ctime {
+        color: white;
+    }
+
+    .CDetailtitle {
+        font-size: 1.5vw;
+        background-color: white;
+    }
+
+    .CDetail {
+        font-size: 1.5vw;
+        color: white;
+    }
+
+    .Destination {
+        color: white;
+    }
+
+    .orange {
+        color: orange;
+    }
+
+    .topic {
+        color: white;
+    }
+
+    #guidance {
+        font-size: 15px;
+    }
+
+    @media(max-width:1199px) {
+        .CDetailtitle {
+            font-size: 25px;
+        }
+
+        .CDetail {
+            font-size: 25px;
+            color: white;
+        }
+    }
+}
+
+.CATOSTable {
+    .HrailNumber {
+        text-align: center;
+    }
+}

@@ -2,7 +2,9 @@
 //console.log(Dtype);
 JRNameDevide(2);
 var YamagataRapid = [123, 157];
-var Zaou = [201, 123, 205, 53, 133, 135, 137, 61, 141, 143, 67, 145, 149, 215, 157, 69, 223]
+var Zaou = [201, 123, 205, 53, 133, 135, 137, 61, 141, 143, 67, 145, 149, 215, 157, 69, 223];
+var Shirakawa = [50];
+var Oyama = [202];
 var annnaka = [602, 604, 608, 610, 612, 614, 618, 622, 626, 628, 630, 632];
 var iiyama = [591, 551, 553, 555, 559, 561, 565, 569, 571, 573, 575, 577];
 var Nhonjou = [600, 604, 628];
@@ -131,9 +133,78 @@ if (station == '長野駅') {
             TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
         }
     }
+} else if (station == '福島駅') {
+    for (var tr = 0; tr < 2; tr++) {
+        if (!Zaou.includes(number[0][tr]) && Des[0][tr] == '仙台') {
+            Detail[0][tr] = 'この列車は仙台まで止まりません。';
+        }
+        if (number[0][tr] < 100) {
+            Detail[0][tr] = '仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
+        } else if (number[0][tr] > 100) {
+            Detail[0][tr] = '仙台';
+        }
+        if (Zaou.includes(number[0][tr])) {
+            DetailReplace(0, tr, '仙台', '白石蔵王・仙台');
+        }
+        if (Detail[0][tr] == '仙台') {
+            Detail[0][tr] = 'この列車は仙台まで止まりません。';
+        }
+        //JREScolor(1, tr, 'やまびこ･つばさ', '<span class="green">やまびこ</span>･<span class="orange">つばさ</span>', 'pink');
+        FourLetters(1, tr, 0.6, 30, 'TType', Type, 8);
+        if (Type[1][tr] == 'やまびこ･つばさ') {
+            Detail[1][tr] = '郡山・宇都宮・大宮・上野・東京';
+            document.getElementById('WType2' + (tr + 1)).innerHTML = '<span class="green">やまびこ</span>･<span class="orange">つばさ</span>';
+            document.getElementById('TName2' + (tr + 1)).style.color = 'pink';
+            document.getElementById('TNum2' + (tr + 1)).style.backgroundColor = 'orange';
+            document.getElementById('TNum2' + (tr + 1)).style.color = 'black';
+            document.getElementById('Ttopic2' + (tr + 1)).textContent = '１７両編成';
+        } else if (Type[1][tr] != '') {
+            document.getElementById('Ttopic2' + (tr + 1)).textContent = '１０両編成';
+        }
+        if (Des[1][tr] == '郡山') {
+            Detail[1][tr] = 'この列車は郡山まで止まりません。';
+        } else if (number[1][tr] == 124) {
+            Detail[1][tr] = '大宮・東京';
+        } else if (number[1][tr] < 170) {
+            Detail[1][tr] = '郡山・宇都宮・大宮・上野・東京';
+        } else if (number[1][tr] > 199) {
+            Detail[1][tr] = '郡山・新白河・那須塩原・宇都宮・小山・大宮・上野・東京';
+        }
+        if (Shirakawa.includes(number[1][tr])) {
+            DetailReplace(1, tr, '宇都宮', '新白河・宇都宮');
+        }
+        if (Oyama.includes(number[1][tr])) {
+            DetailReplace(1, tr, '那須塩原・宇都宮', '宇都宮');
+        }
+        if (Seventeen.includes(number[0][tr])) {
+            document.getElementById('Ttopic1' + (tr + 1)).textContent = '１７両編成';
+        } else if (Type[0][tr] != '') {
+            document.getElementById('Ttopic1' + (tr + 1)).textContent = '１０両編成';
+        }
+        if (Seventeen.includes(number[1][tr])) {
+            document.getElementById('Ttopic2' + (tr + 1)).textContent = '１７両編成';
+        }
+    }
 }
-console.log(document.getElementById('WType12'));
+for (var td = 0; td < 2; td++) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        if (Type[td][0] == '') {
+            document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
+            Detail[td][0] = '本日の運転は終了しました';
+            break;
+        } else if (Type[td][tr] != '') {
+            document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
+        }
+    }
+}
 allLastShow();
+if (station == '福島駅') {
+    for (var tr = 0; tr < 2; tr++) {
+        if (Type[1][tr] == 'やまびこ･つばさ') {
+            document.getElementById('WType2' + (tr + 1)).innerHTML = '<span class="green">やまびこ</span>･<span style="color:pink;">つばさ</span>';
+        }
+    }
+}
 if (Indexfile == 'index3_S.php') {
     doallDetailShow(18);
 }
