@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="css/styleAll.css">
     <link rel="stylesheet" href="css/styleATOS.css">
     <link rel="stylesheet" href="css/styleATOS_S.css">
-    <link rel="stylesheet" href="css/styleFukushima.css">
     <link rel="stylesheet" href="css/banner.css">
     <!--タブのアイコンを変えたいが、公式HPと混同しそうなので保留-->
     <!--<link rel="icon" href="PNG/favicon.ico" id="favicon">
@@ -15,18 +14,21 @@
     <?php
     $files = array();
     require_once('PHP/variable.php');
-    $files[0] = 'csv/JRE_S/fukushima1.csv';
-    $files[1] = 'csv/JRE_S/fukushima2.csv';
-    $files[2] = 'csv/JRE_T/fukushima3.csv';
-    $files[3] = 'csv/JRE_T/fukushima4.csv';
-    $files[4] = 'csv/JRE_T/fukushima5.csv';
-    $tablenum = 5;
-    $tableStrange = 1;
-    $tablenums = [2, 2, 3, 3, 3];
+    $files[0] = 'csv/JRE_T/sendai1.csv';
+    $files[1] = 'csv/JRE_T/sendai2.csv';
+    $files[2] = 'csv/JRE_T/sendai3.csv';
+    $files[3] = 'csv/JRE_T/sendai4.csv';
+    $files[4] = 'csv/JRE_T/sendai4.csv';
+    $files[5] = 'csv/JRE_T/sendai4.csv';
+    $JRShinkansenflag = 0;
+    $tablenum = 6;
     require('PHP/files3.php');
     require('PHP/select3.php');
     require('PHP/table3.php');
     require_once('getCSV.php');
+    if ($station == '福島駅') {
+        print('<link rel="stylesheet" href="css/styleFukushima.css">');
+    }
     ?>
     <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
     <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
@@ -34,17 +36,16 @@
     <script type="text/javascript" src="js/stationset3_S.js"></script>
     <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
     <script type="text/javascript" src="js/detailStopData/JRTohokuShinset.js"></script>
-
 </head>
 
 <body>
     <div><time>現在時刻:<span id="TTime"></span></time></div>
     <div>
-        <p id="stationname">広島駅</p>
+        <p id="stationname">仙台駅</p>
     </div>
     <!--駅選択部分-->
     <?php
-    JRATOSStaSele('駅変更');
+    JRTohoku('駅変更');
     JRATOS_SStaSele('駅変更');
     ?>
     <form action="select.php" method="POST">
@@ -62,10 +63,14 @@
     <!--表をすべて入れる-->
     <tableline>
         <?php
-        for ($i = 1; $i <= 2; $i++) {
-            JRE_STable($i, $tablenums);
+        $Tstart = 1;
+        if ($JRShinkansenflag == 1) {
+            for ($i = 1; $i <= 2; $i++) {
+                JRE_STable($i, $tablenums);
+            }
+            $Tstart = 3;
         }
-        for ($i = 3; $i <= $tablenum; $i++) {
+        for ($i = $Tstart; $i <= $tablenum; $i++) {
             JRATOSTable($i, $tablenums);
         }
         ?>

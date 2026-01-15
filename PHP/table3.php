@@ -17,7 +17,7 @@ print('
         print('
     <tr id="TRow' . $i . $j . '">
       <td id="TName' . $i . $j . '"><span id="WName' . $i . $j . '"></td>
-      <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
+      <td class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
       <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"></td>
       <td class="cars" id="TCars' . $i . $j . '"></td>

@@ -157,11 +157,11 @@ function JRNameDevide(T = Tablenum) {
                 if (
                     Indexfile == "index6_S.php" ||
                     Indexfile == "index3_S.php" ||
-                    Indexfile == "index6_Chiba.php"||Indexfile=="index3_T.php"
+                    Indexfile == "index6_Chiba.php" || Indexfile == "index3_T.php"
                 ) {
                     Mlength = 9;
                 }
-                console.log(matches[tr][1].length+":"+Mlength);
+                console.log(matches[tr][1].length + ":" + Mlength);
                 if (matches[tr][1].length < Mlength) {
                     console.log(matches[tr][1]);
                     document.getElementById(
@@ -386,7 +386,13 @@ function AllStartWordReplace(td, tr, line, keyword, AfterWord) {
     //console.log(Type[td][tr] + 'td=' + td + 'tr=' + tr);
     //console.log(LTab.textContent);
 }
-
+//JSでstyleを変更する
+function AllClassSetting(ClassName, styleName, change) {
+    const elements = document.querySelectorAll(ClassName);
+    elements.forEach(el => {
+        el.style[styleName] = change;
+    });
+}
 //路線記号追加
 function LineMarkAdd(td, Mark, backColor) {
     var newElement = document.createElement("span"); // p要素作成
@@ -484,11 +490,11 @@ function moveTableColumn(table, fromIndex, toIndex) {
     // table.rowsは<thead>, <tbody>, <tfoot>内の全ての<tr>要素を含むHTMLCollection
     for (let i = 0; i < table.rows.length; i++) {
         const row = table.rows[i];
-        
+
         // 移動させるセル（<td>または<th>）を取得
         // cellsは<tr>内の全てのセル要素を含むHTMLCollection
         const cellToMove = row.cells[fromIndex];
-        
+
         // 移動元インデックスと移動先インデックスが同じ場合は何もしない
         if (fromIndex === toIndex) {
             continue;
