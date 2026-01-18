@@ -38,6 +38,7 @@ if (station == '長野駅') {
     limitedjustnumber(TT[1], 50, 'やまびこ+');
     limitedjustnumber(TT[1], 122, ['やまびこ', 'つばさ', 'やまびこ･つばさ']);
 } else if (station == '仙台駅' && JRShinkansenflag == 0) {
+    company = 'JR東日本';
     DestinationDevide(['仙台空港'], 3, 5);
     DestinationDevide(['原ノ町', '品川', '新地', '山下'], 3, 4);
     TableTitle = ['仙山線 愛子 作並 山形方面', '仙石線 本塩釜 松島海岸 石巻方面', '東北本線下り 岩切 利府 塩釜 小牛田方面',

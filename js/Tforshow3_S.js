@@ -199,7 +199,12 @@ if (JRShinkansenflag > 0) {
         }
     }
 }
-allLastShow();
+if (Indexfile != 'index3_T.php') {
+    allLastShow();
+    flagmarkerase(0, 'WType');
+    flagmarkerase(1, 'WType');
+    flagmarkerase(1, 'WType', '+');
+}
 if (station == '福島駅') {
     for (var tr = 0; tr < 2; tr++) {
         if (Type[1][tr] == 'やまびこ･つばさ') {
@@ -210,6 +215,3 @@ if (station == '福島駅') {
 if (Indexfile == 'index3_S.php') {
     doallDetailShow(18);
 }
-flagmarkerase(0, 'TType');
-flagmarkerase(1, 'TType');
-flagmarkerase(1, 'TType', '+');

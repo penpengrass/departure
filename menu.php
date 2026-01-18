@@ -55,8 +55,8 @@
             <tr>
                 <td>JR東日本東北</td>
                 <td><button type="button" onclick="location.href='./index3_T.php'">移動</button></td>
+                <td><span style="color:blue;">仙台駅</span></td>
                 <td><span style="color:blue;">福島駅</span></td>
-                <td><span style="color:blue;"></span></td>
             </tr>
             <tr>
                 <td>JR西日本</td>
