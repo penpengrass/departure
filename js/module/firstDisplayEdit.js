@@ -161,9 +161,9 @@ function JRNameDevide(T = Tablenum) {
                 ) {
                     Mlength = 9;
                 }
-                console.log(matches[tr][1].length + ":" + Mlength);
+                //console.log(matches[tr][1].length + ":" + Mlength);
                 if (matches[tr][1].length < Mlength) {
-                    console.log(matches[tr][1]);
+                    //console.log(matches[tr][1]);
                     document.getElementById(
                         "WType" + (td + 1) + "" + (tr + 1)
                     ).textContent = matches[tr][1];
@@ -183,8 +183,7 @@ function JRNameDevide(T = Tablenum) {
                         ).style.color = "red";
                     }
                 }
-                console.log(ShinNumber);
-                console.log(Type[td]);
+                //console.log(ShinNumber);
                 ShinNumber[td][tr] = matches[tr][2];
             } else {
                 //console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');

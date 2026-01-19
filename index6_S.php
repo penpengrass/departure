@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>JR東日本北信越発車標</title>
+  <title>JR東日本新幹線発車標</title>
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/styleNagano.css">
   <link rel="stylesheet" href="css/styleJRES6.css">
@@ -15,7 +15,8 @@
   require_once('PHP/variable.php');
   $tablenum = 2;
   $OrderNum = 4;
-  //require_once('PHP/files6.php');
+  require_once('PHP/files3_S.php');
+  require('PHP/select3.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
@@ -30,13 +31,10 @@
   <div>
     <p id="stationname">長野駅</p>
   </div>
-  <!--駅選択部分-->
-  <form action="index6_S.php" method="POST">
-    <select name="stasele">
-      <option value="csv/JRE_S/Tokyo1.csv">東京駅</option>
-    </select>
-    <button type="submit" name="submit">駅変更</button>
-  </form>
+  <?php
+  //駅選択部分
+  JRES_StaSele('駅変更')
+  ?>
   <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>

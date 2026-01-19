@@ -186,7 +186,7 @@ if (station == '長野駅') {
         }
     }
 }
-if (JRShinkansenflag > 0) {
+if (JRShinkansenflag > 0 && Indexfile != 'index4_H.php') {
     for (var td = 0; td < 2; td++) {
         for (var tr = 0; tr < Tablenums[td]; tr++) {
             if (Type[td][0] == '') {

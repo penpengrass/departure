@@ -17,15 +17,19 @@ for (let te = 0; te < Tablenum; te++) {
 }
 allLastShow();
 Bansenshow();
-flagmarkerase(0,'WType');
-//種別の色   
-for (var tr = 0; tr < 4; tr++) {
-    JREScolor(0, tr, 'やまびこ', '<span class="green">やまびこ</span>', yellowgreen);
-    JREScolor(0, tr, 'なすの', '<span class="green">なすの</span>', yellowgreen);
-    JREScolor(0, tr, 'つばさ', '<span class="orange">つばさ</span>', orange);
-    JREScolor(0, tr, 'はやぶさ', '<span class="green">はやぶさ</span>', yellowgreen);
-    JREScolor(0, tr, 'はやぶさ･こまち', '<span class="green">はやぶさ</span>･<span class="pink">こまち</span>', pink);
-    JREScolor(0, tr, 'やまびこ･つばさ', '<span class="green">やまびこ</span>･<span class="orange">つばさ</span>', orange);
+flagmarkerase(0, 'WType');
+flagmarkerase(1, 'WType');
+flagmarkerase(1, 'WType', '+');
+//種別の色
+for (var td = 0; td < Tablenum; td++) {
+    for (var tr = 0; tr < 4; tr++) {
+        JREScolor(td, tr, 'やまびこ', '<span class="green">やまびこ</span>', yellowgreen);
+        JREScolor(td, tr, 'なすの', '<span class="green">なすの</span>', yellowgreen);
+        JREScolor(td, tr, 'つばさ', '<span class="orange">つばさ</span>', orange);
+        JREScolor(td, tr, 'はやぶさ', '<span class="green">はやぶさ</span>', yellowgreen);
+        JREScolor(td, tr, 'はやぶさ･こまち', '<span class="green">はやぶさ</span>･<span class="pink">こまち</span>', pink);
+        JREScolor(td, tr, 'やまびこ･つばさ', '<span class="green">やまびこ</span>･<span class="orange">つばさ</span>', orange);
+    }
 }
 for (var tr = 0; tr < 4; tr++) {
     JREScolor(1, tr, 'とき', '<span class="brown">とき</span>', 'brown');
@@ -33,4 +37,7 @@ for (var tr = 0; tr < 4; tr++) {
     JREScolor(1, tr, 'あさま', '<span class="blue">あさま</span>', '#456f99');
     JREScolor(1, tr, 'はくたか', '<span class="blue">はくたか</span>', '#456f99');
     JREScolor(1, tr, 'かがやき', '<span class="blue">かがやき</span>', '#456f99');
+}
+if (station == '仙台駅') {
+    comment.innerHTML += "<br>実際には停車駅表示があるが未実装";
 }
