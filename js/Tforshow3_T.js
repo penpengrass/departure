@@ -14,22 +14,29 @@ for (var tr = 0; tr < 3; tr++) {
 }
 
 if (station == '仙台駅' && JRShinkansenflag == 0) {
-    AllClassSetting('.shubetu', 'textAlign', 'left');
-    AllClassSetting('.railnumber', 'color', 'red');
-    for (var tr = 0; tr < 3; tr++) {
-        JRLineName(2, tr, '快速', '仙石東北ﾗｲﾝ', 1);
-        JRLimitedNameDevide(4, tr, 'ひたち', '特急', 'red');
-    }
     for (var td = 0; td < Tablenum; td++) {
         swapColumns(ATOStable[td], 0, 1);
         for (var tr = 0; tr < Tablenums[td]; tr++) {
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = 'red';
             TypeColorChange(td, tr, '普通', 'orange');
             TypeColorChange(td, tr, '特急', 'red');
+            TypeColorChange(td, tr, '特別快速', 'red');
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.6);
             TwoLetterDistance(td, tr, Des, TDes, 0.4, 0.2, 3);
         }
+        document.getElementById('HType' + (td + 1)).style.width = "10%";
+        document.getElementById('HName' + (td + 1)).style.width = "33%";
     }
+    AllClassSetting('.shubetu', 'textAlign', 'left');
+    AllClassSetting('.HrailNumber', 'textAlign', 'center');
+    AllClassSetting('.CName', 'textAlign', 'left');
+    AllClassSetting('.railnumber', 'color', 'red');
+    for (var tr = 0; tr < 3; tr++) {
+        JRLineName(2, tr, '快速', '仙石東北ﾗｲﾝ', 1);
+        JRLimitedNameDevide(4, tr, 'ひたち', '特急', 'red');
+        FourLetters(2, tr, 0.7, 15,'TType');
+    }
+    
     comment.innerHTML+="新幹線仙台駅は別画面で作成";
 }
 if (station == '福島駅') {

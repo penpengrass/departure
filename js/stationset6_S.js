@@ -20,13 +20,14 @@ if (station == '東京駅') {
     TT[1] = TT[3];
 } else if (station == '仙台駅') {
     company = '東北新幹線';
-    TableTitle = ['新青森方面','東京方面'];
+    TableTitle = ['新青森方面', '東京方面'];
     limitedjustnumber(TT[0], 51, 'やまびこ');
     limitedjustnumber(TT[0], 101, 'はやぶさ', '盛岡');
-    limitedjustnumber(TT[0], 1, ['はやぶさ','はやぶさ･こまち'], ['新青森','新函館北斗','新青森･秋田','新函館北斗･秋田']);
-    limitedjustnumber(TT[1], 2, ['はやぶさ','はやぶさ･こまち']);
+    limitedjustnumber(TT[0], 1, ['はやぶさ', 'はやぶさ･こまち'], ['新青森', '新函館北斗', '新青森･秋田', '新函館北斗･秋田']);
+    limitedjustnumber(TT[1], 2, ['はやぶさ', 'はやぶさ･こまち']);
     limitedjustnumber(TT[1], 102, 'はやぶさ*');
     limitedjustnumber(TT[1], 202, 'やまびこ*');
     limitedjustnumber(TT[1], 50, 'やまびこ+');
     limitedjustnumber(TT[1], 122, 'やまびこ');
+    detailflag = 4;
 }

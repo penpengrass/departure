@@ -39,5 +39,11 @@ for (var tr = 0; tr < 4; tr++) {
     JREScolor(1, tr, 'かがやき', '<span class="blue">かがやき</span>', '#456f99');
 }
 if (station == '仙台駅') {
+    for (var tr = 0; tr < orderNum; tr++) {
+        if (number[0][tr] > 11 && number[0][tr] < 100 && Type[0][tr].includes('はやぶさ')) {
+            number[0][tr] += 2;
+            document.getElementById('TName' + (1) + (tr + 1)).textContent = number[0][tr] + "号";
+        }
+    }
     comment.innerHTML += "<br>実際には停車駅表示があるが未実装";
 }

@@ -38,11 +38,11 @@
   <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
-    <button type="button" onclick="location.href='./index3.php'">ATOSへ移動</button>
+    <button type="button" onclick="location.href='./index3.php?station=omoya'">大宮駅へ移動</button>
+    <button type="button" onclick="location.href='./index3_T.php'">在来線仙台駅へ移動</button>
     <button type="button" onclick="location.href='./index3_S.php'">新幹線長野駅へ移動</button>
-    <button type="button" onclick="location.href='./index4.php'">JR西日本へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
-    <button type="button" onclick="location.href='./index6.php'">在来線へ移動</button>
+    <button type="button" onclick="location.href='./index6_U.php'">在来線東京駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
     <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線へ移動</button>
     <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
@@ -96,6 +96,7 @@
 <script type="text/javascript" src="js/main.js"></script>
 <script type="text/javascript" src="js/variable2.js"></script>
 <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
+<script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
 <script type="text/javascript" src="js/module/displayEdit6.js"></script>
 <script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
 <script type="text/javascript" src="js/Tforshow6_S.js"></script>
