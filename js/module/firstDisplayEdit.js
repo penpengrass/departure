@@ -6,7 +6,6 @@ for (var td = 0; td < Tablenum; td++) {
 function LastShows(td, tr) {
     //console.log(TableHour[td][tr]);
     //console.log(document.getElementById("THour" + (td + 1) + "" + (tr + 1)))
-    // console.log(TableHour[td][tr]);
     document.getElementById("THour" + (td + 1) + "" + (tr + 1)).textContent =
         TableHour[td][tr];
     document.getElementById("TMin" + (td + 1) + "" + (tr + 1)).textContent =
@@ -157,11 +156,10 @@ function JRNameDevide(T = Tablenum) {
                 if (
                     Indexfile == "index6_S.php" ||
                     Indexfile == "index3_S.php" ||
-                    Indexfile == "index6_Chiba.php"||Indexfile=="index3_T.php"
+                    Indexfile == "index6_Chiba.php" || Indexfile == "index3_T.php"
                 ) {
                     Mlength = 9;
                 }
-                console.log(matches[tr][1].length+":"+Mlength);
                 if (matches[tr][1].length < Mlength) {
                     console.log(matches[tr][1]);
                     document.getElementById(
@@ -199,9 +197,7 @@ function JRLimitedName(td, tr, flag = 0) {
     var matches = new Array(Type[td].length);
     //console.log(Type[td][tr]);
     if (flag == 0) {
-        LimitedName[tr] = document.getElementById(
-            "TType" + (td + 1) + "" + (tr + 1)
-        ).textContent;
+        LimitedName[tr] = document.getElementById("TType" + (td + 1) + "" + (tr + 1)).textContent;
     } else if (flag == 1) {
         LimitedName[tr] = Type[td][tr];
     }
@@ -484,11 +480,11 @@ function moveTableColumn(table, fromIndex, toIndex) {
     // table.rowsは<thead>, <tbody>, <tfoot>内の全ての<tr>要素を含むHTMLCollection
     for (let i = 0; i < table.rows.length; i++) {
         const row = table.rows[i];
-        
+
         // 移動させるセル（<td>または<th>）を取得
         // cellsは<tr>内の全てのセル要素を含むHTMLCollection
         const cellToMove = row.cells[fromIndex];
-        
+
         // 移動元インデックスと移動先インデックスが同じ場合は何もしない
         if (fromIndex === toIndex) {
             continue;

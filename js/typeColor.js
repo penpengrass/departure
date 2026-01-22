@@ -188,7 +188,7 @@ function allTokyuColor() {
 //console.log(Indexfile);
 //index7.phpのみTforshow7.jsに移行
 if (Indexfile == 'index8.php') {
-    
+
 } else if (Indexfile == 'index7_T.php') {
     allJRNagoyaColor();
 } else if (CompanyNumber == 5) {

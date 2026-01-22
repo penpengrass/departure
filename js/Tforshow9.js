@@ -1,4 +1,9 @@
-
+function WhetherLocal(td) {
+    if (Type[td][0].startsWith('普通') || Type[td][0].startsWith('各駅停車')) {
+        return true;
+    }
+    return false;
+}
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         if (Des[td][tr] == '岡山･高松' || Des[td][tr] == '高松･岡山') {
@@ -14,40 +19,53 @@ for (var td = 0; td < Tablenum; td++) {
     }
 }
 if (station == '高松駅') {
-    allJRSIncludeColor(JRSobj);
+    //allJRSIncludeColor(JRSobj);
     DetailShow(JRSobj, "、");
 } else if (station == '松山駅') {
-    allJRSIncludeColor(JRSMobj);
+    //allJRSIncludeColor(JRSMobj);
     DetailShow(JRSMobj, "、");
 
 } else if (station == '高知駅') {
-    allJRSIncludeColor(JRSKobj);
+    //allJRSIncludeColor(JRSKobj);
     DetailShow(JRSKobj, "、");
 }
-console.log(Type);
 for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < orderNum; tr++) {
+    let element = document.getElementById('TRDetail' + (td + 1) + "1");
+    let element_Line = document.getElementById('TTLine' + (td + 1) + "2");
+    if (WhetherLocal(td)) {
+        var tr = 2;
+        element.innerHTML = '<td class="shubetu" id="TType' + (td + 1) + tr + '"><span id="WType' + (td + 1) + tr + '"></span></td>\
+        <td class="CName" id="TName' + (td + 1) + tr + '" colspan="4"><span id="WName' + (td + 1) + tr + '"></span></td>\
+        <td class="CTime" id="TTime' + (td + 1) + tr + '"><p2 id="THour' + (td + 1) + tr + '"></p2>:<p2 id="TMin' + (td + 1) + tr + '"></p2></td>\
+        <td class="Destination" id="TDes' + (td + 1) + tr + '"><span id="WDes' + (td + 1) + tr + '"></span></td>\
+        <td class="railnumber" id="TNum' + (td + 1) + tr + '"></td>';
+        tr++;
+        element_Line.innerHTML = '<td class="shubetu" id="TType' + (td + 1) + tr + '"><span id="WType' + (td + 1) + tr + '"></span></td>\
+        <td class="CName" id="TName' + (td + 1) + tr + '" colspan="4"><span id="WName' + (td + 1) + tr + '"></span></td>\
+        <td class="CTime" id="TTime' + (td + 1) + tr + '"><p2 id="THour' + (td + 1) + tr + '"></p2>:<p2 id="TMin' + (td + 1) + tr + '"></p2></td>\
+        <td class="Destination" id="TDes' + (td + 1) + tr + '"><span id="WDes' + (td + 1) + tr + '"></span></td>\
+        <td class="railnumber" id="TNum' + (td + 1) + tr + '"></td>';
+        tr--;
+    } else {
+        Tablenums[td] -= 1;
+    }
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (Des[td][tr] == '岡山' && station == '松山駅') {
             Des[td][tr] = '岡山･高松';
         } else if (Type[td][tr].includes('しまんと･南風')) {
             Des[td][tr] = '高松･岡山';
         }
-        if (station == '高知駅') {
-            TypeColorChange(td, tr, '特急', 'red');
-            TypeBackColorChange(td, tr, '特急', '#202020');
-        }
     }
 }
-console.log(Des[0][1]);
-console.log(Detail);
 for (var td = 0; td < Tablenum; td++) {
     //console.log(Detail[tr][0].slice(-1));
     LastLetterRemove(td, 0, '、');
     if (Detail[td][0] != '各駅にとまります' && Detail[td][0] != '') {
         Detail[td][0] += 'に停車します。';
     }
-    document.getElementById('TDetail' + (td + 1) + '' + 1).textContent = Detail[td][0];
-
+    if (!WhetherLocal(td)) {
+        document.getElementById('TDetail' + (td + 1) + '' + 1).textContent = Detail[td][0];
+    }
 }
 for (var td = 0; td < 2; td++) {
     if (Type[td][0].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
@@ -61,15 +79,16 @@ for (var td = 0; td < 2; td++) {
     }
 }
 if (station == '高松駅') {
-    console.log(number);
     if (Type[2][0].startsWith('快速ﾏﾘﾝﾗｲﾅｰ') && number[2][0] != 2) {
-        document.getElementById('TDetail' + (td + 1) + '' + 1).innerHTML += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜５号車は<font color='yellow'>自由席</font>です。";
+        document.getElementById('TDetail' + (2 + 1) + '' + 1).innerHTML += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜５号車は<font color='yellow'>自由席</font>です。";
     }
 
     //
     for (var td = 0; td < 2; td++) {
-        if (Type[td][1].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
-            Type[td][1] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
+        for (var tr = 1; tr < 3; tr++) {
+            if (Type[td][tr].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
+                Type[td][tr] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
+            }
         }
     }
 } else if (station == '松山駅') {
@@ -93,15 +112,23 @@ if (station == '高松駅') {
         Detail1.innerHTML += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
     }
 }
-console.log(TableHour);
 allLastShow();
 //JRLimitedDevide(1);
 //JRLimitedDevide(3);
 for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < 2; tr++) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
         var dType = document.getElementById('TType' + (td + 1) + (tr + 1));
+        if (station == '高知駅') {
+            JTypeIncludeColor(Type[td][tr], TType[td][tr], JRSKobj);
+            TypeColorChange(td, tr, '特急', 'red');
+            TypeBackColorChange(td, tr, '特急', '#202020');
+        } else if (station == '高松駅') {
+            console.log(td+":"+tr);
+            JTypeIncludeColor(Type[td][tr], TType[td][tr], JRSobj);
+        } else if (station == '松山駅') {
+            JTypeIncludeColor(Type[td][tr], TType[td][tr], JRSMobj);
+        }
         var color = dType.style.color;
-        console.log(Type[td][tr]);
         if (Type[td][tr] == '各駅停車' || Type[td][tr] == '普通') {
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = '各駅停車';
             document.getElementById('WType' + (td + 1) + (tr + 1)).textContent = '';
