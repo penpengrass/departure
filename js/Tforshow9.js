@@ -1,8 +1,33 @@
-function WhetherLocal(td) {
-    if (Type[td][0].startsWith('普通') || Type[td][0].startsWith('各駅停車')) {
+function WhetherLocal(td, tr) {
+    if (Type[td][tr] == '普通' || Type[td][tr] == '各駅停車' || Type[td][tr] == '普通(当駅始発)') {
         return true;
     }
     return false;
+}
+function WhetherStartsLocal(td, tr) {
+    if (Type[td][tr].startsWith('普通') || Type[td][tr].startsWith('各駅停車')) {
+        return true;
+    }
+    return false;
+}
+function LocalShow(td, tr, color) {
+    if (station == '松山駅' || station == '高松駅') {
+        document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = '各駅停車';
+        document.getElementById('WType' + (td + 1) + (tr + 1)).textContent = '';
+        document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'left';
+        document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = color;
+    }
+    else if (station == '高知駅') {
+        document.getElementById('WType' + (td + 1) + (tr + 1)).textContent = '普通';
+        document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'center';
+        document.getElementById('WType' + (td + 1) + (tr + 1)).style.color = 'lightgreen';
+        document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = 'lightgreen';
+        if (Type[td][tr].includes('(')) {
+            document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = Type[td][tr].replace('普通', '');
+        } else {
+            document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = '(各駅停車)';
+        }
+    }
 }
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
@@ -32,7 +57,7 @@ if (station == '高松駅') {
 for (var td = 0; td < Tablenum; td++) {
     let element = document.getElementById('TRDetail' + (td + 1) + "1");
     let element_Line = document.getElementById('TTLine' + (td + 1) + "2");
-    if (WhetherLocal(td)) {
+    if (WhetherLocal(td, 0) && !Des[td][0].includes('*') && !Des[td][0].includes('+')) {
         var tr = 2;
         element.innerHTML = '<td class="shubetu" id="TType' + (td + 1) + tr + '"><span id="WType' + (td + 1) + tr + '"></span></td>\
         <td class="CName" id="TName' + (td + 1) + tr + '" colspan="4"><span id="WName' + (td + 1) + tr + '"></span></td>\
@@ -63,7 +88,7 @@ for (var td = 0; td < Tablenum; td++) {
     if (Detail[td][0] != '各駅にとまります' && Detail[td][0] != '') {
         Detail[td][0] += 'に停車します。';
     }
-    if (!WhetherLocal(td)) {
+    if (!WhetherLocal(td, 0)) {
         document.getElementById('TDetail' + (td + 1) + '' + 1).textContent = Detail[td][0];
     }
 }
@@ -71,9 +96,6 @@ for (var td = 0; td < 2; td++) {
     if (Type[td][0].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
         var matches = Type[td][0].match(/(\D+)(\d+)号/);
         var NampuNumber = Number(matches[2]);
-        if (NampuNumber == 21) {
-            NampuNumber += 2;
-        }
         document.getElementById('TDetail' + (td + 1) + '' + 1).innerHTML += ' <font color="red">丸亀駅</font>で<font color="red">特急南風' + NampuNumber + '号 高知行き</font>に接続します';
         Type[td][0] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
     }
@@ -111,6 +133,16 @@ if (station == '高松駅') {
         Detail1.textContent = Detail1.textContent.replace('宇多津、坂出', '坂出');
         Detail1.innerHTML += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
     }
+    if (Type[1][0] == '快速') {
+        Detail[1][0] = '後免までの各駅、後免町、のいち、あかおか、夜須、和食、球場前、球場前から各駅に停車します。';
+        document.getElementById('TDetail21').textContent = Detail[1][0];
+    } else if (Type[1][0] == '普通(一部通過)') {
+        Detail[1][0] = '土佐一宮、土佐大津、後免に停車します';
+        document.getElementById('TDetail21').textContent = Detail[1][0];
+    } else if (Des[1][0].includes('･奈半利')) {
+        Detail[1][0] = '奈半利行きは後免から<span class="orange">快速</span>となります。';
+        document.getElementById('TDetail21').innerHTML = Detail[1][0];
+    }
 }
 allLastShow();
 //JRLimitedDevide(1);
@@ -121,19 +153,16 @@ for (var td = 0; td < Tablenum; td++) {
         if (station == '高知駅') {
             JTypeIncludeColor(Type[td][tr], TType[td][tr], JRSKobj);
             TypeColorChange(td, tr, '特急', 'red');
+            TypeColorChange(td, tr, '快速', 'orange');
             TypeBackColorChange(td, tr, '特急', '#202020');
         } else if (station == '高松駅') {
-            console.log(td+":"+tr);
             JTypeIncludeColor(Type[td][tr], TType[td][tr], JRSobj);
         } else if (station == '松山駅') {
             JTypeIncludeColor(Type[td][tr], TType[td][tr], JRSMobj);
         }
         var color = dType.style.color;
-        if (Type[td][tr] == '各駅停車' || Type[td][tr] == '普通') {
-            document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = '各駅停車';
-            document.getElementById('WType' + (td + 1) + (tr + 1)).textContent = '';
-            document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'left';
-            document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = color;
+        if (WhetherStartsLocal(td, tr)) {
+            LocalShow(td, tr, color);
         } else if (Type[td][tr].startsWith('各停')) {
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = Type[td][tr];
             document.getElementById('WType' + (td + 1) + (tr + 1)).textContent = '';
@@ -162,10 +191,15 @@ for (var td = 0; td < Tablenum; td++) {
         } else if (Type[td][tr].startsWith('快速')) {
             document.getElementById('TType' + (td + 1) + (tr + 1)).textContent = '快速';
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = Type[td][tr].slice(2);
-            document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'left';
             document.getElementById('TName' + (td + 1) + (tr + 1)).style.color = color;
-            dType.style.backgroundColor = color;
-            dType.style.color = 'white';
+            if (station != '高知駅') {
+                dType.style.backgroundColor = color;
+                dType.style.color = 'white';
+                document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'left';
+            } else {
+                document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = '(一部通過)';
+                document.getElementById('TName' + (td + 1) + (tr + 1)).style.textAlign = 'center';
+            }
         } else if (Type[td][tr].startsWith('特急')) {
             dType.textContent = '特急';
             document.getElementById('TName' + (td + 1) + (tr + 1)).textContent = Type[td][tr].slice(2);
