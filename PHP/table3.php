@@ -16,8 +16,8 @@ print('
       for ($j = 1; $j <= $tablenums[$i - 1]; $j++) {
         print('
     <tr id="TRow' . $i . $j . '">
-      <td id="TName' . $i . $j . '"><span id="WName' . $i . $j . '"></td>
-      <td class="shubetu' . $i . $j . '" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
+      <td class="CName" id="TName' . $i . $j . '"><span id="WName' . $i . $j . '"></td>
+      <td class="shubetu" id="TType' . $i . $j . '"><span id="WType' . $i . $j . '"></span></td>
       <td id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"></td>
       <td class="cars" id="TCars' . $i . $j . '"></td>
@@ -35,7 +35,7 @@ print('
 }
 function JRE_STable($i,$tablenums){
   print('
-  <table>
+  <table class="STable" id="TATOSTable' . $i . '">
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
     ');
