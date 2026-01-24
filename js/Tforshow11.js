@@ -1,17 +1,23 @@
-allLastShow();
+if (station == '浅草駅') {
+    Delay(-6);
+    var PlusHour = new Array(3);
+    var PlusMin = new Array(3);
+    var PlusType = new Array(3);
+    var PlusDes = new Array(3);
+    FShow(TT[3], 4, NotShows);
+    FSTShow(TT[3], NotShows, orders[1], 4, 2);
+    FSTShow(TT[3], NotShows, orders[2], 4, 3);
+}
+console.log(number);
 for (var td = 0; td < 2; td++) {
     for (var tr = 0; tr < 4; tr++) {
         if (Type[td][tr] != '') {
             var dName = document.getElementById('TName' + (td + 1) + (tr + 1));
+            var Name = JRLimitedName(td, tr, 1);
             var dType = document.getElementById('TType' + (td + 1) + (tr + 1));
             var dNumber = document.getElementById('TNumber' + (td + 1) + (tr + 1));
-            dName.textContent = document.getElementById('TType' + + (td + 1) + (tr + 1)).textContent;
-            dType.textContent = '特急';
-            Type[td][tr] = '特急';
-            var number = JRLimitedNumber(td, tr, 'TName');
-            dNumber.textContent = number + '号';
-            dName.textContent = dName.textContent.replace(number + '号', '');
-            console.log(dName);
+            dNumber.textContent = number[td][tr] + "号";
+            dName.textContent = Name;
             if (dName.textContent.includes('リバティ')) {
                 var Right = dName.textContent.replace('リバティ', '');
                 dName.innerHTML = 'リバティ<br>' + '<span class="gou">' + Right + '</span>';
@@ -31,6 +37,7 @@ for (var td = 0; td < 2; td++) {
                 dName.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
                 dName.style.fontWeight = '800px';
             }
+            Type[td][tr] = '特急';
         }
     }
 }
@@ -40,7 +47,7 @@ for (var tr = 0; tr < orderNum; tr++) {
     document.getElementById('TName1' + (tr + 1)).style.color = 'red';
     document.getElementById('TNumber1' + (tr + 1)).style.color = 'red';
 }
-console.log(Type);
+allLastShow();
 if (station == '浅草駅') {
     var dDetail1 = document.getElementById('TDetail11');
     var dDetail2 = document.getElementById('TDetail21');
@@ -48,6 +55,12 @@ if (station == '浅草駅') {
     LastLetterRemove(0, 0, '・');
     FDetail(Type[1][0], Tobuobj, Dtype[0], 1, 0, "・");
     LastLetterRemove(1, 0, '・');
+    if (whetherStop(17, 40, TableHour[0][0], TableMin[0][0], 23, 30)) {
+        DetailReplace(0, 0, '北千住', '曳舟・北千住');
+    }
+    if (whetherStop(17, 40, TableHour[1][0], TableMin[1][0], 23, 30)) {
+        DetailReplace(1, 0, '北千住', '曳舟・北千住');
+    }
     stationN = '北千住';
     FDetail(Type[2][0], Tobuobj, Dtype[0], 2, 0, "・");
     if (Detail[0][0] != '' && Type[0][0] != '') {
@@ -55,12 +68,6 @@ if (station == '浅草駅') {
     }
     if (Detail[1][0] != '' && Type[1][0] != '') {
         Detail[1][0] = '停車駅は ' + Detail[1][0] + 'です';
-    }
-    if (whetherStop(17, 40, TableHour[0][0], TableMin[0][0], 23, 30)) {
-        DetailReplace(0, 0, '北千住', '曳舟・北千住');
-    }
-    if (whetherStop(17, 40, TableHour[1][0], TableMin[1][0], 23, 30)) {
-        DetailReplace(1, 0, '北千住', '曳舟・北千住');
     }
     var dDetail = document.getElementById('TDetail31');
     if (Type[2][0].includes('区間')) {

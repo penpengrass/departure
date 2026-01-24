@@ -87,17 +87,6 @@ function main() {
     }
 }
 main();
-if (station == '浅草駅') {
-    Delay(-6);
-    var PlusHour = new Array(3);
-    var PlusMin = new Array(3);
-    var PlusType = new Array(3);
-    var PlusDes = new Array(3);
-    console.log(station);
-    FShow(TT[3], 4, NotShows);
-    FSTShow(TT[3], NotShows, orders[1], 4, 2);
-    FSTShow(TT[3], NotShows, orders[2], 4, 3);
-}
 var testflag = 0;
 if (testflag == 0) {
     //1分ごとに更新するが，先発が切り替わるごとに実行したい
