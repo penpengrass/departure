@@ -6,14 +6,25 @@ if (isset($_POST['staselect3'])) {
   if ($test1 == $startstation) {
     header('Location: ../index3.php');
     exit();
-  } else if($test1 == 'shinjuku'){
+  } else if ($test1 == 'shinjuku') {
     header('Location: ../index6.php');
-  } else if($test1 == 'akabane'){
+  } else if ($test1 == 'akabane') {
     header('Location: ../index6.php?station=akabane');
-  }else if($test1 == 'tokyo'){
+  } else if ($test1 == 'tokyo') {
     header('Location: ../index6_U.php');
-  }else{
+  } else {
     header('Location: ../index3.php?station=' . $test1);
+    exit();
+  }
+}
+if (isset($_POST['staselect3_tohoku'])) {
+  $test1 = $_POST['staselect3_tohoku'];
+  if ($test1 == 'kuroiso' || $test1 == 'utsunomiya') {
+    header('Location: ../index3.php?station=' . $test1);
+  } else if ($test1 == 'sendai') {
+    header('Location: ../index3_T.php');
+  } else {
+    header('Location: ../index3_T.php?station=' . $test1);
     exit();
   }
 }
@@ -22,20 +33,20 @@ if (isset($_GET['station'])) {
     $files[0] = 'csv/JRE/atami1.csv';
     $files[1] = 'csv/JRE/atami2.csv';
     $files[2] = 'csv/JRE/atami3.csv';
-    if($holidayflag==1){
+    if ($holidayflag == 1) {
       $files[0] = 'csv/JRE/atami1_H.csv';
       $files[2] = 'csv/JRE/atami3_H.csv';
     }
     $tablenum = 3;
     $OrderNum = 2;
-    $station='熱海駅';
+    $station = '熱海駅';
   } else if (Inisset('odawara')) {
-    if($holidayflag==1){
+    if ($holidayflag == 1) {
       $files[0] = 'csv/JRE/odawara1_H.csv';
       $files[1] = 'csv/JRE/odawara2_H.csv';
-    }else{
+    } else {
       $files[0] = 'csv/JRE/odawara1.csv';
-     $files[1] = 'csv/JRE/odawara2.csv';
+      $files[1] = 'csv/JRE/odawara2.csv';
     }
     $tablenum = 2;
     $OrderNum = 4;
@@ -56,11 +67,11 @@ if (isset($_GET['station'])) {
     $tablenum = 6;
     $OrderNum = 2;
     $station = '横浜駅';
-  }else if (Inisset('kuroiso')) {
+  } else if (Inisset('kuroiso')) {
     $files[0] = 'csv/JRE/kuroiso1.csv';
     $files[1] = 'csv/JRE/kuroiso2.csv';
     $OrderNum = 2;
-  }else if (Inisset('omiya')) {
+  } else if (Inisset('omiya')) {
     $files[0] = 'csv/JRE/omiya_kawagoe.csv';
     $files[1] = 'csv/JRE/omiya_shinkiba.csv';
     $files[2] = 'csv/JRE/omiya_zushi.csv';
@@ -71,5 +82,16 @@ if (isset($_GET['station'])) {
     $files[6] = 'csv/JRE/omiya_kawaguchi.csv';
     $tablenum = 7;
     $OrderNum = 3;
+  } else if (Inisset('fukushima')) {
+    $files[0] = 'csv/JRE_S/fukushima1.csv';
+    $files[1] = 'csv/JRE_S/fukushima2.csv';
+    $files[2] = 'csv/JRE_T/fukushima3.csv';
+    $files[3] = 'csv/JRE_T/fukushima4.csv';
+    $files[4] = 'csv/JRE_T/fukushima5.csv';
+    $tablenum = 5;
+    $tableStrange = 1;
+    $JRShinkansenflag = 1;
+    $station = '福島駅';
+    $tablenums = [2, 2, 3, 3, 3];
   }
 }

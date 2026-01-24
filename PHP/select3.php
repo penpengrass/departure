@@ -25,6 +25,31 @@ function JRATOS_SStaSele($Select)
       <option value="nagano">長野駅</option>
       <option value="utsunomiya">宇都宮駅</option>
       <option value="fukushima">福島駅</option>
+      <option value="sendai">仙台駅</option>
+    </select>
+    <button type="submit" name="submit">'.$Select.'</button>
+  </form>';
+}
+function JRES_StaSele($Select)
+{
+    echo '<span class="selecttext">新幹線駅</span>
+    <form action="PHP/files3_S.php" method="POST">
+    <select name="staselect6_S">
+      <option value="tokyo">東京駅</option>
+      <option value="utsunomiya">宇都宮駅</option>
+      <option value="fukushima">福島駅</option>
+      <option value="sendai">仙台駅</option>
+    </select>
+    <button type="submit" name="submit">'.$Select.'</button>
+  </form>';
+}
+function JRTohoku($Select){
+   echo '<form action="PHP/files3.php" method="POST">
+    <select name="staselect3_tohoku">
+      <option value="sendai">仙台駅</option>
+      <option value="fukushima">福島駅</option>
+      <option value="kuroiso">黒磯駅</option>
+      <option value="utsunomiya">宇都宮駅</option>s
     </select>
     <button type="submit" name="submit">'.$Select.'</button>
   </form>';

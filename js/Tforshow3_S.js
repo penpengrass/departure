@@ -186,18 +186,25 @@ if (station == '長野駅') {
         }
     }
 }
-for (var td = 0; td < 2; td++) {
-    for (var tr = 0; tr < Tablenums[td]; tr++) {
-        if (Type[td][0] == '') {
-            document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
-            Detail[td][0] = '本日の運転は終了しました';
-            break;
-        } else if (Type[td][tr] != '') {
-            document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
+if (JRShinkansenflag > 0 && Indexfile != 'index4_H.php') {
+    for (var td = 0; td < 2; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            if (Type[td][0] == '') {
+                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
+                Detail[td][0] = '本日の運転は終了しました';
+                break;
+            } else if (Type[td][tr] != '') {
+                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = '停車駅';
+            }
         }
     }
 }
-allLastShow();
+if (Indexfile != 'index3_T.php') {
+    allLastShow();
+    flagmarkerase(0, 'WType');
+    flagmarkerase(1, 'WType');
+    flagmarkerase(1, 'WType', '+');
+}
 if (station == '福島駅') {
     for (var tr = 0; tr < 2; tr++) {
         if (Type[1][tr] == 'やまびこ･つばさ') {
@@ -208,6 +215,3 @@ if (station == '福島駅') {
 if (Indexfile == 'index3_S.php') {
     doallDetailShow(18);
 }
-flagmarkerase(0, 'TType');
-flagmarkerase(1, 'TType');
-flagmarkerase(1, 'TType', '+');
