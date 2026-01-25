@@ -48,6 +48,7 @@ function JRTohoku($Select){
     <select name="staselect3_tohoku">
       <option value="sendai">仙台駅</option>
       <option value="fukushima">福島駅</option>
+      <option value="shinshirakawa">新白河駅</option>
       <option value="kuroiso">黒磯駅</option>
       <option value="utsunomiya">宇都宮駅</option>s
     </select>

@@ -37,10 +37,18 @@ if (station == '長野駅') {
     limitedjustnumber(TT[1], 202, 'やまびこ*');
     limitedjustnumber(TT[1], 50, 'やまびこ+');
     limitedjustnumber(TT[1], 122, ['やまびこ', 'つばさ', 'やまびこ･つばさ']);
+} else if (station == '新白河駅') {
+    company = 'JR東日本';
+    DetailLength = [1, 1, 0, 0];
+    TableTitle = ['東北新幹線(下り) 仙台 盛岡方面', '東北新幹線(上り) 宇都宮 大宮 東京方面', '東北線 黒磯 宇都宮方面', '東北線 郡山 福島方面'];
+    limitedjustnumber(TT[0], 201, 'やまびこ');
+    limitedjustnumber(TT[0], 253, 'なすの');
+    limitedjustnumber(TT[1], 202, 'やまびこ');
+    limitedjustnumber(TT[1], 272, 'なすの');
 } else if (station == '仙台駅' && JRShinkansenflag == 0) {
     company = 'JR東日本';
     DestinationDevide(['仙台空港'], 3, 5);
     DestinationDevide(['原ノ町', '品川', '新地', '山下'], 3, 4);
     TableTitle = ['仙山線 愛子 作並 山形方面', '仙石線 本塩釜 松島海岸 石巻方面', '東北本線下り 岩切 利府 塩釜 小牛田方面',
-         '東北本線 岩沼 白石 福島方面', '常磐線 亘理 相馬 原ノ町方面', '仙台空港アクセス線 名取 仙台空港方面'];
+        '東北本線 岩沼 白石 福島方面', '常磐線 亘理 相馬 原ノ町方面', '仙台空港アクセス線 名取 仙台空港方面'];
 }

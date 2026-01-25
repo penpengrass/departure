@@ -185,10 +185,35 @@ if (station == '長野駅') {
             document.getElementById('Ttopic2' + (tr + 1)).textContent = '１７両編成';
         }
     }
+} else if (station == '新白河駅') {
+    if (Des[0][0] == '郡山') {
+        Detail[0][0] = 'この列車は郡山まで止まりません。';
+    } else if (Des[0][0] == '仙台') {
+        Detail[0][0] = '郡山・福島・仙台';
+    }
+    if (number[1][0] < 60) {
+        Detail[1][0] = '宇都宮・大宮・上野・東京';
+    } else if (number[1][0] > 60) {
+        Detail[1][0] = '那須塩原・宇都宮・小山・大宮・上野・東京';
+    }
+    if (Zaou.includes(number[0][0])) {
+        DetailReplace(0, 0, '仙台', '白石蔵王・仙台');
+    }
+    for (var td = 0; td < 2; td++) {
+        for (var tr = 0; tr < 2; tr++) {
+            TypeColorChange(td, tr, 'やまびこ', 'red');
+            TypeColorChange(td, tr, 'なすの', 'orange');
+            if (Seventeen.includes(number[td][tr])) {
+                document.getElementById('Ttopic' + (td + 1) + (tr + 1)).textContent = '１７両編成';
+            } else if (Type[td][tr] != '') {
+                document.getElementById('Ttopic' + (td + 1) + (tr + 1)).textContent = '１０両編成';
+            }
+        }
+    }
 }
 if (JRShinkansenflag > 0 && Indexfile != 'index4_H.php') {
     for (var td = 0; td < 2; td++) {
-        for (var tr = 0; tr < Tablenums[td]; tr++) {
+        for (var tr = 0; tr < DetailLength[td]; tr++) {
             if (Type[td][0] == '') {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1)).textContent = 'お知らせ';
                 Detail[td][0] = '本日の運転は終了しました';

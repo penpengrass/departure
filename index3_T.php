@@ -65,7 +65,7 @@
         $Tstart = 1;
         if ($JRShinkansenflag == 1) {
             for ($i = 1; $i <= 2; $i++) {
-                JRE_STable($i, $tablenums);
+                JRE_STable($i, $tablenums,$detaillength);
             }
             $Tstart = 3;
         }
