@@ -57,6 +57,7 @@ if (isset($_GET['station'])) {
     $files[3] = 'csv/JRE/utsunomiya4.csv';
     $tablenum = 4;
     $OrderNum = 3;
+    $station = '宇都宮駅';
   } else if (Inisset('yokohama')) {
     $files[0] = 'csv/JRE/yokohama1.csv';
     $files[1] = 'csv/JRE/yokohama2.csv';
@@ -71,6 +72,7 @@ if (isset($_GET['station'])) {
     $files[0] = 'csv/JRE/kuroiso1.csv';
     $files[1] = 'csv/JRE/kuroiso2.csv';
     $OrderNum = 2;
+    $station = '黒磯駅';
   } else if (Inisset('omiya')) {
     $files[0] = 'csv/JRE/omiya_kawagoe.csv';
     $files[1] = 'csv/JRE/omiya_shinkiba.csv';

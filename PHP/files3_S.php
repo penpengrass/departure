@@ -32,7 +32,7 @@ if (isset($_POST['staselect6_S'])) {
         exit();
     }
 }
-$detaillength = 0;
+$detaillength = 3;
 if (isset($_GET['station'])) {
     if (Inisset('nagano')) {
         $files[0] = 'csv/JRE_S/nagano1.csv';
