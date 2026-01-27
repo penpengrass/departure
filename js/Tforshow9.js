@@ -216,8 +216,8 @@ for (var td = 0; td < Tablenum; td++) {
             dName.style.fontSize = '15px';
             dName.style.fontWeight = '800px';
         }
-        if (Des[td][tr].length > 5) {
-            document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.60)" + "translate(-30%,0%)";
+        if (Des[td][tr].length > 5 && Des[td][tr] != 'ｵﾚﾝｼﾞﾀｳﾝ') {
+            document.getElementById('TDes' + (td + 1) + (tr + 1)).style.transform = "scaleX(0.60)" + "translate(-40%,0%)";
         }
         TwoLetterDistance(td, tr, Des, TDes, 1, 0.4);
     }
