@@ -17,7 +17,7 @@
   $files[2] = 'csv/JRE/Musashi_Shinjuku.csv';
   $files[3] = 'csv/JRE/Musashi_Zushi.csv';
   $files[1] = 'csv/JRE/Musashi_shonan.csv';
-  $files[4]='csv/JRE/Musashi_Ebina.csv';
+  $files[4] = 'csv/JRE/Musashi_Ebina.csv';
   require('PHP/files3.php');
   require('PHP/select3.php');
   require('PHP/table3.php');
@@ -40,6 +40,9 @@
   <?php
   JRATOSStaSele('駅変更');
   JRATOS_SStaSele('駅変更');
+  if ($station == '黒磯駅' || $station == '宇都宮駅') {
+    JRTohoku('駅変更');
+  }
   ?>
   <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
@@ -57,7 +60,7 @@
   <tableline>
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
-      JRATOSTable($i,$tablenums);
+      JRATOSTable($i, $tablenums);
     }
     ?>
   </tableline>
@@ -76,19 +79,20 @@
   }
   ?>
 </body>
-  <!--ここから内部のこと-->
-  <script type="text/javascript" src="js/Time.js"></script>
-  <script type="text/javascript" src="js/Timer.js"></script>
-  <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
-  <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-  <script type="text/javascript" src="js/module/carsEdit.js"></script>
-  <script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
-  <script type="text/javascript" src="js/module/detailBannerSwitch.js"></script>
-  <script type="text/javascript" src="js/module/displayEdit6.js"></script>
-  <script type="text/javascript" src="js/typeColor.js"></script>
-  <script type="text/javascript" src="js/Tforshow3.js"></script>
-  <script type="text/javascript" src="js/LastShow.js"></script>
+<!--ここから内部のこと-->
+<script type="text/javascript" src="js/Time.js"></script>
+<script type="text/javascript" src="js/Timer.js"></script>
+<script type="text/javascript" src="js/module/timeInfoSet.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/variable2.js"></script>
+<script type="text/javascript" src="js/module/displaySwitch.js"></script>
+<script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
+<script type="text/javascript" src="js/module/carsEdit.js"></script>
+<script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
+<script type="text/javascript" src="js/module/detailBannerSwitch.js"></script>
+<script type="text/javascript" src="js/module/displayEdit6.js"></script>
+<script type="text/javascript" src="js/typeColor.js"></script>
+<script type="text/javascript" src="js/Tforshow3.js"></script>
+<script type="text/javascript" src="js/LastShow.js"></script>
+
 </html>

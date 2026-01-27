@@ -57,6 +57,7 @@ if (isset($_GET['station'])) {
     $files[3] = 'csv/JRE/utsunomiya4.csv';
     $tablenum = 4;
     $OrderNum = 3;
+    $station = '宇都宮駅';
   } else if (Inisset('yokohama')) {
     $files[0] = 'csv/JRE/yokohama1.csv';
     $files[1] = 'csv/JRE/yokohama2.csv';
@@ -71,6 +72,7 @@ if (isset($_GET['station'])) {
     $files[0] = 'csv/JRE/kuroiso1.csv';
     $files[1] = 'csv/JRE/kuroiso2.csv';
     $OrderNum = 2;
+    $station = '黒磯駅';
   } else if (Inisset('omiya')) {
     $files[0] = 'csv/JRE/omiya_kawagoe.csv';
     $files[1] = 'csv/JRE/omiya_shinkiba.csv';
@@ -91,7 +93,18 @@ if (isset($_GET['station'])) {
     $tablenum = 5;
     $tableStrange = 1;
     $JRShinkansenflag = 1;
+    $detaillength = 2;
     $station = '福島駅';
     $tablenums = [2, 2, 3, 3, 3];
+  } else if (Inisset('shinshirakawa')) {
+    $files[0] = 'csv/JRE_S/shinshirakawa1.csv';
+    $files[1] = 'csv/JRE_S/shinshirakawa2.csv';
+    $files[2] = 'csv/JRE_T/shinshirakawa3.csv';
+    $files[3] = 'csv/JRE_T/shinshirakawa4.csv';
+    $tablenum = 4;
+    $JRShinkansenflag = 1;
+    $detaillength = 1;
+    $station = '新白河駅';
+    $OrderNum = 2;
   }
 }
