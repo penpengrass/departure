@@ -151,7 +151,7 @@
                 <td>JR四国</td>
                 <td><button type="button" onclick="location.href='./index9.php'">移動</button></td>
                 <td><span style="color:blue;">高松駅</span></td>
-                <td>松山駅, 高知駅</td>
+                <td><span style="color:blue;">松山駅</span>, <span style="color:blue;">高知駅</span></td>
             </tr>
             <tr>
                 <td>JR九州</td>

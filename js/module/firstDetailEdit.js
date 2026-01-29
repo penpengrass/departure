@@ -34,14 +34,14 @@ for (var td = 0; td < Tablenum; td++) {
     }
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (detailflag > 1 && detailflag != 8) {
-            //console.log(JRLimitedNumber(td, tr)+':'+td+':'+tr)
+            //console.log(JRLimitedName(td, tr,1) + ':' + td + ':' + tr)
             number[td][tr] = Number.parseInt(JRLimitedNumber(td, tr));
             //console.log(typeof number[td][tr]);
-            Lname[td][tr] = JRLimitedName(td, tr);
+            Lname[td][tr] = JRLimitedName(td, tr, 1);
         } else {
             //console.log(JRLimitedName(td,0,1));
             number[td] = Number.parseInt(JRLimitedNumber(td, 0));
-            Lname[td] = JRLimitedName(td, 0,1);
+            Lname[td] = JRLimitedName(td, 0, 1);
             break;
         }
     }

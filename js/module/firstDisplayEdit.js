@@ -6,7 +6,6 @@ for (var td = 0; td < Tablenum; td++) {
 function LastShows(td, tr) {
     //console.log(TableHour[td][tr]);
     //console.log(document.getElementById("THour" + (td + 1) + "" + (tr + 1)))
-    // console.log(TableHour[td][tr]);
     document.getElementById("THour" + (td + 1) + "" + (tr + 1)).textContent =
         TableHour[td][tr];
     document.getElementById("TMin" + (td + 1) + "" + (tr + 1)).textContent =
@@ -161,7 +160,6 @@ function JRNameDevide(T = Tablenum) {
                 ) {
                     Mlength = 9;
                 }
-                //console.log(matches[tr][1].length + ":" + Mlength);
                 if (matches[tr][1].length < Mlength) {
                     //console.log(matches[tr][1]);
                     document.getElementById(
@@ -198,9 +196,7 @@ function JRLimitedName(td, tr, flag = 0) {
     var matches = new Array(Type[td].length);
     //console.log(Type[td][tr]);
     if (flag == 0) {
-        LimitedName[tr] = document.getElementById(
-            "TType" + (td + 1) + "" + (tr + 1)
-        ).textContent;
+        LimitedName[tr] = document.getElementById("TType" + (td + 1) + "" + (tr + 1)).textContent;
     } else if (flag == 1) {
         LimitedName[tr] = Type[td][tr];
     }
