@@ -80,7 +80,7 @@ if (station == "北新地駅") {
         "一部の快速の番線は不正確";
 } else if (station == '天王寺駅') {
     for (var tr = 0; tr < orderNum; tr++) {
-        if (Type[2][tr] != '' && (Des[2][tr] == '' || Des[2][tr] == '大阪')) {
+        if (Type[2][tr] != '' && (Des[2][tr] == '' || Des[2][tr] == '大阪' || Des[2][tr] == '天王寺')) {
             Des[2][tr] = '新今宮･西九条方面';
             document.getElementById('TDes' + (2 + 1) + (tr + 1)).style.transform = "scaleX(0.7)" + "translate(-15%,0%)";
         }
