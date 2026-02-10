@@ -22,8 +22,8 @@
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/banner.css">
   <link rel="stylesheet" href="css/styleJRW.css">
-<!--タブのアイコンを変えたいが、公式HPと混同しそうなので保留-->
-<!--<link rel="icon" href="PNG/JR西日本マーク.png" id="favicon">-->
+  <!--タブのアイコンを変えたいが、公式HPと混同しそうなので保留-->
+  <!--<link rel="icon" href="PNG/JR西日本マーク.png" id="favicon">-->
   <?php
   if ($station == '岡山駅') {
     print('
@@ -46,9 +46,9 @@
   </div>
   <!--駅選択部分-->
   <?php JRWStaSele('駅変更');
-        JRWSStaSele('新幹線駅変更');
+  JRWSStaSele('新幹線駅変更');
   ?>
-  
+
   <form action="select.php" method="POST" id="selectstation">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <?php
@@ -149,11 +149,13 @@
   <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
   <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
   <script type="text/javascript" src="js/module/carsEdit.js"></script>
+  <script type="text/javascript" src="js/module/carsEdit.js"></script>
   <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
   <script type="text/javascript" src="js/module/detailBannerSwitch.js"></script>
-    <script type="text/javascript" src="js/detailStopData/JRNadetailset.js"></script>
+  <script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
+  <script type="text/javascript" src="js/detailStopData/JRNadetailset.js"></script>
   <script type="text/javascript" src="js/detailStopData/JRW_afterset.js"></script>
-    <script type="text/javascript" src="js/detailStopData/JRSanindetailset.js"></script>
+  <script type="text/javascript" src="js/detailStopData/JRSanindetailset.js"></script>
   <script type="text/javascript" src="js/typeColor.js"></script>
   <script type="text/javascript" src="js/module/detailMainPut.js"></script>
   <script type="text/javascript" src="js/module/displayEdit4.js"></script>

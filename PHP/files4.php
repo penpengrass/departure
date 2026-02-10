@@ -14,10 +14,11 @@ exitfilejump(4, 'shimonoseki');*/
 $startstation = 'kitashinti';
 if (isset($_POST['staselect4'])) {
   $test1 = $_POST['staselect4'];
-  if ($test1 == 'tennouji') {
+  /*if ($test1 == 'tennouji') {
     header("Location: ../index4_T.php");
     exit();
-  } else if ($test1 == 'tsuruga') {
+  } else*/
+  if ($test1 == 'tsuruga') {
     header("Location: ../index4_H.php");
     exit();
   } else if ($test1 == 'osaka') {
@@ -52,6 +53,19 @@ if (isset($_GET['station'])) {
     $station = '広島駅';
     $tableStrange = 1;
     $tablenums = [3, 2, 2, 2, 2];
+  } else if (Inisset('tennouji')) {
+    $files[0] = 'csv/JRW/tennoji_Nara.csv';
+    $files[1] = 'csv/JRW/tennoji_Namba.csv';
+    $files[2] = 'csv/JRW/tennoji_outer.csv';
+    $files[3] = 'csv/JRW/tennoji_inner.csv';
+    $files[4] = 'csv/JRW/tennoji_hanwa.csv';
+    $files[5] = 'csv/JRW/tennoji_hanwa.csv';
+    $files[6] = 'csv/JRW/tennoji_Namba.csv';
+    $tablenum = 6;
+    $OrderNum = 3;
+    $column = 2;
+    $tableStrange = 0;
+    $station = '天王寺駅';
   } else if (Inisset('himeji')) {
     $files[0] = 'csv/JRW_S/himeji_S1.csv';
     $files[1] = 'csv/JRW_S/himeji_S2.csv';
