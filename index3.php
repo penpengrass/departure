@@ -22,6 +22,9 @@
   require('PHP/select3.php');
   require('PHP/table3.php');
   require_once('getCSV.php');
+  if ($station == '高崎駅') {
+    print('<link rel="stylesheet" href="css/styleTakasaki.css">');
+  }
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
   <script type="text/javascript" src="js/module/firstTableEdit.js"></script>

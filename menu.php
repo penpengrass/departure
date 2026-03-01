@@ -43,8 +43,8 @@
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td><span style="color:black;">武蔵小杉駅</span></td>
-                <td><span style="color:black;">横浜駅</span>, <span style="color:red;">小田原駅</span>, <span style="color:red;">熱海駅</span>, 
-                <span style="color:black;">大宮駅</span>, <span style="color:black;">宇都宮駅</span>, <span style="color:red;">黒磯駅</span></td>
+                <td><span style="color:blue;">高崎駅</span>, <span style="color:red;">黒磯駅</span>, <span style="color:black;">宇都宮駅</span>, <span style="color:black;">大宮駅</span>,
+                <span style="color:black;">横浜駅</span>, <span style="color:red;">小田原駅</span>, <span style="color:red;">熱海駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
@@ -179,9 +179,9 @@
             ?>
         </div>
         <h1 class="Cheader">今後追加する駅</h1>
-        <li>新幹線 静岡駅 郡山駅 盛岡駅 新青森駅</li>
+        <li>新幹線 静岡駅 高崎駅 郡山駅 盛岡駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
-        <li>JR東日本 高崎駅 郡山駅 小牛田駅 一ノ関駅 盛岡駅</li>
+        <li>JR東日本 郡山駅 小牛田駅 一ノ関駅 盛岡駅</li>
         <li>東武鉄道 浅草駅 北千住駅</li>
         <li>北陸地方 富山駅</li>
         <li>JR西日本 京都駅 尼崎駅 和歌山駅 新山口駅</li>

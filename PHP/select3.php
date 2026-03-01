@@ -4,6 +4,7 @@ function JRATOSStaSele($Select)
     echo '<form action="PHP/files3.php" method="POST">
     <select name="staselect3">
       <option value="musashikosugi">武蔵小杉駅</option>
+      <option value="takasaki">高崎駅</option>
       <option value="kuroiso">黒磯駅</option>
       <option value="utsunomiya">宇都宮駅</option>
       <option value="omiya">大宮駅</option>
