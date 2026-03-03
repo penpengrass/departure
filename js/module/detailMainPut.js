@@ -206,12 +206,12 @@ function doallDetailShow(BannerLength = 1, LLength = Tablenum) {
     }
 }
 //詳細表示をバナー表示にするかどうかの判定
-function DetailBanner(td, tr, Letter, flag = 0) {
-  var LDetail = document.getElementById("TDetail" + (td + 1) + (tr + 1));
+function DetailBanner(td, tr, Letter, flag = 0,tag='TDetail') {
+  var LDetail = document.getElementById(tag + (td + 1) + (tr + 1));
   console.log(td + ":" + tr + ":" + LDetail.textContent.length);
   if (LDetail.textContent.length < Letter) {
     document
-      .getElementById("TDetail" + (td + 1) + (tr + 1))
+      .getElementById(tag + (td + 1) + (tr + 1))
       .classList.remove("news-banner__content");
   } else {
     //未完成
@@ -221,7 +221,7 @@ function DetailBanner(td, tr, Letter, flag = 0) {
       Indexfile == "index2.php"
     ) {
       document
-        .getElementById("TDetail" + (td + 1) + (tr + 1))
+        .getElementById(tag + (td + 1) + (tr + 1))
         .classList.remove("news-banner__content");
       var DetailM = LDetail.textContent;
       const targetIndex = DetailM.indexOf(" ", Letter);

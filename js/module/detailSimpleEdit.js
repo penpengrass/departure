@@ -1,3 +1,5 @@
+//const { schedulingPolicy } = require("node:cluster");
+
 //西ノ京や久居で使う
 function whetherStop(start_hour, start_min, hour, min, end_hour, end_min) {
   if (start_hour < hour && end_hour > hour) {
@@ -66,6 +68,11 @@ function DetailReplace(td, tr, Before, After) {
 function DetailReplace_Set(td, tr, Line, Before, After) {
   if (Line.includes(number[td][tr])) {
     DetailReplace(td, tr, Before, After);
+  }
+}
+function Shin_DetailReplace_Set_One(td, Line, Before, After, TypeName = "") {
+  if (Line.includes(Number(ShinNumber[td][0])) && Type[td][0].includes(TypeName)) {
+    DetailReplace(td, 0, Before, After);
   }
 }
 function DetailReplace_Set_One(td, Line, Before, After, TypeName = "") {

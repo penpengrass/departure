@@ -11,6 +11,9 @@ if (isset($_POST['staselect3_S'])) {
     } else if ($test1 == 'fukushima') {
         header('Location: ../index3_T.php?station=fukushima');
         exit();
+    } else if ($test1 == 'takasaki') {
+        header('Location: ../index6_S.php?station=takasaki');
+        exit();
     } else {
         header('Location: ../index3_S.php?station=' . $test1);
         exit();
@@ -32,18 +35,28 @@ if (isset($_POST['staselect6_S'])) {
         exit();
     }
 }
-$detaillength = 3;
 if (isset($_GET['station'])) {
     if (Inisset('nagano')) {
         $files[0] = 'csv/JRE_S/nagano1.csv';
         $files[1] = 'csv/JRE_S/nagano2.csv';
+        $detaillength = 3;
     } else if (Inisset('utsunomiya')) {
         $files[0] = 'csv/JRE_S/utsunomiya1.csv';
         $files[1] = 'csv/JRE_S/utsunomiya2.csv';
+        $detaillength = 3;
     } else if (Inisset('sendai')) {
         $files[0] = 'csv/JRE_S/sendai1.csv';
         $files[1] = 'csv/JRE_S/sendai2.csv';
         $JRShinkansenflag = 1;
+        $detaillength = 0;
         $station = '仙台駅';
+    } else if (Inisset('takasaki')) {
+        $files[0] = 'csv/JRE_S/takasaki1.csv';
+        $files[1] = 'csv/JRE_S/takasaki2.csv';
+        $files[2] = 'csv/JRE_S/takasaki3.csv';
+        $station = '高崎駅';
+        $tablenum = 3;
+        $OrderNum = 2;
+        $detaillength = 1;
     }
 }

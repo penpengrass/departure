@@ -33,7 +33,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
     <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
     <script type="text/javascript" src="js/module/timeShift.js"></script>
-    <script type="text/javascript" src="js/detailStopData/JRHokuShindetailset.js"></script>
+    <script type="text/javascript" src="js/detailStopData/JRHokuJoetsuset.js"></script>
     <script type="text/javascript" src="js/detailStopData/JRW_afterset.js"></script>
     <script type="text/javascript" src="js/stationset4.js"></script>
     <script type="text/javascript" src="js/stationset4_H.js"></script>

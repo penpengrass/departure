@@ -7,30 +7,62 @@
 .line{
     font-size:25px;
 }*/
-td{
+td {
     border-bottom: 5px #202020 solid;
-    height:60px;
-    padding:1px;
+    height: 60px;
+    padding: 1px;
 }
-.Destination{
-    text-align:left;
-    transform:translate(10%,0);
+
+.Destination {
+    text-align: left;
+    transform: translate(10%, 0);
 }
-.name{
+
+.name {
     text-align: right;
 }
-.green{
-    color:yellowgreen;
+
+.CDetail {
+    overflow: hidden;
+    text-align: left;
+    font-size: 1.5vw;
 }
-.pink{
-    color:pink;
+.CDetailtitle {
+    overflow: hidden;
+    font-size: 1.5vw;
 }
-.orange{
-    color:orange;
+.topic {
+    font-size: 2vw;
 }
-.brown{
-    color:brown;
+
+@media(max-width:1199px) {
+    .topic {
+        font-size: 30px;
+    }
+    .CDetail {
+        font-size: 25px;
+    }
+    .CDetailtitle {
+        font-size: 25px;
+    }
 }
-.blue{
-    color:#456f99;
+
+.green {
+    color: yellowgreen;
+}
+
+.pink {
+    color: pink;
+}
+
+.orange {
+    color: orange;
+}
+
+.brown {
+    color: brown;
+}
+
+.blue {
+    color: #456f99;
 }
