@@ -415,7 +415,7 @@ function holiday_F(station) {
 }
 //時刻の:を消す
 function TimeMarkErase(td, tr) {
-    if (Type[td][tr] == "") {
+    if (Type[td][tr] == "" && Des[td][tr] == "") {
         var timeerase = document.getElementById("TTime" + (td + 1) + "" + (tr + 1));
         while (timeerase.firstChild) {
             timeerase.removeChild(timeerase.firstChild);

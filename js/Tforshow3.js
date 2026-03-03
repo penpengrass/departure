@@ -447,7 +447,7 @@ if (station == '熱海駅') {
     document.getElementById('HType3').style.width = "53%";
     document.getElementById('HType4').style.width = "53%";
     FShow(TT[4], 5, Shows);
-    Des[0][2] = Des[4][0];
+    Des[0][2] = Des[4][0] ? Des[4][0] : "";
     TableHour[0][2] = TableHour[4][0];
     TableMin[0][2] = TableMin[4][0];
     TrackNum[0][2] = TrackNum[4][0];
@@ -456,6 +456,7 @@ if (station == '熱海駅') {
         AllWordChange(1, tr, Type, '普通', '両毛線4両 乗車口③～⑥');
         AllWordChange(1, tr, Type, '普通*', '両毛線6両 乗車口①～⑥');
         AllWordChange(1, tr, Type, '普通+', '両毛線10両 乗車口:青色');
+        AllWordChange(1, tr, Type, '快速', '両毛線10両 乗車口:青色');
         AllWordChange(2, tr, Des, '万座・鹿沢口', '万座･鹿沢口');
         var Agatsuma = ['万座･鹿沢口', '大前', '長野原草津口'];
         if (Agatsuma.includes(Des[2][tr])) {
@@ -482,5 +483,5 @@ if (station == '熱海駅') {
     document.getElementById('WType13').textContent = '八高線 高麗川 拝島 八王子方面 普通';
     document.getElementById('TType13').style.backgroundColor = "gray";
     document.getElementById('TType13').style.color = "white";
-    comment.innerHTML += '両数と臨時特急、一部表示は不正確';
+    comment.innerHTML += '両数と臨時特急、一部表示は不正確、実際には接続表示がある';
 }
