@@ -4,7 +4,10 @@
   "description": "プログラミング練習を主目的とした鉄道のリアルタイム発車標再現  \r 鉄道駅の平日ダイヤの発車標をリアルタイムに再現している  \r 鉄道会社, 発車標の種類ごとにファイルを分けている \r 色や形式をできる限り再現しているが，フォント等は基本的な物を使用 両数は非表示  \r 表示駅は随時追加予定  \r # departureの使い方(xampp使用)\r xamppをインストールし,Apacheをオンにする(PHPが使える環境ならば他の方法も可能)  \r xampp\\htdocs\\departureの形となるようにフォルダを置く  \r http://localhost/departure/index2.php のようにブラウザで開く  \r 列車の運転間隔によって何分ごとに表示更新するかを分けている    \r サーバーにアップロードしているが未完成  \r # departureの使い方(Docker使用)\r dockerfileとdocker-compose.ymlを使用し，プロジェクトのターミナルでdocker-compose up -dコマンドを実行  \r mysqlは使用していない  \r 参考に使用したqiita記事  \r https://qiita.com/Shika-san/items/3eff1d6237847d740304  \r # 表示駅\r index2.php・・・近鉄　　　鶴橋駅　奈良駅  京都駅　名古屋駅  \r index3.php・・・JR東日本　武蔵小杉駅(未完成) 横浜駅 小田原駅 熱海駅 宇都宮駅     \r index3_S.php・・・JR東日本　長野駅  \r index4.php・・・JR西日本　北新地駅　米原駅  姫路駅 岡山駅 糸崎駅 三原駅 広島駅 新見駅 岩国駅 徳山駅 下関駅   \r index4_T.php・・・JR西日本 天王寺駅(未完成)   \r index4_Tsuruga.php・・・JR西日本  敦賀駅  \r index4_A.php・・・JR西日本LED  大阪駅  \r index4_S2.php・ 山陽新幹線主要駅  広島駅 博多駅  \r index5.php・・・東急　　　二子玉川駅　武蔵小杉駅  \r index6.php・・・JR東日本　長野駅　松本駅 横浜駅  \r index6_S.php・・・JR東日本新幹線　東京駅  \r index7.php・・・JR東海　　沼津駅　静岡駅　浜松駅　豊橋駅　岐阜駅 大垣駅  \r index7_S1.php・・・東海道新幹線　　浜松駅 豊橋駅  \r index7_T.php・・・JR東海　名古屋駅  \r index8.php・・・JR北海道  札幌駅 新函館北斗駅  \r index9.php・・・JR四国    高松駅      \r index10.php・・・JR九州  小倉駅  \r index10_H.php・・・JR九州  博多駅",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "build:watch": "vite build --watch"
   },
   "repository": {
     "type": "git",
@@ -19,7 +22,11 @@
   },
   "homepage": "https://github.com/penpengrass/departure#readme",
   "devDependencies": {
-    "@types/node": "^24.10.1",
-    "typescript": "^5.9.3"
+    "@types/node": "^24.11.0",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "undici-types": "^7.16.0"
   }
 }

@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ES2018",
+        "module": "ESNext",
+        "moduleResolution": "bundler",
+        "strict": true,
+        "esModuleInterop": true,
+        "sourceMap": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "moduleDetection": "force",
+        "lib": [
+            "ES2018",
+            "DOM"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts"
+    ]
+}

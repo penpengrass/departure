@@ -105,7 +105,7 @@ $js_array .= ']';
   let CompanyNumber = '<?php echo $CompanyNumber; ?>';
   //詳細表示がいくつあるか(0~2)PHPも使う
   var detailflag = '<?php echo $detailflag; ?>';
-  let station = '<?php echo $station; ?>';
+  window.station = '<?php echo $station; ?>';
   let dayOfWeek = '<?php echo $dayOfWeek; ?>';
   if (station == '') {
     station = title[1];
