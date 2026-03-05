@@ -61,7 +61,6 @@ function DetailReplace(td, tr, Before, After) {
     Detail[td][tr] = _NextStop + "・" + Detail[td][tr];
   }
   Detail[td][tr] = Detail[td][tr].replace(Before, After);
-  LastLetterRemove(td, tr, '・');
 }
 //新幹線や有料特急の追加停車
 function DetailReplace_Set(td, tr, Line, Before, After) {

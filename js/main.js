@@ -79,4 +79,3 @@ if (station == "浅草駅") {
 }
 console.log("-------main完了-------");
 document.title = station + "発車標";
-console.log(Type);

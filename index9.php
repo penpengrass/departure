@@ -60,7 +60,7 @@
   ');
       for ($j = 1; $j <= 2; $j++) {
         print('
-    <tr>
+    <tr id="TTLine' . $i . $j . '">
       <td width="10%" class="shubetu" id="TType' . $i . $j . '" colspan="1"><span id="WType' . $i . $j . '"></span></td>
       <td width="40%" class="CName" id="TName' . $i . $j . '" colspan="4"></td>
       <td width="20%" class="CTime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
@@ -70,7 +70,7 @@
     ');
         if ($j == 1) {
           print('
-      <tr>
+      <tr id="TRDetail' . $i . $j . '">
       <td width="20%" class="CDetail" id="TDetailtitle' . $i . '"colspan="2"></td>
       <td width="80%" class="CDetail" colspan="7"><p3 id="TDetail' . $i . $j . '" class="news-banner__content"></p3></td>
       </tr>

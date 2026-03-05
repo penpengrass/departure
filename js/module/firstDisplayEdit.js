@@ -6,7 +6,6 @@ for (var td = 0; td < Tablenum; td++) {
 function LastShows(td, tr) {
     //console.log(TableHour[td][tr]);
     //console.log(document.getElementById("THour" + (td + 1) + "" + (tr + 1)))
-    // console.log(TableHour[td][tr]);
     document.getElementById("THour" + (td + 1) + "" + (tr + 1)).textContent =
         TableHour[td][tr];
     document.getElementById("TMin" + (td + 1) + "" + (tr + 1)).textContent =
@@ -148,22 +147,21 @@ function JRNameDevide(T = Tablenum) {
                     (tr + 1) +
                     "番目の表示はJRNameDevideとマッチする"
                 );
-                console.log(matches[tr][0] + ":" + tr);
+                /*console.log(matches[tr][0] + ":" + tr);
                 console.log(matches[tr][1] + ":" + tr);
                 console.log(matches[tr][2] + ":" + tr);
                 console.log(matches[tr][3] + ":" + tr);
-                console.log(matches[tr][1] + matches[tr][1].length);
+                console.log(matches[tr][1] + matches[tr][1].length);*/
                 var Mlength = 7;
                 if (
                     Indexfile == "index6_S.php" ||
                     Indexfile == "index3_S.php" ||
-                    Indexfile == "index6_Chiba.php"
+                    Indexfile == "index6_Chiba.php" || Indexfile == "index3_T.php"
                 ) {
                     Mlength = 9;
                 }
-                console.log(matches[tr][1].length);
                 if (matches[tr][1].length < Mlength) {
-                    console.log(matches[tr][1]);
+                    //console.log(matches[tr][1]);
                     document.getElementById(
                         "WType" + (td + 1) + "" + (tr + 1)
                     ).textContent = matches[tr][1];
@@ -183,7 +181,7 @@ function JRNameDevide(T = Tablenum) {
                         ).style.color = "red";
                     }
                 }
-                console.log(ShinNumber);
+                //console.log(ShinNumber);
                 ShinNumber[td][tr] = matches[tr][2];
             } else {
                 //console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');
@@ -196,25 +194,23 @@ function JRNameDevide(T = Tablenum) {
 function JRLimitedName(td, tr, flag = 0) {
     var LimitedName = new Array(Type[td].length);
     var matches = new Array(Type[td].length);
-    console.log(Type[td][tr]);
+    //console.log(Type[td][tr]);
     if (flag == 0) {
-        LimitedName[tr] = document.getElementById(
-            "TType" + (td + 1) + "" + (tr + 1)
-        ).textContent;
+        LimitedName[tr] = document.getElementById("TType" + (td + 1) + "" + (tr + 1)).textContent;
     } else if (flag == 1) {
         LimitedName[tr] = Type[td][tr];
     }
     //console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     if (matches[tr]) {
-        console.log(matches[tr][0] + ":" + tr);
+        /*console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
         console.log(matches[tr][2] + ":" + tr);
         console.log(matches[tr][3] + ":" + tr);
-        console.log(matches[tr][1] + matches[tr][1].length);
+        console.log(matches[tr][1] + matches[tr][1].length);*/
         var name = matches[tr][1];
     } else {
-        console.log("JRLimitedNumberはマッチしない");
+        //console.log("JRLimitedNumberはマッチしない");
     }
     return name;
 }
@@ -239,29 +235,29 @@ function JRLimitedNumber(td, tr, flag = 0) {
             "TName" + (td + 1) + "" + (tr + 1)
         ).textContent;
     }
-    console.log(LimitedName[tr]);
+    //console.log(LimitedName[tr]);
     matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
     matches2[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
     if (matches[tr]) {
-        console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
+        /*console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
         console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
         console.log(matches[tr][2] + ":" + tr);
         console.log(matches[tr][3] + ":" + tr);
-        console.log(matches[tr][1] + matches[tr][1].length);
+        console.log(matches[tr][1] + matches[tr][1].length);*/
         number = matches[tr][2];
     } else if (matches2[tr]) {
-        console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
+        /*console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
         console.log(matches2[tr][0] + ":" + tr);
         console.log(matches2[tr][1] + ":" + tr);
         console.log(matches2[tr][2] + ":" + tr);
-        console.log(matches2[tr][1] + matches2[tr][1].length);
+        console.log(matches2[tr][1] + matches2[tr][1].length);*/
         //console.log("Dtypeは" + Dtype);
         number = matches2[tr][2];
     } else {
         //console.log("JRLimitedNumberはマッチしない");
     }
-    console.log(number);
+    //console.log(number);
     return number;
 }
 //種別+両数の場合分割
@@ -385,7 +381,13 @@ function AllStartWordReplace(td, tr, line, keyword, AfterWord) {
     //console.log(Type[td][tr] + 'td=' + td + 'tr=' + tr);
     //console.log(LTab.textContent);
 }
-
+//JSでstyleを変更する
+function AllClassSetting(ClassName, styleName, change) {
+    const elements = document.querySelectorAll(ClassName);
+    elements.forEach(el => {
+        el.style[styleName] = change;
+    });
+}
 //路線記号追加
 function LineMarkAdd(td, Mark, backColor) {
     var newElement = document.createElement("span"); // p要素作成
@@ -443,6 +445,7 @@ function flagmarkerase(td, tag, mark = "*") {
     for (tr = 0; tr < Tablenums[td]; tr++) {
         var str = document.getElementById(tag + (td + 1) + "" + (tr + 1));
         if (str.textContent.includes(mark)) {
+            console.log(td + ":" + tr);
             str.textContent = str.textContent.replace(mark, "");
         }
     }
@@ -483,11 +486,11 @@ function moveTableColumn(table, fromIndex, toIndex) {
     // table.rowsは<thead>, <tbody>, <tfoot>内の全ての<tr>要素を含むHTMLCollection
     for (let i = 0; i < table.rows.length; i++) {
         const row = table.rows[i];
-        
+
         // 移動させるセル（<td>または<th>）を取得
         // cellsは<tr>内の全てのセル要素を含むHTMLCollection
         const cellToMove = row.cells[fromIndex];
-        
+
         // 移動元インデックスと移動先インデックスが同じ場合は何もしない
         if (fromIndex === toIndex) {
             continue;

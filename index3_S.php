@@ -50,7 +50,7 @@
   <tableline>
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
-      JRE_STable($i,$tablenums);
+      JRE_STable($i,$tablenums,$detaillength);
     }
     ?>
   </tableline>

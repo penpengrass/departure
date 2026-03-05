@@ -1,9 +1,8 @@
 var time0 = document.getElementById('THour11');
 var time1 = document.getElementById('THour21');
-console.log(time0);
 if (station == '高松駅') {
     if (time0 != null) {
-        if (Type[0][0].includes('ｻﾝﾎﾟｰﾄ') && time0.textContent > 16) {
+        if (TableHour[0][0] > 16) {
             AddStopping(Sunport, '端岡', '鴨川');
         }
     }
@@ -84,22 +83,22 @@ if (station == '高松駅') {
             AddStopping(Ishiduti, '松山', '伊予北条', 1);
         }
     }
-    var takuma2=[4,6,8,30,102];
+    var takuma2 = [4, 6, 8, 30, 102];
     for (var line = 0; line < takuma2.length; line++) {
         if (number[0][0] == takuma2[line]) {
             AddStopping(Shiokaze, '観音寺', '詫間', 1);
             AddStopping(Ishiduti, '観音寺', '詫間', 1);
         }
     }
-    var takase2=[4,6,30,102];
+    var takase2 = [4, 6, 30, 102];
     for (var line = 0; line < takase2.length; line++) {
         if (number[0][0] == takase2[line]) {
             AddStopping(Shiokaze, '観音寺', '高瀬', 1);
             AddStopping(Ishiduti, '観音寺', '高瀬', 1);
         }
     }
-    if(number[0][0]>99){
-        DeleteStopping(Ishiduti,'宇多津',1);
+    if (number[0][0] > 99) {
+        DeleteStopping(Ishiduti, '宇多津', 1);
     }
     //DetailReplace_Set(0, 0, iyonakayama, '伊予市', '伊予市、伊予中山',3);
 }

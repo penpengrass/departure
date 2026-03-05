@@ -17,6 +17,14 @@ if (station == '二子玉川駅') {
     if (Type[0][0] == '各停' && Type[0][1] == '急行' && Interval < 5) {
         document.getElementById('TDetail11').textContent = '桜新町で急行の通過待ち';
     }
+} else if (station == '武蔵小杉駅') {
+    for (let tr = 0; tr < Type[2].length; tr++) {
+        AllWordChange(0, tr, Type, 'Ｆライナー', 'Ｆ特急');
+        AllWordChange(3, tr, Type, 'Ｆライナー', 'Ｆ特急');
+        AllWordChange(0, tr, Type, '通勤特急', '通特');
+        AllWordChange(3, tr, Type, '通勤特急', '通特');
+    }
+
 }
 allTwoLettersDistance(Des, TDes, 1, 1);
 allLastShow();

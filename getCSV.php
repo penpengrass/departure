@@ -13,7 +13,7 @@ if ($files[0] == 'csv/JRH/sapporo1.csv') {
   $files[2] = 'csv/JRS/takamatsu1.csv';
   $files[3] = 'csv/JRS/takamatsu2.csv';
   $tablenum = 4;
-  $OrderNum = 2;
+  $OrderNum = 3;
 }
 //ここからgetCSVとしたい
 //表示数が全部同じ場合

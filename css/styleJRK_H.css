@@ -12,7 +12,8 @@ time{
     text-align: right;
 }
 td{               /*データ内*/
-    font-size:30px;
+    /*font-size:30px;*/
+    font-size: 1.7vw;
     height: 48px;
     color:white;
     font-family:Arial,"MS Gothic",monospace;
@@ -36,7 +37,10 @@ table{        /*表全体*/
 }
 @media(max-width:1199px) {
     table{   
-        width: 750px;
+        width: 100%;
+    }
+    td{
+        font-size:30px;
     }
 }
 .Ctitle{
