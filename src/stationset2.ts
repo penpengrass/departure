@@ -1,3 +1,4 @@
+import { RailNumberDevide,DestinationDevide } from './module/firstTableEdit';
 //console.log(TT[0][1][2] + ":1mod4");//種別
 //console.log(TT[0][2][2] + ":2mod4");//分
 //console.log(TT[0][3][2] + ":3mod4");//行先
@@ -29,9 +30,7 @@ if (station == '名古屋駅') {
     RailNumberDevide(4, 0, 1);
     Dtype[0] = 3;
     Dtype[1] = 3;
-    /*station2 = station;
     stationN2 = stationN;
-    dir2 = dir;*/
 } else if (station == '鶴橋駅') {
     TableTitle = ['奈良線 生駒 奈良方面', '大阪線 高安 名古屋 伊勢志摩方面'];
     Dtype[0] = 1;

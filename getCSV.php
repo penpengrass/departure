@@ -104,7 +104,7 @@ $js_array .= ']';
   console.log(title2);
   let CompanyNumber = '<?php echo $CompanyNumber; ?>';
   //詳細表示がいくつあるか(0~2)PHPも使う
-  var detailflag = '<?php echo $detailflag; ?>';
+  window.detailflag = '<?php echo $detailflag; ?>';
   window.station = '<?php echo $station; ?>';
   let dayOfWeek = '<?php echo $dayOfWeek; ?>';
   if (station == '') {
@@ -121,10 +121,10 @@ $js_array .= ']';
   let dir2 = title2[2].substr(0, 2);
   let MinIn = 2;
   let company = '';
-  var NonGouflag = 0;
+  window.NonGouflag = 0;
   var TwoLetterDisflag = 0;
-  var detailLength_one = 0;
-  var DetailLength = new Array(Tablenum);
+  window.detailLength_one = 0;
+  window.DetailLength = new Array(Tablenum);
   console.log(title[2].substr(0, 2));
   console.log(TT[1].length);
   let LastShowFlag = 0;

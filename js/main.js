@@ -1,8 +1,17 @@
 document.getElementById("stationname").textContent = company + " " + station;
+function NotShows(hour, Table_Column, TT2, TableNumber, depnum) {
+  PlusHour[depnum - 1] = TT2[hour][0];
+  PlusMin[depnum - 1] = String(TT2[hour + 1][Table_Column]).padStart(2, "0");
+  PlusType[depnum - 1] = TT2[hour][Table_Column];
+  PlusDes[depnum - 1] = TT2[hour + 2][Table_Column];
+  orders[depnum - 1] = Table_Column;
+  orders[depnum] = Table_Column + 1;
+  return;
+}
 window.Type = new Array(Tablenum);
 let TableHour = new Array(Tablenum);
 let TableMin = new Array(Tablenum);
-let Des = new Array(Tablenum);
+window.Des = new Array(Tablenum);
 let TrackNum = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
   window.Type[tr] = new Array(Tablenums[tr]);
@@ -59,10 +68,10 @@ function main() {
 main();
 if (station == "浅草駅") {
   Delay(-6);
-  new Array(3);
-  new Array(3);
-  new Array(3);
-  new Array(3);
+  var PlusHour = new Array(3);
+  var PlusMin = new Array(3);
+  var PlusType = new Array(3);
+  var PlusDes = new Array(3);
   console.log(station);
   FShow(TT[3], 4, NotShows);
   FSTShow(TT[3], NotShows, orders[1], 4, 2);
