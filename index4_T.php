@@ -27,10 +27,10 @@
   <link rel="stylesheet" href="css/banner.css">
 
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/module/connectTable.js"></script>
-  <script type="text/javascript" src="js/detailStopData/JRTennojidetail.js"></script>
-  <script type="text/javascript" src="js/stationset4.js"></script>
+  <script type="module" src="dist/module/firstTableEdit.js"></script>
+  <script type="module" src="dist/module/connectTable.js"></script>
+  <script type="module" src="dist/detailStopData/JRTennojidetail.js"></script>
+  <script type="module" src="dist/stationset4.js"></script>
 </head>
 
 <body>
@@ -115,18 +115,18 @@
   <li>糸崎駅 岩国駅 下関駅においては番線の表示は実際と異なる</li>
   <li>本来山陽地区では種別の横に両数がある</li>
   <!--ここから内部のこと-->
-  <script type="text/javascript" src="js/Time.js"></script>
-  <script type="text/javascript" src="js/Timer.js"></script>
-  <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
-  <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-    <script type="text/javascript" src="js/detailStopData/JRW_afterset.js"></script>
-  <script type="text/javascript" src="js/module/detailMainPut.js"></script>
-  <script type="text/javascript" src="js/typeColor.js"></script>
-  <script type="text/javascript" src="js/Tforshow4_T.js"></script>
-  <!--<script type="text/javascript" src="js/Tforshow4_S.js"></script>-->
+  <script type="module" src="dist/Time.js"></script>
+  <script type="module" src="dist/Timer.js"></script>
+  <script type="module" src="dist/module/timeInfoSet.js"></script>
+  <script type="module" src="dist/main.js"></script>
+  <script type="module" src="dist/variable2.js"></script>
+  <script type="module" src="dist/module/displaySwitch.js"></script>
+  <script type="module" src="dist/module/firstDisplayEdit.js"></script>
+    <script type="module" src="dist/detailStopData/JRW_afterset.js"></script>
+  <script type="module" src="dist/module/detailMainPut.js"></script>
+  <script type="module" src="dist/typeColor.js"></script>
+  <script type="module" src="dist/Tforshow4_T.js"></script>
+  <!--<script type="module" src="dist/Tforshow4_S.js"></script>-->
 </body>
 
 </html>

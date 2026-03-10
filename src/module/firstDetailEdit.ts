@@ -1,0 +1,51 @@
+import { JRLimitedNumber, JRLimitedName } from '../module/firstDisplayEdit'
+//JR四国とJR北海道でのみ使用
+//配列(引数1)の中から引数2となる駅を探して，引数3に引数2の次の追加停車駅を入れる関数(ex)limited,'今治','伊予北条')
+export function AddStopping(TrainType: any, BeforeStation: string, AddStation: string, LDtype = 0) {
+    var Addnumber = -1;
+    for (var tr = 0; tr < TrainType[LDtype].length; tr++) {
+        if (TrainType[LDtype][tr] == BeforeStation) {
+            Addnumber = tr;
+            break;
+        }
+    }
+    TrainType[LDtype].splice(Addnumber + 1, 0, AddStation);
+}
+export function DeleteStopping(TrainType: any, BeforeStation: string, LDtype = 0) {
+    var Deletenumber = -1;
+    for (var tr = 0; tr < TrainType[LDtype].length; tr++) {
+        if (TrainType[LDtype][tr] == BeforeStation) {
+            Deletenumber = tr;
+            break;
+        }
+    }
+    //limited[5].splice(2, 0, '高の原');
+    TrainType[LDtype].splice(Deletenumber, 1);
+}
+//console.log(Type);
+//特急によって停車駅が異なるときの処理
+//numberは号数 Lnameは列車名
+export var number = new Array(Tablenum);
+export var Lname = new Array(Tablenum);
+console.log(detailflag);
+for (var td = 0; td < Tablenum; td++) {
+    if (detailflag > 1) {
+        number[td] = new Array(orderNum);
+        Lname[td] = new Array(orderNum);
+    }
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        if (detailflag > 1 && detailflag != 8) {
+            //console.log(JRLimitedName(td, tr,1) + ':' + td + ':' + tr)
+            number[td][tr] = Number.parseInt(JRLimitedNumber(td, tr));
+            //console.log(typeof number[td][tr]);
+            Lname[td][tr] = JRLimitedName(td, tr, 1);
+        } else {
+            //console.log(JRLimitedName(td,0,1));
+            number[td] = Number.parseInt(JRLimitedNumber(td, 0));
+            Lname[td] = JRLimitedName(td, 0, 1);
+            break;
+        }
+    }
+}
+console.log(number);
+//console.log(Lname);

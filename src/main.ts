@@ -1,4 +1,6 @@
-import { RailNumberDevide,DestinationDevide } from './module/firstTableEdit';
+import { hour, min } from "./Time";
+import { FShow,FSTShow } from "./module/timeInfoSet";
+import { koshin } from "./module/firstTableEdit";
 //駅名の表示
 document.getElementById('stationname')!.textContent = company + ' ' + station;
 let countTable = 0;
@@ -21,10 +23,22 @@ let countOrder = 2;
     orders[depnum] = Table_Column + 1;
     return;
 }*/
+function Delay(MMinute: number) {
+    if (L_min - MMinute < 0) {
+        L_hour -= 1;
+        L_min += 60;
+    }
+    L_min = L_min - MMinute;
+    console.log(L_hour + ':' + L_min);
+}
+function BackTime() {
+    L_min = min;
+    L_hour = hour;
+}
 //先発表示を関数にするFirhourは時,orderは時の中で何番目列車かFirhourはj or 1(mod 4) order>=1 
 //depnumは先発なら1，次発なら2
 //Showsの引数は(配列の時,時刻表の中で何列目か,時刻表配列,表が何番目か,何番目に出発するか)
-function NotShows(hour:number, Table_Column:number, TT:any[], TableNumber:number, depnum:number) {
+function NotShows(hour: number, Table_Column: number, TT: any[], TableNumber: number, depnum: number) {
     PlusHour[depnum - 1] = TT[hour][0];
     PlusMin[depnum - 1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
     PlusType[depnum - 1] = TT[hour][Table_Column];
@@ -35,11 +49,11 @@ function NotShows(hour:number, Table_Column:number, TT:any[], TableNumber:number
     orders[depnum] = Table_Column + 1;
     return;
 }
-window.Type= new Array(Tablenum);
-let TableHour = new Array(Tablenum);
-let TableMin = new Array(Tablenum);
+window.Type = new Array(Tablenum);
+window.TableHour = new Array(Tablenum);
+window.TableMin = new Array(Tablenum);
 window.Des = new Array(Tablenum);
-let TrackNum = new Array(Tablenum);
+export var TrackNum = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
     window.Type[tr] = new Array(Tablenums[tr]);
     TableHour[tr] = new Array(Tablenums[tr]);
@@ -47,12 +61,12 @@ for (let tr = 0; tr < Tablenum; tr++) {
     Des[tr] = new Array(Tablenums[tr]);
     TrackNum[tr] = new Array(Tablenums[tr]);
 }
-function EmptyLine(td:number, tr:number, Line:any) {
+function EmptyLine(td: number, tr: number, Line: any) {
     if (Line[td][tr] === undefined) {
         Line[td][tr] = '';
     }
 }
-function Shows(hour:number, Table_Column:number, TT:any, TableNumber:number, depnum:number) {
+function Shows(hour: number, Table_Column: number, TT: any, TableNumber: number, depnum: number) {
     TableHour[TableNumber - 1][depnum - 1] = TT[hour][0];
     TableMin[TableNumber - 1][depnum - 1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
     Type[TableNumber - 1][depnum - 1] = TT[hour][Table_Column];
@@ -101,12 +115,12 @@ function main() {
     }
 }
 main();
+export var PlusHour = new Array(3);
+export var PlusMin = new Array(3);
+export var PlusType = new Array(3);
+export var PlusDes = new Array(3);
 if (station == '浅草駅') {
     Delay(-6);
-    var PlusHour = new Array(3);
-    var PlusMin = new Array(3);
-    var PlusType = new Array(3);
-    var PlusDes = new Array(3);
     console.log(station);
     FShow(TT[3], 4, NotShows);
     FSTShow(TT[3], NotShows, orders[1], 4, 2);

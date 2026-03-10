@@ -17,10 +17,10 @@
   }
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/detailStopData/Shidetailset.js"></script>
-  <script type="text/javascript" src="js/module/connectTable.js"></script>
-  <script type="text/javascript" src="js/stationset9.js"></script>
+  <script type="module" src="dist/module/firstTableEdit.js"></script>
+  <script type="module" src="dist/detailStopData/Shidetailset.js"></script>
+  <script type="module" src="dist/module/connectTable.js"></script>
+  <script type="module" src="dist/stationset9.js"></script>
 
 </head>
 
@@ -90,19 +90,19 @@
   <p id="supplement">停車駅や一部表示は不正確</p>
 </body>
 <!--ここから内部のこと-->
-<script type="text/javascript" src="js/Time.js"></script>
-<script type="text/javascript" src="js/Timer.js"></script>
-<script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/variable2.js"></script>
-<script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-<script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
-<script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
-<script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-<script type="text/javascript" src="js/detailStopData/Shidetailchange.js"></script>
-<script type="text/javascript" src="js/typeColor.js"></script>
-<script type="text/javascript" src="js/module/detailMainPut.js"></script>
-<script type="text/javascript" src="js/Tforshow9.js"></script>
+<script type="module" src="dist/Time.js"></script>
+<script type="module" src="dist/Timer.js"></script>
+<script type="module" src="dist/module/timeInfoSet.js"></script>
+<script type="module" src="dist/main.js"></script>
+<script type="module" src="dist/variable2.js"></script>
+<script type="module" src="dist/module/firstDisplayEdit.js"></script>
+<script type="module" src="dist/module/detailSimpleEdit.js"></script>
+<script type="module" src="dist/module/colorSimpleSet.js"></script>
+<script type="module" src="dist/module/firstDetailEdit.js"></script>
+<script type="module" src="dist/detailStopData/Shidetailchange.js"></script>
+<script type="module" src="dist/typeColor.js"></script>
+<script type="module" src="dist/module/detailMainPut.js"></script>
+<script type="module" src="dist/Tforshow9.js"></script>
 </body>
 
 </html>

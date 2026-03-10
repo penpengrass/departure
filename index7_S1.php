@@ -22,9 +22,9 @@
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/styleJRC_S1.css">
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
-  <script type="text/javascript" src="js/stationset7_S.js"></script>
+  <script type="module" src="dist/module/firstTableEdit.js"></script>
+  <script type="module" src="dist/detailStopData/JRdetail.js"></script>
+  <script type="module" src="dist/stationset7_S.js"></script>
 </head>
 
 <body>
@@ -70,15 +70,15 @@
   </tableline>
   <p id="supplement">臨時列車の有無や号数は不正確</p>
   <!--ここから内部のこと-->
-  <script type="text/javascript" src="js/Time.js"></script>
-  <script type="text/javascript" src="js/Timer.js"></script>
-  <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
-  <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-  <script type="text/javascript" src="js/Tforshow7_S.js"></script>
-  <script type="text/javascript" src="js/typeColor.js"></script>
+  <script type="module" src="dist/Time.js"></script>
+  <script type="module" src="dist/Timer.js"></script>
+  <script type="module" src="dist/module/timeInfoSet.js"></script>
+  <script type="module" src="dist/main.js"></script>
+  <script type="module" src="dist/variable2.js"></script>
+  <script type="module" src="dist/module/displaySwitch.js"></script>
+  <script type="module" src="dist/module/firstDisplayEdit.js"></script>
+  <script type="module" src="dist/Tforshow7_S.js"></script>
+  <script type="module" src="dist/typeColor.js"></script>
 </body>
 
 </html>

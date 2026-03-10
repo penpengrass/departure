@@ -24,7 +24,7 @@ company = '近鉄';
 for (var td = 0; td < Tablenum; td++) {
     DetailLength[td]=orderNum;
 }
-var Dtype = new Array(2);
+window.Dtype = new Array(2);
 if (station == '名古屋駅') {
     TableTitle = ['名古屋線', '名古屋線特急'];
     RailNumberDevide(4, 0, 1);

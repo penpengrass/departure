@@ -26,8 +26,8 @@
   <?php
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/stationset6.js"></script>
+  <script type="module" src="dist/module/firstTableEdit.js"></script>
+  <script type="module" src="dist/stationset6.js"></script>
 </head>
 
 <body>
@@ -134,18 +134,18 @@
   ?>
 </body>
 <!--ここから内部のこと-->
-<script type="text/javascript" src="js/Time.js"></script>
-<script type="text/javascript" src="js/Timer.js"></script>
-<script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/variable2.js"></script>
-<script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-<script type="text/javascript" src="js/module/carsEdit.js"></script>
-<script type="text/javascript" src="js/module/displayEdit6.js"></script>
-<script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-<script type="text/javascript" src="js/module/displaySwitch.js"></script>
-<script type="text/javascript" src="js/Tforshow6_Chiba.js"></script>
-<!--<script type="text/javascript" src="js/Tforshow6UTL.js"></script>-->
+<script type="module" src="dist/Time.js"></script>
+<script type="module" src="dist/Timer.js"></script>
+<script type="module" src="dist/module/timeInfoSet.js"></script>
+<script type="module" src="dist/main.js"></script>
+<script type="module" src="dist/variable2.js"></script>
+<script type="module" src="dist/module/firstDisplayEdit.js"></script>
+<script type="module" src="dist/module/carsEdit.js"></script>
+<script type="module" src="dist/module/displayEdit6.js"></script>
+<script type="module" src="dist/module/firstDetailEdit.js"></script>
+<script type="module" src="dist/module/displaySwitch.js"></script>
+<script type="module" src="dist/Tforshow6_Chiba.js"></script>
+<!--<script type="module" src="dist/Tforshow6UTL.js"></script>-->
 </body>
 
 </html>

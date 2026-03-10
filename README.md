@@ -44,9 +44,13 @@ PCやタブレットサイズによって文字同士が被る
 その他はメニュー参照  
 
 # TypeScriptを使用する場合
-`npm init -y`
-`npm install typescript @types/node --save-dev`
-`npx tsc --init`
+`npm init -y`  
+`npm install typescript @types/node --save-dev`  
+`npx tsc --init`  
+
+# TypeScriptの実行
+`npm install`  
+`npx vite build`
 # 参考にしたサイト
 デザインのレイアウト部分のみ、プログラミング部分は独力
 http://r113.sakura.ne.jp/p/hasshahyo/index.htm

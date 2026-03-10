@@ -1,5 +1,6 @@
-let orders = new Array(orderNum);
+window.orders = new Array(orderNum);
 let hours = new Array(orderNum);
+export var Dtype = new Array(Tablenum);
 for (let or = 0; or < orders.length; or++) {
     orders[or] = 0;
     hours[or] = 0;
@@ -114,38 +115,38 @@ export function DestinationDevide(station: string | string[], mainTable: number,
     tableDevide.process((TaRow, mainTaNum) => station.includes(TT[mainTable][TaRow - 1][mainTaNum]));
 }
 // TrainNameDevideの実装
-function TrainNameDevide(trainName: string, mainTable: number, subTable: number) {
+export function TrainNameDevide(trainName: string, mainTable: number, subTable: number) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, subTable);
     tableDevide.process((TaRow, mainTaNum) => TT[mainTable][TaRow - 3][mainTaNum].includes(trainName));
 }
-function TrainNameLineDevide(trainName: string, mainTable: number, subTable: number) {
+export function TrainNameLineDevide(trainName: string, mainTable: number, subTable: number) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, subTable);
     tableDevide.process((TaRow, mainTaNum) => trainName.includes(TT[mainTable][TaRow - 3][mainTaNum]));
 }
-function TrainNameLineIncludeDevide(trainNames: string[], mainTable: number, subTable: number) {
+export function TrainNameLineIncludeDevide(trainNames: string[], mainTable: number, subTable: number) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, subTable);
     tableDevide.process((TaRow, mainTaNum) => trainNames.some(trainName => TT[mainTable][TaRow - 3][mainTaNum].includes(trainName)));
 }
-function DestinationRemove(station: string, mainTable: number) {
+export function DestinationRemove(station: string | string[], mainTable: number) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, null);
     tableDevide.process_remove_only((TaRow, mainTaNum) => station.includes(TT[mainTable][TaRow - 1][mainTaNum]));
 }
 // TrainNameDevideの実装
-function TrainNameRemove(trainName: string, mainTable: number) {
+export function TrainNameRemove(trainName: string, mainTable: number) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, null);
     tableDevide.process_remove_only((TaRow, mainTaNum) => TT[mainTable][TaRow - 3][mainTaNum].includes(trainName));
 }
-function TrainNameLineRemove(trainName: string, mainTable: number) {
+export function TrainNameLineRemove(trainName: string | string[], mainTable: number) {
     //インスタンス化
     const tableDevide = new TableDevide(mainTable, null);
     tableDevide.process_remove_only((TaRow, mainTaNum) => trainName.includes(TT[mainTable][TaRow - 3][mainTaNum]));
 }
-class TrainNumber {
+export class TrainNumber {
     TT: any;
     name: string;
     constructor(TT: any, name: string) {
@@ -155,7 +156,7 @@ class TrainNumber {
 
 }
 //特急の号数を追加する，2ずつ追加する場合のみ
-function limitednumber(TT: any, firstlimited: number, name: string) {
+export function limitednumber(TT: any, firstlimited: number, name: string | string[]) {
     var count = firstlimited;
     var Lname = [];
     var LDes = [];
@@ -203,7 +204,7 @@ function limitednumber(TT: any, firstlimited: number, name: string) {
     }
     //console.log(TT);
 }
-function limitedjustnumber(TT: any, firstlimited: number, name: string, Des: string) {
+export function limitedjustnumber(TT: any, firstlimited: number, name: string | string[], Des: string | string[] | undefined = "") {
     var count = firstlimited;
     var Lname = [];
     var LDes = [];
@@ -267,7 +268,7 @@ function limitedjustnumber(TT: any, firstlimited: number, name: string, Des: str
     }
     //console.log(TT);
 }
-function limitednumber2(TT: any, limitednumberline: any, name: string) {
+export function limitednumber2(TT: any, limitednumberline: number[], name: string) {
     var number = 0;
     for (var td = 1; td < TT.length; td++) {
         for (var tr = 1; tr < TT[td].length; tr++) {
@@ -278,7 +279,7 @@ function limitednumber2(TT: any, limitednumberline: any, name: string) {
         }
     }
 }
-function limitedjustnumber2(TT: any, limitednumberline: any, name: string) {
+export function limitedjustnumber2(TT: any, limitednumberline: number[], name: string) {
     var number = 0;
     for (var td = 1; td < TT.length; td++) {
         for (var tr = 1; tr < TT[td].length; tr++) {
@@ -294,7 +295,7 @@ function limitedjustnumber2(TT: any, limitednumberline: any, name: string) {
     }
 }
 //TTをリセットする
-function Tablereset(num: number) {
+export function Tablereset(num: number) {
     console.log(num);
     for (let row = 1; row < TT[num].length; row++) {
         for (let Tcolumn = 1; Tcolumn < TT[num][row].length; Tcolumn++) {
@@ -303,14 +304,14 @@ function Tablereset(num: number) {
     }
 }
 //reverseの代わり
-function reverseLine(hairetsu: any, before: number, after: number) {
+export function reverseLine(hairetsu: any, before: number, after: number) {
     var numberOfHairetsu = hairetsu[before].length;
     hairetsu[after] = new Array(numberOfHairetsu);
     for (var a = 0; a < numberOfHairetsu; a++) {
         hairetsu[after][numberOfHairetsu - a - 1] = hairetsu[before][a];
     }
 }
-function JRC_station() {
+export function JRC_station() {
     if (station == '浜松駅') {
         location.href = './index7.php';
     } else if (station == '豊橋駅') {
@@ -326,7 +327,7 @@ function JRW_station() {
         location.href = './index10_H.php';
     }
 }
-function LineCopy(conLine: any) {
+export function LineCopy(conLine: any) {
     var NewLine = JSON.parse(JSON.stringify(conLine));
     return NewLine;
 }

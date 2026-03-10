@@ -20,8 +20,8 @@
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/stationset3_S.js"></script>
+  <script type="module" src="dist/module/firstTableEdit.js"></script>
+  <script type="module" src="dist/stationset3_S.js"></script>
 
 </head>
 
@@ -57,19 +57,19 @@
   <p id="supplement">号数や臨時列車の有無，停車駅，両数は不正確</p>
 </body>
 <!--ここから内部のこと-->
-<script type="text/javascript" src="js/Time.js"></script>
-<script type="text/javascript" src="js/Timer.js"></script>
-<script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/variable2.js"></script>
-<script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-<script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
-<script type="text/javascript" src="js/module/displayEdit6.js"></script>
-<script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
-<script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-<script type="text/javascript" src="js/detailStopData/JRHokuShindetailset.js"></script>
-<script type="text/javascript" src="js/module/detailMainPut.js"></script>
-<script type="text/javascript" src="js/Tforshow3_S.js"></script>
+<script type="module" src="dist/Time.js"></script>
+<script type="module" src="dist/Timer.js"></script>
+<script type="module" src="dist/module/timeInfoSet.js"></script>
+<script type="module" src="dist/main.js"></script>
+<script type="module" src="dist/variable2.js"></script>
+<script type="module" src="dist/module/firstDisplayEdit.js"></script>
+<script type="module" src="dist/module/detailSimpleEdit.js"></script>
+<script type="module" src="dist/module/displayEdit6.js"></script>
+<script type="module" src="dist/module/colorSimpleSet.js"></script>
+<script type="module" src="dist/module/firstDetailEdit.js"></script>
+<script type="module" src="dist/detailStopData/JRHokuShindetailset.js"></script>
+<script type="module" src="dist/module/detailMainPut.js"></script>
+<script type="module" src="dist/Tforshow3_S.js"></script>
 </body>
 
 </html>
