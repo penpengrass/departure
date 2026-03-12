@@ -1,6 +1,6 @@
 import { swapColumns, AllWordChange, AllWordReplace, TwoLetterDistance, allLastShow, comment, JRNameDevide, Bansenshow, AllClassSetting } from "./module/firstDisplayEdit";
 import { CarsDevideToLine, CarsInto } from "./module/carsEdit";
-import { number } from "./module/firstDetailEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { JRK_Nobj, NagasakiAddStop } from "./detailStopData/JRK_S";
@@ -22,15 +22,15 @@ if (station == '鳥栖駅') {
     CarsDevideToLine(5);
     for (var tr = 0; tr < 2; tr++) {
         if (!Type[0][tr].includes('ゆふ')) {
-            if (SixCars.includes(number[0][tr])) {
+            if (SixCars.includes(TrainNumber[0][tr])) {
                 Cars[0][tr] = '6両';
-            } else if (number[0][tr] > 0) {
+            } else if (TrainNumber[0][tr] > 0) {
                 Cars[0][tr] = '8両';
             }
         }
-        if (SixCars.includes(number[2][tr])) {
+        if (SixCars.includes(TrainNumber[2][tr])) {
             Cars[2][tr] = '6両';
-        } else if (number[2][tr] > 0) {
+        } else if (TrainNumber[2][tr] > 0) {
             Cars[2][tr] = '8両';
         }
         if (Type[2][tr].includes('みどり(リレーかもめ')) {
@@ -51,13 +51,13 @@ if (station == '鳥栖駅') {
     let FourCars = [[10, 12], [], []];
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
-            if (SixCars[td].includes(number[td][tr])) {
+            if (SixCars[td].includes(TrainNumber[td][tr])) {
                 Cars[td][tr] = '6両';
-            } else if (SevenCars[td].includes(number[td][tr])) {
+            } else if (SevenCars[td].includes(TrainNumber[td][tr])) {
                 Cars[td][tr] = '7両';
-            } else if (EightCars[td].includes(number[td][tr])) {
+            } else if (EightCars[td].includes(TrainNumber[td][tr])) {
                 Cars[td][tr] = '8両';
-            } else if (FourCars[td].includes(number[td][tr])) {
+            } else if (FourCars[td].includes(TrainNumber[td][tr])) {
                 Cars[td][tr] = '4両';
             }
         }
@@ -89,9 +89,9 @@ if (station == '鳥栖駅') {
         NagasakiAddStop(tr)
         LastLetterRemove(0, tr, "、");
         Detail[0][tr] = "停車駅は、<span class='Corange'>" + Detail[0][tr] + "</span>です"
-        if (number[0][tr] < 99 && number[0][tr] > 0) {
+        if (TrainNumber[0][tr] < 99 && TrainNumber[0][tr] > 0) {
             document.getElementById('TCars' + (1) + (tr + 1))!.textContent = '自由席4-6号車';
-        } else if (number[0][tr] > 99) {
+        } else if (TrainNumber[0][tr] > 99) {
             document.getElementById('TCars' + (1) + (tr + 1))!.textContent = '全車自由席';
             Detail[0][tr] += "　諫早、新大村方面の<span class='Corange'>最終列車</span>です。";
         }

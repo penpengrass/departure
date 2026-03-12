@@ -144,13 +144,7 @@ export function JRNameDevide(T = Tablenum) {
                 matches[tr] = LimitedName[tr].match(/([^0-9]+)(\d+)([^0-9]+)/);
             }
             if (matches[tr]) {
-                console.log(
-                    td +
-                    1 +
-                    "個目の表の" +
-                    (tr + 1) +
-                    "番目の表示はJRNameDevideとマッチする"
-                );
+                //console.log(td + 1 + "個目の表の" + (tr + 1) + "番目の表示はJRNameDevideとマッチする");
                 /*console.log(matches[tr][0] + ":" + tr);
                 console.log(matches[tr][1] + ":" + tr);
                 console.log(matches[tr][2] + ":" + tr);
@@ -263,6 +257,31 @@ export function JRLimitedNumber(td: number, tr: number, flag: number | string = 
     }
     //console.log(number);
     return number;
+}
+//console.log(Type);
+//特急によって停車駅が異なるときの処理
+//numberは号数 Lnameは列車名
+export var TrainNumber = new Array(Tablenum);
+export var Lname = new Array(Tablenum);
+console.log("detailflag=" + detailflag);
+for (var td = 0; td < Tablenum; td++) {
+    if (detailflag > 1) {
+        TrainNumber[td] = new Array(orderNum);
+        Lname[td] = new Array(orderNum);
+    }
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        if (detailflag > 1 && detailflag != 8) {
+            //console.log(JRLimitedName(td, tr,1) + ':' + td + ':' + tr)
+            TrainNumber[td][tr] = Number.parseInt(JRLimitedNumber(td, tr));
+            //console.log(typeof number[td][tr]);
+            Lname[td][tr] = JRLimitedName(td, tr, 1);
+        } else {
+            //console.log(JRLimitedName(td,0,1));
+            TrainNumber[td] = Number.parseInt(JRLimitedNumber(td, 0));
+            Lname[td] = JRLimitedName(td, 0, 1);
+            break;
+        }
+    }
 }
 //種別+両数の場合分割
 export function CarsDevide(td: number, LCarsTag = "TCars") {
@@ -516,3 +535,4 @@ export function moveTableColumn(table: any, fromIndex: any, toIndex: any) {
     }
 }
 export var comment = document.getElementById("supplement");
+console.log(TrainNumber);

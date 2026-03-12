@@ -32,11 +32,9 @@
     <link rel="stylesheet" href="css/banner.css">
     <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
     <script type="module" src="dist/module/firstTableEdit.js"></script>
-    <script type="module" src="dist/module/timeShift.js"></script>
     <script type="module" src="dist/detailStopData/JRHokuShindetailset.js"></script>
+     <script type="module" src="dist/stationset4_H.js"></script>
     <script type="module" src="dist/detailStopData/JRW_afterset.js"></script>
-    <script type="module" src="dist/stationset4.js"></script>
-    <script type="module" src="dist/stationset4_H.js"></script>
 </head>
 
 <body>

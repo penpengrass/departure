@@ -21,7 +21,7 @@ export function BottomBanner(tag: string, td: number, tr: number, colspan: any, 
         }
     }
 }
-//JR西日本のみで使用
+//JR西日本のみで使用(注意! エラー未解決)
 export function BottomBanner_Reverse(tag: string, td: number, tr: number) {
     let element = document.getElementById(tag + td + tr);
     var doBNumber = document.getElementById('TNum' + (td + 1) + '' + (tr + 1));

@@ -2,7 +2,7 @@ import { JRWSHobj } from './detailStopData/JRHokuShindetailset';
 import { DetailShow, doallDetailShow } from "./module/detailMainPut";
 import { DetailReplace } from "./module/detailSimpleEdit";
 import { AllWordChange, TwoLetterDistance, JRLimitedDevide, JRNameDevide, Bansenshow } from "./module/firstDisplayEdit";
-import { number } from "./module/firstDetailEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
 import { allJRWTrainNameColor, DesMiddle } from "./module/displayEdit4";
 import { allJRColor, allJRSSColor } from "./typeColor";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
@@ -13,8 +13,9 @@ JRLimitedDevide(2);
 JRLimitedDevide(3);
 //allLastShow();
 //TablenumSub = 1
+NonGouflag = 1;
 JRNameDevide(2);
-console.log(Detail);
+console.log(TrainNumber);
 var takefu = [62, 64, 4, 8, 12, 84, 16, 20, 22, 24, 26, 28, 30, 34, 38, 42, 46, 48, 50, 1, 5, 9, 13, 17, 19, 21, 23, 25, 29, 33, 37, 41, 45, 47, 49, 61];
 var iiyama = [552, 554, 556, 558, 560, 564, 568, 572, 574, 576, 578, 590];
 var k_takefu = [[502, 518], [501, 517]];
@@ -41,7 +42,7 @@ for (var td = 0; td < 2; td++) {
         } else if (Type[td][tr] == 'つるぎ') {
             Cars[td][tr] = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-2号車';
-            if (number[td][tr] > 59) {
+            if (TrainNumber[td][tr] > 59) {
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-4号車';
             }
         }
@@ -51,51 +52,51 @@ for (var td = 0; td < 2; td++) {
     }
 }
 for (var tr = 0; tr < 2; tr++) {
-    if (takefu.includes(number[0][tr])) {
+    if (takefu.includes(TrainNumber[0][tr])) {
         //DetailReplace(0, tr, '福井', '越前たけふ　福井　芦原温泉　加賀温泉　小松');
         Detail[0][tr] = '各駅';
     } else if (station == '福井駅' && Des[0][tr] == '金沢') {
         Detail[0][tr] = '次の停車駅は終点金沢です';
     }
-    if (k_onsen[0].includes(number[0][tr])) {
+    if (k_onsen[0].includes(TrainNumber[0][tr])) {
         DetailReplace(0, tr, '金沢', '芦原温泉　加賀温泉　金沢');
     }
-    if (k_takefu[1].includes(number[0][tr])) {
+    if (k_takefu[1].includes(TrainNumber[0][tr])) {
         DetailReplace(0, tr, '福井', '小松　福井　越前たけふ');
     }
-    if (k_takefu[1].includes(number[1][tr])) {
+    if (k_takefu[1].includes(TrainNumber[1][tr])) {
         DetailReplace(1, tr, '福井', '小松　福井　越前たけふ');
     }
 
-    if (k_onsen[1].includes(number[0][tr])) {
+    if (k_onsen[1].includes(TrainNumber[0][tr])) {
         DetailReplace(0, tr, '福井', '加賀温泉　芦原温泉　福井');
     }
     if (station == '福井駅') {
-        if (takefu.includes(number[1][tr]) || k_takefu[1].includes(number[1][tr]) || Type[1][tr].startsWith('はくたか')) {
+        if (takefu.includes(TrainNumber[1][tr]) || k_takefu[1].includes(TrainNumber[1][tr]) || Type[1][tr].startsWith('はくたか')) {
             Detail[1][tr] = '越前たけふ';
-        } else if (number[1][tr] > 0) {
+        } else if (TrainNumber[1][tr] > 0) {
             Detail[1][tr] = '次の停車駅は終点敦賀です';
         }
     } else if (station == '金沢駅' && Type[0][tr].startsWith('はくたか')) {
         Detail[0][tr] = '各駅';
     }
-    if (iiyama.includes(number[0][tr])) {
+    if (iiyama.includes(TrainNumber[0][tr])) {
         DetailReplace(0, tr, '長野', '飯山　長野');
     }
-    if (iiyama.includes(number[1][tr])) {
+    if (iiyama.includes(TrainNumber[1][tr])) {
         DetailReplace(1, tr, '長野', '飯山　長野');
     }
 
-    if (Stops.ueda.includes(number[0][tr])) {
+    if (Stops.ueda.includes(TrainNumber[0][tr])) {
         DetailReplace(0, tr, '長野', '長野　上田　軽井沢');
     }
-    if (Stops.ueda.includes(number[1][tr])) {
+    if (Stops.ueda.includes(TrainNumber[1][tr])) {
         DetailReplace(1, tr, '長野', '長野　上田　軽井沢');
     }
-    if (Stops.sakudaira.includes(number[1][tr])) {
+    if (Stops.sakudaira.includes(TrainNumber[1][tr])) {
         DetailReplace(1, tr, '上田', '上田　佐久平');
     }
-    if (k_takefu[0].includes(number[0][tr])) {
+    if (k_takefu[0].includes(TrainNumber[0][tr])) {
         DetailReplace(0, tr, '福井', '越前たけふ　福井');
         DetailReplace(0, tr, '金沢', '小松　金沢');
     }
@@ -110,14 +111,14 @@ if (station == '敦賀駅' || station == '金沢駅') {
             document.getElementById('TName' + 3 + (tr + 1))!.textContent += '号';
         }
         if (Type[4][tr].startsWith('特急')) {
-            document.getElementById('TName' + 5 + (tr + 1))!.textContent += number[4][tr] + '号';
-            Type[4][tr] = Type[4][tr].replace(number[4][tr].toString(), '');
+            document.getElementById('TName' + 5 + (tr + 1))!.textContent += TrainNumber[4][tr] + '号';
+            Type[4][tr] = Type[4][tr].replace(TrainNumber[4][tr].toString(), '');
             document.getElementById('WType' + 5 + (tr + 1))!.textContent = Type[4][tr];
             document.getElementById('TName' + 5 + (tr + 1))!.style.textAlign = 'right';
         }
         if (Type[3][tr].startsWith('快速あいの')) {
-            document.getElementById('TName' + 4 + (tr + 1))!.textContent += number[3][tr] + '号';
-            Type[3][tr] = Type[3][tr].replace(number[3][tr].toString(), '');
+            document.getElementById('TName' + 4 + (tr + 1))!.textContent += TrainNumber[3][tr] + '号';
+            Type[3][tr] = Type[3][tr].replace(TrainNumber[3][tr].toString(), '');
             document.getElementById('WType' + 4 + (tr + 1))!.textContent = Type[3][tr];
             document.getElementById('TName' + 4 + (tr + 1))!.style.textAlign = 'right';
         }

@@ -2,7 +2,7 @@ import { AllWordChange, AllWordReplace, AllStartWordReplace, allLastShow,flagmar
 import { TypeColorChange, TypeBackColorChange } from "./module/colorSimpleSet";
 import { DetailShow,LastLetterRemove } from "./module/detailMainPut";
 import { JTypeIncludeColor } from "./typeColor";
-import { number } from "./module/firstDetailEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
 import * as ShikokuStops from "./detailStopData/Shidetailset";
 function WhetherLocal(td: number, tr: number) {
     if (Type[td][tr] == '普通' || Type[td][tr] == '各駅停車' || Type[td][tr] == '普通(当駅始発)') {
@@ -93,7 +93,7 @@ for (var td = 0; td < Tablenum; td++) {
     }
 }
 if (station == '高松駅') {
-    if (Type[2][0].startsWith('快速ﾏﾘﾝﾗｲﾅｰ') && number[2][0] != 2) {
+    if (Type[2][0].startsWith('快速ﾏﾘﾝﾗｲﾅｰ') && TrainNumber[2][0] != 2) {
         Detail[2][0] += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜５号車は<font color='yellow'>自由席</font>です。";
     }
     for (var td = 0; td < 2; td++) {
@@ -125,9 +125,9 @@ if (station == '高松駅') {
     if (Des[0][0] == '岡山･高松') {
         Detail[0][0] = 'しおかぜ号は' + Detail[0][0] + 'いしづち号は宇多津発車後坂出に停車します';
     }
-    if (number[0][0] == 102) {
+    if (TrainNumber[0][0] == 102) {
         Detail[0][0] += '坂出で<span class="blue">快速「マリンライナー68号」</span>岡山行きに接続します。';
-    } else if (number[0][0] == 104) {
+    } else if (TrainNumber[0][0] == 104) {
         Detail[0][0] += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
     }
     var Detaila = document.getElementById('TDetail21');
@@ -217,7 +217,7 @@ for (var td = 0; td < Tablenum; td++) {
         }
         var dName = document.getElementById('TName' + (td + 1) + (tr + 1));
         if (dName!.textContent.startsWith('しおかぜ･いしづち')) {
-            dName!.innerHTML = 'しおかぜ' + '<span class="gou">' + number[td][tr] + '号</span><br>いしづち';
+            dName!.innerHTML = 'しおかぜ' + '<span class="gou">' + TrainNumber[td][tr] + '号</span><br>いしづち';
             dName!.style.fontSize = '15px';
             dName!.style.fontWeight = '800px';
         }

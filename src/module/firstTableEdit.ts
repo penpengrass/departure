@@ -1,6 +1,5 @@
 window.orders = new Array(orderNum);
 let hours = new Array(orderNum);
-export var Dtype = new Array(Tablenum);
 for (let or = 0; or < orders.length; or++) {
     orders[or] = 0;
     hours[or] = 0;
@@ -244,8 +243,7 @@ export function limitedjustnumber(TT: any, firstlimited: number, name: string | 
                                 TT[td][tr] += count + "号";
                             }
                         } else {
-                            //console.log(count + ' 3' + TT[td + 2][tr] + ':' + Des);
-                            if (LDes[0] == 'undefined') {
+                            if (LDes[0] == 'undefined' || LDes[0] == "") {
                                 //console.log(TT[td][tr]);
                                 if (NonGouflag == 1) {
                                     TT[td][tr] += count + "";
@@ -256,7 +254,6 @@ export function limitedjustnumber(TT: any, firstlimited: number, name: string | 
                                 count -= 2;
                             }
                         }
-                        //console.log(count);
                         count += 2;
                         if (Indexfile == 'index8.php' && count == 100) {
                             count = 110;

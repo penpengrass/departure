@@ -1,6 +1,6 @@
 import { JRNameDevide, allLastShow, flagmarkerase, Bansenshow, comment } from "./module/firstDisplayEdit";
 import { JREScolor } from "./module/colorSimpleSet";
-import { number } from "./module/firstDetailEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
 JRNameDevide(2);
 for (let te = 0; te < Tablenum; te++) {
     for (let tr = 0; tr < orderNum; tr++) {
@@ -43,9 +43,9 @@ for (var tr = 0; tr < 4; tr++) {
 }
 if (station == '仙台駅') {
     for (var tr = 0; tr < orderNum; tr++) {
-        if (number[0][tr] > 11 && number[0][tr] < 100 && Type[0][tr].includes('はやぶさ')) {
-            number[0][tr] += 2;
-            document.getElementById('TName' + (1) + (tr + 1))!.textContent = number[0][tr] + "号";
+        if (TrainNumber[0][tr] > 11 && TrainNumber[0][tr] < 100 && Type[0][tr].includes('はやぶさ')) {
+            TrainNumber[0][tr] += 2;
+            document.getElementById('TName' + (1) + (tr + 1))!.textContent = TrainNumber[0][tr] + "号";
         }
     }
     comment!.innerHTML += "<br>実際には停車駅表示があるが未実装";

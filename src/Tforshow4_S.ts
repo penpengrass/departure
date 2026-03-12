@@ -1,12 +1,15 @@
 import { DetailReplace_Set } from "./module/detailSimpleEdit";
-import { allLastShow, TwoLetterDistance, flagmarkerase, JRNameDevide,Bansenshow } from "./module/firstDisplayEdit";
+import { allLastShow, TwoLetterDistance, flagmarkerase, JRNameDevide, Bansenshow } from "./module/firstDisplayEdit";
 import { FDetail, doallDetailShow } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRW_S";
-import { number } from "./module/firstDetailEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
 import { JRSSobj } from "./detailStopData/JRW_S";
 import { allJRSSColor } from "./typeColor";
 import { allSanyoShinkansenSwitch } from "./module/displaySwitch";
-allLastShow();
+if (LastShowFlag == 0) {
+    allLastShow();
+}
+LastShowFlag = 1;
 var TablenumSub = Tablenum;
 if (station == '博多駅') {
     Dtype = [1, 0];
@@ -42,7 +45,7 @@ if (station == '博多駅') {
             Detail[0][tr] = '小倉';
         }
     }
-    console.log(number);
+    console.log(TrainNumber);
     DetailLength = [2, 2];
     doallDetailShow(25);
 } else if (station == '岡山駅' && Indexfile == 'index4_S2.php') {
@@ -109,6 +112,7 @@ if (station == '博多駅') {
     }
 }*/
 if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
+    NonGouflag = 1;
     JRNameDevide();
     allJRSSColor();
     for (var td = 0; td < TablenumSub; td++) {

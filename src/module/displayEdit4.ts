@@ -1,5 +1,4 @@
 import { FDetail } from "./detailMainPut"
-import { Dtype } from "../module/firstTableEdit";
 import { DetailReplace } from "./detailSimpleEdit";
 import { LastLetterRemove } from "./detailMainPut";
 import { Detail_contents } from "../detailStopData/JRW_afterset";
@@ -24,16 +23,16 @@ export function DesMiddle(td: number, tr: number, word: string) {
         Tag = 'TDes';
     }
     //console.log(matches[tr]);
-    if (matches[tr]) {
-        //console.log(td + ':' + tr + word + 'はマッチする');
+    var d_Tag = document.getElementById(Tag + (td + 1) + (tr + 1));
+    if (matches[tr] && d_Tag) {
+        //console.log(td + ':' + tr + word + " " + Tag + ' はマッチする');
         /*console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
         console.log(matches[tr][2] + ":" + tr);*/
-        document.getElementById(Tag + (td + 1) + (tr + 1))!.innerHTML =
+        d_Tag.innerHTML =
             '<span class="DesLeft" id="DesLeft' + (td + 1) + (tr + 1) + '">' + matches[tr][1] + '</span>' + '<span class="DesMiddle">' + word + '</span>' + '<span id="DesRight' + (td + 1) + (tr + 1) + '">' + matches[tr][2] + '</span>';
-        var DesLeft = document.getElementById('DesLeft' + (td + 1) + (tr + 1)) as HTMLElement | null;
+            var DesLeft = document.getElementById('DesLeft' + (td + 1) + (tr + 1)) as HTMLElement | null;
         var DesRight = document.getElementById('DesRight' + (td + 1) + (tr + 1));
-        //console.log(DesRight.textContent.length);
         if (DesRight !== null && DesRight.textContent.length > 3) {
             //console.log(DesRight.textContent.length);
             DesRight.style.display = 'inline-block';
@@ -53,7 +52,6 @@ export function DesMiddle(td: number, tr: number, word: string) {
     } else {
         //console.log(td + ':' + tr + word + 'はマッチしない');
     }
-
 }
 export function Maibara_Banner(td: number) {
     if (td == 1 && (Type[td - 1][0] == '新快速' || Type[td - 1][0] == '特急')) {

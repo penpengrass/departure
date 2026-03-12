@@ -1,4 +1,4 @@
-import { number } from "../module/firstDetailEdit";
+import { TrainNumber } from "../module/firstDisplayEdit";
 import { TokaiDetailflag } from "../stationset7";
 //西ノ京や久居で使う
 export function whetherStop(start_hour: number, start_min: number, hour: number, min: number, end_hour: number, end_min: number) {
@@ -66,12 +66,12 @@ export function DetailReplace(td: number, tr: number, Before: string, After: str
 }
 //新幹線や有料特急の追加停車
 export function DetailReplace_Set(td: number, tr: number, Line: any, Before: string, After: string) {
-  if (Line.includes(number[td][tr])) {
+  if (Line.includes(TrainNumber[td][tr])) {
     DetailReplace(td, tr, Before, After);
   }
 }
 export function DetailReplace_Set_One(td: number, Line: any, Before: string, After: string, TypeName = "") {
-  if (Line.includes(number[td]) && Type[td][0].includes(TypeName)) {
+  if (Line.includes(TrainNumber[td]) && Type[td][0].includes(TypeName)) {
     DetailReplace(td, 0, Before, After);
   }
 }

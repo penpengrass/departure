@@ -147,15 +147,15 @@
   <script type="module" src="dist/variable2.js"></script>
   <script type="module" src="dist/module/displaySwitch.js"></script>
   <script type="module" src="dist/module/firstDisplayEdit.js"></script>
+   <script type="module" src="dist/module/firstDetailEdit.js"></script>
   <script type="module" src="dist/module/detailSimpleEdit.js"></script>
   <script type="module" src="dist/module/carsEdit.js"></script>
   <script type="module" src="dist/module/carsEdit.js"></script>
-  <script type="module" src="dist/module/firstDetailEdit.js"></script>
   <script type="module" src="dist/module/detailBannerSwitch.js"></script>
   <script type="module" src="dist/module/colorSimpleSet.js"></script>
   <script type="module" src="dist/detailStopData/JRNadetailset.js"></script>
-  <script type="module" src="dist/detailStopData/JRW_afterset.js"></script>
   <script type="module" src="dist/detailStopData/JRSanindetailset.js"></script>
+  <script type="module" src="dist/detailStopData/JRW_afterset.js"></script>
   <script type="module" src="dist/typeColor.js"></script>
   <script type="module" src="dist/module/detailMainPut.js"></script>
   <script type="module" src="dist/module/displayEdit4.js"></script>

@@ -36,7 +36,7 @@ Cesubrapid[3][Cesubrapid[1].length - 1] = '岐阜から各駅';
 Cesubrapid[3].push('関ケ原', '米原');
 TSperapid[1].push('関ケ原', '米原');
 Cesubrapid[3][1] = '岡崎までの各駅';
-console.log(TNewrapid);
+//console.log(TNewrapid);
 var Slimited = Shilimited.slice();
 let Sperapid = TSperapid.slice();
 let Newrapid = TNewrapid.slice();
@@ -46,8 +46,8 @@ var Jrapid = HomeOgaki.slice();
 var Jsubrapid = Cesubrapid.slice();
 var limited = Shirasagi.slice();
 var local = [['各駅にとまります']];
-console.log(Newrapid);
-console.log(Cesubrapid);
+//console.log(Newrapid);
+//console.log(Cesubrapid);
 let Cgreen='#39ff14'
 export var JRCeNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: limited, },
@@ -60,7 +60,7 @@ export var JRCeNobj = {//色は文字
 };
 if (station != '名古屋駅') {
     JRCeNobj.Typeb.type = 'ホームライナー';
-    console.log(JRCeNobj);
+    //console.log(JRCeNobj);
 }
 export var JRChNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: Slimited, },

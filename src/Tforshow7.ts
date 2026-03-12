@@ -3,7 +3,7 @@ import { TypeColorChange, TypeColorChange2 } from "./module/colorSimpleSet";
 import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, allLastShow,holiday_F } from "./module/firstDisplayEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { SpendingTime, DetailReplace,SpecialStop } from "./module/detailSimpleEdit";
-import { number } from "./module/firstDetailEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
 import { JRCeNobj, JRKaobj, Nagahama } from "./detailStopData/JRNadetailset";
 import { TokaiDetailflag } from "./stationset7";
 import { BottomBanner } from "./module/detailBannerSwitch";
@@ -37,9 +37,9 @@ function allJRC_Reduction() {
 if (station == '大垣駅') {
     if (Type[0][0].includes('特急')) {
         FDetail(Type[0][0], JRCeNobj, Dtype[0], 0, 0, "・");
-        console.log(number[0]);
-        if (Nagahama.includes(number[0])) {
-            console.log(number[0]);
+        console.log(TrainNumber[0]);
+        if (Nagahama.includes(TrainNumber[0])) {
+            console.log(TrainNumber[0]);
             Detail[0][0] += '長浜';
             //DetailReplace(0,'', '米原', '米原・長浜', 3);
         }
@@ -64,8 +64,8 @@ if (station == '大垣駅') {
 if (station == '岐阜駅') {
     if (Type[0][0].includes('特急')) {
         FDetail(Type[0][0], JRCeNobj, Dtype[0], 0, 0, "・");
-        if (Nagahama.includes(number[0])) {
-            console.log(number[0]);
+        if (Nagahama.includes(TrainNumber[0])) {
+            console.log(TrainNumber[0]);
             Detail[0][0] += '長浜';
             //DetailReplace(0,'', '米原', '米原・長浜', 3);
         }

@@ -1,4 +1,3 @@
-import { Dtype } from "../module/firstTableEdit";
 //console.log(express);
 //console.log(Dtype[0] + "&" + Dtype[1]);
 //let u = 0;

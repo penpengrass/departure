@@ -1,9 +1,8 @@
-import { TrainNameDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
+import { RailNumberDevide, TrainNameDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 NonGouflag = 1;
 if (station == '敦賀駅') {
     company = '北陸新幹線';
     DetailLength = [2];
-    var staflag = 0;
     window.Dtype = [1];
     TableTitle = ['北陸新幹線 金沢 富山方面', '北陸新幹線 当駅止め', '当駅止め', '特急列車 大阪 名古屋方面', '北陸本線 湖西線', 'ハピラインふくい', '小浜線'];
     var Tshirasagi = [2, 52, 4, 54, 6, 56, 8, 58, 10, 12, 60, 14, 62, 16, 64];

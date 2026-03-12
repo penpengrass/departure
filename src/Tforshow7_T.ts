@@ -2,7 +2,7 @@ import { JRCeNobj,JRChNobj } from "./detailStopData/JRNadetailset";
 import { TwoLetterDistance,allTimeMarkErase,JRLimitedNumber,LastShows,holiday_F, AllClassSetting } from "./module/firstDisplayEdit";
 import { FDetail,DetailBanner } from "./module/detailMainPut";
 import { DetailReplace, DetailReplace_Set,SpecialStop } from "./module/detailSimpleEdit";
-import { number } from "./module/firstDetailEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
 import { LastLetterRemove } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRNadetailset";
 console.log(Dtype);
@@ -24,8 +24,8 @@ for (var tr = 0; tr < orderNum; tr++) {
             Detail[1][tr] = Detail[1][tr].slice(0, -1);
 
         }
-        if (Stops.Nagahama.includes(number[1][tr])) {
-            console.log(number[1][tr]);
+        if (Stops.Nagahama.includes(TrainNumber[1][tr])) {
+            console.log(TrainNumber[1][tr]);
             DetailReplace(1, tr, '米原', '米原・長浜');
         }
         document.getElementById('TDetail' + (2) + '' + (tr + 1))!.textContent = Detail[1][tr];
@@ -68,9 +68,9 @@ for (var tr = 0; tr < orderNum; tr++) {
 //td_detail++;
 var HidaDtype = 0;
 console.log("-----ここから高山方面の詳細表示-----");
-console.log(number);
+console.log(TrainNumber);
 for (var tr = 0; tr < orderNum; tr++) {
-    var HidaNumber = number[4][tr];
+    var HidaNumber = TrainNumber[4][tr];
     if (HidaNumber == 9) {
         Dtype[4] = 1;
     } else {

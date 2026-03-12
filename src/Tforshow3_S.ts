@@ -2,8 +2,7 @@ import { DetailShow, doallDetailShow } from "./module/detailMainPut";
 import { DetailReplace } from "./module/detailSimpleEdit";
 import { allLastShow, TwoLetterDistance, flagmarkerase } from "./module/firstDisplayEdit";
 import { TypeColorChange, JREScolor } from "./module/colorSimpleSet";
-import { FourLetters } from "./module/firstDisplayEdit";
-import { number } from "./module/firstDetailEdit";
+import { FourLetters,TrainNumber } from "./module/firstDisplayEdit";
 import { JRNameDevide } from "./module/firstDisplayEdit";
 import { JRSBobj } from "./detailStopData/JREShindetailset";
 import { Seventeen } from "./detailStopData/JRTohokuShinset";
@@ -21,35 +20,35 @@ var Nhonjou = [600, 604, 628];
 var Nkumagaya = [600, 604, 628];
 var onsen = [507, 509];
 var takefu = [501, 517];
-console.log(number);
+console.log(TrainNumber);
 if (station == '長野駅') {
     DetailShow(JRSBobj, "・");
     for (var tr = 0; tr < orderNum; tr++) {
-        if (iiyama.includes(number[0][tr])) {
+        if (iiyama.includes(TrainNumber[0][tr])) {
             DetailReplace(0, tr, '上越妙高', '飯山・上越妙高');
         }
-        if (annnaka.includes(number[1][tr])) {
+        if (annnaka.includes(TrainNumber[1][tr])) {
             DetailReplace(1, tr, '高崎', '安中榛名・高崎');
         }
-        if (Nhonjou.includes(number[1][tr])) {
+        if (Nhonjou.includes(TrainNumber[1][tr])) {
             DetailReplace(1, tr, '本庄早稲田・', '');
         }
-        if (Nkumagaya.includes(number[1][tr])) {
+        if (Nkumagaya.includes(TrainNumber[1][tr])) {
             DetailReplace(1, tr, '熊谷・', '');
         }
-        if (Stops.ueda.includes(number[1][tr])) {
+        if (Stops.ueda.includes(TrainNumber[1][tr])) {
             DetailReplace(1, tr, '高崎', '上田・軽井沢・高崎');
         }
-        if (Stops.sakudaira.includes(number[1][tr])) {
+        if (Stops.sakudaira.includes(TrainNumber[1][tr])) {
             DetailReplace(1, tr, '上田', '上田・佐久平');
         }
-        if (Stops.Ntakasaki.includes(number[1][tr])) {
+        if (Stops.Ntakasaki.includes(TrainNumber[1][tr])) {
             DetailReplace(1, tr, '高崎・', '');
         }
-        if (onsen.includes(number[0][tr])) {
+        if (onsen.includes(TrainNumber[0][tr])) {
             DetailReplace(0, tr, '金沢', '金沢・加賀温泉・芦原温泉');
         }
-        if (takefu.includes(number[0][tr])) {
+        if (takefu.includes(TrainNumber[0][tr])) {
             DetailReplace(0, tr, '金沢・福井', '金沢・小松・福井・越前たけふ');
         }
     }
@@ -77,20 +76,20 @@ if (station == '長野駅') {
 } else if (station == '宇都宮駅') {
     for (var tr = 0; tr < orderNum; tr++) {
         if (Type[1][tr] != '') {
-            //console.log(number[1][tr]);
-            if (number[1][tr] > 199 || number[1][tr] == 68) {
+            //console.log(TrainNumber[1][tr]);
+            if (TrainNumber[1][tr] > 199 || TrainNumber[1][tr] == 68) {
                 Detail[1][tr] = '小山・大宮・上野・東京';
             } else {
                 Detail[1][tr] = '大宮・上野・東京';
             }
         }
         if (Type[0][tr] != '') {
-            //console.log(number[0][tr]);
+            //console.log(TrainNumber[0][tr]);
             var LDes = Des[0][tr];
             var LNumber = document.getElementById('TName' + (0 + 1) + (tr + 1));
             if (LNumber && Number(LNumber.textContent) > 130 && Number(LNumber.textContent) < 200) {
-                number[0][tr] += 2;
-                LNumber.textContent = number[0][tr];
+                TrainNumber[0][tr] += 2;
+                LNumber.textContent = TrainNumber[0][tr];
             }
             //console.log(LNumber);
             if (LDes == '那須塩原') {
@@ -101,21 +100,20 @@ if (station == '長野駅') {
                 Detail[0][tr] = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形・天童・さくらんぼ東根・村山・大石田・新庄';
             } else if (LDes.includes('山形')) {
                 Detail[0][tr] = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形';
-            } else if (number[0][tr] > 200) {
+            } else if (TrainNumber[0][tr] > 200) {
                 Detail[0][tr] = '那須塩原・新白河・郡山・福島・仙台';
-            } else if (number[0][tr] < 100) {
+            } else if (TrainNumber[0][tr] < 100) {
                 Detail[0][tr] = '郡山・福島・仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
-            } else if (number[0][tr] > 100) {
+            } else if (TrainNumber[0][tr] > 100) {
                 Detail[0][tr] = '郡山・福島・仙台';
             }
         }
-        console.log(Type[0][tr]);
-        if (YamagataRapid.includes(number[0][tr])) {
+        if (YamagataRapid.includes(TrainNumber[0][tr])) {
             Detail[0][tr] = '郡山・福島・米沢・山形・天童・さくらんぼ東根・村山・大石田・新庄';
         }
-        if (Zaou.includes(number[0][tr]) && !Type[0][tr].includes('つばさ')) {
+        if (Zaou.includes(TrainNumber[0][tr]) && !Type[0][tr].includes('つばさ')) {
             DetailReplace(0, tr, '福島', '福島・白石蔵王');
-        } else if (Zaou.includes(number[0][tr])) {
+        } else if (Zaou.includes(TrainNumber[0][tr])) {
             Detail[0][tr] += '　やまびこは福島発車後白石蔵王にも停まります';
         }
     }
@@ -145,15 +143,15 @@ if (station == '長野駅') {
     }
 } else if (station == '福島駅') {
     for (var tr = 0; tr < 2; tr++) {
-        if (!Zaou.includes(number[0][tr]) && Des[0][tr] == '仙台') {
+        if (!Zaou.includes(TrainNumber[0][tr]) && Des[0][tr] == '仙台') {
             Detail[0][tr] = 'この列車は仙台まで止まりません。';
         }
-        if (number[0][tr] < 100) {
+        if (TrainNumber[0][tr] < 100) {
             Detail[0][tr] = '仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
-        } else if (number[0][tr] > 100) {
+        } else if (TrainNumber[0][tr] > 100) {
             Detail[0][tr] = '仙台';
         }
-        if (Zaou.includes(number[0][tr])) {
+        if (Zaou.includes(TrainNumber[0][tr])) {
             DetailReplace(0, tr, '仙台', '白石蔵王・仙台');
         }
         if (Detail[0][tr] == '仙台') {
@@ -173,25 +171,25 @@ if (station == '長野駅') {
         }
         if (Des[1][tr] == '郡山') {
             Detail[1][tr] = 'この列車は郡山まで止まりません。';
-        } else if (number[1][tr] == 124) {
+        } else if (TrainNumber[1][tr] == 124) {
             Detail[1][tr] = '大宮・東京';
-        } else if (number[1][tr] < 170) {
+        } else if (TrainNumber[1][tr] < 170) {
             Detail[1][tr] = '郡山・宇都宮・大宮・上野・東京';
-        } else if (number[1][tr] > 199) {
+        } else if (TrainNumber[1][tr] > 199) {
             Detail[1][tr] = '郡山・新白河・那須塩原・宇都宮・小山・大宮・上野・東京';
         }
-        if (Shirakawa.includes(number[1][tr])) {
+        if (Shirakawa.includes(TrainNumber[1][tr])) {
             DetailReplace(1, tr, '宇都宮', '新白河・宇都宮');
         }
-        if (Oyama.includes(number[1][tr])) {
+        if (Oyama.includes(TrainNumber[1][tr])) {
             DetailReplace(1, tr, '那須塩原・宇都宮', '宇都宮');
         }
-        if (Seventeen.includes(number[0][tr])) {
+        if (Seventeen.includes(TrainNumber[0][tr])) {
             document.getElementById('Ttopic1' + (tr + 1))!.textContent = '１７両編成';
         } else if (Type[0][tr] != '') {
             document.getElementById('Ttopic1' + (tr + 1))!.textContent = '１０両編成';
         }
-        if (Seventeen.includes(number[1][tr])) {
+        if (Seventeen.includes(TrainNumber[1][tr])) {
             document.getElementById('Ttopic2' + (tr + 1))!.textContent = '１７両編成';
         }
     }
@@ -201,19 +199,19 @@ if (station == '長野駅') {
     } else if (Des[0][0] == '仙台') {
         Detail[0][0] = '郡山・福島・仙台';
     }
-    if (number[1][0] < 60) {
+    if (TrainNumber[1][0] < 60) {
         Detail[1][0] = '宇都宮・大宮・上野・東京';
-    } else if (number[1][0] > 60) {
+    } else if (TrainNumber[1][0] > 60) {
         Detail[1][0] = '那須塩原・宇都宮・小山・大宮・上野・東京';
     }
-    if (Zaou.includes(number[0][0])) {
+    if (Zaou.includes(TrainNumber[0][0])) {
         DetailReplace(0, 0, '仙台', '白石蔵王・仙台');
     }
     for (var td = 0; td < 2; td++) {
         for (var tr = 0; tr < 2; tr++) {
             TypeColorChange(td, tr, 'やまびこ', 'red');
             TypeColorChange(td, tr, 'なすの', 'orange');
-            if (Seventeen.includes(number[td][tr])) {
+            if (Seventeen.includes(TrainNumber[td][tr])) {
                 document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.textContent = '１７両編成';
             } else if (Type[td][tr] != '') {
                 document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.textContent = '１０両編成';

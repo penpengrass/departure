@@ -1,13 +1,11 @@
 import { reverseLine} from "../module/firstTableEdit";
 import { DetailReplace_Set_One } from "../module/detailSimpleEdit";
-import {Dtype} from "../module/firstTableEdit"
 var yakumo_stop = [['岡山', '倉敷', '備中高梁', '新見', '米子', '安来', '松江', '宍道', '出雲市']];
 var matsukaze_stop = [['鳥取', '鳥取大学前', '倉吉', '米子', '安来', '松江', '宍道', '出雲市', '大田市', '江津', '浜田', '益田', '日原', '津和野', '徳佐', '三谷', '山口', '湯田温泉', '新山口']];
 var sanrise_stop=[['東京','横浜','熱海','沼津','富士','静岡','大阪','三ノ宮','姫路','岡山','倉敷','備中高梁','新見','米子','安来','松江','宍道','出雲市']];
 reverseLine(yakumo_stop, 0, 1);
 reverseLine(matsukaze_stop, 0, 1);
 reverseLine(sanrise_stop, 0, 1);
-Dtype[2] = 0;
 export var JRSaninObj = {//色は文字
     Typea: { type: "特急やくも", Bcolor: 'yellow', color: black, detail: yakumo_stop },
     Typeb: { type: "特急ｽｰﾊﾟｰまつかぜ", Bcolor: red, color: white, detail: matsukaze_stop },

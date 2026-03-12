@@ -22,30 +22,4 @@ export function DeleteStopping(TrainType: any, BeforeStation: string, LDtype = 0
     //limited[5].splice(2, 0, '高の原');
     TrainType[LDtype].splice(Deletenumber, 1);
 }
-//console.log(Type);
-//特急によって停車駅が異なるときの処理
-//numberは号数 Lnameは列車名
-export var number = new Array(Tablenum);
-export var Lname = new Array(Tablenum);
-console.log(detailflag);
-for (var td = 0; td < Tablenum; td++) {
-    if (detailflag > 1) {
-        number[td] = new Array(orderNum);
-        Lname[td] = new Array(orderNum);
-    }
-    for (var tr = 0; tr < Tablenums[td]; tr++) {
-        if (detailflag > 1 && detailflag != 8) {
-            //console.log(JRLimitedName(td, tr,1) + ':' + td + ':' + tr)
-            number[td][tr] = Number.parseInt(JRLimitedNumber(td, tr));
-            //console.log(typeof number[td][tr]);
-            Lname[td][tr] = JRLimitedName(td, tr, 1);
-        } else {
-            //console.log(JRLimitedName(td,0,1));
-            number[td] = Number.parseInt(JRLimitedNumber(td, 0));
-            Lname[td] = JRLimitedName(td, 0, 1);
-            break;
-        }
-    }
-}
-console.log(number);
 //console.log(Lname);

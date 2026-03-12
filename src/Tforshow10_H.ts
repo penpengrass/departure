@@ -1,7 +1,8 @@
-import { JRNameDevide, JRLimitedDevide, JRLimitedNumber, allLastShow, TwoLetterDistance,flagmarkerase,Bansenshow } from "./module/firstDisplayEdit";
+import { JRNameDevide, JRLimitedDevide, JRLimitedNumber, allLastShow, TwoLetterDistance, flagmarkerase, Bansenshow } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { J_hakataTypeColor } from "./typeColor";
 import { JRSSobj } from "./detailStopData/JRW_S";
+NonGouflag = 1;
 JRNameDevide(2);
 JRLimitedDevide(2);
 JRLimitedDevide(3);

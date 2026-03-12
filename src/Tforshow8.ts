@@ -1,7 +1,7 @@
 import { JRNameDevide, comment, AllStartWordReplace, allLastShow, Bansenshow } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FDetail } from "./module/detailMainPut";
-import { number } from "./module/firstDetailEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
 import { DetailBannerOnce } from "./module/detailMainPut";
 import { JRHoobj, JRHSobj } from "./detailStopData/Hodetailset";
 JRNameDevide();
@@ -99,7 +99,7 @@ if (station == '新函館北斗駅') {
     var teine = [35, 47, 59, 71, 83, 95, 117];
     if (Type[3][0].includes('快速エアポート')) {
         var Teine_Detail = '';
-        if (teine.includes(number[3])) {
+        if (teine.includes(TrainNumber[3])) {
             Teine_Detail = '桑園・琴似・手稲から各駅です';
         } else {
             Teine_Detail = '桑園・琴似・手稲・小樽築港・南小樽です。';
@@ -122,13 +122,13 @@ if (station == '新函館北斗駅') {
         }
         dToAsahi!.innerHTML = HokkaidoCars(cars) + "　<span class='CLapidcolor'>"
             + cardetail + "</span>　<span class='Cstops'>停車駅は岩見沢・美唄・砂川・滝川・深川です。</span>";
-        if (number[2] == 13) {
+        if (TrainNumber[2] == 13) {
             dToAsahi!.innerHTML += '  この列車は旭川で網走行き特別快速大雪に接続します';
-        } else if (number[2] == 17) {
+        } else if (TrainNumber[2] == 17) {
             dToAsahi!.innerHTML += '  この列車は旭川で稚内行き<span class="CLapidcolor">特急サロベツ1号</span>に接続します';
-        } else if (number[2] == 33) {
+        } else if (TrainNumber[2] == 33) {
             dToAsahi!.innerHTML += '  この列車は旭川で網走行き特別快速大雪に接続します';
-        } else if (number[2] == 37) {
+        } else if (TrainNumber[2] == 37) {
             dToAsahi!.innerHTML += '  この列車は旭川で稚内行き<span class="CLapidcolor">特急サロベツ3号</span>に接続します';
         }
     } else if (Des[2][0] == '網走') {

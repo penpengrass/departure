@@ -3,28 +3,6 @@ import { DesMiddle } from "./module/displayEdit4";
 JRLimitedDevide(1);
 JRLimitedDevide(4);
 
-
-for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < Tablenums[td]; tr++) {
-        //TwoLetterDistance(td, tr, Type, TType, 0.60, 0);
-        //TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
-        var LType = document.getElementById('WType' + (td + 1) + (tr + 1));
-        var LocalType = document.getElementById('TType' + (td + 1) + (tr + 1));
-        var LocalDes = document.getElementById('TDes' + (td + 1) + (tr + 1));
-        if (Type[td][tr] == '普通') {
-            LType!.style.display = 'inline';
-            LType!.style.borderColor = 'white';
-        } else if (LType != null) {
-            LType.style.display = 'inline';
-            LType.style.border = 'none';
-        }
-        DesMiddle(td, tr, '経由');
-        DesMiddle(td, tr, '方面');
-        if (Des[td][tr].length > 7) {
-            LocalDes!.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
-        }
-    }
-}
 if (station == '大阪駅') {
     document.getElementById('HType' + 1)!.style.width = "25%";
     document.getElementById('HName' + 1)!.style.width = "25%";
@@ -63,3 +41,24 @@ if (station == '大阪駅') {
 allTwoLettersDistance(Type, TType, 0.60, 0);
 allTwoLettersDistance(Des, TDes, 1, 0.9);
 allLastShow();
+for (var td = 0; td < Tablenum; td++) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        //TwoLetterDistance(td, tr, Type, TType, 0.60, 0);
+        //TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+        var LType = document.getElementById('WType' + (td + 1) + (tr + 1));
+        var LocalType = document.getElementById('TType' + (td + 1) + (tr + 1));
+        var LocalDes = document.getElementById('TDes' + (td + 1) + (tr + 1));
+        if (Type[td][tr] == '普通') {
+            LType!.style.display = 'inline';
+            LType!.style.borderColor = 'white';
+        } else if (LType != null) {
+            LType.style.display = 'inline';
+            LType.style.border = 'none';
+        }
+        DesMiddle(td, tr, '経由');
+        DesMiddle(td, tr, '方面');
+        if (Des[td][tr].length > 7) {
+            LocalDes!.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
+        }
+    }
+}

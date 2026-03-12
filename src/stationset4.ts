@@ -40,7 +40,7 @@ export var JRWALobj = {//色は文字
     Typelocal: { type: "普通", color: white, detail: local, }
 };
 var Matsukaze_Masuda = [1, 5, 7, 9];
-if (station == '岡山駅') {
+if (station == '岡山駅' && Indexfile == 'index4.php') {
     TwoLetterDisflag = 1;
     var selectstation = ['備前片上', '長船', '日生', '播州赤穂', '西大寺'];
     DestinationDevide(selectstation, 2, 3);
@@ -109,6 +109,7 @@ if (station == '岡山駅') {
     TwoLetterDisflag = 1;
 } else if (station == '米原駅') {
     TwoLetterDisflag = 1;
+    window.Dtype = [0, 0, 0];
     TableTitle = ['東海道線 彦根 草津 京都方面', '北陸線 長浜 敦賀 金沢方面', '東海道線 大垣 岐阜方面'];
     var shirasagi = [51, 1, 3, 5, 53, 7, 55, 9, 57, 11, 59, 13, 61, 15, 63];
     //var shirasagi = [51, 1, 3, 5, 53, 7, 9, 57, 11, 59, 13, 61, 15, 63, 65];
@@ -174,6 +175,7 @@ if (station == '岡山駅') {
     }
     console.log(TT[4]);
 } else if (station == '米子駅') {
+    window.Dtype = [0, 0, 0];
     TableTitle = ['伯備線 境線 新見･岡山･境港方面', '山陰線 松江･出雲市･益田方面', '山陰線 倉吉･鳥取方面'];
     limitedjustnumber(TT[0], 2, '特急やくも');
     limitedjustnumber(TT[1], 1, '特急やくも');

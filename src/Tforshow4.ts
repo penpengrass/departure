@@ -1,5 +1,5 @@
 //const { isForInitializer } = require("typescript");
-import { LineMarkAdd, JRLimitedDevide, AllWordChange, AllWordReplace, comment, TwoLetterDistance, rowremove, allTwoLettersDistance, holiday_F, AllClassSetting } from "./module/firstDisplayEdit";
+import { LineMarkAdd, JRLimitedDevide, AllWordChange, AllWordReplace, comment, TwoLetterDistance, rowremove, allTwoLettersDistance, holiday_F, AllClassSetting, allLastShow } from "./module/firstDisplayEdit";
 import { DesMiddle, allJRWTrainNameColor } from "./module/displayEdit4";
 import { Kitashinchi_Banner, Maibara_Banner, Yonago_Banner } from "./module/displayEdit4";
 import { allswitch_detail } from "./module/detailBannerSwitch";
@@ -53,8 +53,8 @@ if (station == "広島駅" && Indexfile == "index4.php") {
     LineMarkAdd(3, "G", "yellowgreen");
     LineMarkAdd(4, "Y", "orange");
     LineMarkAdd(5, "P", "blue");
-     //広島駅のみ表のタイトルを広くしている
-    AllClassSetting("Ctitle","padding", "7px");
+    //広島駅のみ表のタイトルを広くしている
+    AllClassSetting("Ctitle", "padding", "7px");
     if (holidayflag == 1) {
         document.getElementById("supplement")!.textContent =
             station + "のみ土休日ダイヤに対応(表示は土休日ダイヤ)";
@@ -486,7 +486,15 @@ if (TwoLetterDisflag == 1) {
         }
     }
 }
-if (station == "北新地駅") {
+allLastShow();
+LastShowFlag = 1;
+for (var td = 0; td < Tablenum; td++) {
+    for (var tr = 0; tr < orderNum; tr++) {
+        DesMiddle(td, tr, '連絡');
+        DesMiddle(td, tr, '方面');
+    }
+}
+/*if (station == "北新地駅") {
     //setInterval(allswitch_detail, 3000);
     setInterval(function () {
         allswitch_detail(Kitashinchi_Banner);
@@ -501,7 +509,7 @@ if (station == "北新地駅") {
     setInterval(function () {
         allswitch_detail(Yonago_Banner);
     }, 20000);
-}
+}*/
 
 /*function switchTrainInfo() {
     var SanyoCell = document.getElementById("TName11");

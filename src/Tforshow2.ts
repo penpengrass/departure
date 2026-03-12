@@ -151,6 +151,7 @@ if (station == '伊勢中川駅') {
         Celement[td].remove();
     }*/
 }
+allLastShow();
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         //DetailBanner(td, tr, 18);
@@ -161,7 +162,8 @@ for (var td = 0; td < Tablenum; td++) {
         if (Type[td][tr].length > 2) {
             document.getElementById('TType' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.77)" + "translate(-0%,0%)";
         }
-        var color = document.getElementById('WType' + (td + 1) + (tr + 1))!.style.backgroundColor;
+        var d_Type=document.getElementById('WType' + (td + 1) + (tr + 1));
+        var color = d_Type ? getComputedStyle(d_Type).backgroundColor : '';
         if (Type[td][tr] == '') {
             document.getElementById('TNum' + (td + 1) + (tr + 1))!.style.backgroundColor = 'black';
         } else if (Type[td][tr].includes('特急')) {
@@ -171,7 +173,6 @@ for (var td = 0; td < Tablenum; td++) {
         }
     }
 }
-allLastShow();
 comment!.innerHTML += '停車駅や一部表示は不正確';
 if (station == '鶴橋駅') {
     for (tr = 0; tr < orderNum; tr++) {
