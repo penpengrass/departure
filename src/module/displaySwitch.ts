@@ -71,7 +71,7 @@ export function ChibaSwitch_LiNum(Tab: string, td: number, tr: number, line: str
     altershow.UseKeyWord(Cell!.textContent == Word2 && TrainNumber[td][tr], line);
 }
 export function ChibaSwitch2(Tab: string, td: number, tr: number, line: string, Des_Line: string[], Word2: string) {
-    //(注意!)ここは明確な間違い、Des_Line[0]ではなく、Des_Lineにする必要がある。
+    //(注意!!!)ここは明確な間違い、Des_Line[0]ではなく、Des_Lineにする必要がある。
     const altershow = new Altershow(Tab, td, tr, Des_Line[0], Word2);
     var Cell = document.getElementById(Tab);
     altershow.Desjudge(Des_Line, line);

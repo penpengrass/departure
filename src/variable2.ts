@@ -1,7 +1,6 @@
 //mainの後に定義するもの
 //種別の表示位置を取得(mainの後)
 //Tablenums[td]はオーダーの数，Tablenumは表の数
-let shubetu = new Array(Tablenum);
 let IType = new Array(Tablenum);
 let Tshubetu = new Array(Tablenum);
 //let Type = new Array(Tablenum);
@@ -21,7 +20,6 @@ window.Jiyuseki = new Array(Tablenum);
 const table = new Array(Tablenum);
 var ShinNumber = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
-    shubetu[tr] = new Array(Tablenums[tr]);
     IType[tr] = new Array(Tablenums[tr]);
     Tshubetu[tr] = new Array(Tablenums[tr]);
     //Type[tr] = new Array(Tablenums[tr]);

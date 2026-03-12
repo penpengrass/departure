@@ -1,6 +1,7 @@
 import { hour, min } from "./Time";
-import { FShow,FSTShow } from "./module/timeInfoSet";
+import { FShow, FSTShow } from "./module/timeInfoSet";
 import { koshin } from "./module/firstTableEdit";
+import { trainTables, TrainData, TrainTable } from "./types/trainTable";
 //駅名の表示
 document.getElementById('stationname')!.textContent = company + ' ' + station;
 let countTable = 0;
@@ -61,6 +62,22 @@ for (let tr = 0; tr < Tablenum; tr++) {
     Des[tr] = new Array(Tablenums[tr]);
     TrackNum[tr] = new Array(Tablenums[tr]);
 }
+for (var td = 0; td < Tablenum; td++) {
+    const trains: TrainData[] = Array(Tablenums[td])
+        .fill(null)
+        .map(() => ({
+            type: '',
+            destination: '',
+            hour: 0,
+            minute: '',
+            trackNumber: '',
+        }));
+    trainTables.push({
+        title: TableTitle[td] || '',
+        trains: trains,
+        detailType: 0,
+    })
+}
 function EmptyLine(td: number, tr: number, Line: any) {
     if (Line[td][tr] === undefined) {
         Line[td][tr] = '';
@@ -72,6 +89,13 @@ function Shows(hour: number, Table_Column: number, TT: any, TableNumber: number,
     Type[TableNumber - 1][depnum - 1] = TT[hour][Table_Column];
     Des[TableNumber - 1][depnum - 1] = TT[hour + 2][Table_Column];
     TrackNum[TableNumber - 1][depnum - 1] = TT[hour + 3][Table_Column];
+    //(未反映!!!)ここからインタフェース、コメント外してもいいが今は意味なし
+    /*const trainData = trainTables[TableNumber - 1].trains[depnum - 1];
+    trainData.hour = TT[hour][0];
+    trainData.minute = String(TT[hour + 1][Table_Column]).padStart(2, "0");
+    trainData.type = TT[hour][Table_Column];
+    trainData.destination = TT[hour + 2][Table_Column];
+    trainData.trackNumber = TT[hour + 3][Table_Column];*/
     //ここで次発のために変数に入れる
     orders[depnum - 1] = Table_Column;
     orders[depnum] = Table_Column + 1;
@@ -139,7 +163,7 @@ if (testflag == 0) {
     }
     setInterval(koshin, MinIn * 60000);
 }
-
+console.log(trainTables)
 
 console.log("-------main完了-------");
 document.title = station + "発車標";

@@ -38,7 +38,7 @@ if (station == '米原駅') {
     Super_rapid = LineCopy(ASperapid);
     limited = LineCopy(Alimited);
     var Name_11 = document.getElementById('TName11');
-    //(注意!)エラーが出るため応急処置
+    //(注意!!!)エラーが出るため応急処置
     var TrainNumber = [JRLimitedNumber(0, 0), JRLimitedNumber(1, 0), JRLimitedNumber(2, 0)]
     console.log(TrainNumber);
     var Nagahama = [51, 3, 7, 55, 57, 13];
