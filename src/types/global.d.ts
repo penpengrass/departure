@@ -9,7 +9,7 @@ declare global {
     var L_hour: number;
     var L_min: number;
     var Detail: any[];
-    var Des_Banner:any[];
+    var Des_Banner: any[];
     var detailflag: number;
     var DetailLength: any[];
     var detailLength_one: number;
@@ -36,6 +36,7 @@ declare global {
     var Cars: any[];
     var TableHour: any;
     var TableMin: any;
+    var TrackNum: any;
     var LastShowFlag = 0;
     var red = 'red';
     var orange = 'orange';

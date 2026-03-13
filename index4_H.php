@@ -34,7 +34,7 @@
     <script type="module" src="dist/module/firstTableEdit.js"></script>
     <script type="module" src="dist/detailStopData/JRHokuShindetailset.js"></script>
      <script type="module" src="dist/stationset4_H.js"></script>
-    <script type="module" src="dist/detailStopData/JRW_afterset.js"></script>
+    
 </head>
 
 <body>
@@ -79,6 +79,7 @@
     <script type="module" src="dist/module/timeInfoSet.js"></script>
     <script type="module" src="dist/main.js"></script>
     <script type="module" src="dist/variable2.js"></script>
+    <script type="module" src="dist/detailStopData/JRW_afterset.js"></script>
     <script type="module" src="dist/module/firstDisplayEdit.js"></script>
     <script type="module" src="dist/module/detailSimpleEdit.js"></script>
     <script type="module" src="dist/module/firstDetailEdit.js"></script>

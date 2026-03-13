@@ -53,8 +53,8 @@ function NotShows(hour: number, Table_Column: number, TT: any[], TableNumber: nu
 window.Type = new Array(Tablenum);
 window.TableHour = new Array(Tablenum);
 window.TableMin = new Array(Tablenum);
+window.TrackNum = new Array(Tablenum);
 window.Des = new Array(Tablenum);
-export var TrackNum = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
     window.Type[tr] = new Array(Tablenums[tr]);
     TableHour[tr] = new Array(Tablenums[tr]);
@@ -83,7 +83,7 @@ function EmptyLine(td: number, tr: number, Line: any) {
         Line[td][tr] = '';
     }
 }
-function Shows(hour: number, Table_Column: number, TT: any, TableNumber: number, depnum: number) {
+export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: number, depnum: number) {
     TableHour[TableNumber - 1][depnum - 1] = TT[hour][0];
     TableMin[TableNumber - 1][depnum - 1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
     Type[TableNumber - 1][depnum - 1] = TT[hour][Table_Column];

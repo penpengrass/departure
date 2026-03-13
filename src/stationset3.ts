@@ -1,4 +1,4 @@
-import { RailNumberDevide, DestinationRemove, TrainNameLineRemove, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
+import { RailNumberDevide, DestinationRemove, DestinationDevide, TrainNameLineRemove, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
 company = 'JR東日本';
 var NexOfuna1 = [2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 40, 42, 46, 50, 52, 54];
@@ -78,4 +78,8 @@ if (station == '武蔵小杉駅') {
     DestinationRemove('新宿', 5);
     DestinationRemove(['逗子', '大船'], 5);
     limitednumber(TT[4], 1, 'あかぎ');
+} else if (station == '高崎駅') {
+    TableTitle = ['信越本線 安中･磯部･横川方面', '両毛線 前橋･桐生･小山方面', '上越線 吾妻線 新前橋方面', '高崎線 大宮･東京･新宿･横浜方面', ''];
+    Tablenum = 5;
+    DestinationDevide(['水上', '長野原草津口', '万座・鹿沢口', '大前'], 1, 2);
 }

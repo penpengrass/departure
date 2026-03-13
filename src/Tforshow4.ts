@@ -488,10 +488,12 @@ if (TwoLetterDisflag == 1) {
 }
 allLastShow();
 LastShowFlag = 1;
-for (var td = 0; td < Tablenum; td++) {
-    for (var tr = 0; tr < orderNum; tr++) {
-        DesMiddle(td, tr, '連絡');
-        DesMiddle(td, tr, '方面');
+if (Indexfile == 'index4.php' || Indexfile == 'index4_A.php' || Indexfile == 'index4_H.php') {
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < orderNum; tr++) {
+            DesMiddle(td, tr, '連絡');
+            DesMiddle(td, tr, '方面');
+        }
     }
 }
 /*if (station == "北新地駅") {

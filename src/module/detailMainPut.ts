@@ -197,36 +197,33 @@ export function doallDetailShow(BannerLength = 1, LLength = Tablenum) {
     }
 }
 //詳細表示をバナー表示にするかどうかの判定
-export function DetailBanner(td: number, tr: number, Letter: number, flag = 0) {
-    var LDetail = document.getElementById("TDetail" + (td + 1) + (tr + 1));
-    if (LDetail) {
-        console.log(td + ":" + tr + ":" + LDetail.textContent.length);
-        if (LDetail.textContent.length < Letter) {
+export function DetailBanner(td: number, tr: number, Letter: number, flag = 0, tag = 'TDetail') {
+    var LDetail = document.getElementById(tag + (td + 1) + (tr + 1));
+    console.log(td + ":" + tr + ":" + LDetail!.textContent.length);
+    if (LDetail!.textContent.length < Letter) {
+        document
+            .getElementById(tag + (td + 1) + (tr + 1))!
+            .classList.remove("news-banner__content");
+    } else {
+        //未完成
+        if (
+            flag == 1 &&
+            LDetail!.textContent.length < 48 &&
+            Indexfile == "index2.php"
+        ) {
             document
-                .getElementById("TDetail" + (td + 1) + (tr + 1))!
+                .getElementById(tag + (td + 1) + (tr + 1))!
                 .classList.remove("news-banner__content");
-        } else {
-            //未完成
-            if (
-                flag == 1 &&
-                LDetail.textContent.length < 48 &&
-                Indexfile == "index2.php"
-            ) {
-                document
-                    .getElementById("TDetail" + (td + 1) + (tr + 1))!
-                    .classList.remove("news-banner__content");
-                var DetailM = LDetail.textContent;
-                const targetIndex = DetailM.indexOf(" ", Letter);
-                const before = DetailM.substring(0, targetIndex); // n文字目以前
-                const after = DetailM.substring(targetIndex + 1); // 特定文字以降
-                //改行したい
-                if (before == "") {
-                    LDetail.innerHTML = after;
-                } else {
-                    LDetail.innerHTML = before;
-                    document.getElementById("TDetailD" + (td + 1) + (tr + 1))!.textContent =
-                        after;
-                }
+            var DetailM = LDetail!.textContent;
+            const targetIndex = DetailM.indexOf(" ", Letter);
+            const before = DetailM.substring(0, targetIndex); // n文字目以前
+            const after = DetailM.substring(targetIndex + 1); // 特定文字以降
+            //改行したい
+            if (before == "") {
+                LDetail!.innerHTML = after;
+            } else {
+                LDetail!.innerHTML = before;
+                document.getElementById("TDetailD" + (td + 1) + (tr + 1))!.textContent = after;
             }
         }
     }

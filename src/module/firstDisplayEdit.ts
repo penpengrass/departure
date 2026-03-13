@@ -1,5 +1,4 @@
 import { DesMiddle } from "./displayEdit4";
-import { TrackNum } from "../main";
 import { trainTables } from "../types/trainTable";
 //JR西日本の特急名を表で分ける関数 index4.phpとindex3.phpで使用
 export var LiName = new Array(Tablenum);
@@ -8,11 +7,13 @@ for (var td = 0; td < Tablenum; td++) {
 }
 export function LastShows(td: number, tr: number) {
     //console.log(TableHour[td][tr]);
-    //console.log(document.getElementById("THour" + (td + 1) + "" + (tr + 1)))
-    document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =
-        TableHour[td][tr];
-    document.getElementById("TMin" + (td + 1) + "" + (tr + 1))!.textContent =
-        TableMin[td][tr];
+    //console.log(document.getElementById("THour" + (td + 1) + "" + (tr + 1)));
+    if (TableHour[td][tr] !== undefined && TableHour[td][tr] != "") {
+        document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =
+            TableHour[td][tr];
+        document.getElementById("TMin" + (td + 1) + "" + (tr + 1))!.textContent =
+            TableMin[td][tr];
+    }
     document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.textContent =
         Type[td][tr];
     if (Indexfile == "index6_Chiba.php" || Indexfile == "index4_O.php") {
@@ -24,7 +25,7 @@ export function LastShows(td: number, tr: number) {
     }
     document.getElementById("TNum" + (td + 1) + "" + (tr + 1))!.textContent =
         TrackNum[td][tr];
-    
+
     //(未反映!!!)インタフェースの情報を入れる。ここの動作確認は完了。書き換えが反映されないため保留。
     /*
      document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =
@@ -555,4 +556,3 @@ export function moveTableColumn(table: any, fromIndex: any, toIndex: any) {
     }
 }
 export var comment = document.getElementById("supplement");
-console.log(TrainNumber);

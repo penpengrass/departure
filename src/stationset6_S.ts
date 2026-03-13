@@ -32,4 +32,16 @@ if (station == '東京駅') {
     limitedjustnumber(TT[1], 50, 'やまびこ+');
     limitedjustnumber(TT[1], 122, 'やまびこ');
     detailflag = 4;
+} else if (station == '高崎駅') {
+    TableTitle = ['北陸新幹線', '上越新幹線', '新幹線 大宮 上野 東京方面'];
+    DetailLength = [1, 1, 1];
+    detailflag = 1;
+    limitedjustnumber(TT[0], 551, 'はくたか');
+    limitedjustnumber(TT[0], 601, 'あさま');
+    limitedjustnumber(TT[1], 301, 'とき');
+    limitedjustnumber(TT[1], 401, 'たにがわ');
+    limitedjustnumber(TT[2], 552, 'はくたか');
+    limitedjustnumber(TT[2], 300, 'とき');
+    limitedjustnumber(TT[2], 400, 'たにがわ');
+    limitedjustnumber(TT[2], 600, 'あさま');
 }

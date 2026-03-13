@@ -70,6 +70,11 @@ export function DetailReplace_Set(td: number, tr: number, Line: any, Before: str
     DetailReplace(td, tr, Before, After);
   }
 }
+export function Shin_DetailReplace_Set_One(td: number, Line: any, Before: string, After: string, TypeName = "") {
+  if (Line.includes(Number(TrainNumber[td][0])) && Type[td][0].includes(TypeName)) {
+    DetailReplace(td, 0, Before, After);
+  }
+}
 export function DetailReplace_Set_One(td: number, Line: any, Before: string, After: string, TypeName = "") {
   if (Line.includes(TrainNumber[td]) && Type[td][0].includes(TypeName)) {
     DetailReplace(td, 0, Before, After);

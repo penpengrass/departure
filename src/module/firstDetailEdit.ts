@@ -22,4 +22,12 @@ export function DeleteStopping(TrainType: any, BeforeStation: string, LDtype = 0
     //limited[5].splice(2, 0, '高の原');
     TrainType[LDtype].splice(Deletenumber, 1);
 }
+//号数で飛ばしがあった場合
+export function LimitedNumberPass(td:number, tr:number, Range:boolean, _number:number[][], tag = 'TName') {
+    var LNumber = document.getElementById(tag + (td + 1) + (tr + 1));
+    if (Range) {
+        _number[td][tr] = Number(_number[td][tr]) + 2;
+        LNumber!.textContent = _number[td][tr] + '号';
+    }
+}
 //console.log(Lname);
