@@ -4,6 +4,7 @@ function JRATOSStaSele($Select)
     echo '<form action="PHP/files3.php" method="POST">
     <select name="staselect3">
       <option value="musashikosugi">武蔵小杉駅</option>
+      <option value="takasaki">高崎駅</option>
       <option value="kuroiso">黒磯駅</option>
       <option value="utsunomiya">宇都宮駅</option>
       <option value="omiya">大宮駅</option>
@@ -23,6 +24,7 @@ function JRATOS_SStaSele($Select)
     <form action="PHP/files3_S.php" method="POST">
     <select name="staselect3_S">
       <option value="nagano">長野駅</option>
+      <option value="takasaki">高崎駅</option>
       <option value="utsunomiya">宇都宮駅</option>
       <option value="fukushima">福島駅</option>
       <option value="sendai">仙台駅</option>
@@ -39,6 +41,7 @@ function JRES_StaSele($Select)
       <option value="utsunomiya">宇都宮駅</option>
       <option value="fukushima">福島駅</option>
       <option value="sendai">仙台駅</option>
+       <option value="takasaki">高崎駅</option>
     </select>
     <button type="submit" name="submit">'.$Select.'</button>
   </form>';

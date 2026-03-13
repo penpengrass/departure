@@ -21,7 +21,14 @@ function DeleteStopping(TrainType, BeforeStation, LDtype = 0) {
     //limited[5].splice(2, 0, '高の原');
     TrainType[LDtype].splice(Deletenumber, 1);
 }
-//console.log(Type);
+//号数で飛ばしがあった場合
+function LimitedNumberPass(td, tr, Range, _number, tag = 'TName') {
+    var LNumber = document.getElementById(tag + (td + 1) + (tr + 1));
+    if (Range) {
+        _number[td][tr] = Number(_number[td][tr]) + 2;
+        LNumber.textContent = _number[td][tr] + '号';
+    }
+}
 //特急によって停車駅が異なるときの処理
 //numberは号数 Lnameは列車名
 var number = new Array(Tablenum);

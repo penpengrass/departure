@@ -6,7 +6,7 @@
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/banner6.css">
   <link rel="stylesheet" href="css/styleATOS_S.css">
-  
+
   <?php
   $files = array();
   $files[0] = 'csv/JRE_S/nagano1.csv';
@@ -14,6 +14,7 @@
   require_once('PHP/variable.php');
   $tablenum = 2;
   $OrderNum = 3;
+  $detaillength = 3;
   require('PHP/files3_S.php');
   require('PHP/select3.php');
   require('PHP/table3.php');
@@ -50,7 +51,7 @@
   <tableline>
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
-      JRE_STable($i,$tablenums,$detaillength);
+      JRE_STable($i, $tablenums, $detaillength);
     }
     ?>
   </tableline>
