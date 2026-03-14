@@ -37,6 +37,10 @@ export function DetailDecide(Type_Line: any, td_detail: number, Des: string, Sen
     let DLine_in = 0;
     let Dflag = 0;//行先が違う配列の場合に使いたい
     //console.log(Dtype);
+    //北海道(index8.php)はDtypeの警告OK
+    /*if (Dtype.length != Tablenum) {
+        console.warn('Dtypeが正しく定義されていません');
+    }*/
     /*console.log(td_detail);
     console.log(Dtype);
     console.log(Dtype[td_detail]);*/
@@ -111,7 +115,6 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
     if (Utype == '') {
         DetailLine = '';
     } else if (Utype.includes(Uobj.Typea.type)) {
-
         DetailLine = DetailDecide(Uobj.Typea.detail, td, Des[td][tr], AType, distance);//特急
     } else if (Utype.startsWith(Uobj.Typeb.type)) {
         DetailLine = DetailDecide(Uobj.Typeb.detail, td, Des[td][tr], AType, distance);;//快急
@@ -161,8 +164,8 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
             document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent += Des[td][tr];
         }
     }*/
-    console.log(td + ":" + tr);
-    console.log(Detail[td][tr]);
+    //console.log(td + ":" + tr);
+    //console.log(Detail[td][tr]);
     //console.log(document.getElementById(TType));
     //console.log('----' + (td + 1) + '番目の表の' + (tr + 1) + '番目に発車するFDetail関数終了----');
     //console.log("Dtypeがプラスされた回数" + DtypePlusCount);
@@ -199,7 +202,7 @@ export function doallDetailShow(BannerLength = 1, LLength = Tablenum) {
 //詳細表示をバナー表示にするかどうかの判定
 export function DetailBanner(td: number, tr: number, Letter: number, flag = 0, tag = 'TDetail') {
     var LDetail = document.getElementById(tag + (td + 1) + (tr + 1));
-    console.log(td + ":" + tr + ":" + LDetail!.textContent.length);
+    //console.log(td + ":" + tr + ":" + LDetail!.textContent.length);
     if (LDetail!.textContent.length < Letter) {
         document
             .getElementById(tag + (td + 1) + (tr + 1))!

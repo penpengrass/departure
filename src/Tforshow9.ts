@@ -1,6 +1,6 @@
-import { AllWordChange, AllWordReplace, AllStartWordReplace, allLastShow,flagmarkerase,TwoLetterDistance } from "./module/firstDisplayEdit";
+import { AllWordChange, AllWordReplace, AllStartWordReplace, allLastShow, flagmarkerase, TwoLetterDistance } from "./module/firstDisplayEdit";
 import { TypeColorChange, TypeBackColorChange } from "./module/colorSimpleSet";
-import { DetailShow,LastLetterRemove } from "./module/detailMainPut";
+import { DetailShow, LastLetterRemove } from "./module/detailMainPut";
 import { JTypeIncludeColor } from "./typeColor";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import * as ShikokuStops from "./detailStopData/Shidetailset";
@@ -77,6 +77,7 @@ for (var td = 0; td < Tablenum; td++) {
 }
 if (station == '高松駅') {
     //allJRSIncludeColor(JRSobj);
+    window.Dtype = [0, 0, 0, 0];
     DetailShow(ShikokuStops.JRSobj, "、");
 } else if (station == '松山駅') {
     //allJRSIncludeColor(JRSMobj);

@@ -31,7 +31,7 @@ export function DesMiddle(td: number, tr: number, word: string) {
         console.log(matches[tr][2] + ":" + tr);*/
         d_Tag.innerHTML =
             '<span class="DesLeft" id="DesLeft' + (td + 1) + (tr + 1) + '">' + matches[tr][1] + '</span>' + '<span class="DesMiddle">' + word + '</span>' + '<span id="DesRight' + (td + 1) + (tr + 1) + '">' + matches[tr][2] + '</span>';
-            var DesLeft = document.getElementById('DesLeft' + (td + 1) + (tr + 1)) as HTMLElement | null;
+        var DesLeft = document.getElementById('DesLeft' + (td + 1) + (tr + 1)) as HTMLElement | null;
         var DesRight = document.getElementById('DesRight' + (td + 1) + (tr + 1));
         if (DesRight !== null && DesRight.textContent.length > 3) {
             //console.log(DesRight.textContent.length);
@@ -117,9 +117,9 @@ export function JRWTrainNameColor(td: number, tr: number, NameColor: string, Num
             newTrainName = `<span class="NewTrainName">${matches[1]}</span>
         <span class="NewTrainNumber">${matches[2]}</span><span class="NewGou">${matches[3]}</span>`;
             document.getElementById('TName' + (td + 1) + '' + (tr + 1))!.innerHTML = newTrainName;
-            AllClassSetting('NewTrainName', 'color', NameColor)
-            AllClassSetting('NewTrainNumber', 'color', NumberColor)
-            AllClassSetting('NewGou', 'color', GouColor);
+            AllClassSetting('.NewTrainName', 'color', NameColor)
+            AllClassSetting('.NewTrainNumber', 'color', NumberColor)
+            AllClassSetting('.NewGou', 'color', GouColor);
         }
     }
 }

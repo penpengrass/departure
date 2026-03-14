@@ -1,5 +1,5 @@
 import { DesMiddle, JRWTrainNameColor } from "./displayEdit4";
-import { TimeMarkErase, TwoLetterDistance,LiName } from "./firstDisplayEdit";
+import { TimeMarkErase, TwoLetterDistance, LiName } from "./firstDisplayEdit";
 import { JTypeColor } from "../typeColor";
 import { JRobj } from "../detailStopData/JRW_afterset";
 import { Ex_Name } from "../Tforshow4";
@@ -21,10 +21,9 @@ export function BottomBanner(tag: string, td: number, tr: number, colspan: any, 
         }
     }
 }
-//JR西日本のみで使用(注意!!! エラー未解決)
+//JR西日本のみで使用
 export function BottomBanner_Reverse(tag: string, td: number, tr: number) {
     let element = document.getElementById(tag + td + tr);
-    var doBNumber = document.getElementById('TNum' + (td + 1) + '' + (tr + 1));
     //console.log(element);
     //console.log(element.innerHTML);
     element!.innerHTML = '<td class="shubetu" id="TType' + td + tr + '"><span id="WType' + td + tr + '"></span></td>\
@@ -36,7 +35,7 @@ export function BottomBanner_Reverse(tag: string, td: number, tr: number) {
     document.getElementById('TType' + td + tr)!.textContent = Type[td - 1][tr - 1];
     document.getElementById('TTime' + td + tr)!.textContent = TableHour[td - 1][tr - 1] + ':' + TableMin[td - 1][tr - 1];
     document.getElementById('TDes' + td + tr)!.textContent = Des[td - 1][tr - 1];
-    document.getElementById('TNum' + td + tr)!.textContent = doBNumber!.textContent;
+    document.getElementById('TNum' + td + tr)!.textContent = TrackNum[td - 1][tr - 1];
     document.getElementById('TName' + td + tr)!.textContent = Ex_Name[td - 1][tr - 1];
     if (Ex_Name[td - 1][tr - 1].includes('から快速')) {
         document.getElementById('TName' + td + tr)!.innerHTML = '<span class="PartRapid">' + Ex_Name[td - 1][tr - 1] + '</span>'

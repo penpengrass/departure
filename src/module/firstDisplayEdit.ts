@@ -284,7 +284,7 @@ export function JRLimitedNumber(td: number, tr: number, flag: number | string = 
 //numberは号数 Lnameは列車名
 export var TrainNumber = new Array(Tablenum);
 export var Lname = new Array(Tablenum);
-console.log("detailflag=" + detailflag);
+//console.log("detailflag=" + detailflag);
 for (var td = 0; td < Tablenum; td++) {
     if (detailflag > 1) {
         TrainNumber[td] = new Array(orderNum);

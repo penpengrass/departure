@@ -39,7 +39,7 @@ export var H_Mishima2 = [502, 506, 510, 514, 518];
 export var H_Atami2 = [500, 504, 516];
 
 export var JRSSobj = {//色は文字
-    Typea: { type: "のぞみ", Bcolor: 'yellow', color: black, detail: Nozomi, cars: '16両編成', jiyu: '自由席1-3号車' },
+    Typea: { type: "のぞみ", Bcolor: 'yellow', color: black, detail: Nozomi, cars: '16両編成', jiyu: '自由席1-2号車' },
     Typeb: { type: "ひかり", Bcolor: red, color: white, detail: hikari, cars: '16両編成', jiyu: '自由席1-5号車' },
     Typec: { type: "こだま", Bcolor: '#3050FF', color: white, detail: "", cars: '8両編成', jiyu: '自由席1-3,7,8号車' },
     Typed: { type: "みずほ", Bcolor: orange, color: black, detail: Amizuho, cars: '8両編成', jiyu: '自由席1-3号車' },

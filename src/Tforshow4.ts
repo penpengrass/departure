@@ -490,13 +490,13 @@ allLastShow();
 LastShowFlag = 1;
 if (Indexfile == 'index4.php' || Indexfile == 'index4_A.php' || Indexfile == 'index4_H.php') {
     for (var td = 0; td < Tablenum; td++) {
-        for (var tr = 0; tr < orderNum; tr++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
             DesMiddle(td, tr, '連絡');
             DesMiddle(td, tr, '方面');
         }
     }
 }
-/*if (station == "北新地駅") {
+if (station == "北新地駅") {
     //setInterval(allswitch_detail, 3000);
     setInterval(function () {
         allswitch_detail(Kitashinchi_Banner);
@@ -511,7 +511,7 @@ if (Indexfile == 'index4.php' || Indexfile == 'index4_A.php' || Indexfile == 'in
     setInterval(function () {
         allswitch_detail(Yonago_Banner);
     }, 20000);
-}*/
+}
 
 /*function switchTrainInfo() {
     var SanyoCell = document.getElementById("TName11");

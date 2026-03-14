@@ -1,8 +1,8 @@
-import { JRNameDevide,allLastShow,flagmarkerase,Bansenshow,swapColumns,AllClassSetting,comment } from "./module/firstDisplayEdit";
+import { JRNameDevide, allLastShow, flagmarkerase, Bansenshow, swapColumns, AllClassSetting, comment } from "./module/firstDisplayEdit";
 import { JREScolor } from "./module/colorSimpleSet";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { LimitedNumberPass } from "./module/firstDetailEdit";
-import { DetailBanner,FDetail } from "./module/detailMainPut";
+import { DetailBanner, FDetail } from "./module/detailMainPut";
 import { Shin_DetailReplace_Set_One } from "./module/detailSimpleEdit";
 import * as Stops from "./detailStopData/JRHokuJoetsuset";
 JRNameDevide(Tablenum);
@@ -49,7 +49,6 @@ if (station == '仙台駅') {
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
             if (Type[td][0] == '') {
-                console.log(td + ':' + tr);
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = 'お知らせ';
                 Detail[td][0] = '本日の運転は終了しました';
                 break;
@@ -71,6 +70,7 @@ if (station == '仙台駅') {
         LimitedNumberPass(2, tr, TrainNumber[2][tr] >= 338 && TrainNumber[2][tr] < 400, TrainNumber);
         LimitedNumberPass(2, tr, TrainNumber[2][tr] >= 556 && TrainNumber[2][tr] < 600, TrainNumber);
     }
+    window.Dtype[2] = 1;
     for (var td = 0; td < 3; td++) {
         FDetail(Type[td][0], Stops.JRSBobj, Dtype[0], td, 0, "・");
         if (Detail[td][0] != '') {

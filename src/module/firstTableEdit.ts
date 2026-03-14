@@ -315,7 +315,7 @@ export function JRC_station() {
         location.href = './index7.php?station=toyohashi';
     }
 }
-function JRW_station() {
+export function JRW_station() {
     if (station == '広島駅') {
         location.href = './index4.php?station=hiroshima';
     } else if (station == '岡山駅') {
@@ -328,3 +328,5 @@ export function LineCopy(conLine: any) {
     var NewLine = JSON.parse(JSON.stringify(conLine));
     return NewLine;
 }
+(window as any).JRC_station = JRC_station;
+(window as any).JRW_station = JRW_station;

@@ -35,7 +35,8 @@ if (station == '東京駅') {
 } else if (station == '高崎駅') {
     TableTitle = ['北陸新幹線', '上越新幹線', '新幹線 大宮 上野 東京方面'];
     DetailLength = [1, 1, 1];
-    detailflag = 1;
+    window.Dtype = [0, 0, 0];
+    detailflag = 2;
     limitedjustnumber(TT[0], 551, 'はくたか');
     limitedjustnumber(TT[0], 601, 'あさま');
     limitedjustnumber(TT[1], 301, 'とき');

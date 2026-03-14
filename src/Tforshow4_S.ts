@@ -102,15 +102,15 @@ if (station == '博多駅') {
 
 
 }
-/*function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj:any) {
-    for (key in Uobj) {
+function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj:any) {
+    for (const key in Uobj) {
         if (Utype.startsWith(Uobj[key].type)) {
             Cars[td][tr] = Uobj[key].cars;
             Jiyuseki[td][tr] = Uobj[key].jiyu;
             //document.getElementById(TType).style.color = Uobj[key].color;
         }
     }
-}*/
+}
 if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
     NonGouflag = 1;
     JRNameDevide();
@@ -119,7 +119,7 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
         for (var tr = 0; tr < orderNum; tr++) {
             //この部分は未完成
             if (Indexfile != 'index4_H.php') {
-                //ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
+                ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
                 if (Type[td][tr].includes('つばめ*') || Type[td][tr].includes('さくら*')) {
                     Cars[td][tr] = '6両編成';
                     Jiyuseki[td][tr] = '自由席1-3,5,6号車'

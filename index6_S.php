@@ -24,7 +24,6 @@
   <script type="module" src="dist/module/firstTableEdit.js"></script>
   <script type="module" src="dist/module/connectTable.js"></script>
   <script type="module" src="dist/stationset6_S.js"></script>
-  <script type="module" src="dist/detailStopData/JRdetail.js"></script>
 </head>
 
 <body>
@@ -105,9 +104,12 @@
 <script type="module" src="dist/main.js"></script>
 <script type="module" src="dist/variable2.js"></script>
 <script type="module" src="dist/module/firstDisplayEdit.js"></script>
+<script type="module" src="dist/detailStopData/JRHokuJoetsuset.js"></script>
 <script type="module" src="dist/module/firstDetailEdit.js"></script>
 <script type="module" src="dist/module/displayEdit6.js"></script>
 <script type="module" src="dist/module/colorSimpleSet.js"></script>
+<script type="module" src="dist/module/detailSimpleEdit.js"></script>
+<script type="module" src="dist/module/detailMainPut.js"></script>
 <script type="module" src="dist/Tforshow6_S.js"></script>
 <script type="module" src="dist/LastShow.js"></script>
 </body>
