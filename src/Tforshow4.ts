@@ -436,6 +436,7 @@ if (station == "徳山駅") {
             station + "のみ土休日ダイヤに対応(表示は平日ダイヤ)";
     }
 } else if (station == '米子駅') {
+    Dtype = [0, 0, 0];
     comment!.textContent += "一部表示不正確 ";
     holiday_F(station);
 }

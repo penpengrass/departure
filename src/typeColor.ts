@@ -7,6 +7,7 @@ import { JRCobj } from "./detailStopData/JRdetail";
 import { JRChNobj, JRCeNobj } from "./detailStopData/JRNadetailset";
 import { Tokyuobj } from "./stationset5";
 import { JRWTobj } from "./detailStopData/JRTennojidetail";
+import { JRCSobj } from "./stationset7_S";
 //先発と次発と次々発の種別色分けを一気にする
 export function KTypeColor(Utype: any, TType: any, Uobj: any) {//(種別,その種別の背景色を変える)
     for (const key in Uobj) {
@@ -36,7 +37,6 @@ export function KJTypeColor(Utype: any, TType: any, Uobj: any) {//(種別,その
     }
 }
 export function JTypeColor(Utype: any, TType: any, Uobj: any) {//(種別,その種別の文字色を変える)
-    //console.log(Uobj.Typea);
     for (const key in Uobj) {
         if (Utype.startsWith(Uobj[key].type)) {
             document.getElementById(TType)!.style.color = Uobj[key].color;
@@ -106,8 +106,8 @@ export function allJROsakaColor() {
 export function allJRCSColor() {
     for (let ia = 0; ia < 2; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            JTypeColor(Type[ia][ib], TType[ia][ib], JRSBobj);
-            JTypeColor(Type[ia][ib], TName[ia][ib], JRSBobj);
+            JTypeColor(Type[ia][ib], TType[ia][ib], JRCSobj);
+            JTypeColor(Type[ia][ib], TName[ia][ib], JRCSobj);
         }
     }
     for (let ia = 2; ia < Tablenum; ia++) {

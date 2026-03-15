@@ -54,7 +54,6 @@ if (station == '福島駅') {
             TwoLetterDistance(td, tr, Type, TType, 1, 0.9);
         }
     }
-    console.log(Detail);
     doallDetailShow(18, 2);
     var guide = document.getElementById('guidance');
     comment!.innerHTML = '在来線東口改札を再現、阿武隈急行と飯坂線は現実の発車標自体が存在しない。<br>' + comment!.innerHTML;

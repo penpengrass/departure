@@ -1,5 +1,6 @@
 import { DesMiddle } from "./displayEdit4";
 import { trainTables } from "../types/trainTable";
+import "../main";
 //JR西日本の特急名を表で分ける関数 index4.phpとindex3.phpで使用
 export var LiName = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
@@ -279,7 +280,9 @@ export function JRLimitedNumber(td: number, tr: number, flag: number | string = 
     //console.log(number);
     return number;
 }
-//console.log(Type);
+if(window.Type===undefined){
+    console.error("Typeが未定義です");
+}
 //特急によって停車駅が異なるときの処理
 //numberは号数 Lnameは列車名
 export var TrainNumber = new Array(Tablenum);
@@ -423,6 +426,9 @@ export function AllStartWordReplace(td: number, tr: number, line: any, keyword: 
 //JSでstyleを変更する
 export function AllClassSetting(ClassName: any, styleName: any, change: any) {
     const elements = document.querySelectorAll(ClassName);
+    if (!ClassName.startsWith('.')) {
+        ClassName = "." + ClassName;
+    }
     elements.forEach(el => {
         el.style[styleName] = change;
     });

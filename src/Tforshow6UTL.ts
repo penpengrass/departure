@@ -65,10 +65,10 @@ if (station == '上野駅') {
         swapColumns(table4, row, row + 1);
         swapColumns(table5, row, row + 1);
     }
-    AllClassSetting('topic', "backgroundColor", "black");
-    AllClassSetting('topic', "borderColor", "black");
-    AllClassSetting('topic', "color", "orange");
-    AllClassSetting('topic', "transform", "scaleX(0.80)" + "translate(-10%,0%)");
+    AllClassSetting('.topic', "backgroundColor", "black");
+    AllClassSetting('.topic', "borderColor", "black");
+    AllClassSetting('.topic', "color", "orange");
+    AllClassSetting('.topic', "transform", "scaleX(0.80)" + "translate(-10%,0%)");
 }
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
@@ -132,8 +132,6 @@ for (var td = 0; td < Tablenum; td++) {
 
     }
 }
-console.log(Type);
-
 allLastShow();
 comment!.innerHTML = '両数や番線など一部表示不正確<br>';
 //allalterUTL_setting('特急');

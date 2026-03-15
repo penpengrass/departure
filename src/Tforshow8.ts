@@ -4,6 +4,7 @@ import { FDetail } from "./module/detailMainPut";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { DetailBannerOnce } from "./module/detailMainPut";
 import { JRHoobj, JRHSobj } from "./detailStopData/Hodetailset";
+NonGouflag = 0;
 JRNameDevide();
 function HokkaidoCars(cars: string) {
     return 'この列車は' + cars + '両編成です。';

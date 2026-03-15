@@ -2,7 +2,7 @@ import { limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, }
 import { limited, rapid, Jrapid, Jsubrapid, local } from './detailStopData/JRdetail';
 company = '東海道新幹線';
 NonGouflag = 1;
-var JRSBobj = {//色は文字
+export var JRCSobj = {//色は文字
     Typea: { type: "のぞみ", color: 'yellow', detail: limited, },
     Typeb: { type: "ひかり", color: red, detail: rapid, },
     Typec: { type: "こだま", color: '#3050FF', detail: rapid, },

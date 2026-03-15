@@ -46,13 +46,11 @@ for (var td = 0; td < Tablenum; td++) {
         //TwoLetterDistance(td, tr, Type, TType, 0.60, 0);
         //TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         var LType = document.getElementById('WType' + (td + 1) + (tr + 1));
-        var LocalType = document.getElementById('TType' + (td + 1) + (tr + 1));
         var LocalDes = document.getElementById('TDes' + (td + 1) + (tr + 1));
         if (Type[td][tr] == '普通') {
             LType!.style.display = 'inline';
             LType!.style.borderColor = 'white';
         } else if (LType != null) {
-            LType.style.display = 'inline';
             LType.style.border = 'none';
         }
         DesMiddle(td, tr, '経由');
