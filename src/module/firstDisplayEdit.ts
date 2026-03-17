@@ -8,8 +8,8 @@ for (var td = 0; td < Tablenum; td++) {
 }
 export function LastShows(td: number, tr: number) {
     //console.log(TableHour[td][tr]);
-    //console.log(document.getElementById("THour" + (td + 1) + "" + (tr + 1)));
-    if (TableHour[td][tr] !== undefined && TableHour[td][tr] != "") {
+    var d_Hour = document.getElementById("THour" + (td + 1) + "" + (tr + 1));
+    if (d_Hour && TableHour[td][tr] !== undefined && TableHour[td][tr] != "") {
         document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =
             TableHour[td][tr];
         document.getElementById("TMin" + (td + 1) + "" + (tr + 1))!.textContent =
@@ -280,7 +280,7 @@ export function JRLimitedNumber(td: number, tr: number, flag: number | string = 
     //console.log(number);
     return number;
 }
-if(window.Type===undefined){
+if (window.Type === undefined) {
     console.error("Typeが未定義です");
 }
 //特急によって停車駅が異なるときの処理
