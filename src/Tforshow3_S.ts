@@ -1,6 +1,6 @@
 import { DetailShow, doallDetailShow } from "./module/detailMainPut";
 import { DetailReplace } from "./module/detailSimpleEdit";
-import { allLastShow, TwoLetterDistance, flagmarkerase } from "./module/firstDisplayEdit";
+import { allLastShow,NewAllLastShow, TwoLetterDistance, flagmarkerase } from "./module/firstDisplayEdit";
 import { TypeColorChange, JREScolor } from "./module/colorSimpleSet";
 import { FourLetters, TrainNumber } from "./module/firstDisplayEdit";
 import { JRNameDevide } from "./module/firstDisplayEdit";
@@ -234,6 +234,7 @@ if (JRShinkansenflag > 0 && Indexfile != 'index4_H.php') {
     }
 }
 if (Indexfile != 'index3_T.php') {
+    //NewAllLastShow();
     allLastShow();
     flagmarkerase(0, 'WType');
     flagmarkerase(1, 'WType');

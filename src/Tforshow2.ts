@@ -1,9 +1,8 @@
 import { DetailShow, LowerDetail, doallDetailShow } from "./module/detailMainPut";
 import { Kinobj } from "./detailStopData/Kindetailset";
 import { DetailReplace, whetherStop } from "./module/detailSimpleEdit";
-import { AllWordChange, AllWordReplace, allLastShow, TwoLetterDistance, LineMarkAdd, comment } from "./module/firstDisplayEdit";
+import { AllWordChange, AllWordReplace, NewAllLastShow, TwoLetterDistance, LineMarkAdd, comment } from "./module/firstDisplayEdit";
 import { allKinColor } from "./typeColor";
-
 document.getElementById('supplement')!.innerHTML = '<p>特急 A:あをによし U:アーバンライナー H:ひのとり I:伊勢志摩ライナー V:ビスタカー</p>';
 var ExpressMsg = '竹田で新田辺行き<span class="KinLocolor">普通</span>に連絡します';
 var LocalMsg = '竹田で奈良行き<span class="KinExcolor">急行</span>に連絡します';
@@ -46,6 +45,8 @@ for (var td = 0; td < Tablenum; td++) {
         KyotoRenraku(td, tr);
     }
 }
+if (station == '鶴橋駅') Dtype = [1, 0];
+else if (station == '名古屋駅') Dtype = [3, 3];
 DetailShow(Kinobj, " ");
 if (station == '京都駅') {
     if (holidayflag == 1) {
@@ -151,7 +152,7 @@ if (station == '伊勢中川駅') {
         Celement[td].remove();
     }*/
 }
-allLastShow();
+//NewAllLastShow();
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         //DetailBanner(td, tr, 18);
@@ -162,7 +163,7 @@ for (var td = 0; td < Tablenum; td++) {
         if (Type[td][tr].length > 2) {
             document.getElementById('TType' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.77)" + "translate(-0%,0%)";
         }
-        var d_Type=document.getElementById('WType' + (td + 1) + (tr + 1));
+        var d_Type = document.getElementById('WType' + (td + 1) + (tr + 1));
         var color = d_Type ? getComputedStyle(d_Type).backgroundColor : '';
         if (Type[td][tr] == '') {
             document.getElementById('TNum' + (td + 1) + (tr + 1))!.style.backgroundColor = 'black';

@@ -8,6 +8,7 @@ import { allJRColor, allJRSSColor } from "./typeColor";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
 allJRSSColor(JRWSHobj, 2);
 allJRColor(2);
+console.log(DetailLength);
 DetailShow(JRWSHobj, "　", DetailLength.length);
 JRLimitedDevide(2);
 JRLimitedDevide(3);

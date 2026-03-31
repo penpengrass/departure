@@ -26,10 +26,14 @@ export function LastShows(td: number, tr: number) {
     }
     document.getElementById("TNum" + (td + 1) + "" + (tr + 1))!.textContent =
         TrackNum[td][tr];
-
+    //ここで次発のために変数に入れる
+    //orders[depnum - 1] = Table_Column;
+    //orders[depnum] = Table_Column + 1;
+    return;
+}
+export function NewLastShows(td: number, tr: number) {
     //(未反映!!!)インタフェースの情報を入れる。ここの動作確認は完了。書き換えが反映されないため保留。
-    /*
-     document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =
+    document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =
         String(trainTables[td].trains[tr].hour);
     document.getElementById("TMin" + (td + 1) + "" + (tr + 1))!.textContent =
         trainTables[td].trains[tr].minute;
@@ -40,15 +44,11 @@ export function LastShows(td: number, tr: number) {
             trainTables[td].trains[tr].destination;
     } else {
         document.getElementById("TDes" + (td + 1) + "" + (tr + 1))!.textContent =
-           trainTables[td].trains[tr].destination;
+            trainTables[td].trains[tr].destination;
     }
     document.getElementById("TNum" + (td + 1) + "" + (tr + 1))!.textContent =
         trainTables[td].trains[tr].trackNumber;
-        */
-    //ここで次発のために変数に入れる
-    //orders[depnum - 1] = Table_Column;
-    //orders[depnum] = Table_Column + 1;
-    return;
+
 }
 export function allLastShow() {
     for (var td = 0; td < Tablenum; td++) {
@@ -59,6 +59,15 @@ export function allLastShow() {
                 DesMiddle(td, tr, "経由");
                 DesMiddle(td, tr, "方面");
             }
+        }
+    }
+    LastShowFlag = 1;
+    allTimeMarkErase();
+}
+export function NewAllLastShow(){
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            NewLastShows(td, tr);
         }
     }
     LastShowFlag = 1;

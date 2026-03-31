@@ -3,7 +3,9 @@ import { JRLimitedNumber } from "../module/firstDisplayEdit";
 import { rapid, Jsubrapid, local } from '../detailStopData/JRdetail';
 var Jrapid = "";
 var limited = "";
-window.Dtype = [0, 0];
+if (Indexfile == 'index4.php') {
+    window.Dtype = [0, 0];
+}
 let Grapid = [['北新地', '尼崎までの各駅', '伊丹', '川西池田', '中山寺', '宝塚', '西宮名塩', '三田', '三田から各駅', '新三田', '篠山口']];
 let Hrapid = '京橋までの各駅・放出・住道・四条畷・星田・河内磐船・長尾・長尾から各駅';
 let Tsubrapid = '京橋までの各駅・放出・住道・四条畷・四条畷から各駅';

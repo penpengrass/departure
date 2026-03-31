@@ -1,13 +1,41 @@
 import { hour, min } from "./Time";
 import { FShow, FSTShow } from "./module/timeInfoSet";
 import { koshin } from "./module/firstTableEdit";
-import { trainTables, TrainData, TrainTable } from "./types/trainTable";
+import { StationRegistry, StationConfig } from './types/station';
+import { trainTables, TrainData, plainTrainTables, PlainTrainData, createTrainDataFromGlobal } from "./types/trainTable";
+import { KintetsuStations, initKintetsuCommon } from "./stationset2";
+import { ShinkansenStations } from "./stationset3_S";
+import { JREastStations } from "./stationset3";
+// --- 新方式の適用チェック ---
+//const config = KintetsuStations[window.station];
+/*if (config) {
+    console.log(`${window.station} の設定を StationConfig インターフェースから読み込みます。`);
+    initKintetsuCommon(config);
+}*/
+// config がない場合は、既存の import された stationset3.ts などの if 文が実行される
+
+export const AllStations: StationRegistry = {
+    ...KintetsuStations,
+    ...ShinkansenStations,
+    ...JREastStations
+}
+function initStationCommon(config: StationConfig) {
+    window.MinIn = 1;
+    window.company = config.company;
+    for (let td = 0; td < window.Tablenum; td++) {
+        window.DetailLength[td] = window.orderNum;
+    }
+
+    window.TableTitle = config.tableTitles;
+    if (config.dtype) window.Dtype = config.dtype;
+    if (config.setup) config.setup();
+}
 //駅名の表示
+if (AllStations[station]) company = AllStations[station].company;
 document.getElementById('stationname')!.textContent = company + ' ' + station;
 let countTable = 0;
 let countOrder = 2;
 //console.log(TT[2][51][1]);
-
 //document.getElementById('kn1').textContent =dir;
 /*function Shows(hour, Table_Column, TT, TableNumber, depnum) {
     document.getElementById('THour' + TableNumber + '' + depnum).textContent = TT[hour][0];
@@ -62,22 +90,6 @@ for (let tr = 0; tr < Tablenum; tr++) {
     Des[tr] = new Array(Tablenums[tr]);
     TrackNum[tr] = new Array(Tablenums[tr]);
 }
-for (var td = 0; td < Tablenum; td++) {
-    const trains: TrainData[] = Array(Tablenums[td])
-        .fill(null)
-        .map(() => ({
-            type: '',
-            destination: '',
-            hour: 0,
-            minute: '',
-            trackNumber: '',
-        }));
-    trainTables.push({
-        title: TableTitle[td] || '',
-        trains: trains,
-        detailType: 0,
-    })
-}
 function EmptyLine(td: number, tr: number, Line: any) {
     if (Line[td][tr] === undefined) {
         Line[td][tr] = '';
@@ -90,12 +102,18 @@ export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: 
     Des[TableNumber - 1][depnum - 1] = TT[hour + 2][Table_Column];
     TrackNum[TableNumber - 1][depnum - 1] = TT[hour + 3][Table_Column];
     //(未反映!!!)ここからインタフェース、コメント外してもいいが今は意味なし
-    /*const trainData = trainTables[TableNumber - 1].trains[depnum - 1];
-    trainData.hour = TT[hour][0];
-    trainData.minute = String(TT[hour + 1][Table_Column]).padStart(2, "0");
-    trainData.type = TT[hour][Table_Column];
-    trainData.destination = TT[hour + 2][Table_Column];
-    trainData.trackNumber = TT[hour + 3][Table_Column];*/
+    // plainTrainTables の該当要素を更新する
+    createTrainDataFromGlobal(hour, Table_Column, TT)
+    /*const plainTrainData = plainTrainTables[TableNumber - 1].trains[depnum - 1];
+    plainTrainData.hour = TT[hour][0];
+    plainTrainData.minute = TT[hour][0];
+    plainTrainData.minute = String(TT[hour + 1][Table_Column]).padStart(2, "0");
+    plainTrainData.type = TT[hour][Table_Column];
+    plainTrainData.destination = TT[hour + 2][Table_Column];
+    plainTrainData.track_number = TT[hour + 3][Table_Column];
+    console.log(plainTrainData);
+    //plainTrainData.track_number = TT[hour + 3][Table_Column];
+    //console.log(plainTrainData);*/
     //ここで次発のために変数に入れる
     orders[depnum - 1] = Table_Column;
     orders[depnum] = Table_Column + 1;
@@ -103,36 +121,51 @@ export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: 
 }
 //td_mainは表番号・ONは何番目に出発するか
 function main() {
+    // --- 駅設定の適用 ---
+    let config = AllStations[window.station];
+    console.log(AllStations)
+    console.log(Tablenum);
+    if (config) {
+        console.log(`${window.station} の設定を StationConfig インターフェースから読み込みます。`);
+        initStationCommon(config);
+    }
     for (var td_main = 0; td_main < Tablenum; td_main++) {
-        //表のタイトル表示
-        if (TableTitle[td_main] != '') {
-            //console.log('表のタイトル' + TableTitle[td_main]);
-            document.getElementById('kn' + (td_main + 1))!.innerHTML = TableTitle[td_main];
-        }
-        if (station == '敦賀駅') {
-            BackTime();
-            if (td_main == 1 || td_main == 2) {
-                Delay(15);
+        var do_Title = document.getElementById('kn' + (td_main + 1));
+        if (do_Title) {
+            //表のタイトル表示
+            if (TableTitle[td_main] != '') {
+                //console.log('表のタイトル' + TableTitle[td_main]);
+                document.getElementById('kn' + (td_main + 1))!.innerHTML = TableTitle[td_main];
             }
-        }
-        //先発表示
-        FShow(TT[td_main], td_main + 1, Shows);
-        //console.log((td_main + 1) + "番目の表の" + "1番目に出発する列車の配列代入完了");
-        for (var ON = 2; ON < Tablenums[td_main] + 1; ON++) {
-            if (next != 1) {
-                FSTShow(TT[td_main], Shows, orders[ON - 1], td_main + 1, ON);
-                //console.log((td_main + 1) + "番目の表の" + (ON) + "番目に出発する列車の配列代入完了");
-            } else {
-                break;
+            //インタフェース化した場合
+            if (config) {
+                document.getElementById('kn' + (td_main + 1))!.innerHTML = config.tableTitles[td_main];
             }
-        }
-        for (var td = 0; td < Tablenum; td++) {
-            for (var tr = 0; tr < Tablenums[td]; tr++) {
-                EmptyLine(td, tr, Type);
-                EmptyLine(td, tr, Des);
-                EmptyLine(td, tr, TableHour);
-                EmptyLine(td, tr, TableMin);
-                EmptyLine(td, tr, TrackNum);
+            if (station == '敦賀駅') {
+                BackTime();
+                if (td_main == 1 || td_main == 2) {
+                    Delay(15);
+                }
+            }
+            //先発表示
+            FShow(TT[td_main], td_main + 1, Shows);
+            //console.log((td_main + 1) + "番目の表の" + "1番目に出発する列車の配列代入完了");
+            for (var ON = 2; ON < Tablenums[td_main] + 1; ON++) {
+                if (next != 1) {
+                    FSTShow(TT[td_main], Shows, orders[ON - 1], td_main + 1, ON);
+                    //console.log((td_main + 1) + "番目の表の" + (ON) + "番目に出発する列車の配列代入完了");
+                } else {
+                    break;
+                }
+            }
+            for (var td = 0; td < Tablenum; td++) {
+                for (var tr = 0; tr < Tablenums[td]; tr++) {
+                    EmptyLine(td, tr, Type);
+                    EmptyLine(td, tr, Des);
+                    EmptyLine(td, tr, TableHour);
+                    EmptyLine(td, tr, TableMin);
+                    EmptyLine(td, tr, TrackNum);
+                }
             }
         }
         //console.log((td_main + 1) + "番目の表表示完了");
