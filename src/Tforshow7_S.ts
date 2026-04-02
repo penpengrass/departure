@@ -1,4 +1,5 @@
-import { JRNameDevide,allLastShow } from "./module/firstDisplayEdit";
+import { JRNameDevide, allLastShow } from "./module/firstDisplayEdit";
+NonGouflag = 1;
 JRNameDevide();
 
 for (var td = 0; td < 2; td++) {

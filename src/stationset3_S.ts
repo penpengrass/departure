@@ -9,6 +9,7 @@ export const ShinkansenStations: StationRegistry = {
         name: '長野駅',
         company: '北陸新幹線',
         tableTitles: ['金沢 富山方面', '東京方面'],
+        file:'index3_S.php',
         dtype: [0, 1],
         setup: () => {
             limitedjustnumber(window.TT[0], 501, 'かがやき');
@@ -79,3 +80,7 @@ export const ShinkansenStations: StationRegistry = {
         }
     }
 };
+//Tforshow3_T.tsをインタフェース化した際に削除する。
+if (station == '福島駅') {
+    detailflag = 2;
+}

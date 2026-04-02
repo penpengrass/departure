@@ -1,8 +1,85 @@
 import { TrainNameLineIncludeDevide, TrainNameDevide, DestinationDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
-company = 'JR九州';
+import { StationRegistry, StationConfig } from './types/station';
 NonGouflag = 1;
-if (station == '小倉駅') {
+export const JRKyushuStations: StationRegistry = {
+    '小倉駅': {
+        name: '小倉駅',
+        company: 'JR九州',
+        tableTitles: ['鹿児島本線 門司港 下関方面', '鹿児島本線 黒崎 博多方面', '日豊本線 行橋 大分方面'],
+        file: 'index10.php',
+        setup: () => {
+            detailflag = 2;
+            NonGouflag = 0;
+            limitednumber(TT[0], 4, '特急きらめき');
+            limitednumber(TT[1], 1, '特急きらめき');
+            limitedjustnumber(TT[1], 2, '特急ソニック');
+            limitedjustnumber(TT[2], 1, '特急ソニック');
+        }
+    },
+    '博多駅': {
+        name: '博多駅',
+        company: 'JR九州',
+        tableTitles: ['山陽・東海道新幹線 新大阪方面', '九州新幹線 鹿児島中央方面',
+            '鹿児島本線下り 大牟田 久留米方面', '長崎本線 佐賀 佐世保方面', '鹿児島本線上り 小倉方面', '福北ゆたか線 篠栗方面'],
+        file: 'index10.php',
+        setup: () => {
+            limitedjustnumber(TT[1], 1, 'のぞみ');
+            limitedjustnumber(TT[0], 2, 'のぞみ');
+            limitedjustnumber(TT[0], 600, 'みずほ');
+            limitedjustnumber(TT[1], 601, 'みずほ');
+            limitedjustnumber(TT[0], 838, 'こだま');
+            limitedjustnumber(TT[0], 540, 'さくら');
+            limitedjustnumber(TT[4], 1, '特急ソニック');
+            limitedjustnumber(TT[4], 2, '特急きらめき');
+            limitedjustnumber(TT[2], 101, '特急かささぎ');
+            limitedjustnumber(TT[2], 1, '特急ゆふ');
+            limitedjustnumber(TT[2], 1, '特急ゆふいんの森');
+            limitedjustnumber(TT[2], 1, ['特急みどり', '特急リレーかもめ', '特急ハウステンボス', '特急ハウステンボス･特急みどり', '特急みどり(リレーかもめ)']);
+            var selectstation = ['武雄温泉', '佐賀', '肥前鹿島', '佐世保', 'ハウステンボス', '江北', 'ハウステンボス･佐世保'];
+            DestinationDevide(selectstation, 2, 3);
+        }
+    },
+    '鳥栖駅': {
+        name: '鳥栖駅',
+        company: 'JR九州',
+        tableTitles: ['鹿児島線 二日市 博多方面(特急)', '鹿児島線 二日市 博多方面(快速 普通)',
+            '長崎線 新鳥栖 佐賀方面(特急)', '長崎線 新鳥栖 佐賀方面(快速 普通)'
+            , '鹿児島線 久留米 大牟田方面(特急)', '鹿児島線 久留米 大牟田方面(快速 普通)'],
+        file: 'index10.php',
+        setup: () => {
+            detailflag = 2;
+            NonGouflag = 0;
+            let trainName = ['特急リレーかもめ', 'リレーかもめ', '特急ゆふいんの森', '特急かささぎ', 'ハウステンボス･みどり', '特急みどり', 'みどり(リレーかもめ)', '特急ゆふ', '特急ゆふ73号'];
+            TrainNameLineIncludeDevide(trainName, 1, 0);
+            TrainNameLineIncludeDevide(trainName, 3, 2);
+            TrainNameLineIncludeDevide(trainName, 5, 4);
+            limitedjustnumber(TT[0], 102, '特急かささぎ');
+            limitedjustnumber(TT[2], 101, '特急かささぎ');
+            limitedjustnumber(TT[0], 2, '特急ゆふ');
+            limitedjustnumber(TT[4], 1, '特急ゆふ');
+            limitedjustnumber(TT[0], 2, '特急ゆふいんの森');
+            limitedjustnumber(TT[4], 1, '特急ゆふいんの森');
+            limitedjustnumber(TT[0], 2, ['特急みどり', 'リレーかもめ', 'ハウステンボス', 'ハウステンボス･みどり', 'みどり(リレーかもめ)']);
+            limitedjustnumber(TT[2], 1, ['特急みどり', 'リレーかもめ', 'ハウステンボス', 'ハウステンボス･みどり', 'みどり(リレーかもめ)']);
+        }
+    },
+    '長崎駅': {
+        name: '長崎駅',
+        company: 'JR九州',
+        tableTitles: ['西九州新幹線　佐賀・新鳥栖・博多方面', '長与経由 大村線 長崎本線 ', '市布経由 大村線 長崎本線'],
+        file: 'index10.php',
+        dtype:[0],
+        setup: () => {
+            detailflag = 2;
+            TrainNameDevide('長与', 2, 1);
+            var nagasaki = [2, 4, 8, 12, 14, 18, 22, 26, 30, 34, 38, 42, 46, 48, 50, 52, 54, 56, 58, 60, 64, 66, 102];
+            limitedjustnumber2(TT[0], nagasaki, 'かもめ');
+            NonGouflag == 0
+        }
+    }
+}
+/*if (station == '小倉駅') {
     detailflag = 2;
     NonGouflag = 0;
     TableTitle = ['鹿児島本線 門司港 下関方面', '鹿児島本線 黒崎 博多方面', '日豊本線 行橋 大分方面'];
@@ -52,4 +129,4 @@ if (station == '小倉駅') {
     var nagasaki = [2, 4, 8, 12, 14, 18, 22, 26, 30, 34, 38, 42, 46, 48, 50, 52, 54, 56, 58, 60, 64, 66, 102];
     limitedjustnumber2(TT[0], nagasaki, 'かもめ');
     NonGouflag == 0
-}
+}*/

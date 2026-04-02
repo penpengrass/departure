@@ -49,6 +49,7 @@ if (station == '新函館北斗駅') {
             LDes5!.style.transform = "scaleX(0.70)" + "translate(-25%,0%)";
         }
         if (Type[1][tr].includes('普通')) {
+            Type[1][tr] = '普通';
             //LWType2.textContent = '普通';
             LName2!.textContent = '';
         }

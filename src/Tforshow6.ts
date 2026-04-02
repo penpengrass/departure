@@ -1,6 +1,6 @@
 import {
     JRLimitedDevide, rowremove, JRLimitedNameDevide, rowsize, AllWordChange, swapColumns, FourLetters,
-    flagmarkerase, allLastShow, Bansenshow, moveTableColumn, comment
+    flagmarkerase, allLastShow, Bansenshow, moveTableColumn, comment,allTwoLettersDistance
 } from "./module/firstDisplayEdit";
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";
 import { CarsDefine, CarsInto } from "./module/carsEdit";
@@ -111,6 +111,7 @@ if (station == '松本駅') {
     for (var td = 0; td < 4; td++) {
         (document.getElementsByClassName('HDes')[td] as HTMLElement).style.paddingRight = "1.5em";
         for (var tr = 0; tr < 3; tr++) {
+            allTwoLettersDistance(Des, TDes, 0.5, 0.5);
             //console.log(document.getElementById('Ttopic'+(tr+1)+(ts+1)));
             document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.innerHTML += '<span class="bansen">番線</span>';
             document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.paddingRight = "1em";

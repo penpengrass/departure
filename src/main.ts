@@ -3,9 +3,20 @@ import { FShow, FSTShow } from "./module/timeInfoSet";
 import { koshin } from "./module/firstTableEdit";
 import { StationRegistry, StationConfig } from './types/station';
 import { trainTables, TrainData, plainTrainTables, PlainTrainData, createTrainDataFromGlobal } from "./types/trainTable";
-import { KintetsuStations, initKintetsuCommon } from "./stationset2";
+import { KintetsuStations } from "./stationset2";
 import { ShinkansenStations } from "./stationset3_S";
 import { JREastStations } from "./stationset3";
+import { JRHokurikuStations } from "./stationset4_H";
+import { JRSanyoStations } from "./stationset4_S";
+import { JRWestStations } from "./stationset4";
+import { TokyuStations } from "./stationset5";
+import { JREastShinkansenStations } from "./stationset6_S";
+import { JREast6Stations } from "./stationset6";
+import { JRTokaidouStations } from "./stationset7_S";
+import { JRTokaiStations } from "./stationset7";
+import { JRHokkaidouStations } from "./stationset8";
+import { JRShikokuStations } from "./stationset9";
+import { JRKyushuStations } from "./stationset10";
 // --- 新方式の適用チェック ---
 //const config = KintetsuStations[window.station];
 /*if (config) {
@@ -14,10 +25,36 @@ import { JREastStations } from "./stationset3";
 }*/
 // config がない場合は、既存の import された stationset3.ts などの if 文が実行される
 
-export const AllStations: StationRegistry = {
-    ...KintetsuStations,
-    ...ShinkansenStations,
-    ...JREastStations
+function getStationConfig(stationName: string, indexfile: string) {
+    // 全registryを一つのオブジェクトにマージ
+    const allRegistries = [
+        KintetsuStations,
+        ShinkansenStations,
+        JREastStations,
+        JRHokurikuStations,
+        JRSanyoStations,
+        JRWestStations,
+        TokyuStations,
+        JREastShinkansenStations,
+        JREast6Stations,
+        JRTokaidouStations,
+        JRTokaiStations,
+        JRHokkaidouStations,
+        JRShikokuStations,
+        JRKyushuStations
+    ];
+    for (const registry of allRegistries) {
+        for (const [key, config] of Object.entries(registry)) {
+            // name が マッチし、file に IndexFile が含まれている場合
+            if (config.name === stationName) {
+                if (!config.file || config.file.includes(indexfile)) {
+                    return config;
+                }
+            }
+        }
+    }
+
+    return undefined;
 }
 function initStationCommon(config: StationConfig) {
     window.MinIn = 1;
@@ -25,14 +62,19 @@ function initStationCommon(config: StationConfig) {
     for (let td = 0; td < window.Tablenum; td++) {
         window.DetailLength[td] = window.orderNum;
     }
-
     window.TableTitle = config.tableTitles;
     if (config.dtype) window.Dtype = config.dtype;
     if (config.setup) config.setup();
 }
+var config = getStationConfig(window.station, Indexfile);
 //駅名の表示
-if (AllStations[station]) company = AllStations[station].company;
-document.getElementById('stationname')!.textContent = company + ' ' + station;
+if (config) {
+    company = config.company;
+    document.getElementById('stationname')!.textContent = company + ' ' + config.name;
+} else {
+    //インタフェース化していない場合
+    document.getElementById('stationname')!.textContent = company + ' ' + window.station;
+}
 let countTable = 0;
 let countOrder = 2;
 //console.log(TT[2][51][1]);
@@ -122,9 +164,8 @@ export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: 
 //td_mainは表番号・ONは何番目に出発するか
 function main() {
     // --- 駅設定の適用 ---
-    let config = AllStations[window.station];
-    console.log(AllStations)
-    console.log(Tablenum);
+    let config = getStationConfig(window.station, Indexfile);
+    console.log(config);
     if (config) {
         console.log(`${window.station} の設定を StationConfig インターフェースから読み込みます。`);
         initStationCommon(config);

@@ -6,6 +6,7 @@ var Mito = ['土浦', '勝田', '水戸', '高萩'];
 var Toride = ['取手', '成田'];
 var ATOSLimited = ['成田ｴｸｽﾌﾟﾚｽ', '湘南'];
 var UTLDir = [0, 1];
+NonGouflag = 0;
 function Local_Name(td: number, tr: number) {
     return document.getElementById('TName' + (td + 1) + (tr + 1));
 }

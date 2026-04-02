@@ -113,9 +113,9 @@ function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj:any) {
 }
 if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
     NonGouflag = 1;
-    JRNameDevide();
+    JRNameDevide(2);
     allJRSSColor();
-    for (var td = 0; td < TablenumSub; td++) {
+    for (var td = 0; td < 2; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
             //この部分は未完成
             if (Indexfile != 'index4_H.php') {

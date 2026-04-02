@@ -6,6 +6,7 @@ import { DetailBanner, FDetail } from "./module/detailMainPut";
 import { Shin_DetailReplace_Set_One } from "./module/detailSimpleEdit";
 import * as Stops from "./detailStopData/JRHokuJoetsuset";
 JRNameDevide(Tablenum);
+NonGouflag = 0;
 const table1 = document.getElementById("TESTable1");
 const table2 = document.getElementById("TESTable2");
 const table3 = document.getElementById("TESTable3");

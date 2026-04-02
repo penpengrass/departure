@@ -2,6 +2,7 @@
 export interface StationConfig {
     name: string;
     company: string;
+    file?: string;
     tableTitles: string[];
     dtype?: number[];
     detailFlag?: number;

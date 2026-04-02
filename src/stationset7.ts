@@ -1,43 +1,86 @@
 import { limitedjustnumber, limitednumber, limitednumber2, TrainNameDevide } from './module/firstTableEdit';
-company = 'JR東海';
+import { StationRegistry, StationConfig } from './types/station';
 export var TokaiDetailflag = 0;
+export const JRTokaiStations: StationRegistry = {
+    '豊橋駅': {
+        name: '豊橋駅',
+        company: 'JR東海 名鉄線',
+        tableTitles: ['飯田線 (豊川・飯田方面)', '名鉄線(東岡崎・名鉄名古屋方面)', '東海道線(浜松・静岡方面)', '東海道線(岡崎・名古屋方面)'],
+        file: 'index7.php',
+        setup: () => {
+            Dtype[3] = 1;
+            TokaiDetailflag = 2;
+            limitednumber(TT[0], 1, '特急伊那路');
+        }
+    },
+    '浜松駅': {
+        name: '浜松駅',
+        company: 'JR東海',
+        tableTitles: ['東海道線 掛川 静岡方面', '東海道線 豊橋 名古屋方面'],
+    },
+    '沼津駅': {
+        name: '沼津駅',
+        company: 'JR東海',
+        tableTitles: ['東海道線 静岡 浜松方面', '東海道線 熱海 東京方面', '御殿場線 御殿場 国府津方面'],
+    },
+    '静岡駅': {
+        name: '静岡駅',
+        company: 'JR東海',
+        tableTitles: ['東海道線 沼津 熱海方面', '東海道線 浜松 豊橋方面'],
+    },
+    '岐阜駅': {
+        name: '岐阜駅',
+        company: 'JR東海',
+        tableTitles: ['東海道線 大垣 米原方面', '高山本線 美濃太田方面', '東海道線 名古屋 豊橋方面'],
+        dtype: [0, 0, 0],
+        setup: () => {
+            limitednumber(TT[0], 1, '特急しらさぎ');
+            limitednumber(TT[2], 2, '特急しらさぎ');
+            limitednumber(TT[1], 1, '特急ひだ');
+            limitednumber(TT[2], 2, '特急ひだ');
+            limitednumber(TT[0], 1, 'ホームライナー大垣');
+        }
+    },
+    '大垣駅': {
+        name: '大垣駅',
+        company: 'JR東海',
+        tableTitles: ['東海道線 関ケ原 米原方面', '東海道線 名古屋 豊橋方面'],
+        dtype: [0, 0],
+        setup: () => {
+            limitednumber(TT[0], 1, '特急しらさぎ');
+            limitednumber(TT[1], 2, '特急しらさぎ');
+            limitednumber(TT[1], 2, 'ホームライナー大垣');
+        }
+    },
+    '名古屋駅': {
+        name: '名古屋駅',
+        company: 'JR東海',
+        tableTitles: ['東海道線(豊橋・武豊方面)', '東海道線(岐阜・大垣方面)', '中央線(多治見・中津川方面)', '関西線(四日市・松阪方面)', '高山線(美濃太田・高山方面)'],
+        file: 'index7_T.php',
+        setup: () => {
+            detailflag = 2;
+            TokaiDetailflag = 3;
+            TrainNameDevide('特急ひだ', 1, 4);
+            limitednumber(TT[2], 1, '特急しなの');
+            limitednumber(TT[3], 1, '特急南紀');
+            limitedjustnumber(TT[3], 1, '快速みえ');
+            limitednumber(TT[1], 1, '特急しらさぎ');
+            limitednumber(TT[4], 1, '特急ひだ');
+        }
+    }
+}
+//Tforshow7.tsをインタフェース化した際に削除する。
 if (station == '豊橋駅') {
     Dtype[3] = 1;
     TokaiDetailflag = 2;
-    company = 'JR東海 名鉄線';
-    TableTitle = ['飯田線 (豊川・飯田方面)', '名鉄線(東岡崎・名鉄名古屋方面)', '東海道線(浜松・静岡方面)', '東海道線(岡崎・名古屋方面)'];
-    limitednumber(TT[0], 1, '特急伊那路');
-} else if (station == '浜松駅') {
-    TableTitle = ['東海道線 掛川 静岡方面', '東海道線 豊橋 名古屋方面'];
-} else if (station == '沼津駅') {
-    TableTitle = ['東海道線 静岡 浜松方面', '東海道線 熱海 東京方面', '御殿場線 御殿場 国府津方面'];
-} else if (station == '静岡駅') {
-    TableTitle = ['東海道線 沼津 熱海方面', '東海道線 浜松 豊橋方面'];
-    limitednumber(TT[0], 1, '特急ふじかわ');
-} else if (station == '岐阜駅') {
+}
+if (station == '岐阜駅') {
     TokaiDetailflag = 1;
-    TableTitle = ['東海道線 大垣 米原方面', '高山本線 美濃太田方面', '東海道線 名古屋 豊橋方面'];
-    limitednumber(TT[0], 1, '特急しらさぎ');
-    limitednumber(TT[2], 2, '特急しらさぎ');
-    limitednumber(TT[1], 1, '特急ひだ');
-    limitednumber(TT[2], 2, '特急ひだ');
-    limitednumber(TT[0], 1, 'ホームライナー大垣');
 } else if (station == '大垣駅') {
     TokaiDetailflag = 1;
-    TableTitle = ['東海道線 関ケ原 米原方面', '東海道線 名古屋 豊橋方面'];
-    limitednumber(TT[0], 1, '特急しらさぎ');
-    limitednumber(TT[1], 2, '特急しらさぎ');
-    limitednumber(TT[1], 2, 'ホームライナー大垣');
 } else if (station == '名古屋駅' && Indexfile == 'index7_T.php') {
     detailflag = 2;
     TokaiDetailflag = 3;
-    TableTitle = ['東海道線(豊橋・武豊方面)', '東海道線(岐阜・大垣方面)', '中央線(多治見・中津川方面)', '関西線(四日市・松阪方面)', '高山線(美濃太田・高山方面)'];
-    TrainNameDevide('特急ひだ', 1, 4);
-    limitednumber(TT[2], 1, '特急しなの');
-    limitednumber(TT[3], 1, '特急南紀');
-    limitedjustnumber(TT[3], 1, '快速みえ');
-    limitednumber(TT[1], 1, '特急しらさぎ');
-    limitednumber(TT[4], 1, '特急ひだ');
 }
 if (TokaiDetailflag == 1) {
     detailLength_one = 1;
