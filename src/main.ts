@@ -2,7 +2,7 @@ import { hour, min } from "./Time";
 import { FShow, FSTShow } from "./module/timeInfoSet";
 import { koshin } from "./module/firstTableEdit";
 import { StationRegistry, StationConfig } from './types/station';
-import { trainTables, TrainData, plainTrainTables, PlainTrainData, createTrainDataFromGlobal } from "./types/trainTable";
+import { plainTrainTables, createTrainDataFromGlobal, initPlainTrainTables, updatePlainTrainData } from "./types/trainTable";
 import { KintetsuStations } from "./stationset2";
 import { ShinkansenStations } from "./stationset3_S";
 import { JREastStations } from "./stationset3";
@@ -145,17 +145,10 @@ export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: 
     TrackNum[TableNumber - 1][depnum - 1] = TT[hour + 3][Table_Column];
     //(未反映!!!)ここからインタフェース、コメント外してもいいが今は意味なし
     // plainTrainTables の該当要素を更新する
-    createTrainDataFromGlobal(hour, Table_Column, TT)
-    /*const plainTrainData = plainTrainTables[TableNumber - 1].trains[depnum - 1];
-    plainTrainData.hour = TT[hour][0];
-    plainTrainData.minute = TT[hour][0];
-    plainTrainData.minute = String(TT[hour + 1][Table_Column]).padStart(2, "0");
-    plainTrainData.type = TT[hour][Table_Column];
-    plainTrainData.destination = TT[hour + 2][Table_Column];
-    plainTrainData.track_number = TT[hour + 3][Table_Column];
-    console.log(plainTrainData);
-    //plainTrainData.track_number = TT[hour + 3][Table_Column];
-    //console.log(plainTrainData);*/
+    const plainTrainData = createTrainDataFromGlobal(hour, Table_Column, TT);
+    plainTrainTables[TableNumber - 1].trains[depnum - 1] = plainTrainData;
+    //console.log(plainTrainTables[TableNumber - 1].trains[depnum - 1].destination);
+    //updatePlainTrainData(TableNumber - 1, depnum - 1, plainTrainData);
     //ここで次発のために変数に入れる
     orders[depnum - 1] = Table_Column;
     orders[depnum] = Table_Column + 1;
@@ -163,6 +156,9 @@ export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: 
 }
 //td_mainは表番号・ONは何番目に出発するか
 function main() {
+    // --- plainTrainTables の初期化 ---
+    initPlainTrainTables(Tablenum, Tablenums);
+
     // --- 駅設定の適用 ---
     let config = getStationConfig(window.station, Indexfile);
     console.log(config);
@@ -213,6 +209,8 @@ function main() {
     }
 }
 main();
+console.log(plainTrainTables);
+
 export var PlusHour = new Array(3);
 export var PlusMin = new Array(3);
 export var PlusType = new Array(3);
@@ -237,7 +235,7 @@ if (testflag == 0) {
     }
     setInterval(koshin, MinIn * 60000);
 }
-console.log(trainTables)
+console.log(plainTrainTables)
 
 console.log("-------main完了-------");
 document.title = station + "発車標";
