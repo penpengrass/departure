@@ -69,10 +69,10 @@
              <tr>
                 <td>JR西日本中国地方</td>
                 <td><button type="button" onclick="location.href='./index4.php?station=hiroshima'">移動</button></td>
-                <td><span style="color:red;">広島駅</span></td>
-                <td><span style="color:red;">岡山駅</span>, <span style="color:red;">糸崎駅</span>, 
-                <span style="color:red;">三原駅</span>, <span style="color:black;">新見駅</span>, <span style="color:red;">米子駅</span>, 
-                <span style="color:red;">岩国駅</span>, <span style="color:red;">徳山駅</span>, <span style="color:red;">下関駅</span></td>
+                <td><span class="orange">広島駅</span></td>
+                <td><span style="color:red;">岡山駅</span>, <span class="orange">糸崎駅</span>, 
+                <span class="orange">三原駅</span>, <span style="color:blue;">新見駅</span>, <span style="color:red;">米子駅</span>, 
+                <span class="orange">岩国駅</span>, <span class="orange">徳山駅</span>, <span class="orange">下関駅</span></td>
             </tr>
             <tr>
                 <td>JR西日本フルカラーLED</td>

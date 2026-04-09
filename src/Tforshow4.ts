@@ -156,6 +156,7 @@ if (station == "米原駅") {
 }
 if (station == "姫路駅") {
     Shinkansenflag = 2;
+    NonGouflag = 0;
     JRLimitedDevide(Shinkansenflag + 0);
     JRLimitedDevide(Shinkansenflag + 1);
     JRLimitedDevide(Shinkansenflag + 3);
@@ -338,6 +339,7 @@ if (station == "北新地駅") {
     }
 }
 if (station == "徳山駅") {
+    NonGouflag = 0;
     rowremove(4, "HName", "TName");
     document.getElementById("TTable5")!.style.width = "45em";
     document.getElementById("HType5")!.style.width = "15%";
@@ -367,7 +369,7 @@ if (station == "徳山駅") {
             }
         }
     }
-    comment!.textContent = "両数や号数, 自由席は不正確";
+    comment!.textContent = "新幹線の号数は2025年のまま, 自由席は不正確";
 } else if (station == "岩国駅") {
     document.getElementById("supplement")!.textContent = "※両数は不正確 ";
     if (holidayflag == 1) {
