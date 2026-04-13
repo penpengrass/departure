@@ -62,7 +62,7 @@
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
                 <td><span style="color:red;">北新地駅</span></td>
-                <td class="long"><span style="color:red;">米原駅</span>, <span style="color:black;">天王寺駅</span>, <span style="color:red;">三ノ宮駅</span>, 
+                <td class="long"><span style="color:red;">米原駅</span>, <span style="color:black;">天王寺駅</span>, <span class="orange">三ノ宮駅</span>, 
                 <span style="color:blue;">姫路駅</span>
                 </td>
             </tr>
