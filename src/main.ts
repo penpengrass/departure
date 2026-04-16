@@ -2,7 +2,7 @@ import { hour, min } from "./Time";
 import { FShow, FSTShow } from "./module/timeInfoSet";
 import { koshin } from "./module/firstTableEdit";
 import { StationRegistry, StationConfig } from './types/station';
-import { plainTrainTables, createTrainDataFromGlobal, initPlainTrainTables, updatePlainTrainData } from "./types/trainTable";
+import { plainTrainTables, createTrainDataFromGlobal, initPlainTrainTables, updatePlainTrainData,initTrainTables } from "./types/trainTable";
 import { KintetsuStations } from "./stationset2";
 import { ShinkansenStations } from "./stationset3_S";
 import { JREastStations } from "./stationset3";
@@ -25,7 +25,7 @@ import { JRKyushuStations } from "./stationset10";
 }*/
 // config がない場合は、既存の import された stationset3.ts などの if 文が実行される
 
-function getStationConfig(stationName: string, indexfile: string) {
+export function getStationConfig(stationName: string, indexfile: string) {
     // 全registryを一つのオブジェクトにマージ
     const allRegistries = [
         KintetsuStations,
@@ -158,7 +158,7 @@ export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: 
 function main() {
     // --- plainTrainTables の初期化 ---
     initPlainTrainTables(Tablenum, Tablenums);
-
+    initTrainTables(Tablenum, Tablenums);
     // --- 駅設定の適用 ---
     let config = getStationConfig(window.station, Indexfile);
     console.log(config);

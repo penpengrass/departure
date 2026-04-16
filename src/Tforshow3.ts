@@ -10,6 +10,7 @@ import { JRETypeSelectAdd, JRETypeAdd, ShihatsuMove } from "./module/displayEdit
 import { BottomBanner } from "./module/detailBannerSwitch";
 import { allswitchOdawara } from "./module/displaySwitch";
 import { allJRCIncludeColor } from "./typeColor";
+import { getStationConfig } from "./main";
 const ATOStable = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
     ATOStable[td] = document.getElementById("TATOSTable" + (td + 1));
@@ -23,7 +24,9 @@ const table6 = document.getElementById("TATOSTable6");
 var UenoLine = ['小金井', '籠原', '宇都宮', '高崎', '古河'];
 var Guidance = document.getElementById("guidance");
 if (station == '熱海駅') {
-    AllClassSetting('Destination', 'color', '#0f0');
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*AllClassSetting('Destination', 'color', '#0f0');
     for (var tr = 0; tr < orderNum; tr++) {
         if (Type[0][tr].startsWith('普通')) {
             Type[0][tr] = Type[0][tr].replace('普通', '伊東線 普通');
@@ -74,7 +77,7 @@ if (station == '熱海駅') {
     allTwoLettersDistance(Des, TDes, 1, 1);
     document.getElementById('supplement')!.textContent = '熱海駅は実際の表示と異なる部分がある　土休日ダイヤに対応';
     allJRCIncludeColor();
-    allLastShow();
+    allLastShow();*/
 } else if (station == '小田原駅') {
     // 2列目と3列目を入れ替え
     // 表のIDを取得

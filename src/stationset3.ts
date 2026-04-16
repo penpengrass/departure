@@ -1,9 +1,21 @@
 import { RailNumberDevide, DestinationRemove, DestinationDevide, TrainNameLineRemove, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
-import { table } from 'node:console';
+import {
+    FourLetters, swapColumns, NameColorchange, JRLineName, LastShows, rowremove, AllWordChange, AllWordReplace, JRLimitedNameDevide,
+    JRLimitedDevide, JRLimitedNumber, comment, JRATOSDevide, allTwoLettersDistance, CarsDevide, DestinationSet, TrainTypeSet, flagmarkerase, allTimeMarkErase, Bansenshow, holiday_F,
+    AllClassSetting,
+    NewAllLastShow
+} from "./module/firstDisplayEdit";
+import { allJRCIncludeColor } from "./typeColor";
+import { plainTrainTables, trainTables } from './types/trainTable';
+const ATOStable = new Array(Tablenum);
+for (var td = 0; td < Tablenum; td++) {
+    ATOStable[td] = document.getElementById("TATOSTable" + (td + 1));
+}
 var NexOfuna1 = [2, 6, 10, 14, 18, 22, 26, 30, 34, 38, 40, 42, 46, 50, 52, 54];
 var NexOfuna2 = [1, 3, 5, 7, 13, 15, 19, 23, 27, 31, 35, 39, 43, 47, 51, 53];
+var UenoLine = ['小金井', '籠原', '宇都宮', '高崎', '古河'];
 export const JREastStations: StationRegistry = {
     'JR武蔵小杉駅': {
         name: '武蔵小杉駅',
@@ -49,6 +61,64 @@ export const JREastStations: StationRegistry = {
             TTconnect(TT[1], TT[2], TT[3]);
             TT[1] = TT[3];
             RailNumberDevide(4, 1, 2);
+        },
+        onRender: () => {
+
+            DestinationSet();
+            TrainTypeSet(2);
+            AllClassSetting('Destination', 'color', '#0f0');
+            for (var tr = 0; tr < orderNum; tr++) {
+                var _Type = plainTrainTables[0].trains[tr].type;
+                if (_Type.startsWith('普通')) {
+                    trainTables[0].trains[tr].type = '伊東線 普通';
+                }
+                for (var td = 1; td < 3; td++) {
+                    const _Type1 = plainTrainTables[td].trains[tr].type;
+                    if (_Type1.startsWith('普通')) {
+                        if (UenoLine.includes(Des[td][tr])) trainTables[td].trains[tr].type = '普通 上野東京ﾗｲﾝ';
+                        else if (Des[td][tr] != '') trainTables[td].trains[tr].type = '普通 東海道線';
+                    }
+                }
+                if (Type[0][tr].startsWith('特急踊り子')) {
+                    document.getElementById('TCars' + 1 + (tr + 1))!.textContent = '9両';
+                } else if (Type[0][tr].startsWith('特急ｻﾌｨｰﾙ')) {
+                    document.getElementById('TCars' + 1 + (tr + 1))!.textContent = '8両';
+                }
+                if (Type[1][tr].startsWith('特急踊り子')) {
+                    document.getElementById('TCars' + 2 + (tr + 1))!.textContent = '5両';
+                }
+                if (Type[2][tr].startsWith('特急踊り子')) {
+                    if (Type[2][tr].includes('4') || Type[2][tr].includes('10')) {
+                        document.getElementById('TCars' + 3 + (tr + 1))!.textContent = '14両';
+                    } else {
+                        document.getElementById('TCars' + 3 + (tr + 1))!.textContent = '9両';
+                    }
+                } else if (Type[2][tr].startsWith('特急ｻﾌｨｰﾙ')) {
+                    document.getElementById('TCars' + 3 + (tr + 1))!.textContent = '8両';
+                }
+            }
+            for (var td = 0; td < Tablenum; td++) {
+                swapColumns(ATOStable[td], 3, 4);
+                swapColumns(ATOStable[td], 2, 3);
+                for (var tr = 0; tr < orderNum; tr++) {
+                    if (Type[td][tr].length > 11) {
+                        console.log(Type[td][tr]);
+                        console.log(document.getElementById('TType' + (td + 1) + (tr + 1))!.textContent);
+                        //document.getElementById('TType' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
+                    }
+                }
+                rowremove(td, 'HName', 'TName');
+                document.getElementById('HType1')!.style.width = "35%";
+                document.getElementById('HType2')!.style.width = "35%";
+                document.getElementById('HType3')!.style.width = "35%";
+            }
+            CarsDevide(0);
+            CarsDevide(1);
+            CarsDevide(2);
+            allTwoLettersDistance(Des, TDes, 1, 1);
+            document.getElementById('supplement')!.textContent = '熱海駅は実際の表示と異なる部分がある　土休日ダイヤに対応';
+            allJRCIncludeColor();
+            NewAllLastShow();
         }
     },
     '小田原駅': {

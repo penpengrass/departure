@@ -1,16 +1,18 @@
 import { DetailShow, doallDetailShow } from "./module/detailMainPut";
 import { DetailReplace } from "./module/detailSimpleEdit";
-import { allLastShow,NewAllLastShow, TwoLetterDistance, flagmarkerase } from "./module/firstDisplayEdit";
+import { allLastShow, NewAllLastShow, TwoLetterDistance, flagmarkerase } from "./module/firstDisplayEdit";
 import { TypeColorChange, JREScolor } from "./module/colorSimpleSet";
 import { FourLetters, TrainNumber } from "./module/firstDisplayEdit";
-import { JRNameDevide } from "./module/firstDisplayEdit";
+import { JRNewNameNumberDevide } from "./module/firstDisplayEdit";
 import { JRSBobj } from "./detailStopData/JREShindetailset";
 import { Seventeen } from "./detailStopData/JRTohokuShinset";
+import { getStationConfig } from "./main";
+import { plainTrainTables } from "./types/trainTable";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
 //console.log(JRSBobj);
 //console.log(Dtype);
 NonGouflag = 1;
-JRNameDevide(2);
+JRNewNameNumberDevide(2);
 var YamagataRapid = [123, 157];
 var Zaou = [201, 123, 205, 53, 133, 135, 137, 61, 141, 143, 67, 145, 149, 215, 157, 69, 223];
 var Shirakawa = [50];
@@ -23,7 +25,9 @@ var onsen = [507, 509];
 var takefu = [501, 517];
 console.log(TrainNumber);
 if (station == '長野駅') {
-    DetailShow(JRSBobj, "・");
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*DetailShow(JRSBobj, "・");
     for (var tr = 0; tr < orderNum; tr++) {
         if (iiyama.includes(TrainNumber[0][tr])) {
             DetailReplace(0, tr, '上越妙高', '飯山・上越妙高');
@@ -73,9 +77,11 @@ if (station == '長野駅') {
             }
             TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
         }
-    }
+    }*/
 } else if (station == '宇都宮駅') {
-    for (var tr = 0; tr < orderNum; tr++) {
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*for (var tr = 0; tr < orderNum; tr++) {
         if (Type[1][tr] != '') {
             //console.log(TrainNumber[1][tr]);
             if (TrainNumber[1][tr] > 199 || TrainNumber[1][tr] == 68) {
@@ -141,9 +147,11 @@ if (station == '長野駅') {
             FourLetters(td, tr, 0.6, 30, 'TType', Type, 8);
             TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
         }
-    }
+    }*/
 } else if (station == '福島駅') {
-    for (var tr = 0; tr < 2; tr++) {
+     var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*for (var tr = 0; tr < 2; tr++) {
         if (!Zaou.includes(TrainNumber[0][tr]) && Des[0][tr] == '仙台') {
             Detail[0][tr] = 'この列車は仙台まで止まりません。';
         }
@@ -193,9 +201,11 @@ if (station == '長野駅') {
         if (Seventeen.includes(TrainNumber[1][tr])) {
             document.getElementById('Ttopic2' + (tr + 1))!.textContent = '１７両編成';
         }
-    }
+    }*/
 } else if (station == '新白河駅') {
-    if (Des[0][0] == '郡山') {
+     var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*if (Des[0][0] == '郡山') {
         Detail[0][0] = 'この列車は郡山まで止まりません。';
     } else if (Des[0][0] == '仙台') {
         Detail[0][0] = '郡山・福島・仙台';
@@ -218,7 +228,7 @@ if (station == '長野駅') {
                 document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.textContent = '１０両編成';
             }
         }
-    }
+    }*/
 }
 if (JRShinkansenflag > 0 && Indexfile != 'index4_H.php') {
     for (var td = 0; td < 2; td++) {
@@ -233,19 +243,12 @@ if (JRShinkansenflag > 0 && Indexfile != 'index4_H.php') {
         }
     }
 }
-if (Indexfile != 'index3_T.php') {
-    //NewAllLastShow();
-    allLastShow();
+if (Indexfile == 'index3_S.php') {
+    NewAllLastShow();
+    //allLastShow();
     flagmarkerase(0, 'WType');
     flagmarkerase(1, 'WType');
     flagmarkerase(1, 'WType', '+');
-}
-if (station == '福島駅') {
-    for (var tr = 0; tr < 2; tr++) {
-        if (Type[1][tr] == 'やまびこ･つばさ') {
-            document.getElementById('WType2' + (tr + 1))!.innerHTML = '<span class="green">やまびこ</span>･<span style="color:pink;">つばさ</span>';
-        }
-    }
 }
 if (Indexfile == 'index3_S.php') {
     doallDetailShow(18);

@@ -1,5 +1,5 @@
 import { DesMiddle } from "./displayEdit4";
-import { trainTables } from "../types/trainTable";
+import { trainTables, plainTrainTables } from "../types/trainTable";
 import "../main";
 //JR西日本の特急名を表で分ける関数 index4.phpとindex3.phpで使用
 export var LiName = new Array(Tablenum);
@@ -33,21 +33,22 @@ export function LastShows(td: number, tr: number) {
 }
 export function NewLastShows(td: number, tr: number) {
     //(未反映!!!)インタフェースの情報を入れる。ここの動作確認は完了。書き換えが反映されないため保留。
-    document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =
-        String(trainTables[td].trains[tr].hour);
-    document.getElementById("TMin" + (td + 1) + "" + (tr + 1))!.textContent =
-        trainTables[td].trains[tr].minute;
-    document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.textContent =
+    if (!plainTrainTables[td].trains[tr]) return;
+    document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.innerHTML =
+        String(plainTrainTables[td].trains[tr].hour);
+    document.getElementById("TMin" + (td + 1) + "" + (tr + 1))!.innerHTML =
+        plainTrainTables[td].trains[tr].minute;
+    document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.innerHTML =
         trainTables[td].trains[tr].type;
     if (Indexfile == "index6_Chiba.php" || Indexfile == "index4_O.php") {
-        document.getElementById("WDes" + (td + 1) + "" + (tr + 1))!.textContent =
+        document.getElementById("WDes" + (td + 1) + "" + (tr + 1))!.innerHTML =
             trainTables[td].trains[tr].destination;
     } else {
-        document.getElementById("TDes" + (td + 1) + "" + (tr + 1))!.textContent =
+        document.getElementById("TDes" + (td + 1) + "" + (tr + 1))!.innerHTML =
             trainTables[td].trains[tr].destination;
     }
-    document.getElementById("TNum" + (td + 1) + "" + (tr + 1))!.textContent =
-        trainTables[td].trains[tr].trackNumber;
+    document.getElementById("TNum" + (td + 1) + "" + (tr + 1))!.innerHTML =
+        plainTrainTables[td].trains[tr].trackNumber;
 
 }
 export function allLastShow() {
@@ -64,7 +65,8 @@ export function allLastShow() {
     LastShowFlag = 1;
     allTimeMarkErase();
 }
-export function NewAllLastShow(){
+export function NewAllLastShow() {
+    console.log(plainTrainTables);
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < Tablenums[td]; tr++) {
             NewLastShows(td, tr);
@@ -190,7 +192,7 @@ export function JRNameDevide(T = Tablenum) {
                     Mlength = 9;
                 }
                 if (matches[tr][1].length < Mlength) {
-                    //console.log(matches[tr][1]);
+                    console.log(matches[tr][2]);
                     document.getElementById(
                         "WType" + (td + 1) + "" + (tr + 1)
                     )!.textContent = matches[tr][1];
@@ -212,6 +214,51 @@ export function JRNameDevide(T = Tablenum) {
                 }
                 //console.log(ShinNumber);
                 //ShinNumber[td][tr] = matches[tr][2];
+            } else {
+                //console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');
+            }
+        }
+    }
+    //console.log(ShinNumber);
+}
+//新幹線と北海道の特急の列車名を分割(引数は表の数)，index3_S.phpを除く
+export function JRNewNameNumberDevide(T = Tablenum) {
+    for (var td = 0; td < T; td++) {
+        var Order_Length = plainTrainTables[td].trains.length;
+        for (var tr = 0; tr < Order_Length; tr++) {
+            if (!plainTrainTables[td].trains[tr]) continue;
+            var LimitedName = plainTrainTables[td].trains[tr].type;
+            var matches;
+            //LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1))!.textContent;
+            if (!LimitedName.endsWith('号')) {
+                matches = LimitedName.match(/(\D+)(\d+)/);
+            } else {
+                matches = LimitedName.match(/([^0-9]+)(\d+)([^0-9]+)/);
+            }
+            if (matches) {
+                //console.log(td + 1 + "個目の表の" + (tr + 1) + "番目の表示はJRNameDevideとマッチする");
+                /*console.log(matches[tr][0] + ":" + tr);
+                console.log(matches[tr][1] + ":" + tr);
+                console.log(matches[tr][2] + ":" + tr);
+                console.log(matches[tr][3] + ":" + tr);
+                console.log(matches[tr][1] + matches[tr][1].length);*/
+                var Mlength = 7;
+                if (Indexfile == "index6_S.php" || Indexfile == "index3_S.php" || Indexfile == "index6_Chiba.php" || Indexfile == "index3_T.php") {
+                    Mlength = 9;
+                }
+                if (matches[1].length < Mlength) {
+                    trainTables[td].trains[tr].type = matches[1];
+                    if (NonGouflag == 1) {
+                        trainTables[td].trains[tr].trainName = matches[2];
+                    } else {
+                        trainTables[td].trains[tr].trainName = matches[2] + "号";
+                    }
+                    if (Type[td][tr].includes("特急")) {
+                        document.getElementById(
+                            "TName" + (td + 1) + "" + (tr + 1)
+                        )!.style.color = "red";
+                    }
+                }
             } else {
                 //console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');
             }
@@ -249,6 +296,14 @@ export function JRLimitedNameDevide(td: number, tr: number, name: string, _type 
         document.getElementById("TType" + (td + 1) + "" + (tr + 1))!.style.color = color;
         Type[td][tr] = _type;
 
+    }
+}
+export function JRAllShinkansenNumberSet(T: number) {
+    for (var td = 0; td < T; td++) {
+        for (var tr = 0; tr < plainTrainTables[td].trains.length; tr++) {
+            const trainName = trainTables[td].trains[tr].trainName;
+            if (typeof trainName === "string") document.getElementById("WName" + (td + 1) + "" + (tr + 1))!.textContent = trainName;
+        }
     }
 }
 //特急等の号数を取得 tdは何番目の表か
@@ -333,6 +388,7 @@ export function CarsDevide(td: number, LCarsTag = "TCars") {
                 console.log(matches2[2]);
                 console.log(matches2[3]);
                 var number = matches[2];
+                trainTables[td].trains[tr].cars = matches2[3] + "両";
                 LCars.textContent = matches2[3] + "両";
                 LType = matches2[1] + matches2[2] + "号";
                 Type[td][tr] = matches[1];
@@ -342,6 +398,7 @@ export function CarsDevide(td: number, LCarsTag = "TCars") {
                 console.log(matches3[2]);
                 console.log(matches3[3]);
                 var number = matches3[2];
+                trainTables[td].trains[tr].cars = matches3[3] + "両";
                 LCars.textContent = matches3[2] + "両";
                 LType = matches[1] + matches3[3] + "号";
                 Type[td][tr] = matches[1];
@@ -351,6 +408,7 @@ export function CarsDevide(td: number, LCarsTag = "TCars") {
                 console.log(matches[2]);
                 console.log(matches[3]);
                 var number = matches[2];
+                trainTables[td].trains[tr].cars = matches[3] + "両";
                 LCars.textContent = matches[2] + "両";
                 LType = matches[1];
                 Type[td][tr] = matches[1];
@@ -495,6 +553,28 @@ export function rowsize(td: number, header: string, text: string, size: any) {
     document.getElementById(header + (td + 1))!.style.width = size;
     for (var tr = 0; tr < Type[td].length; tr++) {
         document.getElementById(text + (td + 1) + "" + (tr + 1))!.style.width = size;
+    }
+}
+export function DestinationSet() {
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < plainTrainTables[td].trains.length; tr++) {
+            if (!plainTrainTables[td].trains[tr]) continue;
+            var Destination = plainTrainTables[td].trains[tr].destination;
+            Destination = Destination.replace('*', '');
+            Destination = Destination.replace('+', '');
+            trainTables[td].trains[tr].destination = Destination;
+        }
+    }
+}
+export function TrainTypeSet(T = 0) {
+    for (var td = T; td < Tablenum; td++) {
+        for (var tr = 0; tr < plainTrainTables[td].trains.length; tr++) {
+            if (!plainTrainTables[td].trains[tr]) continue;
+            var Type = plainTrainTables[td].trains[tr].type;
+            Type = Type.replace('*', '');
+            Type = Type.replace('+', '');
+            trainTables[td].trains[tr].type = Type;
+        }
     }
 }
 export function flagmarkerase(td: number, tag: string, mark = "*") {

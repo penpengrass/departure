@@ -3,6 +3,7 @@ import { Kinobj } from "./detailStopData/Kindetailset";
 import { DetailReplace, whetherStop } from "./module/detailSimpleEdit";
 import { AllWordChange, AllWordReplace, NewAllLastShow, TwoLetterDistance, LineMarkAdd, comment } from "./module/firstDisplayEdit";
 import { allKinColor } from "./typeColor";
+import { getStationConfig } from "./main";
 document.getElementById('supplement')!.innerHTML = '<p>特急 A:あをによし U:アーバンライナー H:ひのとり I:伊勢志摩ライナー V:ビスタカー</p>';
 var ExpressMsg = '竹田で新田辺行き<span class="KinLocolor">普通</span>に連絡します';
 var LocalMsg = '竹田で奈良行き<span class="KinExcolor">急行</span>に連絡します';
@@ -47,111 +48,9 @@ for (var td = 0; td < Tablenum; td++) {
 }
 if (station == '鶴橋駅') Dtype = [1, 0];
 else if (station == '名古屋駅') Dtype = [3, 3];
-DetailShow(Kinobj, " ");
-if (station == '京都駅') {
-    if (holidayflag == 1) {
-        document.getElementById('supplement')!.innerHTML += '<p>京都駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
-    } else if (holidayflag == 0) {
-        document.getElementById('supplement')!.innerHTML += '<p>京都駅のみ土休日ダイヤに対応(表示は平日ダイヤ)</p>';
-    }
-    //高の原駅停車を追加
-    for (var tr = 0; tr < orderNum; tr++) {
-        var LType = Type[0][tr];
-        var tr_hour = TableHour[0][tr];
-        var tr_min = TableMin[0][tr];
-        if (LType.includes('特急')) {
-            if (LType != '特急A' && (tr_hour > 14)) {
-                console.log(tr + "は高の原停車");
-                DetailReplace(0, tr, '丹波橋', '丹波橋 高の原');
-            } else if (tr_hour > 9 && LType != '特急S' && Des[0][tr] == '橿原神宮前') {
-                DetailReplace(0, tr, '大和西大寺', '大和西大寺 西ノ京');
-            }
-        } else if (LType == '急行') {
-            if (holidayflag == 0) {
-                if (whetherStop(9, 40, tr_hour, tr_min, 16, 4)) {
-                } else {
-                    DetailReplace(0, tr, '西ノ京 ', '');
-                }
-            } else if (holidayflag == 1) {
-                if (whetherStop(8, 10, tr_hour, tr_min, 16, 44)) {
-                } else {
-                    DetailReplace(0, tr, '西ノ京 ', '');
-                }
-            }
-        }
-        var element = document.getElementById('TConnection' + (0 + 1) + (tr + 1));
-        if (tr < 2) {
-            if (element && Type[0][tr] == '急行' && Des[0][tr] == '大和西大寺' && element.textContent == '') {
-                element.innerHTML += ' 大和西大寺で奈良行きに連絡します';
-            }
-        }
-    }
-}
-if (station == '奈良駅') {
-    if (holidayflag == 1) {
-        document.getElementById('supplement')!.innerHTML += '<p>奈良駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
-    } else if (holidayflag == 0) {
-        document.getElementById('supplement')!.innerHTML += '<p>奈良駅のみ土休日ダイヤに対応(表示は平日ダイヤ)</p>';
-    }
-    for (var tr = 0; tr < orderNum; tr++) {
-        var LType = Type[1][tr];
-        var tr_hour = TableHour[1][tr];
-        var tr_min = TableMin[1][tr];
-        if (LType.includes('特急')) {
-            if (LType != '特急A' && whetherStop(5, 0, tr_hour, tr_min, 12, 3)) {
-                DetailReplace(1, tr, '丹波橋', '高の原 丹波橋');
-            }
-        }
-    }
-    LineMarkAdd(1, "A", 'red');
-    LineMarkAdd(2, "B", 'orange');
-}
-if (station == '名古屋駅') {
-    if (holidayflag == 1) {
-        document.getElementById('supplement')!.innerHTML += '<p>名古屋駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
-    } else if (holidayflag == 0) {
-        document.getElementById('supplement')!.innerHTML += '<p>名古屋駅のみ土休日ダイヤに対応(表示は平日ダイヤ)</p>';
-    }
-    for (var tr = 0; tr < orderNum; tr++) {
-        var LType = Type[1][tr];
-        var LDes = Des[1][tr];
-        var tr_hour = TableHour[1][tr];
-        var tr_min = TableMin[1][tr];
-        if (LDes != '大阪難波' && whetherStop(17, 40, tr_hour, tr_min, 23, 30)) {
-            DetailReplace(1, tr, '伊勢中川', '久居 伊勢中川');
-        }
-        var LConnection = document.getElementById('TConnection1' + (tr + 1));
-        if (LConnection && Type[0][tr].includes('*') && LConnection.textContent == '') {
-            document.getElementById('TConnection1' + (tr + 1))!.innerHTML = '６両編成  前４両は３扉';
-            Type[0][tr] = Type[0][tr].replace('*', '');
-        }
-    }
-}
-if (station == '伊勢中川駅') {
-    //document.getElementsByTagName('th').classList.remove('HDetail');
-    //document.getElementsByTagName('td').classList.remove('CDetail');
-    // CClass クラスを持つすべての <td> を取得
-    const elements = document.querySelectorAll('td.CDetail');
-    const Helements = document.querySelectorAll('th.HDetail');
-    // すべて削除
-    elements.forEach(el => el.remove());
-    Helements.forEach(el => el.remove());
-    for (var td = 0; td < 3; td++) {
-
-        document.getElementById("TTable" + (td + 1))!.style.width = "40em";
-        document.getElementById("TTable" + (td + 1))!.style.marginLeft = "4em";
-    }
-    /*for (var td = 0; td < 3; td++) {
-        rowremove(td, 'HDetail', 'TdDetail');
-    }*/
-    /*for (var td = 0; td < Helement.length; td++) {
-        Helement[td].remove();
-        rowremove(td, 'HDetail', 'TdDetail');
-    }
-    for (var td = 0; td < Celement.length; td++) {
-        Celement[td].remove();
-    }*/
-}
+//DetailShow(Kinobj, " ");
+var config = getStationConfig(window.station, Indexfile);
+if (config && config.onRender) config.onRender();
 //NewAllLastShow();
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
@@ -175,13 +74,6 @@ for (var td = 0; td < Tablenum; td++) {
     }
 }
 comment!.innerHTML += '停車駅や一部表示は不正確';
-if (station == '鶴橋駅') {
-    for (tr = 0; tr < orderNum; tr++) {
-        if (Type[1][tr] == '準急' && Des[1][tr] == '高安') {
-            Detail[1][tr] = '布施 八尾 河内山本';
-        }
-    }
-}
 if (station != '伊勢中川駅') {
     doallDetailShow(20);
 }

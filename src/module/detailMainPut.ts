@@ -4,6 +4,9 @@
 //let k = 0;
 //console.log("-------ここから詳細表示-------");
 //console.log(stationN);
+
+import { trainTables } from "../types/trainTable";
+
 //console.log(Dtype);
 export var td_detail = 0;
 var DtypePlusCount = 0;
@@ -119,7 +122,6 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
     } else if (Utype.startsWith(Uobj.Typeb.type)) {
         DetailLine = DetailDecide(Uobj.Typeb.detail, td, Des[td][tr], AType, distance);;//快急
     } else if (Utype.startsWith(Uobj.Typec.type)) {
-
         DetailLine = DetailDecide(Uobj.Typec.detail, td, Des[td][tr], AType, distance);
     } else if (Utype.startsWith(Uobj.Typed.type)) {
         //console.log(Utype);
@@ -127,7 +129,7 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
             DetailLine = Uobj.Typed.detail[n];
             console.log(DetailLine);
         } else {
-            DetailLine = DetailDecide(Uobj.Typed.detail, td, Des[td][tr], AType, distance);
+            DetailLine = DetailDecide(Uobj.Typed.detail, td, Des[td][tr], AType, distance)
         }
     } else if (Utype.startsWith(Uobj.Typee.type)) {
         //console.log(Utype);
@@ -154,6 +156,7 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
     //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = DetailLine;
     //console.log(DetailLine);
     Detail[td][tr] = DetailLine;
+    trainTables[td].trains[tr].detail = DetailLine;
     //console.log(Detail);
     /*if (detailflag == 8 || Indexfile == 'index4.php' || Indexfile == 'index7.php') {
         //console.log(Detail[td][tr]);
@@ -183,6 +186,21 @@ export function DetailShow(companyObject: any, distance: string, LLength = Table
         for (var tr = 0; tr < DetailLength[td]; tr++) {
             //console.log("Dtype[" + td + "]=" + Dtype[td]);
             FDetail(Type[td][tr], companyObject, Dtype[td], td, tr, distance);
+            console.log("-------" + (td + 1) + "個目の表の" + (tr + 1) + "番目の詳細表示完了-------");
+        }
+        console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");
+        td_detail++;
+        //stationN = stationN2;
+    }
+}
+export function NewDetailShow(companyObject: any, distance: string, LLength = Tablenum) {
+    console.log("---ここから1個目の表の詳細表示----");
+    for (var td = 0; td < LLength; td++) {
+        console.log(DetailLength[td]);
+        for (var tr = 0; tr < DetailLength[td]; tr++) {
+            //console.log("Dtype[" + td + "]=" + Dtype[td]);
+            var _Type = trainTables[td].trains[tr].type
+            FDetail(_Type, companyObject, Dtype[td], td, tr, distance);
             console.log("-------" + (td + 1) + "個目の表の" + (tr + 1) + "番目の詳細表示完了-------");
         }
         console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");

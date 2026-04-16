@@ -1,3 +1,4 @@
+import { trainTables } from "../types/trainTable";
 //種別+両数の場合分割し、Cars配列に入れる
 export function CarsDevideToLine(td: number) {
     for (var tr = 0; tr < orderNum; tr++) {
@@ -38,6 +39,7 @@ export function CarsDevideToLine(td: number) {
 }
 export function CarsDefine(td: number, tr: number, KeyWord1: string, KeyWord2: string, LCars: any, Last = '') {
     if (Type[td][tr].includes(KeyWord1) && Type[td][tr].includes(KeyWord2)) {
+        trainTables[td].trains[tr].cars = LCars + '両' + Last;
         Cars[td][tr] = LCars + '両' + Last;
     }
 }

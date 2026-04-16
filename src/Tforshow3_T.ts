@@ -1,4 +1,4 @@
-import { allLastShow, TwoLetterDistance, flagmarkerase } from "./module/firstDisplayEdit";
+import { allLastShow, NewAllLastShow, TwoLetterDistance, flagmarkerase } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FourLetters, swapColumns, NameColorchange, JRLineName, LastShows, rowremove, JRLimitedNameDevide, JRLimitedDevide, comment, AllClassSetting, allTwoLettersDistance } from "./module/firstDisplayEdit";
 import { doallDetailShow } from "./module/detailMainPut";
@@ -37,12 +37,6 @@ if (station == '仙台駅' && JRShinkansenflag == 0) {
     comment!.innerHTML += "新幹線仙台駅は別画面で作成";
 }
 if (station == '福島駅') {
-    for (var tr = 0; tr < 3; tr++) {
-        TypeColorChange(4, tr, 'つばさ', 'red');
-        if (Type[4][tr].startsWith('つばさ')) {
-            Type[4][tr] += '号';
-        }
-    }
     for (var td = TStart; td < Tablenum; td++) {
         rowremove(td, 'HName', 'TName');
         document.getElementById('HType' + (td + 1))!.style.width = "38%";
@@ -56,6 +50,7 @@ if (station == '福島駅') {
     }
     doallDetailShow(18, 2);
     var guide = document.getElementById('guidance');
+    NewAllLastShow();
     comment!.innerHTML = '在来線東口改札を再現、阿武隈急行と飯坂線は現実の発車標自体が存在しない。<br>' + comment!.innerHTML;
     guide!.innerHTML += '<li>1番線と阿武隈急行線、飯坂線は同一ホーム<br></li>';
     guide!.innerHTML += '<li>2･3番線が同一ホーム、4～6番線は同一ホーム<br></li>';
@@ -69,8 +64,8 @@ if (station == '福島駅') {
         document.getElementById('HDes' + (td + 1))!.style.width = "25%";
     }
     doallDetailShow(18, 2);
+    NewAllLastShow();
 }
-allLastShow();
 flagmarkerase(0, 'WType');
 flagmarkerase(1, 'WType');
 flagmarkerase(1, 'WType', '+');

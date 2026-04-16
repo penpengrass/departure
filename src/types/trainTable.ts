@@ -17,7 +17,8 @@ export interface TrainData {
     minute: string;
     trackNumber: string;
     //ない場合もある
-    trainNumber?: number;//列車の号数、ない場合もあるので要検討(-1にするとか)
+    trainName?: string; //列車名、在来線特急の一部で使用する
+    trainNumber?: number | null;//列車の号数、ない場合もあるので要検討(-1にするとか)
     cars?: string;
     detail?: string;
     jiyuseki?: string;
@@ -88,32 +89,38 @@ export function updatePlainTrainData(tableIdx: number, trainIdx: number, data: P
     console.log(targetRow);
 }
 
-export const trainTables: TrainTable[] = [];
-/*for (var td = 0; td < Tablenum; td++) {
-    // plainTrainTables も Tablenum 分の器を用意し、各要素に PlainTrainData をセットする
-    const plainTrainsData: PlainTrainData[] = Array(Tablenums[td])
+export var trainTables: TrainTable[] = [];
+export function initTrainTables(tableNum: number, tableNums: number[]): void {
+    trainTables = Array(tableNum)
         .fill(null)
-        .map(() => ({
-            type:  TT[hour][Table_Column], // Shows関数で実際の値が設定されるため、ここでは空文字列で初期化
-            destination: '',
-            hour: 0,
-            minute: '',
-            track_number: '',
+        .map((_, tableIndex) => ({
+            trains: Array(tableNums[tableIndex])
+                .fill(null)
+                .map((): TrainData => ({
+                    type: '',
+                    trainName: '',
+                    trainNumber: 0,
+                    destination: '',
+                    hour: 0,
+                    minute: '',
+                    detail: '',
+                    trackNumber: '',
+                }))
         }));
-    plainTrainTables.push({
-        title: TableTitle[td] || '', // 表のタイトルがあれば設定、なければ空文字列
-        trains: plainTrainsData,
-    });
-    const trains: TrainData[] = Array(Tablenums[td])
-        .fill(null)
-        .map(() => ({
-            type:  TT[hour][Table_Column],
-            destination: '',
-            hour: 0,
-            minute: '',
-            trackNumber: '',
-        }));
-    trainTables.push({
-        trains: trains,
-    });
-}*/
+    // 配列の構造を固定
+    Object.preventExtensions(trainTables);
+    trainTables.forEach(table => Object.preventExtensions(table.trains));
+}
+/**
+ * trainTables の指定位置にデータを一度だけセットする
+ */
+export function updateTrainData(tableIdx: number, trainIdx: number, data: TrainData): void {
+    const targetTable = trainTables[tableIdx];
+    if (!targetTable) return;
+
+    if (targetTable.trains[trainIdx] !== null) {
+        console.warn(`警告: trainTables[${tableIdx}].trains[${trainIdx}] は既に設定されています。上書きをスキップしました。`);
+        return;
+    }
+    targetTable.trains[trainIdx] = data;
+}
