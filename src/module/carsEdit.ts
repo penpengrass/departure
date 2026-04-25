@@ -13,6 +13,7 @@ export function CarsDevideToLine(td: number) {
             console.log(matches2[1]);
             console.log(matches2[2]);
             console.log(matches2[3]);*/
+            trainTables[td].trains[tr].cars = matches2[3] + "両";
             Cars[td][tr] = matches2[3] + "両";
             LType = matches2[1] + matches2[2] + "号";
             Type[td][tr] = LType;
@@ -21,6 +22,7 @@ export function CarsDevideToLine(td: number) {
             console.log(matches3[1]);
             console.log(matches3[2]);
             console.log(matches3[3]);*/
+            trainTables[td].trains[tr].cars = matches3[2] + "両";
             Cars[td][tr] = matches3[2] + "両";
             LType = matches[1] + matches3[3] + "号";
             Type[td][tr] = matches3[1];
@@ -29,6 +31,7 @@ export function CarsDevideToLine(td: number) {
             console.log(matches[1]);
             console.log(matches[2]);
             console.log(matches[3]);*/
+            trainTables[td].trains[tr].cars = matches[2] + "両";
             Cars[td][tr] = matches[2] + "両";
             LType = matches[1];
             Type[td][tr] = matches[1];

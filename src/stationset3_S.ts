@@ -8,6 +8,7 @@ import { JRSBobj } from "./detailStopData/JREShindetailset";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
 import { Seventeen } from "./detailStopData/JRTohokuShinset";
 import { plainTrainTables, trainTables } from './types/trainTable';
+import { registerStations } from './main';
 var YamagataRapid = [123, 157];
 var Zaou = [201, 123, 205, 53, 133, 135, 137, 61, 141, 143, 67, 145, 149, 215, 157, 69, 223];
 var Shirakawa = [50];
@@ -95,6 +96,7 @@ export const ShinkansenStations: StationRegistry = {
     '宇都宮駅': {
         name: '宇都宮駅',
         company: '東北新幹線',
+        file:'index3_S.php',
         tableTitles: ['東北新幹線 仙台方面', '新幹線 大宮・上野・東京方面'],
         dtype: [0, 1],
         setup: () => {
@@ -326,3 +328,4 @@ export const ShinkansenStations: StationRegistry = {
 if (station == '福島駅') {
     detailflag = 2;
 }
+registerStations(ShinkansenStations);

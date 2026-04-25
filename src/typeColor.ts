@@ -214,6 +214,4 @@ if (Indexfile == 'index8.php') {
     allTokyuColor();
 } else if (Indexfile == 'index7_S1.php') {
     allJRCSColor();
-} else if (Indexfile == 'index4_A.php') {
-    allJROsakaColor();
 }

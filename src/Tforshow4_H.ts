@@ -1,11 +1,12 @@
 import { JRWSHobj } from './detailStopData/JRHokuShindetailset';
 import { DetailShow, doallDetailShow } from "./module/detailMainPut";
 import { DetailReplace } from "./module/detailSimpleEdit";
-import { AllWordChange, TwoLetterDistance, JRLimitedDevide, JRNameDevide, Bansenshow } from "./module/firstDisplayEdit";
+import { AllWordChange, TwoLetterDistance, JRLimitedDevide, JRNameDevide, Bansenshow, allLastShow } from "./module/firstDisplayEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { allJRWTrainNameColor, DesMiddle } from "./module/displayEdit4";
 import { allJRColor, allJRSSColor } from "./typeColor";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
+import { getStationConfig } from "./main";
 allJRSSColor(JRWSHobj, 2);
 allJRColor(2);
 console.log(DetailLength);
@@ -125,44 +126,10 @@ if (station == '敦賀駅' || station == '金沢駅') {
         }
     }
 }
-if (station == '敦賀駅') {
-    for (var tr = 0; tr < 3; tr++) {
-        if (Type[1][tr] != '' && ((TableMin[1][tr] < L_min && TableHour[1][tr] == L_hour) || TableHour[1][tr] < L_hour)) {
-            document.getElementById('TExplain' + 2 + (tr + 1))!.textContent = '到着済み';
-        }
-    }
-    for (var tr = 0; tr < 3; tr++) {
-        if (Type[2][tr] != '' && ((TableMin[2][tr] < L_min && TableHour[2][tr] == L_hour) || TableHour[2][tr] < L_hour)) {
-            document.getElementById('TDes' + 3 + (tr + 1))!.textContent += '(到着済み)';
-            document.getElementById('TDes' + 3 + (tr + 1))!.style.transform = "scaleX(0.70)" + "translate(-15%,0%)";
-        }
-    }
-    for (var tr = 0; tr < 3; tr++) {
-        let dName = document.getElementById('TName' + 5 + (tr + 1));
-        if (dName) {
-            if (Type[4][tr] == '新快速') {
-                dName.innerHTML += '<span class="LocalDetail">湖西経由近江舞子まで各停</span>';
-                /*dName.style.color='red';
-                dName.style.fontSize = '1.2vw';*/
-                dName.style.transform = "scalex(0.90)" + "translate(10%,0%)";
-            } else if (Type[4][tr] == '新快速*') {
-                dName.innerHTML += '<span class="LocalDetail">米原経由米原まで各駅停車</span>';
-                /*dName.style.color='red';
-                dName.style.fontSize = '1.2vw';*/
-                dName.style.transform = "scalex(0.90)" + "translate(10%,0%)";
-                Type[4][tr] = '新快速';
-                document.getElementById('WType' + 5 + (tr + 1))!.textContent = '新快速';
-            } else if (Des[4][tr] == '京都') {
-                dName.textContent = '湖西線経由';
-                dName.style.color = 'red';
-            }
-        }
-    }
-    if (holidayflag == 1) {
-        document.getElementById('supplement')!.innerHTML += station + 'のみ土休日ダイヤに対応(表示は土休日ダイヤ)';
-    } else if (holidayflag == 0) {
-        document.getElementById('supplement')!.innerHTML += station + 'のみ土休日ダイヤに対応(表示は平日ダイヤ)';
-    }
+if (Indexfile == 'index4_H.php') {
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    allLastShow();
 }
 Bansenshow(1, 2);
 allJRWTrainNameColor('red', 'red', 'red', 2);

@@ -3,7 +3,7 @@ import { JRE6ColorPlusName } from "./module/displayEdit6";
 import { CarsDefine, CarsInto } from "./module/carsEdit";
 import { allswitchChiba } from "./module/displaySwitch";
 //カラーコード(仮)
-var Sotobo_Color = 'red';
+/*var Sotobo_Color = 'red';
 JRNameDevide(6);
 document.getElementById("WDir1")!.textContent = "東京･横浜･大船方面";
 document.getElementById("WDir2")!.textContent = "西船橋･秋葉原方面";
@@ -69,4 +69,4 @@ for (var td = 0; td < 6; td++) {
     flagmarkerase(td, 'WType');
 }
 setInterval(allswitchChiba, 5000);
-Bansenshow();
+Bansenshow();*/

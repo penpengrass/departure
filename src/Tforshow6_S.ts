@@ -5,6 +5,7 @@ import { LimitedNumberPass } from "./module/firstDetailEdit";
 import { DetailBanner, FDetail } from "./module/detailMainPut";
 import { Shin_DetailReplace_Set_One } from "./module/detailSimpleEdit";
 import * as Stops from "./detailStopData/JRHokuJoetsuset";
+import { getStationConfig } from "./main";
 JRNameDevide(Tablenum);
 NonGouflag = 0;
 const table1 = document.getElementById("TESTable1");
@@ -32,15 +33,19 @@ flagmarkerase(0, 'WType');
 flagmarkerase(1, 'WType');
 flagmarkerase(1, 'WType', '+');
 if (station == '仙台駅') {
-    for (var tr = 0; tr < orderNum; tr++) {
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*for (var tr = 0; tr < orderNum; tr++) {
         if (TrainNumber[0][tr] > 11 && TrainNumber[0][tr] < 100 && Type[0][tr].includes('はやぶさ')) {
             TrainNumber[0][tr] += 2;
             document.getElementById('TName' + (1) + (tr + 1))!.textContent = TrainNumber[0][tr] + "号";
         }
     }
-    comment!.innerHTML += "<br>実際には停車駅表示があるが未実装";
+    comment!.innerHTML += "<br>実際には停車駅表示があるが未実装";*/
 } else if (station == '高崎駅') {
-    swapColumns(table1, 0, 1);
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*swapColumns(table1, 0, 1);
     swapColumns(table1, 1, 2);
     swapColumns(table2, 0, 1);
     swapColumns(table2, 1, 2);
@@ -94,7 +99,7 @@ if (station == '仙台駅') {
         document.getElementById('TDetailtitle' + (td + 1) + '' + (0 + 1))!.textContent = Detail[td][0];
         DetailBanner(td, 0, 23, 1, 'TDetailtitle');
     }
-    comment!.innerHTML = "臨時列車の有無や停車駅は不正確";
+    comment!.innerHTML = "臨時列車の有無や停車駅は不正確";*/
 }
 //種別の色
 for (var td = 0; td < Tablenum; td++) {

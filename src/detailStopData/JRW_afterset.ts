@@ -1,23 +1,25 @@
 import { reverseLine, LineCopy } from "../module/firstTableEdit";
 import { JRLimitedNumber } from "../module/firstDisplayEdit";
 import { rapid, Jsubrapid, local } from '../detailStopData/JRdetail';
+import { plainTrainTables } from "../types/trainTable";
 var Jrapid = "";
 var limited = "";
 if (Indexfile == 'index4.php') {
     window.Dtype = [0, 0];
 }
-let Grapid = [['北新地', '尼崎までの各駅', '伊丹', '川西池田', '中山寺', '宝塚', '西宮名塩', '三田', '三田から各駅', '新三田', '篠山口']];
-let Hrapid = '京橋までの各駅・放出・住道・四条畷・星田・河内磐船・長尾・長尾から各駅';
-let Tsubrapid = '京橋までの各駅・放出・住道・四条畷・四条畷から各駅';
-let ASperapid = [['米原', '彦根', '能登川', '近江八幡', '野洲', '守山', '草津', '南草津', '石山', '大津', '山科', '京都', '高槻', '新大阪',
+export let Grapid = [['北新地', '尼崎までの各駅', '伊丹', '川西池田', '中山寺', '宝塚', '西宮名塩', '三田', '三田から各駅', '新三田', '篠山口']];
+export let Hrapid = '京橋までの各駅・放出・住道・四条畷・星田・河内磐船・長尾・長尾から各駅';
+export let Tsubrapid = '京橋までの各駅・放出・住道・四条畷・四条畷から各駅';
+export let ASperapid = [['米原', '彦根', '能登川', '近江八幡', '野洲', '守山', '草津', '南草津', '石山', '大津', '山科', '京都', '高槻', '新大阪',
     '大阪', '尼崎', '芦屋', '三ノ宮', '神戸', '明石', '西明石', '加古川', '姫路', '姫路から各駅', '網干', '播州赤穂', '上郡']];
-let Alimited = [['米原', '草津', '京都', '新大阪', '大阪']];
+export let Alimited = [['米原', '草津', '京都', '新大阪', '大阪']];
 reverseLine(ASperapid, 0, 1);
 ASperapid[1].push('米原から各駅');
 let Super_rapid;
 //JR西日本などの詳細表示
 export var Detail_contents = new Array(Tablenum);
 if (station == '北新地駅') {
+    /*console.log(plainTrainTables);
     Jrapid = LineCopy(Grapid);
     if (Type[0][0] == '快速') {
         Detail_contents[0] = Hrapid;
@@ -33,7 +35,7 @@ if (station == '北新地駅') {
         Detail_contents[1] = '西明石までの各駅';
     } else if (Type[1][0] == '普通') {
         Detail_contents[1] = Des[1][0] + 'までの各駅';
-    }
+    }*/
 }
 if (station == '米原駅') {
     Dtype[2] = 0;

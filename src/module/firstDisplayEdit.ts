@@ -7,7 +7,7 @@ for (var td = 0; td < Tablenum; td++) {
     LiName[td] = "";
 }
 export function LastShows(td: number, tr: number) {
-    //console.log(TableHour[td][tr]);
+    //console.log(TableHour);
     var d_Hour = document.getElementById("THour" + (td + 1) + "" + (tr + 1));
     if (d_Hour && TableHour[td][tr] !== undefined && TableHour[td][tr] != "") {
         document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =

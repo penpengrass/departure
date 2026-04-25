@@ -2,7 +2,7 @@ import { hour, min } from "./Time";
 import { FShow, FSTShow } from "./module/timeInfoSet";
 import { koshin } from "./module/firstTableEdit";
 import { StationRegistry, StationConfig } from './types/station';
-import { plainTrainTables, createTrainDataFromGlobal, initPlainTrainTables, updatePlainTrainData,initTrainTables } from "./types/trainTable";
+import { plainTrainTables, createTrainDataFromGlobal, initPlainTrainTables, updatePlainTrainData, initTrainTables } from "./types/trainTable";
 import { KintetsuStations } from "./stationset2";
 import { ShinkansenStations } from "./stationset3_S";
 import { JREastStations } from "./stationset3";
@@ -25,35 +25,24 @@ import { JRKyushuStations } from "./stationset10";
 }*/
 // config がない場合は、既存の import された stationset3.ts などの if 文が実行される
 
-export function getStationConfig(stationName: string, indexfile: string) {
-    // 全registryを一つのオブジェクトにマージ
-    const allRegistries = [
-        KintetsuStations,
-        ShinkansenStations,
-        JREastStations,
-        JRHokurikuStations,
-        JRSanyoStations,
-        JRWestStations,
-        TokyuStations,
-        JREastShinkansenStations,
-        JREast6Stations,
-        JRTokaidouStations,
-        JRTokaiStations,
-        JRHokkaidouStations,
-        JRShikokuStations,
-        JRKyushuStations
-    ];
-    for (const registry of allRegistries) {
-        for (const [key, config] of Object.entries(registry)) {
-            // name が マッチし、file に IndexFile が含まれている場合
-            if (config.name === stationName) {
-                if (!config.file || config.file.includes(indexfile)) {
-                    return config;
-                }
+const stationRegistries: StationRegistry = {};
+
+export function registerStations(registry: StationRegistry) {
+    Object.assign(stationRegistries, registry);
+    console.log("------registerの方のmain開始-------");
+    main();
+}
+
+export function getStationConfig(stationName: string, indexfile: string): StationConfig | undefined {
+    //console.log(JSON.stringify(stationRegistries));
+    for (const [key, config] of Object.entries(stationRegistries)) {
+        if (config.name === stationName) {
+            if (!config.file || config.file.includes(indexfile)) {
+                return config;
             }
         }
     }
-
+    console.error("configが見つかりませんでした。");
     return undefined;
 }
 function initStationCommon(config: StationConfig) {
@@ -65,15 +54,6 @@ function initStationCommon(config: StationConfig) {
     window.TableTitle = config.tableTitles;
     if (config.dtype) window.Dtype = config.dtype;
     if (config.setup) config.setup();
-}
-var config = getStationConfig(window.station, Indexfile);
-//駅名の表示
-if (config) {
-    company = config.company;
-    document.getElementById('stationname')!.textContent = company + ' ' + config.name;
-} else {
-    //インタフェース化していない場合
-    document.getElementById('stationname')!.textContent = company + ' ' + window.station;
 }
 let countTable = 0;
 let countOrder = 2;
@@ -160,11 +140,19 @@ function main() {
     initPlainTrainTables(Tablenum, Tablenums);
     initTrainTables(Tablenum, Tablenums);
     // --- 駅設定の適用 ---
+    console.log("getStationConfig開始");
     let config = getStationConfig(window.station, Indexfile);
-    console.log(config);
     if (config) {
-        console.log(`${window.station} の設定を StationConfig インターフェースから読み込みます。`);
+        console.log(`${window.station} の設定をmain関数のStationConfig インターフェースから読み込みます。`);
         initStationCommon(config);
+    }
+    //駅名の表示
+    if (config) {
+        company = config.company;
+        document.getElementById('stationname')!.textContent = company + ' ' + config.name;
+    } else {
+        //インタフェース化していない場合
+        document.getElementById('stationname')!.textContent = company + ' ' + window.station;
     }
     for (var td_main = 0; td_main < Tablenum; td_main++) {
         var do_Title = document.getElementById('kn' + (td_main + 1));
@@ -176,6 +164,7 @@ function main() {
             }
             //インタフェース化した場合
             if (config) {
+                console.log("config駅タイトル")
                 document.getElementById('kn' + (td_main + 1))!.innerHTML = config.tableTitles[td_main];
             }
             if (station == '敦賀駅') {
@@ -208,6 +197,7 @@ function main() {
         //console.log((td_main + 1) + "番目の表表示完了");
     }
 }
+console.log("------元々のmain開始-------");
 main();
 console.log(plainTrainTables);
 

@@ -1,8 +1,6 @@
 import { DetailReplace_Set } from "./module/detailSimpleEdit";
 import { allLastShow, TwoLetterDistance, flagmarkerase, JRNameDevide, Bansenshow } from "./module/firstDisplayEdit";
-import { FDetail, doallDetailShow } from "./module/detailMainPut";
-import * as Stops from "./detailStopData/JRW_S";
-import { TrainNumber } from "./module/firstDisplayEdit";
+import { getStationConfig } from "./main";
 import { JRSSobj } from "./detailStopData/JRW_S";
 import { allJRSSColor } from "./typeColor";
 import { allSanyoShinkansenSwitch } from "./module/displaySwitch";
@@ -12,7 +10,9 @@ if (LastShowFlag == 0) {
 LastShowFlag = 1;
 var TablenumSub = Tablenum;
 if (station == '博多駅') {
-    Dtype = [1, 0];
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*Dtype = [1, 0];
     for (var td = 0; td < TablenumSub; td++) {
         for (var tr = 0; tr < 2; tr++) {
             FDetail(Type[td][tr], JRSSobj, Dtype[td], td, tr, "・");
@@ -47,9 +47,11 @@ if (station == '博多駅') {
     }
     console.log(TrainNumber);
     DetailLength = [2, 2];
-    doallDetailShow(25);
+    doallDetailShow(25);*/
 } else if (station == '岡山駅' && Indexfile == 'index4_S2.php') {
-    Dtype = [1, 0];
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*Dtype = [1, 0];
     console.log("--ここから詳細表示--");
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < 2; tr++) {
@@ -92,17 +94,11 @@ if (station == '博多駅') {
             Detail[1][tr] = Des[1][tr] + "まで止まりません";
         }
     }
-    /*for (var td = 0; td < TablenumSub; td++) {
-        for (var tr = 0; tr < 2; tr++) {
-            DetailBanner(td, tr, 25);
-        }
-    }*/
+    
     DetailLength = [2, 2];
-    doallDetailShow(25);
-
-
+    doallDetailShow(25);*/
 }
-function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj:any) {
+function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj: any) {
     for (const key in Uobj) {
         if (Utype.startsWith(Uobj[key].type)) {
             Cars[td][tr] = Uobj[key].cars;

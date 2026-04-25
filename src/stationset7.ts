@@ -1,5 +1,14 @@
 import { limitedjustnumber, limitednumber, limitednumber2, TrainNameDevide } from './module/firstTableEdit';
 import { StationRegistry, StationConfig } from './types/station';
+import { Meiobj } from './detailStopData/Meidenset';
+import { TypeColorChange, TypeColorChange2 } from "./module/colorSimpleSet";
+import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, allLastShow, holiday_F } from "./module/firstDisplayEdit";
+import { FDetail, LastLetterRemove } from "./module/detailMainPut";
+import { SpendingTime, DetailReplace, SpecialStop } from "./module/detailSimpleEdit";
+import { TrainNumber } from "./module/firstDisplayEdit";
+import { JRCeNobj, JRKaobj, Nagahama } from "./detailStopData/JRNadetailset";
+import { BottomBanner } from "./module/detailBannerSwitch";
+import { registerStations } from './main';
 export var TokaiDetailflag = 0;
 export const JRTokaiStations: StationRegistry = {
     '豊橋駅': {
@@ -11,6 +20,52 @@ export const JRTokaiStations: StationRegistry = {
             Dtype[3] = 1;
             TokaiDetailflag = 2;
             limitednumber(TT[0], 1, '特急伊那路');
+        },
+        onRender: () => {
+            AllWordReplace(1, 0, Type, '特急', '特急(一部特別車)');
+            AllWordReplace(1, 0, Type, '快特', '快特(一部特別車)');
+            AllWordReplace(1, 1, Type, '特急', '特急(一部特別車)');
+            AllWordReplace(1, 1, Type, '快特', '快特(一部特別車)');
+            FDetail(Type[3][0], JRCeNobj, Dtype[3], 3, 0, "・");
+            console.log(Type[1][0]);
+            AllWordChange(1, 0, Des, '名鉄名古屋', '名古屋');
+            FDetail(Type[1][0], Meiobj, Dtype[1], 1, 0, "・");
+            Detail[1][0] = Detail[1][0].replace('須ケ口・', '');
+            AllWordChange(1, 0, Des, '名古屋', '名鉄名古屋');
+            SpecialStop(1, '(須)', '名古屋', '須ケ口', '・', 0.8);
+            SpecialStop(1, '(新)', '東岡崎', '新安城', '・', 0.8);
+            SpecialStop(1, '(国)(伊)', '豊橋', '伊奈・国府', '・', 0.8);
+            SpecialStop(1, '(国)', '豊橋', '国府', '・', 0.8);
+            SpecialStop(1, '(伊)', '豊橋', '伊奈', '・', 0.8);
+            SpecialStop(3, '(稲)', '名古屋', '稲沢', '・', 0.8);
+            SpecialStop(3, ' 幸', '蒲郡', '幸田', '・', 0.8);
+            SpecialStop(3, ' 三谷', '豊橋', '三河三谷', '・', 0.8);
+            document.getElementById('Detail_Banner1')!.remove();
+            document.getElementById('Detail_Banner2')!.remove();
+            Tablenums = [3, 2, 3, 3];
+            LastLetterRemove(1, 0, '・');
+            if (Type[1][0] == '急行(東岡崎から準急)') {
+                DetailReplace(1, 0, '東岡崎', '東岡崎・矢作橋');
+                DetailReplace(1, 0, '前後', '豊明・前後・有松・中京競馬場前');
+            }
+            if (Type[1][0] != '') {
+                BottomBanner("TRow", 2, 3, 5, '停車駅は<span class="orange">' + Detail[1][0] + '</span>です');
+            }
+            if (Type[2][0] != '') {
+                SpendingTime(2, '', '浜松', 'およそ35', 'orange');
+                //document.getElementById('TDetail3').innerHTML = '浜松までの所要時間は<span class="orange">およそ35分</span>です';
+            }
+            LastLetterRemove(3, 0, '・');
+            if (Detail[3][0] == '各駅にとまります') {
+                Detail[3][0] = Des[3][0] + 'までの各駅';
+            }
+            if (Type[3][0] != '') {
+                document.getElementById('TDetail' + (3 + 1))!.innerHTML =
+                    '<span id="Detail_Type' + (3 + 1) + '">' + Type[3][0] + '</span> ' + Des[3][0] + '行きの停車駅は' +
+                    '<span class="orange">' + Detail[3][0] + '</span>です';
+            }
+            TypeColorChange2(3, 'Detail_Type', '特急', 'red');
+            TypeColorChange2(3, 'Detail_Type', '快速', 'orange');
         }
     },
     '浜松駅': {
@@ -39,6 +94,35 @@ export const JRTokaiStations: StationRegistry = {
             limitednumber(TT[1], 1, '特急ひだ');
             limitednumber(TT[2], 2, '特急ひだ');
             limitednumber(TT[0], 1, 'ホームライナー大垣');
+        },
+        onRender: () => {
+            if (Type[0][0].includes('特急')) {
+                FDetail(Type[0][0], JRCeNobj, Dtype[0], 0, 0, "・");
+                if (Nagahama.includes(TrainNumber[0])) {
+                    console.log(TrainNumber[0]);
+                    Detail[0][0] += '長浜';
+                    //DetailReplace(0,'', '米原', '米原・長浜', 3);
+                }
+            } else if (Type[0][0] != '') {
+                Detail[0][0] = Des[0][0] + 'までの各駅';
+            }
+            var HidaNumber = JRLimitedNumber(1, 0);
+            //console.log(HidaNumber);
+            if (Type[1][0].includes('特急')) {
+                FDetail(Type[1][0], JRKaobj, Dtype[1], 1, 0, "・");
+                console.log(Detail[1][0]);
+            } else if (Type[1][0] != '') {
+                Detail[1][0] = Des[1][0] + 'までの各駅';
+            }
+            console.log(Detail[1][0]);
+            if (HidaNumber == 7 || HidaNumber == 13) {
+                DetailReplace(1, 0, '越中八尾', '越中八尾・速星');
+            } else if (HidaNumber == 15) {
+                DetailReplace(1, 0, '飛騨萩原・飛騨小坂・久々野', '飛騨萩原');
+            }
+            FDetail(Type[2][0], JRCeNobj, Dtype[2], 2, 0, "・");
+            SpecialStop(2, '(幸)', '岡崎', '幸田', '・', 0.8);
+            SpecialStop(2, '(三)', '蒲郡', '三河三谷', '・', 0.8);
         }
     },
     '大垣駅': {
@@ -50,6 +134,33 @@ export const JRTokaiStations: StationRegistry = {
             limitednumber(TT[0], 1, '特急しらさぎ');
             limitednumber(TT[1], 2, '特急しらさぎ');
             limitednumber(TT[1], 2, 'ホームライナー大垣');
+        },
+        onRender: () => {
+            if (Type[0][0].includes('特急')) {
+                FDetail(Type[0][0], JRCeNobj, Dtype[0], 0, 0, "・");
+                console.log(TrainNumber[0]);
+                if (Nagahama.includes(TrainNumber[0])) {
+                    console.log(TrainNumber[0]);
+                    Detail[0][0] += '長浜';
+                    //DetailReplace(0,'', '米原', '米原・長浜', 3);
+                }
+            } else if (Type[0][0] != '') {
+                if (Des[0][0] == '米原') {
+                    SpendingTime(0, '', Des[0][0], 'およそ35', 'orange');
+                } else if (Des[0][0] == '関ケ原') {
+                    SpendingTime(0, '', Des[0][0], 'およそ13', 'orange');
+                } else if (Des[0][0] == '美濃赤坂') {
+                    SpendingTime(0, '', Des[0][0], 'およそ7', 'orange');
+                }
+                //Detail[0][0] = Des[0][0] + 'までの各駅';
+            }
+            console.log(Type[1][0]);
+            FDetail(Type[1][0], JRCeNobj, Dtype[1], 1, 0, "・");
+            if (Type[1][0].includes('快速')) {
+                Detail[1][0] = '穂積・西岐阜・' + Detail[1][0];
+            }
+            SpecialStop(1, '(幸)', '岡崎', '幸田', '・', 0.8);
+            SpecialStop(1, '(三)', '蒲郡', '三河三谷', '・', 0.8);
         }
     },
     '名古屋駅': {
@@ -86,3 +197,4 @@ if (TokaiDetailflag == 1) {
     detailLength_one = 1;
 }
 export { };
+registerStations(JRTokaiStations);
