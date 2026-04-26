@@ -1,7 +1,6 @@
 import { RailNumberDevide, DestinationDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
-import { registerStations } from './main';
 detailflag = 9;
 detailLength_one = 1;
 export const JRShikokuStations: StationRegistry = {
@@ -55,4 +54,3 @@ export const JRShikokuStations: StationRegistry = {
         }
     }
 }
-registerStations(JRShikokuStations);

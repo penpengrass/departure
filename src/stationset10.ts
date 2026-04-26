@@ -1,13 +1,14 @@
 import { TrainNameLineIncludeDevide, TrainNameDevide, DestinationDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
-import { swapColumns, AllWordChange, AllWordReplace, TwoLetterDistance, allLastShow, comment, JRNameDevide, Bansenshow, AllClassSetting } from "./module/firstDisplayEdit";
+import { swapColumns, AllWordChange, AllTrainTypeReplace, TwoLetterDistance, JRNameDevide, Bansenshow, AllClassSetting, TrainTypeSet, TrainTypeWordChange, DestinationWordChange } from "./module/firstDisplayEdit";
 import { CarsDevideToLine, CarsInto } from "./module/carsEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { JRK_Nobj, NagasakiAddStop } from "./detailStopData/JRK_S";
-import { registerStations } from './main';
+import { comment, Cars } from './types/constants';
+import { plainTrainTables, trainTables } from './types/trainTable';
 NonGouflag = 1;
 export const JRKyushuStations: StationRegistry = {
     '小倉駅': {
@@ -30,28 +31,29 @@ export const JRKyushuStations: StationRegistry = {
             let FourCars = [[10, 12], [], []];
             for (var td = 0; td < Tablenum; td++) {
                 for (var tr = 0; tr < orderNum; tr++) {
-                    if (SixCars[td].includes(TrainNumber[td][tr])) {
-                        Cars[td][tr] = '6両';
-                    } else if (SevenCars[td].includes(TrainNumber[td][tr])) {
-                        Cars[td][tr] = '7両';
-                    } else if (EightCars[td].includes(TrainNumber[td][tr])) {
-                        Cars[td][tr] = '8両';
-                    } else if (FourCars[td].includes(TrainNumber[td][tr])) {
-                        Cars[td][tr] = '4両';
+                    var _number = trainTables[td].trains[tr]?.trainNumber ?? 0;
+                    if (SixCars[td].includes(_number)) {
+                        trainTables[td].trains[tr].cars = '6両';
+                    } else if (SevenCars[td].includes(_number)) {
+                        trainTables[td].trains[tr].cars = '7両';
+                    } else if (EightCars[td].includes(_number)) {
+                        trainTables[td].trains[tr].cars = '8両';
+                    } else if (FourCars[td].includes(_number)) {
+                        trainTables[td].trains[tr].cars = '4両';
                     }
                 }
             }
             for (var tr = 0; tr < orderNum; tr++) {
-                AllWordReplace(0, tr, Type, '区間快速', '普通');
-                AllWordReplace(0, tr, Type, '快速', '普通');
+                AllTrainTypeReplace(0, tr, '区間快速', '普通');
+                AllTrainTypeReplace(0, tr, '快速', '普通');
                 if (Des[0][tr] == '下関') {
-                    Cars[0][tr] = '4両';
+                    trainTables[0].trains[tr].cars = '4両';
                 }
 
                 if ((Des[2][tr] == '田川後藤寺' || Des[2][tr] == '添田') && Type[2][tr] == '普通') {
-                    Cars[2][tr] = '2両';
+                    trainTables[2].trains[tr].cars = '2両';
                 } else if (Type[2][tr] == '普通') {
-                    Cars[2][tr] = '3両';
+                    trainTables[2].trains[tr].cars = '3両';
                 }
             }
             CarsDevideToLine(0);
@@ -64,7 +66,7 @@ export const JRKyushuStations: StationRegistry = {
         company: 'JR九州',
         tableTitles: ['山陽・東海道新幹線 新大阪方面', '九州新幹線 鹿児島中央方面',
             '鹿児島本線下り 大牟田 久留米方面', '長崎本線 佐賀 佐世保方面', '鹿児島本線上り 小倉方面', '福北ゆたか線 篠栗方面'],
-        file: 'index10.php',
+        file: 'index10_H.php',
         setup: () => {
             limitedjustnumber(TT[1], 1, 'のぞみ');
             limitedjustnumber(TT[0], 2, 'のぞみ');
@@ -123,25 +125,25 @@ export const JRKyushuStations: StationRegistry = {
             for (var tr = 0; tr < 2; tr++) {
                 if (!Type[0][tr].includes('ゆふ')) {
                     if (SixCars.includes(TrainNumber[0][tr])) {
-                        Cars[0][tr] = '6両';
+                        trainTables[0].trains[tr].cars = '6両';
                     } else if (TrainNumber[0][tr] > 0) {
-                        Cars[0][tr] = '8両';
+                        trainTables[0].trains[tr].cars = '8両';
                     }
                 }
                 if (SixCars.includes(TrainNumber[2][tr])) {
-                    Cars[2][tr] = '6両';
+                    trainTables[2].trains[tr].cars = '6両';
                 } else if (TrainNumber[2][tr] > 0) {
-                    Cars[2][tr] = '8両';
+                    trainTables[2].trains[tr].cars = '8両';
                 }
                 if (Type[2][tr].includes('みどり(リレーかもめ')) {
                     Des[2][tr] = '佐世保･長崎';
                 }
                 if (Des[2][tr] == '武雄温泉') {
-                    Des[2][tr] = '長崎';
+                     trainTables[2].trains[tr].destination = '長崎';
                 }
-                AllWordChange(2, tr, Des, 'ハウステンボス･佐世保', 'ﾊｳｽﾃﾝﾎﾞｽ･佐世保');
-                if (Type[3][tr] == '普通' && Cars[3][tr] === undefined) {
-                    Cars[3][tr] = '2両';
+                DestinationWordChange(2, tr, 'ハウステンボス･佐世保', 'ﾊｳｽﾃﾝﾎﾞｽ･佐世保');
+                if (Type[3][tr] == '普通' && trainTables[3].trains[tr].cars === undefined) {
+                    trainTables[3].trains[tr].cars = '2両';
                 }
             }
         }
@@ -172,31 +174,33 @@ export const JRKyushuStations: StationRegistry = {
                 Detail[0][tr] = "停車駅は、<span class='Corange'>" + Detail[0][tr] + "</span>です"
                 if (TrainNumber[0][tr] < 99 && TrainNumber[0][tr] > 0) {
                     document.getElementById('TCars' + (1) + (tr + 1))!.textContent = '自由席4-6号車';
+                    trainTables[0].trains[tr].type = 'かもめ'
                 } else if (TrainNumber[0][tr] > 99) {
                     document.getElementById('TCars' + (1) + (tr + 1))!.textContent = '全車自由席';
                     Detail[0][tr] += "　諫早、新大村方面の<span class='Corange'>最終列車</span>です。";
+                    trainTables[0].trains[tr].type = 'かもめ'
                 }
                 if (Type[0][tr] != "") document.getElementById('TDetail1' + (tr + 1))!.innerHTML = Detail[0][tr];
+                TrainTypeWordChange(1, tr, '長与経由普通', '普通');
                 if (Type[1][tr] != "") {
-                    if (Type[1][tr].includes('*')) Cars[1][tr] = '3両';
-                    else if (Type[1][tr].includes('+')) Cars[1][tr] = '4両';
-                    else Cars[1][tr] = '2両';
-                    Type[1][tr] = Type[1][tr].replace('*', '');
-                    Type[1][tr] = Type[1][tr].replace('+', '');
+                    if (Type[1][tr].includes('*')) trainTables[1].trains[tr].cars = '3両';
+                    else if (Type[1][tr].includes('+')) trainTables[1].trains[tr].cars = '4両';
+                    else trainTables[1].trains[tr].cars = '2両';
+                    TrainTypeSet(1);
                 }
-                AllWordChange(1, tr, Type, '長与経由普通', '普通');
-                if (Des[1][tr] != '' && Des[1][tr] != '長与') {
-                    Des[1][tr] += '(長与)';
+                const _Des1 = plainTrainTables[1].trains[tr].destination;
+                const _Des2 = plainTrainTables[2].trains[tr].destination;
+                if (_Des1 != '' && _Des1 != '長与') {
+                    trainTables[1].trains[tr].destination += _Des1 + '(長与)';
                 }
-                if (Des[2][tr] != '') {
-                    Des[2][tr] += '(市布)';
+                if (_Des2 != '') {
+                    trainTables[2].trains[tr].destination += _Des2 + '(市布)';
                 }
                 if (Type[2][tr] != "") {
-                    if (Type[2][tr].includes('*')) Cars[2][tr] = '3両';
-                    else if (Type[2][tr].includes('+')) Cars[2][tr] = '4両';
-                    else Cars[2][tr] = '2両';
-                    Type[2][tr] = Type[2][tr].replace('*', '');
-                    Type[2][tr] = Type[2][tr].replace('+', '');
+                    if (Type[2][tr].includes('*')) trainTables[2].trains[tr].cars = '3両';
+                    else if (Type[2][tr].includes('+')) trainTables[2].trains[tr].cars = '4両';
+                    else trainTables[2].trains[tr].cars = '2両';
+                    TrainTypeSet(2);
                 }
             }
             if (Type[0][0] != "") document.getElementById('TDetail1' + (3))!.innerHTML = "西九州新幹線では、<span class='Corange'>交通系ICカード</span>のご利用はできません。";
@@ -206,4 +210,3 @@ export const JRKyushuStations: StationRegistry = {
         }
     }
 }
-registerStations(JRKyushuStations);

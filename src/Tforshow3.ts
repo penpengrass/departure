@@ -1,7 +1,7 @@
 import { TypeColorChange } from "./module/colorSimpleSet";
 import {
     FourLetters, swapColumns, NameColorchange, JRLineName, LastShows, rowremove, AllWordChange, AllWordReplace, JRLimitedNameDevide,
-    JRLimitedDevide, JRLimitedNumber, comment, JRATOSDevide, allTwoLettersDistance, CarsDevide, allLastShow, flagmarkerase, allTimeMarkErase, Bansenshow, holiday_F,
+    JRLimitedDevide, JRLimitedNumber, JRATOSDevide, allTwoLettersDistance, NewAllLastShow, flagmarkerase, allTimeMarkErase, Bansenshow, holiday_F,
     AllClassSetting
 } from "./module/firstDisplayEdit";
 import { FShow } from "./module/timeInfoSet";
@@ -11,6 +11,7 @@ import { BottomBanner } from "./module/detailBannerSwitch";
 import { allswitchOdawara } from "./module/displaySwitch";
 import { allJRCIncludeColor } from "./typeColor";
 import { getStationConfig } from "./main";
+import { comment } from "./types/constants";
 const ATOStable = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
     ATOStable[td] = document.getElementById("TATOSTable" + (td + 1));
@@ -92,7 +93,7 @@ if (station == '熱海駅') {
         TypeColorChange(3, tr, '特急', 'red');
     }
     allTwoLettersDistance(Des, TDes, 1, 0.8);
-    allLastShow();
+    NewAllLastShow();
     document.getElementById('WType13')!.textContent = '八高線 高麗川 拝島 八王子方面 普通';
     document.getElementById('TType13')!.style.backgroundColor = "gray";
     document.getElementById('TType13')!.style.color = "white";

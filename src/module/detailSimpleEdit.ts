@@ -1,5 +1,5 @@
 import { TrainNumber } from "../module/firstDisplayEdit";
-import { TokaiDetailflag } from "../stationset7";
+import { TokaiDetailflag } from "../types/constants";
 //西ノ京や久居で使う
 export function whetherStop(start_hour: number, start_min: number, hour: number, min: number, end_hour: number, end_min: number) {
   if (start_hour < hour && end_hour > hour) {

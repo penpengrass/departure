@@ -2,6 +2,9 @@ import { JRNameDevide, allLastShow, flagmarkerase, Bansenshow } from "./module/f
 import { JRE6ColorPlusName } from "./module/displayEdit6";
 import { CarsDefine, CarsInto } from "./module/carsEdit";
 import { allswitchChiba } from "./module/displaySwitch";
+import { getStationConfig } from "./main";
+var config = getStationConfig(window.station, Indexfile);
+if (config && config.onRender) config.onRender();
 //カラーコード(仮)
 /*var Sotobo_Color = 'red';
 JRNameDevide(6);

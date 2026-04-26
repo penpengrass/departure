@@ -1,3 +1,5 @@
+import { plainTrainTables, trainTables } from "../types/trainTable";
+
 export function JRE6Color(td: number, LType: string, color: string) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (Type[td][tr].includes(LType)) {
@@ -14,8 +16,9 @@ export function JRE6ColorPlusName(td: number, tr: number, LoType: string, color:
     var LType = document.getElementById('TType' + (td + 1) + (tr + 1));
     var LName = document.getElementById('TName' + (td + 1) + (tr + 1));
     var LDep = document.getElementById('TDep' + (td + 1) + (tr + 1));
+    const _Type = trainTables[td].trains[tr].type;
     if (Nameflag == 0) {
-        if (Type[td][tr].includes(LoType)) {
+        if (_Type.includes(LoType)) {
             LType!.style.backgroundColor = color;
             if (LDep != null) {
                 LDep.style.backgroundColor = color;
@@ -86,7 +89,8 @@ export function allUTL() {
 
 export function ShihatsuMove(td: number, tr: number, Place: string) {
     var LoName = document.getElementById(Place + (td + 1) + (tr + 1));
-    if (LoName && Type[td][tr].includes('始発')) {
+    if (LoName && plainTrainTables[td].trains[tr].type.includes('始発')) {
+        trainTables[td].trains[tr].type = Type[td][tr].replace('始発', '');
         Type[td][tr] = Type[td][tr].replace('始発', '');
         LoName.textContent += '始発';
     }

@@ -7,7 +7,7 @@ import { JRobj } from "../detailStopData/JRW_afterset";
 import { JRCeNobj } from "../detailStopData/JRNadetailset";
 import { JRSaninObj } from "../detailStopData/JRSanindetailset";
 import { AllClassSetting } from "./firstDisplayEdit";
-window.Des_Banner = new Array(Tablenum);
+import { trainTables } from "../types/trainTable";
 export function DesMiddle(td: number, tr: number, word: string) {
     var matches = new Array(orderNum);
     var Desword = new RegExp("(\\D+)" + word + "(\\D+)");
@@ -15,21 +15,15 @@ export function DesMiddle(td: number, tr: number, word: string) {
     //console.log(Des[td][tr]);
     //(/(\D+)(\d+)両/);
     //matches[tr] = Des[td][tr].match(/(\D+)連絡(\D+)/);
-    matches[tr] = Des[td][tr].match(Desword);
-    var Tag;
-    if (Indexfile == 'index4_O.php') {
-        Tag = 'WDes';
-    } else {
-        Tag = 'TDes';
-    }
+    matches[tr] = trainTables[td].trains[tr].destination.match(Desword);
     //console.log(matches[tr]);
-    var d_Tag = document.getElementById(Tag + (td + 1) + (tr + 1));
+    var d_Tag = document.getElementById('WDes' + (td + 1) + (tr + 1));
     if (matches[tr] && d_Tag) {
         //console.log(td + ':' + tr + word + " " + Tag + ' はマッチする');
         /*console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
         console.log(matches[tr][2] + ":" + tr);*/
-        d_Tag.innerHTML =
+        trainTables[td].trains[tr].destination =
             '<span class="DesLeft" id="DesLeft' + (td + 1) + (tr + 1) + '">' + matches[tr][1] + '</span>' + '<span class="DesMiddle">' + word + '</span>' + '<span id="DesRight' + (td + 1) + (tr + 1) + '">' + matches[tr][2] + '</span>';
         var DesLeft = document.getElementById('DesLeft' + (td + 1) + (tr + 1)) as HTMLElement | null;
         var DesRight = document.getElementById('DesRight' + (td + 1) + (tr + 1));
@@ -47,7 +41,8 @@ export function DesMiddle(td: number, tr: number, word: string) {
             DesLeft.style.transform = "scaleX(0.75)" + "translate(20%,0%)";
         }
         if (DesRight && tr == 0) {
-            Des_Banner[td] = DesRight.textContent;
+            console.log(DesRight.textContent)
+            trainTables[td].trains[0].des_banner = DesRight.textContent;
         }
     } else {
         //console.log(td + ':' + tr + word + 'はマッチしない');
@@ -64,7 +59,7 @@ export function Maibara_Banner(td: number) {
         //console.log(Type[td - 1][0]);
         if (Type[td - 1][0].includes('快速')) {
             stationN = '大垣';
-            Des[2][0] = Des_Banner[2];
+            Des[2][0] = trainTables[2].trains[0].des_banner;
             FDetail(Type[td - 1][0], JRCeNobj, Dtype[0], td - 1, 0, "・");
             console.log(Dtype);
             DetailReplace(2, 0, '岐阜', '岐阜までの各駅');

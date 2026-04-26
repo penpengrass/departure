@@ -212,7 +212,8 @@ export function doallDetailShow(BannerLength = 1, LLength = Tablenum) {
     for (var td = 0; td < LLength; td++) {
         for (var tr = 0; tr < DetailLength[td]; tr++) {
             LastLetterRemove(td, tr, '・');
-            document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = Detail[td][tr];
+            document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = trainTables[td].trains[tr]?.detail ?? Detail[td][tr];
+            //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = Detail[td][tr];
             DetailBanner(td, tr, BannerLength, 1);
         }
     }
@@ -268,5 +269,7 @@ export function LastLetterRemove(td: number, tr: number, mark: string) {
     if (Detail[td][tr] != null && Detail[td][tr].slice(-1) == mark) {
         //console.log(tr + 'は読点で終わる');
         Detail[td][tr] = Detail[td][tr].slice(0, -1);
+        trainTables[td].trains[tr].detail = Detail[td][tr];
+    
     }
 }

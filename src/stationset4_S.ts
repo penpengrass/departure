@@ -1,14 +1,9 @@
 import { TrainNameDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { StationRegistry, StationConfig } from './types/station';
 import { DetailReplace_Set } from "./module/detailSimpleEdit";
-import { allLastShow, TwoLetterDistance, flagmarkerase, JRNameDevide, Bansenshow } from "./module/firstDisplayEdit";
 import { FDetail, doallDetailShow } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRW_S";
-import { TrainNumber } from "./module/firstDisplayEdit";
 import { JRSSobj } from "./detailStopData/JRW_S";
-import { allJRSSColor } from "./typeColor";
-import { allSanyoShinkansenSwitch } from "./module/displaySwitch";
-import { registerStations } from './main';
 NonGouflag = 1;
 export const JRSanyoStations: StationRegistry = {
     '新幹線広島駅': {
@@ -81,7 +76,6 @@ export const JRSanyoStations: StationRegistry = {
                     Detail[0][tr] = '小倉';
                 }
             }
-            console.log(TrainNumber);
             DetailLength = [2, 2];
             doallDetailShow(25);
         }
@@ -164,4 +158,3 @@ export const JRSanyoStations: StationRegistry = {
         }
     }
 }
-registerStations(JRSanyoStations);

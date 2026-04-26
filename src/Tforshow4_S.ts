@@ -4,6 +4,7 @@ import { getStationConfig } from "./main";
 import { JRSSobj } from "./detailStopData/JRW_S";
 import { allJRSSColor } from "./typeColor";
 import { allSanyoShinkansenSwitch } from "./module/displaySwitch";
+import { trainTables } from "./types/trainTable";
 if (LastShowFlag == 0) {
     allLastShow();
 }
@@ -101,7 +102,7 @@ if (station == '博多駅') {
 function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj: any) {
     for (const key in Uobj) {
         if (Utype.startsWith(Uobj[key].type)) {
-            Cars[td][tr] = Uobj[key].cars;
+            trainTables[td].trains[tr].cars = Uobj[key].cars;
             Jiyuseki[td][tr] = Uobj[key].jiyu;
             //document.getElementById(TType).style.color = Uobj[key].color;
         }
@@ -117,10 +118,10 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
             if (Indexfile != 'index4_H.php') {
                 ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
                 if (Type[td][tr].includes('つばめ*') || Type[td][tr].includes('さくら*')) {
-                    Cars[td][tr] = '6両編成';
+                    trainTables[td].trains[tr].cars = '6両編成';
                     Jiyuseki[td][tr] = '自由席1-3,5,6号車'
                 }
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = Cars[td][tr];
+                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = trainTables[td].trains[tr]?.cars ?? "";
             }
             if (Type[td][tr] != '' && (station == '博多駅' || station == '岡山駅') && tr < 2) {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = '停車駅';

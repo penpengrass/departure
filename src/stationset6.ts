@@ -2,14 +2,16 @@ import { RailNumberDevide, DestinationDevide, TrainNameDevide, limitedjustnumber
 import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
 import {
-    JRNameDevide, allLastShow, flagmarkerase, Bansenshow, JRLimitedDevide, JRLimitedNameDevide, rowsize, moveTableColumn, comment, rowremove, allTwoLettersDistance, FourLetters
-    , AllWordChange,swapColumns
+    JRNameDevide, NewAllLastShow, TrainTypeWordChange, flagmarkerase, Bansenshow, JRLimitedDevide, JRLimitedNameDevide, rowsize, moveTableColumn, rowremove, allTwoLettersDistance, FourLetters
+    , AllWordChange, swapColumns, DestinationSet,
+    TrainTypeSet
 } from "./module/firstDisplayEdit";
 import { CarsDefine, CarsInto } from "./module/carsEdit";
 import { allswitchChiba, allswitch_Akabane } from "./module/displaySwitch";
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";
+import { comment } from './types/constants';
 import { } from "./module/displaySwitch";
-import { registerStations } from './main';
+import { plainTrainTables, trainTables } from './types/trainTable';
 let Saikyo_Color = '#00AC9A';
 let Keihin_Color = '#00b2e5';
 export const JREast6Stations: StationRegistry = {
@@ -25,7 +27,9 @@ export const JREast6Stations: StationRegistry = {
         },
         onRender: () => {
             for (let tr = 0; tr < 3; tr++) {
-                console.log(Type[0][tr]);
+                TrainTypeSet(0);
+                TrainTypeSet(1);
+                TrainTypeSet(2);
                 if (Type[0][tr] == '普通') {
                     if (['妙高高原', '豊野'].includes(Des[0][tr])) {
                         //Type[0][tr] += ' 北しなの線';
@@ -88,7 +92,8 @@ export const JREast6Stations: StationRegistry = {
                 document.getElementById('supplement')!.textContent = '長野駅のみ土休日ダイヤに対応(表示は平日ダイヤ)';
             }
             JRLimitedDevide(2, 'left');
-            allLastShow();
+            DestinationSet();
+            NewAllLastShow();
             Bansenshow();
         }
     },
@@ -162,6 +167,7 @@ export const JREast6Stations: StationRegistry = {
             for (var td = 0; td < 4; td++) {
                 (document.getElementsByClassName('HDes')[td] as HTMLElement).style.paddingRight = "1.5em";
                 for (var tr = 0; tr < 3; tr++) {
+                    TrainTypeSet(td);
                     allTwoLettersDistance(Des, TDes, 0.5, 0.5);
                     //console.log(document.getElementById('Ttopic'+(tr+1)+(ts+1)));
                     document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.innerHTML += '<span class="bansen">番線</span>';
@@ -331,10 +337,10 @@ export const JREast6Stations: StationRegistry = {
                 ShihatsuMove(7, tr, 'Ttopic');
                 ShihatsuMove(8, tr, 'Ttopic');
                 ShihatsuMove(9, tr, 'Ttopic');
-                AllWordChange(3, tr, Type, 'かいじ', '特急');
-                AllWordChange(3, tr, Type, 'あずさ', '特急');
-                AllWordChange(3, tr, Type, '通勤特別快速', '通勤特快');
-                AllWordChange(6, tr, Type, '普通', '各駅停車');
+                TrainTypeWordChange(3, tr, 'かいじ', '特急');
+                TrainTypeWordChange(3, tr, 'あずさ', '特急');
+                TrainTypeWordChange(3, tr, '通勤特別快速', '通勤特快');
+                TrainTypeWordChange(6, tr, '普通', '各駅停車');
                 var yokosuka = ['逗子', '大船'];
                 var utsunomiya = ['宇都宮', '小金井', '古河'];
                 console.log(Type[6][0]);
@@ -379,8 +385,14 @@ export const JREast6Stations: StationRegistry = {
                     }
                 }
             }
-            console.log(Type);
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(6);
+            TrainTypeSet(7);
+            TrainTypeSet(8);
+            TrainTypeSet(9);
             for (var td = 2; td < 4; td++) {
+                TrainTypeSet(td);
                 for (var tr = 0; tr < 2; tr++) {
                     var LimitedType = document.getElementById('TType' + (td + 3) + (tr + 1));
                     var LimitedName = document.getElementById('WName' + (td + 3) + (tr + 1));
@@ -453,31 +465,14 @@ export const JREast6Stations: StationRegistry = {
             rowsize(4, 'HName', 'TName', '15%');
             rowsize(5, 'HName', 'TName', '15%');
             for (var tr = 0; tr < 2; tr++) {
-                AllWordChange(0, tr, Type, '普通', '各駅停車');
-                AllWordChange(1, tr, Type, '普通', '各駅停車');
-                AllWordChange(3, tr, Type, '快速:大宮から小山間', '普通');
-                AllWordChange(5, tr, Type, '快速:大宮から小山間', '快速');
-                AllWordChange(4, tr, Type, '快速', '普通');
-                JRE6ColorPlusName(0, tr, '各駅停車', Keihin_Color);
-                JRE6ColorPlusName(1, tr, '各駅停車', Keihin_Color);
-                JRE6ColorPlusName(0, tr, '快速', Keihin_Color);
-                JRE6ColorPlusName(1, tr, '快速', Keihin_Color);
-                JRE6ColorPlusName(2, tr, '普通', 'orange');
-                JRE6ColorPlusName(3, tr, '普通', 'orange');
-                JRE6ColorPlusName(4, tr, '普通', 'orange');
-                JRE6ColorPlusName(5, tr, '普通', 'orange');
-                JRE6ColorPlusName(2, tr, '快速', 'orange');
-                JRE6ColorPlusName(3, tr, '快速', 'orange');
-                JRE6ColorPlusName(4, tr, '快速', 'orange');
-                JRE6ColorPlusName(5, tr, '快速', 'orange');
-                JRE6ColorPlusName(2, tr, 'あかぎ', 'red');
-                JRE6ColorPlusName(4, tr, 'あかぎ', 'red');
-                JRE6ColorPlusName(2, tr, '草津･四万', 'red');
-                JRE6ColorPlusName(4, tr, '草津･四万', 'red');
-                JRE6ColorPlusName(6, tr, '', Saikyo_Color);
-                JRE6ColorPlusName(7, tr, '', Saikyo_Color);
+                TrainTypeWordChange(0, tr, '普通', '各駅停車');
+                TrainTypeWordChange(1, tr, '普通', '各駅停車');
+                TrainTypeWordChange(3, tr, '快速:大宮から小山間', '普通');
+                TrainTypeWordChange(5, tr, '快速:大宮から小山間', '快速');
+                TrainTypeWordChange(4, tr, '快速', '普通');
             }
             for (var td = 0; td < 8; td++) {
+                TrainTypeSet(td);
                 (document.getElementsByClassName('HDes')[td] as HTMLElement).style.paddingRight = "1.5em";
                 for (var tr = 0; tr < 2; tr++) {
                     //console.log(document.getElementById('Ttopic'+(td+1)+(tr+1)));
@@ -488,8 +483,28 @@ export const JREast6Stations: StationRegistry = {
                         document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.5)" + "translate(-50%,0%)";
                     }
                     document.getElementById('TType' + (td + 1) + (tr + 1))!.style.textAlign = 'center';
+                    JRE6ColorPlusName(0, tr, '各駅停車', Keihin_Color);
+                    JRE6ColorPlusName(1, tr, '各駅停車', Keihin_Color);
+                    JRE6ColorPlusName(0, tr, '快速', Keihin_Color);
+                    JRE6ColorPlusName(1, tr, '快速', Keihin_Color);
+                    JRE6ColorPlusName(2, tr, '普通', 'orange');
+                    JRE6ColorPlusName(3, tr, '普通', 'orange');
+                    JRE6ColorPlusName(4, tr, '普通', 'orange');
+                    JRE6ColorPlusName(5, tr, '普通', 'orange');
+                    JRE6ColorPlusName(2, tr, '快速', 'orange');
+                    JRE6ColorPlusName(3, tr, '快速', 'orange');
+                    JRE6ColorPlusName(4, tr, '快速', 'orange');
+                    JRE6ColorPlusName(5, tr, '快速', 'orange');
+                    JRE6ColorPlusName(2, tr, 'あかぎ', 'red');
+                    JRE6ColorPlusName(4, tr, 'あかぎ', 'red');
+                    JRE6ColorPlusName(2, tr, '草津･四万', 'red');
+                    JRE6ColorPlusName(4, tr, '草津･四万', 'red');
+                    JRE6ColorPlusName(6, tr, '', Saikyo_Color);
+                    JRE6ColorPlusName(7, tr, '', Saikyo_Color);
                 }
             }
+            DestinationSet();
+            NewAllLastShow();
             setInterval(allswitch_Akabane, 5000);
             comment!.textContent += '一部表示不正確';
         }
@@ -523,6 +538,7 @@ export const JREast6Stations: StationRegistry = {
             detailflag = 2;
         },
         onRender: () => {
+            NonGouflag = 0;
             var Sotobo_Color = 'red';
             JRNameDevide(6);
             document.getElementById("WDir1")!.textContent = "東京･横浜･大船方面";
@@ -531,7 +547,6 @@ export const JREast6Stations: StationRegistry = {
             document.getElementById("WDir4")!.textContent = "大網方面";
             document.getElementById("WDir5")!.textContent = "佐倉･銚子方面";
             document.getElementById("WDir6")!.textContent = "成田空港･銚子方面";
-            allLastShow();
             for (var tr = 0; tr < 3; tr++) {
                 JRE6ColorPlusName(0, tr, '快速', 'blue');
                 JRE6ColorPlusName(2, tr, '快速', 'blue');
@@ -552,9 +567,9 @@ export const JREast6Stations: StationRegistry = {
                     CarsDefine(td, tr, 'しおさい', '', 6);
                 }
             }
-            console.log(Cars);
             for (var td = 0; td < 6; td++) {
                 for (var tr = 0; tr < 3; tr++) {
+                    const _PlainType = plainTrainTables[td].trains[tr].type;
                     var L_WName = document.getElementById('WName' + (td + 1) + (tr + 1));
                     var L_WType = document.getElementById('WType' + (td + 1) + (tr + 1));
                     var L_PName = document.getElementById('PName' + (td + 1) + (tr + 1));
@@ -563,31 +578,37 @@ export const JREast6Stations: StationRegistry = {
                         JRE6ColorPlusName(td, tr, '成田エクスプレス', 'red');
                         JRE6ColorPlusName(td, tr, 'しおさい', 'red');
                         if (td > 3) {
-                            L_WType.textContent = L_WType.textContent.replace('成田線経由', '');
-                            Type[td][tr] = Type[td][tr].replace('成田線経由', '');
-                            L_WType.textContent = L_WType.textContent.replace('総武本線経由', '');
-                            Type[td][tr] = Type[td][tr].replace('総武本線経由', '');
+                            //L_WType.textContent = L_WType.textContent.replace('成田線経由', '');
+                            trainTables[td].trains[tr].type = _PlainType.replace('成田線経由', '').replace('総武本線経由', '');
+                            //L_WType.textContent = L_WType.textContent.replace('総武本線経由', '');
+                            //Type[td][tr] = Type[td][tr].replace('総武本線経由', '');
                         }
                         if (td == 5) {
                             Des[td][tr] = Des[td][tr].replace('*', '');
                         }
                         CarsInto(td, tr, 'WName');
-                        if (Type[td][tr].startsWith('始発')) {
+                        if (_PlainType.startsWith('始発')) {
                             L_WName.textContent = '当駅始発';
                             L_WName.style.transform = "scaleX(0.60)" + "translate(-0%,0%)";
-                            L_WType.textContent = L_WType.textContent.replace('始発', '');
+                            const _Type = trainTables[td].trains[tr].type.replace('始発', '')
+                            trainTables[td].trains[tr].type = _Type ?? plainTrainTables[td].trains[tr].type;
                         }
                         if (td == 1) {
                             L_WType.style.transform = "scaleX(0.90)" + "translate(-5%,0%)";
                         }
-                        if (Type[td][tr].length > 6) {
+                        if (trainTables[td].trains[tr].type.length > 6) {
                             L_WType.style.transform = "scaleX(0.40)" + "translate(-75%,0%)";
                         }
                     }
                 }
-                flagmarkerase(td, 'WDes');
                 flagmarkerase(td, 'WType');
             }
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(2);
+            TrainTypeSet(3);
+            DestinationSet();
+            NewAllLastShow();
             setInterval(allswitchChiba, 5000);
             Bansenshow();
         }
@@ -617,6 +638,10 @@ export const JREast6Stations: StationRegistry = {
                 }
                 moveTableColumn(table[td], 5, 2);
             }
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(2);
+            TrainTypeSet(3);
             for (var tr = 0; tr < orderNum; tr++) {
                 JRLimitedNameDevide(0, tr, 'ひたち', '特急', 'white');
                 JRLimitedNameDevide(0, tr, 'ときわ', '特急', 'white');
@@ -633,9 +658,9 @@ export const JREast6Stations: StationRegistry = {
                 CarsDefine(0, tr, '普通', '', 5);
                 CarsDefine(0, tr, '特急', '', '10両');
                 if (Des[1][tr] == '小山' || Des[1][tr] == '下館' || Des[1][tr] == '土浦') {
-                    Cars[1][tr] = '5両';
+                    trainTables[1].trains[tr].cars = '5両';
                 } else if (Des[1][tr] == '上野' || Des[1][tr] == '品川' || Des[1][tr] == '我孫子' || Des[1][tr] == '土浦*') {
-                    Cars[1][tr] = '10両';
+                    trainTables[1].trains[tr].cars = '10両';
                 }
                 CarsInto(0, tr, 'WName');
                 CarsInto(1, tr, 'WName');
@@ -651,15 +676,15 @@ export const JREast6Stations: StationRegistry = {
 
                 }
             }
+            DestinationSet();
             rowremove(2, 'HName', 'TName');
             rowremove(3, 'HName', 'TName');
             rowremove(2, 'Htopic', 'Ttopic');
             rowremove(3, 'Htopic', 'Ttopic');
             document.getElementById('TLCDTable' + (2 + 1))!.style.width = '600px';
             document.getElementById('TLCDTable' + (3 + 1))!.style.width = '600px';
-            //console.log(Cars);
+            NewAllLastShow();
             comment!.textContent = '実際の表示とは異なる。接続表示は省略。両数や番線など一部表示不正確';
         }
     }
 }
-registerStations(JREast6Stations)

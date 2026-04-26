@@ -1,5 +1,4 @@
 import { RailNumberDevide, DestinationDevide } from './module/firstTableEdit';
-import { registerStations } from './main';
 import { StationRegistry, StationConfig } from './types/station';
 import { whetherStop, DetailReplace } from './module/detailSimpleEdit';
 import { LineMarkAdd } from './module/firstDisplayEdit';
@@ -158,7 +157,6 @@ export const KintetsuStations: StationRegistry = {
     }
     //ここに何か書きたい
 } as const;
-registerStations(KintetsuStations);
 /**
  * 近鉄共通の初期化処理
  */

@@ -2,12 +2,22 @@ import { Meiobj } from './detailStopData/Meidenset';
 import { TypeColorChange, TypeColorChange2 } from "./module/colorSimpleSet";
 import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, allLastShow, holiday_F } from "./module/firstDisplayEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
-import { SpendingTime, DetailReplace, SpecialStop } from "./module/detailSimpleEdit";
-import { TrainNumber } from "./module/firstDisplayEdit";
-import { JRCeNobj, JRKaobj, Nagahama } from "./detailStopData/JRNadetailset";
-import { TokaiDetailflag } from "./stationset7";
-import { BottomBanner } from "./module/detailBannerSwitch";
 import { getStationConfig } from './main';
+/*if (station == '豊橋駅') {
+    Dtype[3] = 1;
+    TokaiDetailflag = 2;
+}
+if (station == '岐阜駅') {
+    TokaiDetailflag = 1;
+} else if (station == '大垣駅') {
+    TokaiDetailflag = 1;
+} else if (station == '名古屋駅' && Indexfile == 'index7_T.php') {
+    detailflag = 2;
+    TokaiDetailflag = 3;
+}
+if (TokaiDetailflag == 1) {
+    detailLength_one = 1;
+}*/
 function allJRC_Reduction() {
     for (let te = 0; te < Tablenum; te++) {
         for (let tr = 0; tr < Tablenums[te]; tr++) {
@@ -41,7 +51,7 @@ if (holidayflag == 1) {
     holiday_F(station);
 }
 //index7.phpではDetail[]に入れた後フォーマットに停車駅を入れる。
-if (TokaiDetailflag == 1) {
+/*if (TokaiDetailflag == 1) {
     for (var td = 0; td < Tablenum; td++) {
         var Type_Show;
         LastLetterRemove(td, 0, '・');
@@ -66,5 +76,5 @@ if (TokaiDetailflag == 1) {
     for (var td = 0; td < Tablenum; td++) {
         document.getElementById('Detail_Banner' + (td + 1))!.remove();
     }
-}
+}*/
 allLastShow();

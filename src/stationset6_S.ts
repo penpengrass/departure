@@ -1,14 +1,14 @@
 import { limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
-import { JRNameDevide, allLastShow, flagmarkerase, Bansenshow, swapColumns, AllClassSetting, comment } from "./module/firstDisplayEdit";
+import { JRNameDevide, flagmarkerase, Bansenshow, swapColumns, AllClassSetting } from "./module/firstDisplayEdit";
 import { JREScolor } from "./module/colorSimpleSet";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { LimitedNumberPass } from "./module/firstDetailEdit";
 import { DetailBanner, FDetail } from "./module/detailMainPut";
 import { Shin_DetailReplace_Set_One } from "./module/detailSimpleEdit";
 import * as Stops from "./detailStopData/JRHokuJoetsuset";
-import { registerStations } from './main';
+import { comment } from './types/constants';
 export const JREastShinkansenStations: StationRegistry = {
     '新幹線東京駅': {
         name: '東京駅',
@@ -150,4 +150,3 @@ if (station == '仙台駅') {
     window.Dtype = [0, 0, 0];
     detailflag = 2;
 }
-registerStations(JREastShinkansenStations);

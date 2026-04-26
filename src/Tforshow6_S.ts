@@ -1,10 +1,11 @@
-import { JRNameDevide, allLastShow, flagmarkerase, Bansenshow, swapColumns, AllClassSetting, comment } from "./module/firstDisplayEdit";
+import { JRNameDevide, allLastShow, flagmarkerase, Bansenshow, swapColumns, AllClassSetting } from "./module/firstDisplayEdit";
 import { JREScolor } from "./module/colorSimpleSet";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { LimitedNumberPass } from "./module/firstDetailEdit";
 import { DetailBanner, FDetail } from "./module/detailMainPut";
 import { Shin_DetailReplace_Set_One } from "./module/detailSimpleEdit";
 import * as Stops from "./detailStopData/JRHokuJoetsuset";
+import { comment } from "./types/constants";
 import { getStationConfig } from "./main";
 JRNameDevide(Tablenum);
 NonGouflag = 0;

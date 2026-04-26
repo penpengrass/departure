@@ -2,7 +2,7 @@ import { hour, min } from "./Time";
 import { FShow, FSTShow } from "./module/timeInfoSet";
 import { koshin } from "./module/firstTableEdit";
 import { StationRegistry, StationConfig } from './types/station';
-import { plainTrainTables, createTrainDataFromGlobal, initPlainTrainTables, updatePlainTrainData, initTrainTables } from "./types/trainTable";
+import { plainTrainTables, trainTables, createTrainDataFromGlobal, initPlainTrainTables, updatePlainTrainData, initTrainTables } from "./types/trainTable";
 import { KintetsuStations } from "./stationset2";
 import { ShinkansenStations } from "./stationset3_S";
 import { JREastStations } from "./stationset3";
@@ -29,7 +29,7 @@ const stationRegistries: StationRegistry = {};
 
 export function registerStations(registry: StationRegistry) {
     Object.assign(stationRegistries, registry);
-    console.log("------registerの方のmain開始-------");
+    console.trace("------" + registry + "の方のmain開始-------");
     main();
 }
 
@@ -134,9 +134,62 @@ export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: 
     orders[depnum] = Table_Column + 1;
     return;
 }
+//特急等の号数を取得 tdは何番目の表か
+function JRLimitedNumberSet(td: number, tr: number) {
+    var LimitedName = new Array(Tablenums[td]);
+    var matches = new Array(Tablenums[td]);
+    var matches2 = new Array(Tablenums[td]);
+    let number;
+    LimitedName[tr] = plainTrainTables[td].trains[tr]?.type ?? "";
+    //console.log(LimitedName[tr]);
+    matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
+    matches2[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
+    if (matches[tr]) {
+        /*console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
+        console.log(matches[tr][0] + ":" + tr);
+        console.log(matches[tr][1] + ":" + tr);
+        console.log(matches[tr][2] + ":" + tr);
+        console.log(matches[tr][3] + ":" + tr);
+        console.log(matches[tr][1] + matches[tr][1].length);*/
+        number = matches[tr][2];
+    } else if (matches2[tr]) {
+        /*console.log(td + 1 + "個目の表の" + (tr + 1) + "番目はマッチする");
+        console.log(matches2[tr][0] + ":" + tr);
+        console.log(matches2[tr][1] + ":" + tr);
+        console.log(matches2[tr][2] + ":" + tr);
+        console.log(matches2[tr][1] + matches2[tr][1].length);*/
+        //console.log("Dtypeは" + Dtype);
+        number = matches2[tr][2];
+    } else {
+        //console.log("JRLimitedNumberはマッチしない");
+    }
+    //console.log(number);
+    return number;
+}
+//特急などの列車名を取得
+function JRLimitedNameSet(td: number, tr: number) {
+    var LimitedName = new Array(Type[td].length);
+    var matches = new Array(Type[td].length);
+    //console.log(Type[td][tr]);
+    LimitedName[tr] = Type[td][tr];
+    //console.log(LimitedName[tr]);
+    matches[tr] = LimitedName[tr].match(/(\D+)(\d+)(\D+)/);
+    if (matches[tr]) {
+        /*console.log(matches[tr][0] + ":" + tr);
+        console.log(matches[tr][1] + ":" + tr);
+        console.log(matches[tr][2] + ":" + tr);
+        console.log(matches[tr][3] + ":" + tr);
+        console.log(matches[tr][1] + matches[tr][1].length);*/
+        var name = matches[tr][1];
+    } else {
+        //console.log("JRLimitedNumberはマッチしない");
+    }
+    return name;
+}
 //td_mainは表番号・ONは何番目に出発するか
 function main() {
     // --- plainTrainTables の初期化 ---
+    console.log(Tablenums);
     initPlainTrainTables(Tablenum, Tablenums);
     initTrainTables(Tablenum, Tablenums);
     // --- 駅設定の適用 ---
@@ -197,10 +250,36 @@ function main() {
         //console.log((td_main + 1) + "番目の表表示完了");
     }
 }
-console.log("------元々のmain開始-------");
-main();
-console.log(plainTrainTables);
+//console.log("------元々のmain開始-------");
+// main.ts の最後（202行目の元々のmain()呼び出しの前）に以下を追加
+const registryMap: Record<string, StationRegistry> = {
+    'index2.php': KintetsuStations,
+    'index3_S.php': ShinkansenStations,
+    'index3_T.php': ShinkansenStations,
+    'index3.php': JREastStations,
+    'index4_H.php': JRHokurikuStations,
+    'index4_S2.php': JRSanyoStations,
+    'index4.php': JRWestStations,
+    'index4_A.php': JRWestStations,
+    'index5.php': TokyuStations,
+    'index6_S.php': JREastShinkansenStations,
+    'index6.php': JREast6Stations,
+    'index6_U.php': JREast6Stations,
+    'index6_Chiba.php': JREast6Stations,
+    'index7_S.php': JRTokaidouStations,
+    'index7.php': JRTokaiStations,
+    'index7_T.php': JRTokaiStations,
+    'index8.php': JRHokkaidouStations,
+    'index9.php': JRShikokuStations,
+    'index10.php': JRKyushuStations,
+    'index10_H.php': JRKyushuStations
+};
 
+// Indexfileに対応したregistryだけを登録
+if (registryMap[Indexfile]) {
+    registerStations(registryMap[Indexfile]);
+}
+//main();
 export var PlusHour = new Array(3);
 export var PlusMin = new Array(3);
 export var PlusType = new Array(3);
@@ -225,7 +304,28 @@ if (testflag == 0) {
     }
     setInterval(koshin, MinIn * 60000);
 }
+var Length_Debug = plainTrainTables.length;
+if (Length_Debug == 0) {
+    console.error("plainTrainTablesが空です。")
+}
 console.log(plainTrainTables)
 
 console.log("-------main完了-------");
 document.title = station + "発車標";
+//特急によって停車駅が異なるときの処理
+//numberは号数 Lnameは列車名
+export var TrainNumber = new Array(Tablenum);
+export var Lname = new Array(Tablenum);
+//console.log("detailflag=" + detailflag);
+for (var td = 0; td < Tablenum; td++) {
+    if (detailflag > 1) {
+        TrainNumber[td] = new Array(orderNum);
+        Lname[td] = new Array(orderNum);
+    }
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        trainTables[td].trains[tr].trainNumber = Number.parseInt(JRLimitedNumberSet(td, tr));
+        //console.log(typeof number[td][tr]);
+        trainTables[td].trains[tr].trainName = JRLimitedNameSet(td, tr);
+
+    }
+}

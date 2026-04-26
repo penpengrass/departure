@@ -1,7 +1,7 @@
 import { reverseLine, LineCopy } from "../module/firstTableEdit";
 import { JRLimitedNumber } from "../module/firstDisplayEdit";
 import { rapid, Jsubrapid, local } from '../detailStopData/JRdetail';
-import { plainTrainTables } from "../types/trainTable";
+import { plainTrainTables, trainTables } from "../types/trainTable";
 var Jrapid = "";
 var limited = "";
 if (Indexfile == 'index4.php') {
@@ -37,13 +37,12 @@ if (station == '北新地駅') {
         Detail_contents[1] = Des[1][0] + 'までの各駅';
     }*/
 }
-if (station == '米原駅') {
+export function JRMaibara_Detail(){
     Dtype[2] = 0;
     Super_rapid = LineCopy(ASperapid);
     limited = LineCopy(Alimited);
     var Name_11 = document.getElementById('TName11');
-    var TrainNumber = [JRLimitedNumber(0, 0), JRLimitedNumber(1, 0), JRLimitedNumber(2, 0)]
-    //console.log(TrainNumber);
+    var _TrainNumber_ToTsuruga=trainTables[1].trains[0].trainNumber;
     var Nagahama = [51, 3, 7, 55, 57, 13];
     if (Type[0][0] == '快速') {
         if (Des[0][0] == '大阪') {
@@ -59,7 +58,7 @@ if (station == '米原駅') {
     if (Type[1][0] == '普通' || Type[1][0] == '新快速') {
         Detail_contents[1] = Des[1][0] + 'までの各駅';
     } else if (Type[1][0].includes('しらさぎ')) {
-        if (Nagahama.includes(Number(TrainNumber[1]))) {
+        if (Nagahama.includes(Number(_TrainNumber_ToTsuruga))) {
             Detail_contents[1] = '長浜';
         } else {
             Detail_contents[1] = '敦賀';

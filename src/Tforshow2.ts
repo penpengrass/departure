@@ -1,9 +1,10 @@
 import { DetailShow, LowerDetail, doallDetailShow } from "./module/detailMainPut";
 import { Kinobj } from "./detailStopData/Kindetailset";
 import { DetailReplace, whetherStop } from "./module/detailSimpleEdit";
-import { AllWordChange, AllWordReplace, NewAllLastShow, TwoLetterDistance, LineMarkAdd, comment } from "./module/firstDisplayEdit";
+import { AllWordChange, AllWordReplace, NewAllLastShow, TwoLetterDistance, LineMarkAdd } from "./module/firstDisplayEdit";
 import { allKinColor } from "./typeColor";
 import { getStationConfig } from "./main";
+import { comment } from "./types/constants";
 document.getElementById('supplement')!.innerHTML = '<p>特急 A:あをによし U:アーバンライナー H:ひのとり I:伊勢志摩ライナー V:ビスタカー</p>';
 var ExpressMsg = '竹田で新田辺行き<span class="KinLocolor">普通</span>に連絡します';
 var LocalMsg = '竹田で奈良行き<span class="KinExcolor">急行</span>に連絡します';

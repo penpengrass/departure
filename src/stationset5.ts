@@ -1,7 +1,7 @@
 import { limited, rapid, express, subexpress, local } from './detailStopData/JRdetail';
 import { StationRegistry, StationConfig } from './types/station';
 import { AllWordChange } from './module/firstDisplayEdit';
-import { registerStations } from './main';
+import { allTokyuColor } from './typeColor';
 export var Tokyuobj = {
     Typea: { type: "特急", color: orange, detail: limited, },
     Typeb: { type: "通特", color: orange, detail: rapid, },
@@ -41,6 +41,7 @@ export const TokyuStations: StationRegistry = {
             if (Type[0][0] == '各停' && Type[0][1] == '急行' && Interval < 5) {
                 document.getElementById('TDetail11')!.textContent = '桜新町で急行の通過待ち';
             }
+            allTokyuColor();
         }
     },
     '東急武蔵小杉駅': {
@@ -55,7 +56,7 @@ export const TokyuStations: StationRegistry = {
                 AllWordChange(0, tr, Type, '通勤特急', '通特');
                 AllWordChange(3, tr, Type, '通勤特急', '通特');
             }
+            allTokyuColor();
         }
     }
 }
-registerStations(TokyuStations);

@@ -19,6 +19,8 @@ export interface TrainData {
     //ない場合もある
     trainName?: string; //列車名、在来線特急の一部で使用する
     trainNumber?: number | null;//列車の号数、ない場合もあるので要検討(-1にするとか)
+    type_banner?:string;//JR西日本のバナー表示用
+    des_banner?:string;//JR西日本のバナー表示用
     cars?: string;
     detail?: string;
     jiyuseki?: string;
@@ -72,6 +74,7 @@ export function initPlainTrainTables(tableNum: number, tableNums: number[]): voi
     // 配列の構造を固定（要素の追加/削除は禁止、変更は許可）
     Object.preventExtensions(plainTrainTables);
     plainTrainTables.forEach(row => Object.preventExtensions(row.trains));
+    console.log(plainTrainTables)
 }
 
 /**

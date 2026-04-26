@@ -8,6 +8,8 @@ import { JRChNobj, JRCeNobj } from "./detailStopData/JRNadetailset";
 import { Tokyuobj } from "./stationset5";
 import { JRWTobj } from "./detailStopData/JRTennojidetail";
 import { JRCSobj } from "./stationset7_S";
+import { TType, TDes, WType } from "./types/constants";
+import { trainTables } from "./types/trainTable";
 //先発と次発と次々発の種別色分けを一気にする
 export function KTypeColor(Utype: any, TType: any, Uobj: any) {//(種別,その種別の背景色を変える)
     for (const key in Uobj) {
@@ -77,7 +79,8 @@ export function allKinColor() {
 export function allJRColor(start = 0) {
     for (let ia = start; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            JTypeColor(Type[ia][ib], TType[ia][ib], JRobj);
+            var _Type = trainTables[ia].trains[ib].type;
+            JTypeColor(_Type, TType[ia][ib], JRobj);
         }
     }
 }
@@ -125,7 +128,9 @@ export function allJRWSZColor() {
     }
     for (let ia = 2; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            JTypeColor(Type[ia][ib], TType[ia][ib], JRobj);
+            var _Type = trainTables[ia].trains[ib].type;
+            console.log(_Type)
+            JTypeColor(_Type, TType[ia][ib], JRobj);
         }
     }
 
@@ -206,12 +211,8 @@ export function allTokyuColor() {
 //console.log(CompanyNumber);
 //console.log(Indexfile);
 //index7.phpのみTforshow7.jsに移行
-if (Indexfile == 'index8.php') {
-
-} else if (Indexfile == 'index7_T.php') {
+if (Indexfile == 'index7_T.php') {
     allJRNagoyaColor();
-} else if (Indexfile == 'index5.php') {
-    allTokyuColor();
 } else if (Indexfile == 'index7_S1.php') {
     allJRCSColor();
 }

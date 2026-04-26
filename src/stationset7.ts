@@ -2,14 +2,13 @@ import { limitedjustnumber, limitednumber, limitednumber2, TrainNameDevide } fro
 import { StationRegistry, StationConfig } from './types/station';
 import { Meiobj } from './detailStopData/Meidenset';
 import { TypeColorChange, TypeColorChange2 } from "./module/colorSimpleSet";
-import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, allLastShow, holiday_F } from "./module/firstDisplayEdit";
+import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, holiday_F } from "./module/firstDisplayEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { SpendingTime, DetailReplace, SpecialStop } from "./module/detailSimpleEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { JRCeNobj, JRKaobj, Nagahama } from "./detailStopData/JRNadetailset";
 import { BottomBanner } from "./module/detailBannerSwitch";
-import { registerStations } from './main';
-export var TokaiDetailflag = 0;
+import { TokaiDetailflag } from './types/constants';
 export const JRTokaiStations: StationRegistry = {
     '豊橋駅': {
         name: '豊橋駅',
@@ -18,7 +17,7 @@ export const JRTokaiStations: StationRegistry = {
         file: 'index7.php',
         setup: () => {
             Dtype[3] = 1;
-            TokaiDetailflag = 2;
+            //TokaiDetailflag = 2;
             limitednumber(TT[0], 1, '特急伊那路');
         },
         onRender: () => {
@@ -170,7 +169,7 @@ export const JRTokaiStations: StationRegistry = {
         file: 'index7_T.php',
         setup: () => {
             detailflag = 2;
-            TokaiDetailflag = 3;
+            //TokaiDetailflag = 3;
             TrainNameDevide('特急ひだ', 1, 4);
             limitednumber(TT[2], 1, '特急しなの');
             limitednumber(TT[3], 1, '特急南紀');
@@ -183,18 +182,17 @@ export const JRTokaiStations: StationRegistry = {
 //Tforshow7.tsをインタフェース化した際に削除する。
 if (station == '豊橋駅') {
     Dtype[3] = 1;
-    TokaiDetailflag = 2;
+    //TokaiDetailflag = 2;
 }
 if (station == '岐阜駅') {
-    TokaiDetailflag = 1;
+    //TokaiDetailflag = 1;
 } else if (station == '大垣駅') {
-    TokaiDetailflag = 1;
+    //TokaiDetailflag = 1;
 } else if (station == '名古屋駅' && Indexfile == 'index7_T.php') {
     detailflag = 2;
-    TokaiDetailflag = 3;
+    //TokaiDetailflag = 3;
 }
 if (TokaiDetailflag == 1) {
     detailLength_one = 1;
 }
 export { };
-registerStations(JRTokaiStations);

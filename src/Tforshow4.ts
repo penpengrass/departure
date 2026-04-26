@@ -1,5 +1,7 @@
-//const { isForInitializer } = require("typescript");
-import { LineMarkAdd, JRLimitedDevide, AllWordChange, AllWordReplace, comment, TwoLetterDistance, rowremove, allTwoLettersDistance, holiday_F, AllClassSetting, allLastShow } from "./module/firstDisplayEdit";
+import {
+    LineMarkAdd, JRLimitedDevide, AllWordChange, AllWordReplace, TwoLetterDistance, rowremove, allTwoLettersDistance, holiday_F, AllClassSetting, DestinationSet, TrainTypeSet,
+    NewAllLastShow
+} from "./module/firstDisplayEdit";
 import { DesMiddle, allJRWTrainNameColor } from "./module/displayEdit4";
 import { Kitashinchi_Banner, Maibara_Banner, Yonago_Banner } from "./module/displayEdit4";
 import { allswitch_detail } from "./module/detailBannerSwitch";
@@ -8,10 +10,12 @@ import { TypeColorChange } from "./module/colorSimpleSet";
 import { allswitchMihara } from "./module/displaySwitch";
 import { allJRColor, allJRWSZColor } from "./typeColor";
 import { getStationConfig } from "./main";
+import { } from "./module/firstDisplayEdit";
+import { TDes } from "./types/constants";
+import { comment } from "./types/constants";
+import { DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
 var Shinkansenflag = 0;
 //特急や快速等の列車名や路線名を表示させたい
-var config = getStationConfig(window.station, Indexfile);
-if (config && config.onRender) config.onRender();
 if (station == '天王寺駅') {
     for (var tr = 0; tr < orderNum; tr++) {
         if (Type[2][tr] != '' && (Des[2][tr] == '' || Des[2][tr] == '大阪' || Des[2][tr] == '天王寺')) {
@@ -40,44 +44,30 @@ if (station == "新見駅") {
     JRLimitedDevide(1);
     allJRWTrainNameColor("orange", "orange", "red");
 }
-export var Ex_Name = new Array(Tablenum);
-for (var td = 0; td < Tablenum; td++) {
-    Ex_Name[td] = new Array(Tablenums[td]);
-    for (var tr = 0; tr < Tablenums[td]; tr++) {
-        var L_TrainName = document.getElementById(
-            "TName" + (td + 1) + "" + (tr + 1)
-        );
-        if (L_TrainName != null) {
-            Ex_Name[td][tr] = L_TrainName.textContent;
-        }
-    }
-}
-if (Indexfile == "index4.php") {
-    if (JRShinkansenflag == 0) {
-        allJRColor();
-    } else if (JRShinkansenflag == 1) {
-        allJRWSZColor();
-    }
+if (Indexfile == 'index4.php') {
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
 }
 
 if (TwoLetterDisflag == 1) {
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < Tablenums[td]; tr++) {
-            TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+            DestinationTwoLetterDistance(td, tr, TDes, 1, 0.9);
         }
     }
 }
 if (Indexfile == 'index4.php') {
-    allLastShow();
-    LastShowFlag = 1;
-}
-if (Indexfile == 'index4.php') {
+    if (JRShinkansenflag == 0) {
+        allJRColor();
+    } else if (JRShinkansenflag == 1) {
+        allJRWSZColor();
+    }
     for (var td = 0; td < Tablenum; td++) {
-        for (var tr = 0; tr < Tablenums[td]; tr++) {
-            DesMiddle(td, tr, '連絡');
-            DesMiddle(td, tr, '方面');
-        }
+        TrainTypeSet(td);
     }
+    DestinationSet();
+    NewAllLastShow();
+    LastShowFlag = 1;
 }
 if (station == "北新地駅") {
     //setInterval(allswitch_detail, 3000);

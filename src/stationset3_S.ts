@@ -3,12 +3,17 @@ import { DetailShow, doallDetailShow, NewDetailShow } from "./module/detailMainP
 import { DetailReplace } from "./module/detailSimpleEdit";
 import { TypeColorChange, JREScolor } from "./module/colorSimpleSet";
 import { StationRegistry, StationConfig } from './types/station';
-import { FourLetters, TrainNumber, TwoLetterDistance, JRAllShinkansenNumberSet, DestinationSet, TrainTypeSet, JRNewNameNumberDevide, NewAllLastShow } from "./module/firstDisplayEdit";
+import { FourLetters, TrainNumber, TwoLetterDistance, JRAllShinkansenNumberSet, DestinationSet, swapColumns, AllClassSetting, JRLineName, JRLimitedNameDevide } from "./module/firstDisplayEdit";
+import { TrainTypeSet, JRNewNameNumberDevide, NewAllLastShow } from "./module/firstDisplayEdit";
 import { JRSBobj } from "./detailStopData/JREShindetailset";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
 import { Seventeen } from "./detailStopData/JRTohokuShinset";
 import { plainTrainTables, trainTables } from './types/trainTable';
-import { registerStations } from './main';
+import { TDes, comment } from './types/constants';
+const ATOStable = new Array(Tablenum);
+for (var td = 0; td < Tablenum; td++) {
+    ATOStable[td] = document.getElementById("TATOSTable" + (td + 1));
+}
 var YamagataRapid = [123, 157];
 var Zaou = [201, 123, 205, 53, 133, 135, 137, 61, 141, 143, 67, 145, 149, 215, 157, 69, 223];
 var Shirakawa = [50];
@@ -96,7 +101,7 @@ export const ShinkansenStations: StationRegistry = {
     '宇都宮駅': {
         name: '宇都宮駅',
         company: '東北新幹線',
-        file:'index3_S.php',
+        file: 'index3_S.php',
         tableTitles: ['東北新幹線 仙台方面', '新幹線 大宮・上野・東京方面'],
         dtype: [0, 1],
         setup: () => {
@@ -122,12 +127,14 @@ export const ShinkansenStations: StationRegistry = {
                     }
                 }
                 if (Type[0][tr] != '') {
-                    //console.log(TrainNumber[0][tr]);
+                    console.log(trainTables[0].trains[tr].trainNumber);
+                    var _number = trainTables[0].trains[tr]?.trainNumber ?? 0;
+                    //console.log(LNumber);
                     var LDes = Des[0][tr];
                     var LNumber = document.getElementById('TName' + (0 + 1) + (tr + 1));
-                    if (LNumber && Number(LNumber.textContent) > 130 && Number(LNumber.textContent) < 200) {
-                        TrainNumber[0][tr] += 2;
-                        LNumber.textContent = TrainNumber[0][tr];
+                    if (LNumber && _number > 130 && _number < 200) {
+                        _number += 2;
+                        LNumber.textContent = String(_number);
                     }
                     //console.log(LNumber);
                     if (LDes == '那須塩原') {
@@ -204,6 +211,8 @@ export const ShinkansenStations: StationRegistry = {
             JRAllShinkansenNumberSet(2);
             DestinationSet();
             TrainTypeSet(2);
+            TrainTypeSet(3);
+            TrainTypeSet(4);
             for (var tr = 0; tr < 3; tr++) {
                 var _Type = trainTables[4].trains[tr].type;
                 TypeColorChange(4, tr, 'つばさ', 'red');
@@ -284,6 +293,7 @@ export const ShinkansenStations: StationRegistry = {
             JRAllShinkansenNumberSet(2);
             DestinationSet();
             TrainTypeSet(2);
+            TrainTypeSet(3);
             if (Des[0][0] == '郡山') {
                 Detail[0][0] = 'この列車は郡山まで止まりません。';
             } else if (Des[0][0] == '仙台') {
@@ -314,6 +324,7 @@ export const ShinkansenStations: StationRegistry = {
         name: '仙台駅',
         company: 'JR東日本',
         tableTitles: ['仙山線 愛子 作並 山形方面', '仙石線 本塩釜 松島海岸 石巻方面', '東北本線下り 岩切 利府 塩釜 小牛田方面', '東北本線 岩沼 白石 福島方面', '常磐線 亘理 相馬 原ノ町方面', '仙台空港アクセス線 名取 仙台空港方面'],
+        file: 'index3_T.php',
         dtype: [0, 1],
         setup: () => {
             // 仙台駅の設定は index3_T.php でのみ適用
@@ -321,6 +332,34 @@ export const ShinkansenStations: StationRegistry = {
                 DestinationDevide(['仙台空港'], 3, 5);
                 DestinationDevide(['原ノ町', '品川', '新地', '山下'], 3, 4);
             }
+        },
+        onRender: () => {
+            for (var td = 0; td < Tablenum; td++) {
+                TrainTypeSet(td);
+                swapColumns(ATOStable[td], 0, 1);
+                for (var tr = 0; tr < Tablenums[td]; tr++) {
+                    document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = 'red';
+                    TypeColorChange(td, tr, '普通', 'orange');
+                    TypeColorChange(td, tr, '特急', 'red');
+                    TypeColorChange(td, tr, '特別快速', 'red');
+                    TwoLetterDistance(td, tr, Des, TDes, 1, 0.6);
+                    TwoLetterDistance(td, tr, Des, TDes, 0.4, 0.2, 3);
+                }
+                document.getElementById('HType' + (td + 1))!.style.width = "10%";
+                document.getElementById('HName' + (td + 1))!.style.width = "33%";
+            }
+            AllClassSetting('.shubetu', 'textAlign', 'left');
+            AllClassSetting('.HrailNumber', 'textAlign', 'center');
+            AllClassSetting('.CName', 'textAlign', 'left');
+            AllClassSetting('.railnumber', 'color', 'red');
+            for (var tr = 0; tr < 3; tr++) {
+                JRLineName(2, tr, '快速', '仙石東北ﾗｲﾝ', 1);
+                JRLimitedNameDevide(4, tr, 'ひたち', '特急', 'red');
+                FourLetters(2, tr, 0.7, 15, 'TType');
+            }
+            DestinationSet();
+            NewAllLastShow();
+            comment!.innerHTML += "新幹線仙台駅は別画面で作成";
         }
     }
 };
@@ -328,4 +367,3 @@ export const ShinkansenStations: StationRegistry = {
 if (station == '福島駅') {
     detailflag = 2;
 }
-registerStations(ShinkansenStations);

@@ -41,7 +41,6 @@ for (let tr = 0; tr < Tablenum; tr++) {
     WType[tr] = new Array(Tablenums[tr]);
    
     BType[tr] = new Array(Tablenums[tr]);
-    Cars[tr] = new Array(Tablenums[tr]);
     Jiyuseki[tr] = new Array(Tablenums[tr]);
 }
 //console.log(ShinNumber);
@@ -69,4 +68,3 @@ for (var td = 0; td < Tablenum; td++) {
         BType[td][tr] = 'BType' + (td + 1) + '' + (tr + 1);
     }
 }
-console.log(Cars);

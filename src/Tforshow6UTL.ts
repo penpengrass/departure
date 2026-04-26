@@ -1,7 +1,9 @@
-import { swapColumns, FourLetters, JRNameDevide, TwoLetterDistance, allLastShow, comment, Bansenshow, AllClassSetting } from "./module/firstDisplayEdit";
+import { swapColumns, FourLetters, JRNameDevide, TwoLetterDistance, NewAllLastShow, Bansenshow, AllClassSetting, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";
 import { CarsDefine, CarsInto } from "./module/carsEdit";
 import { allswitch_UTL } from "./module/displaySwitch";
+import { comment } from "./types/constants";
+import { plainTrainTables, trainTables } from "./types/trainTable";
 var Mito = ['土浦', '勝田', '水戸', '高萩'];
 var Toride = ['取手', '成田'];
 var ATOSLimited = ['成田ｴｸｽﾌﾟﾚｽ', '湘南'];
@@ -27,31 +29,6 @@ for (var td = 0; td < Tablenum; td++) {
         CarsDefine(td, tr, '湘南', '', 9);
     }
 }
-console.log(Cars);
-console.log(station);
-for (var tr = 0; tr < orderNum; tr++) {
-    JRE6ColorPlusName(UTLDir[0], tr, '普通', 'orange');
-    if (Mito.includes(Des[UTLDir[0]][tr])) {
-        JRE6ColorPlusName(UTLDir[0], tr, '普通', 'blue');
-        JRE6ColorPlusName(UTLDir[0], tr, '快速', 'blue');
-    } else if (Toride.includes(Des[UTLDir[0]][tr])) {
-        JRE6ColorPlusName(UTLDir[0], tr, '普通', 'green');
-        JRE6ColorPlusName(UTLDir[0], tr, '快速', 'green');
-    }
-    JRE6ColorPlusName(0, tr, '踊り子', 'red');
-    JRE6ColorPlusName(1, tr, '踊り子', 'red');
-    JRE6ColorPlusName(0, tr, 'ひたち', 'red');
-    JRE6ColorPlusName(1, tr, 'ひたち', 'red');
-    JRE6ColorPlusName(0, tr, 'ときわ', 'red');
-    JRE6ColorPlusName(1, tr, 'ときわ', 'red');
-    JRE6ColorPlusName(0, tr, '湘南', 'red');
-    JRE6ColorPlusName(1, tr, '湘南', 'red');
-    if (station != '上野駅') {
-        JRE6ColorPlusName(UTLDir[1], tr, '普通', 'orange');
-        JRE6ColorPlusName(UTLDir[1], tr, '快速', 'orange');
-    }
-    //LType.textContent = keyword;
-}
 var LCDNumber = 2;
 const table2 = document.getElementById("TATOSTable2");
 const table3 = document.getElementById("TATOSTable3");
@@ -76,6 +53,7 @@ for (var td = 0; td < Tablenum; td++) {
         var LoType = document.getElementById('WType' + (td + 1) + (tr + 1));
         var LoName = document.getElementById('WName' + (td + 1) + (tr + 1));
         var LoDep = document.getElementById('TDep' + (td + 1) + (tr + 1));
+        const _PlainType = plainTrainTables[td].trains[tr].type;
         if (station == '上野駅' && td > 0) {
             ShihatsuMove(td, tr, 'Ttopic');
         } else if (station == '品川駅' && td > 1) {
@@ -107,16 +85,16 @@ for (var td = 0; td < Tablenum; td++) {
             CarsInto(td, tr, 'TCars');
             document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.textAlign = 'center';
             TwoLetterDistance(td, tr, Des, TDes, 1, 1);
-            if (!Type[td][tr].startsWith('普通') && !Type[td][tr].startsWith('快速') && !Type[td][tr].startsWith('特別快速') && Type[td][tr] != '') {
+            if (!_PlainType.includes('普通') && !_PlainType.includes('快速') && !_PlainType.includes('特別快速') && _PlainType != '') {
                 var LName = document.getElementById('TName' + (td + 1) + (tr + 1));
-                document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = Type[td][tr];
-                if (station == '上野駅' && (Type[td][tr].startsWith('ラビット') || Type[td][tr].startsWith('アーバン'))) {
-                    Type[td][tr] = '快速';
+                document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = _PlainType;
+                if (station == '上野駅' && (_PlainType.startsWith('ラビット') || _PlainType.startsWith('アーバン'))) {
+                    trainTables[td].trains[tr].type = '快速';
                     document.getElementById('WType' + (td + 1) + (tr + 1))!.style.color = 'orange';
                     LName!.textContent = LName!.textContent.replace('快速', '');
-                    document.getElementById('TCars' + (td + 1) + (tr + 1))!.textContent = '15両';
+                    trainTables[td].trains[tr].cars = '15両';
                 } else {
-                    Type[td][tr] = '特急';
+                    trainTables[td].trains[tr].type = '特急';
                     document.getElementById('WType' + (td + 1) + (tr + 1))!.style.color = 'red';
                     LName!.textContent = LName!.textContent.replace('特急', '');
                 }
@@ -130,10 +108,35 @@ for (var td = 0; td < Tablenum; td++) {
                 }
             }
         }
+        TrainTypeSet(td);
 
     }
 }
-allLastShow();
+for (var tr = 0; tr < orderNum; tr++) {
+    JRE6ColorPlusName(UTLDir[0], tr, '普通', 'orange');
+    if (Mito.includes(Des[UTLDir[0]][tr])) {
+        JRE6ColorPlusName(UTLDir[0], tr, '普通', 'blue');
+        JRE6ColorPlusName(UTLDir[0], tr, '快速', 'blue');
+    } else if (Toride.includes(Des[UTLDir[0]][tr])) {
+        JRE6ColorPlusName(UTLDir[0], tr, '普通', 'green');
+        JRE6ColorPlusName(UTLDir[0], tr, '快速', 'green');
+    }
+    JRE6ColorPlusName(0, tr, '踊り子', 'red');
+    JRE6ColorPlusName(1, tr, '踊り子', 'red');
+    JRE6ColorPlusName(0, tr, 'ひたち', 'red');
+    JRE6ColorPlusName(1, tr, 'ひたち', 'red');
+    JRE6ColorPlusName(0, tr, 'ときわ', 'red');
+    JRE6ColorPlusName(1, tr, 'ときわ', 'red');
+    JRE6ColorPlusName(0, tr, '湘南', 'red');
+    JRE6ColorPlusName(1, tr, '湘南', 'red');
+    if (station != '上野駅') {
+        JRE6ColorPlusName(UTLDir[1], tr, '普通', 'orange');
+        JRE6ColorPlusName(UTLDir[1], tr, '快速', 'orange');
+    }
+    //LType.textContent = keyword;
+}
+DestinationSet();
+NewAllLastShow();
 comment!.innerHTML = '両数や番線など一部表示不正確<br>';
 //allalterUTL_setting('特急');
 Bansenshow(0, LCDNumber);

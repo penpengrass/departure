@@ -1,7 +1,6 @@
 import { limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { limited, rapid, Jrapid, Jsubrapid, local } from './detailStopData/JRdetail';
 import { StationRegistry, StationConfig } from './types/station';
-import { registerStations } from './main';
 export var JRCSobj = {//色は文字
     Typea: { type: "のぞみ", color: 'yellow', detail: limited, },
     Typeb: { type: "ひかり", color: red, detail: rapid, },
@@ -38,4 +37,3 @@ export const JRTokaidouStations: StationRegistry = {
         }
     }
 }
-registerStations(JRTokaidouStations);

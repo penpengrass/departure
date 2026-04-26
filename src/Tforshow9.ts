@@ -1,4 +1,4 @@
-import { AllWordChange, AllWordReplace, AllStartWordReplace, allLastShow, flagmarkerase, TwoLetterDistance } from "./module/firstDisplayEdit";
+import { AllWordChange, AllWordReplace, AllTypeStartWordReplace, allLastShow, flagmarkerase, TwoLetterDistance } from "./module/firstDisplayEdit";
 import { TypeColorChange, TypeBackColorChange } from "./module/colorSimpleSet";
 import { DetailShow, LastLetterRemove } from "./module/detailMainPut";
 import { JTypeIncludeColor } from "./typeColor";
@@ -71,7 +71,7 @@ for (var td = 0; td < Tablenum; td++) {
         if (station == '高知駅') {
             AllWordReplace(td, tr, Type, 'しまんと', '特急しまんと');
         }
-        AllStartWordReplace(td, tr, Type, '南風', '特急南風');
+        AllTypeStartWordReplace(td, tr, '南風', '特急南風');
 
     }
 }

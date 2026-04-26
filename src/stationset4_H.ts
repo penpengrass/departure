@@ -1,6 +1,5 @@
 import { RailNumberDevide, TrainNameDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { StationRegistry, StationConfig } from './types/station';
-import { registerStations } from './main';
 NonGouflag = 1;
 export const JRHokurikuStations: StationRegistry = {
     '敦賀駅': {
@@ -101,4 +100,3 @@ export const JRHokurikuStations: StationRegistry = {
         }
     },
 }
-registerStations(JRHokurikuStations);

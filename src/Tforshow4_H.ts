@@ -1,19 +1,19 @@
 import { JRWSHobj } from './detailStopData/JRHokuShindetailset';
 import { DetailShow, doallDetailShow } from "./module/detailMainPut";
 import { DetailReplace } from "./module/detailSimpleEdit";
-import { AllWordChange, TwoLetterDistance, JRLimitedDevide, JRNameDevide, Bansenshow, allLastShow } from "./module/firstDisplayEdit";
+import { AllWordChange, TwoLetterDistance, JRLimitedDevide, JRNameDevide, Bansenshow, NewAllLastShow, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { allJRWTrainNameColor, DesMiddle } from "./module/displayEdit4";
 import { allJRColor, allJRSSColor } from "./typeColor";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
 import { getStationConfig } from "./main";
+import { trainTables } from './types/trainTable';
 allJRSSColor(JRWSHobj, 2);
 allJRColor(2);
 console.log(DetailLength);
 DetailShow(JRWSHobj, "　", DetailLength.length);
 JRLimitedDevide(2);
 JRLimitedDevide(3);
-//allLastShow();
 //TablenumSub = 1
 NonGouflag = 1;
 JRNameDevide(2);
@@ -36,13 +36,13 @@ for (var tr = 0; tr < 2; tr++) {
 for (var td = 0; td < 2; td++) {
     for (var tr = 0; tr < 3; tr++) {
         if (Type[td][tr] == 'かがやき') {
-            Cars[td][tr] = '12両編成';
+            trainTables[td].trains[tr].cars = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '全車指定席';
         } else if (Type[td][tr] == 'はくたか') {
-            Cars[td][tr] = '12両編成';
+           trainTables[td].trains[tr].cars = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-4号車';
         } else if (Type[td][tr] == 'つるぎ') {
-            Cars[td][tr] = '12両編成';
+            trainTables[td].trains[tr].cars= '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-2号車';
             if (TrainNumber[td][tr] > 59) {
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-4号車';
@@ -129,7 +129,12 @@ if (station == '敦賀駅' || station == '金沢駅') {
 if (Indexfile == 'index4_H.php') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();
-    allLastShow();
+    TrainTypeSet(2);
+    TrainTypeSet(3);
+    TrainTypeSet(4);
+    TrainTypeSet(5);
+    DestinationSet();
+    NewAllLastShow();
 }
 Bansenshow(1, 2);
 allJRWTrainNameColor('red', 'red', 'red', 2);

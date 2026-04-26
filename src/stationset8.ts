@@ -1,14 +1,15 @@
 import { DestinationDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, Tablereset } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
-import { registerStations } from './main';
-import { JRNameDevide, comment, AllStartWordReplace, allLastShow, Bansenshow } from "./module/firstDisplayEdit";
+import { JRNameDevide, AllTypeStartWordReplace, Bansenshow, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FDetail } from "./module/detailMainPut";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { DetailBannerOnce } from "./module/detailMainPut";
 import { JRHoobj, JRHSobj } from "./detailStopData/Hodetailset";
 import { getStationConfig } from "./main";
+import { comment } from './types/constants';
+import { trainTables, plainTrainTables } from './types/trainTable';
 var staflag = 0;
 window.Dtype = new Array(Tablenum);
 Dtype[0] = 0;
@@ -16,12 +17,40 @@ Dtype[1] = 0;
 detailflag = 8;
 detailLength_one = 1;
 NonGouflag = 0;
-JRNameDevide();
 function HokkaidoCars(cars: string) {
     return 'この列車は' + cars + '両編成です。';
 }
 function Useat(car: string) {
     return '指定席は' + car + '号車ｕシートです。';
+}
+function JRHokkaidouLimited() {
+    for (var td = 0; td < Tablenum; td++) {
+        let _data_Length = Tablenums[td];
+        var LimitedName = new Array(_data_Length);
+        var matches = new Array(_data_Length);
+        for (var tr = 0; tr < _data_Length; tr++) {
+            LimitedName[tr] = plainTrainTables[td].trains[tr]?.type ?? "";
+            //LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1))!.textContent;
+            if (NonGouflag == 1) {
+                matches[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
+            } else {
+                matches[tr] = LimitedName[tr].match(/([^0-9]+)(\d+)([^0-9]+)/);
+            }
+            if (matches[tr]) {
+                if (matches[tr][1].length < 7) {
+                    document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.textContent = matches[tr][1];
+                    document.getElementById("WName" + (td + 1) + "" + (tr + 1))!.textContent = matches[tr][2] + "号";
+                    trainTables[td].trains[tr].type = matches[tr][1];
+                    if (Type[td][tr].includes("特急")) document.getElementById("TName" + (td + 1) + "" + (tr + 1))!.style.color = "red";
+                }
+                //console.log(ShinNumber);
+                //ShinNumber[td][tr] = matches[tr][2];
+            } else {
+                //console.log(td + 1 + '個目の表の' + (tr + 1) + '番目の表示はJRNameDevideとマッチしない');
+            }
+        }
+    }
+    //console.log(ShinNumber);
 }
 export const JRHokkaidouStations: StationRegistry = {
     '札幌駅': {
@@ -80,11 +109,12 @@ export const JRHokkaidouStations: StationRegistry = {
             limitednumber2(TT[3], airportO, '快速エアポート')
         },
         onRender: () => {
+            JRHokkaidouLimited();
             for (var tr = 0; tr < orderNum; tr++) {
-                AllStartWordReplace(0, tr, Type, 'とかち', '特急とかち');
-                AllStartWordReplace(0, tr, Type, 'おおぞら', '特急おおぞら');
-                AllStartWordReplace(0, tr, Type, '北斗', '特急北斗');
-                AllStartWordReplace(0, tr, Type, 'すずらん', '特急すずらん');
+                AllTypeStartWordReplace(0, tr, 'とかち', '特急とかち');
+                AllTypeStartWordReplace(0, tr, 'おおぞら', '特急おおぞら');
+                AllTypeStartWordReplace(0, tr, '北斗', '特急北斗');
+                AllTypeStartWordReplace(0, tr, 'すずらん', '特急すずらん');
                 var LType2 = document.getElementById('TType' + 2 + (tr + 1));
                 var LWType2 = document.getElementById('WType' + 2 + (tr + 1));
                 var LName2 = document.getElementById('TName' + 2 + (tr + 1));
@@ -112,18 +142,19 @@ export const JRHokkaidouStations: StationRegistry = {
                     TypeColorChange(td, tr, '快速', 'orange');
                     if (Type[td][tr] == '普通*') {
                         if (tr == 0) {
-                            Cars[td][tr] = '６';
+                            trainTables[td].trains[tr].cars = '６';
                         }
-                        Type[td][tr] = '普通';
+                        trainTables[td].trains[tr].type = '普通';
                     } else if (Type[td][tr] == '普通+') {
                         if (tr == 0) {
-                            Cars[td][tr] = '２';
+                            trainTables[td].trains[tr].cars = '２';
                         }
-                        Type[td][tr] = '普通';
+                        trainTables[td].trains[tr].type = '普通';
                     } else if (Type[td][tr] == '普通') {
                         if (tr == 0) {
-                            Cars[td][tr] = '３'
+                            trainTables[td].trains[tr].cars = '３'
                         }
+                        trainTables[td].trains[tr].type = '普通'
                     }
                 }
             }
@@ -131,7 +162,6 @@ export const JRHokkaidouStations: StationRegistry = {
             console.log("---2個目の表の詳細表示終了、この後1個目の表の詳細表示完了---");
             FDetail(Type[0][0], JRHSobj, Dtype[0], 0, 0, "・");
             //FDetail(Type[3][0], JRHobj, Dtype[1], 3, 0, "・");
-            console.log(Detail[0][0]);
             //末尾の・を取り除く
             for (var td = 0; td < 2; td++) {
                 if (Detail[td][0].slice(-1) == '・') {
@@ -139,8 +169,8 @@ export const JRHokkaidouStations: StationRegistry = {
                 }
             }
             for (var td = 0; td < Tablenum; td++) {
-                if (Type[td][0] == '普通') {
-                    document.getElementById('TDetail' + (td + 1))!.textContent = HokkaidoCars(Cars[td][0]);
+                if (trainTables[td].trains[0].type == '普通') {
+                    document.getElementById('TDetail' + (td + 1))!.textContent = HokkaidoCars(String(trainTables[td].trains[0].cars));
                 }
             }
             if (Type[1][0].includes('快速エアポート')) {
@@ -209,6 +239,12 @@ export const JRHokkaidouStations: StationRegistry = {
             for (var td = 0; td < Tablenum; td++) {
                 DetailBannerOnce(td, 20);
             }
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(2);
+            TrainTypeSet(3);
+            TrainTypeSet(4);
+            DestinationSet();
         }
     },
     '新函館北斗駅': {
@@ -225,6 +261,7 @@ export const JRHokkaidouStations: StationRegistry = {
             TT[1] = TT[3];
         },
         onRender: () => {
+            JRNameDevide();
             console.log(Type);
             for (var tr = 1; tr < 3; tr++) {
                 if (Type[0][tr - 1] != '') {
@@ -243,4 +280,3 @@ export const JRHokkaidouStations: StationRegistry = {
         }
     }
 }
-registerStations(JRHokkaidouStations);

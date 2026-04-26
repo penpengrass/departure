@@ -1,9 +1,10 @@
-import { swapColumns, AllWordChange, AllWordReplace, TwoLetterDistance, allLastShow, comment, JRNameDevide, Bansenshow, AllClassSetting } from "./module/firstDisplayEdit";
+import { swapColumns, TwoLetterDistance,TypeTwoLetterDistance,DestinationTwoLetterDistance, Bansenshow, AllClassSetting, NewAllLastShow, DestinationSet } from "./module/firstDisplayEdit";
 import { CarsDevideToLine, CarsInto } from "./module/carsEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { JRK_Nobj, NagasakiAddStop } from "./detailStopData/JRK_S";
+import { comment } from "./types/constants";
 import { getStationConfig } from "./main";
 var Guidance = document.getElementById("guidance");
 if (station == '鳥栖駅') {
@@ -16,16 +17,17 @@ if (station == '鳥栖駅') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();
 }
-allLastShow();
+DestinationSet();
+NewAllLastShow();
 
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         CarsInto(td, tr, 'TCars');
         TypeColorChange(td, tr, '快速', 'orange');
         TypeColorChange(td, tr, '特急', 'red');
-        TwoLetterDistance(td, tr, Type, TType, 1, 0);
-        TwoLetterDistance(td, tr, Des, TDes, 1, 0.6);
-        TwoLetterDistance(td, tr, Des, TDes, 0.4, 0.2, 3);
+        TypeTwoLetterDistance(td, tr, TType, 1, 0);
+        DestinationTwoLetterDistance(td, tr, TDes, 1, 0.6);
+        DestinationTwoLetterDistance(td, tr, TDes, 0.4, 0.2, 3);
         if (Type[td][tr] === 'undefined') {
             console.log(":");
         } else if (Type[td][tr].length > 12) {
