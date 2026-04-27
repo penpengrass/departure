@@ -304,10 +304,10 @@ export const JRWestStations: StationRegistry = {
                 for (var tr = 0; tr < orderNum; tr++) {
                     let dType = document.getElementById("TType2" + (tr + 1));
                     if (Des[1][tr] == "広") {
-                        Type[1][tr] = "呉線";
+                        trainTables[1].trains[tr].type = "呉線";
                         dType!.style.color = "orange";
                     } else if (sanyo.includes(Des[1][tr])) {
-                        Type[1][tr] = "山陽線";
+                        trainTables[1].trains[tr].type = "山陽線";
                         dType!.style.transform = "scaleX(0.70)" + "translate(-20%,0%)";
                     }
                     TwoLetterDistance(td, tr, Des, TDes, 1, 1);

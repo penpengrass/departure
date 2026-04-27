@@ -211,6 +211,19 @@ export const JREast6Stations: StationRegistry = {
             var shonan2 = ['籠原', '高崎', '前橋', '宇都宮', '小金井', '古河'];
             JRETypeSelectAdd(5, '普通', shonan2, ' 湘南新宿ﾗｲﾝ', ' 横須賀線');
             JRETypeSelectAdd(5, '快速', shonan2, ' 湘南新宿ﾗｲﾝ', ' 横須賀線');
+            for (var td = 0; td < 6; td++) {
+                TrainTypeSet(td);
+                (document.getElementsByClassName('HDes')[td] as HTMLElement).style.paddingRight = "1.5em";
+                for (var tr = 0; tr < 2; tr++) {
+                    //console.log(document.getElementById('Ttopic'+(td+1)+(tr+1)));
+                    FourLetters(td, tr, 0.6, 30, 'WType');
+                    document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.innerHTML += '<span class="bansen">番線</span>';
+                    //document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.paddingRight = "1em";
+                    if (Des[td][tr].length > 6) {
+                        document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.5)" + "translate(-50%,0%)";
+                    }
+                }
+            }
             for (var tr = 0; tr < 2; tr++) {
                 Des[4][tr] = Des[4][tr].replace('*', '');
                 JRE6ColorPlusName(0, tr, '各駅停車', '#00b2e5');
@@ -227,18 +240,6 @@ export const JREast6Stations: StationRegistry = {
                 JRE6ColorPlusName(5, tr, '横須賀線', 'blue', 1);
                 JRE6ColorPlusName(4, tr, '特急', 'red');
                 JRE6ColorPlusName(5, tr, '特急', 'red');
-            }
-            for (var td = 0; td < 6; td++) {
-                (document.getElementsByClassName('HDes')[td] as HTMLElement).style.paddingRight = "1.5em";
-                for (var tr = 0; tr < 2; tr++) {
-                    //console.log(document.getElementById('Ttopic'+(td+1)+(tr+1)));
-                    FourLetters(td, tr, 0.6, 30, 'WType');
-                    document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.innerHTML += '<span class="bansen">番線</span>';
-                    //document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.paddingRight = "1em";
-                    if (Des[td][tr].length > 6) {
-                        document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.5)" + "translate(-50%,0%)";
-                    }
-                }
             }
             comment!.textContent = '両数表示は今後更新';
         }
@@ -541,23 +542,16 @@ export const JREast6Stations: StationRegistry = {
             NonGouflag = 0;
             var Sotobo_Color = 'red';
             JRNameDevide(6);
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(2);
+            TrainTypeSet(3);
             document.getElementById("WDir1")!.textContent = "東京･横浜･大船方面";
             document.getElementById("WDir2")!.textContent = "西船橋･秋葉原方面";
             document.getElementById("WDir3")!.textContent = "君津方面";
             document.getElementById("WDir4")!.textContent = "大網方面";
             document.getElementById("WDir5")!.textContent = "佐倉･銚子方面";
             document.getElementById("WDir6")!.textContent = "成田空港･銚子方面";
-            for (var tr = 0; tr < 3; tr++) {
-                JRE6ColorPlusName(0, tr, '快速', 'blue');
-                JRE6ColorPlusName(2, tr, '快速', 'blue');
-                JRE6ColorPlusName(2, tr, '普通', 'blue');
-                JRE6ColorPlusName(3, tr, '普通', Sotobo_Color);
-                JRE6ColorPlusName(3, tr, '快速', Sotobo_Color);
-                JRE6ColorPlusName(4, tr, '快速', 'orange');
-                JRE6ColorPlusName(4, tr, '普通', 'orange');
-                JRE6ColorPlusName(5, tr, '快速', 'green');
-                JRE6ColorPlusName(5, tr, '普通', 'green');
-            }
             for (var td = 0; td < 6; td++) {
                 for (var tr = 0; tr < 3; tr++) {
                     CarsDefine(td, tr, '快速', '', 15);
@@ -569,7 +563,7 @@ export const JREast6Stations: StationRegistry = {
             }
             for (var td = 0; td < 6; td++) {
                 for (var tr = 0; tr < 3; tr++) {
-                    const _PlainType = plainTrainTables[td].trains[tr].type;
+                    const _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
                     var L_WName = document.getElementById('WName' + (td + 1) + (tr + 1));
                     var L_WType = document.getElementById('WType' + (td + 1) + (tr + 1));
                     var L_PName = document.getElementById('PName' + (td + 1) + (tr + 1));
@@ -577,21 +571,18 @@ export const JREast6Stations: StationRegistry = {
                     if (L_WName && L_WType) {
                         JRE6ColorPlusName(td, tr, '成田エクスプレス', 'red');
                         JRE6ColorPlusName(td, tr, 'しおさい', 'red');
-                        if (td > 3) {
+                        if (td > 3 && trainTables[td].trains[tr].type == "") {
                             //L_WType.textContent = L_WType.textContent.replace('成田線経由', '');
                             trainTables[td].trains[tr].type = _PlainType.replace('成田線経由', '').replace('総武本線経由', '');
                             //L_WType.textContent = L_WType.textContent.replace('総武本線経由', '');
                             //Type[td][tr] = Type[td][tr].replace('総武本線経由', '');
-                        }
-                        if (td == 5) {
-                            Des[td][tr] = Des[td][tr].replace('*', '');
                         }
                         CarsInto(td, tr, 'WName');
                         if (_PlainType.startsWith('始発')) {
                             L_WName.textContent = '当駅始発';
                             L_WName.style.transform = "scaleX(0.60)" + "translate(-0%,0%)";
                             const _Type = trainTables[td].trains[tr].type.replace('始発', '')
-                            trainTables[td].trains[tr].type = _Type ?? plainTrainTables[td].trains[tr].type;
+                            trainTables[td].trains[tr].type = _Type ?? plainTrainTables[td].trains[tr]?.type ?? "";
                         }
                         if (td == 1) {
                             L_WType.style.transform = "scaleX(0.90)" + "translate(-5%,0%)";
@@ -603,10 +594,17 @@ export const JREast6Stations: StationRegistry = {
                 }
                 flagmarkerase(td, 'WType');
             }
-            TrainTypeSet(0);
-            TrainTypeSet(1);
-            TrainTypeSet(2);
-            TrainTypeSet(3);
+            for (var tr = 0; tr < 3; tr++) {
+                JRE6ColorPlusName(0, tr, '快速', 'blue');
+                JRE6ColorPlusName(2, tr, '快速', 'blue');
+                JRE6ColorPlusName(2, tr, '普通', 'blue');
+                JRE6ColorPlusName(3, tr, '普通', Sotobo_Color);
+                JRE6ColorPlusName(3, tr, '快速', Sotobo_Color);
+                JRE6ColorPlusName(4, tr, '快速', 'orange');
+                JRE6ColorPlusName(4, tr, '普通', 'orange');
+                JRE6ColorPlusName(5, tr, '快速', 'green');
+                JRE6ColorPlusName(5, tr, '普通', 'green');
+            }
             DestinationSet();
             NewAllLastShow();
             setInterval(allswitchChiba, 5000);

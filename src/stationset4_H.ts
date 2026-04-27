@@ -1,11 +1,13 @@
 import { RailNumberDevide, TrainNameDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { StationRegistry, StationConfig } from './types/station';
+import { trainTables } from './types/trainTable';
 NonGouflag = 1;
 export const JRHokurikuStations: StationRegistry = {
     '敦賀駅': {
         name: '敦賀駅',
         company: 'JR西日本',
         tableTitles: ['北陸新幹線 金沢 富山方面', '北陸新幹線 当駅止め', '当駅止め', '特急列車 大阪 名古屋方面', '北陸本線 湖西線', 'ハピラインふくい', '小浜線'],
+        nonGouFlag: 1,
         dtype: [1],
         setup: () => {
             DetailLength = [2];
@@ -32,7 +34,7 @@ export const JRHokurikuStations: StationRegistry = {
             }
             for (var tr = 0; tr < 3; tr++) {
                 if (Type[2][tr] != '' && ((TableMin[2][tr] < L_min && TableHour[2][tr] == L_hour) || TableHour[2][tr] < L_hour)) {
-                    document.getElementById('TDes' + 3 + (tr + 1))!.textContent += '(到着済み)';
+                    trainTables[2].trains[tr].destination = '当駅止(到着済み)';
                     document.getElementById('TDes' + 3 + (tr + 1))!.style.transform = "scaleX(0.70)" + "translate(-15%,0%)";
                 }
             }
@@ -68,6 +70,7 @@ export const JRHokurikuStations: StationRegistry = {
         name: '福井駅',
         company: 'JR西日本',
         tableTitles: ['北陸新幹線 金沢 富山方面', '北陸新幹線 敦賀方面', '九頭竜湖方面', '金沢 富山方面', '敦賀 大阪 京都方面'],
+        nonGouFlag:1,
         dtype: [1, 0],
         setup: () => {
             DetailLength = [2, 2];
@@ -85,6 +88,7 @@ export const JRHokurikuStations: StationRegistry = {
         company: 'JR西日本',
         tableTitles: ['北陸新幹線 福井 敦賀方面', '北陸新幹線 富山 東京方面', 'IRいしかわ鉄道線 松任 小松 福井方面', 'IRいしかわ鉄道線 津幡 高岡 富山方面', '七尾線 津幡 七尾 和倉温泉方面'],
         dtype: [0, 0],
+        nonGouFlag:1,
         setup: () => {
             DetailLength = [2, 2];
             window.Dtype = [1, 0];

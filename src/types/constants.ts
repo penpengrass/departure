@@ -12,10 +12,7 @@ export let WType = new Array(Tablenum);
 let BType = new Array(Tablenum);
 let TDetail = new Array(Tablenum);
 export let Detail = new Array(Tablenum);
-//let TableHour = new Array(Tablenum);
-//let TableMin = new Array(Tablenum);
 let Connecting = new Array(Tablenum);
-export let Cars = new Array(Tablenum);
 export let Jiyuseki = new Array(Tablenum);
 const table = new Array(Tablenum);
 var ShinNumber = new Array(Tablenum);
@@ -43,7 +40,6 @@ for (let tr = 0; tr < Tablenum; tr++) {
     WType[tr] = new Array(Tablenums[tr]);
    
     BType[tr] = new Array(Tablenums[tr]);
-    Cars[tr] = new Array(Tablenums[tr]);
     Jiyuseki[tr] = new Array(Tablenums[tr]);
 }
 for (var td = 0; td < Tablenum; td++) {

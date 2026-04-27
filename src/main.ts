@@ -266,7 +266,7 @@ const registryMap: Record<string, StationRegistry> = {
     'index6.php': JREast6Stations,
     'index6_U.php': JREast6Stations,
     'index6_Chiba.php': JREast6Stations,
-    'index7_S.php': JRTokaidouStations,
+    'index7_S1.php': JRTokaidouStations,
     'index7.php': JRTokaiStations,
     'index7_T.php': JRTokaiStations,
     'index8.php': JRHokkaidouStations,

@@ -53,7 +53,7 @@ for (var td = 0; td < Tablenum; td++) {
         var LoType = document.getElementById('WType' + (td + 1) + (tr + 1));
         var LoName = document.getElementById('WName' + (td + 1) + (tr + 1));
         var LoDep = document.getElementById('TDep' + (td + 1) + (tr + 1));
-        const _PlainType = plainTrainTables[td].trains[tr].type;
+        const _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
         if (station == '上野駅' && td > 0) {
             ShihatsuMove(td, tr, 'Ttopic');
         } else if (station == '品川駅' && td > 1) {

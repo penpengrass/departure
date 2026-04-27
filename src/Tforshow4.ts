@@ -57,13 +57,13 @@ if (TwoLetterDisflag == 1) {
     }
 }
 if (Indexfile == 'index4.php') {
+    for (var td = 0; td < Tablenum; td++) {
+        TrainTypeSet(td);
+    }
     if (JRShinkansenflag == 0) {
         allJRColor();
     } else if (JRShinkansenflag == 1) {
         allJRWSZColor();
-    }
-    for (var td = 0; td < Tablenum; td++) {
-        TrainTypeSet(td);
     }
     DestinationSet();
     NewAllLastShow();

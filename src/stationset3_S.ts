@@ -47,36 +47,39 @@ export const ShinkansenStations: StationRegistry = {
             JRAllShinkansenNumberSet(2);
             DestinationSet()
             for (var tr = 0; tr < orderNum; tr++) {
-                if (iiyama.includes(TrainNumber[0][tr])) {
+                const _Number0 = trainTables[0].trains[tr]?.trainNumber ?? 0;
+                const _Number1 = trainTables[1].trains[tr]?.trainNumber ?? 0;
+                if (iiyama.includes(_Number0)) {
                     DetailReplace(0, tr, '上越妙高', '飯山・上越妙高');
                 }
-                if (annnaka.includes(TrainNumber[1][tr])) {
+                if (annnaka.includes(_Number1)) {
                     DetailReplace(1, tr, '高崎', '安中榛名・高崎');
                 }
-                if (Nhonjou.includes(TrainNumber[1][tr])) {
+                if (Nhonjou.includes(_Number1)) {
                     DetailReplace(1, tr, '本庄早稲田・', '');
                 }
-                if (Nkumagaya.includes(TrainNumber[1][tr])) {
+                if (Nkumagaya.includes(_Number1)) {
                     DetailReplace(1, tr, '熊谷・', '');
                 }
-                if (Stops.ueda.includes(TrainNumber[1][tr])) {
+                if (Stops.ueda.includes(_Number1)) {
                     DetailReplace(1, tr, '高崎', '上田・軽井沢・高崎');
                 }
-                if (Stops.sakudaira.includes(TrainNumber[1][tr])) {
+                if (Stops.sakudaira.includes(_Number1)) {
                     DetailReplace(1, tr, '上田', '上田・佐久平');
                 }
-                if (Stops.Ntakasaki.includes(TrainNumber[1][tr])) {
+                if (Stops.Ntakasaki.includes(_Number1)) {
                     DetailReplace(1, tr, '高崎・', '');
                 }
-                if (onsen.includes(TrainNumber[0][tr])) {
+                if (onsen.includes(_Number0)) {
                     DetailReplace(0, tr, '金沢', '金沢・加賀温泉・芦原温泉');
                 }
-                if (takefu.includes(TrainNumber[0][tr])) {
+                if (takefu.includes(_Number0)) {
                     DetailReplace(0, tr, '金沢・福井', '金沢・小松・福井・越前たけふ');
                 }
             }
             for (var td = 0; td < Tablenum; td++) {
                 for (var tr = 0; tr < orderNum; tr++) {
+                    const _Des = trainTables[td].trains[tr].destination;
                     if (Type[td][0] == '') {
                         console.log(td + ':' + tr);
                         document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = 'お知らせ';
@@ -92,6 +95,7 @@ export const ShinkansenStations: StationRegistry = {
                     //DetailBanner(td, tr, 18);
                     if (Detail[td][tr] != '') {
                         Detail[td][tr] += Des[td][tr];
+                        trainTables[td].trains[tr].detail += _Des;
                     }
                     TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
                 }
@@ -104,6 +108,7 @@ export const ShinkansenStations: StationRegistry = {
         file: 'index3_S.php',
         tableTitles: ['東北新幹線 仙台方面', '新幹線 大宮・上野・東京方面'],
         dtype: [0, 1],
+        nonGouFlag: 1,
         setup: () => {
             limitednumber(window.TT[0], 251, 'なすの');
             limitednumber(window.TT[1], 254, 'なすの');
@@ -118,56 +123,54 @@ export const ShinkansenStations: StationRegistry = {
             JRAllShinkansenNumberSet(2);
             DestinationSet();
             for (var tr = 0; tr < orderNum; tr++) {
+                var _Number0 = trainTables[0].trains[tr]?.trainNumber ?? 0;
+                var _Number1 = trainTables[1].trains[tr]?.trainNumber ?? 0;
                 if (Type[1][tr] != '') {
-                    //console.log(TrainNumber[1][tr]);
-                    if (TrainNumber[1][tr] > 199 || TrainNumber[1][tr] == 68) {
-                        Detail[1][tr] = '小山・大宮・上野・東京';
+                    if (_Number1 > 199 || _Number1 == 68) {
+                        trainTables[1].trains[tr].detail = '小山・大宮・上野・東京';
                     } else {
-                        Detail[1][tr] = '大宮・上野・東京';
+                        trainTables[1].trains[tr].detail = '大宮・上野・東京';
                     }
                 }
                 if (Type[0][tr] != '') {
-                    console.log(trainTables[0].trains[tr].trainNumber);
-                    var _number = trainTables[0].trains[tr]?.trainNumber ?? 0;
                     //console.log(LNumber);
                     var LDes = Des[0][tr];
                     var LNumber = document.getElementById('TName' + (0 + 1) + (tr + 1));
-                    if (LNumber && _number > 130 && _number < 200) {
-                        _number += 2;
-                        LNumber.textContent = String(_number);
+                    if (LNumber && _Number0 > 130 && _Number0 < 200) {
+                        _Number0 += 2;
+                        LNumber.textContent = String(_Number0);
                     }
                     //console.log(LNumber);
                     if (LDes == '那須塩原') {
-                        Detail[0][tr] = '次の那須塩原までです';
+                        trainTables[0].trains[tr].detail = '次の那須塩原までです';
                     } else if (LDes == '郡山') {
-                        Detail[0][tr] = '那須塩原・新白河・郡山';
+                        trainTables[0].trains[tr].detail = '那須塩原・新白河・郡山';
                     } else if (LDes.includes('新庄')) {
-                        Detail[0][tr] = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形・天童・さくらんぼ東根・村山・大石田・新庄';
+                        trainTables[0].trains[tr].detail = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形・天童・さくらんぼ東根・村山・大石田・新庄';
                     } else if (LDes.includes('山形')) {
-                        Detail[0][tr] = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形';
-                    } else if (TrainNumber[0][tr] > 200) {
-                        Detail[0][tr] = '那須塩原・新白河・郡山・福島・仙台';
-                    } else if (TrainNumber[0][tr] < 100) {
-                        Detail[0][tr] = '郡山・福島・仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
-                    } else if (TrainNumber[0][tr] > 100) {
-                        Detail[0][tr] = '郡山・福島・仙台';
+                        trainTables[0].trains[tr].detail = '郡山・福島・米沢・高畠・赤湯・かみのやま温泉・山形';
+                    } else if (_Number0 > 200) {
+                        trainTables[0].trains[tr].detail = '那須塩原・新白河・郡山・福島・仙台';
+                    } else if (_Number0 < 100 && _Number0 > 0) {
+                        trainTables[0].trains[tr].detail = '郡山・福島・仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
+                    } else if (_Number0 > 100) {
+                        trainTables[0].trains[tr].detail = '郡山・福島・仙台';
                     }
                 }
                 if (YamagataRapid.includes(TrainNumber[0][tr])) {
-                    Detail[0][tr] = '郡山・福島・米沢・山形・天童・さくらんぼ東根・村山・大石田・新庄';
+                    trainTables[0].trains[tr].detail = '郡山・福島・米沢・山形・天童・さくらんぼ東根・村山・大石田・新庄';
                 }
                 if (Zaou.includes(TrainNumber[0][tr]) && !Type[0][tr].includes('つばさ')) {
                     DetailReplace(0, tr, '福島', '福島・白石蔵王');
                 } else if (Zaou.includes(TrainNumber[0][tr])) {
-                    Detail[0][tr] += '　やまびこは福島発車後白石蔵王にも停まります';
+                    trainTables[0].trains[tr].detail += '　やまびこは福島発車後白石蔵王にも停まります';
                 }
             }
             for (var td = 0; td < Tablenum; td++) {
                 for (var tr = 0; tr < orderNum; tr++) {
                     var _Type0 = plainTrainTables[td].trains[0].type;
-                    var _Type = plainTrainTables[td].trains[tr].type;
+                    var _Type = plainTrainTables[td].trains[tr]?.type ?? "";
                     if (_Type0 == '') {
-                        console.log(td + ':' + tr);
                         document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = 'お知らせ';
                         Detail[td][0] = '本日の運転は終了しました';
                         break;
@@ -195,7 +198,7 @@ export const ShinkansenStations: StationRegistry = {
         tableTitles: ['東北新幹線(下り) 仙台 盛岡方面', '東北新幹線(上り) 宇都宮 大宮 東京方面', '東北本線 白石 仙台方面', '東北本線 郡山 新白河方面', '山形新幹線 奥羽本線 米沢 山形方面'],
         dtype: [0, 1],
         detailFlag: 2,
-        nonGouFlag: true,
+        nonGouFlag: 1,
         setup: () => {
             window.DetailLength = [2, 2, 0, 0, 0];
             limitedjustnumber(window.TT[0], 51, 'やまびこ', '盛岡');
@@ -221,26 +224,28 @@ export const ShinkansenStations: StationRegistry = {
                 }
             }
             for (var tr = 0; tr < 2; tr++) {
-                var _Type0 = plainTrainTables[1].trains[0].type;
                 var _Type = plainTrainTables[1].trains[tr].type;
-                if (!Zaou.includes(TrainNumber[0][tr]) && Des[0][tr] == '仙台') {
-                    Detail[0][tr] = 'この列車は仙台まで止まりません。';
+                var _Number0 = trainTables[0].trains[tr]?.trainNumber ?? 0;
+                var _Number1 = trainTables[1].trains[tr]?.trainNumber ?? 0;
+                if (!Zaou.includes(_Number0) && Des[0][tr] == '仙台') {
+                    trainTables[0].trains[tr].detail = 'この列車は仙台まで止まりません。';
                 }
-                if (TrainNumber[0][tr] < 100) {
-                    Detail[0][tr] = '仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
-                } else if (TrainNumber[0][tr] > 100) {
-                    Detail[0][tr] = '仙台';
+                if (_Number0 < 100 && _Number0 > 0) {
+                    trainTables[0].trains[tr].detail = '仙台・古川・くりこま高原・一ノ関・水沢江刺・北上・新花巻・盛岡';
+                } else if (_Number0 > 100) {
+                    trainTables[0].trains[tr].detail = '仙台';
                 }
-                if (Zaou.includes(TrainNumber[0][tr])) {
+                if (Zaou.includes(_Number0)) {
+                    Detail[0][tr] = "";
                     DetailReplace(0, tr, '仙台', '白石蔵王・仙台');
                 }
-                if (Detail[0][tr] == '仙台') {
-                    Detail[0][tr] = 'この列車は仙台まで止まりません。';
+                if (trainTables[0].trains[tr].detail == '仙台') {
+                    trainTables[0].trains[tr].detail = 'この列車は仙台まで止まりません。';
                 }
                 JREScolor(1, tr, 'やまびこ･つばさ', '<span class="green">やまびこ</span>･<span class="orange">つばさ</span>', 'pink');
                 FourLetters(1, tr, 0.6, 30, 'TType', Type, 8);
                 if (_Type.startsWith('やまびこ･つばさ')) {
-                    Detail[1][tr] = '郡山・宇都宮・大宮・上野・東京';
+                    trainTables[1].trains[tr].detail = '郡山・宇都宮・大宮・上野・東京';
                     trainTables[1].trains[tr].type = '<span class="green">やまびこ</span>･<span style="color:pink;">つばさ</span>';
                     document.getElementById('TType2' + (tr + 1))!.style.transform = "scaleX(0.6)" + "translate(-30%,0%)";
                     document.getElementById('TName2' + (tr + 1))!.style.color = 'pink';
@@ -251,26 +256,26 @@ export const ShinkansenStations: StationRegistry = {
                     document.getElementById('Ttopic2' + (tr + 1))!.textContent = '１０両編成';
                 }
                 if (Des[1][tr] == '郡山') {
-                    Detail[1][tr] = 'この列車は郡山まで止まりません。';
-                } else if (TrainNumber[1][tr] == 124) {
-                    Detail[1][tr] = '大宮・東京';
-                } else if (TrainNumber[1][tr] < 170) {
-                    Detail[1][tr] = '郡山・宇都宮・大宮・上野・東京';
-                } else if (TrainNumber[1][tr] > 199) {
-                    Detail[1][tr] = '郡山・新白河・那須塩原・宇都宮・小山・大宮・上野・東京';
+                    trainTables[1].trains[tr].detail = 'この列車は郡山まで止まりません。';
+                } else if (_Number1 == 124) {
+                    trainTables[1].trains[tr].detail = '大宮・東京';
+                } else if (_Number1 < 170 && _Number1 > 0) {
+                    trainTables[1].trains[tr].detail = '郡山・宇都宮・大宮・上野・東京';
+                } else if (_Number1 > 199) {
+                    trainTables[1].trains[tr].detail = '郡山・新白河・那須塩原・宇都宮・小山・大宮・上野・東京';
                 }
-                if (Shirakawa.includes(TrainNumber[1][tr])) {
+                if (Shirakawa.includes(_Number1)) {
                     DetailReplace(1, tr, '宇都宮', '新白河・宇都宮');
                 }
-                if (Oyama.includes(TrainNumber[1][tr])) {
+                if (Oyama.includes(_Number1)) {
                     DetailReplace(1, tr, '那須塩原・宇都宮', '宇都宮');
                 }
-                if (Seventeen.includes(TrainNumber[0][tr])) {
+                if (Seventeen.includes(_Number0)) {
                     document.getElementById('Ttopic1' + (tr + 1))!.textContent = '１７両編成';
                 } else if (Type[0][tr] != '') {
                     document.getElementById('Ttopic1' + (tr + 1))!.textContent = '１０両編成';
                 }
-                if (Seventeen.includes(TrainNumber[1][tr])) {
+                if (Seventeen.includes(_Number1)) {
                     document.getElementById('Ttopic2' + (tr + 1))!.textContent = '１７両編成';
                 }
             }

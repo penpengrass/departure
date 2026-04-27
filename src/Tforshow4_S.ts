@@ -1,14 +1,10 @@
 import { DetailReplace_Set } from "./module/detailSimpleEdit";
-import { allLastShow, TwoLetterDistance, flagmarkerase, JRNameDevide, Bansenshow } from "./module/firstDisplayEdit";
+import { NewAllLastShow, TwoLetterDistance, flagmarkerase, JRNameDevide, Bansenshow, DestinationSet } from "./module/firstDisplayEdit";
 import { getStationConfig } from "./main";
 import { JRSSobj } from "./detailStopData/JRW_S";
 import { allJRSSColor } from "./typeColor";
 import { allSanyoShinkansenSwitch } from "./module/displaySwitch";
 import { trainTables } from "./types/trainTable";
-if (LastShowFlag == 0) {
-    allLastShow();
-}
-LastShowFlag = 1;
 var TablenumSub = Tablenum;
 if (station == '博多駅') {
     var config = getStationConfig(window.station, Indexfile);
@@ -111,6 +107,8 @@ function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj: any) {
 if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
     NonGouflag = 1;
     JRNameDevide(2);
+    DestinationSet();
+    NewAllLastShow();
     allJRSSColor();
     for (var td = 0; td < 2; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
@@ -126,29 +124,9 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
             if (Type[td][tr] != '' && (station == '博多駅' || station == '岡山駅') && tr < 2) {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = '停車駅';
             }
-
-            /*if (Type[td][tr] == 'のぞみ' || Type[td][tr] == 'のぞみ*') {
-                Cars[td][tr] = '16両編成';
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '16両編成';
-                Jiyuseki[td][tr]='自由席1-3号車'
-            }else if(Type[td][tr] == 'ひかり') {
-                Cars[td][tr] = '16両編成';
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '16両編成';
-                Jiyuseki[td][tr]='自由席1-5号車'
-            }else if (Type[td][tr].includes('*')) {
-                Cars[td][tr] = '6両編成';
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '6両編成';
-                Jiyuseki[td][tr]='自由席1-3,5,6号車'
-            }  else if (Type[td][tr] != '') {
-                Cars[td][tr] = '8両編成';
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '8両編成';
-                Jiyuseki[td][tr]='自由席1-3号車'
-            }*/
-
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         }
     }
-    console.log(Cars);
     console.log(Jiyuseki);
     flagmarkerase(0, 'TType', '*');
     flagmarkerase(1, 'TType', '*');
@@ -178,4 +156,5 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
         }
     }
 }
+
 LastShowFlag = 1;

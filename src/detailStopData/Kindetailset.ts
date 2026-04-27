@@ -37,7 +37,7 @@ Hsubsemiexpress[1] = ["布施 河内小阪 東花園 以遠各駅"];
 var Rsubsemiexpress = new Array(3);
 Rsubsemiexpress[1] = ["東花園までの各駅と河内小阪 布施 鶴橋 以遠各駅"];
 var Rsemiexpress = new Array(3);
-Rsemiexpress[1] = ["石切までの各駅と東花園　河内小阪　布施　鶴橋　以遠各駅"];
+Rsemiexpress[1] = ["石切までの各駅と東花園 河内小阪 布施 鶴橋 以遠各駅"];
 var Hlimited = ['大和高田　大和八木　榛原　名張　青山町　伊勢中川　松阪　伊勢市　宇治山田　五十鈴川　鳥羽　志摩磯部　鵜方', '生駒　学園前　大和西大寺',
     '大和八木　大和高田　鶴橋'];
 var Hrapid = ["五位堂　大和高田　大和八木　榛原　室生口大野　赤目口　名張　桔梗が丘　美旗　青山町　榊原温泉口　伊勢中川　松阪　伊勢市　宇治山田　五十鈴川　朝熊　池の浦",

@@ -7,7 +7,7 @@ import { TrainNumber } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { JRK_Nobj, NagasakiAddStop } from "./detailStopData/JRK_S";
-import { comment, Cars } from './types/constants';
+import { comment } from './types/constants';
 import { plainTrainTables, trainTables } from './types/trainTable';
 NonGouflag = 1;
 export const JRKyushuStations: StationRegistry = {

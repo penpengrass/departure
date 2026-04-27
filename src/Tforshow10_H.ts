@@ -29,7 +29,7 @@ for (var td = 0; td < Tablenum; td++) {
         var Name = document.getElementById('TName' + (td + 1) + (tr + 1));
         var Name_word = Name!.textContent;
         Name!.style.color = Type_color!.style.color;
-        if (_PlainType.startsWith('特急') || td < 2) {
+        if (_PlainType.startsWith('特急')) {
             if (Name_word === 'undefined') {
                 console.log(":");
             } else if (Name_word.length > 10) {

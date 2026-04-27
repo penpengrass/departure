@@ -1,7 +1,9 @@
+import { StationConfig } from './../types/station';
 import { limited } from './../detailStopData/JRdetail';
 import { DesMiddle } from "./displayEdit4";
 import { trainTables, plainTrainTables, PlainTrainData } from "../types/trainTable";
 import "../main";
+import { getStationConfig } from '../main';
 //JR西日本の特急名を表で分ける関数 index4.phpとindex3.phpで使用
 export var LiName = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
@@ -36,9 +38,9 @@ export function NewLastShows(td: number, tr: number) {
     //(未反映!!!)インタフェースの情報を入れる。ここの動作確認は完了。書き換えが反映されないため保留。
     if (!plainTrainTables[td].trains[tr]) return;
     document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.innerHTML =
-        String(plainTrainTables[td].trains[tr].hour);
+        String(trainTables[td].trains[tr]?.hour) ?? String(plainTrainTables[td].trains[tr].hour);
     document.getElementById("TMin" + (td + 1) + "" + (tr + 1))!.innerHTML =
-        plainTrainTables[td].trains[tr].minute;
+        trainTables[td].trains[tr]?.minute ?? plainTrainTables[td].trains[tr].minute;
     document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.innerHTML =
         trainTables[td].trains[tr].type;
     if (Indexfile == "index6_Chiba.php" || Indexfile == "index4_O.php") {
@@ -49,7 +51,7 @@ export function NewLastShows(td: number, tr: number) {
             trainTables[td].trains[tr].destination;
     }
     document.getElementById("TNum" + (td + 1) + "" + (tr + 1))!.innerHTML =
-        plainTrainTables[td].trains[tr].trackNumber;
+        trainTables[td].trains[tr]?.trackNumber ?? plainTrainTables[td].trains[tr].trackNumber;
 
 }
 export function allLastShow() {
@@ -102,11 +104,11 @@ export function JRLimitedDevide(td: number, align = "center", Tab = "TName") {
 //種別の条件によって路線名をnameに入れる(ATOSや岡山駅など)
 export function JRLineName(td: number, tr: number, F_Type: string, Name: string, flag: number, Replace_Flag = 0) {
     var LName = document.getElementById("TName" + (td + 1) + (tr + 1)) as HTMLElement | null;
-    var _PlainType = plainTrainTables[td].trains[tr].type;
+    var _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
     if (_PlainType.includes(F_Type)) {
         if (Replace_Flag == 1 || (Replace_Flag == 0 && LName?.textContent == "")) {
             LName!.textContent = Name;
-            trainTables[td].trains[tr].type = plainTrainTables[td].trains[tr].type;
+            trainTables[td].trains[tr].type = plainTrainTables[td].trains[tr]?.type ?? "";
         }
     }
 }
@@ -152,20 +154,21 @@ export function JRATOSDevide(td: number) {
 }
 
 //新幹線と北海道の特急の列車名を分割(引数は表の数)，index3_S.phpを除く
-export function JRNameDevide(T = Tablenum) {
+export function JRNameDevide(T = Tablenum, config?: StationConfig) {
+    config = getStationConfig(window.station, Indexfile);
+    const isNonGou = config ? config.nonGouFlag : NonGouflag;
+    console.log("isNonGou=" + isNonGou);
     for (var td = 0; td < T; td++) {
         let _data_Length = Tablenums[td];
         var LimitedName = new Array(_data_Length);
         var matches = new Array(_data_Length);
+        var matches2 = new Array(_data_Length);
         for (var tr = 0; tr < _data_Length; tr++) {
             LimitedName[tr] = plainTrainTables[td].trains[tr]?.type ?? "";
-            //LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1))!.textContent;
-            if (NonGouflag == 1) {
-                matches[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
-            } else {
-                matches[tr] = LimitedName[tr].match(/([^0-9]+)(\d+)([^0-9]+)/);
-            }
-            if (matches[tr]) {
+            matches[tr] = LimitedName[tr].match(/(\D+)(\d+)/);
+            matches2[tr] = LimitedName[tr].match(/([^0-9]+)(\d+)(号)/);
+            if (matches[tr] || matches2[tr]) {
+                matches[tr] = matches[tr] ?? matches2[tr];
                 //console.log(td + 1 + "個目の表の" + (tr + 1) + "番目の表示はJRNameDevideとマッチする");
                 /*console.log(matches[tr][0] + ":" + tr);
                 console.log(matches[tr][1] + ":" + tr);
@@ -181,20 +184,12 @@ export function JRNameDevide(T = Tablenum) {
                     Mlength = 9;
                 }
                 if (matches[tr][1].length < Mlength) {
-                    console.log(matches[tr][2]);
-                    document.getElementById(
-                        "WType" + (td + 1) + "" + (tr + 1)
-                    )!.textContent = matches[tr][1];
-                    if (NonGouflag == 1) {
-                        document.getElementById(
-                            "WName" + (td + 1) + "" + (tr + 1)
-                        )!.textContent = matches[tr][2];
+                    trainTables[td].trains[tr].type = matches[tr][1].replace('*', '').replace('+', '');
+                    if (isNonGou == 1) {
+                        document.getElementById("WName" + (td + 1) + "" + (tr + 1))!.textContent = matches[tr][2];
                     } else {
-                        document.getElementById(
-                            "WName" + (td + 1) + "" + (tr + 1)
-                        )!.textContent = matches[tr][2] + "号";
+                        document.getElementById("WName" + (td + 1) + "" + (tr + 1))!.textContent = matches[tr][2] + "号";
                     }
-                    trainTables[td].trains[tr].type = matches[tr][1];
                     if (Type[td][tr].includes("特急")) {
                         document.getElementById(
                             "TName" + (td + 1) + "" + (tr + 1)
@@ -216,7 +211,7 @@ export function JRNewNameNumberDevide(T = Tablenum) {
         var Order_Length = plainTrainTables[td].trains.length;
         for (var tr = 0; tr < Order_Length; tr++) {
             if (!plainTrainTables[td].trains[tr]) continue;
-            var LimitedName = plainTrainTables[td].trains[tr].type;
+            var LimitedName = plainTrainTables[td].trains[tr]?.type ?? "";
             var matches;
             //LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1))!.textContent;
             if (!LimitedName.endsWith('号')) {
@@ -458,7 +453,7 @@ export function AllWordChange(td: number, tr: number, line: any, Before: string,
     }
 }
 export function TrainTypeWordChange(td: number, tr: number, Before: string, After: string) {
-    var _PlainType = plainTrainTables[td].trains[tr].type;
+    var _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
     if (_PlainType == Before) {
         trainTables[td].trains[tr].type = After;
     }
@@ -484,8 +479,8 @@ export function AllDestinationReplace(td: number, tr: number, keyword: string, A
     }
 }
 export function AllTrainTypeReplace(td: number, tr: number, keyword: string, AfterWord: string) {
-    const _train = plainTrainTables[td].trains[tr];
-    const _word = String(_train.type);
+    const _train = plainTrainTables[td].trains[tr]?.type ?? "";
+    const _word = String(_train);
     if (_word.includes(keyword)) {
         console.log(_word)
         trainTables[td].trains[tr].type = _word.replace(keyword, AfterWord);
@@ -493,7 +488,7 @@ export function AllTrainTypeReplace(td: number, tr: number, keyword: string, Aft
     }
 }
 export function AllTypeStartWordReplace(td: number, tr: number, keyword: string, AfterWord: string) {
-    const _PlainType= plainTrainTables[td].trains[tr].type;
+    const _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
     if (_PlainType.startsWith(keyword)) {
         trainTables[td].trains[tr].type = plainTrainTables[td].trains[tr].type.replace(keyword, AfterWord);
     }
@@ -568,6 +563,12 @@ export function rowsize(td: number, header: string, text: string, size: any) {
 export function DestinationSet() {
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < plainTrainTables[td].trains.length; tr++) {
+            const Min = trainTables[td].trains[tr].minute;
+            if (Min == "") {
+                trainTables[td].trains[tr].minute = plainTrainTables[td].trains[tr]?.minute ?? "";
+                trainTables[td].trains[tr].hour = plainTrainTables[td].trains[tr]?.hour ?? "";
+                trainTables[td].trains[tr].trackNumber = plainTrainTables[td].trains[tr]?.trackNumber ?? "";
+            }
             if (!plainTrainTables[td].trains[tr]) continue;
             if (trainTables[td].trains[tr].destination != "") continue;
             var Destination = plainTrainTables[td].trains[tr].destination;
@@ -581,10 +582,12 @@ export function TrainTypeSet(td: number) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (!plainTrainTables[td].trains[tr]) continue;
         if (trainTables[td].trains[tr].type != "") continue;
-        var Type = plainTrainTables[td].trains[tr].type;
+        var Type = plainTrainTables[td].trains[tr]?.type ?? "";
         Type = Type.replace('*', '');
         Type = Type.replace('+', '');
-        Type = Type.replace('始発', '');
+        if (!Type.includes('当駅始発')) {
+            Type = Type.replace('始発', '');
+        }
         trainTables[td].trains[tr].type = Type;
     }
 }

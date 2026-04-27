@@ -10,7 +10,7 @@ export interface StationConfig {
     dtype?: number[];
     detailFlag?: number;
     detailLengthOne?: number;
-    nonGouFlag?: boolean;
+    nonGouFlag?: number;
     holidayAbleflag?:number;
     jrShinkansenFlag?: number; //(未使用)
     // 駅固有の初期化ロジック（stationset*.ts の内容）

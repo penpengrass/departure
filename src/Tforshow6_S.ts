@@ -1,4 +1,4 @@
-import { JRNameDevide, allLastShow, flagmarkerase, Bansenshow, swapColumns, AllClassSetting } from "./module/firstDisplayEdit";
+import { JRNameDevide, NewAllLastShow, flagmarkerase, Bansenshow, swapColumns, AllClassSetting, DestinationSet } from "./module/firstDisplayEdit";
 import { JREScolor } from "./module/colorSimpleSet";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { LimitedNumberPass } from "./module/firstDetailEdit";
@@ -7,6 +7,8 @@ import { Shin_DetailReplace_Set_One } from "./module/detailSimpleEdit";
 import * as Stops from "./detailStopData/JRHokuJoetsuset";
 import { comment } from "./types/constants";
 import { getStationConfig } from "./main";
+import { trainTables } from "./types/trainTable";
+
 JRNameDevide(Tablenum);
 NonGouflag = 0;
 const table1 = document.getElementById("TESTable1");
@@ -16,7 +18,7 @@ for (let te = 0; te < Tablenum; te++) {
     for (let tr = 0; tr < orderNum; tr++) {
         if (Type[te][tr] === 'undefined') {
             console.log(":");
-        } else if (Type[te][tr].length > 7) {
+        } else if (trainTables[te].trains[tr].type.length > 7) {
             document.getElementById('TType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.50)" + "translate(-50%,0%)";
         }
         if (Des[te][tr] === 'undefined') {
@@ -28,11 +30,9 @@ for (let te = 0; te < Tablenum; te++) {
         }
     }
 }
-allLastShow();
+DestinationSet();
+NewAllLastShow();
 Bansenshow();
-flagmarkerase(0, 'WType');
-flagmarkerase(1, 'WType');
-flagmarkerase(1, 'WType', '+');
 if (station == '仙台駅') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();

@@ -10,7 +10,7 @@ import {
     FourLetters, swapColumns, NameColorchange, JRLineName, rowremove, AllWordChange, AllWordReplace, JRLimitedNameDevide,
     JRLimitedDevide, JRLimitedNumber, JRATOSDevide, allTwoLettersDistance, DestinationSet, TrainTypeSet, flagmarkerase, allTimeMarkErase, Bansenshow, holiday_F,
     AllClassSetting,
-    NewAllLastShow, NewLastShows, TrainTypeWordChange
+    NewAllLastShow, NewLastShows, TrainTypeWordChange, allDestinationTwoLettersDistance, DestinationWordChange, AllTrainTypeReplace
 } from "./module/firstDisplayEdit";
 import { allJRCIncludeColor } from "./typeColor";
 import { plainTrainTables, trainTables } from './types/trainTable';
@@ -134,7 +134,7 @@ export const JREastStations: StationRegistry = {
                     trainTables[0].trains[tr].type = '伊東線 普通';
                 }
                 for (var td = 1; td < 3; td++) {
-                    const _Type1 = plainTrainTables[td].trains[tr].type;
+                    const _Type1 = plainTrainTables[td].trains[tr]?.type ?? "";
                     if (_Type1.startsWith('普通')) {
                         if (UenoLine.includes(Des[td][tr])) trainTables[td].trains[tr].type = '普通 上野東京ﾗｲﾝ';
                         else if (Des[td][tr] != '') trainTables[td].trains[tr].type = '普通 東海道線';
@@ -602,39 +602,43 @@ export const JREastStations: StationRegistry = {
             document.getElementById('HType3')!.style.width = "53%";
             document.getElementById('HType4')!.style.width = "53%";
             FShow(TT[4], 5, Shows);
-            Des[0][2] = Des[4][0] ? Des[4][0] : "";
-            TableHour[0][2] = TableHour[4][0];
-            TableMin[0][2] = TableMin[4][0];
-            TrackNum[0][2] = TrackNum[4][0];
+            trainTables[0].trains[2].destination = plainTrainTables[4].trains[0].destination ? plainTrainTables[4].trains[0].destination : "";
+            trainTables[0].trains[2].hour = plainTrainTables[4].trains[0].hour;
+            trainTables[0].trains[2].minute = plainTrainTables[4].trains[0].minute;
+            trainTables[0].trains[2].trackNumber = plainTrainTables[4].trains[0].trackNumber;
+            //TableHour[0][2] = TableHour[4][0];
+            //TableMin[0][2] = TableMin[4][0];
+            //TrackNum[0][2] = TrackNum[4][0];
             for (var tr = 0; tr < orderNum; tr++) {
-                AllWordChange(0, tr, Type, '普通', '信越線4両 乗車口③～⑥');
-                AllWordChange(1, tr, Type, '普通', '両毛線4両 乗車口③～⑥');
-                AllWordChange(1, tr, Type, '普通*', '両毛線6両 乗車口①～⑥');
-                AllWordChange(1, tr, Type, '普通+', '両毛線10両 乗車口:青色');
-                AllWordChange(1, tr, Type, '快速', '両毛線10両 乗車口:青色');
-                AllWordChange(2, tr, Des, '万座・鹿沢口', '万座･鹿沢口');
+                TrainTypeWordChange(0, tr, '普通', '信越線4両 乗車口③～⑥');
+                TrainTypeWordChange(1, tr, '普通', '両毛線4両 乗車口③～⑥');
+                TrainTypeWordChange(1, tr, '普通*', '両毛線6両 乗車口①～⑥');
+                TrainTypeWordChange(1, tr, '普通+', '両毛線10両 乗車口:青色');
+                TrainTypeWordChange(1, tr, '快速', '両毛線10両 乗車口:青色');
+                DestinationWordChange(2, tr, '万座・鹿沢口', '万座･鹿沢口');
                 var Agatsuma = ['万座･鹿沢口', '大前', '長野原草津口'];
                 if (Agatsuma.includes(Des[2][tr])) {
-                    AllWordChange(2, tr, Type, '普通', '吾妻線4両 乗車口③～⑥')
+                    TrainTypeWordChange(2, tr, '普通', '吾妻線4両 乗車口③～⑥')
                 } else if (Type[2][tr] != "") {
-                    AllWordChange(2, tr, Type, '普通', '上越線4両 乗車口③～⑥')
+                    TrainTypeWordChange(2, tr, '普通', '上越線4両 乗車口③～⑥')
                 }
-                AllWordReplace(2, tr, Type, '草津・四万', '特急草津･四万');
-                AllWordChange(3, tr, Type, '特別快速:湘南新宿ライン経由', '湘南新宿ﾗｲﾝ特快10両');
-                AllWordChange(3, tr, Type, '快速:湘南新宿ライン経由', '湘南新宿ﾗｲﾝ快速10両');
-                AllWordReplace(3, tr, Type, '草津・四万', '特急草津･四万');
-                AllWordChange(3, tr, Type, 'あかぎ', '特急あかぎ');
-                if ((Des[3][tr] == '上野' || Des[3][tr] == '籠原') && Type[3][tr] == '普通') {
-                    Type[3][tr] = '高崎線普通10両';
+                AllTrainTypeReplace(2, tr, '草津・四万', '特急草津･四万');
+                TrainTypeWordChange(3, tr, '特別快速:湘南新宿ライン経由', '湘南新宿ﾗｲﾝ特快10両');
+                TrainTypeWordChange(3, tr, '快速:湘南新宿ライン経由', '湘南新宿ﾗｲﾝ快速10両');
+                AllTrainTypeReplace(3, tr, '草津・四万', '特急草津･四万');
+                AllTrainTypeReplace(3, tr, 'あかぎ', '特急あかぎ');
+                const _PlainDestination = plainTrainTables[3].trains[tr].destination;
+                if ((_PlainDestination == '上野' || _PlainDestination == '籠原') && plainTrainTables[3].trains[tr].type == '普通') {
+                    trainTables[3].trains[tr].type = '高崎線普通10両';
                 }
-                AllWordChange(3, tr, Type, '普通', '上野東京ﾗｲﾝ普通10両');
+                TrainTypeWordChange(3, tr, '普通', '上野東京ﾗｲﾝ普通10両');
 
                 TypeColorChange(3, tr, '湘南新宿', 'orange');
                 TypeColorChange(2, tr, '特急', 'red');
                 TypeColorChange(3, tr, '特急', 'red');
             }
-            allTwoLettersDistance(Des, TDes, 1, 0.8);
             DestinationSet();
+            allDestinationTwoLettersDistance(TDes, 1, 0.8);
             NewAllLastShow();
             document.getElementById('WType13')!.textContent = '八高線 高麗川 拝島 八王子方面 普通';
             document.getElementById('TType13')!.style.backgroundColor = "gray";

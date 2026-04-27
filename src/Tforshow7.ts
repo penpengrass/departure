@@ -1,6 +1,6 @@
 import { Meiobj } from './detailStopData/Meidenset';
 import { TypeColorChange, TypeColorChange2 } from "./module/colorSimpleSet";
-import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, allLastShow, holiday_F } from "./module/firstDisplayEdit";
+import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, allLastShow, holiday_F, NewAllLastShow, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { getStationConfig } from './main';
 /*if (station == '豊橋駅') {
@@ -46,10 +46,6 @@ function allJRC_Reduction() {
 }
 var config = getStationConfig(window.station, Indexfile);
 if (config && config.onRender) config.onRender();
-allJRC_Reduction();
-if (holidayflag == 1) {
-    holiday_F(station);
-}
 //index7.phpではDetail[]に入れた後フォーマットに停車駅を入れる。
 /*if (TokaiDetailflag == 1) {
     for (var td = 0; td < Tablenum; td++) {
@@ -77,4 +73,12 @@ if (holidayflag == 1) {
         document.getElementById('Detail_Banner' + (td + 1))!.remove();
     }
 }*/
-allLastShow();
+for (let td = 0; td < Tablenum; td++) {
+    TrainTypeSet(td);
+}
+DestinationSet();
+allJRC_Reduction();
+if (holidayflag == 1) {
+    holiday_F(station);
+}
+NewAllLastShow();

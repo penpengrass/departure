@@ -32,7 +32,6 @@ declare global {
     var Type: any[];
     var Des: any[];
     var TDes: any[];
-    var Cars: any[];
     var TableHour: any;
     var TableMin: any;
     var TrackNum: any;

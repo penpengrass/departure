@@ -15,7 +15,6 @@ window.Detail = new Array(Tablenum);
 //let TableHour = new Array(Tablenum);
 //let TableMin = new Array(Tablenum);
 let Connecting = new Array(Tablenum);
-window.Cars = new Array(Tablenum);
 window.Jiyuseki = new Array(Tablenum);
 const table = new Array(Tablenum);
 var ShinNumber = new Array(Tablenum);

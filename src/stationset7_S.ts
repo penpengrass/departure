@@ -15,6 +15,7 @@ export const JRTokaidouStations: StationRegistry = {
         company: '東海道新幹線',
         tableTitles: ['東海道新幹線 静岡・東京方面', '東海道新幹線 名古屋・新大阪方面'],
         file: 'index7_S1.php',
+        nonGouFlag:1,
         setup: () => {
             limitedjustnumber(TT[1], 501, 'ひかり');
             limitedjustnumber(TT[0], 500, 'ひかり');
@@ -27,6 +28,7 @@ export const JRTokaidouStations: StationRegistry = {
         company: '東海道新幹線',
         tableTitles: ['東海道新幹線 静岡・東京方面', '東海道新幹線 名古屋・新大阪方面'],
         file: 'index7_S1.php',
+        nonGouFlag:1,
         setup: () => {
             var hikari1 = [630, 632, 638, 644, 648, 652, 656, 660, 522];
             var hikari2 = [631, 635, 639, 643, 647, 651, 657, 667, 669];

@@ -56,6 +56,7 @@ export const JRHokkaidouStations: StationRegistry = {
     '札幌駅': {
         name: '札幌駅',
         company: 'JR北海道',
+        nonGouFlag:0,
         tableTitles: ['苫小牧 東室蘭 函館 帯広 釧路方面', '新千歳空港方面', '岩見沢 旭川 網走 稚内方面', '手稲 小樽 倶知安方面', 'あいの里教育大 当別方面'],
         setup: () => {
             var selectstation = ['新千歳空港'];
@@ -135,6 +136,11 @@ export const JRHokkaidouStations: StationRegistry = {
                     LName2!.textContent = '';
                 }
             }
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(2);
+            TrainTypeSet(3);
+            TrainTypeSet(4);
             comment!.textContent = '特急の臨時列車、両数は不正確';
             for (var td = 0; td < Tablenum; td++) {
                 for (var tr = 0; tr < orderNum; tr++) {
@@ -239,17 +245,13 @@ export const JRHokkaidouStations: StationRegistry = {
             for (var td = 0; td < Tablenum; td++) {
                 DetailBannerOnce(td, 20);
             }
-            TrainTypeSet(0);
-            TrainTypeSet(1);
-            TrainTypeSet(2);
-            TrainTypeSet(3);
-            TrainTypeSet(4);
             DestinationSet();
         }
     },
     '新函館北斗駅': {
         name: '新函館北斗駅',
         company: 'JR北海道',
+        nonGouFlag:0,
         tableTitles: ['新青森 東京方面', '函館 札幌方面'],
         setup: () => {
             var hayabusa = [10, 14, 18, 22, 28, 32, 34, 40, 44, 48, 96];
@@ -262,12 +264,13 @@ export const JRHokkaidouStations: StationRegistry = {
         },
         onRender: () => {
             JRNameDevide();
-            console.log(Type);
             for (var tr = 1; tr < 3; tr++) {
                 if (Type[0][tr - 1] != '') {
                     document.getElementById('TExplain1' + tr)!.textContent = '10両編成';
                 }
             }
+            TrainTypeSet(0);
+            TrainTypeSet(1);
             for (var tr = 0; tr < 3; tr++) {
                 TypeColorChange(1, tr, '特急', 'red');
                 TypeColorChange(1, tr, '快速', 'orange');
@@ -277,6 +280,7 @@ export const JRHokkaidouStations: StationRegistry = {
             document.getElementById('TDetail11')!.textContent = Detail[0][0];
             document.getElementById('TDetail11')!.textContent += Des[0][0];
             comment!.textContent = '番線と停車駅は不正確';
+            DestinationSet();
         }
     }
 }

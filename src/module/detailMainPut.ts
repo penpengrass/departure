@@ -185,7 +185,8 @@ export function DetailShow(companyObject: any, distance: string, LLength = Table
         console.log(DetailLength[td]);
         for (var tr = 0; tr < DetailLength[td]; tr++) {
             //console.log("Dtype[" + td + "]=" + Dtype[td]);
-            FDetail(Type[td][tr], companyObject, Dtype[td], td, tr, distance);
+            var _Type= trainTables[td].trains[tr].type
+            FDetail(_Type, companyObject, Dtype[td], td, tr, distance);
             console.log("-------" + (td + 1) + "個目の表の" + (tr + 1) + "番目の詳細表示完了-------");
         }
         console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");
@@ -270,6 +271,6 @@ export function LastLetterRemove(td: number, tr: number, mark: string) {
         //console.log(tr + 'は読点で終わる');
         Detail[td][tr] = Detail[td][tr].slice(0, -1);
         trainTables[td].trains[tr].detail = Detail[td][tr];
-    
+
     }
 }

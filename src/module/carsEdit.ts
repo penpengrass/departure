@@ -2,7 +2,7 @@ import { trainTables, plainTrainTables } from "../types/trainTable";
 //種別+両数の場合分割し、Cars配列に入れる
 export function CarsDevideToLine(td: number, TypeSetFlag: boolean = true) {
     for (var tr = 0; tr < orderNum; tr++) {
-        var LType = plainTrainTables[td].trains[tr].type;
+        var LType = plainTrainTables[td].trains[tr]?.type ?? "";
         var matches = LType.match(/(\D+)(\d+)両/);
         var matches2 = LType.match(/(\D+)(\d+)号(\d+)両/);
         var matches3 = LType.match(/(\D+)(\d+)両(\d+)号/);

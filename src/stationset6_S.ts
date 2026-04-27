@@ -15,6 +15,7 @@ export const JREastShinkansenStations: StationRegistry = {
         company: '新幹線',
         tableTitles: ['東北・山形・秋田新幹線', '上越・長野新幹線'],
         file: 'index6_S.php',
+        nonGouFlag:0,
         setup: () => {
             var hayabusa = [1, 101, 5, 103, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 31, 33, 35, 105, 39, 107, 41, 109, 43, 111, 45, 47];
             //hayabusa=[1, 101, 5, 103, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 31, 33, 35, 105, 39, 107, 41, 43, 111, 45, 47];
@@ -40,6 +41,7 @@ export const JREastShinkansenStations: StationRegistry = {
         company: '東北新幹線',
         tableTitles: ['新青森方面', '東京方面'],
         file: 'index6_S.php',
+        nonGouFlag:0,
         setup: () => {
             limitedjustnumber(TT[0], 51, 'やまびこ');
             limitedjustnumber(TT[0], 101, 'はやぶさ', '盛岡');
@@ -67,6 +69,7 @@ export const JREastShinkansenStations: StationRegistry = {
         company: '新幹線',
         tableTitles: ['北陸新幹線', '上越新幹線', '新幹線 大宮 上野 東京方面'],
         file: 'index6_S.php',
+        nonGouFlag:0,
         setup: () => {
             DetailLength = [1, 1, 1];
             window.Dtype = [0, 0, 0];

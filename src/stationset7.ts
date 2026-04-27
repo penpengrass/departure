@@ -2,13 +2,14 @@ import { limitedjustnumber, limitednumber, limitednumber2, TrainNameDevide } fro
 import { StationRegistry, StationConfig } from './types/station';
 import { Meiobj } from './detailStopData/Meidenset';
 import { TypeColorChange, TypeColorChange2 } from "./module/colorSimpleSet";
-import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, holiday_F } from "./module/firstDisplayEdit";
+import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, holiday_F,AllTrainTypeReplace } from "./module/firstDisplayEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { SpendingTime, DetailReplace, SpecialStop } from "./module/detailSimpleEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { JRCeNobj, JRKaobj, Nagahama } from "./detailStopData/JRNadetailset";
 import { BottomBanner } from "./module/detailBannerSwitch";
-import { TokaiDetailflag } from './types/constants';
+//import { TokaiDetailflag } from './types/constants';
+export var TokaiDetailflag:number;
 export const JRTokaiStations: StationRegistry = {
     '豊橋駅': {
         name: '豊橋駅',
@@ -17,14 +18,14 @@ export const JRTokaiStations: StationRegistry = {
         file: 'index7.php',
         setup: () => {
             Dtype[3] = 1;
-            //TokaiDetailflag = 2;
+            TokaiDetailflag = 2;
             limitednumber(TT[0], 1, '特急伊那路');
         },
         onRender: () => {
-            AllWordReplace(1, 0, Type, '特急', '特急(一部特別車)');
-            AllWordReplace(1, 0, Type, '快特', '快特(一部特別車)');
-            AllWordReplace(1, 1, Type, '特急', '特急(一部特別車)');
-            AllWordReplace(1, 1, Type, '快特', '快特(一部特別車)');
+            AllTrainTypeReplace(1, 0, '特急', '特急(一部特別車)');
+            AllTrainTypeReplace(1, 0, '快特', '快特(一部特別車)');
+            AllTrainTypeReplace(1, 1, '特急', '特急(一部特別車)');
+            AllTrainTypeReplace(1, 1, '快特', '快特(一部特別車)');
             FDetail(Type[3][0], JRCeNobj, Dtype[3], 3, 0, "・");
             console.log(Type[1][0]);
             AllWordChange(1, 0, Des, '名鉄名古屋', '名古屋');
@@ -182,17 +183,19 @@ export const JRTokaiStations: StationRegistry = {
 //Tforshow7.tsをインタフェース化した際に削除する。
 if (station == '豊橋駅') {
     Dtype[3] = 1;
-    //TokaiDetailflag = 2;
+    TokaiDetailflag = 2;
 }
 if (station == '岐阜駅') {
-    //TokaiDetailflag = 1;
+    TokaiDetailflag = 1;
+    detailLength_one = 1;
 } else if (station == '大垣駅') {
-    //TokaiDetailflag = 1;
+    TokaiDetailflag = 1;
+    detailLength_one = 1;
 } else if (station == '名古屋駅' && Indexfile == 'index7_T.php') {
     detailflag = 2;
-    //TokaiDetailflag = 3;
+    TokaiDetailflag = 3;
 }
-if (TokaiDetailflag == 1) {
+/*if (TokaiDetailflag == 1) {
     detailLength_one = 1;
-}
+}*/
 export { };

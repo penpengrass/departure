@@ -1,10 +1,11 @@
 import { JRCeNobj,JRChNobj } from "./detailStopData/JRNadetailset";
-import { TwoLetterDistance,allTimeMarkErase,JRLimitedNumber,LastShows,holiday_F, AllClassSetting } from "./module/firstDisplayEdit";
+import { TypeTwoLetterDistance,allTimeMarkErase,JRLimitedNumber,NewLastShows,holiday_F, AllClassSetting, DestinationSet, TrainTypeSet, DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
 import { FDetail,DetailBanner } from "./module/detailMainPut";
 import { DetailReplace, DetailReplace_Set,SpecialStop } from "./module/detailSimpleEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { LastLetterRemove } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRNadetailset";
+import { allJRNagoyaColor } from "./typeColor";
 console.log(Dtype);
 Dtype = [0, 0, 0, 0, 0];
 for (var tr = 0; tr < orderNum; tr++) {
@@ -147,12 +148,17 @@ for (let te = 0; te < Tablenum; te++) {
         }
     }
 }
+DestinationSet();
 for (var td = 0; td < Tablenum; td++) {
+    TrainTypeSet(td);
     for (var tr = 0; tr < orderNum; tr++) {
-        LastShows(td, tr);
-        TwoLetterDistance(td, tr, Type, TType, 1, 0.4);
-        TwoLetterDistance(td, tr, Des, TDes, 1, 1);
+        NewLastShows(td, tr);
+        TypeTwoLetterDistance(td, tr, TType, 1, 0.4);
+        DestinationTwoLetterDistance(td, tr, TDes, 1, 1);
     }
+}
+if (Indexfile == 'index7_T.php') {
+    allJRNagoyaColor();
 }
 allTimeMarkErase();
 holiday_F(station);

@@ -39,10 +39,10 @@ for (var td = 0; td < 2; td++) {
             trainTables[td].trains[tr].cars = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '全車指定席';
         } else if (Type[td][tr] == 'はくたか') {
-           trainTables[td].trains[tr].cars = '12両編成';
+            trainTables[td].trains[tr].cars = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-4号車';
         } else if (Type[td][tr] == 'つるぎ') {
-            trainTables[td].trains[tr].cars= '12両編成';
+            trainTables[td].trains[tr].cars = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-2号車';
             if (TrainNumber[td][tr] > 59) {
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-4号車';
@@ -54,51 +54,53 @@ for (var td = 0; td < 2; td++) {
     }
 }
 for (var tr = 0; tr < 2; tr++) {
-    if (takefu.includes(TrainNumber[0][tr])) {
+    const _Number0 = trainTables[0].trains[tr]?.trainNumber ?? 0;
+    const _Number1 = trainTables[1].trains[tr]?.trainNumber?? 0;
+    if (takefu.includes(_Number0)) {
         //DetailReplace(0, tr, '福井', '越前たけふ　福井　芦原温泉　加賀温泉　小松');
-        Detail[0][tr] = '各駅';
+        trainTables[0].trains[tr].detail = '各駅';
     } else if (station == '福井駅' && Des[0][tr] == '金沢') {
-        Detail[0][tr] = '次の停車駅は終点金沢です';
+       trainTables[0].trains[tr].detail  = '次の停車駅は終点金沢です';
     }
-    if (k_onsen[0].includes(TrainNumber[0][tr])) {
+    if (k_onsen[0].includes(_Number0)) {
         DetailReplace(0, tr, '金沢', '芦原温泉　加賀温泉　金沢');
     }
-    if (k_takefu[1].includes(TrainNumber[0][tr])) {
+    if (k_takefu[1].includes(_Number0)) {
         DetailReplace(0, tr, '福井', '小松　福井　越前たけふ');
     }
-    if (k_takefu[1].includes(TrainNumber[1][tr])) {
+    if (k_takefu[1].includes(_Number1)) {
         DetailReplace(1, tr, '福井', '小松　福井　越前たけふ');
     }
 
-    if (k_onsen[1].includes(TrainNumber[0][tr])) {
+    if (k_onsen[1].includes(_Number0)) {
         DetailReplace(0, tr, '福井', '加賀温泉　芦原温泉　福井');
     }
     if (station == '福井駅') {
-        if (takefu.includes(TrainNumber[1][tr]) || k_takefu[1].includes(TrainNumber[1][tr]) || Type[1][tr].startsWith('はくたか')) {
-            Detail[1][tr] = '越前たけふ';
-        } else if (TrainNumber[1][tr] > 0) {
-            Detail[1][tr] = '次の停車駅は終点敦賀です';
+        if (takefu.includes(_Number1) || k_takefu[1].includes(_Number1) || Type[1][tr].startsWith('はくたか')) {
+            trainTables[1].trains[tr].detail = '越前たけふ';
+        } else if (_Number1 > 0) {
+            trainTables[1].trains[tr].detail = '次の停車駅は終点敦賀です';
         }
     } else if (station == '金沢駅' && Type[0][tr].startsWith('はくたか')) {
         Detail[0][tr] = '各駅';
     }
-    if (iiyama.includes(TrainNumber[0][tr])) {
+    if (iiyama.includes(_Number0)) {
         DetailReplace(0, tr, '長野', '飯山　長野');
     }
-    if (iiyama.includes(TrainNumber[1][tr])) {
+    if (iiyama.includes(_Number1)) {
         DetailReplace(1, tr, '長野', '飯山　長野');
     }
 
-    if (Stops.ueda.includes(TrainNumber[0][tr])) {
+    if (Stops.ueda.includes(_Number0)) {
         DetailReplace(0, tr, '長野', '長野　上田　軽井沢');
     }
-    if (Stops.ueda.includes(TrainNumber[1][tr])) {
+    if (Stops.ueda.includes(_Number1)) {
         DetailReplace(1, tr, '長野', '長野　上田　軽井沢');
     }
-    if (Stops.sakudaira.includes(TrainNumber[1][tr])) {
+    if (Stops.sakudaira.includes(_Number1)) {
         DetailReplace(1, tr, '上田', '上田　佐久平');
     }
-    if (k_takefu[0].includes(TrainNumber[0][tr])) {
+    if (k_takefu[0].includes(_Number0)) {
         DetailReplace(0, tr, '福井', '越前たけふ　福井');
         DetailReplace(0, tr, '金沢', '小松　金沢');
     }
@@ -113,15 +115,17 @@ if (station == '敦賀駅' || station == '金沢駅') {
             document.getElementById('TName' + 3 + (tr + 1))!.textContent += '号';
         }
         if (Type[4][tr].startsWith('特急')) {
-            document.getElementById('TName' + 5 + (tr + 1))!.textContent += TrainNumber[4][tr] + '号';
-            Type[4][tr] = Type[4][tr].replace(TrainNumber[4][tr].toString(), '');
-            document.getElementById('WType' + 5 + (tr + 1))!.textContent = Type[4][tr];
+            var _Number = trainTables[4].trains[tr].trainNumber;
+            document.getElementById('TName' + 5 + (tr + 1))!.textContent += _Number + '号';
+            Type[4][tr] = Type[4][tr].replace(String(_Number), '');
+            trainTables[4].trains[tr].type = Type[4][tr];
             document.getElementById('TName' + 5 + (tr + 1))!.style.textAlign = 'right';
         }
         if (Type[3][tr].startsWith('快速あいの')) {
-            document.getElementById('TName' + 4 + (tr + 1))!.textContent += TrainNumber[3][tr] + '号';
-            Type[3][tr] = Type[3][tr].replace(TrainNumber[3][tr].toString(), '');
-            document.getElementById('WType' + 4 + (tr + 1))!.textContent = Type[3][tr];
+            var _Number3 = trainTables[3].trains[tr].trainNumber;
+            document.getElementById('TName' + 4 + (tr + 1))!.textContent += _Number3 + '号';
+            Type[3][tr] = Type[3][tr].replace(String(_Number3), '');
+            trainTables[3].trains[tr].type = Type[3][tr];
             document.getElementById('TName' + 4 + (tr + 1))!.style.textAlign = 'right';
         }
     }
@@ -133,6 +137,7 @@ if (Indexfile == 'index4_H.php') {
     TrainTypeSet(3);
     TrainTypeSet(4);
     TrainTypeSet(5);
+    TrainTypeSet(6);
     DestinationSet();
     NewAllLastShow();
 }
