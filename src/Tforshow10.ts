@@ -1,4 +1,4 @@
-import { swapColumns, TwoLetterDistance,TypeTwoLetterDistance,DestinationTwoLetterDistance, Bansenshow, AllClassSetting, NewAllLastShow, DestinationSet } from "./module/firstDisplayEdit";
+import { swapColumns, TypeTwoLetterDistance, DestinationTwoLetterDistance, Bansenshow, AllClassSetting, NewAllLastShow, DestinationSet } from "./module/firstDisplayEdit";
 import { CarsDevideToLine, CarsInto } from "./module/carsEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";

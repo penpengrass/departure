@@ -1,78 +1,38 @@
 import { Meiobj } from './detailStopData/Meidenset';
 import { TypeColorChange, TypeColorChange2 } from "./module/colorSimpleSet";
-import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, allLastShow, holiday_F, NewAllLastShow, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
+import { TypeTwoLetterDistance, DestinationTwoLetterDistance, JRLimitedNumber, holiday_F, NewAllLastShow, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { getStationConfig } from './main';
-/*if (station == '豊橋駅') {
-    Dtype[3] = 1;
-    TokaiDetailflag = 2;
-}
-if (station == '岐阜駅') {
-    TokaiDetailflag = 1;
-} else if (station == '大垣駅') {
-    TokaiDetailflag = 1;
-} else if (station == '名古屋駅' && Indexfile == 'index7_T.php') {
-    detailflag = 2;
-    TokaiDetailflag = 3;
-}
-if (TokaiDetailflag == 1) {
-    detailLength_one = 1;
-}*/
+import { trainTables } from './types/trainTable';
 function allJRC_Reduction() {
     for (let te = 0; te < Tablenum; te++) {
         for (let tr = 0; tr < Tablenums[te]; tr++) {
+            const _Type = trainTables[te].trains[tr].type;
             TypeColorChange(te, tr, '快速', 'orange');
             TypeColorChange(te, tr, '特急', 'red');
             TypeColorChange(te, tr, 'ホームライナー', 'red');
             TypeColorChange(te, tr, '快特', 'red');
-            if (Type[te][tr] === 'undefined') {
+            if (_Type === 'undefined') {
                 console.log(":");
-            } else if (Type[te][tr].length > 12) {
+            } else if (_Type.length > 12) {
                 document.getElementById('WType' + (te + 1) + (tr + 1))!.style.textAlign = "center";
                 document.getElementById('TType' + (te + 1) + (tr + 1))!.style.boxSizing = "border-box";
                 document.getElementById('TType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.50)" + "translate(-45%,0%)";
-            } else if (Type[te][tr].length > 10) {
+            } else if (_Type.length > 10) {
                 document.getElementById('TType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
                 //document.getElementsByClassName('shubetu' + (te + 1) + (tr + 1))[0].style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
-            } else if (Type[te][tr].length > 8) {
+            } else if (_Type.length > 8) {
                 document.getElementById('TType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.65)" + "translate(-15%,0%)";
-            } else if (Type[te][tr].length > 7) {
+            } else if (_Type.length > 7) {
                 document.getElementById('TType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.80)" + "translate(-0%,0%)";
             }
-            TwoLetterDistance(te, tr, Type, TType, 1, 1);
-            TwoLetterDistance(te, tr, Des, TDes, 1, 1);
+            TypeTwoLetterDistance(te, tr, TType, 1, 1);
+            DestinationTwoLetterDistance(te, tr, TDes, 1, 1);
         }
     }
 }
 var config = getStationConfig(window.station, Indexfile);
 if (config && config.onRender) config.onRender();
-//index7.phpではDetail[]に入れた後フォーマットに停車駅を入れる。
-/*if (TokaiDetailflag == 1) {
-    for (var td = 0; td < Tablenum; td++) {
-        var Type_Show;
-        LastLetterRemove(td, 0, '・');
-        if (Type[td][0].includes('当駅始発')) {
-            Type_Show = Type[td][0].replace('(当駅始発)', '');
-        } else {
-            Type_Show = Type[td][0];
-        }
-        if (Detail[td][0] == '各駅にとまります') {
-            Detail[td][0] = Des[td][0] + 'までの各駅';
-        }
-        if (Type[td][0] != '' && Detail[td][0] != '') {
-            document.getElementById('TDetail' + (td + 1))!.innerHTML =
-                '<span id="Detail_Type' + (td + 1) + '">' + Type_Show + '</span> ' + Des[td][0] + '行きの停車駅は' +
-                '<span class="orange">' + Detail[td][0] + '</span>です';
-            TypeColorChange2(td, 'Detail_Type', '特急', 'red');
-            TypeColorChange2(td, 'Detail_Type', 'ホームライナー', 'red');
-            TypeColorChange2(td, 'Detail_Type', '快速', 'orange');
-        }
-    }
-} else if (TokaiDetailflag == 0) {
-    for (var td = 0; td < Tablenum; td++) {
-        document.getElementById('Detail_Banner' + (td + 1))!.remove();
-    }
-}*/
 for (let td = 0; td < Tablenum; td++) {
     TrainTypeSet(td);
 }

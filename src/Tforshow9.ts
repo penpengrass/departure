@@ -1,9 +1,10 @@
-import { AllWordChange, AllWordReplace, AllTypeStartWordReplace, allLastShow, flagmarkerase, TwoLetterDistance } from "./module/firstDisplayEdit";
+import { AllWordChange, AllWordReplace, TrainTypeWordChange, AllTrainTypeReplace, AllTypeStartWordReplace, NewAllLastShow, flagmarkerase, TwoLetterDistance, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
 import { TypeColorChange, TypeBackColorChange } from "./module/colorSimpleSet";
 import { DetailShow, LastLetterRemove } from "./module/detailMainPut";
 import { JTypeIncludeColor } from "./typeColor";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import * as ShikokuStops from "./detailStopData/Shidetailset";
+import { plainTrainTables, trainTables } from "./types/trainTable";
 function WhetherLocal(td: number, tr: number) {
     if (Type[td][tr] == '普通' || Type[td][tr] == '各駅停車' || Type[td][tr] == '普通(当駅始発)') {
         return true;
@@ -19,12 +20,12 @@ function WhetherStartsLocal(td: number, tr: number) {
 function LocalShow(td: number, tr: number, color: string) {
     if (station == '松山駅' || station == '高松駅') {
         document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = '各駅停車';
-        document.getElementById('WType' + (td + 1) + (tr + 1))!.textContent = '';
+        trainTables[td].trains[tr].type = '';
         document.getElementById('TName' + (td + 1) + (tr + 1))!.style.textAlign = 'left';
         document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = color;
     }
     else if (station == '高知駅') {
-        document.getElementById('WType' + (td + 1) + (tr + 1))!.textContent = '普通';
+        trainTables[td].trains[tr].type = '普通';
         document.getElementById('TName' + (td + 1) + (tr + 1))!.style.textAlign = 'center';
         document.getElementById('WType' + (td + 1) + (tr + 1))!.style.color = 'lightgreen';
         document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = 'lightgreen';
@@ -51,10 +52,11 @@ function DetailDelete(td: number, tr: number) {
         <td class="railnumber" id="TNum' + (td + 1) + tr + '"></td>';
 }
 function JRS_Connect(td: number, tr: number, Keyword: string, Connect_Station: string) {
-    if (Des[td][tr].includes(Keyword)) {
-        Des[td][tr] = Des[td][tr].replace(Keyword, "");
+    const _Des = plainTrainTables[td].trains[tr]?.destination ?? "";
+    if (_Des.includes(Keyword)) {
+        trainTables[td].trains[tr].destination = _Des.replace(Keyword, "");
         if (tr == 0) {
-            Detail[td][0] = Des[td][0] + "で<span class='lightgreen'>" + Connect_Station + "</span>行きに接続します";
+            trainTables[td].trains[0].detail = Des[td][0] + "で<span class='lightgreen'>" + Connect_Station + "</span>行きに接続します";
             document.getElementById('TDetailtitle' + (td + 1))!.textContent = "接続案内";
         }
     }
@@ -65,15 +67,16 @@ for (var td = 0; td < Tablenum; td++) {
         if (Des[td][tr] == '岡山･高松' || Des[td][tr] == '高松･岡山') {
             Des[td][tr] = '岡山';
         }
-        AllWordChange(td, tr, Type, '内子線経由普通', '各停(内子経由)');
-        AllWordChange(td, tr, Type, '内子線経由普通', '各停(内子経由)');
-        AllWordReplace(td, tr, Type, 'あしずり', '特急あしずり');
+        TrainTypeWordChange(td, tr, '内子線経由普通', '各停(内子経由)');
+        TrainTypeWordChange(td, tr, '内子線経由普通', '各停(内子経由)');
+        AllTrainTypeReplace(td, tr, 'あしずり', '特急あしずり');
         if (station == '高知駅') {
-            AllWordReplace(td, tr, Type, 'しまんと', '特急しまんと');
+            AllTrainTypeReplace(td, tr, 'しまんと', '特急しまんと');
         }
         AllTypeStartWordReplace(td, tr, '南風', '特急南風');
 
     }
+    TrainTypeSet(td);
 }
 if (station == '高松駅') {
     //allJRSIncludeColor(JRSobj);
@@ -87,6 +90,7 @@ if (station == '高松駅') {
     //allJRSIncludeColor(JRSKobj);
     DetailShow(ShikokuStops.JRSKobj, "、");
 }
+console.log(Detail);
 for (var td = 0; td < Tablenum; td++) {
     LastLetterRemove(td, 0, '、');
     if (Detail[td][0] != '各駅にとまります' && Detail[td][0] != '' && Detail_title!.textContent == "停車駅") {
@@ -164,7 +168,6 @@ for (var td = 0; td < Tablenum; td++) {
         Tablenums[td] -= 1;
     }
 }
-allLastShow();
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         var dType = document.getElementById('TType' + (td + 1) + (tr + 1));
@@ -183,17 +186,17 @@ for (var td = 0; td < Tablenum; td++) {
             LocalShow(td, tr, color);
         } else if (Type[td][tr].startsWith('各停')) {
             document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = Type[td][tr];
-            document.getElementById('WType' + (td + 1) + (tr + 1))!.textContent = '';
+            trainTables[td].trains[tr].type = '';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.textAlign = 'left';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = 'skyblue';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
         } else if (Type[td][tr].startsWith('伊予灘')) {
             document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = '伊予灘ものがたり';
-            document.getElementById('TType' + (td + 1) + (tr + 1))!.textContent = '';
+            trainTables[td].trains[tr].type = '';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = 'skyblue';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.80)" + "translate(-15%,0%)";
         } else if (Type[td][tr].startsWith('快速')) {
-            document.getElementById('TType' + (td + 1) + (tr + 1))!.textContent = '快速';
+            trainTables[td].trains[tr].type = '快速';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = Type[td][tr].slice(2);
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = color;
             if (station != '高知駅') {
@@ -205,8 +208,12 @@ for (var td = 0; td < Tablenum; td++) {
                 document.getElementById('TName' + (td + 1) + (tr + 1))!.style.textAlign = 'center';
             }
         } else if (Type[td][tr].startsWith('特急')) {
-            dType!.textContent = '特急';
-            document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = Type[td][tr].slice(2);
+            trainTables[td].trains[tr].type = '特急';
+            var _Name = Type[td][tr].slice(2);
+            if (!_Name.endsWith('号')) {
+                _Name += '号';
+            }
+            document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = _Name;
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.textAlign = 'left';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = 'red';
             if (station != '高知駅') {
@@ -218,17 +225,18 @@ for (var td = 0; td < Tablenum; td++) {
         }
         var dName = document.getElementById('TName' + (td + 1) + (tr + 1));
         if (dName!.textContent.startsWith('しおかぜ･いしづち')) {
-            dName!.innerHTML = 'しおかぜ' + '<span class="gou">' + TrainNumber[td][tr] + '号</span><br>いしづち';
+            dName!.innerHTML = 'しおかぜ' + '<span class="gou">' + trainTables[td].trains[tr].trainNumber + '号</span><br>いしづち';
             dName!.style.fontSize = '15px';
             dName!.style.fontWeight = '800px';
         }
-        if (Des[td][tr].length > 5 && Des[td][tr] != 'ｵﾚﾝｼﾞﾀｳﾝ') {
+        if (trainTables[td].trains[tr].destination.length > 5 && Des[td][tr] != 'ｵﾚﾝｼﾞﾀｳﾝ') {
             document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.60)" + "translate(-40%,0%)";
         }
         TwoLetterDistance(td, tr, Des, TDes, 1, 0.4);
     }
 }
-
+DestinationSet();
+NewAllLastShow();
 flagmarkerase(0, 'TDes');
 flagmarkerase(1, 'TDes');
 flagmarkerase(0, 'TDes', '+');

@@ -55,7 +55,6 @@ for (var td = 0; td < Tablenum; td++) {
             DetailLength[td] = Tablenums[td];
         } else if (Indexfile == 'index9.php') {
             DetailLength[td] = 1;
-            console.log(Detail);
         }
         IType[td][tr] = 'IType' + (td + 1) + '' + (tr + 1);
         Tshubetu[td][tr] = 'shubetu' + (td + 1) + '' + (tr + 1);

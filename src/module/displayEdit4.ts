@@ -1,7 +1,6 @@
 import { FDetail } from "./detailMainPut"
 import { DetailReplace } from "./detailSimpleEdit";
 import { LastLetterRemove } from "./detailMainPut";
-import { Detail_contents } from "../detailStopData/JRW_afterset";
 import { JRSaninAddStop } from "../detailStopData/JRSanindetailset";
 import { JRobj } from "../detailStopData/JRW_afterset";
 import { JRCeNobj } from "../detailStopData/JRNadetailset";
@@ -40,9 +39,8 @@ export function DesMiddle(td: number, tr: number, word: string) {
             DesLeft.style.display = 'inline-block';
             DesLeft.style.transform = "scaleX(0.75)" + "translate(20%,0%)";
         }
-        if (DesRight && tr == 0) {
-            console.log(DesRight.textContent)
-            trainTables[td].trains[0].des_banner = DesRight.textContent;
+        if (tr == 0) {
+            trainTables[td].trains[0].des_banner = matches[0][2];
         }
     } else {
         //console.log(td + ':' + tr + word + 'はマッチしない');
@@ -52,7 +50,6 @@ export function Maibara_Banner(td: number) {
     if (td == 1 && (Type[td - 1][0] == '新快速' || Type[td - 1][0] == '特急')) {
         FDetail(Type[td - 1][0], JRobj, Dtype[0], td - 1, 0, "・");
         Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
-        Detail_contents[td - 1] = Detail[0][0];
         console.log("-----1個目の詳細完了------");
     }
     if (td == 3) {
@@ -61,23 +58,20 @@ export function Maibara_Banner(td: number) {
             stationN = '大垣';
             Des[2][0] = trainTables[2].trains[0].des_banner;
             FDetail(Type[td - 1][0], JRCeNobj, Dtype[0], td - 1, 0, "・");
-            console.log(Dtype);
+            LastLetterRemove(td - 1, 0, '・');
             DetailReplace(2, 0, '岐阜', '岐阜までの各駅');
             Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
-            Detail_contents[td - 1] = Detail[2][0];
-            console.log(Detail[2][0]);
             stationN = '米原';
         }
     }
 }
 export function Kitashinchi_Banner(td: number) {
-    if (td == 2 && Type[1][0] == '快速' && Des[1][0] != '塚口') {
+    if (td == 2 && Type[1][0] == '快速' && Des[1][0] != '塚口' && Des[1][0] != '尼崎') {
         FDetail(Type[td - 1][0], JRobj, Dtype[0], td - 1, 0, "・");
         if (Des[1][0].includes('新三田')) {
             DetailReplace(1, 0, '・三田から各駅', '');
         }
         Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
-        Detail_contents[td - 1] = Detail[td - 1][0];
     }
 }
 export function Yonago_Banner(td: number) {
@@ -90,12 +84,11 @@ export function Yonago_Banner(td: number) {
     LastLetterRemove(td - 1, 0, '・');
     if (Detail[td - 1][0].includes('各駅')) {
         if (Des[td - 1][0] == '新見') {
-            Detail[td - 1][0] = '備中神代までの各駅';
+            trainTables[td - 1].trains[0].detail = '備中神代までの各駅';
         } else {
-            Detail[td - 1][0] = Des[td - 1][0] + "までの各駅";
+            trainTables[td - 1].trains[0].detail = Des[td - 1][0] + "までの各駅";
         }
     }
-    Detail_contents[td - 1] = Detail[td - 1][0];
 }
 //特急の列車名の色を変える
 export function JRWTrainNameColor(td: number, tr: number, NameColor: string, NumberColor: string, GouColor: string) {

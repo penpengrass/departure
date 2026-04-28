@@ -1,3 +1,4 @@
+import { comment } from './types/constants';
 import { M_Himeji2, S_Himeji2, S_Tokuyama2, N_Tokuyama2, N_Himeji2 } from './detailStopData/JRW_S';
 import { RailNumberDevide, DestinationDevide, TrainNameDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
@@ -5,7 +6,9 @@ import { limited, rapid, Jrapid, Jsubrapid, local } from './detailStopData/JRdet
 import { StationRegistry, StationConfig } from './types/station';
 import {
     LineMarkAdd, AllClassSetting, AllWordReplace, AllDestinationReplace, DestinationWordChange, allTypeTwoLettersDistance,
-    AllWordChange, holiday_F, NewAllLastShow, allDestinationTwoLettersDistance, JRLimitedDevide, rowremove, TwoLetterDistance, TrainTypeSet, DestinationSet
+    AllWordChange, holiday_F, NewAllLastShow, allDestinationTwoLettersDistance, JRLimitedDevide, rowremove, TrainTypeSet, DestinationSet,
+    TypeTwoLetterDistance,
+    DestinationTwoLetterDistance
 } from './module/firstDisplayEdit';
 import { allJROsakaColor } from './typeColor';
 import { DesMiddle, allJRWTrainNameColor } from "./module/displayEdit4";
@@ -295,25 +298,28 @@ export const JRWestStations: StationRegistry = {
             TT[0][6][2] = '44';
         },
         onRender: () => {
+            let sanyo = ["岩国", "大野浦", "五日市", "広島", "南岩国", "徳山"];
+            for (var tr = 0; tr < orderNum; tr++) {
+                let dType = document.getElementById("TType2" + (tr + 1));
+                if (Des[1][tr] == "広") {
+                    trainTables[1].trains[tr].type = "呉線";
+                    dType!.style.color = "orange";
+                } else if (sanyo.includes(Des[1][tr])) {
+                    trainTables[1].trains[tr].type = "山陽線";
+                    dType!.style.transform = "scaleX(0.70)" + "translate(-20%,0%)";
+                }
+                DestinationWordChange(1, tr, "岩国", "広島方面岩国");
+                DestinationWordChange(1, tr, "大野浦", "広島方面大野浦");
+                DestinationWordChange(1, tr, "五日市", "広島方面五日市");
+            }
+            DestinationSet();
             for (var td = 0; td < Tablenum; td++) {
                 rowremove(td, "HName", "TName");
                 //表のサイズを小さくする
                 document.getElementById("TTable" + (td + 1))!.style.width = "40em";
                 document.getElementById("TTable" + (td + 1))!.style.marginLeft = "8em";
-                let sanyo = ["岩国", "大野浦", "五日市", "広島", "南岩国", "徳山"];
                 for (var tr = 0; tr < orderNum; tr++) {
-                    let dType = document.getElementById("TType2" + (tr + 1));
-                    if (Des[1][tr] == "広") {
-                        trainTables[1].trains[tr].type = "呉線";
-                        dType!.style.color = "orange";
-                    } else if (sanyo.includes(Des[1][tr])) {
-                        trainTables[1].trains[tr].type = "山陽線";
-                        dType!.style.transform = "scaleX(0.70)" + "translate(-20%,0%)";
-                    }
-                    TwoLetterDistance(td, tr, Des, TDes, 1, 1);
-                    AllWordChange(1, tr, Des, "岩国", "広島方面岩国");
-                    AllWordChange(1, tr, Des, "大野浦", "広島方面大野浦");
-                    AllWordChange(1, tr, Des, "五日市", "広島方面五日市");
+                    DestinationTwoLetterDistance(td, tr, TDes, 1, 1);
                     DesMiddle(td, tr, "方面");
                     DesMiddle(td, tr, "経由");
                 }
@@ -401,7 +407,6 @@ export const JRWestStations: StationRegistry = {
             TwoLetterDisflag = 1;
         },
         onRender: () => {
-            //console.log(plainTrainTables);
             var Jrapid = LineCopy(Stops.Grapid);
             var _Type = plainTrainTables[0].trains[0].type;
             if (_Type == '快速') {
@@ -411,14 +416,15 @@ export const JRWestStations: StationRegistry = {
             } else if (_Type == '普通') {
                 trainTables[0].trains[0].detail = Des[0][0] + 'までの各駅';
             }
-            if (Des[1][0] == '塚口') {
-                trainTables[1].trains[0].detail = ' 塚口までの各駅';
+            if (Des[1][0] == '塚口' || Des[1][0] == '尼崎') {
+                trainTables[1].trains[0].detail = Des[1][0] + 'までの各駅';
             } else if (Des[1][0] == '神戸方面西明石') {
                 Des[1][0] == '西明石';
                 trainTables[1].trains[0].detail = '西明石までの各駅';
             } else if (Type[1][0] == '普通') {
                 trainTables[1].trains[0].detail = Des[1][0] + 'までの各駅';
             }
+            DestinationSet();
             for (var tr = 0; tr < orderNum; tr++) {
                 DesMiddle(1, tr, "方面");
             }
@@ -496,24 +502,21 @@ export const JRWestStations: StationRegistry = {
             JRLimitedDevide(0);
             JRLimitedDevide(1);
             JRLimitedDevide(2);
+            DestinationSet();
             //document.getElementById('TName' + 2 + '' + (tr + 1))!.style.transform = "scaleX(0.65)" + "translate(-15%,0%)";
             for (var tr = 0; tr < Type[0].length; tr++) {
-                var _PlainType = plainTrainTables[0].trains[tr].type;
-                var _PlainType2 = plainTrainTables[2].trains[tr].type;
+                var _PlainType = plainTrainTables[0].trains[tr]?.type ?? "";
+                var _PlainType2 = plainTrainTables[2].trains[tr]?.type ?? "";
                 if (_PlainType == "快速") {
                     trainTables[0].trains[tr].type = "普通";
-                    document.getElementById("TName" + 1 + "" + (tr + 1))!.innerHTML =
-                        '<span class="PartRapid">高槻から快速</span>';
-                    document.getElementById(
-                        "TName" + 1 + "" + (tr + 1)
-                    )!.style.textAlign = "left";
+                    document.getElementById("WName" + 1 + "" + (tr + 1))!.innerHTML = '<span class="PartRapid">高槻から快速</span>';
+                    trainTables[0].trains[tr].trainName = '<span class="PartRapid">高槻から快速</span>';
+                    document.getElementById("TName" + 1 + "" + (tr + 1))!.style.textAlign = "left";
                 } else if (_PlainType == "快速*") {
                     trainTables[0].trains[tr].type = "普通";
-                    document.getElementById("TName" + 1 + "" + (tr + 1))!.innerHTML =
-                        '<span class="PartRapid">京都から快速</span>';
-                    document.getElementById(
-                        "TName" + 1 + "" + (tr + 1)
-                    )!.style.textAlign = "left";
+                    document.getElementById("WName" + 1 + "" + (tr + 1))!.innerHTML = '<span class="PartRapid">京都から快速</span>';
+                    trainTables[0].trains[tr].trainName = '<span class="PartRapid">京都から快速</span>';
+                    document.getElementById("TName" + 1 + "" + (tr + 1))!.style.textAlign = "left";
                 }
                 if (_PlainType2 == "特別快速") {
                     document.getElementById("TType" + 3 + "" + (tr + 1))!.style.color =
@@ -553,6 +556,31 @@ export const JRWestStations: StationRegistry = {
             DestinationDevide(NoLoop, 2, 1);
             limitednumber(TT[1], 2, '特急はるか');
             limitednumber(TT[1], 2, '特急くろしお');
+        },
+        onRender: () => {
+            for (var tr = 0; tr < orderNum; tr++) {
+                if (Type[2][tr] != '' && (Des[2][tr] == '' || Des[2][tr] == '大阪' || Des[2][tr] == '天王寺')) {
+                     trainTables[2].trains[tr].destination = '新今宮･西九条方面';
+                    document.getElementById('TDes' + (2 + 1) + (tr + 1))!.style.transform = "scaleX(0.7)" + "translate(-15%,0%)";
+                }
+                if (Type[3][tr] != '' && Des[3][tr] != '大阪' && Des[3][tr] != '京橋' && Des[3][tr] != '桜島') {
+                    trainTables[3].trains[tr].destination= '鶴橋･京橋方面';
+                    trainTables[3].trains[tr].type = '普通';
+                    document.getElementById('TDes' + (3 + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-10%,0%)";
+                }
+                if (Des[5][tr].length > 7) {
+                    document.getElementById('TDes' + (5 + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-10%,0%)";
+                }
+            }
+            for (var td = 0; td < 6; td++) {
+                TrainTypeSet(td);
+                for (var tr = 0; tr < orderNum; tr++) {
+                    TypeColorChange(td, tr, '快速', 'orange');
+                }
+            }
+            DestinationSet();
+            allDestinationTwoLettersDistance(TDes, 1, 0.9);
+            comment!.innerHTML = '番線や一部表示不正確　一部2024年ダイヤのまま';
         }
     },
     '徳山駅': {
@@ -579,12 +607,12 @@ export const JRWestStations: StationRegistry = {
             document.getElementById("HDes5")!.style.width = "40%";
             for (var td = 0; td < 2; td++) {
                 for (var tr = 0; tr < Tablenums[td]; tr++) {
-                    TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+                    DestinationTwoLetterDistance(td, tr, TDes, 1, 0.9);
                 }
             }
             for (var td = 2; td < 5; td++) {
                 for (var tr = 0; tr < Tablenums[td]; tr++) {
-                    TwoLetterDistance(td, tr, Des, TDes, 1, 0.7);
+                    DestinationTwoLetterDistance(td, tr, TDes, 1, 0.7);
                 }
             }
             for (var td = 2; td < 4; td++) {

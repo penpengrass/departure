@@ -459,7 +459,7 @@ export function TrainTypeWordChange(td: number, tr: number, Before: string, Afte
     }
 }
 export function DestinationWordChange(td: number, tr: number, Before: string, After: string) {
-    var _PlainType = plainTrainTables[td].trains[tr].destination;
+    var _PlainType = plainTrainTables[td].trains[tr]?.destination ?? "";
     if (_PlainType == Before) {
         trainTables[td].trains[tr].destination = After;
     }
@@ -472,10 +472,9 @@ export function AllWordReplace(td: number, tr: number, line: any, keyword: strin
     //console.log(LTab.textContent);
 }
 export function AllDestinationReplace(td: number, tr: number, keyword: string, AfterWord: string) {
-    const _train = plainTrainTables[td].trains[tr];
-    const _word = String(_train.destination);
-    if (_word.includes(keyword)) {
-        trainTables[td].trains[tr].destination = _word.replace(keyword, AfterWord);
+    const _Destination = plainTrainTables[td].trains[tr]?.destination ?? "";
+    if (_Destination.includes(keyword)) {
+        trainTables[td].trains[tr].destination = _Destination.replace(keyword, AfterWord);
     }
 }
 export function AllTrainTypeReplace(td: number, tr: number, keyword: string, AfterWord: string) {

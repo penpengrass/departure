@@ -49,12 +49,11 @@ for (var td = 0; td < Tablenum; td++) {
 }
 if (station == '鶴橋駅') Dtype = [1, 0];
 else if (station == '名古屋駅') Dtype = [3, 3];
-var config = getStationConfig(window.station, Indexfile);
-if (config && config.onRender) config.onRender();
 for (var td = 0; td < Tablenum; td++) {
     TrainTypeSet(td);
 }
-DetailShow(Kinobj, " ");
+var config = getStationConfig(window.station, Indexfile);
+if (config && config.onRender) config.onRender();
 DestinationSet();
 NewAllLastShow();
 for (var td = 0; td < Tablenum; td++) {

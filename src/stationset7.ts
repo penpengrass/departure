@@ -2,14 +2,25 @@ import { limitedjustnumber, limitednumber, limitednumber2, TrainNameDevide } fro
 import { StationRegistry, StationConfig } from './types/station';
 import { Meiobj } from './detailStopData/Meidenset';
 import { TypeColorChange, TypeColorChange2 } from "./module/colorSimpleSet";
-import { TwoLetterDistance, AllWordReplace, AllWordChange, JRLimitedNumber, holiday_F,AllTrainTypeReplace } from "./module/firstDisplayEdit";
+import { TrainTypeSet, AllWordChange, JRLimitedNumber, holiday_F, AllTrainTypeReplace } from "./module/firstDisplayEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { SpendingTime, DetailReplace, SpecialStop } from "./module/detailSimpleEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { JRCeNobj, JRKaobj, Nagahama } from "./detailStopData/JRNadetailset";
 import { BottomBanner } from "./module/detailBannerSwitch";
-//import { TokaiDetailflag } from './types/constants';
-export var TokaiDetailflag:number;
+import { plainTrainTables, trainTables } from './types/trainTable';
+function JRTokaiDetailShow(td: number) {
+    TrainTypeSet(td);
+    const _Type = trainTables[td].trains[0].type.replace('(当駅始発)', '');
+    LastLetterRemove(td, 0, '・');
+    if (_Type != '') {
+        document.getElementById('TDetail' + (td + 1) + '1')!.innerHTML =
+            '<span id="Detail_Type' + (td + 1) + '">' + _Type + '</span> ' + Des[td][0] + '行きの停車駅は' +
+            '<span class="orange">' + trainTables[td].trains[0].detail + '</span>です';
+    }
+    TypeColorChange2(td, 'Detail_Type', '特急', 'red');
+    TypeColorChange2(td, 'Detail_Type', '快速', 'orange');
+}
 export const JRTokaiStations: StationRegistry = {
     '豊橋駅': {
         name: '豊橋駅',
@@ -18,7 +29,6 @@ export const JRTokaiStations: StationRegistry = {
         file: 'index7.php',
         setup: () => {
             Dtype[3] = 1;
-            TokaiDetailflag = 2;
             limitednumber(TT[0], 1, '特急伊那路');
         },
         onRender: () => {
@@ -52,20 +62,14 @@ export const JRTokaiStations: StationRegistry = {
                 BottomBanner("TRow", 2, 3, 5, '停車駅は<span class="orange">' + Detail[1][0] + '</span>です');
             }
             if (Type[2][0] != '') {
-                SpendingTime(2, '', '浜松', 'およそ35', 'orange');
+                SpendingTime(2, '浜松', 'およそ35', 'orange');
                 //document.getElementById('TDetail3').innerHTML = '浜松までの所要時間は<span class="orange">およそ35分</span>です';
             }
             LastLetterRemove(3, 0, '・');
-            if (Detail[3][0] == '各駅にとまります') {
-                Detail[3][0] = Des[3][0] + 'までの各駅';
+            if (trainTables[3].trains[0].detail == '各駅にとまります') {
+                trainTables[3].trains[0].detail = Des[3][0] + 'までの各駅';
             }
-            if (Type[3][0] != '') {
-                document.getElementById('TDetail' + (3 + 1))!.innerHTML =
-                    '<span id="Detail_Type' + (3 + 1) + '">' + Type[3][0] + '</span> ' + Des[3][0] + '行きの停車駅は' +
-                    '<span class="orange">' + Detail[3][0] + '</span>です';
-            }
-            TypeColorChange2(3, 'Detail_Type', '特急', 'red');
-            TypeColorChange2(3, 'Detail_Type', '快速', 'orange');
+            JRTokaiDetailShow(3);
         }
     },
     '浜松駅': {
@@ -104,7 +108,7 @@ export const JRTokaiStations: StationRegistry = {
                     //DetailReplace(0,'', '米原', '米原・長浜', 3);
                 }
             } else if (Type[0][0] != '') {
-                Detail[0][0] = Des[0][0] + 'までの各駅';
+                trainTables[0].trains[0].detail = Des[0][0] + 'までの各駅';
             }
             var HidaNumber = JRLimitedNumber(1, 0);
             //console.log(HidaNumber);
@@ -112,9 +116,8 @@ export const JRTokaiStations: StationRegistry = {
                 FDetail(Type[1][0], JRKaobj, Dtype[1], 1, 0, "・");
                 console.log(Detail[1][0]);
             } else if (Type[1][0] != '') {
-                Detail[1][0] = Des[1][0] + 'までの各駅';
+                trainTables[1].trains[0].detail = Des[1][0] + 'までの各駅';
             }
-            console.log(Detail[1][0]);
             if (HidaNumber == 7 || HidaNumber == 13) {
                 DetailReplace(1, 0, '越中八尾', '越中八尾・速星');
             } else if (HidaNumber == 15) {
@@ -123,6 +126,9 @@ export const JRTokaiStations: StationRegistry = {
             FDetail(Type[2][0], JRCeNobj, Dtype[2], 2, 0, "・");
             SpecialStop(2, '(幸)', '岡崎', '幸田', '・', 0.8);
             SpecialStop(2, '(三)', '蒲郡', '三河三谷', '・', 0.8);
+            JRTokaiDetailShow(0);
+            JRTokaiDetailShow(1);
+            JRTokaiDetailShow(2);
         }
     },
     '大垣駅': {
@@ -146,21 +152,22 @@ export const JRTokaiStations: StationRegistry = {
                 }
             } else if (Type[0][0] != '') {
                 if (Des[0][0] == '米原') {
-                    SpendingTime(0, '', Des[0][0], 'およそ35', 'orange');
+                    SpendingTime(0, Des[0][0], 'およそ35', 'orange');
                 } else if (Des[0][0] == '関ケ原') {
-                    SpendingTime(0, '', Des[0][0], 'およそ13', 'orange');
+                    SpendingTime(0, Des[0][0], 'およそ13', 'orange');
                 } else if (Des[0][0] == '美濃赤坂') {
-                    SpendingTime(0, '', Des[0][0], 'およそ7', 'orange');
+                    SpendingTime(0, Des[0][0], 'およそ7', 'orange');
                 }
                 //Detail[0][0] = Des[0][0] + 'までの各駅';
             }
-            console.log(Type[1][0]);
-            FDetail(Type[1][0], JRCeNobj, Dtype[1], 1, 0, "・");
-            if (Type[1][0].includes('快速')) {
-                Detail[1][0] = '穂積・西岐阜・' + Detail[1][0];
+            const _Type = plainTrainTables[1].trains[0]?.type ?? "";
+            FDetail(_Type, JRCeNobj, Dtype[1], 1, 0, "・");
+            if (_Type.includes('快速')) {
+                trainTables[1].trains[0].detail = '穂積・西岐阜・' + trainTables[1].trains[0].detail;
             }
             SpecialStop(1, '(幸)', '岡崎', '幸田', '・', 0.8);
             SpecialStop(1, '(三)', '蒲郡', '三河三谷', '・', 0.8);
+            JRTokaiDetailShow(1);
         }
     },
     '名古屋駅': {
@@ -170,7 +177,6 @@ export const JRTokaiStations: StationRegistry = {
         file: 'index7_T.php',
         setup: () => {
             detailflag = 2;
-            //TokaiDetailflag = 3;
             TrainNameDevide('特急ひだ', 1, 4);
             limitednumber(TT[2], 1, '特急しなの');
             limitednumber(TT[3], 1, '特急南紀');
@@ -183,19 +189,12 @@ export const JRTokaiStations: StationRegistry = {
 //Tforshow7.tsをインタフェース化した際に削除する。
 if (station == '豊橋駅') {
     Dtype[3] = 1;
-    TokaiDetailflag = 2;
 }
 if (station == '岐阜駅') {
-    TokaiDetailflag = 1;
     detailLength_one = 1;
 } else if (station == '大垣駅') {
-    TokaiDetailflag = 1;
     detailLength_one = 1;
 } else if (station == '名古屋駅' && Indexfile == 'index7_T.php') {
     detailflag = 2;
-    TokaiDetailflag = 3;
 }
-/*if (TokaiDetailflag == 1) {
-    detailLength_one = 1;
-}*/
 export { };

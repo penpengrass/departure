@@ -1,14 +1,13 @@
-export var TokaiDetailflag = 0;
 export var WName = new Array(Tablenum);
 export var WDes = new Array(Tablenum);
 let IType = new Array(Tablenum);
 let Tshubetu = new Array(Tablenum);
 //let Type = new Array(Tablenum);
 //let Des = new Array(Tablenum);
-export let TDes = new Array(Tablenum);
-export let TType = new Array(Tablenum);
-export let TName = new Array(Tablenum);
-export let WType = new Array(Tablenum);
+export const TDes = new Array(Tablenum);
+export const TType = new Array(Tablenum);
+export const TName = new Array(Tablenum);
+export const WType = new Array(Tablenum);
 let BType = new Array(Tablenum);
 let TDetail = new Array(Tablenum);
 export let Detail = new Array(Tablenum);
@@ -38,7 +37,7 @@ for (let tr = 0; tr < Tablenum; tr++) {
     //TableHour[tr] = new Array(Tablenums[tr]);
     //TableMin[tr] = new Array(Tablenums[tr]);
     WType[tr] = new Array(Tablenums[tr]);
-   
+
     BType[tr] = new Array(Tablenums[tr]);
     Jiyuseki[tr] = new Array(Tablenums[tr]);
 }

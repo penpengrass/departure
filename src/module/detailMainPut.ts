@@ -6,10 +6,11 @@
 //console.log(stationN);
 
 import { trainTables } from "../types/trainTable";
+import { StationConfig } from "../types/station";
+import { getStationConfig } from "../main";
+import { LineCopy } from "./firstTableEdit";
 
 //console.log(Dtype);
-export var td_detail = 0;
-var DtypePlusCount = 0;
 //詳細表示
 //出発駅または行先駅が配列内(外側)に含まれているかどうかを判定する(無ければ-1)
 export function StationInLine(station: string, TypeLine: any, startDtypenumber: number) {
@@ -30,74 +31,81 @@ export function StationInLine(station: string, TypeLine: any, startDtypenumber: 
     //console.log(-1);
     return -1;
 }
-export function DetailDecide(Type_Line: any, td_detail: number, Des: string, Sentence: string, distance: string) {//引数1つ目に路線の種別の配列，3つ目は空でいい
+//引数1つ目に路線の種別の配列，3つ目は空でいい
+export function DetailDecide(Type_Line: any, td_detail: number, Des: string, Sentence: string, distance: string, config?: StationConfig) {
     //前にDtypeが別の配列に移行していた場合戻す
     //console.log("Dtype[td_detail]=" + Dtype[td_detail]);
-    Dtype[td_detail] = Dtype[td_detail] - DtypePlusCount;
-    DtypePlusCount = 0;
+    config = getStationConfig(window.station, Indexfile);
+    //var _Dtype = config ? config.dtype : Dtype;
+    //console.log(Dtype);
+    //console.log(config?.dtype ?? Dtype)
+    //console.log(config ? config.dtype : Dtype)
+    var _Dtype = LineCopy(config?.dtype ?? Dtype);
+    //Dtype[td_detail] = Dtype[td_detail] - DtypePlusCount;
+    //DtypePlusCount = 0;
     //書き換え終わり
     //配列内の駅探索
     let DLine_in = 0;
     let Dflag = 0;//行先が違う配列の場合に使いたい
-    //console.log(Dtype);
+    console.log(_Dtype);
     //北海道(index8.php)はDtypeの警告OK
-    /*if (Dtype.length != Tablenum) {
+    if (Dtype.length != Tablenum) {
         console.warn('Dtypeが正しく定義されていません');
-    }*/
+    }
     /*console.log(td_detail);
     console.log(Dtype);
     console.log(Dtype[td_detail]);*/
     //console.log(Type_Line);
     //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
-    while (Sentence == '' && Dtype[td_detail] < 10 && Dflag < 200) {
+    while (Sentence == '' && _Dtype[td_detail] < 10 && Dflag < 200) {
         DLine_in = 0;
         //console.log("td_detail=" + td_detail);
-        //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
+        console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
         Dflag++;
         //console.log(Dflag);
-        if (StationInLine(stationN, Type_Line, Dtype[td_detail]) == -1) {
+        if (StationInLine(stationN, Type_Line, _Dtype[td_detail]) == -1) {
             console.log("DetailDecideで出発駅がない(外側)" + stationN + Des);
-            if (Dtype[td_detail] > Type_Line.length) {
+            if (_Dtype[td_detail] > Type_Line.length) {
                 console.log("詳細表示は書けない");
                 break;
             } else {
                 console.log("出発駅がないのでDtypeをプラスする");
-                Dtype[td_detail]++;
-                DtypePlusCount++;
+                _Dtype[td_detail]++;
+                //DtypePlusCount++;
                 continue;
             }
         } else {
-            //console.log("関数の結果出発駅が何番目の配列か=" + StationInLine(stationN, Type_Line, Dtype[td_detail]));
+            //console.log("関数の結果出発駅が何番目の配列か=" + StationInLine(stationN, Type_Line, _Dtype[td_detail]));
         }
         //出発駅が配列部分に出てくるまでwhileを繰り返す
         //console.log(Dtype[td_detail] + ':' + td_detail);
-        DtypePlusCount += StationInLine(stationN, Type_Line, Dtype[td_detail]) - Dtype[td_detail];
-        Dtype[td_detail] = StationInLine(stationN, Type_Line, Dtype[td_detail]);
-        while (stationN != Type_Line[Dtype[td_detail]][DLine_in] && DLine_in < 50) {
-            //console.log("出発駅を検索:" + Type_Line[Dtype[td_detail]][DLine_in] + ":" + DLine_in);
+        //DtypePlusCount += StationInLine(stationN, Type_Line, _Dtype[td_detail]) - _Dtype[td_detail];
+        _Dtype[td_detail] = StationInLine(stationN, Type_Line, _Dtype[td_detail]);
+        while (stationN != Type_Line[_Dtype[td_detail]][DLine_in] && DLine_in < 50) {
+            //console.log("出発駅を検索:" + Type_Line[_Dtype[td_detail]][DLine_in] + ":" + DLine_in);
             DLine_in++;
-            if (Type_Line[Dtype[td_detail]].length <= DLine_in) {//配列内に出発駅がない場合
+            if (Type_Line[_Dtype[td_detail]].length <= DLine_in) {//配列内に出発駅がない場合
                 console.log("DetailDecideで出発駅がない(内側)" + stationN);
                 break;
             }
         }
-        //console.log("出発駅仮確定 出発駅=" + Type_Line[Dtype[td_detail]][DLine_in] + ":DLine_in=" + DLine_in);
+        //console.log("出発駅仮確定 出発駅=" + Type_Line[_Dtype[td_detail]][DLine_in] + ":DLine_in=" + DLine_in);
         DLine_in++;
-        while (Type_Line[Dtype[td_detail]][DLine_in - 1] != "以遠各駅" && !Type_Line[Dtype[td_detail]][DLine_in - 1].includes("から各駅") && Type_Line[Dtype[td_detail]][DLine_in] !== Des && Dflag < 200) {
-            Sentence += Type_Line[Dtype[td_detail]][DLine_in] + distance;
+        while (Type_Line[_Dtype[td_detail]][DLine_in - 1] != "以遠各駅" && !Type_Line[_Dtype[td_detail]][DLine_in - 1].includes("から各駅") && Type_Line[_Dtype[td_detail]][DLine_in] !== Des && Dflag < 200) {
+            Sentence += Type_Line[_Dtype[td_detail]][DLine_in] + distance;
             DLine_in++;
-            //console.log(Des + "が" + Type_Line + "の中に含まれているか " + Dtype[td_detail]);
-            if (StationInLine(Des, Type_Line, Dtype[td_detail]) == -1) {
+            //console.log(Des + "が" + Type_Line + "の中に含まれているか " + _Dtype[td_detail]);
+            if (StationInLine(Des, Type_Line, _Dtype[td_detail]) == -1) {
                 //console.log("DetailDecide後半で例外a:" + Type_Line.length + ":" + Des);
             } else {
                 //console.log("DetailDecide後半で例外なし:" + Type_Line.length + ":" + Des);
             }
-            if (Type_Line[Dtype[td_detail]].length <= DLine_in) {//配列内に終着駅がない場合(以遠を除く)      
+            if (Type_Line[_Dtype[td_detail]].length <= DLine_in) {//配列内に終着駅がない場合(以遠を除く)      
                 Sentence = '';//ここに分岐している場合を記述
-                console.log("DetailDecideで終着駅がないのでDtypeプラス:" + Type_Line[Dtype[td_detail]].length + ":" + Dtype[td_detail]);
-                Dtype[td_detail]++;
+                console.log("DetailDecideで終着駅がないのでDtypeプラス:" + Type_Line[_Dtype[td_detail]].length + ":" + _Dtype[td_detail]);
+                _Dtype[td_detail]++;
                 //console.log("Dtypeの結果" + Dtype[td_detail]);
-                DtypePlusCount++;
+                //DtypePlusCount++;
                 Dflag++;
                 break;
             }
@@ -114,7 +122,6 @@ var DetailLine = '';
 //3つまとめて種別に案内を対応させる　変える余地ありそう(種別ごとに関数を作るとか)
 export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, distance: string) {
     //console.log(Utype + ':' + td + ':' + tr);
-    //console.log(Uobj.Typeb.detail);
     if (Utype == '') {
         DetailLine = '';
     } else if (Utype.includes(Uobj.Typea.type)) {
@@ -154,7 +161,6 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
     //Detail[td][tr] = DetailLine;
     //document.getElementById(TType).textContent = Detail[td][tr];
     //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = DetailLine;
-    //console.log(DetailLine);
     Detail[td][tr] = DetailLine;
     trainTables[td].trains[tr].detail = DetailLine;
     //console.log(Detail);
@@ -172,8 +178,8 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
     //console.log(document.getElementById(TType));
     //console.log('----' + (td + 1) + '番目の表の' + (tr + 1) + '番目に発車するFDetail関数終了----');
     //console.log("Dtypeがプラスされた回数" + DtypePlusCount);
-    Dtype[td_detail] = Dtype[td_detail] - DtypePlusCount;
-    DtypePlusCount = 0;
+    //Dtype[td_detail] = Dtype[td_detail] - DtypePlusCount;
+    //DtypePlusCount = 0;
     //console.log(Dtype[td_detail]);
     if (Indexfile == 'index7.php') {
         return DetailLine;
@@ -185,12 +191,12 @@ export function DetailShow(companyObject: any, distance: string, LLength = Table
         console.log(DetailLength[td]);
         for (var tr = 0; tr < DetailLength[td]; tr++) {
             //console.log("Dtype[" + td + "]=" + Dtype[td]);
-            var _Type= trainTables[td].trains[tr].type
+            var _Type = trainTables[td].trains[tr].type
             FDetail(_Type, companyObject, Dtype[td], td, tr, distance);
             console.log("-------" + (td + 1) + "個目の表の" + (tr + 1) + "番目の詳細表示完了-------");
         }
         console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");
-        td_detail++;
+        //td_detail++;
         //stationN = stationN2;
     }
 }
@@ -205,7 +211,7 @@ export function NewDetailShow(companyObject: any, distance: string, LLength = Ta
             console.log("-------" + (td + 1) + "個目の表の" + (tr + 1) + "番目の詳細表示完了-------");
         }
         console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");
-        td_detail++;
+        //td_detail++;
         //stationN = stationN2;
     }
 }
@@ -267,9 +273,10 @@ export function LowerDetail(td: number, tr: number) {
 }
 export function LastLetterRemove(td: number, tr: number, mark: string) {
     //console.log(Detail);
-    if (Detail[td][tr] != null && Detail[td][tr].slice(-1) == mark) {
+    var _Detail = trainTables[td].trains[tr].detail;
+    if (_Detail != null && _Detail.slice(-1) == mark) {
         //console.log(tr + 'は読点で終わる');
-        Detail[td][tr] = Detail[td][tr].slice(0, -1);
+        Detail[td][tr] = _Detail.slice(0, -1);
         trainTables[td].trains[tr].detail = Detail[td][tr];
 
     }

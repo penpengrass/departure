@@ -89,6 +89,7 @@ export const KintetsuStations: StationRegistry = {
                     if (holidayflag == 0) {
                         if (whetherStop(9, 40, tr_hour, tr_min, 16, 4)) {
                         } else {
+                            console.log("西ノ京");
                             DetailReplace(0, tr, '西ノ京 ', '');
                         }
                     } else if (holidayflag == 1) {

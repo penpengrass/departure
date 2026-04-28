@@ -1,5 +1,5 @@
 import {
-    LineMarkAdd, JRLimitedDevide, AllWordChange, AllWordReplace, TwoLetterDistance, rowremove, allTwoLettersDistance, holiday_F, AllClassSetting, DestinationSet, TrainTypeSet,
+    LineMarkAdd, JRLimitedDevide, rowremove, holiday_F, AllClassSetting, DestinationSet, TrainTypeSet,
     NewAllLastShow
 } from "./module/firstDisplayEdit";
 import { DesMiddle, allJRWTrainNameColor } from "./module/displayEdit4";
@@ -14,10 +14,11 @@ import { } from "./module/firstDisplayEdit";
 import { TDes } from "./types/constants";
 import { comment } from "./types/constants";
 import { DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
+import { JRobj } from "./detailStopData/JRW_afterset";
 var Shinkansenflag = 0;
 //特急や快速等の列車名や路線名を表示させたい
 if (station == '天王寺駅') {
-    for (var tr = 0; tr < orderNum; tr++) {
+    /*for (var tr = 0; tr < orderNum; tr++) {
         if (Type[2][tr] != '' && (Des[2][tr] == '' || Des[2][tr] == '大阪' || Des[2][tr] == '天王寺')) {
             Des[2][tr] = '新今宮･西九条方面';
             document.getElementById('TDes' + (2 + 1) + (tr + 1))!.style.transform = "scaleX(0.7)" + "translate(-15%,0%)";
@@ -37,7 +38,7 @@ if (station == '天王寺駅') {
         }
     }
     allTwoLettersDistance(Des, TDes, 1, 0.9);
-    comment!.innerHTML = '番線や一部表示不正確　一部2024年ダイヤのまま';
+    comment!.innerHTML = '番線や一部表示不正確　一部2024年ダイヤのまま';*/
 }
 if (station == "新見駅") {
     JRLimitedDevide(0);
@@ -47,14 +48,6 @@ if (station == "新見駅") {
 if (Indexfile == 'index4.php') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();
-}
-
-if (TwoLetterDisflag == 1) {
-    for (var td = 0; td < Tablenum; td++) {
-        for (var tr = 0; tr < Tablenums[td]; tr++) {
-            DestinationTwoLetterDistance(td, tr, TDes, 1, 0.9);
-        }
-    }
 }
 if (Indexfile == 'index4.php') {
     for (var td = 0; td < Tablenum; td++) {
@@ -66,6 +59,13 @@ if (Indexfile == 'index4.php') {
         allJRWSZColor();
     }
     DestinationSet();
+    if (TwoLetterDisflag == 1) {
+        for (var td = 0; td < Tablenum; td++) {
+            for (var tr = 0; tr < Tablenums[td]; tr++) {
+                DestinationTwoLetterDistance(td, tr, TDes, 1, 0.9);
+            }
+        }
+    }
     NewAllLastShow();
     LastShowFlag = 1;
 }

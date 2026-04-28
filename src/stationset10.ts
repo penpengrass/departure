@@ -1,7 +1,7 @@
 import { TrainNameLineIncludeDevide, TrainNameDevide, DestinationDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
-import { swapColumns, AllWordChange, AllTrainTypeReplace, TwoLetterDistance, JRNameDevide, Bansenshow, AllClassSetting, TrainTypeSet, TrainTypeWordChange, DestinationWordChange } from "./module/firstDisplayEdit";
+import { swapColumns, AllTrainTypeReplace, JRNameDevide, Bansenshow, AllClassSetting, TrainTypeSet, TrainTypeWordChange, DestinationWordChange } from "./module/firstDisplayEdit";
 import { CarsDevideToLine, CarsInto } from "./module/carsEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";

@@ -17,7 +17,7 @@ declare global {
     var TType: any[];
     var WType: any[];
     var TName: any[];
-    var Dtype: any[];
+    var Dtype: number[];
     var Jiyuseki: any;
     var Tablenum: number;
     var Tablenums: number[]; // 各表の列数

@@ -1,7 +1,7 @@
 import { JRWSHobj } from './detailStopData/JRHokuShindetailset';
 import { DetailShow, doallDetailShow } from "./module/detailMainPut";
 import { DetailReplace } from "./module/detailSimpleEdit";
-import { AllWordChange, TwoLetterDistance, JRLimitedDevide, JRNameDevide, Bansenshow, NewAllLastShow, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
+import { JRLimitedDevide, JRNameDevide, Bansenshow, NewAllLastShow, DestinationSet, TrainTypeSet, DestinationWordChange, DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { allJRWTrainNameColor, DesMiddle } from "./module/displayEdit4";
 import { allJRColor, allJRSSColor } from "./typeColor";
@@ -9,7 +9,6 @@ import * as Stops from "./detailStopData/JRHokuShindetailset";
 import { getStationConfig } from "./main";
 import { trainTables } from './types/trainTable';
 allJRSSColor(JRWSHobj, 2);
-allJRColor(2);
 console.log(DetailLength);
 DetailShow(JRWSHobj, "　", DetailLength.length);
 JRLimitedDevide(2);
@@ -130,6 +129,10 @@ if (station == '敦賀駅' || station == '金沢駅') {
         }
     }
 }
+for (var tr = 0; tr < orderNum; tr++) {
+    DestinationWordChange(3, tr, "大阪", "京都方面大阪");
+    DesMiddle(3, tr, '方面');
+}
 if (Indexfile == 'index4_H.php') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();
@@ -142,17 +145,14 @@ if (Indexfile == 'index4_H.php') {
     NewAllLastShow();
 }
 Bansenshow(1, 2);
+allJRColor(2);
 allJRWTrainNameColor('red', 'red', 'red', 2);
 doallDetailShow(25);
 //DetailBanner(0, 0, 25);
 //DetailBanner(0, 1, 25);
-for (var tr = 0; tr < orderNum; tr++) {
-    AllWordChange(3, tr, Des, "大阪", "京都方面大阪");
-    DesMiddle(3, tr, '方面');
-}
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
-        TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
+        DestinationTwoLetterDistance(td, tr, TDes, 1, 0.9);
     }
 }
 LastShowFlag = 1;

@@ -3,7 +3,7 @@ import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
 import {
     JRNameDevide, NewAllLastShow, TrainTypeWordChange, flagmarkerase, Bansenshow, JRLimitedDevide, JRLimitedNameDevide, rowsize, moveTableColumn, rowremove, allTwoLettersDistance, FourLetters
-    , AllWordChange, swapColumns, DestinationSet,
+    , allDestinationTwoLettersDistance, swapColumns, DestinationSet,
     TrainTypeSet
 } from "./module/firstDisplayEdit";
 import { CarsDefine, CarsInto } from "./module/carsEdit";
@@ -144,7 +144,7 @@ export const JREast6Stations: StationRegistry = {
                 if (Type[1][tr].includes('普通')) {
                     document.getElementById('TType' + 2 + '' + (tr + 1))!.style.backgroundColor = '#ffa500';
                     if (Type[1][tr].includes('(東)')) {
-                        Type[1][tr] = '普通';
+                        trainTables[1].trains[tr].type = '普通';
                     }
                 }
                 JRE6Color(2, '普通', '#ff6e00');
@@ -163,12 +163,13 @@ export const JREast6Stations: StationRegistry = {
                     }
                 }
             }
+            DestinationSet();
             //松本駅だけ番線の文字追加および行先表示調整
             for (var td = 0; td < 4; td++) {
                 (document.getElementsByClassName('HDes')[td] as HTMLElement).style.paddingRight = "1.5em";
                 for (var tr = 0; tr < 3; tr++) {
                     TrainTypeSet(td);
-                    allTwoLettersDistance(Des, TDes, 0.5, 0.5);
+                    allDestinationTwoLettersDistance(TDes, 0.5, 0.5);
                     //console.log(document.getElementById('Ttopic'+(tr+1)+(ts+1)));
                     document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.innerHTML += '<span class="bansen">番線</span>';
                     document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.paddingRight = "1em";
