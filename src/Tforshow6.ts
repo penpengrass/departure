@@ -1,6 +1,6 @@
 import {
-    JRLimitedDevide, rowremove, JRLimitedNameDevide, rowsize, AllWordChange, swapColumns, FourLetters,
-    flagmarkerase, Bansenshow, moveTableColumn, allTwoLettersDistance,
+    JRLimitedDevide, rowremove, JRLimitedNameDevide, rowsize,  swapColumns, FourLetters,
+    flagmarkerase, Bansenshow, moveTableColumn,
     NewAllLastShow,DestinationSet
 } from "./module/firstDisplayEdit";
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";

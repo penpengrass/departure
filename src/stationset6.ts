@@ -334,6 +334,12 @@ export const JREast6Stations: StationRegistry = {
             document.getElementById('HType9')!.style.width = '20%';
             document.getElementById('Htopic7')!.style.width = '8%';
             document.getElementById('Htopic9')!.style.width = '8%';
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(6);
+            TrainTypeSet(7);
+            TrainTypeSet(8);
+            TrainTypeSet(9);
             for (var tr = 0; tr < 2; tr++) {
                 ShihatsuMove(6, tr, 'Ttopic');
                 ShihatsuMove(7, tr, 'Ttopic');
@@ -345,7 +351,6 @@ export const JREast6Stations: StationRegistry = {
                 TrainTypeWordChange(6, tr, '普通', '各駅停車');
                 var yokosuka = ['逗子', '大船'];
                 var utsunomiya = ['宇都宮', '小金井', '古河'];
-                console.log(Type[6][0]);
                 if (Type[6][tr] != '') {
                     document.getElementById('TName7' + (tr + 1))!.textContent = '埼京線';
                     JRE6ColorPlusName(6, tr, '', '#00AC9A');
@@ -387,12 +392,6 @@ export const JREast6Stations: StationRegistry = {
                     }
                 }
             }
-            TrainTypeSet(0);
-            TrainTypeSet(1);
-            TrainTypeSet(6);
-            TrainTypeSet(7);
-            TrainTypeSet(8);
-            TrainTypeSet(9);
             for (var td = 2; td < 4; td++) {
                 TrainTypeSet(td);
                 for (var tr = 0; tr < 2; tr++) {
@@ -466,6 +465,9 @@ export const JREast6Stations: StationRegistry = {
             rowsize(3, 'HName', 'TName', '15%');
             rowsize(4, 'HName', 'TName', '15%');
             rowsize(5, 'HName', 'TName', '15%');
+            for (var td = 0; td < 8; td++) {
+                TrainTypeSet(td);
+            }
             for (var tr = 0; tr < 2; tr++) {
                 TrainTypeWordChange(0, tr, '普通', '各駅停車');
                 TrainTypeWordChange(1, tr, '普通', '各駅停車');

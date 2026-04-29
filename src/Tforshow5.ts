@@ -1,4 +1,4 @@
-import { AllWordChange, NewAllLastShow, allTwoLettersDistance } from "./module/firstDisplayEdit";
+import { NewAllLastShow, allTwoLettersDistance } from "./module/firstDisplayEdit";
 import { getStationConfig } from "./main";
 //二子新地と高津に停車するかどうかの処理
 if (station == '二子玉川駅') {

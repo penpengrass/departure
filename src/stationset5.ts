@@ -1,6 +1,6 @@
 import { limited, rapid, express, subexpress, local } from './detailStopData/JRdetail';
 import { StationRegistry, StationConfig } from './types/station';
-import { AllWordChange, DestinationSet, TrainTypeSet, TrainTypeWordChange } from './module/firstDisplayEdit';
+import { DestinationSet, TrainTypeSet, TrainTypeWordChange } from './module/firstDisplayEdit';
 import { allTokyuColor } from './typeColor';
 import { trainTables } from './types/trainTable';
 export var Tokyuobj = {

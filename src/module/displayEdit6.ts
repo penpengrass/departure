@@ -89,12 +89,17 @@ export function allUTL() {
 
 export function ShihatsuMove(td: number, tr: number, Place: string) {
     var LoName = document.getElementById(Place + (td + 1) + (tr + 1));
-    if (LoName && plainTrainTables[td].trains[tr].type.includes('始発')) {
-        trainTables[td].trains[tr].type = Type[td][tr].replace('始発', '');
-        Type[td][tr] = Type[td][tr].replace('始発', '');
+    var _PlainType
+    if (trainTables[td].trains[tr].type) {
+        _PlainType = trainTables[td].trains[tr].type;
+    } else {
+        _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
+    }
+    if (LoName && _PlainType.includes('始発')) {
+        trainTables[td].trains[tr].type = _PlainType.replace('始発', '');
+        Type[td][tr] = _PlainType.replace('始発', '');
         LoName.textContent += '始発';
     }
-
 }
 export function Type_Cars(td: number, tr: number, L_Type: string, Cars: any, Tag: string, LineSetFlag = 0) {
     if (Type[td][tr].includes(L_Type)) {

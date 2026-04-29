@@ -1,13 +1,15 @@
-import { JRCeNobj,JRChNobj } from "./detailStopData/JRNadetailset";
-import { TypeTwoLetterDistance,allTimeMarkErase,JRLimitedNumber,NewLastShows,holiday_F, AllClassSetting, DestinationSet, TrainTypeSet, DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
-import { FDetail,DetailBanner } from "./module/detailMainPut";
-import { DetailReplace, DetailReplace_Set,SpecialStop } from "./module/detailSimpleEdit";
+import { JRCeNobj, JRChNobj } from "./detailStopData/JRNadetailset";
+import { TypeTwoLetterDistance, allTimeMarkErase, JRLimitedNumber, NewLastShows, holiday_F, AllClassSetting, DestinationSet, TrainTypeSet, DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
+import { FDetail, DetailBanner } from "./module/detailMainPut";
+import { DetailReplace, DetailReplace_Set, SpecialStop } from "./module/detailSimpleEdit";
 import { TrainNumber } from "./module/firstDisplayEdit";
-import { LastLetterRemove } from "./module/detailMainPut";
+import { LastLetterRemove, doallDetailShow } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRNadetailset";
 import { allJRNagoyaColor } from "./typeColor";
-console.log(Dtype);
+import { trainTables } from "./types/trainTable";
 Dtype = [0, 0, 0, 0, 0];
+DetailLength = [3, 3, 3, 3, 3];
+DestinationSet();
 for (var tr = 0; tr < orderNum; tr++) {
     FDetail(Type[0][tr], JRCeNobj, Dtype[0], 0, tr, "・");
     if (Detail[0][tr].slice(-1) == '・') {
@@ -16,6 +18,7 @@ for (var tr = 0; tr < orderNum; tr++) {
         document.getElementById('TDetail' + (1) + '' + (tr + 1))!.textContent = Detail[0][tr];
     }
 }
+console.log(Detail);
 //td_detail++;
 for (var tr = 0; tr < orderNum; tr++) {
     if (Type[1][tr].includes('特急') || Type[1][tr].includes('ﾎｰﾑﾗｲﾅｰ')) {
@@ -77,7 +80,6 @@ for (var tr = 0; tr < orderNum; tr++) {
     } else {
         Dtype[4] = HidaDtype;
     }
-    console.log("Dtype[" + "]=" + Dtype);
     FDetail(Type[4][tr], Stops.JRKaobj, Dtype[4], 4, tr, "・");
     LastLetterRemove(4, tr, '・');
     //console.log(HidaNumber);
@@ -97,14 +99,14 @@ for (var tr = 0; tr < orderNum; tr++) {
 }
 for (var tr = 0; tr < orderNum; tr++) {
     if (Type[1][tr].includes('快速')) {
-        document.getElementById('TDetail' + 2 + (tr + 1))!.textContent = '尾張一宮・岐阜・岐阜から各駅';
+        trainTables[1].trains[tr].detail  = '尾張一宮・岐阜・岐阜から各駅';
     } else if (Type[1][tr].includes('ﾎｰﾑﾗｲﾅｰ')) {
-        document.getElementById('TDetail' + 2 + (tr + 1))!.textContent = '尾張一宮・岐阜・穂積';
+        trainTables[1].trains[tr].detail  = '尾張一宮・岐阜・穂積';
     }
     if (Type[2][tr] == '快速') {
-        document.getElementById('TDetail' + 3 + (tr + 1))!.textContent = '金山・鶴舞・千種・大曽根・勝川・春日井・高蔵寺・多治見・多治見から各駅';
+         trainTables[2].trains[tr].detail = '金山・鶴舞・千種・大曽根・勝川・春日井・高蔵寺・多治見・多治見から各駅';
     } else if (Type[2][tr] == '区間快速') {
-        document.getElementById('TDetail' + 3 + (tr + 1))!.textContent = '金山・鶴舞・千種・大曽根・新守山・勝川・春日井・神領・高蔵寺・多治見・多治見から各駅';
+        trainTables[2].trains[tr].detail= '金山・鶴舞・千種・大曽根・新守山・勝川・春日井・神領・高蔵寺・多治見・多治見から各駅';
     }
     Detail[1][tr] = document.getElementById('TDetail' + 2 + (tr + 1))!.textContent;
     Detail[2][tr] = document.getElementById('TDetail' + 3 + (tr + 1))!.textContent;
@@ -120,9 +122,10 @@ let Class_Bottm = document.getElementsByClassName('Ctitle');
 var bottom_color = ['orange', 'orange', 'blue', '#00A497', 'brown']
 for (let te = 0; te < Tablenum; te++) {
     (Class_Bottm[te] as HTMLElement).style.borderBottomColor = bottom_color[te];
+    TrainTypeSet(te);
     for (let tr = 0; tr < orderNum; tr++) {
         if (Type[te][tr].includes('普通')) {
-            document.getElementById('TDetail' + (te + 1) + (tr + 1))!.textContent = '各駅にとまります';
+            trainTables[te].trains[tr].detail = '各駅にとまります';
         }
         //console.log(Type[te][tr]);
         if (Type[te][tr] === 'undefined') {
@@ -141,22 +144,21 @@ for (let te = 0; te < Tablenum; te++) {
         } else if (Type[te][tr].length > 7) {
             document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-12%,0%)";
         }
-        DetailBanner(te, tr, 23);
+        //DetailBanner(te, tr, 23);
         if (Type[te][tr] == '') {
             document.getElementById('TNum' + (te + 1) + (tr + 1))!.style.backgroundColor = 'black';
             document.getElementById('TDetailtitle' + (te + 1) + (tr + 1))!.textContent = '';
         }
     }
 }
-DestinationSet();
 for (var td = 0; td < Tablenum; td++) {
-    TrainTypeSet(td);
     for (var tr = 0; tr < orderNum; tr++) {
         NewLastShows(td, tr);
         TypeTwoLetterDistance(td, tr, TType, 1, 0.4);
         DestinationTwoLetterDistance(td, tr, TDes, 1, 1);
     }
 }
+doallDetailShow(23);
 if (Indexfile == 'index7_T.php') {
     allJRNagoyaColor();
 }

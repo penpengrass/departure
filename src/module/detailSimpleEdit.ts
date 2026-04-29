@@ -62,7 +62,14 @@ export function SpecialStop(td: number, last: any, Before_station: string, AddSt
   for (var tr = 0; tr < orderNum; tr++) {
     //console.log(Detail);
     //console.log(Type[td][tr]);
-    var _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
+    var _PlainType
+    if (trainTables[td].trains[tr].type) {
+      _PlainType = trainTables[td].trains[tr].type;
+    } else {
+      _PlainType = plainTrainTables[td].trains[tr].type;
+    }
+
+    // = trainTables[td].trains[tr]?.type ?? plainTrainTables[td].trains[tr]?.type ?? "";
     var LType = document.getElementById("TType" + (td + 1) + "" + (tr + 1));
     if (tr > 0) {
       trainTables[td].trains[tr].type = _PlainType.replace(last, "");
@@ -83,7 +90,7 @@ export function SpecialStop(td: number, last: any, Before_station: string, AddSt
       }
       console.log(LineDetail);
       //LDetail!.textContent = LineDetail;
-      Detail[td][tr] = LineDetail;
+      trainTables[td].trains[tr].detail = LineDetail;
       if (LType!.textContent.length == 2) {
         LType!.style.textIndent = Indent + "em";
       }

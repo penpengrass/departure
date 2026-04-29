@@ -18,8 +18,10 @@ if (station == '鳥栖駅') {
     if (config && config.onRender) config.onRender();
 }
 DestinationSet();
+if (station != '長崎駅') {
+    Bansenshow(1);
+}
 NewAllLastShow();
-
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         CarsInto(td, tr, 'TCars');
@@ -58,7 +60,4 @@ if (station == '鳥栖駅') {
         '<li>8両リレーかもめ、かささぎ・・・787系</li>' +
         '<li>6両リレーかもめ、かささぎ、みどり・・・885系</li>' +
         '<li>ただし、早朝深夜の佐賀発着かささぎ6両は787系</li>';
-}
-if (station != '長崎駅') {
-    Bansenshow(1);
 }

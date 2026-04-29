@@ -15,5 +15,5 @@ function Useat(car: string) {
 }
 var config = getStationConfig(window.station, Indexfile);
 if (config && config.onRender) config.onRender();
-NewAllLastShow();
 Bansenshow();
+NewAllLastShow();

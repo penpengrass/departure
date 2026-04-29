@@ -5,8 +5,8 @@ import { TTconnect, makeemptyTable } from './module/connectTable';
 import { limited, rapid, Jrapid, Jsubrapid, local } from './detailStopData/JRdetail';
 import { StationRegistry, StationConfig } from './types/station';
 import {
-    LineMarkAdd, AllClassSetting, AllWordReplace, AllDestinationReplace, DestinationWordChange, allTypeTwoLettersDistance,
-    AllWordChange, holiday_F, NewAllLastShow, allDestinationTwoLettersDistance, JRLimitedDevide, rowremove, TrainTypeSet, DestinationSet,
+    LineMarkAdd, AllClassSetting, AllTrainTypeReplace, AllDestinationReplace, DestinationWordChange, allTypeTwoLettersDistance,
+    holiday_F, NewAllLastShow, allDestinationTwoLettersDistance, JRLimitedDevide, rowremove, TrainTypeSet, DestinationSet,
     TypeTwoLetterDistance,
     DestinationTwoLetterDistance
 } from './module/firstDisplayEdit';
@@ -339,13 +339,12 @@ export const JRWestStations: StationRegistry = {
         tableTitles: ['山陽線 福山 岡山方面', '山陽線 広島 岩国方面', '呉線 広 呉方面'],
         onRender: () => {
             for (var tr = 0; tr < orderNum; tr++) {
-                AllWordChange(1, tr, Des, "大野浦", "広島方面大野浦");
-                AllWordChange(1, tr, Des, "五日市", "広島方面五日市");
-                AllWordChange(1, tr, Des, "岩国", "広島方面岩国");
-                AllWordChange(1, tr, Des, "南岩国", "広島方面南岩国");
-                //無意味
-                //DesMiddle(0, tr, '連絡');
-                //DesMiddle(1, tr, '方面');
+                DestinationWordChange(1, tr, "大野浦", "広島方面大野浦");
+                DestinationWordChange(1, tr, "五日市", "広島方面五日市");
+                DestinationWordChange(1, tr, "岩国", "広島方面岩国");
+                DestinationWordChange(1, tr, "南岩国", "広島方面南岩国");
+                DesMiddle(0, tr, '連絡');
+                DesMiddle(1, tr, '方面');
             }
             setInterval(allswitchMihara, 5000);
             if (holidayflag == 1) {
@@ -560,11 +559,11 @@ export const JRWestStations: StationRegistry = {
         onRender: () => {
             for (var tr = 0; tr < orderNum; tr++) {
                 if (Type[2][tr] != '' && (Des[2][tr] == '' || Des[2][tr] == '大阪' || Des[2][tr] == '天王寺')) {
-                     trainTables[2].trains[tr].destination = '新今宮･西九条方面';
+                    trainTables[2].trains[tr].destination = '新今宮･西九条方面';
                     document.getElementById('TDes' + (2 + 1) + (tr + 1))!.style.transform = "scaleX(0.7)" + "translate(-15%,0%)";
                 }
                 if (Type[3][tr] != '' && Des[3][tr] != '大阪' && Des[3][tr] != '京橋' && Des[3][tr] != '桜島') {
-                    trainTables[3].trains[tr].destination= '鶴橋･京橋方面';
+                    trainTables[3].trains[tr].destination = '鶴橋･京橋方面';
                     trainTables[3].trains[tr].type = '普通';
                     document.getElementById('TDes' + (3 + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-10%,0%)";
                 }
@@ -729,7 +728,7 @@ export const JRWestStations: StationRegistry = {
                     LType!.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
                     LType!.style.padding = '0px';
                 }
-                AllWordReplace(4, tr, Type, '寝台', '');
+                AllTrainTypeReplace(4, tr, '寝台', '');
                 AllDestinationReplace(1, tr, '新三田', '宝塚方面新三田');
                 AllDestinationReplace(1, tr, '篠山口', '宝塚方面篠山口');
                 AllDestinationReplace(1, tr, '福知山', '宝塚方面福知山');

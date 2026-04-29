@@ -77,11 +77,10 @@ export const JREastStations: StationRegistry = {
                     JRLineName(1, tr, '', '相鉄線', 1, 1);
                 }
                 JRLineName(1, tr, '快速', '湘南新宿ﾗｲﾝ', 0, 0);
-                NewLastShows(0, tr);
-                NewLastShows(1, tr);
                 FourLetters(0, tr, 0.7, 7);
                 FourLetters(1, tr, 0.7, 7);
             }
+            NewAllLastShow();
             LastShowFlag = 1;
             NameColorchange(0, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
             NameColorchange(1, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
@@ -445,10 +444,11 @@ export const JREastStations: StationRegistry = {
             Bansenshow();
             DestinationSet();
             for (var td = 0; td < 2; td++) {
+                TrainTypeSet(td);
                 for (var tr = 0; tr < 2; tr++) {
                     NewLastShows(td, tr);
                     if (Type[td][tr] != '') {
-                        (document.getElementsByClassName('bansen')[td + tr * 2] as HTMLElement).style.fontSize = '2vw';
+                        //(document.getElementsByClassName('bansen')[(td + tr) * 2] as HTMLElement).style.fontSize = '2vw';
                     }
                 }
             }
@@ -501,13 +501,22 @@ export const JREastStations: StationRegistry = {
             JRETypeAdd(3, '快速', '宇都宮線', 'orange');
             JRETypeAdd(4, '普通', '高崎線', 'orange');
             JRETypeAdd(4, '快速', '高崎線', 'orange');
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(2);
+            TrainTypeSet(3);
+            TrainTypeSet(4);
+            TrainTypeSet(5);
+            TrainTypeSet(6);
             for (var tr = 0; tr < 3; tr++) {
                 //CarsDefine(2, tr, '普通', '', 15);
                 //CarsInto(2,tr,'TName');
+                ShihatsuMove(0, tr, 'TName');
+                ShihatsuMove(1, tr, 'TName');
                 TrainTypeWordChange(0, tr, '普通', '各駅停車');
                 TrainTypeWordChange(0, tr, '快速', '各駅停車');
                 TrainTypeWordChange(0, tr, '通勤快速', '各駅停車');
-                AllWordReplace(1, tr, Type, '普通', '各駅停車');
+                TrainTypeWordChange(1, tr, '普通', '各駅停車');
                 AllWordReplace(2, tr, Type, 'スペーシア', 'ｽﾍﾟｰｼｱ');
                 AllWordReplace(3, tr, Type, 'スペーシア', 'ｽﾍﾟｰｼｱ');
                 TrainTypeWordChange(4, tr, '快速', '普通');
@@ -518,8 +527,6 @@ export const JREastStations: StationRegistry = {
                 TypeColorChange(6, tr, '快速', 'orange');
                 document.getElementById('TType1' + (tr + 1))!.style.textAlign = "left";
                 document.getElementById('TType2' + (tr + 1))!.style.textAlign = "left";
-                ShihatsuMove(0, tr, 'TName');
-                ShihatsuMove(1, tr, 'TName');
                 JRLimitedNameDevide(4, tr, '草津・四万');
                 JRLimitedNameDevide(5, tr, '草津・四万');
                 JRLimitedNameDevide(2, tr, 'きぬがわ');
@@ -555,13 +562,6 @@ export const JREastStations: StationRegistry = {
                 if (Type[5][tr] == '特急') {
                     document.getElementById('TName' + (5 + 1) + '' + (tr + 1))!.style.color = 'red';
                 }
-                TrainTypeSet(0);
-                TrainTypeSet(1);
-                TrainTypeSet(2);
-                TrainTypeSet(3);
-                TrainTypeSet(4);
-                TrainTypeSet(5);
-                TrainTypeSet(6);
             }
             DestinationSet();
             allTwoLettersDistance(Des, TDes, 1, 0.8);
@@ -585,7 +585,6 @@ export const JREastStations: StationRegistry = {
         file: 'index3.php',
         setup: () => {
             Tablenum = 5;
-            console.log(Tablenum);
             DestinationDevide(['水上', '長野原草津口', '万座・鹿沢口', '大前'], 1, 2);
         },
         onRender: () => {
@@ -609,6 +608,9 @@ export const JREastStations: StationRegistry = {
             //TableHour[0][2] = TableHour[4][0];
             //TableMin[0][2] = TableMin[4][0];
             //TrackNum[0][2] = TrackNum[4][0];
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(2);
             for (var tr = 0; tr < orderNum; tr++) {
                 TrainTypeWordChange(0, tr, '普通', '信越線4両 乗車口③～⑥');
                 TrainTypeWordChange(1, tr, '普通', '両毛線4両 乗車口③～⑥');
@@ -627,7 +629,7 @@ export const JREastStations: StationRegistry = {
                 TrainTypeWordChange(3, tr, '快速:湘南新宿ライン経由', '湘南新宿ﾗｲﾝ快速10両');
                 AllTrainTypeReplace(3, tr, '草津・四万', '特急草津･四万');
                 AllTrainTypeReplace(3, tr, 'あかぎ', '特急あかぎ');
-                const _PlainDestination = plainTrainTables[3].trains[tr].destination;
+                const _PlainDestination = plainTrainTables[3].trains[tr]?.destination ?? "";
                 if ((_PlainDestination == '上野' || _PlainDestination == '籠原') && plainTrainTables[3].trains[tr].type == '普通') {
                     trainTables[3].trains[tr].type = '高崎線普通10両';
                 }

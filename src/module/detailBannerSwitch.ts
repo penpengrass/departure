@@ -76,6 +76,9 @@ export function switchdetail(Tab: string, td: number, tr: number, colspan: any, 
         let _Des_Banner = trainTables[td - 1].trains[0].des_banner
         Banner_F(td);
         var TrainName = trainTables[td - 1].trains[0]?.trainName ?? "";
+        if (!trainTables[td - 1].trains[0].type.includes('特急')) {
+            TrainName = "";
+        }
         BottomBanner(Tab, td, tr, colspan, '<span id="Detail_Type' + td + '">' + trainTables[td - 1].trains[0].type
             + ' ' + TrainName + '</span> ' + _Des_Banner + '行きの停車駅は<span class="orange">'
             + trainTables[td - 1].trains[0].detail + '</span>です');

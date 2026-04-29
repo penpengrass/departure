@@ -1,4 +1,4 @@
-import { AllWordChange, AllWordReplace, TrainTypeWordChange, AllTrainTypeReplace, AllTypeStartWordReplace, NewAllLastShow, flagmarkerase, TwoLetterDistance, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
+import { TrainTypeWordChange, AllTrainTypeReplace, AllTypeStartWordReplace, NewAllLastShow, flagmarkerase, TwoLetterDistance, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
 import { TypeColorChange, TypeBackColorChange } from "./module/colorSimpleSet";
 import { DetailShow, LastLetterRemove } from "./module/detailMainPut";
 import { JTypeIncludeColor } from "./typeColor";
@@ -90,22 +90,23 @@ if (station == '高松駅') {
     //allJRSIncludeColor(JRSKobj);
     DetailShow(ShikokuStops.JRSKobj, "、");
 }
-console.log(Detail);
 for (var td = 0; td < Tablenum; td++) {
     LastLetterRemove(td, 0, '、');
-    if (Detail[td][0] != '各駅にとまります' && Detail[td][0] != '' && Detail_title!.textContent == "停車駅") {
-        Detail[td][0] += 'に停車します。';
+    var _Detail = trainTables[td].trains[0].detail
+    if (_Detail != '各駅にとまります' && _Detail != '' && Detail_title!.textContent == "停車駅") {
+        trainTables[td].trains[0].detail += 'に停車します。';
     }
 }
+console.log(Des);
 if (station == '高松駅') {
     if (Type[2][0].startsWith('快速ﾏﾘﾝﾗｲﾅｰ') && TrainNumber[2][0] != 2) {
-        Detail[2][0] += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜５号車は<font color='yellow'>自由席</font>です。";
+        trainTables[2].trains[0].detail += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜５号車は<font color='yellow'>自由席</font>です。";
     }
     for (var td = 0; td < 2; td++) {
         if (Type[td][0].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
             var matches = Type[td][0].match(/(\D+)(\d+)号/);
             var NampuNumber = Number(matches[2]);
-            Detail[td][0] += ' <font color="red">丸亀駅</font>で<font color="red">特急南風' + NampuNumber + '号 高知行き</font>に接続します';
+            trainTables[td].trains[0].detail += ' <font color="red">丸亀駅</font>で<font color="red">特急南風' + NampuNumber + '号 高知行き</font>に接続します';
             Type[td][0] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
         }
         for (var tr = 1; tr < 3; tr++) {
@@ -128,48 +129,50 @@ if (station == '高松駅') {
         }
     }
     if (Des[0][0] == '岡山･高松') {
-        Detail[0][0] = 'しおかぜ号は' + Detail[0][0] + 'いしづち号は宇多津発車後坂出に停車します';
+        trainTables[0].trains[0].detail = 'しおかぜ号は' + trainTables[0].trains[0].detail + 'いしづち号は宇多津発車後坂出に停車します';
     }
     if (TrainNumber[0][0] == 102) {
-        Detail[0][0] += '坂出で<span class="blue">快速「マリンライナー68号」</span>岡山行きに接続します。';
+        trainTables[0].trains[0].detail += '坂出で<span class="blue">快速「マリンライナー68号」</span>岡山行きに接続します。';
     } else if (TrainNumber[0][0] == 104) {
-        Detail[0][0] += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
+        trainTables[0].trains[0].detail += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
     }
     var Detaila = document.getElementById('TDetail21');
     if (Des[1][0].includes('*')) {
-        Detail[1][0] += '  伊予市で内子経由伊予大洲行きに接続します。';
+        trainTables[1].trains[0].detail += '  伊予市で内子経由伊予大洲行きに接続します。';
         Detail_title!.textContent = '接続案内';
     } else if (Des[1][0].includes('+')) {
-        Detail[1][0] += '  伊予市で<span class="red">愛ある伊予灘線</span><span class="blue">伊予長浜経由</span>伊予大洲行きに接続します。';
+        trainTables[1].trains[0].detail += '  伊予市で<span class="red">愛ある伊予灘線</span><span class="blue">伊予長浜経由</span>伊予大洲行きに接続します。';
         Detail_title!.textContent = '接続案内';
     }
 } else if (station == '高知駅') {
     if (Des[0][0] == '高松･岡山') {
-        Detail[0][0] = '南風号は' + Detail[0][0] + 'しまんと号は宇多津発車後坂出に停車します';
+        trainTables[0].trains[0].detail = '南風号は' + trainTables[0].trains[0].detail + 'しまんと号は宇多津発車後坂出に停車します';
     } else if (Des[0][0] == '岡山') {
-        Detail[0][0] += '多度津で<span class="lightgreen">快速「サンポート南風リレー号」</span>高松行きに接続します。';
+        trainTables[0].trains[0].detail += '多度津で<span class="lightgreen">快速「サンポート南風リレー号」</span>高松行きに接続します。';
     } else if (Type[0][0] == '特急しまんと8号') {
-        Detail[0][0] = Detail[0][0].replace('宇多津、坂出', '坂出');
-        Detail[0][0] += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
+        trainTables[0].trains[0].detail = trainTables[0].trains[0]?.detail ?? "".replace('宇多津、坂出', '坂出');
+        trainTables[0].trains[0].detail += '坂出で<span class="blue">快速「マリンライナー70号」</span>岡山行きに接続します。';
     }
     if (Type[1][0] == '快速') {
-        Detail[1][0] = '後免までの各駅、後免町、のいち、あかおか、夜須、和食、球場前、球場前から各駅に停車します。';
+        trainTables[1].trains[0].detail = '後免までの各駅、後免町、のいち、あかおか、夜須、和食、球場前、球場前から各駅に停車します。';
     } else if (Type[1][0] == '普通(一部通過)') {
-        Detail[1][0] = '土佐一宮、土佐大津、後免に停車します';
+        trainTables[1].trains[0].detail = '土佐一宮、土佐大津、後免に停車します';
     } else if (Des[1][0].includes('･奈半利')) {
-        Detail[1][0] = '奈半利行きは後免から<span class="orange">快速</span>となります。';
+        trainTables[1].trains[0].detail = '奈半利行きは後免から<span class="orange">快速</span>となります。';
     }
 }
 for (var td = 0; td < Tablenum; td++) {
-    if ((Detail[td][0] == "" || Detail[td][0] == "各駅にとまります") && Type[td][1] != "") {
+    var _Detail = trainTables[td].trains[0].detail
+    if ((_Detail == "" || _Detail == "各駅にとまります") && Type[td][1] != "") {
         DetailDelete(td, 2)
     } else {
-        document.getElementById('TDetail' + (td + 1) + '' + 1)!.innerHTML = Detail[td][0];
+        document.getElementById('TDetail' + (td + 1) + '' + 1)!.innerHTML = trainTables[td].trains[0]?.detail ?? "";
         Tablenums[td] -= 1;
     }
 }
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
+        var _Type = trainTables[td].trains[tr].type
         var dType = document.getElementById('TType' + (td + 1) + (tr + 1));
         if (station == '高知駅') {
             JTypeIncludeColor(Type[td][tr], TType[td][tr], ShikokuStops.JRSKobj);
@@ -184,20 +187,20 @@ for (var td = 0; td < Tablenum; td++) {
         var color = dType!.style.color;
         if (WhetherStartsLocal(td, tr)) {
             LocalShow(td, tr, color);
-        } else if (Type[td][tr].startsWith('各停')) {
-            document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = Type[td][tr];
+        } else if (_Type.startsWith('各停')) {
+            document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = _Type;
             trainTables[td].trains[tr].type = '';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.textAlign = 'left';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = 'skyblue';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
-        } else if (Type[td][tr].startsWith('伊予灘')) {
+        } else if (_Type.startsWith('伊予灘')) {
             document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = '伊予灘ものがたり';
             trainTables[td].trains[tr].type = '';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = 'skyblue';
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.80)" + "translate(-15%,0%)";
-        } else if (Type[td][tr].startsWith('快速')) {
+        } else if (_Type.startsWith('快速')) {
             trainTables[td].trains[tr].type = '快速';
-            document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = Type[td][tr].slice(2);
+            document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = _Type.slice(2);
             document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = color;
             if (station != '高知駅') {
                 dType!.style.backgroundColor = color;

@@ -13,6 +13,9 @@ function JRTokaiDetailShow(td: number) {
     TrainTypeSet(td);
     const _Type = trainTables[td].trains[0].type.replace('(当駅始発)', '');
     LastLetterRemove(td, 0, '・');
+    if (trainTables[td].trains[0].detail == '各駅にとまります') {
+        trainTables[td].trains[0].detail = Des[td][0] + 'までの各駅';
+    }
     if (_Type != '') {
         document.getElementById('TDetail' + (td + 1) + '1')!.innerHTML =
             '<span id="Detail_Type' + (td + 1) + '">' + _Type + '</span> ' + Des[td][0] + '行きの停車駅は' +
@@ -86,6 +89,9 @@ export const JRTokaiStations: StationRegistry = {
         name: '静岡駅',
         company: 'JR東海',
         tableTitles: ['東海道線 沼津 熱海方面', '東海道線 浜松 豊橋方面'],
+        setup: () => {
+            limitednumber(TT[0], 1, '特急ふじかわ');
+        },
     },
     '岐阜駅': {
         name: '岐阜駅',

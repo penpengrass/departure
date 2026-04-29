@@ -94,8 +94,8 @@ export const ShinkansenStations: StationRegistry = {
                     TypeColorChange(td, tr, 'あさま', 'red');
                     //DetailBanner(td, tr, 18);
                     if (Detail[td][tr] != '') {
-                        Detail[td][tr] += Des[td][tr];
-                        trainTables[td].trains[tr].detail += _Des;
+                        Detail[td][tr] += "・" + Des[td][tr];
+                        trainTables[td].trains[tr].detail += "・" + _Des;
                     }
                     TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
                 }
@@ -220,13 +220,13 @@ export const ShinkansenStations: StationRegistry = {
                 var _Type = trainTables[4].trains[tr].type;
                 TypeColorChange(4, tr, 'つばさ', 'red');
                 if (_Type.startsWith('つばさ')) {
-                    _Type += '号';
+                    trainTables[4].trains[tr].type += '号';
                 }
             }
             for (var tr = 0; tr < 2; tr++) {
                 var _Type = plainTrainTables[1].trains[tr].type;
-                var _Number0 = trainTables[0].trains[tr]?.trainNumber ?? 0;
-                var _Number1 = trainTables[1].trains[tr]?.trainNumber ?? 0;
+                var _Number0 = trainTables[0].trains[tr]?.trainNumber ?? NaN;
+                var _Number1 = trainTables[1].trains[tr]?.trainNumber ?? NaN;
                 if (!Zaou.includes(_Number0) && Des[0][tr] == '仙台') {
                     trainTables[0].trains[tr].detail = 'この列車は仙台まで止まりません。';
                 }
@@ -299,17 +299,19 @@ export const ShinkansenStations: StationRegistry = {
             DestinationSet();
             TrainTypeSet(2);
             TrainTypeSet(3);
+            const _Number0 = trainTables[0].trains[0]?.trainNumber ?? 0
+            const _Number = trainTables[1].trains[0]?.trainNumber ?? 0
             if (Des[0][0] == '郡山') {
-                Detail[0][0] = 'この列車は郡山まで止まりません。';
+                trainTables[0].trains[0].detail = 'この列車は郡山まで止まりません。';
             } else if (Des[0][0] == '仙台') {
-                Detail[0][0] = '郡山・福島・仙台';
+                trainTables[0].trains[0].detail = '郡山・福島・仙台';
             }
-            if (TrainNumber[1][0] < 60) {
-                Detail[1][0] = '宇都宮・大宮・上野・東京';
-            } else if (TrainNumber[1][0] > 60) {
-                Detail[1][0] = '那須塩原・宇都宮・小山・大宮・上野・東京';
+            if (_Number < 60 && _Number > 0) {
+                trainTables[1].trains[0].detail = '宇都宮・大宮・上野・東京';
+            } else if (_Number > 60) {
+                trainTables[1].trains[0].detail = '那須塩原・宇都宮・小山・大宮・上野・東京';
             }
-            if (Zaou.includes(TrainNumber[0][0])) {
+            if (Zaou.includes(_Number0)) {
                 DetailReplace(0, 0, '仙台', '白石蔵王・仙台');
             }
             for (var td = 0; td < 2; td++) {
@@ -333,10 +335,9 @@ export const ShinkansenStations: StationRegistry = {
         dtype: [0, 1],
         setup: () => {
             // 仙台駅の設定は index3_T.php でのみ適用
-            if (window.Indexfile === 'index3_T.php') {
-                DestinationDevide(['仙台空港'], 3, 5);
-                DestinationDevide(['原ノ町', '品川', '新地', '山下'], 3, 4);
-            }
+            DestinationDevide(['仙台空港'], 3, 5);
+            DestinationDevide(['原ノ町', '品川', '新地', '山下'], 3, 4);
+
         },
         onRender: () => {
             for (var td = 0; td < Tablenum; td++) {

@@ -115,7 +115,6 @@ export function JRLineName(td: number, tr: number, F_Type: string, Name: string,
 //路線名と種別を分割(湘南新宿ラインなど)
 export function JRATOSDevide(td: number) {
     for (var tr = 0; tr < orderNum; tr++) {
-        console.log(Type);
         if (Type[td][tr].includes("線")) {
             var Line = Type[td][tr].split("線")[0];
             var LType = Type[td][tr].split("線")[1];
@@ -124,8 +123,7 @@ export function JRATOSDevide(td: number) {
             document.getElementById(
                 "TName" + (td + 1) + "" + (tr + 1)
             )!.style.textAlign = "center";
-            document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.textContent =
-                LType;
+            trainTables[td].trains[tr].type = LType;
             Type[td][tr] = LType;
         } else if (Type[td][tr].includes("ライン")) {
             var Line = Type[td][tr].split("ン")[0];
@@ -135,8 +133,7 @@ export function JRATOSDevide(td: number) {
             document.getElementById(
                 "TName" + (td + 1) + "" + (tr + 1)
             )!.style.textAlign = "center";
-            document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.textContent =
-                LType;
+            trainTables[td].trains[tr].type = LType;
             Type[td][tr] = LType;
         } else if (Type[td][tr].includes("ﾗｲﾝ")) {
             var Line = Type[td][tr].split("ﾝ")[0];
@@ -146,11 +143,11 @@ export function JRATOSDevide(td: number) {
             document.getElementById(
                 "TName" + (td + 1) + "" + (tr + 1)
             )!.style.textAlign = "center";
-            document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.textContent =
-                LType;
+            trainTables[td].trains[tr].type = LType;
             Type[td][tr] = LType;
         }
     }
+    console.log(Type);
 }
 
 //新幹線と北海道の特急の列車名を分割(引数は表の数)，index3_S.phpを除く
@@ -369,19 +366,14 @@ export function Bansenshow(flag = 0, LLength = Tablenum) {
     //console.log(doBNumber[1][0].textContent);
     for (var td = 0; td < LLength; td++) {
         for (var tr = 0; tr < Tablenums[td]; tr++) {
-            //console.log(doBNumber[td][tr]);
-            var doBNumber = document.getElementById("TNum" + (td + 1) + (tr + 1));
-            if (doBNumber && TrackNum[td][tr] != "") {
+            if (TrackNum[td][tr] != "") {
                 var Line = TrackNum[td][tr];
                 if (flag == 0) {
-                    doBNumber.innerHTML =
-                        Line + '<span class="bansen">番線</span>';
+                    trainTables[td].trains[tr].trackNumber = Line + '<span class="bansen">番線</span>';
                 } else if (flag == 1) {
-                    doBNumber.innerHTML =
-                        '<span class="bansen">のりば</span>' + Line;
+                    trainTables[td].trains[tr].trackNumber = '<span class="bansen">のりば</span>' + Line;
                 } else if (flag == 2) {
-                    doBNumber.innerHTML =
-                        Line + '<span class="bansen">のりば</span>';
+                    trainTables[td].trains[tr].trackNumber = Line + '<span class="bansen">のりば</span>';
                 }
             }
         }
@@ -410,8 +402,13 @@ export function allTypeTwoLettersDistance(Tab: string[], LetterSpacing: any, Ind
     }
 }
 export function DestinationTwoLetterDistance(td: number, tr: number, Tab: string[], LetterSpacing: any, Indent: number, Letters = 2) {
-    const _Type = trainTables[td].trains[tr].destination;
-    if (_Type.length == Letters) {
+    var _Destination
+    if (trainTables[td].trains[tr].destination) {
+        _Destination = trainTables[td].trains[tr].destination;
+    } else {
+        _Destination = plainTrainTables[td].trains[tr]?.destination ?? "";
+    }
+    if (_Destination.length == Letters) {
         document.getElementById(Tab[td][tr])!.style.letterSpacing =
             LetterSpacing + "em";
         document.getElementById(Tab[td][tr])!.style.textIndent += Indent + "em";
@@ -453,14 +450,19 @@ export function AllWordChange(td: number, tr: number, line: any, Before: string,
     }
 }
 export function TrainTypeWordChange(td: number, tr: number, Before: string, After: string) {
-    var _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
+    const _PlainType = trainTables[td].trains[tr].type ?? plainTrainTables[td].trains[tr].type;
     if (_PlainType == Before) {
         trainTables[td].trains[tr].type = After;
     }
 }
 export function DestinationWordChange(td: number, tr: number, Before: string, After: string) {
-    var _PlainType = plainTrainTables[td].trains[tr]?.destination ?? "";
-    if (_PlainType == Before) {
+   var _Destination
+    if (trainTables[td].trains[tr].destination) {
+        _Destination = trainTables[td].trains[tr].destination;
+    } else {
+        _Destination = plainTrainTables[td].trains[tr]?.destination ?? "";
+    }
+    if (_Destination == Before) {
         trainTables[td].trains[tr].destination = After;
     }
 }
@@ -584,9 +586,6 @@ export function TrainTypeSet(td: number) {
         var Type = plainTrainTables[td].trains[tr]?.type ?? "";
         Type = Type.replace('*', '');
         Type = Type.replace('+', '');
-        if (!Type.includes('当駅始発')) {
-            Type = Type.replace('始発', '');
-        }
         trainTables[td].trains[tr].type = Type;
     }
 }

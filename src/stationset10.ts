@@ -139,7 +139,7 @@ export const JRKyushuStations: StationRegistry = {
                     Des[2][tr] = '佐世保･長崎';
                 }
                 if (Des[2][tr] == '武雄温泉') {
-                     trainTables[2].trains[tr].destination = '長崎';
+                    trainTables[2].trains[tr].destination = '長崎';
                 }
                 DestinationWordChange(2, tr, 'ハウステンボス･佐世保', 'ﾊｳｽﾃﾝﾎﾞｽ･佐世保');
                 if (Type[3][tr] == '普通' && trainTables[3].trains[tr].cars === undefined) {
@@ -188,8 +188,8 @@ export const JRKyushuStations: StationRegistry = {
                     else trainTables[1].trains[tr].cars = '2両';
                     TrainTypeSet(1);
                 }
-                const _Des1 = plainTrainTables[1].trains[tr].destination;
-                const _Des2 = plainTrainTables[2].trains[tr].destination;
+                const _Des1 = plainTrainTables[1].trains[tr]?.destination ?? "";
+                const _Des2 = plainTrainTables[2].trains[tr]?.destination ?? "";
                 if (_Des1 != '' && _Des1 != '長与') {
                     trainTables[1].trains[tr].destination += _Des1 + '(長与)';
                 }

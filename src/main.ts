@@ -324,6 +324,7 @@ for (var td = 0; td < Tablenum; td++) {
     }
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         trainTables[td].trains[tr].trainNumber = Number.parseInt(JRLimitedNumberSet(td, tr));
+        TrainNumber[td][tr] = Number.parseInt(JRLimitedNumberSet(td, tr));
         //console.log(typeof number[td][tr]);
         trainTables[td].trains[tr].trainName = JRLimitedNameSet(td, tr);
 

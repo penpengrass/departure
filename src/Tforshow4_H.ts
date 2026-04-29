@@ -16,7 +16,6 @@ JRLimitedDevide(3);
 //TablenumSub = 1
 NonGouflag = 1;
 JRNameDevide(2);
-console.log(TrainNumber);
 var takefu = [62, 64, 4, 8, 12, 84, 16, 20, 22, 24, 26, 28, 30, 34, 38, 42, 46, 48, 50, 1, 5, 9, 13, 17, 19, 21, 23, 25, 29, 33, 37, 41, 45, 47, 49, 61];
 var iiyama = [552, 554, 556, 558, 560, 564, 568, 572, 574, 576, 578, 590];
 var k_takefu = [[502, 518], [501, 517]];
@@ -34,16 +33,18 @@ for (var tr = 0; tr < 2; tr++) {
 }
 for (var td = 0; td < 2; td++) {
     for (var tr = 0; tr < 3; tr++) {
-        if (Type[td][tr] == 'かがやき') {
+        const _Type = trainTables[td].trains[tr].type;
+        const _Number = trainTables[td].trains[tr]?.trainNumber ?? 0;
+        if (_Type == 'かがやき') {
             trainTables[td].trains[tr].cars = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '全車指定席';
-        } else if (Type[td][tr] == 'はくたか') {
+        } else if (_Type == 'はくたか') {
             trainTables[td].trains[tr].cars = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-4号車';
-        } else if (Type[td][tr] == 'つるぎ') {
+        } else if (_Type == 'つるぎ') {
             trainTables[td].trains[tr].cars = '12両編成';
             document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-2号車';
-            if (TrainNumber[td][tr] > 59) {
+            if (_Number > 59) {
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-4号車';
             }
         }
@@ -54,12 +55,12 @@ for (var td = 0; td < 2; td++) {
 }
 for (var tr = 0; tr < 2; tr++) {
     const _Number0 = trainTables[0].trains[tr]?.trainNumber ?? 0;
-    const _Number1 = trainTables[1].trains[tr]?.trainNumber?? 0;
+    const _Number1 = trainTables[1].trains[tr]?.trainNumber ?? 0;
     if (takefu.includes(_Number0)) {
         //DetailReplace(0, tr, '福井', '越前たけふ　福井　芦原温泉　加賀温泉　小松');
         trainTables[0].trains[tr].detail = '各駅';
     } else if (station == '福井駅' && Des[0][tr] == '金沢') {
-       trainTables[0].trains[tr].detail  = '次の停車駅は終点金沢です';
+        trainTables[0].trains[tr].detail = '次の停車駅は終点金沢です';
     }
     if (k_onsen[0].includes(_Number0)) {
         DetailReplace(0, tr, '金沢', '芦原温泉　加賀温泉　金沢');
@@ -129,6 +130,7 @@ if (station == '敦賀駅' || station == '金沢駅') {
         }
     }
 }
+DestinationSet();
 for (var tr = 0; tr < orderNum; tr++) {
     DestinationWordChange(3, tr, "大阪", "京都方面大阪");
     DesMiddle(3, tr, '方面');
@@ -141,10 +143,9 @@ if (Indexfile == 'index4_H.php') {
     TrainTypeSet(4);
     TrainTypeSet(5);
     TrainTypeSet(6);
-    DestinationSet();
+    Bansenshow(1, 2);
     NewAllLastShow();
 }
-Bansenshow(1, 2);
 allJRColor(2);
 allJRWTrainNameColor('red', 'red', 'red', 2);
 doallDetailShow(25);

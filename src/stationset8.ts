@@ -28,6 +28,7 @@ function JRHokkaidouLimited() {
         let _data_Length = Tablenums[td];
         var LimitedName = new Array(_data_Length);
         var matches = new Array(_data_Length);
+        var LimitedNameLine = ['すずらん', '北斗', 'とかち', 'おおぞら'];
         for (var tr = 0; tr < _data_Length; tr++) {
             LimitedName[tr] = plainTrainTables[td].trains[tr]?.type ?? "";
             //LimitedName[tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1))!.textContent;
@@ -38,9 +39,12 @@ function JRHokkaidouLimited() {
             }
             if (matches[tr]) {
                 if (matches[tr][1].length < 7) {
-                    document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.textContent = matches[tr][1];
                     document.getElementById("WName" + (td + 1) + "" + (tr + 1))!.textContent = matches[tr][2] + "号";
-                    trainTables[td].trains[tr].type = matches[tr][1];
+                    if (LimitedNameLine.includes(matches[tr][1])) {
+                        trainTables[td].trains[tr].type = '特急' + matches[tr][1];
+                    } else {
+                        trainTables[td].trains[tr].type = matches[tr][1];
+                    }
                     if (Type[td][tr].includes("特急")) document.getElementById("TName" + (td + 1) + "" + (tr + 1))!.style.color = "red";
                 }
                 //console.log(ShinNumber);
@@ -56,7 +60,7 @@ export const JRHokkaidouStations: StationRegistry = {
     '札幌駅': {
         name: '札幌駅',
         company: 'JR北海道',
-        nonGouFlag:0,
+        nonGouFlag: 0,
         tableTitles: ['苫小牧 東室蘭 函館 帯広 釧路方面', '新千歳空港方面', '岩見沢 旭川 網走 稚内方面', '手稲 小樽 倶知安方面', 'あいの里教育大 当別方面'],
         setup: () => {
             var selectstation = ['新千歳空港'];
@@ -67,7 +71,6 @@ export const JRHokkaidouStations: StationRegistry = {
             limitednumber2(TT[2], lilac, '特急ライラック');
             limitednumber(TT[2], 1, '特急オホーツク');
             //Tablereset(1);
-            console.log(TT.length);
             DestinationDevide(selectstation, 0, 1);
             DestinationDevide(selectstation2, 2, 4);
             Tablereset(4);
@@ -110,12 +113,10 @@ export const JRHokkaidouStations: StationRegistry = {
             limitednumber2(TT[3], airportO, '快速エアポート')
         },
         onRender: () => {
+            DestinationSet();
             JRHokkaidouLimited();
+            console.log(trainTables)
             for (var tr = 0; tr < orderNum; tr++) {
-                AllTypeStartWordReplace(0, tr, 'とかち', '特急とかち');
-                AllTypeStartWordReplace(0, tr, 'おおぞら', '特急おおぞら');
-                AllTypeStartWordReplace(0, tr, '北斗', '特急北斗');
-                AllTypeStartWordReplace(0, tr, 'すずらん', '特急すずらん');
                 var LType2 = document.getElementById('TType' + 2 + (tr + 1));
                 var LWType2 = document.getElementById('WType' + 2 + (tr + 1));
                 var LName2 = document.getElementById('TName' + 2 + (tr + 1));
@@ -166,12 +167,17 @@ export const JRHokkaidouStations: StationRegistry = {
             }
             FDetail(Type[1][0], JRHSobj, Dtype[0], 1, 0, "・");
             console.log("---2個目の表の詳細表示終了、この後1個目の表の詳細表示完了---");
-            FDetail(Type[0][0], JRHSobj, Dtype[0], 0, 0, "・");
+            FDetail(trainTables[0].trains[0].type, JRHSobj, Dtype[0], 0, 0, "・");
             //FDetail(Type[3][0], JRHobj, Dtype[1], 3, 0, "・");
             //末尾の・を取り除く
             for (var td = 0; td < 2; td++) {
                 if (Detail[td][0].slice(-1) == '・') {
                     Detail[td][0] = Detail[td][0].slice(0, -1);
+                }
+            }
+            for (var tr = 0; tr < orderNum; tr++) {
+                if (Type[1][tr].includes('快速エアポート')) {
+                    trainTables[1].trains[tr].type += '号';
                 }
             }
             for (var td = 0; td < Tablenum; td++) {
@@ -200,8 +206,8 @@ export const JRHokkaidouStations: StationRegistry = {
                     + "　<span class='Cstops'>停車駅は桑園・琴似・手稲から各駅です。</span>"
             }
             var dToAsahi = document.getElementById('TDetail' + 3);
+            console.log(Detail);
             if (Des[2][0] == '旭川' && Type[2][0].includes('特急')) {
-                console.log(Type[2][0]);
                 var cars = '５';
                 var cardetail = '指定席は３号車から５号車　４号車はｕシートです';
                 console.log(dToAsahi);
@@ -245,13 +251,12 @@ export const JRHokkaidouStations: StationRegistry = {
             for (var td = 0; td < Tablenum; td++) {
                 DetailBannerOnce(td, 20);
             }
-            DestinationSet();
         }
     },
     '新函館北斗駅': {
         name: '新函館北斗駅',
         company: 'JR北海道',
-        nonGouFlag:0,
+        nonGouFlag: 0,
         tableTitles: ['新青森 東京方面', '函館 札幌方面'],
         setup: () => {
             var hayabusa = [10, 14, 18, 22, 28, 32, 34, 40, 44, 48, 96];

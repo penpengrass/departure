@@ -163,6 +163,7 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
     //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = DetailLine;
     Detail[td][tr] = DetailLine;
     trainTables[td].trains[tr].detail = DetailLine;
+    LastLetterRemove(td, tr, '・')
     //console.log(Detail);
     /*if (detailflag == 8 || Indexfile == 'index4.php' || Indexfile == 'index7.php') {
         //console.log(Detail[td][tr]);
