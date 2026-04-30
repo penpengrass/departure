@@ -122,6 +122,9 @@ export const JRKyushuStations: StationRegistry = {
             CarsDevideToLine(1);
             CarsDevideToLine(3);
             CarsDevideToLine(5);
+            TrainTypeSet(0);
+            TrainTypeSet(2);
+            TrainTypeSet(4);
             for (var tr = 0; tr < 2; tr++) {
                 if (!Type[0][tr].includes('ゆふ')) {
                     if (SixCars.includes(TrainNumber[0][tr])) {
@@ -181,13 +184,13 @@ export const JRKyushuStations: StationRegistry = {
                     trainTables[0].trains[tr].type = 'かもめ'
                 }
                 if (Type[0][tr] != "") document.getElementById('TDetail1' + (tr + 1))!.innerHTML = Detail[0][tr];
-                TrainTypeWordChange(1, tr, '長与経由普通', '普通');
                 if (Type[1][tr] != "") {
                     if (Type[1][tr].includes('*')) trainTables[1].trains[tr].cars = '3両';
                     else if (Type[1][tr].includes('+')) trainTables[1].trains[tr].cars = '4両';
                     else trainTables[1].trains[tr].cars = '2両';
                     TrainTypeSet(1);
                 }
+                TrainTypeWordChange(1, tr, '長与経由普通', '普通');
                 const _Des1 = plainTrainTables[1].trains[tr]?.destination ?? "";
                 const _Des2 = plainTrainTables[2].trains[tr]?.destination ?? "";
                 if (_Des1 != '' && _Des1 != '長与') {

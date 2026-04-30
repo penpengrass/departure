@@ -106,7 +106,7 @@ export function switchTrainInfo2(Tab: string, tr: number, line: string, Longerwo
 export function allswitchMihara() {
     for (var tr = 0; tr < orderNum; tr++) {
         var LDes = document.getElementById('TDes1' + (tr + 1));
-        DesSwitch(TDes[0][tr], 0, tr, Des[0][tr], "糸崎連絡", "糸崎");
+        DesSwitch(TDes[0][tr], 0, tr, trainTables[0].trains[tr].destination, "糸崎連絡", "糸崎");
         if (LDes!.textContent.includes('連絡')) {
             DesMiddle(0, tr, '連絡');
         }

@@ -46,61 +46,6 @@ if (station == '仙台駅') {
 } else if (station == '高崎駅') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();
-    /*swapColumns(table1, 0, 1);
-    swapColumns(table1, 1, 2);
-    swapColumns(table2, 0, 1);
-    swapColumns(table2, 1, 2);
-    swapColumns(table3, 0, 1);
-    swapColumns(table3, 1, 2);
-    AllClassSetting('.CDetailtitle', 'textAlign', 'left');
-    for (var td = 0; td < Tablenum; td++) {
-        for (var tr = 0; tr < orderNum; tr++) {
-            if (Type[td][0] == '') {
-                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = 'お知らせ';
-                Detail[td][0] = '本日の運転は終了しました';
-                break;
-            } else if (Type[td][tr] != '') {
-                if (tr == 0) {
-                    document.getElementById('TDetail' + (td + 1) + (tr + 1))!.textContent = '停車駅';
-                }
-                document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.textContent = '12両編成';
-            }
-        }
-    }
-    for (var tr = 0; tr < orderNum; tr++) {
-        LimitedNumberPass(0, tr, TrainNumber[0][tr] >= 557 && TrainNumber[0][tr] < 600, TrainNumber);
-        LimitedNumberPass(0, tr, TrainNumber[0][tr] >= 571 && TrainNumber[0][tr] < 600, TrainNumber);
-        LimitedNumberPass(1, tr, TrainNumber[1][tr] >= 303 && TrainNumber[1][tr] < 400, TrainNumber);
-        LimitedNumberPass(1, tr, TrainNumber[1][tr] >= 311 && TrainNumber[1][tr] < 400, TrainNumber);
-        LimitedNumberPass(2, tr, TrainNumber[2][tr] >= 312 && TrainNumber[2][tr] < 400, TrainNumber);
-        LimitedNumberPass(2, tr, TrainNumber[2][tr] >= 326 && TrainNumber[2][tr] < 400, TrainNumber);
-        LimitedNumberPass(2, tr, TrainNumber[2][tr] >= 338 && TrainNumber[2][tr] < 400, TrainNumber);
-        LimitedNumberPass(2, tr, TrainNumber[2][tr] >= 556 && TrainNumber[2][tr] < 600, TrainNumber);
-    }
-    window.Dtype[2] = 1;
-    for (var td = 0; td < 3; td++) {
-        FDetail(Type[td][0], Stops.JRSBobj, Dtype[0], td, 0, "・");
-        if (Detail[td][0] != '') {
-            Detail[td][0] += Des[td][0];
-        }
-    }
-    Shin_DetailReplace_Set_One(0, Stops.annnaka1, '軽井沢', '安中榛名・軽井沢');
-    Shin_DetailReplace_Set_One(0, Stops.iiyama, '上越妙高', '飯山・上越妙高');
-    Shin_DetailReplace_Set_One(0, Stops.Karuizawa, '長野', '軽井沢・長野');
-    Shin_DetailReplace_Set_One(0, Stops.Ueda, '長野', '軽井沢・上田・長野');
-    Shin_DetailReplace_Set_One(0, Stops.Sakudaira, '長野', '軽井沢・佐久平・上田・長野');
-    Shin_DetailReplace_Set_One(1, Stops.N_Joumou, '上毛高原・越後湯沢', '越後湯沢');
-    Shin_DetailReplace_Set_One(1, Stops.N_Echigo, '越後湯沢・浦佐', '浦佐');
-    Shin_DetailReplace_Set_One(1, Stops.N_Urasa, '浦佐・長岡', '長岡');
-    Shin_DetailReplace_Set_One(1, Stops.N_Tsubame, '長岡・燕三条', '長岡');
-    Shin_DetailReplace_Set_One(2, Stops.N_Honjou, '本庄早稲田・熊谷', '熊谷');
-    Shin_DetailReplace_Set_One(2, Stops.N_Kumagaya, '熊谷・大宮', '大宮');
-    Shin_DetailReplace_Set_One(2, Stops.Kumagaya, '大宮', '熊谷・大宮');
-    for (var td = 0; td < 3; td++) {
-        document.getElementById('TDetailtitle' + (td + 1) + '' + (0 + 1))!.textContent = Detail[td][0];
-        DetailBanner(td, 0, 23, 1, 'TDetailtitle');
-    }
-    comment!.innerHTML = "臨時列車の有無や停車駅は不正確";*/
 }
 //種別の色
 for (var td = 0; td < Tablenum; td++) {

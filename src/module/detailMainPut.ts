@@ -165,15 +165,6 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
     trainTables[td].trains[tr].detail = DetailLine;
     LastLetterRemove(td, tr, '・')
     //console.log(Detail);
-    /*if (detailflag == 8 || Indexfile == 'index4.php' || Indexfile == 'index7.php') {
-        //console.log(Detail[td][tr]);
-        //document.getElementById('TDetail' + (td + 1)).textContent = Detail[td][tr];
-    } else {
-        document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = Detail[td][tr];
-        if (Indexfile == 'index3_S.php') {
-            document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent += Des[td][tr];
-        }
-    }*/
     //console.log(td + ":" + tr);
     //console.log(Detail[td][tr]);
     //console.log(document.getElementById(TType));

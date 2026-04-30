@@ -136,8 +136,8 @@ for (var tr = 0; tr < orderNum; tr++) {
     //LType.textContent = keyword;
 }
 DestinationSet();
+Bansenshow(0, LCDNumber);
 NewAllLastShow();
 comment!.innerHTML = '両数や番線など一部表示不正確<br>';
 //allalterUTL_setting('特急');
-Bansenshow(0, LCDNumber);
 setInterval(allswitch_UTL, 5000);

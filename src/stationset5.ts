@@ -56,16 +56,16 @@ export const TokyuStations: StationRegistry = {
         file: 'index5.php',
         tableTitles: ['東横線 渋谷 和光市 小手指 森林公園方面', '目黒線 目黒 浦和美園 西高島平方面', '目黒線 日吉 新横浜 海老名方面', '東横線 横浜 元町・中華街方面'],
         onRender: () => {
+            TrainTypeSet(0);
+            TrainTypeSet(1);
+            TrainTypeSet(2);
+            TrainTypeSet(3);
             for (let tr = 0; tr < Type[2].length; tr++) {
                 TrainTypeWordChange(0, tr, 'Ｆライナー', 'Ｆ特急');
                 TrainTypeWordChange(3, tr, 'Ｆライナー', 'Ｆ特急');
                 TrainTypeWordChange(0, tr, '通勤特急', '通特');
                 TrainTypeWordChange(3, tr, '通勤特急', '通特');
             }
-            TrainTypeSet(0);
-            TrainTypeSet(1);
-            TrainTypeSet(2);
-            TrainTypeSet(3);
             DestinationSet();
             allTokyuColor();
         }

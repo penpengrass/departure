@@ -70,7 +70,7 @@ export const JREast6Stations: StationRegistry = {
                         Des[1][tr] = Des[1][tr].replace('*', '');
                     }
                 } else if (Type[1][tr] == '快速しなの') {
-                    Type[1][tr] = '快速';
+                    trainTables[1].trains[tr].type = '快速';
                     document.getElementById('TName' + 2 + '' + (tr + 1))!.textContent = 'しなのｻﾝｾｯﾄ';
                     JRE6ColorPlusName(1, tr, '快速', '#bb0000');
                 } else if (Type[1][tr].startsWith('快速軽井沢')) {
@@ -609,9 +609,9 @@ export const JREast6Stations: StationRegistry = {
                 JRE6ColorPlusName(5, tr, '普通', 'green');
             }
             DestinationSet();
+            Bansenshow();
             NewAllLastShow();
             setInterval(allswitchChiba, 5000);
-            Bansenshow();
         }
     },
     '水戸駅': {

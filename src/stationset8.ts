@@ -120,17 +120,6 @@ export const JRHokkaidouStations: StationRegistry = {
                 var LType2 = document.getElementById('TType' + 2 + (tr + 1));
                 var LWType2 = document.getElementById('WType' + 2 + (tr + 1));
                 var LName2 = document.getElementById('TName' + 2 + (tr + 1));
-                if (Type[1][tr].length > 11) {
-                    LType2!.style.transform = "scaleX(0.85)" + "translate(-6%,0%)";
-                }
-                var LType4 = document.getElementById('TType' + 4 + (tr + 1));
-                if (Type[3][tr].length > 11) {
-                    LType4!.style.transform = "scaleX(0.85)" + "translate(-6%,0%)";
-                }
-                var LDes5 = document.getElementById('TDes' + 5 + (tr + 1));
-                if (Des[4][tr].length > 5) {
-                    LDes5!.style.transform = "scaleX(0.70)" + "translate(-25%,0%)";
-                }
                 if (Type[1][tr].includes('普通')) {
                     Type[1][tr] = '普通';
                     //LWType2.textContent = '普通';
@@ -175,14 +164,28 @@ export const JRHokkaidouStations: StationRegistry = {
                     Detail[td][0] = Detail[td][0].slice(0, -1);
                 }
             }
-            for (var tr = 0; tr < orderNum; tr++) {
-                if (Type[1][tr].includes('快速エアポート')) {
-                    trainTables[1].trains[tr].type += '号';
-                }
-            }
             for (var td = 0; td < Tablenum; td++) {
                 if (trainTables[td].trains[0].type == '普通') {
                     document.getElementById('TDetail' + (td + 1))!.textContent = HokkaidoCars(String(trainTables[td].trains[0].cars));
+                }
+            }
+            for (var tr = 0; tr < orderNum; tr++) {
+                var LType2 = document.getElementById('TType' + 2 + (tr + 1));
+                var LName2 = document.getElementById('TName' + 2 + (tr + 1));
+                if (Type[1][tr].includes('快速エアポート')) {
+                    trainTables[1].trains[tr].type += '号';
+                }
+                console.log(trainTables[1].trains[tr]?.type.length)
+                if (trainTables[1].trains[tr]?.type.length > 11) {
+                    LType2!.style.transform = "scaleX(0.85)" + "translate(-6%,0%)";
+                }
+                var LType4 = document.getElementById('TType' + 4 + (tr + 1));
+                if (trainTables[3].trains[tr]?.type.length > 11) {
+                    LType4!.style.transform = "scaleX(0.85)" + "translate(-6%,0%)";
+                }
+                var LDes5 = document.getElementById('TDes' + 5 + (tr + 1));
+                if (trainTables[4].trains[tr]?.destination.length > 5) {
+                    LDes5!.style.transform = "scaleX(0.70)" + "translate(-25%,0%)";
                 }
             }
             if (Type[1][0].includes('快速エアポート')) {
@@ -283,7 +286,7 @@ export const JRHokkaidouStations: StationRegistry = {
             console.log(Dtype[0]);
             FDetail(Type[0][0], JRHoobj, Dtype[0], 0, 0, "・");
             document.getElementById('TDetail11')!.textContent = Detail[0][0];
-            document.getElementById('TDetail11')!.textContent += Des[0][0];
+            document.getElementById('TDetail11')!.textContent +="・"+ Des[0][0];
             comment!.textContent = '番線と停車駅は不正確';
             DestinationSet();
         }

@@ -480,7 +480,12 @@ export function AllDestinationReplace(td: number, tr: number, keyword: string, A
     }
 }
 export function AllTrainTypeReplace(td: number, tr: number, keyword: string, AfterWord: string) {
-    const _train = plainTrainTables[td].trains[tr]?.type ?? "";
+    var _train
+    if (trainTables[td].trains[tr].type) {
+         _train = trainTables[td].trains[tr].type;
+    } else {
+         _train = plainTrainTables[td].trains[tr]?.type ?? "";
+    }
     const _word = String(_train);
     if (_word.includes(keyword)) {
         console.log(_word)

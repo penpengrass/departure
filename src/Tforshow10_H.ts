@@ -77,5 +77,5 @@ for (var tr = 0; tr < 2; tr++) {
 }
 DestinationSet();
 flagmarkerase(1, 'TType', '*');
-NewAllLastShow();
 Bansenshow(2);
+NewAllLastShow();

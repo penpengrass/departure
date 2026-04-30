@@ -107,11 +107,15 @@ if (station == '高松駅') {
             var matches = Type[td][0].match(/(\D+)(\d+)号/);
             var NampuNumber = Number(matches[2]);
             trainTables[td].trains[0].detail += ' <font color="red">丸亀駅</font>で<font color="red">特急南風' + NampuNumber + '号 高知行き</font>に接続します';
-            Type[td][0] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
+            trainTables[td].trains[0].type='快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
+            trainTables[td].trains[0].trainName = 'ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
+            Type[td][0]='快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
         }
         for (var tr = 1; tr < 3; tr++) {
             if (Type[td][tr].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
-                Type[td][tr] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
+                trainTables[td].trains[tr].type='快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
+                 trainTables[td].trains[tr].trainName = 'ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
+                 Type[td][tr]='快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
             }
         }
     }

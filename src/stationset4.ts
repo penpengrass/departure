@@ -343,6 +343,9 @@ export const JRWestStations: StationRegistry = {
                 DestinationWordChange(1, tr, "五日市", "広島方面五日市");
                 DestinationWordChange(1, tr, "岩国", "広島方面岩国");
                 DestinationWordChange(1, tr, "南岩国", "広島方面南岩国");
+            }
+            DestinationSet();
+            for (var tr = 0; tr < orderNum; tr++) {
                 DesMiddle(0, tr, '連絡');
                 DesMiddle(1, tr, '方面');
             }
