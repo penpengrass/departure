@@ -8,7 +8,6 @@ let Tshubetu = new Array(Tablenum);
 window.TDes = new Array(Tablenum);
 window.TType = new Array(Tablenum);
 window.TName = new Array(Tablenum);
-window.WType = new Array(Tablenum);
 let BType = new Array(Tablenum);
 window.Detail = new Array(Tablenum);
 //let TableHour = new Array(Tablenum);
@@ -35,7 +34,6 @@ for (let tr = 0; tr < Tablenum; tr++) {
     TType[tr] = new Array(Tablenums[tr]);
     //TableHour[tr] = new Array(Tablenums[tr]);
     //TableMin[tr] = new Array(Tablenums[tr]);
-    WType[tr] = new Array(Tablenums[tr]);
    
     BType[tr] = new Array(Tablenums[tr]);
     Jiyuseki[tr] = new Array(Tablenums[tr]);
@@ -59,7 +57,6 @@ for (var td = 0; td < Tablenum; td++) {
         TType[td][tr] = 'TType' + (td + 1) + '' + (tr + 1);
         TName[td][tr] = 'TName' + (td + 1) + '' + (tr + 1);
         TDes[td][tr] = 'TDes' + (td + 1) + '' + (tr + 1);
-        WType[td][tr] = 'WType' + (td + 1) + '' + (tr + 1);
         BType[td][tr] = 'BType' + (td + 1) + '' + (tr + 1);
     }
 }

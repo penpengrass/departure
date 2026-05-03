@@ -61,7 +61,7 @@ for (var td = 0; td < Tablenum; td++) {
         } else {
             ShihatsuMove(td, tr, 'TDep');
         }
-
+        console.log(trainTables[td].trains[tr].type)
         /*if (Type[td][tr].includes('始発')) {
             LoType.textContent = Type[td][tr].replace('始発', '');
             Type[td][tr] = Type[td][tr].replace('始発', '');
@@ -76,29 +76,29 @@ for (var td = 0; td < Tablenum; td++) {
             } else if (Des[td][tr].length == 5) {
                 document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.8)" + "translate(-15%,0%)";
             }
-            if (Type[td][tr].length > 6) {
+            if (trainTables[td].trains[tr].type.length > 6) {
                 document.getElementById('WType' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.6)" + "translate(-30%,0%)";
-            } else if (Type[td][tr].length == 4) {
+            } else if (trainTables[td].trains[tr].type.length == 4) {
                 document.getElementById('WType' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.8)" + "translate(-10%,0%)";
             }
         } else {
-            CarsInto(td, tr, 'TCars');
             document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.textAlign = 'center';
             TwoLetterDistance(td, tr, Des, TDes, 1, 1);
             if (!_PlainType.includes('普通') && !_PlainType.includes('快速') && !_PlainType.includes('特別快速') && _PlainType != '') {
                 var LName = document.getElementById('TName' + (td + 1) + (tr + 1));
                 document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = _PlainType;
-                if (station == '上野駅' && (_PlainType.startsWith('ラビット') || _PlainType.startsWith('アーバン'))) {
+                if (station == '上野駅' && (_PlainType.includes('ラビット') || _PlainType.includes('アーバン'))) {
                     trainTables[td].trains[tr].type = '快速';
                     document.getElementById('WType' + (td + 1) + (tr + 1))!.style.color = 'orange';
-                    LName!.textContent = LName!.textContent.replace('快速', '');
+                    LName!.textContent = LName!.textContent.replace('快速', '').replace('始発','');
                     trainTables[td].trains[tr].cars = '15両';
                 } else {
                     trainTables[td].trains[tr].type = '特急';
                     document.getElementById('WType' + (td + 1) + (tr + 1))!.style.color = 'red';
-                    LName!.textContent = LName!.textContent.replace('特急', '');
+                    LName!.textContent = LName!.textContent.replace('特急', '').replace('始発','');
                 }
             }
+            CarsInto(td, tr, 'TCars');
             FourLetters(td, tr, 0.7, 7);
             //console.log(document.getElementById('Ttopic'+(tr+1)+(ts+1)));
             if (station == '品川駅') {

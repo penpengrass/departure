@@ -1,5 +1,5 @@
 import { DesMiddle, JRWTrainNameColor } from "./displayEdit4";
-import { TimeMarkErase, TwoLetterDistance, LiName } from "./firstDisplayEdit";
+import { TimeMarkErase, TwoLetterDistance, LiName, DestinationTwoLetterDistance } from "./firstDisplayEdit";
 import { JTypeColor } from "../typeColor";
 import { JRobj } from "../detailStopData/JRW_afterset";
 import { trainTables } from "../types/trainTable";
@@ -41,7 +41,7 @@ export function BottomBanner_Reverse(tag: string, td: number, tr: number) {
     element!.innerHTML = '<td class="shubetu" id="TType' + td + tr + '"><span id="WType' + td + tr + '"></span></td>\
         <td class="name" id="TName' + td + tr + '"><span id="WName' + td + tr + '"></span></td>\
         <td class="Ctime" id="TTime' + td + tr + '"><p2 id="THour' + td + tr + '"></p2>:<p2 id="TMin' + td + tr + '"></p2></td>\
-        <td class="Destination" id="TDes' + td + tr + '"><span id="WDes' + td + tr + '"></span></td>\
+        <td class="Destination" id="TDes' + td + tr + '"></td>\
         <td class="railnumber" id="TNum' + td + tr + '"></td>';
     var _Name = trainTables[td - 1].trains[tr - 1]?.trainName ?? ""
     document.getElementById('WType' + td + tr)!.textContent = trainTables[td - 1].trains[tr - 1].type;
@@ -56,8 +56,8 @@ export function BottomBanner_Reverse(tag: string, td: number, tr: number) {
     }
     JTypeColor(trainTables[td - 1].trains[orderNum - 1].type, TType[td - 1][orderNum - 1], JRobj);
     JRWTrainNameColor(td - 1, tr - 1, 'orange', 'orange', 'red');
-    TwoLetterDistance(td - 1, tr - 1, Des, TDes, 1, 0.9);
-    DesMiddle(td - 1, tr - 1, '方面');
+    DestinationTwoLetterDistance(td - 1, tr - 1, TDes, 1, 0.9);
+    //DesMiddle(td - 1, tr - 1, '方面');
     //Cell.innerText = '<td class="shubetu" id="TType' + td + '' + tr + '"><span id="WType' + td + '' + tr + '"></span></td>'
     //console.log(element);
 }

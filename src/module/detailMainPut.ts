@@ -5,7 +5,7 @@
 //console.log("-------ここから詳細表示-------");
 //console.log(stationN);
 
-import { trainTables } from "../types/trainTable";
+import { trainTables,plainTrainTables } from "../types/trainTable";
 import { StationConfig } from "../types/station";
 import { getStationConfig } from "../main";
 import { LineCopy } from "./firstTableEdit";
@@ -60,7 +60,7 @@ export function DetailDecide(Type_Line: any, td_detail: number, Des: string, Sen
     while (Sentence == '' && _Dtype[td_detail] < 10 && Dflag < 200) {
         DLine_in = 0;
         //console.log("td_detail=" + td_detail);
-        console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
+        //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
         Dflag++;
         //console.log(Dflag);
         if (StationInLine(stationN, Type_Line, _Dtype[td_detail]) == -1) {
@@ -255,12 +255,6 @@ export function DetailBannerOnce(td: number, Letter: number) {
         document
             .getElementById("TDetail" + (td + 1))!
             .classList.remove("news-banner__content");
-    }
-}
-export function LowerDetail(td: number, tr: number) {
-    if (Type[td][tr].startsWith("特急")) {
-        document.getElementById("TConnection" + (td + 1) + (tr + 1))!.textContent =
-            "(ご乗車には特急券が必要です)";
     }
 }
 export function LastLetterRemove(td: number, tr: number, mark: string) {

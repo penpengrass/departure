@@ -46,7 +46,6 @@ export function getStationConfig(stationName: string, indexfile: string): Statio
     return undefined;
 }
 function initStationCommon(config: StationConfig) {
-    window.MinIn = 1;
     window.company = config.company;
     for (let td = 0; td < window.Tablenum; td++) {
         window.DetailLength[td] = window.orderNum;
@@ -308,8 +307,7 @@ var Length_Debug = plainTrainTables.length;
 if (Length_Debug == 0) {
     console.error("plainTrainTablesが空です。")
 }
-console.log(plainTrainTables)
-
+console.log("MinIn="+MinIn);
 console.log("-------main完了-------");
 document.title = station + "発車標";
 //特急によって停車駅が異なるときの処理

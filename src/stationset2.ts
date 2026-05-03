@@ -4,7 +4,6 @@ import { whetherStop, DetailReplace } from './module/detailSimpleEdit';
 import { LineMarkAdd } from './module/firstDisplayEdit';
 import { DetailShow } from './module/detailMainPut';
 import { Kinobj } from './detailStopData/Kindetailset';
-MinIn = 1;
 //近鉄は詳細表示の数=order数
 if (Indexfile == 'index2.php') {
     for (var td = 0; td < Tablenum; td++) {

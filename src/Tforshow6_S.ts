@@ -31,8 +31,8 @@ for (let te = 0; te < Tablenum; te++) {
     }
 }
 DestinationSet();
-NewAllLastShow();
 Bansenshow();
+NewAllLastShow();
 if (station == '仙台駅') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();

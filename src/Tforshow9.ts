@@ -56,7 +56,7 @@ function JRS_Connect(td: number, tr: number, Keyword: string, Connect_Station: s
     if (_Des.includes(Keyword)) {
         trainTables[td].trains[tr].destination = _Des.replace(Keyword, "");
         if (tr == 0) {
-            trainTables[td].trains[0].detail = Des[td][0] + "で<span class='lightgreen'>" + Connect_Station + "</span>行きに接続します";
+            trainTables[td].trains[0].detail =trainTables[td].trains[0].destination + "で<span class='lightgreen'>" + Connect_Station + "</span>行きに接続します";
             document.getElementById('TDetailtitle' + (td + 1))!.textContent = "接続案内";
         }
     }
@@ -67,8 +67,6 @@ for (var td = 0; td < Tablenum; td++) {
         if (Des[td][tr] == '岡山･高松' || Des[td][tr] == '高松･岡山') {
             Des[td][tr] = '岡山';
         }
-        TrainTypeWordChange(td, tr, '内子線経由普通', '各停(内子経由)');
-        TrainTypeWordChange(td, tr, '内子線経由普通', '各停(内子経由)');
         AllTrainTypeReplace(td, tr, 'あしずり', '特急あしずり');
         if (station == '高知駅') {
             AllTrainTypeReplace(td, tr, 'しまんと', '特急しまんと');
@@ -97,7 +95,6 @@ for (var td = 0; td < Tablenum; td++) {
         trainTables[td].trains[0].detail += 'に停車します。';
     }
 }
-console.log(Des);
 if (station == '高松駅') {
     if (Type[2][0].startsWith('快速ﾏﾘﾝﾗｲﾅｰ') && TrainNumber[2][0] != 2) {
         trainTables[2].trains[0].detail += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜５号車は<font color='yellow'>自由席</font>です。";
@@ -122,6 +119,7 @@ if (station == '高松駅') {
 } else if (station == '松山駅') {
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
+            TrainTypeWordChange(td, tr, '内子線経由普通', '各停(内子経由)');
             JRS_Connect(td, tr, "(高)", "高松");
             JRS_Connect(td, tr, "(観)", "観音寺");
             JRS_Connect(td, tr, "(多)", "多度津");

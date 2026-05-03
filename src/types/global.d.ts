@@ -15,7 +15,6 @@ declare global {
     var NonGouflag: number;
     var holidayflag: number;
     var TType: any[];
-    var WType: any[];
     var TName: any[];
     var Dtype: number[];
     var Jiyuseki: any;

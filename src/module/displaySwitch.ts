@@ -1,6 +1,6 @@
 import { TrainNumber } from "./firstDisplayEdit";
 import { DesMiddle } from "./displayEdit4";
-import { WName, WDes } from "../types/constants";
+import { WName, WDes,WType } from "../types/constants";
 import { trainTables } from "../types/trainTable";
 //主にJR西日本で使う
 //交互表示
@@ -176,19 +176,21 @@ export function allswitch_UTL() {
     for (var tr = 0; tr < orderNum; tr++) {
         var _Cars0 = trainTables[0].trains[tr]?.cars ?? "";
         var _Cars1 = trainTables[1].trains[tr]?.cars ?? "";
+        const _Type0 = trainTables[0].trains[tr]?.type ?? "";
+        const _Type1 = trainTables[1].trains[tr]?.type ?? "";
         ATOSShihatsuSwitch(WName[0][tr], 0, tr, '始発', '始発', _Cars0);
         ChibaSwitch_LiNum(WName[0][tr], 0, tr, TrainNumber[0][tr] + '号', TrainNumber[0][tr] + '号', _Cars0);
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], 'ひたち', '特急');
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], 'ときわ', '特急');
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], '踊り子', '特急');
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], '湘南', '特急');
+        ChibaSwitch(WType[0][tr], 0, tr, _Type0, 'ひたち', '特急');
+        ChibaSwitch(WType[0][tr], 0, tr, _Type0, 'ときわ', '特急');
+        ChibaSwitch(WType[0][tr], 0, tr, _Type0, '踊り子', '特急');
+        ChibaSwitch(WType[0][tr], 0, tr, _Type0, '湘南', '特急');
         if (station != '上野駅') {
             ATOSShihatsuSwitch(WName[1][tr], 1, tr, '始発', '始発', _Cars1);
             ChibaSwitch_LiNum(WName[1][tr], 1, tr, TrainNumber[1][tr] + '号', TrainNumber[1][tr] + '号', _Cars1);
-            ChibaSwitch(WType[1][tr], 1, tr, Type[1][tr], 'ひたち', '特急');
-            ChibaSwitch(WType[1][tr], 1, tr, Type[1][tr], 'ときわ', '特急');
-            ChibaSwitch(WType[1][tr], 1, tr, Type[1][tr], '踊り子', '特急');
-            ChibaSwitch(WType[1][tr], 1, tr, Type[1][tr], '湘南', '特急');
+            ChibaSwitch(WType[1][tr], 1, tr, _Type1, 'ひたち', '特急');
+            ChibaSwitch(WType[1][tr], 1, tr, _Type1, 'ときわ', '特急');
+            ChibaSwitch(WType[1][tr], 1, tr, _Type1, '踊り子', '特急');
+            ChibaSwitch(WType[1][tr], 1, tr, _Type1, '湘南', '特急');
         }
     }
 }
