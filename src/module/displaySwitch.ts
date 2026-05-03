@@ -1,6 +1,7 @@
 import { TrainNumber } from "./firstDisplayEdit";
 import { DesMiddle } from "./displayEdit4";
-import { WName, WDes } from "../types/constants";
+import { WName, WDes,WType } from "../types/constants";
+import { trainTables } from "../types/trainTable";
 //主にJR西日本で使う
 //交互表示
 class Altershow {
@@ -82,7 +83,8 @@ export function allShinSwitch(Tablenum: number, orderNum: number, line: string) 
         //Exp[td] = new Array(orderNum);
         for (var tr = 0; tr < orderNum; tr++) {
             //Exp[td][tr] = document.getElementById('TExplain' + (td + 1) + '' + (tr + 1).textContent);
-            ShinkansenSwitch('TExplain' + (td + 1) + (tr + 1), td, tr, Cars[td][tr], line[td][tr]);
+            var _Cars = trainTables[td].trains[tr]?.cars ?? "";
+            ShinkansenSwitch('TExplain' + (td + 1) + (tr + 1), td, tr, _Cars, line[td][tr]);
         }
     }
 }
@@ -104,7 +106,7 @@ export function switchTrainInfo2(Tab: string, tr: number, line: string, Longerwo
 export function allswitchMihara() {
     for (var tr = 0; tr < orderNum; tr++) {
         var LDes = document.getElementById('TDes1' + (tr + 1));
-        DesSwitch(TDes[0][tr], 0, tr, Des[0][tr], "糸崎連絡", "糸崎");
+        DesSwitch(TDes[0][tr], 0, tr, trainTables[0].trains[tr].destination, "糸崎連絡", "糸崎");
         if (LDes!.textContent.includes('連絡')) {
             DesMiddle(0, tr, '連絡');
         }
@@ -113,7 +115,8 @@ export function allswitchMihara() {
 export function allswitchOdawara() {
     for (var tr = 0; tr < orderNum; tr++) {
         //CarsDevide(1);
-        ATOSShihatsuSwitch(TType[1][tr], 1, tr, '<span style="color:orange;">始発</span>', "始発", Type[1][tr].replace('始発', ''));
+        var _Type = trainTables[1].trains[tr].type
+        ATOSShihatsuSwitch(TType[1][tr], 1, tr, '<span style="color:orange;">始発</span>', "始発", _Type);
         //console.log(Type[1][tr]);
         var Cell = document.getElementById('TType2' + (tr + 1));
         if (Cell!.textContent.includes('特別快速')) {
@@ -126,18 +129,18 @@ export function allswitchOdawara() {
 export function allswitchChiba() {
     for (var tr = 0; tr < orderNum; tr++) {
         ChibaSwitch2(WDes[0][tr], 0, tr, Des[0][tr], ['久里浜', '大船', '横須賀', '逗子', '品川'], '東京方面');
-        ATOSShihatsuSwitch(WName[0][tr], 0, tr, '当駅始発', '当駅始発', Cars[0][tr]);
-        ATOSShihatsuSwitch(WName[2][tr], 2, tr, '当駅始発', '当駅始発', Cars[2][tr]);
-        ATOSShihatsuSwitch(WName[3][tr], 3, tr, '当駅始発', '当駅始発', Cars[3][tr]);
-        ATOSShihatsuSwitch(WName[4][tr], 4, tr, '当駅始発', '当駅始発', Cars[4][tr]);
-        ATOSShihatsuSwitch(WName[5][tr], 5, tr, '当駅始発', '当駅始発', Cars[5][tr]);
-        ChibaSwitch_LiNum(WName[0][tr], 0, tr, TrainNumber[0][tr] + '号', TrainNumber[0][tr] + '号', Cars[0][tr]);
-        ChibaSwitch_LiNum(WName[4][tr], 4, tr, TrainNumber[4][tr] + '号', TrainNumber[4][tr] + '号', Cars[4][tr]);
-        ChibaSwitch_LiNum(WName[5][tr], 5, tr, TrainNumber[5][tr] + '号', TrainNumber[5][tr] + '号', Cars[5][tr]);
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], '成田エクスプレス', '特急');
-        ChibaSwitch(WType[5][tr], 5, tr, Type[5][tr], '成田エクスプレス', '特急');
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], 'しおさい', '特急');
-        ChibaSwitch(WType[4][tr], 4, tr, Type[4][tr], 'しおさい', '特急');
+        ATOSShihatsuSwitch(WName[0][tr], 0, tr, '当駅始発', '当駅始発', trainTables[0].trains[tr]?.cars ?? "");
+        ATOSShihatsuSwitch(WName[2][tr], 2, tr, '当駅始発', '当駅始発', trainTables[2].trains[tr]?.cars ?? "");
+        ATOSShihatsuSwitch(WName[3][tr], 3, tr, '当駅始発', '当駅始発', trainTables[3].trains[tr]?.cars ?? "");
+        ATOSShihatsuSwitch(WName[4][tr], 4, tr, '当駅始発', '当駅始発', trainTables[4].trains[tr]?.cars ?? "");
+        ATOSShihatsuSwitch(WName[5][tr], 5, tr, '当駅始発', '当駅始発', trainTables[5].trains[tr]?.cars ?? "");
+        ChibaSwitch_LiNum(WName[0][tr], 0, tr, TrainNumber[0][tr] + '号', TrainNumber[0][tr] + '号', trainTables[0].trains[tr]?.cars ?? "");
+        ChibaSwitch_LiNum(WName[4][tr], 4, tr, TrainNumber[4][tr] + '号', TrainNumber[4][tr] + '号', trainTables[4].trains[tr]?.cars ?? "");
+        ChibaSwitch_LiNum(WName[5][tr], 5, tr, TrainNumber[5][tr] + '号', TrainNumber[5][tr] + '号', trainTables[5].trains[tr]?.cars ?? "");
+        ChibaSwitch(WType[0][tr], 0, tr, trainTables[0].trains[tr]?.type ?? "", '成田エクスプレス', '特急');
+        ChibaSwitch(WType[5][tr], 5, tr, trainTables[5].trains[tr]?.type ?? "", '成田エクスプレス', '特急');
+        ChibaSwitch(WType[0][tr], 0, tr, trainTables[0].trains[tr]?.type ?? "", 'しおさい', '特急');
+        ChibaSwitch(WType[4][tr], 4, tr, trainTables[4].trains[tr]?.type ?? "", 'しおさい', '特急');
         ChibaSwitch2(WDes[3][tr], 3, tr, Des[3][tr], ['成東', '東金'], '大網回り');
         ChibaSwitch2(WDes[4][tr], 4, tr, Des[4][tr], ['銚子'], '八日市場回り');
         ChibaSwitch2(WDes[4][tr], 4, tr, Des[4][tr], ['成東'], '八街回り');
@@ -171,19 +174,23 @@ export function allswitchChiba() {
 }
 export function allswitch_UTL() {
     for (var tr = 0; tr < orderNum; tr++) {
-        ATOSShihatsuSwitch(WName[0][tr], 0, tr, '始発', '始発', Cars[0][tr]);
-        ChibaSwitch_LiNum(WName[0][tr], 0, tr, TrainNumber[0][tr] + '号', TrainNumber[0][tr] + '号', Cars[0][tr]);
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], 'ひたち', '特急');
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], 'ときわ', '特急');
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], '踊り子', '特急');
-        ChibaSwitch(WType[0][tr], 0, tr, Type[0][tr], '湘南', '特急');
+        var _Cars0 = trainTables[0].trains[tr]?.cars ?? "";
+        var _Cars1 = trainTables[1].trains[tr]?.cars ?? "";
+        const _Type0 = trainTables[0].trains[tr]?.type ?? "";
+        const _Type1 = trainTables[1].trains[tr]?.type ?? "";
+        ATOSShihatsuSwitch(WName[0][tr], 0, tr, '始発', '始発', _Cars0);
+        ChibaSwitch_LiNum(WName[0][tr], 0, tr, TrainNumber[0][tr] + '号', TrainNumber[0][tr] + '号', _Cars0);
+        ChibaSwitch(WType[0][tr], 0, tr, _Type0, 'ひたち', '特急');
+        ChibaSwitch(WType[0][tr], 0, tr, _Type0, 'ときわ', '特急');
+        ChibaSwitch(WType[0][tr], 0, tr, _Type0, '踊り子', '特急');
+        ChibaSwitch(WType[0][tr], 0, tr, _Type0, '湘南', '特急');
         if (station != '上野駅') {
-            ATOSShihatsuSwitch(WName[1][tr], 1, tr, '始発', '始発', Cars[1][tr]);
-            ChibaSwitch_LiNum(WName[1][tr], 1, tr, TrainNumber[1][tr] + '号', TrainNumber[1][tr] + '号', Cars[1][tr]);
-            ChibaSwitch(WType[1][tr], 1, tr, Type[1][tr], 'ひたち', '特急');
-            ChibaSwitch(WType[1][tr], 1, tr, Type[1][tr], 'ときわ', '特急');
-            ChibaSwitch(WType[1][tr], 1, tr, Type[1][tr], '踊り子', '特急');
-            ChibaSwitch(WType[1][tr], 1, tr, Type[1][tr], '湘南', '特急');
+            ATOSShihatsuSwitch(WName[1][tr], 1, tr, '始発', '始発', _Cars1);
+            ChibaSwitch_LiNum(WName[1][tr], 1, tr, TrainNumber[1][tr] + '号', TrainNumber[1][tr] + '号', _Cars1);
+            ChibaSwitch(WType[1][tr], 1, tr, _Type1, 'ひたち', '特急');
+            ChibaSwitch(WType[1][tr], 1, tr, _Type1, 'ときわ', '特急');
+            ChibaSwitch(WType[1][tr], 1, tr, _Type1, '踊り子', '特急');
+            ChibaSwitch(WType[1][tr], 1, tr, _Type1, '湘南', '特急');
         }
     }
 }

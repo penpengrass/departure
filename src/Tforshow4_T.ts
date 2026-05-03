@@ -1,5 +1,5 @@
 import { DetailBanner } from "./module/detailMainPut";
-import { TwoLetterDistance, allLastShow, allTwoLettersDistance } from "./module/firstDisplayEdit";
+import { TwoLetterDistance, NewAllLastShow, allTwoLettersDistance } from "./module/firstDisplayEdit";
 import { allJRTennoujiColor } from "./typeColor";
 //天王寺駅
 var Tennoji_inner_Table = 3
@@ -56,7 +56,7 @@ for (var td = 0; td < Tablenum; td++) {
         }
     }
 }
-allLastShow();
+NewAllLastShow();
 let TenDes = new Array(orderNum);
 let TenType = new Array(orderNum);
 let space = 0;

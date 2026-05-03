@@ -9,16 +9,14 @@ declare global {
     var L_hour: number;
     var L_min: number;
     var Detail: any[];
-    var Des_Banner: any[];
     var detailflag: number;
     var DetailLength: any[];
     var detailLength_one: number;
     var NonGouflag: number;
     var holidayflag: number;
     var TType: any[];
-    var WType: any[];
     var TName: any[];
-    var Dtype: any[];
+    var Dtype: number[];
     var Jiyuseki: any;
     var Tablenum: number;
     var Tablenums: number[]; // 各表の列数
@@ -33,7 +31,6 @@ declare global {
     var Type: any[];
     var Des: any[];
     var TDes: any[];
-    var Cars: any[];
     var TableHour: any;
     var TableMin: any;
     var TrackNum: any;

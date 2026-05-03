@@ -8,6 +8,8 @@ import { JRChNobj, JRCeNobj } from "./detailStopData/JRNadetailset";
 import { Tokyuobj } from "./stationset5";
 import { JRWTobj } from "./detailStopData/JRTennojidetail";
 import { JRCSobj } from "./stationset7_S";
+import { TType, TDes, WType } from "./types/constants";
+import { trainTables } from "./types/trainTable";
 //先発と次発と次々発の種別色分けを一気にする
 export function KTypeColor(Utype: any, TType: any, Uobj: any) {//(種別,その種別の背景色を変える)
     for (const key in Uobj) {
@@ -68,7 +70,8 @@ export function JTypeIncludeColor(Utype: any, TType: any, Uobj: any) {//(種別,
 export function allKinColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            KTypeColor(Type[ia][ib], WType[ia][ib], Kinobj);
+            const _Type= trainTables[ia].trains[ib].type;
+            KTypeColor(_Type, WType[ia][ib], Kinobj);
             //KTypeColor(Type[ia][ib], shubetu[ia][ib], Kinobj);
         }
     }
@@ -77,7 +80,8 @@ export function allKinColor() {
 export function allJRColor(start = 0) {
     for (let ia = start; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            JTypeColor(Type[ia][ib], TType[ia][ib], JRobj);
+            var _Type = trainTables[ia].trains[ib].type;
+            JTypeColor(_Type, TType[ia][ib], JRobj);
         }
     }
 }
@@ -125,7 +129,8 @@ export function allJRWSZColor() {
     }
     for (let ia = 2; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
-            JTypeColor(Type[ia][ib], TType[ia][ib], JRobj);
+            var _Type = trainTables[ia].trains[ib].type;
+            JTypeColor(_Type, TType[ia][ib], JRobj);
         }
     }
 
@@ -150,10 +155,11 @@ export function allJRCColor() {
 export function allJRNagoyaColor() {
     for (let ia = 0; ia < Tablenum; ia++) {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
+            var _Type = trainTables[ia].trains[ib].type;
             if (ia >= 2) {
-                KJTypeColor(Type[ia][ib], TType[ia][ib], JRChNobj);
+                KJTypeColor(_Type, TType[ia][ib], JRChNobj);
             } else {
-                KJTypeColor(Type[ia][ib], TType[ia][ib], JRCeNobj);
+                KJTypeColor(_Type, TType[ia][ib], JRCeNobj);
             }
         }
     }
@@ -193,7 +199,6 @@ export function allTokyuColor() {
         for (let ib = 0; ib < Tablenums[ia]; ib++) {
             JTypeColor(Type[ia][ib], TType[ia][ib], Tokyuobj);
             JTypeColor(Type[ia][ib], TDes[ia][ib], Tokyuobj);
-            console.log(Des[ia][ib]);
             if (Type[ia][ib] == '準急') {
                 document.getElementById('TType' + (ia + 1) + (ib + 1))!.style.backgroundColor = 'yellowgreen';
             }
@@ -206,14 +211,3 @@ export function allTokyuColor() {
 //console.log(CompanyNumber);
 //console.log(Indexfile);
 //index7.phpのみTforshow7.jsに移行
-if (Indexfile == 'index8.php') {
-
-} else if (Indexfile == 'index7_T.php') {
-    allJRNagoyaColor();
-} else if (Indexfile == 'index5.php') {
-    allTokyuColor();
-} else if (Indexfile == 'index7_S1.php') {
-    allJRCSColor();
-} else if (Indexfile == 'index4_A.php') {
-    allJROsakaColor();
-}

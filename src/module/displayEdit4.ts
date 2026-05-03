@@ -1,13 +1,12 @@
 import { FDetail } from "./detailMainPut"
 import { DetailReplace } from "./detailSimpleEdit";
 import { LastLetterRemove } from "./detailMainPut";
-import { Detail_contents } from "../detailStopData/JRW_afterset";
 import { JRSaninAddStop } from "../detailStopData/JRSanindetailset";
 import { JRobj } from "../detailStopData/JRW_afterset";
 import { JRCeNobj } from "../detailStopData/JRNadetailset";
 import { JRSaninObj } from "../detailStopData/JRSanindetailset";
 import { AllClassSetting } from "./firstDisplayEdit";
-window.Des_Banner = new Array(Tablenum);
+import { trainTables } from "../types/trainTable";
 export function DesMiddle(td: number, tr: number, word: string) {
     var matches = new Array(orderNum);
     var Desword = new RegExp("(\\D+)" + word + "(\\D+)");
@@ -15,39 +14,36 @@ export function DesMiddle(td: number, tr: number, word: string) {
     //console.log(Des[td][tr]);
     //(/(\D+)(\d+)両/);
     //matches[tr] = Des[td][tr].match(/(\D+)連絡(\D+)/);
-    matches[tr] = Des[td][tr].match(Desword);
-    var Tag;
-    if (Indexfile == 'index4_O.php') {
-        Tag = 'WDes';
-    } else {
-        Tag = 'TDes';
-    }
+    matches[tr] = trainTables[td].trains[tr].destination.match(Desword);
     //console.log(matches[tr]);
-    var d_Tag = document.getElementById(Tag + (td + 1) + (tr + 1));
+    var d_Tag = document.getElementById('TDes' + (td + 1) + (tr + 1));
     if (matches[tr] && d_Tag) {
         //console.log(td + ':' + tr + word + " " + Tag + ' はマッチする');
         /*console.log(matches[tr][0] + ":" + tr);
         console.log(matches[tr][1] + ":" + tr);
         console.log(matches[tr][2] + ":" + tr);*/
-        d_Tag.innerHTML =
-            '<span class="DesLeft" id="DesLeft' + (td + 1) + (tr + 1) + '">' + matches[tr][1] + '</span>' + '<span class="DesMiddle">' + word + '</span>' + '<span id="DesRight' + (td + 1) + (tr + 1) + '">' + matches[tr][2] + '</span>';
-        var DesLeft = document.getElementById('DesLeft' + (td + 1) + (tr + 1)) as HTMLElement | null;
-        var DesRight = document.getElementById('DesRight' + (td + 1) + (tr + 1));
-        if (DesRight !== null && DesRight.textContent.length > 3) {
-            //console.log(DesRight.textContent.length);
-            DesRight.style.display = 'inline-block';
-            DesRight.style.transform = "scaleX(0.75)" + "translate(-20%,0%)";
-        } else if (DesRight !== null && station == '糸崎駅' && DesRight.textContent.length > 2) {
-            DesRight.style.display = 'inline-block';
-            DesRight.style.transform = "scaleX(0.65)" + "translate(-25%,0%)";
+        // DesRightのinlineスタイルを条件に応じて決定
+        let desRightStyle = '';
+        if (matches[tr][2].length > 3) {
+            desRightStyle = ' style="display:inline-block;transform:scaleX(0.75) translate(-20%,0%)"';
+        } else if (station == '糸崎駅' && matches[tr][2].length > 2) {
+            desRightStyle = ' style="display:inline-block;transform:scaleX(0.65) translate(-25%,0%)"';
         }
-        if (DesLeft && DesLeft.textContent.length > 2) {
-            //console.log(DesRight.textContent.length);
-            DesLeft.style.display = 'inline-block';
-            DesLeft.style.transform = "scaleX(0.75)" + "translate(20%,0%)";
+        
+        // DesLeftのinlineスタイルを条件に応じて決定
+        let desLeftStyle = '';
+        if (matches[tr][1].length > 2) {
+            desLeftStyle = ' style="display:inline-block;transform:scaleX(0.75) translate(20%,0%)"';
         }
-        if (DesRight && tr == 0) {
-            Des_Banner[td] = DesRight.textContent;
+        
+        var Des_HTML = '<span class="DesLeft" id="DesLeft' + (td + 1) + (tr + 1) + '"' + desLeftStyle + '>' + matches[tr][1]
+            + '</span>' + '<span class="DesMiddle">' + word + '</span>' + '<span id="DesRight' + (td + 1) + (tr + 1) + '"' + desRightStyle + '>' + matches[tr][2] + '</span>';
+        document.getElementById('TDes' + (td + 1) + (tr + 1))!.innerHTML = Des_HTML
+        trainTables[td].trains[tr].destination = Des_HTML;
+        //var DesLeft = document.getElementById('DesLeft' + (td + 1) + (tr + 1)) as HTMLElement | null;
+        //var DesRight = document.getElementById('DesRight' + (td + 1) + (tr + 1));
+        if (tr == 0) {
+            trainTables[td].trains[0].des_banner = matches[0][2];
         }
     } else {
         //console.log(td + ':' + tr + word + 'はマッチしない');
@@ -57,32 +53,28 @@ export function Maibara_Banner(td: number) {
     if (td == 1 && (Type[td - 1][0] == '新快速' || Type[td - 1][0] == '特急')) {
         FDetail(Type[td - 1][0], JRobj, Dtype[0], td - 1, 0, "・");
         Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
-        Detail_contents[td - 1] = Detail[0][0];
         console.log("-----1個目の詳細完了------");
     }
     if (td == 3) {
         //console.log(Type[td - 1][0]);
         if (Type[td - 1][0].includes('快速')) {
             stationN = '大垣';
-            Des[2][0] = Des_Banner[2];
+            Des[2][0] = trainTables[2].trains[0].des_banner;
             FDetail(Type[td - 1][0], JRCeNobj, Dtype[0], td - 1, 0, "・");
-            console.log(Dtype);
+            LastLetterRemove(td - 1, 0, '・');
             DetailReplace(2, 0, '岐阜', '岐阜までの各駅');
             Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
-            Detail_contents[td - 1] = Detail[2][0];
-            console.log(Detail[2][0]);
             stationN = '米原';
         }
     }
 }
 export function Kitashinchi_Banner(td: number) {
-    if (td == 2 && Type[1][0] == '快速' && Des[1][0] != '塚口') {
+    if (td == 2 && Type[1][0] == '快速' && Des[1][0] != '塚口' && Des[1][0] != '尼崎') {
         FDetail(Type[td - 1][0], JRobj, Dtype[0], td - 1, 0, "・");
         if (Des[1][0].includes('新三田')) {
             DetailReplace(1, 0, '・三田から各駅', '');
         }
         Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
-        Detail_contents[td - 1] = Detail[td - 1][0];
     }
 }
 export function Yonago_Banner(td: number) {
@@ -95,12 +87,11 @@ export function Yonago_Banner(td: number) {
     LastLetterRemove(td - 1, 0, '・');
     if (Detail[td - 1][0].includes('各駅')) {
         if (Des[td - 1][0] == '新見') {
-            Detail[td - 1][0] = '備中神代までの各駅';
+            trainTables[td - 1].trains[0].detail = '備中神代までの各駅';
         } else {
-            Detail[td - 1][0] = Des[td - 1][0] + "までの各駅";
+            trainTables[td - 1].trains[0].detail = Des[td - 1][0] + "までの各駅";
         }
     }
-    Detail_contents[td - 1] = Detail[td - 1][0];
 }
 //特急の列車名の色を変える
 export function JRWTrainNameColor(td: number, tr: number, NameColor: string, NumberColor: string, GouColor: string) {

@@ -6,11 +6,11 @@
 //合体用に中身が空のTTを作る関数(TTLeftとTTRightを合わせてTT3を作る)
 //時の部分は数字を入れる
 export function makeemptyTable(TTLeft:any, TTRight:any) {
-    console.log(TTLeft.length + ":" + TTRight.length);
+    //console.log(TTLeft.length + ":" + TTRight.length);
     let TT3 = new Array(TTLeft.length);
-    console.log(TT3.length);
+    //console.log(TT3.length);
     for (let td = 0; td < TTLeft.length; td++) {
-        console.log(TTLeft[td].length + ":" + TTRight[td].length)
+        //console.log(TTLeft[td].length + ":" + TTRight[td].length)
         TT3[td] = new Array(TTLeft[td].length + TTRight[td].length);
         if (TTLeft[td][0] == TTRight[td][0] && TTLeft[td][0] != '') {
             TT3[td][0] = TTLeft[td][0];
@@ -25,7 +25,7 @@ export function TTconnect(TTLeft:any, TTRight:any, TTSum:any) {
     let Sum_TSum = 1;
     //console.log(TTLeft);
     //console.log(TT[6]);
-    console.log("TTLeft.length=" + TTLeft.length + ":TTRight.length=" + TTRight.length);
+    //console.log("TTLeft.length=" + TTLeft.length + ":TTRight.length=" + TTRight.length);
     if (TTLeft.length != TTRight.length) {
         if (TTLeft[2][1] == TTRight[2][1]) {
             throw TypeError("表を合体できますが実装できていません");
@@ -33,12 +33,12 @@ export function TTconnect(TTLeft:any, TTRight:any, TTSum:any) {
             throw TypeError("表を合体できません");
         }
     }
-    console.log(Math.max(TTLeft.length, TTRight.length));
+    //console.log(Math.max(TTLeft.length, TTRight.length));
     for (let TaRow = 2; TaRow < Math.max(TTLeft.length, TTRight.length); TaRow += 4) {
         //TaRow = 34;
         //console.log(TTLeft[TaRow]);
-        console.log(TaRow + ":*" + (TTLeft[TaRow].length + TTRight[TaRow].length));
-        console.log(TTSum);
+        //console.log(TaRow + ":*" + (TTLeft[TaRow].length + TTRight[TaRow].length));
+        //console.log(TTSum);
         TTSum[TaRow] = new Array(TTLeft[TaRow].length + TTRight[TaRow].length);
         //console.log(TTLeft[TaRow].length);
         //時の部分を入れる

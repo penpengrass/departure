@@ -1,16 +1,22 @@
-import { JRNameDevide,allLastShow } from "./module/firstDisplayEdit";
+import { DestinationSet, JRNameDevide, NewAllLastShow,} from "./module/firstDisplayEdit";
+import { allJRCSColor } from "./typeColor";
+import { plainTrainTables } from "./types/trainTable";
+NonGouflag = 1;
 JRNameDevide();
 
 for (var td = 0; td < 2; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
-        if (Type[td][tr] == 'ひかり') {
+        const _PlainType = plainTrainTables[td].trains[tr]?.type ?? "";
+        if (_PlainType.startsWith('ひかり')) {
             document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-5号車';
         } else if (Type[td][tr] != '') {
             document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = '自由席1-7,13-15号車';
         }
     }
 }
-allLastShow();
+DestinationSet();
+NewAllLastShow();
+allJRCSColor();
 /*for (let te = 2; te < Tablenum; te++) {
     for (let tr = 0; tr < orderNum; tr++) {
         console.log(Type[te][tr]);

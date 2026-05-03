@@ -1,18 +1,15 @@
 import { DetailReplace_Set } from "./module/detailSimpleEdit";
-import { allLastShow, TwoLetterDistance, flagmarkerase, JRNameDevide, Bansenshow } from "./module/firstDisplayEdit";
-import { FDetail, doallDetailShow } from "./module/detailMainPut";
-import * as Stops from "./detailStopData/JRW_S";
-import { TrainNumber } from "./module/firstDisplayEdit";
+import { NewAllLastShow, TwoLetterDistance, flagmarkerase, JRNameDevide, Bansenshow, DestinationSet } from "./module/firstDisplayEdit";
+import { getStationConfig } from "./main";
 import { JRSSobj } from "./detailStopData/JRW_S";
 import { allJRSSColor } from "./typeColor";
 import { allSanyoShinkansenSwitch } from "./module/displaySwitch";
-if (LastShowFlag == 0) {
-    allLastShow();
-}
-LastShowFlag = 1;
+import { trainTables } from "./types/trainTable";
 var TablenumSub = Tablenum;
 if (station == '博多駅') {
-    Dtype = [1, 0];
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*Dtype = [1, 0];
     for (var td = 0; td < TablenumSub; td++) {
         for (var tr = 0; tr < 2; tr++) {
             FDetail(Type[td][tr], JRSSobj, Dtype[td], td, tr, "・");
@@ -47,9 +44,11 @@ if (station == '博多駅') {
     }
     console.log(TrainNumber);
     DetailLength = [2, 2];
-    doallDetailShow(25);
+    doallDetailShow(25);*/
 } else if (station == '岡山駅' && Indexfile == 'index4_S2.php') {
-    Dtype = [1, 0];
+    var config = getStationConfig(window.station, Indexfile);
+    if (config && config.onRender) config.onRender();
+    /*Dtype = [1, 0];
     console.log("--ここから詳細表示--");
     for (var td = 0; td < Tablenum; td++) {
         for (var tr = 0; tr < 2; tr++) {
@@ -92,70 +91,46 @@ if (station == '博多駅') {
             Detail[1][tr] = Des[1][tr] + "まで止まりません";
         }
     }
-    /*for (var td = 0; td < TablenumSub; td++) {
-        for (var tr = 0; tr < 2; tr++) {
-            DetailBanner(td, tr, 25);
-        }
-    }*/
+    
     DetailLength = [2, 2];
-    doallDetailShow(25);
-
-
+    doallDetailShow(25);*/
 }
-function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj:any) {
+function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj: any) {
     for (const key in Uobj) {
         if (Utype.startsWith(Uobj[key].type)) {
-            Cars[td][tr] = Uobj[key].cars;
+            trainTables[td].trains[tr].cars = Uobj[key].cars;
             Jiyuseki[td][tr] = Uobj[key].jiyu;
             //document.getElementById(TType).style.color = Uobj[key].color;
         }
     }
 }
-if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
+if (Indexfile == 'index4_S2.php') {
     NonGouflag = 1;
-    JRNameDevide();
+    JRNameDevide(2);
+    DestinationSet();
+    Bansenshow(1, 2);
+    NewAllLastShow();
     allJRSSColor();
-    for (var td = 0; td < TablenumSub; td++) {
+    for (var td = 0; td < 2; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
             //この部分は未完成
-            if (Indexfile != 'index4_H.php') {
+            if (Indexfile == 'index4_S2.php') {
                 ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
                 if (Type[td][tr].includes('つばめ*') || Type[td][tr].includes('さくら*')) {
-                    Cars[td][tr] = '6両編成';
+                    trainTables[td].trains[tr].cars = '6両編成';
                     Jiyuseki[td][tr] = '自由席1-3,5,6号車'
                 }
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = Cars[td][tr];
+                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = trainTables[td].trains[tr]?.cars ?? "";
             }
             if (Type[td][tr] != '' && (station == '博多駅' || station == '岡山駅') && tr < 2) {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = '停車駅';
             }
-
-            /*if (Type[td][tr] == 'のぞみ' || Type[td][tr] == 'のぞみ*') {
-                Cars[td][tr] = '16両編成';
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '16両編成';
-                Jiyuseki[td][tr]='自由席1-3号車'
-            }else if(Type[td][tr] == 'ひかり') {
-                Cars[td][tr] = '16両編成';
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '16両編成';
-                Jiyuseki[td][tr]='自由席1-5号車'
-            }else if (Type[td][tr].includes('*')) {
-                Cars[td][tr] = '6両編成';
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '6両編成';
-                Jiyuseki[td][tr]='自由席1-3,5,6号車'
-            }  else if (Type[td][tr] != '') {
-                Cars[td][tr] = '8両編成';
-                document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = '8両編成';
-                Jiyuseki[td][tr]='自由席1-3号車'
-            }*/
-
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         }
     }
-    console.log(Cars);
     console.log(Jiyuseki);
     flagmarkerase(0, 'TType', '*');
     flagmarkerase(1, 'TType', '*');
-    Bansenshow(1, 2);
 
     if (station == '岡山駅' || station == '広島駅') {
         setInterval(allSanyoShinkansenSwitch, 5000);
@@ -181,4 +156,5 @@ if (Indexfile == 'index4_S2.php' || Indexfile == 'index4_H.php') {
         }
     }
 }
+
 LastShowFlag = 1;
