@@ -71,7 +71,7 @@
       if ($j == 1) {
         print('
       <tr>
-      <td width="10%" class="CDetail" id="TDetail' . $i . '">停車駅</td>
+      <td width="10%" class="CDetailTitle" id="TDetail' . $i . '">停車駅</td>
       <td class="CDetail" colspan="5"><p3 class="news-banner__content" colspan="5"><p2 id="TDetail' . $i . '1" >本日の運転は終了しました</p2></p3></td>
       </tr>
       ');

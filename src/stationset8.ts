@@ -1,13 +1,14 @@
 import { DestinationDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, Tablereset } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
-import { JRNameDevide, AllTypeStartWordReplace, Bansenshow, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
+import { JRNameDevide, AllTypeStartWordReplace, Bansenshow, AllClassSetting, DestinationSet, TrainTypeSet } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
-import { FDetail } from "./module/detailMainPut";
+import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import { DetailBannerOnce } from "./module/detailMainPut";
 import { JRHoobj, JRHSobj } from "./detailStopData/Hodetailset";
 import { getStationConfig } from "./main";
+import { JRHokkaidouShinDetailStop } from './detailStopData/Hodetailchange';
 import { comment } from './types/constants';
 import { trainTables, plainTrainTables } from './types/trainTable';
 var staflag = 0;
@@ -64,7 +65,7 @@ export const JRHokkaidouStations: StationRegistry = {
         tableTitles: ['苫小牧 東室蘭 函館 帯広 釧路方面', '新千歳空港方面', '岩見沢 旭川 網走 稚内方面', '手稲 小樽 倶知安方面', 'あいの里教育大 当別方面'],
         setup: () => {
             var selectstation = ['新千歳空港'];
-            var selectstation2 = ['新千歳空港', '苫小牧', '千歳', '札幌'];
+            var selectstation2 = ['新千歳空港', '苫小牧', '千歳', '札幌', '北広島'];
             var kamui = [7, 19, 21, 29, 31, 35, 43, 45];
             var lilac = [1, 3, 5, 11, 13, 17, 23, 25, 27, 33, 37, 39, 41];
             limitedjustnumber2(TT[2], kamui, '特急カムイ');
@@ -212,14 +213,14 @@ export const JRHokkaidouStations: StationRegistry = {
             console.log(Detail);
             if (Des[2][0] == '旭川' && Type[2][0].includes('特急')) {
                 var cars = '５';
-                var cardetail = '指定席は３号車から５号車　４号車はｕシートです';
+                var cardetail = '全車指定席です。';
                 console.log(dToAsahi);
                 if (Type[2][0].includes('ライラック')) {
                     cars = '６';
-                    cardetail = '指定席は１号車から４号車　グリーン車は１号車です';
+                    cardetail = '全車指定席です。　グリーン車は１号車の一部です';
                 }
-                dToAsahi!.innerHTML = HokkaidoCars(cars) + "　<span class='CLapidcolor'>"
-                    + cardetail + "</span>　<span class='Cstops'>停車駅は岩見沢・美唄・砂川・滝川・深川です。</span>";
+                dToAsahi!.innerHTML = HokkaidoCars(cars) + "　"
+                    + cardetail + "　<span class='Cstops'>停車駅は岩見沢・美唄・砂川・滝川・深川です。</span>";
                 if (TrainNumber[2] == 13) {
                     dToAsahi!.innerHTML += '  この列車は旭川で網走行き特別快速大雪に接続します';
                 } else if (TrainNumber[2] == 17) {
@@ -237,17 +238,17 @@ export const JRHokkaidouStations: StationRegistry = {
         ・士別・名寄・美深・音威子府・天塩中川・幌延・豊富・南稚内です。</span>";
             }
             if (Des[0][0] == '函館') {
-                document.getElementById('TDetail' + 1)!.innerHTML = "<span class='Cstops'>停車駅は" + Detail[0][0] + "です。</span>";
+                document.getElementById('TDetail' + 1)!.innerHTML = '全車指定席です。　 ' + "<span class='Cstops'>停車駅は" + Detail[0][0] + "です。</span>";
             } else if (Des[0][0] == '帯広') {
-                document.getElementById('TDetail' + 1)!.innerHTML
-                    = "<span class='Cstops'>停車駅は新札幌・南千歳・追分・新夕張・占冠・トマム・新得・十勝清水・芽室です。</span>";
+                document.getElementById('TDetail' + 1)!.innerHTML = '全車指定席です。　 ' +
+                    "<span class='Cstops'>停車駅は新札幌・南千歳・追分・新夕張・占冠・トマム・新得・十勝清水・芽室です。</span>";
             } else if (Des[0][0] == '釧路') {
                 document.getElementById('TDetail' + 1)!.innerHTML = "<span class='Cstops'>停車駅は" + Detail[0][0] + "です。</span>";
             } else if (Des[0][0] == '室蘭' && Type[0][0] != '普通') {
-                document.getElementById('TDetail' + 1)!.innerHTML = Useat('３号車と４') + '　 '
-                    + "<span class='Cstops'>停車駅は新札幌・千歳・南千歳・沼ノ端・苫小牧・白老・登別・幌別・鷲別・東室蘭です。東室蘭から普通列車になります</span>";
+                document.getElementById('TDetail' + 1)!.innerHTML = HokkaidoCars('５') + '　全車指定席です。　 '
+                    + "<span class='Cstops'>停車駅は新札幌・千歳・南千歳・沼ノ端・苫小牧・白老・登別・幌別・鷲別・東室蘭・輪西・御崎・母恋です。</span>";
             } else if (Des[0][0] == '東室蘭' && Type[0][0] != '普通') {
-                document.getElementById('TDetail' + 1)!.innerHTML = Useat('３号車と４') + '　 '
+                document.getElementById('TDetail' + 1)!.innerHTML = HokkaidoCars('５') + '　全車指定席です。　 '
                     + "<span class='Cstops'>停車駅は新札幌・千歳・南千歳・沼ノ端・苫小牧・白老・登別・幌別・鷲別です。</span>";
             }
             //document.getElementById('supplement')!.textContent = '';
@@ -271,6 +272,7 @@ export const JRHokkaidouStations: StationRegistry = {
             TT[1] = TT[3];
         },
         onRender: () => {
+            AllClassSetting('.CDetailTitle', 'fontSize', '25px');
             JRNameDevide();
             for (var tr = 1; tr < 3; tr++) {
                 if (Type[0][tr - 1] != '') {
@@ -285,8 +287,12 @@ export const JRHokkaidouStations: StationRegistry = {
             }
             console.log(Dtype[0]);
             FDetail(Type[0][0], JRHoobj, Dtype[0], 0, 0, "・");
+            LastLetterRemove(0, 0, '・');
+            JRHokkaidouShinDetailStop();
             document.getElementById('TDetail11')!.textContent = Detail[0][0];
-            document.getElementById('TDetail11')!.textContent +="・"+ Des[0][0];
+            if (Des[0][0] != "") {
+                document.getElementById('TDetail11')!.textContent += "・" + Des[0][0];
+            }
             comment!.textContent = '番線と停車駅は不正確';
             DestinationSet();
         }

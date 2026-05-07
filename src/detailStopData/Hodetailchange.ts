@@ -1,5 +1,6 @@
 import { DeleteStopping, AddStopping } from "../module/firstDetailEdit";
 import { TrainNumber,Lname } from "../module/firstDisplayEdit";
+import { trainTables } from "../types/trainTable";
 import { oozora, airport, Tohakodate } from "./Hodetailset";
 console.log(Lname[0]);
 console.log(TrainNumber[0]);
@@ -34,4 +35,9 @@ if (station == '札幌駅') {
             DeleteStopping(Tohakodate, '白老');
         }
     }
+}
+export function JRHokkaidouShinDetailStop(){
+    console.log(trainTables[0].trains[0].trainNumber);
+    const _Number=trainTables[0].trains[0].trainNumber;
+    
 }
