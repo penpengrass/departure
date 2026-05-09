@@ -1,5 +1,6 @@
+import { DetailReplace_Set_One } from "../module/detailSimpleEdit";
 import { DeleteStopping, AddStopping } from "../module/firstDetailEdit";
-import { TrainNumber,Lname } from "../module/firstDisplayEdit";
+import { TrainNumber, Lname } from "../module/firstDisplayEdit";
 import { trainTables } from "../types/trainTable";
 import { oozora, airport, Tohakodate } from "./Hodetailset";
 console.log(Lname[0]);
@@ -36,8 +37,21 @@ if (station == '札幌駅') {
         }
     }
 }
-export function JRHokkaidouShinDetailStop(){
+export function JRHokkaidouShinDetailStop() {
     console.log(trainTables[0].trains[0].trainNumber);
-    const _Number=trainTables[0].trains[0].trainNumber;
-    
+    console.log(trainTables[0].trains[0].detail);
+    const _Number = trainTables[0].trains[0].trainNumber;
+    const imabetsu = [10, 16, 24, 32, 44];
+    const kikonai = [36];
+    const towada = [10, 12, 16, 28, 44];
+    const ninohe = [10, 12, 16, 28, 44];
+    const N_hachinohe = [36];
+    const numakunai = [12, 16, 28];
+    DetailReplace_Set_One(0, imabetsu, '新青森', '木古内・奥津軽いまべつ・新青森');
+    DetailReplace_Set_One(0, kikonai, '新青森', '木古内・新青森');
+    DetailReplace_Set_One(0, towada, '新青森', '新青森・七戸十和田');
+    DetailReplace_Set_One(0, ninohe, '八戸', '八戸・二戸');
+    DetailReplace_Set_One(0, N_hachinohe, '八戸・盛岡', '盛岡');
+    DetailReplace_Set_One(0, numakunai, '盛岡', 'いわて沼宮内・盛岡');
+
 }

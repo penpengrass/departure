@@ -137,6 +137,7 @@ export const JRHokkaidouStations: StationRegistry = {
                 for (var tr = 0; tr < orderNum; tr++) {
                     TypeColorChange(td, tr, '特急', 'red');
                     TypeColorChange(td, tr, '快速', 'orange');
+                    TypeColorChange(td, tr, '区間快速', '#0f0');
                     if (Type[td][tr] == '普通*') {
                         if (tr == 0) {
                             trainTables[td].trains[tr].cars = '６';
@@ -263,7 +264,7 @@ export const JRHokkaidouStations: StationRegistry = {
         nonGouFlag: 0,
         tableTitles: ['新青森 東京方面', '函館 札幌方面'],
         setup: () => {
-            var hayabusa = [10, 14, 18, 22, 28, 32, 34, 40, 44, 48, 96];
+            var hayabusa = [10, 12, 16, 18, 24, 28, 32, 36, 40, 44, 96];
             limitednumber2(TT[0], hayabusa, 'はやぶさ');
             limitednumber(TT[1], 2, '特急北斗');
             limitednumber(TT[2], 1, '特急北斗');
@@ -292,9 +293,11 @@ export const JRHokkaidouStations: StationRegistry = {
             document.getElementById('TDetail11')!.textContent = Detail[0][0];
             if (Des[0][0] != "") {
                 document.getElementById('TDetail11')!.textContent += "・" + Des[0][0];
+            } else {
+                document.getElementById('TDetail1')!.textContent = '';
             }
             comment!.textContent = '番線と停車駅は不正確';
-            DestinationSet();
-        }
+        DestinationSet();
     }
+}
 }
