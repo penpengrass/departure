@@ -17,6 +17,7 @@ import { JRTokaiStations } from "./stationset7";
 import { JRHokkaidouStations } from "./stationset8";
 import { JRShikokuStations } from "./stationset9";
 import { JRKyushuStations } from "./stationset10";
+import { TobuStations } from "./stationset11";
 // --- 新方式の適用チェック ---
 //const config = KintetsuStations[window.station];
 /*if (config) {
@@ -271,7 +272,8 @@ const registryMap: Record<string, StationRegistry> = {
     'index8.php': JRHokkaidouStations,
     'index9.php': JRShikokuStations,
     'index10.php': JRKyushuStations,
-    'index10_H.php': JRKyushuStations
+    'index10_H.php': JRKyushuStations,
+    'index11.php': TobuStations
 };
 
 // Indexfileに対応したregistryだけを登録
@@ -307,7 +309,7 @@ var Length_Debug = plainTrainTables.length;
 if (Length_Debug == 0) {
     console.error("plainTrainTablesが空です。")
 }
-console.log("MinIn="+MinIn);
+console.log("MinIn=" + MinIn);
 console.log("-------main完了-------");
 document.title = station + "発車標";
 //特急によって停車駅が異なるときの処理

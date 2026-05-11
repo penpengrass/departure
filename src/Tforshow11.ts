@@ -1,10 +1,11 @@
-import { allLastShow, JRLimitedNumber, allTwoLettersDistance } from "./module/firstDisplayEdit";
+import { allLastShow, JRLimitedNumber, allTwoLettersDistance, TrainTypeSet } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { DetailReplace } from "./module/detailSimpleEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { PlusType, PlusDes } from "./main";
 import { whetherStop } from "./module/detailSimpleEdit";
-var Tobuobj;
+import { Tobuobj } from "./detailStopData/TobuSet";
+import { trainTables } from "./types/trainTable";
 allLastShow();
 for (var td = 0; td < 2; td++) {
     for (var tr = 0; tr < 4; tr++) {
@@ -18,7 +19,6 @@ for (var td = 0; td < 2; td++) {
             var number = JRLimitedNumber(td, tr, 'TName');
             dNumber!.textContent = number + '号';
             dName!.textContent = dName!.textContent.replace(number + '号', '');
-            console.log(dName);
             if (dName!.textContent.includes('リバティ')) {
                 var Right = dName!.textContent.replace('リバティ', '');
                 dName!.innerHTML = 'リバティ<br>' + '<span class="gou">' + Right + '</span>';
@@ -41,11 +41,16 @@ for (var td = 0; td < 2; td++) {
         }
     }
 }
+TrainTypeSet(2);
+console.log(trainTables)
 for (var tr = 0; tr < orderNum; tr++) {
     TypeColorChange(2, tr, '区間急行', 'orange');
     document.getElementById('TType1' + (tr + 1))!.style.color = 'red';
     document.getElementById('TName1' + (tr + 1))!.style.color = 'red';
     document.getElementById('TNumber1' + (tr + 1))!.style.color = 'red';
+    document.getElementById('TType2' + (tr + 1))!.style.color = 'red';
+    document.getElementById('TName2' + (tr + 1))!.style.color = 'red';
+    document.getElementById('TNumber2' + (tr + 1))!.style.color = 'red';
 }
 if (station == '浅草駅') {
     var dDetail1 = document.getElementById('TDetail11');
@@ -56,11 +61,11 @@ if (station == '浅草駅') {
     LastLetterRemove(1, 0, '・');
     stationN = '北千住';
     FDetail(Type[2][0], Tobuobj, Dtype[0], 2, 0, "・");
-    if (dDetail1!.textContent != '') {
-        dDetail1!.textContent = '停車駅は ' + dDetail1!.textContent + 'です';
+    if (Detail[0][0] != '') {
+        dDetail1!.textContent = '停車駅は ' + Detail[0][0] + 'です';
     }
-    if (dDetail2!.textContent != '') {
-        dDetail2!.textContent = '停車駅は ' + dDetail2!.textContent + 'です';
+    if (Detail[1][0] != '') {
+        dDetail2!.textContent = '停車駅は ' + Detail[1][0] + 'です';
     }
     if (whetherStop(17, 40, TableHour[0][0], TableMin[0][0], 23, 30)) {
         DetailReplace(0, 0, '北千住', '曳舟・北千住');
@@ -71,15 +76,15 @@ if (station == '浅草駅') {
     var dDetail = document.getElementById('TDetail31');
     if (Type[2][0].includes('区間')) {
         LastLetterRemove(2, 0, '・');
-        dDetail!.textContent = '停車駅は 北千住までの各駅・' + dDetail!.textContent;
+        dDetail!.textContent = '停車駅は 北千住までの各駅・' + Detail[2][0];
     }
-    console.log(PlusType);
-    console.log(PlusDes);
+    //console.log(PlusType);
+    //console.log(PlusDes);
     var Setsuzoku_flag = 0;
     for (var td = 1; td < 3; td++) {
         if (PlusType[td] == Type[2][0] && PlusDes[td] == Des[2][0]) {
-            console.log(PlusType[td - 1]);
-            console.log(PlusDes[td - 1]);
+            //console.log(PlusType[td - 1]);
+            //console.log(PlusDes[td - 1]);
             if (PlusType[td - 1] == '急行' || PlusType[td - 1] == '準急') {
                 dDetail!.textContent += '　曳舟で' + PlusType[td - 1] + ' ' + PlusDes[td - 1] + '行きに連絡します。';
                 Setsuzoku_flag = 1;
