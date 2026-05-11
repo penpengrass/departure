@@ -17,17 +17,20 @@
   $files[2] = 'csv/JRE/Musashi_Shinjuku.csv';
   $files[3] = 'csv/JRE/Musashi_Zushi.csv';
   $files[1] = 'csv/JRE/Musashi_shonan.csv';
-  $files[4]='csv/JRE/Musashi_Ebina.csv';
+  $files[4] = 'csv/JRE/Musashi_Ebina.csv';
   require('PHP/files3.php');
   require('PHP/select3.php');
   require('PHP/table3.php');
   require_once('getCSV.php');
+  if ($station == '高崎駅') {
+    print('<link rel="stylesheet" href="css/styleTakasaki.css">');
+  }
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/module/connectTable.js"></script>
-  <script type="text/javascript" src="js/stationset3.js"></script>
-  <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
+  <script type="module" src="dist/module/firstTableEdit.js"></script>
+  <script type="module" src="dist/module/connectTable.js"></script>
+  <script type="module" src="dist/stationset3.js"></script>
+  <script type="module" src="dist/detailStopData/JRdetail.js"></script>
 
 </head>
 
@@ -40,6 +43,9 @@
   <?php
   JRATOSStaSele('駅変更');
   JRATOS_SStaSele('駅変更');
+  if ($station == '黒磯駅' || $station == '宇都宮駅') {
+    JRTohoku('駅変更');
+  }
   ?>
   <form action="select.php" method="POST">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
@@ -57,7 +63,7 @@
   <tableline>
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
-      JRATOSTable($i,$tablenums);
+      JRATOSTable($i, $tablenums);
     }
     ?>
   </tableline>
@@ -76,19 +82,20 @@
   }
   ?>
 </body>
-  <!--ここから内部のこと-->
-  <script type="text/javascript" src="js/Time.js"></script>
-  <script type="text/javascript" src="js/Timer.js"></script>
-  <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
-  <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-  <script type="text/javascript" src="js/module/carsEdit.js"></script>
-  <script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
-  <script type="text/javascript" src="js/module/detailBannerSwitch.js"></script>
-  <script type="text/javascript" src="js/module/displayEdit6.js"></script>
-  <script type="text/javascript" src="js/typeColor.js"></script>
-  <script type="text/javascript" src="js/Tforshow3.js"></script>
-  <script type="text/javascript" src="js/LastShow.js"></script>
+<!--ここから内部のこと-->
+<script type="module" src="dist/Time.js"></script>
+<script type="module" src="dist/Timer.js"></script>
+<script type="module" src="dist/module/timeInfoSet.js"></script>
+<script type="module" src="dist/main.js"></script>
+<script type="module" src="dist/variable2.js"></script>
+<script type="module" src="dist/module/displaySwitch.js"></script>
+<script type="module" src="dist/module/firstDisplayEdit.js"></script>
+<script type="module" src="dist/module/carsEdit.js"></script>
+<script type="module" src="dist/module/colorSimpleSet.js"></script>
+<script type="module" src="dist/module/detailBannerSwitch.js"></script>
+<script type="module" src="dist/module/displayEdit6.js"></script>
+<script type="module" src="dist/typeColor.js"></script>
+<script type="module" src="dist/Tforshow3.js"></script>
+<script type="module" src="dist/LastShow.js"></script>
+
 </html>

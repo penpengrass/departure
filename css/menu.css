@@ -24,6 +24,12 @@ button{
     font-size:20px;
     margin:10px;
 }
+li{
+    font-size:20px;
+}
+div{
+    font-size:20px;
+}
 @media(max-width:1199px) {
     td{
         border:2px black solid;
@@ -31,7 +37,8 @@ button{
         font-size:25px;
     }
     button{
-        margin:15px;
+        height:60px;
+        font-size:25px;
         border-radius: 10px;
     }
 }

@@ -15,15 +15,15 @@
   require_once('PHP/variable.php');
   $tablenum = 2;
   $OrderNum = 4;
+  $detaillength = 0;
   require_once('PHP/files3_S.php');
   require('PHP/select3.php');
   require_once('getCSV.php');
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/module/connectTable.js"></script>
-  <script type="text/javascript" src="js/stationset6_S.js"></script>
-  <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
+  <script type="module" src="dist/module/firstTableEdit.js"></script>
+  <script type="module" src="dist/module/connectTable.js"></script>
+  <script type="module" src="dist/stationset6_S.js"></script>
 </head>
 
 <body>
@@ -39,12 +39,12 @@
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <button type="button" onclick="location.href='./menu.php'">メニューへ移動</button>
     <button type="button" onclick="location.href='./index3.php?station=omoya'">大宮駅へ移動</button>
+    <button type="button" onclick="location.href='./index3.php?station=takasaki'">在来線高崎駅へ移動</button>
     <button type="button" onclick="location.href='./index3_T.php'">在来線仙台駅へ移動</button>
     <button type="button" onclick="location.href='./index3_S.php'">新幹線長野駅へ移動</button>
     <button type="button" onclick="location.href='./index5.php'">東急へ移動</button>
     <button type="button" onclick="location.href='./index6_U.php'">在来線東京駅へ移動</button>
     <button type="button" onclick="location.href='./index7.php'">JR東海へ移動</button>
-    <button type="button" onclick="location.href='./index7_S1.php'">東海道新幹線へ移動</button>
     <button type="button" onclick="location.href='./index8.php'">JR北海道へ移動</button>
   </form>
   <!--表をすべて入れる-->
@@ -52,7 +52,7 @@
     <?php
     for ($i = 1; $i <= $tablenum; $i++) {
       print('
- <table>
+ <table id="TESTable' . $i . '">
 <caption class="Ctitle"><showing><p2 id="Tstation' . $i . '"></p2><p2 id="kn' . $i . '"></p2></showing></caption>
     <tr>
     ');
@@ -76,6 +76,14 @@
       <td class="topic" id="Ttopic' . $i . $j . '"></td>
     </tr>
     ');
+        if ($detaillength >= $j) {
+          print('
+    <tr>
+      <td class="CDetailtitle"><p2 class="news-banner__content" id="TDetailtitle' . $i . $j . '"></p2></td>
+      <td class="CDetail" id="TDetail' . $i . $j . '" colspan="5"></td>
+      </tr>
+      ');
+        }
       }
       print('
 </table>
@@ -90,17 +98,20 @@
   <p id="supplement">臨時列車の有無や号数，番線は不正確 </p>
 </body>
 <!--ここから内部のこと-->
-<script type="text/javascript" src="js/Time.js"></script>
-<script type="text/javascript" src="js/Timer.js"></script>
-<script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-<script type="text/javascript" src="js/main.js"></script>
-<script type="text/javascript" src="js/variable2.js"></script>
-<script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-<script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-<script type="text/javascript" src="js/module/displayEdit6.js"></script>
-<script type="text/javascript" src="js/module/colorSimpleSet.js"></script>
-<script type="text/javascript" src="js/Tforshow6_S.js"></script>
-<script type="text/javascript" src="js/LastShow.js"></script>
+<script type="module" src="dist/Time.js"></script>
+<script type="module" src="dist/Timer.js"></script>
+<script type="module" src="dist/module/timeInfoSet.js"></script>
+<script type="module" src="dist/main.js"></script>
+<script type="module" src="dist/variable2.js"></script>
+<script type="module" src="dist/module/firstDisplayEdit.js"></script>
+<script type="module" src="dist/detailStopData/JRHokuJoetsuset.js"></script>
+<script type="module" src="dist/module/firstDetailEdit.js"></script>
+<script type="module" src="dist/module/displayEdit6.js"></script>
+<script type="module" src="dist/module/colorSimpleSet.js"></script>
+<script type="module" src="dist/module/detailSimpleEdit.js"></script>
+<script type="module" src="dist/module/detailMainPut.js"></script>
+<script type="module" src="dist/Tforshow6_S.js"></script>
+<script type="module" src="dist/LastShow.js"></script>
 </body>
 
 </html>

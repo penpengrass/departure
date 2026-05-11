@@ -13,7 +13,7 @@ if ($files[0] == 'csv/JRH/sapporo1.csv') {
   $files[2] = 'csv/JRS/takamatsu1.csv';
   $files[3] = 'csv/JRS/takamatsu2.csv';
   $tablenum = 4;
-  $OrderNum = 2;
+  $OrderNum = 3;
 }
 //ここからgetCSVとしたい
 //表示数が全部同じ場合
@@ -79,7 +79,7 @@ $js_array .= ']';
   let holidayflag = <?php echo $holidayflag; ?>;
   let holiday_able = <?php echo $holiday_able; ?>;
   let holiday_correspond = 0;
-  var TT = <?php echo $js_array; ?>;
+  window.TT = <?php echo $js_array; ?>;
   if (filetablegap > 0) {
     //TT[4] = TT[0];
     //TT[5] = TT[1];
@@ -92,7 +92,7 @@ $js_array .= ']';
   let Tablenum = <?php echo $tablenum; ?>;
   let orderNum = <?php echo $OrderNum; ?>;
   let Tablenums = new Array(<?php echo $tablenum; ?>);
-  var JRShinkansenflag = <?php echo $JRShinkansenflag; ?>;
+  window.JRShinkansenflag = <?php echo $JRShinkansenflag; ?>;
   <?php
   $json_tablenum = json_encode($tablenums);
   ?>;
@@ -104,8 +104,8 @@ $js_array .= ']';
   console.log(title2);
   let CompanyNumber = '<?php echo $CompanyNumber; ?>';
   //詳細表示がいくつあるか(0~2)PHPも使う
-  var detailflag = '<?php echo $detailflag; ?>';
-  let station = '<?php echo $station; ?>';
+  window.detailflag = '<?php echo $detailflag; ?>';
+  window.station = '<?php echo $station; ?>';
   let dayOfWeek = '<?php echo $dayOfWeek; ?>';
   if (station == '') {
     station = title[1];
@@ -121,21 +121,21 @@ $js_array .= ']';
   let dir2 = title2[2].substr(0, 2);
   let MinIn = 2;
   let company = '';
-  var NonGouflag = 0;
-  var TwoLetterDisflag = 0;
-  var detailLength_one = 0;
-  var DetailLength = new Array(Tablenum);
+  window.NonGouflag = 0;
+  window.TwoLetterDisflag = 0;
+  window.detailLength_one = 0;
+  window.DetailLength = new Array(Tablenum);
   console.log(title[2].substr(0, 2));
   console.log(TT[1].length);
-  let LastShowFlag = 0;
-  let red = 'red';
-  let orange = 'orange';
-  let yellowgreen = 'yellowgreen';
-  let greenyellow = 'greenyellow';
-  let green = 'green';
-  let blue = 'blue';
-  let black = 'black';
-  let purple = 'purple';
-  let pink = 'pink';
-  let white = 'white';
+  window.LastShowFlag = 0;
+  window.red = 'red';
+  window.orange = 'orange';
+  window.yellowgreen = 'yellowgreen';
+  window.greenyellow = 'greenyellow';
+  window.green = 'green';
+  window.blue = 'blue';
+  window.black = 'black';
+  window.purple = 'purple';
+  window.pink = 'pink';
+  window.white = 'white';
 </script>

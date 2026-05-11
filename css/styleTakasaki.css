@@ -1,0 +1,32 @@
+.shubetu {
+    font-size: 1.5vw;
+}
+
+.CATOSTable {
+    .Destination {
+        font-size: 1.5vw;
+        color: #0f0;
+    }
+}
+
+#TType13 {
+    font-family: monospace;
+    font-size: 1.5vw;
+}
+
+@media(max-width:1199px) {
+    .shubetu {
+        font-size: 25px;
+    }
+
+    .CATOSTable {
+        .Destination {
+            font-size: 25px;
+        }
+    }
+
+    #TType13 {
+        font-family: monospace;
+        font-size: 20px;
+    }
+}

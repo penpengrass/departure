@@ -22,8 +22,8 @@
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/banner.css">
   <link rel="stylesheet" href="css/styleJRW.css">
-<!--タブのアイコンを変えたいが、公式HPと混同しそうなので保留-->
-<!--<link rel="icon" href="PNG/JR西日本マーク.png" id="favicon">-->
+  <!--タブのアイコンを変えたいが、公式HPと混同しそうなので保留-->
+  <!--<link rel="icon" href="PNG/JR西日本マーク.png" id="favicon">-->
   <?php
   if ($station == '岡山駅') {
     print('
@@ -32,11 +32,11 @@
   }
   ?>
   <meta name="viewport" content="width=device-width, initial-scale=0.55, maximum-scale=1.0, user-scalable=no">
-  <script type="text/javascript" src="js/module/firstTableEdit.js"></script>
-  <script type="text/javascript" src="js/detailStopData/JRdetail.js"></script>
-  <script type="text/javascript" src="js/detailStopData/JRW_S.js"></script>
-  <script type="text/javascript" src="js/module/connectTable.js"></script>
-  <script type="text/javascript" src="js/stationset4.js"></script>
+  <script type="module" src="dist/module/firstTableEdit.js"></script>
+  <script type="module" src="dist/detailStopData/JRdetail.js"></script>
+  <script type="module" src="dist/detailStopData/JRW_S.js"></script>
+  <script type="module" src="dist/module/connectTable.js"></script>
+  <script type="module" src="dist/stationset4.js"></script>
 </head>
 
 <body>
@@ -46,9 +46,9 @@
   </div>
   <!--駅選択部分-->
   <?php JRWStaSele('駅変更');
-        JRWSStaSele('新幹線駅変更');
+  JRWSStaSele('新幹線駅変更');
   ?>
-  
+
   <form action="select.php" method="POST" id="selectstation">
     <button type="button" class="koshin" value="更新" onclick="koshin()">更新</button>
     <?php
@@ -140,26 +140,28 @@
   <li>新見駅の表示は実際と異なる</li>
   <li>三原駅, 広島駅, 岩国駅, 徳山駅, 下関駅では本来種別の横に両数がある</li>
   <!--ここから内部のこと-->
-  <script type="text/javascript" src="js/Time.js"></script>
-  <script type="text/javascript" src="js/Timer.js"></script>
-  <script type="text/javascript" src="js/module/timeInfoSet.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
-  <script type="text/javascript" src="js/variable2.js"></script>
-  <script type="text/javascript" src="js/module/displaySwitch.js"></script>
-  <script type="text/javascript" src="js/module/firstDisplayEdit.js"></script>
-  <script type="text/javascript" src="js/module/detailSimpleEdit.js"></script>
-  <script type="text/javascript" src="js/module/carsEdit.js"></script>
-  <script type="text/javascript" src="js/module/firstDetailEdit.js"></script>
-  <script type="text/javascript" src="js/module/detailBannerSwitch.js"></script>
-    <script type="text/javascript" src="js/detailStopData/JRNadetailset.js"></script>
-  <script type="text/javascript" src="js/detailStopData/JRW_afterset.js"></script>
-    <script type="text/javascript" src="js/detailStopData/JRSanindetailset.js"></script>
-  <script type="text/javascript" src="js/typeColor.js"></script>
-  <script type="text/javascript" src="js/module/detailMainPut.js"></script>
-  <script type="text/javascript" src="js/module/displayEdit4.js"></script>
-  <script type="text/javascript" src="js/Tforshow4.js"></script>
-  <script type="text/javascript" src="js/Tforshow4_S.js"></script>
-  <script type="text/javascript" src="js/LastShow.js"></script>
+  <script type="module" src="dist/Time.js"></script>
+  <script type="module" src="dist/Timer.js"></script>
+  <script type="module" src="dist/module/timeInfoSet.js"></script>
+  <script type="module" src="dist/main.js"></script>
+  <script type="module" src="dist/variable2.js"></script>
+  <script type="module" src="dist/module/displaySwitch.js"></script>
+  <script type="module" src="dist/module/firstDisplayEdit.js"></script>
+   <script type="module" src="dist/module/firstDetailEdit.js"></script>
+  <script type="module" src="dist/module/detailSimpleEdit.js"></script>
+  <script type="module" src="dist/module/carsEdit.js"></script>
+  <script type="module" src="dist/module/carsEdit.js"></script>
+  <script type="module" src="dist/module/detailBannerSwitch.js"></script>
+  <script type="module" src="dist/module/colorSimpleSet.js"></script>
+  <script type="module" src="dist/detailStopData/JRNadetailset.js"></script>
+  <script type="module" src="dist/detailStopData/JRSanindetailset.js"></script>
+  <script type="module" src="dist/detailStopData/JRW_afterset.js"></script>
+  <script type="module" src="dist/typeColor.js"></script>
+  <script type="module" src="dist/module/detailMainPut.js"></script>
+  <script type="module" src="dist/module/displayEdit4.js"></script>
+  <script type="module" src="dist/Tforshow4.js"></script>
+  <script type="module" src="dist/Tforshow4_S.js"></script>
+  <script type="module" src="dist/LastShow.js"></script>
 </body>
 
 </html>

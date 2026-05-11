@@ -1,0 +1,62 @@
+//mainの後に定義するもの
+//種別の表示位置を取得(mainの後)
+//Tablenums[td]はオーダーの数，Tablenumは表の数
+let IType = new Array(Tablenum);
+let Tshubetu = new Array(Tablenum);
+//let Type = new Array(Tablenum);
+//let Des = new Array(Tablenum);
+window.TDes = new Array(Tablenum);
+window.TType = new Array(Tablenum);
+window.TName = new Array(Tablenum);
+let BType = new Array(Tablenum);
+window.Detail = new Array(Tablenum);
+//let TableHour = new Array(Tablenum);
+//let TableMin = new Array(Tablenum);
+let Connecting = new Array(Tablenum);
+window.Jiyuseki = new Array(Tablenum);
+const table = new Array(Tablenum);
+var ShinNumber = new Array(Tablenum);
+for (let tr = 0; tr < Tablenum; tr++) {
+    IType[tr] = new Array(Tablenums[tr]);
+    Tshubetu[tr] = new Array(Tablenums[tr]);
+    //Type[tr] = new Array(Tablenums[tr]);
+    //Des[tr] = new Array(Tablenums[tr]);
+    ShinNumber[tr] = new Array(Tablenums[tr]);
+    table[tr] = document.getElementById("TTable" + (tr + 1));
+    if (company == '近鉄' || detailflag == 2) {
+        Detail[tr] = new Array(Tablenums[tr]);
+    } else if (detailLength_one = 1 || detailLength_one == 2) {
+        Detail[tr] = new Array(2);
+    }
+    TName[tr] = new Array(Tablenums[tr]);
+    Connecting[tr] = new Array(Tablenums[tr]);
+    TDes[tr] = new Array(Tablenums[tr]);
+    TType[tr] = new Array(Tablenums[tr]);
+    //TableHour[tr] = new Array(Tablenums[tr]);
+    //TableMin[tr] = new Array(Tablenums[tr]);
+   
+    BType[tr] = new Array(Tablenums[tr]);
+    Jiyuseki[tr] = new Array(Tablenums[tr]);
+}
+//console.log(ShinNumber);
+//外側は表の数，内側はオーダーの数で種別，行先，種別の場所(色分けのため)，詳細表示の場所を取得
+for (var td = 0; td < Tablenum; td++) {
+    for (var tr = 0; tr < Tablenums[td]; tr++) {
+        //Type[td][tr] = document.getElementById('TType' + (td + 1) + '' + (tr + 1)).textContent;
+        //Des[td][tr] = document.getElementById('TDes' + (td + 1) + '' + (tr + 1)).textContent;
+        //TableHour[td][tr] = document.getElementById('THour' + (td + 1) + '' + (tr + 1)).textContent;
+        //TableMin[td][tr] = document.getElementById('TMin' + (td + 1) + '' + (tr + 1)).textContent;
+        if (company == '近鉄' || Indexfile == 'index3_S.php') {
+            //Detail[tr]=new Array(Tablenums[td]);
+            DetailLength[td] = Tablenums[td];
+        } else if (Indexfile == 'index9.php') {
+            DetailLength[td] = 1;
+        }
+        IType[td][tr] = 'IType' + (td + 1) + '' + (tr + 1);
+        Tshubetu[td][tr] = 'shubetu' + (td + 1) + '' + (tr + 1);
+        TType[td][tr] = 'TType' + (td + 1) + '' + (tr + 1);
+        TName[td][tr] = 'TName' + (td + 1) + '' + (tr + 1);
+        TDes[td][tr] = 'TDes' + (td + 1) + '' + (tr + 1);
+        BType[td][tr] = 'BType' + (td + 1) + '' + (tr + 1);
+    }
+}

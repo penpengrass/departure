@@ -21,7 +21,7 @@ table{        /*表全体*/
     table-layout:fixed;
     background-color: black;
     border: 15px #000070 solid;/*周りの色*/
-    width: 600px; 
+    width: 650px; 
     height:150px;
     white-space:nowrap;
     text-align:center;
@@ -53,6 +53,9 @@ p3{
 }
 .name{
     text-align: right;
+}
+.CDetailTitle{
+    color:orange;
 }
 .CDetail{
     overflow: hidden;

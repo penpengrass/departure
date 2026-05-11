@@ -25,7 +25,7 @@ function JRCZTable($i, $tablenums, $column)
   }
   print('
       <tr id="Detail_Banner' . $i . '">
-      <td class="CDetail" colspan="5"><p3 id="TDetail' . $i . '" class="news-banner__content"></p3></td>
+      <td class="CDetail" colspan="5"><p3 id="TDetail' . $i . 1 . '" class="news-banner__content"></p3></td>
       </tr>
       ');
 
