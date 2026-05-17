@@ -64,9 +64,11 @@ export function SpecialStop(td: number, last: any, Before_station: string, AddSt
     //console.log(Type[td][tr]);
     var _PlainType
     if (trainTables[td].trains[tr].type) {
-      _PlainType = trainTables[td].trains[tr].type;
-    } else {
-      _PlainType = plainTrainTables[td].trains[tr].type;
+      _PlainType = trainTables[td].trains[tr].type ?? "";
+    } else if(plainTrainTables[td].trains[tr]) {
+      _PlainType = plainTrainTables[td].trains[tr].type ?? "";
+    }else {
+      _PlainType = "";
     }
 
     // = trainTables[td].trains[tr]?.type ?? plainTrainTables[td].trains[tr]?.type ?? "";
