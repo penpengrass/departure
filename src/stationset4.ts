@@ -184,7 +184,7 @@ export const JRWestStations: StationRegistry = {
             JRLimitedDevide(Shinkansenflag + 1);
             JRLimitedDevide(Shinkansenflag + 3);
             for (var tr = 0; tr < Type[0].length; tr++) {
-                var _PlainType = plainTrainTables[Shinkansenflag + 1].trains[tr].type;
+                var _PlainType = plainTrainTables[Shinkansenflag + 1].trains[tr] ? plainTrainTables[Shinkansenflag + 1].trains[tr].type : "";
                 if (_PlainType == "快速") {
                     trainTables[Shinkansenflag + 1].trains[tr].type = "普通";
                     document.getElementById("TName" + (Shinkansenflag + 2) + "" + (tr + 1))!.innerHTML = '<span class="PartRapid">西明石から快速</span>';
