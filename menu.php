@@ -36,8 +36,8 @@
             <tr>
                 <td>近鉄LCD</td>
                 <td><button type="button" onclick="location.href='./index2.php'">移動</button></td>
-                <td><span style="color:black;">鶴橋駅</span></td>
-                <td><span style="color:red;">奈良駅</span>, <span style="color:red;">京都駅</span>, <span style="color:red;">名古屋駅</span>, <span style="color:red;">伊勢中川駅</span></td>
+                <td><span style="color:blue;">鶴橋駅</span></td>
+                <td><span class="orange">奈良駅</span>, <span class="orange">京都駅</span>, <span class="orange">名古屋駅</span>, <span class="orange">伊勢中川駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本ATOS</td>

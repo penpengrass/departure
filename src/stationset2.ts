@@ -1,13 +1,62 @@
 import { RailNumberDevide, DestinationDevide } from './module/firstTableEdit';
 import { StationRegistry, StationConfig } from './types/station';
 import { whetherStop, DetailReplace } from './module/detailSimpleEdit';
-import { LineMarkAdd } from './module/firstDisplayEdit';
-import { DetailShow } from './module/detailMainPut';
+import { LineMarkAdd, DestinationSet } from './module/firstDisplayEdit';
 import { Kinobj } from './detailStopData/Kindetailset';
+import { plainTrainTables, trainTables } from './types/trainTable';
+import { DetailDecide, LastLetterRemove } from "./module/detailMainPut";
+import { comment } from './types/constants';
 //近鉄は詳細表示の数=order数
 if (Indexfile == 'index2.php') {
     for (var td = 0; td < Tablenum; td++) {
         DetailLength[td] = orderNum;
+    }
+}
+//3つまとめて種別に案内を対応させる　変える余地ありそう(種別ごとに関数を作るとか)
+let AType = "";
+var DetailLine = '';
+function Kintetsu_One_Detail(Utype: any, Uobj: any, n: any, td: number, tr: number, distance: string) {
+    //console.log(Utype + ':' + td + ':' + tr);
+    if (Utype == '') {
+        DetailLine = '';
+    } else if (Utype.includes(Uobj.Typea.type)) {
+        DetailLine = DetailDecide(Uobj.Typea.detail, td, Des[td][tr], AType, distance);//特急
+    } else if (Utype.startsWith(Uobj.Typeb.type)) {
+        DetailLine = DetailDecide(Uobj.Typeb.detail, td, Des[td][tr], AType, distance);;//快急
+    } else if (Utype.startsWith(Uobj.Typec.type)) {
+        DetailLine = DetailDecide(Uobj.Typec.detail, td, Des[td][tr], AType, distance);
+    } else if (Utype.startsWith(Uobj.Typed.type)) {
+        DetailLine = DetailDecide(Uobj.Typed.detail, td, Des[td][tr], AType, distance);
+    } else if (Utype.startsWith(Uobj.Typee.type)) {
+        DetailLine = DetailDecide(Uobj.Typee.detail, td, Des[td][tr], AType, distance);
+    } else if (Utype.startsWith(Uobj.Typef.type)) {
+        DetailLine = DetailDecide(Uobj.Typef.detail, td, Des[td][tr], AType, distance);
+    } else if (Utype.startsWith(Uobj.Typeg.type)) {
+        DetailLine = Uobj.Typeg.detail[n];
+    } else if (Utype.startsWith(Uobj.Typeh.type)) {
+        DetailLine = Uobj.Typeh.detail[n];
+    } else if (Utype.startsWith(Uobj.Typelocal.type)) {
+        DetailLine = "各駅にとまります";
+    } else {
+        console.error("該当する種別がありません。");
+        DetailLine = "";
+    }
+    Detail[td][tr] = DetailLine;
+    trainTables[td].trains[tr].detail = DetailLine;
+    LastLetterRemove(td, tr, '・')
+}
+function AllKintetsuDetailShow(companyObject: any, distance: string, LLength = Tablenum) {
+    console.log("---ここから1個目の表の詳細表示----");
+    for (var td = 0; td < LLength; td++) {
+        for (var tr = 0; tr < DetailLength[td]; tr++) {
+            //console.log("Dtype[" + td + "]=" + Dtype[td]);
+            var _Type = trainTables[td].trains[tr].type
+            Kintetsu_One_Detail(_Type, companyObject, Dtype[td], td, tr, distance);
+            console.log("-------" + (td + 1) + "個目の表の" + (tr + 1) + "番目の詳細表示完了-------");
+        }
+        console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");
+        //td_detail++;
+        //stationN = stationN2;
     }
 }
 window.Dtype = new Array(2);
@@ -23,7 +72,7 @@ export const KintetsuStations: StationRegistry = {
             window.stationN2 = window.stationN;
         },
         onRender: () => {
-            DetailShow(Kinobj, " ");
+            AllKintetsuDetailShow(Kinobj, " ");
             if (holidayflag == 1) {
                 document.getElementById('supplement')!.innerHTML += '<p>名古屋駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
             } else if (holidayflag == 0) {
@@ -36,6 +85,22 @@ export const KintetsuStations: StationRegistry = {
                 var tr_min = TableMin[1][tr];
                 if (LDes != '大阪難波' && whetherStop(17, 40, tr_hour, tr_min, 23, 30)) {
                     DetailReplace(1, tr, '伊勢中川', '久居 伊勢中川');
+                }
+                if (LType == '特急U' && whetherStop(7, 15, tr_hour, tr_min, 16, 45)) {
+                } else {
+                    DetailReplace(1, tr, '名張', '伊賀神戸 名張');
+                }
+                if (holidayflag == 0) {
+                    if (LType == '特急H' && (whetherStop(10, 40, tr_hour, tr_min, 16, 4) || tr_min == '17')) {
+                        DetailReplace(1, tr, '大和八木 ', '');
+                        if (tr_min == '17') {
+                            DetailReplace(1, tr, '津', '桑名 四日市 白子 津');
+                        }
+                    }
+                } else {
+                    if (LType == '特急H' && whetherStop(9, 40, tr_hour, tr_min, 16, 4)) {
+                        DetailReplace(1, tr, '大和八木 ', '');
+                    }
                 }
                 var LConnection = document.getElementById('TConnection1' + (tr + 1));
                 if (LConnection && Type[0][tr].includes('*') && LConnection.textContent == '') {
@@ -51,12 +116,17 @@ export const KintetsuStations: StationRegistry = {
         tableTitles: ['奈良線 生駒 奈良方面', '大阪線 高安 名古屋 伊勢志摩方面'],
         dtype: [1, 0],
         onRender: () => {
-            DetailShow(Kinobj, " ");
+            DestinationSet();
+            AllKintetsuDetailShow(Kinobj, " ");
             for (var tr = 0; tr < orderNum; tr++) {
-                if (Type[1][tr] == '準急' && Des[1][tr] == '高安') {
-                    Detail[1][tr] = '布施 八尾 河内山本';
+                const _Type = trainTables[1].trains[tr].type;
+                const _Destination = trainTables[1].trains[tr].destination;
+                console.log(_Type, _Destination)
+                if (_Type == '準急' && _Destination == '高安') {
+                    trainTables[1].trains[tr].detail = '布施 八尾 河内山本';
                 }
             }
+            console.log(trainTables)
         }
     },
     '京都駅': {
@@ -66,7 +136,7 @@ export const KintetsuStations: StationRegistry = {
         dtype: [5],
         holidayAbleflag: 1,
         onRender: () => {
-            DetailShow(Kinobj, " ");
+            AllKintetsuDetailShow(Kinobj, " ");
             if (holidayflag == 1) {
                 document.getElementById('supplement')!.innerHTML += '<p>京都駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
             } else if (holidayflag == 0) {
@@ -117,7 +187,7 @@ export const KintetsuStations: StationRegistry = {
             DestinationDevide(KyotoDes, 0, 1);
         },
         onRender: () => {
-            DetailShow(Kinobj, " ");
+            AllKintetsuDetailShow(Kinobj, " ");
             if (holidayflag == 1) {
                 document.getElementById('supplement')!.innerHTML += '<p>奈良駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
             } else if (holidayflag == 0) {
@@ -135,6 +205,7 @@ export const KintetsuStations: StationRegistry = {
             }
             LineMarkAdd(1, "A", 'red');
             LineMarkAdd(2, "B", 'orange');
+            comment!.innerHTML += '番線と';
         }
     },
     '伊勢中川駅': {

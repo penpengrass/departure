@@ -47,6 +47,7 @@ function LowerDetail(td: number, tr: number) {
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < orderNum; tr++) {
         AllTrainTypeReplace(td, tr, '快速急行', '快急');
+        AllTrainTypeReplace(td, tr, '区間急行', '区急');
         AllTrainTypeReplace(td, tr, '区間準急', '区準');
         DestinationWordChange(td, tr, '難波', '大阪難波');
         AllDestinationReplace(td, tr, '上本町', '大阪上本町');
@@ -54,8 +55,6 @@ for (var td = 0; td < Tablenum; td++) {
         KyotoRenraku(td, tr);
     }
 }
-if (station == '鶴橋駅') Dtype = [1, 0];
-else if (station == '名古屋駅') Dtype = [3, 3];
 for (var td = 0; td < Tablenum; td++) {
     TrainTypeSet(td);
 }

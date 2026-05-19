@@ -488,7 +488,6 @@ export function AllTrainTypeReplace(td: number, tr: number, keyword: string, Aft
     }
     const _word = String(_train);
     if (_word.includes(keyword)) {
-        console.log(_word)
         trainTables[td].trains[tr].type = _word.replace(keyword, AfterWord);
         console.log(trainTables[td].trains[tr].type)
     }
