@@ -59,6 +59,53 @@ function AllKintetsuDetailShow(companyObject: any, distance: string, LLength = T
         //stationN = stationN2;
     }
 }
+function Kyukokumei(td: number, tr: number, _initial: string) {
+    var Desword = new RegExp(_initial + "(\\D+)");
+    var matches = trainTables[td].trains[tr].destination.match(Desword);
+    //console.log(matches[tr]);
+    var d_Tag = document.getElementById('TDes' + (td + 1) + (tr + 1));
+    if (matches && d_Tag) {
+        console.log(td + ':' + tr + _initial + " " + ' はマッチする');
+        console.log(matches);
+        const left = _initial;
+        const right = matches[1];
+        /*console.log(matches[tr][0] + ":" + tr);
+        console.log(matches[tr][1] + ":" + tr);
+        console.log(matches[tr][2] + ":" + tr);*/
+        // DesRightのinlineスタイルを条件に応じて決定
+        let desRightStyle = '';
+        /*if (matches[2].length > 3) {
+            desRightStyle = ' style="display:inline-block;transform:scaleX(0.75) translate(-20%,0%)"';
+        } else if (station == '糸崎駅' && matches[2].length > 2) {
+            desRightStyle = ' style="display:inline-block;transform:scaleX(0.65) translate(-25%,0%)"';
+        }*/
+        // DesLeftのinlineスタイルを条件に応じて決定
+        let desLeftStyle = '';
+        if (left.length == 2) {
+            //desLeftStyle = ' style="display:inline-block;transform:scaleY(0.75) translate(0%,-20%)"';
+            desLeftStyle = ' style="display:inline-block;scale:0.85 0.75; translate:0% -10%"';
+        }
+        if (right.length == 2) {
+            desRightStyle = ' style="translate:-15% 0%;letter-spacing:1em; text-indent:0.7em"';
+            /* document.getElementById(Tab[td][tr])!.style.letterSpacing =
+              + "1em";
+         document.getElementById(Tab[td][tr])!.style.textIndent += Indent + "em";*/
+        } else if (right.length == 3) {
+
+        }
+        var Des_HTML = '<span class="DesLeft" id="DesLeft' + (td + 1) + (tr + 1) + '"' + desLeftStyle + '>' + left
+            + '</span>' + '<span class="DesRight" id="DesRight' + (td + 1) + (tr + 1) + '"' + desRightStyle + '>' + right + '</span>' + '</span>';
+        document.getElementById('TDes' + (td + 1) + (tr + 1))!.innerHTML = Des_HTML
+        trainTables[td].trains[tr].destination = Des_HTML;
+        //var DesLeft = document.getElementById('DesLeft' + (td + 1) + (tr + 1)) as HTMLElement | null;
+        //var DesRight = document.getElementById('DesRight' + (td + 1) + (tr + 1));
+        if (tr == 0) {
+            trainTables[td].trains[0].des_banner = matches[2];
+        }
+    } else {
+        //console.log(td + ':' + tr + word + 'はマッチしない');
+    }
+}
 window.Dtype = new Array(2);
 export const KintetsuStations: StationRegistry = {
     '名古屋駅': {
@@ -72,6 +119,7 @@ export const KintetsuStations: StationRegistry = {
             window.stationN2 = window.stationN;
         },
         onRender: () => {
+            DestinationSet();
             AllKintetsuDetailShow(Kinobj, " ");
             if (holidayflag == 1) {
                 document.getElementById('supplement')!.innerHTML += '<p>名古屋駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
@@ -107,6 +155,8 @@ export const KintetsuStations: StationRegistry = {
                     document.getElementById('TConnection1' + (tr + 1))!.innerHTML = '６両編成  前４両は３扉';
                     Type[0][tr] = Type[0][tr].replace('*', '');
                 }
+                Kyukokumei(1, tr, '大阪');
+                Kyukokumei(0, tr, '伊勢');
             }
         }
     },
@@ -125,6 +175,10 @@ export const KintetsuStations: StationRegistry = {
                 if (_Type == '準急' && _Destination == '高安') {
                     trainTables[1].trains[tr].detail = '布施 八尾 河内山本';
                 }
+                Kyukokumei(0, tr, '大和');
+                Kyukokumei(1, tr, '大和');
+                Kyukokumei(1, tr, '河内');
+                Kyukokumei(1, tr, '伊勢');
             }
             console.log(trainTables)
         }
@@ -136,6 +190,7 @@ export const KintetsuStations: StationRegistry = {
         dtype: [5],
         holidayAbleflag: 1,
         onRender: () => {
+            DestinationSet();
             AllKintetsuDetailShow(Kinobj, " ");
             if (holidayflag == 1) {
                 document.getElementById('supplement')!.innerHTML += '<p>京都駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
@@ -174,6 +229,8 @@ export const KintetsuStations: StationRegistry = {
                         element.innerHTML += ' 大和西大寺で奈良行きに連絡します';
                     }
                 }
+                Kyukokumei(0, tr, '大和');
+                Kyukokumei(0, tr, '大阪');
             }
         }
     },
@@ -187,6 +244,7 @@ export const KintetsuStations: StationRegistry = {
             DestinationDevide(KyotoDes, 0, 1);
         },
         onRender: () => {
+            DestinationSet();
             AllKintetsuDetailShow(Kinobj, " ");
             if (holidayflag == 1) {
                 document.getElementById('supplement')!.innerHTML += '<p>奈良駅のみ土休日ダイヤに対応(表示は土休日ダイヤ)</p>';
@@ -202,6 +260,7 @@ export const KintetsuStations: StationRegistry = {
                         DetailReplace(1, tr, '丹波橋', '高の原 丹波橋');
                     }
                 }
+                Kyukokumei(0, tr, '大阪');
             }
             LineMarkAdd(1, "A", 'red');
             LineMarkAdd(2, "B", 'orange');
@@ -223,6 +282,10 @@ export const KintetsuStations: StationRegistry = {
 
                 document.getElementById("TTable" + (td + 1))!.style.width = "40em";
                 document.getElementById("TTable" + (td + 1))!.style.marginLeft = "4em";
+            }
+            DestinationSet();
+            for (var tr = 0; tr < orderNum; tr++) {
+                Kyukokumei(0, tr, '大阪');
             }
         }
     }

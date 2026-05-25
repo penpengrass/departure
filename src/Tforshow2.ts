@@ -51,8 +51,8 @@ for (var td = 0; td < Tablenum; td++) {
         AllTrainTypeReplace(td, tr, '区間準急', '区準');
         DestinationWordChange(td, tr, '難波', '大阪難波');
         AllDestinationReplace(td, tr, '上本町', '大阪上本町');
-        LowerDetail(td, tr);
         KyotoRenraku(td, tr);
+        LowerDetail(td, tr);
     }
 }
 for (var td = 0; td < Tablenum; td++) {
