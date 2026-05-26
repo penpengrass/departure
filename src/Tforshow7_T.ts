@@ -7,6 +7,7 @@ import { LastLetterRemove, doallDetailShow } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRNadetailset";
 import { allJRNagoyaColor } from "./typeColor";
 import { trainTables } from "./types/trainTable";
+import { TType,TDes } from "./types/constants";
 Dtype = [0, 0, 0, 0, 0];
 DetailLength = [3, 3, 3, 3, 3];
 DestinationSet();

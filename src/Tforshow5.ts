@@ -1,5 +1,6 @@
 import { NewAllLastShow, allTwoLettersDistance } from "./module/firstDisplayEdit";
 import { getStationConfig } from "./main";
+import { TDes } from "./types/constants";
 //二子新地と高津に停車するかどうかの処理
 if (station == '二子玉川駅') {
     var config = getStationConfig(window.station, Indexfile);

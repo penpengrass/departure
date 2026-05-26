@@ -2,7 +2,7 @@ import { NewAllLastShow, TwoLetterDistance, flagmarkerase } from "./module/first
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FourLetters, swapColumns, NameColorchange, JRLineName, LastShows, rowremove, JRLimitedNameDevide, JRLimitedDevide, AllClassSetting, allTwoLettersDistance } from "./module/firstDisplayEdit";
 import { doallDetailShow } from "./module/detailMainPut";
-import { comment } from "./types/constants";
+import { comment,TDes,TType } from "./types/constants";
 import { getStationConfig } from "./main";
 var TStart = 0;
 if (JRShinkansenflag == 1) {

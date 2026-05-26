@@ -1,4 +1,4 @@
-import { comment } from './types/constants';
+import { comment, TDes, TType } from './types/constants';
 import { M_Himeji2, S_Himeji2, S_Tokuyama2, N_Tokuyama2, N_Himeji2 } from './detailStopData/JRW_S';
 import { RailNumberDevide, DestinationDevide, TrainNameDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { TTconnect, makeemptyTable } from './module/connectTable';
@@ -349,7 +349,7 @@ export const JRWestStations: StationRegistry = {
                 DesMiddle(0, tr, '連絡');
                 DesMiddle(1, tr, '方面');
             }
-            setInterval(allswitchMihara, 5000);
+            //setInterval(allswitchMihara, 5000);
             if (holidayflag == 1) {
                 document.getElementById("supplement")!.textContent =
                     station + "のみ土休日ダイヤに対応(表示は土休日ダイヤ)";
@@ -440,6 +440,7 @@ export const JRWestStations: StationRegistry = {
         tableTitles: ['尼崎 大阪 京都方面', '西明石 姫路方面'],
         setup: () => {
             MinIn = 1;
+            NonGouflag = 0;
             limitedjustnumber(TT[0], 2, '特急はまかぜ');
             limitedjustnumber(TT[1], 1, '特急はまかぜ');
             limitedjustnumber(TT[0], 2, '特急ｽｰﾊﾟｰはくと');

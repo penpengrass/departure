@@ -4,7 +4,7 @@ import { TrainNumber } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { JRK_Nobj, NagasakiAddStop } from "./detailStopData/JRK_S";
-import { comment } from "./types/constants";
+import { TType,TDes } from "./types/constants";
 import { getStationConfig } from "./main";
 var Guidance = document.getElementById("guidance");
 if (station == '鳥栖駅') {

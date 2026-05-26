@@ -9,7 +9,7 @@ import {
 import { CarsDefine, CarsInto } from "./module/carsEdit";
 import { allswitchChiba, allswitch_Akabane } from "./module/displaySwitch";
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";
-import { comment } from './types/constants';
+import { comment, TDes } from './types/constants';
 import { } from "./module/displaySwitch";
 import { plainTrainTables, trainTables } from './types/trainTable';
 let Saikyo_Color = '#00AC9A';

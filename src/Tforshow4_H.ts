@@ -8,6 +8,7 @@ import { allJRColor, allJRSSColor } from "./typeColor";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
 import { getStationConfig } from "./main";
 import { trainTables } from './types/trainTable';
+import { TDes } from './types/constants';
 allJRSSColor(JRWSHobj, 2);
 console.log(DetailLength);
 DetailShow(JRWSHobj, "　", DetailLength.length);

@@ -5,6 +5,7 @@ import { JRSSobj } from "./detailStopData/JRW_S";
 import { allJRSSColor } from "./typeColor";
 import { allSanyoShinkansenSwitch } from "./module/displaySwitch";
 import { trainTables } from "./types/trainTable";
+import { TDes } from "./types/constants";
 var TablenumSub = Tablenum;
 if (station == '博多駅') {
     var config = getStationConfig(window.station, Indexfile);
@@ -99,7 +100,7 @@ function ShinDetailSetting(td: number, tr: number, Utype: any, Uobj: any) {
     for (const key in Uobj) {
         if (Utype.startsWith(Uobj[key].type)) {
             trainTables[td].trains[tr].cars = Uobj[key].cars;
-            Jiyuseki[td][tr] = Uobj[key].jiyu;
+            trainTables[td].trains[tr].jiyuseki = Uobj[key].jiyu;
             //document.getElementById(TType).style.color = Uobj[key].color;
         }
     }
@@ -118,7 +119,7 @@ if (Indexfile == 'index4_S2.php') {
                 ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
                 if (Type[td][tr].includes('つばめ*') || Type[td][tr].includes('さくら*')) {
                     trainTables[td].trains[tr].cars = '6両編成';
-                    Jiyuseki[td][tr] = '自由席1-3,5,6号車'
+                    trainTables[td].trains[tr].jiyuseki = '自由席1-3,5,6号車';
                 }
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = trainTables[td].trains[tr]?.cars ?? "";
             }
@@ -128,7 +129,6 @@ if (Indexfile == 'index4_S2.php') {
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         }
     }
-    console.log(Jiyuseki);
     flagmarkerase(0, 'TType', '*');
     flagmarkerase(1, 'TType', '*');
 

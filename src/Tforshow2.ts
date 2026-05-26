@@ -4,7 +4,7 @@ import { DetailReplace, whetherStop } from "./module/detailSimpleEdit";
 import { NewAllLastShow, DestinationWordChange, LineMarkAdd, DestinationSet, AllTrainTypeReplace, AllDestinationReplace, DestinationTwoLetterDistance, TrainTypeSet } from "./module/firstDisplayEdit";
 import { allKinColor } from "./typeColor";
 import { getStationConfig } from "./main";
-import { comment } from "./types/constants";
+import { comment, TDes } from "./types/constants";
 import { plainTrainTables, trainTables } from "./types/trainTable";
 document.getElementById('supplement')!.innerHTML = '<p>特急 A:あをによし U:アーバンライナー H:ひのとり I:伊勢志摩ライナー V:ビスタカー</p>';
 var ExpressMsg = '竹田で新田辺行き<span class="KinLocolor">普通</span>に連絡します';

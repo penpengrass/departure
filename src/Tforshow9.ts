@@ -5,6 +5,7 @@ import { JTypeIncludeColor } from "./typeColor";
 import { TrainNumber } from "./module/firstDisplayEdit";
 import * as ShikokuStops from "./detailStopData/Shidetailset";
 import { plainTrainTables, trainTables } from "./types/trainTable";
+import { TType, TDes } from "./types/constants";
 function WhetherLocal(td: number, tr: number) {
     if (Type[td][tr] == '普通' || Type[td][tr] == '各駅停車' || Type[td][tr] == '普通(当駅始発)') {
         return true;
