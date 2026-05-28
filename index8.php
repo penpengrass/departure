@@ -9,6 +9,10 @@
   <?php
   $files[0] = 'csv/JRH/sapporo1.csv';
   $files[1] = 'csv/JRH/sapporo2.csv';
+  $files[2] = 'csv/JRH/sapporo2.csv';
+  $files[3] = 'csv/JRH/sapporo3.csv';
+  $files[4] = 'csv/JRH/sapporo2.csv';
+  $files[5] = 'csv/JRH/sapporo5.csv';
   require_once('PHP/variable.php');
   $tablenum=5;
   $OrderNum=4;

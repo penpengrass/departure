@@ -74,7 +74,7 @@ for (var td = 0; td < Tablenum; td++) {
         }
         var d_Type = document.getElementById('WType' + (td + 1) + (tr + 1));
         var color = d_Type ? getComputedStyle(d_Type).backgroundColor : '';
-        if (Type[td][tr] == '') {
+        if (trainTables[td].trains[tr].type == '') {
             document.getElementById('TNum' + (td + 1) + (tr + 1))!.style.backgroundColor = 'black';
         } else if (Type[td][tr].includes('特急')) {
             document.getElementById('WType' + (td + 1) + (tr + 1))!.style.border = 'white 3px solid';

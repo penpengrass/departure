@@ -3,7 +3,7 @@ import { TimeMarkErase, TwoLetterDistance, LiName, DestinationTwoLetterDistance 
 import { JTypeColor } from "../typeColor";
 import { JRobj } from "../detailStopData/JRW_afterset";
 import { trainTables } from "../types/trainTable";
-import { TDes } from "../types/constants";
+import { TDes, TType } from "../types/constants";
 export var switch_detail_flag = 0;
 export var Ex_Name = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
@@ -47,7 +47,7 @@ export function BottomBanner_Reverse(tag: string, td: number, tr: number) {
     document.getElementById('WType' + td + tr)!.textContent = trainTables[td - 1].trains[tr - 1].type;
     document.getElementById('TTime' + td + tr)!.textContent = TableHour[td - 1][tr - 1] + ':' + TableMin[td - 1][tr - 1];
     document.getElementById('TDes' + td + tr)!.innerHTML = trainTables[td - 1].trains[tr - 1].destination;
-    document.getElementById('TNum' + td + tr)!.textContent = TrackNum[td - 1][tr - 1];
+    document.getElementById('TNum' + td + tr)!.textContent = trainTables[td - 1].trains[tr - 1].trackNumber;
     document.getElementById('WName' + td + tr)!.innerHTML = _Name;
     if (_Name.includes('から快速')) {
         document.getElementById('WName' + td + tr)!.innerHTML = trainTables[td - 1].trains[tr - 1]?.trainName ?? ""

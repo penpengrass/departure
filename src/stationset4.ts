@@ -91,45 +91,26 @@ export const JRWestStations: StationRegistry = {
             for (var tr = 0; tr < Type[4].length; tr++) {
                 if (Type[4][tr].includes("普通")) {
                     if (Des[4][tr] == "宇野") {
-                        document.getElementById(
-                            "TName" + 5 + "" + (tr + 1)
-                        )!.textContent = "宇野みなと線";
+                        document.getElementById("TName" + 5 + "" + (tr + 1))!.textContent = "宇野みなと線";
                     } else {
-                        document.getElementById(
-                            "TName" + 5 + "" + (tr + 1)
-                        )!.textContent = "瀬戸大橋線";
+                        document.getElementById("TName" + 5 + "" + (tr + 1))!.textContent = "瀬戸大橋線";
                     }
-
-                    document.getElementById("TName" + 5 + "" + (tr + 1))!.style.color =
-                        "#0f0";
-                    document
-                        .getElementById("TName" + 5 + "" + (tr + 1))!
-                        .classList.remove("name");
+                    document.getElementById("TName" + 5 + "" + (tr + 1))!.style.color = "#0f0";
+                    document.getElementById("TName" + 5 + "" + (tr + 1))!.classList.remove("name");
                 } else if (Type[4][tr].includes("特急")) {
-                    /*var Limited = Type[4][tr].substr(Type[4][tr].indexOf('急') + 1);
-                    document.getElementById('TName' + 5 + '' + (tr + 1))!.textContent = Limited;
-                    Type[4][tr] = '特急'*/
-                    //JRLimitedDevide(4);
-                    var Name = document.getElementById(
-                        "TName" + 5 + (tr + 1)
-                    )!.textContent;
+                    var Name = document.getElementById("TName" + 5 + (tr + 1))!.textContent;
                     console.log(Name.length + ":" + tr);
                     if (Name.length > 8) {
-                        document.getElementById(
-                            "TName" + 5 + (tr + 1)
-                        )!.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
+                        document.getElementById("TName" + 5 + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
                     }
                 } else if (Type[4][tr].includes("快速ﾏﾘﾝﾗｲﾅｰ")) {
                     var Rapid = Type[4][tr].substr(Type[4][tr].indexOf("速") + 1);
-                    document.getElementById("TName" + 5 + "" + (tr + 1))!.textContent =
-                        Rapid;
+                    document.getElementById("TName" + 5 + "" + (tr + 1))!.textContent = Rapid;
                     trainTables[4].trains[tr].type = "快速";
                 } else if (Type[4][tr].includes("臨時")) {
                     var Rapid = Type[4][tr].substr(Type[4][tr].indexOf("時") + 1);
-                    document.getElementById("TName" + 5 + "" + (tr + 1))!.textContent =
-                        Rapid;
-                    document.getElementById("TName" + 5 + "" + (tr + 1))!.style.color =
-                        "orange";
+                    document.getElementById("TName" + 5 + "" + (tr + 1))!.textContent = Rapid;
+                    document.getElementById("TName" + 5 + "" + (tr + 1))!.style.color = "orange";
                     trainTables[4].trains[tr].type = "臨時";
                 }
             }
@@ -288,6 +269,11 @@ export const JRWestStations: StationRegistry = {
             limitednumber(TT[0], 2, 'やくも');
             limitednumber(TT[2], 1, 'やくも');
             RailNumberDevide(2, 2, 1);
+        },
+        onRender: () => {
+            JRLimitedDevide(0);
+            JRLimitedDevide(1);
+            allJRWTrainNameColor("orange", "orange", "red");
         }
     },
     '糸崎駅': {

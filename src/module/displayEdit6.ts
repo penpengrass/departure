@@ -101,17 +101,8 @@ export function ShihatsuMove(td: number, tr: number, Place: string) {
         LoName.textContent += '始発';
     }
 }
-export function Type_Cars(td: number, tr: number, L_Type: string, Cars: any, Tag: string, LineSetFlag = 0) {
-    if (Type[td][tr].includes(L_Type)) {
-        document.getElementById(Tag + (td + 1) + (tr + 1))!.textContent = Cars + '両';
-    }
-    if (LineSetFlag == 1) {
-        //配列を設定する
-        //GCarsLine[td][tr]=Cars;
-    }
-}
 //条件付き路線名追加(2種類)
-export function JRETypeSelectAdd(td: number, LType: string, Deshairetsu: any, line1: any, line2: any) {
+export function JRETypeSelectAdd(td: number, LType: string, Deshairetsu: string[], line1: string, line2: string) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         if (Type[td][tr].includes(LType)) {
             if (Deshairetsu.includes(Des[td][tr])) {

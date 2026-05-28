@@ -4,7 +4,6 @@ declare global {
     var company: string;
     var station: string;
     var stationN: string;
-    var stationN2: string;
     var JRShinkansenflag: number;
     var L_hour: number;
     var L_min: number;

@@ -146,7 +146,7 @@ export function TrainNameLineRemove(trainName: string | string[], mainTable: num
     tableDevide.process_remove_only((TaRow, mainTaNum) => trainName.includes(TT[mainTable][TaRow - 3][mainTaNum]));
 }
 export class TrainNumber {
-    TT: any;
+  TT: any;
     name: string;
     constructor(TT: any, name: string) {
         this.TT = TT;

@@ -28,7 +28,9 @@ export function DetailReplace(td: number, tr: number, Before: string, After: str
     trainTables[td].trains[tr].detail = _NextStop + "・" + trainTables[td].trains[tr].detail;
   }
   var _Detail2 = trainTables[td].trains[tr]?.detail ?? "";
-  Detail[td][tr] = Detail[td][tr].replace(Before, After);
+  if (Detail[td][tr] !== undefined) {
+    Detail[td][tr] = Detail[td][tr].replace(Before, After);
+  }
   trainTables[td].trains[tr].detail = _Detail2.replace(Before, After);
 
 }
@@ -65,9 +67,9 @@ export function SpecialStop(td: number, last: any, Before_station: string, AddSt
     var _PlainType
     if (trainTables[td].trains[tr].type) {
       _PlainType = trainTables[td].trains[tr].type ?? "";
-    } else if(plainTrainTables[td].trains[tr]) {
+    } else if (plainTrainTables[td].trains[tr]) {
       _PlainType = plainTrainTables[td].trains[tr].type ?? "";
-    }else {
+    } else {
       _PlainType = "";
     }
 

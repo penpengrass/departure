@@ -366,8 +366,9 @@ export function Bansenshow(flag = 0, LLength = Tablenum) {
     //console.log(doBNumber[1][0].textContent);
     for (var td = 0; td < LLength; td++) {
         for (var tr = 0; tr < Tablenums[td]; tr++) {
-            if (TrackNum[td][tr] != "") {
-                var Line = TrackNum[td][tr];
+            var _TrackNum=trainTables[td].trains[tr].trackNumber;
+            if (_TrackNum != "") {
+                var Line = _TrackNum;
                 if (flag == 0) {
                     trainTables[td].trains[tr].trackNumber = Line + '<span class="bansen">番線</span>';
                 } else if (flag == 1) {

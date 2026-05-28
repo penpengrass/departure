@@ -2,7 +2,6 @@
 export interface StationConfig {
     name: string;
     nameEn?: string; // stationN の代替(未使用)
-    nameSub?: string; // stationN2 などの代替(未使用)
     company: string;
     file?: string;
     tableTitles: string[];

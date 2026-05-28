@@ -1,10 +1,5 @@
 import { JRNameDevide, NewAllLastShow, flagmarkerase, Bansenshow, swapColumns, AllClassSetting, DestinationSet } from "./module/firstDisplayEdit";
 import { JREScolor } from "./module/colorSimpleSet";
-import { TrainNumber } from "./module/firstDisplayEdit";
-import { LimitedNumberPass } from "./module/firstDetailEdit";
-import { DetailBanner, FDetail } from "./module/detailMainPut";
-import { Shin_DetailReplace_Set_One } from "./module/detailSimpleEdit";
-import * as Stops from "./detailStopData/JRHokuJoetsuset";
 import { comment } from "./types/constants";
 import { getStationConfig } from "./main";
 import { trainTables } from "./types/trainTable";

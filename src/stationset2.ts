@@ -41,7 +41,6 @@ function Kintetsu_One_Detail(Utype: any, Uobj: any, n: any, td: number, tr: numb
         console.error("該当する種別がありません。");
         DetailLine = "";
     }
-    Detail[td][tr] = DetailLine;
     trainTables[td].trains[tr].detail = DetailLine;
     LastLetterRemove(td, tr, '・')
 }
@@ -56,7 +55,6 @@ function AllKintetsuDetailShow(companyObject: any, distance: string, LLength = T
         }
         console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");
         //td_detail++;
-        //stationN = stationN2;
     }
 }
 function Kyukokumei(td: number, tr: number, _initial: string) {
@@ -116,7 +114,6 @@ export const KintetsuStations: StationRegistry = {
         dtype: [3, 3],
         setup: () => {
             RailNumberDevide(4, 0, 1);
-            window.stationN2 = window.stationN;
         },
         onRender: () => {
             DestinationSet();
