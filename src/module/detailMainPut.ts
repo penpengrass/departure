@@ -1,11 +1,4 @@
-//console.log(express);
-//console.log(Dtype[0] + "&" + Dtype[1]);
-//let u = 0;
-//let k = 0;
-//console.log("-------ここから詳細表示-------");
-//console.log(stationN);
-
-import { trainTables,plainTrainTables } from "../types/trainTable";
+import { trainTables, plainTrainTables } from "../types/trainTable";
 import { StationConfig } from "../types/station";
 import { getStationConfig } from "../main";
 import { LineCopy } from "./firstTableEdit";
@@ -49,7 +42,7 @@ export function DetailDecide(Type_Line: any, td_detail: number, Des: string, Sen
     let Dflag = 0;//行先が違う配列の場合に使いたい
     console.log(_Dtype);
     //北海道(index8.php)はDtypeの警告OK
-    if (Dtype.length != Tablenum) {
+    if (_Dtype.length != Tablenum) {
         console.warn('Dtypeが正しく定義されていません');
     }
     /*console.log(td_detail);
@@ -189,7 +182,6 @@ export function DetailShow(companyObject: any, distance: string, LLength = Table
         }
         console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");
         //td_detail++;
-        //stationN = stationN2;
     }
 }
 export function NewDetailShow(companyObject: any, distance: string, LLength = Tablenum) {
@@ -204,7 +196,6 @@ export function NewDetailShow(companyObject: any, distance: string, LLength = Ta
         }
         console.log("---" + (td + 1) + "個目の表の詳細表示終わり,ここから" + (td + 2) + "個目の表の詳細表示----");
         //td_detail++;
-        //stationN = stationN2;
     }
 }
 export function doallDetailShow(BannerLength = 1, LLength = Tablenum) {

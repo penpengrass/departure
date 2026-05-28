@@ -17,16 +17,9 @@ import { DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
 import { JRobj } from "./detailStopData/JRW_afterset";
 var Shinkansenflag = 0;
 //特急や快速等の列車名や路線名を表示させたい
-if (station == "新見駅") {
-    JRLimitedDevide(0);
-    JRLimitedDevide(1);
-    allJRWTrainNameColor("orange", "orange", "red");
-}
 if (Indexfile == 'index4.php') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();
-}
-if (Indexfile == 'index4.php') {
     for (var td = 0; td < Tablenum; td++) {
         TrainTypeSet(td);
     }

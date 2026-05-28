@@ -89,7 +89,7 @@ function BackTime() {
 //先発表示を関数にするFirhourは時,orderは時の中で何番目列車かFirhourはj or 1(mod 4) order>=1 
 //depnumは先発なら1，次発なら2
 //Showsの引数は(配列の時,時刻表の中で何列目か,時刻表配列,表が何番目か,何番目に出発するか)
-function NotShows(hour: number, Table_Column: number, TT: any[], TableNumber: number, depnum: number) {
+function NotShows(hour: number, Table_Column: number,TT: string[][][], TableNumber: number, depnum: number) {
     PlusHour[depnum - 1] = TT[hour][0];
     PlusMin[depnum - 1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
     PlusType[depnum - 1] = TT[hour][Table_Column];
@@ -117,7 +117,7 @@ function EmptyLine(td: number, tr: number, Line: any) {
         Line[td][tr] = '';
     }
 }
-export function Shows(hour: number, Table_Column: number, TT: any, TableNumber: number, depnum: number) {
+export function Shows(hour: number, Table_Column: number,TT: string[][], TableNumber: number, depnum: number) {
     TableHour[TableNumber - 1][depnum - 1] = TT[hour][0];
     TableMin[TableNumber - 1][depnum - 1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
     Type[TableNumber - 1][depnum - 1] = TT[hour][Table_Column];

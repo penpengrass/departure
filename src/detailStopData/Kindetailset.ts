@@ -46,6 +46,12 @@ var Hlocal = new Array(4);
 for (var i = 0; i < 4; i++) {
     Hlocal[i] = "各駅停車";
 }
+var semiexpress = [["大阪上本町", "鶴橋", "布施", '八尾', '河内山本', '高安', "河内国分", "五位堂", "大和高田", "大和八木", "桜井", "以遠各駅", '榛原', '名張', "青山町", "五十鈴川"]];
+var Shilimited = [[], ['大阪難波', '大阪上本町', "鶴橋", "大和八木", "伊勢市", "宇治山田", "五十鈴川", "鳥羽", "鵜方", "賢島"],
+["京都", "丹波橋", "大和西大寺", "大和八木", "伊勢市", "宇治山田", "鳥羽", "鵜方", "賢島"],
+["名古屋", "四日市", "伊勢市", "宇治山田", "鳥羽", "鵜方", "賢島"], [],
+["京都", "丹波橋", "大和西大寺", "大和八木", "伊勢市", "宇治山田", "鳥羽", "鵜方", "賢島"]
+];
 var staflag = 0;
 var express = SHexpress;
 var subexpress = Hsubexpress;
@@ -74,10 +80,12 @@ if (station == '奈良駅') {
 }
 export const Kinobj = {//色は背景
     Typea: { type: "特急H", color: red, detail: Hilimited, },
-    Typef: { type: "特急", color: red, detail: limited, },
-    Typeb: { type: "快急", color: red, detail: rapid, },
-    Typec: { type: "急行", color: orange, detail: express, },
-    Typed: { type: "準急", color: green, detail: subexpress, },
-    Typee: { type: "区準", color: green, detail: subsemiexpress, },
+    Typeb: { type: "特急S", color: red, detail: Shilimited, },
+    Typec: { type: "特急", color: red, detail: limited, },
+    Typed: { type: "快急", color: red, detail: rapid, },
+    Typee: { type: "急行", color: '#ff8000', detail: express, },
+    Typef: { type: "区急", color: '#ff8000', detail: semiexpress, },
+    Typeg: { type: "準急", color: green, detail: subexpress, },
+    Typeh: { type: "区準", color: green, detail: subsemiexpress, },
     Typelocal: { type: "普通", color: blue, detail: local, }
 };

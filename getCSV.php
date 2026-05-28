@@ -1,21 +1,4 @@
 <?php
-
-if ($files[0] == 'csv/JRH/sapporo1.csv') {
-  $files[1] = 'csv/JRH/sapporo1.csv';
-  $files[2] = 'csv/JRH/sapporo2.csv';
-  $files[3] = 'csv/JRH/sapporo3.csv';
-  $files[4] = 'csv/JRH/sapporo2.csv';
-  $files[5] = 'csv/JRH/sapporo5.csv';
-  $tablenum = 5;
-  $OrderNum = 4;
-} else if ($files[0] == 'csv/JRS/takamatsu1.csv') {
-  $files[1] = 'csv/JRS/takamatsu1.csv';
-  $files[2] = 'csv/JRS/takamatsu1.csv';
-  $files[3] = 'csv/JRS/takamatsu2.csv';
-  $tablenum = 4;
-  $OrderNum = 3;
-}
-//ここからgetCSVとしたい
 //表示数が全部同じ場合
 if ($tableStrange == 0) {
   for ($i = 0; $i < $tablenum; $i++) {
@@ -115,7 +98,6 @@ $js_array .= ']';
   console.log("TT.length=" + TT.length);
   let station2 = title2[1];
   let stationN = station.slice(0, -1);
-  let stationN2 = station2.slice(0, -1);
   let TableTitle = new Array(Tablenum);
   let dir = title[2].substr(0, 2);
   let dir2 = title2[2].substr(0, 2);

@@ -8,11 +8,15 @@
   <link rel="stylesheet" href="css/banner.css">
   <?php
   $files[0] = 'csv/JRS/takamatsu1.csv';
-  $files[1] = 'csv/JRS/takamatsu2.csv';
+  $files[1] = 'csv/JRS/takamatsu1.csv';
+  $files[2] = 'csv/JRS/takamatsu1.csv';
+  $files[3] = 'csv/JRS/takamatsu2.csv';
   require_once('PHP/variable.php');
+  $tablenum = 4;
+  $OrderNum = 3;
   require_once('PHP/files9.php');
   require_once('getCSV.php');
-  if($station=='松山駅'||$station=='高知駅'){
+  if ($station == '松山駅' || $station == '高知駅') {
     print('<link rel="stylesheet" href="css/styleS_Matsuyama.css">');
   }
   ?>

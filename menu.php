@@ -36,8 +36,8 @@
             <tr>
                 <td>近鉄LCD</td>
                 <td><button type="button" onclick="location.href='./index2.php'">移動</button></td>
-                <td><span style="color:black;">鶴橋駅</span></td>
-                <td><span style="color:red;">奈良駅</span>, <span style="color:red;">京都駅</span>, <span style="color:red;">名古屋駅</span>, <span style="color:red;">伊勢中川駅</span></td>
+                <td><span style="color:blue;">鶴橋駅</span></td>
+                <td><span class="orange">奈良駅</span>, <span class="orange">京都駅</span>, <span class="orange">名古屋駅</span>, <span class="orange">伊勢中川駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本ATOS</td>
@@ -61,8 +61,8 @@
             <tr>
                 <td>JR西日本</td>
                 <td><button type="button" onclick="location.href='./index4.php'">移動</button></td>
-                <td><span style="color:red;">北新地駅</span></td>
-                <td class="long"><span style="color:red;">米原駅</span>, <span style="color:black;">天王寺駅</span>, <span class="orange">三ノ宮駅</span>, 
+                <td><span class="orange">北新地駅</span></td>
+                <td class="long"><span class="orange">米原駅</span>, <span style="color:black;">天王寺駅</span>, <span class="orange">三ノ宮駅</span>, 
                 <span style="color:blue;">姫路駅</span>
                 </td>
             </tr>
@@ -77,7 +77,7 @@
             <tr>
                 <td>JR西日本フルカラーLED</td>
                 <td><button type="button" onclick="location.href='./index4_A.php'">移動</button></td>
-                <td><span style="color:red;">大阪駅</span></td>
+                <td><span class="orange">大阪駅</span></td>
                 <td></td>
             </tr>
             <!--<tr>
@@ -133,7 +133,7 @@
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
                 <td><span style="color:red;">浜松駅</span></td>
                 <td><span style="color:red;">沼津駅</span>, <span style="color:red;">静岡駅</span>, <span style="color:red;">豊橋駅</span>, 
-                <span style="color:red;">岐阜駅</span>, <span style="color:red;">大垣駅</span></td>
+                <span style="color:red;">岐阜駅</span>, <span class="orange">大垣駅</span></td>
             </tr>
             <tr>
                 <td>JR東海LCD</td>

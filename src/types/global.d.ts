@@ -4,7 +4,6 @@ declare global {
     var company: string;
     var station: string;
     var stationN: string;
-    var stationN2: string;
     var JRShinkansenflag: number;
     var L_hour: number;
     var L_min: number;
@@ -17,7 +16,6 @@ declare global {
     var TType: any[];
     var TName: any[];
     var Dtype: number[];
-    var Jiyuseki: any;
     var Tablenum: number;
     var Tablenums: number[]; // 各表の列数
     var orderNum: number;

@@ -15,7 +15,7 @@ import {
 import { allJRCIncludeColor } from "./typeColor";
 import { plainTrainTables, trainTables } from './types/trainTable';
 import { BottomBanner } from './module/detailBannerSwitch';
-import { TDes, comment } from './types/constants';
+import { TDes, comment, TType } from './types/constants';
 import { CarsDevideToLine, CarsInto } from './module/carsEdit';
 const ATOStable = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
@@ -630,7 +630,7 @@ export const JREastStations: StationRegistry = {
                 TrainTypeWordChange(3, tr, '快速:湘南新宿ライン経由', '湘南新宿ﾗｲﾝ快速10両');
                 AllTrainTypeReplace(3, tr, '草津・四万', '特急草津･四万');
                 AllTrainTypeReplace(3, tr, 'あかぎ', '特急あかぎ');
-                 TrainTypeWordChange(3, tr, '普通', '上野東京ﾗｲﾝ普通10両');
+                TrainTypeWordChange(3, tr, '普通', '上野東京ﾗｲﾝ普通10両');
                 const _PlainDestination = plainTrainTables[3].trains[tr]?.destination ?? "";
                 if ((_PlainDestination == '上野' || _PlainDestination == '籠原') && plainTrainTables[3].trains[tr].type == '普通') {
                     trainTables[3].trains[tr].type = '高崎線普通10両';

@@ -3,6 +3,8 @@ import { TypeColorChange } from "./module/colorSimpleSet";
 import { J_hakataTypeColor } from "./typeColor";
 import { JRSSobj } from "./detailStopData/JRW_S";
 import { plainTrainTables, trainTables } from "./types/trainTable";
+import {TType} from "./types/constants";
+
 NonGouflag = 1;
 JRNameDevide(2);
 JRLimitedDevide(2);

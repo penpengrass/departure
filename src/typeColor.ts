@@ -8,7 +8,7 @@ import { JRChNobj, JRCeNobj } from "./detailStopData/JRNadetailset";
 import { Tokyuobj } from "./stationset5";
 import { JRWTobj } from "./detailStopData/JRTennojidetail";
 import { JRCSobj } from "./stationset7_S";
-import { TType, TDes, WType } from "./types/constants";
+import { TType, TDes, WType,TName } from "./types/constants";
 import { trainTables } from "./types/trainTable";
 //先発と次発と次々発の種別色分けを一気にする
 export function KTypeColor(Utype: any, TType: any, Uobj: any) {//(種別,その種別の背景色を変える)

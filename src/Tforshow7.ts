@@ -4,6 +4,7 @@ import { TypeTwoLetterDistance, DestinationTwoLetterDistance, JRLimitedNumber, h
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
 import { getStationConfig } from './main';
 import { trainTables } from './types/trainTable';
+import { TType,TDes } from './types/constants';
 function allJRC_Reduction() {
     for (let te = 0; te < Tablenum; te++) {
         for (let tr = 0; tr < Tablenums[te]; tr++) {
