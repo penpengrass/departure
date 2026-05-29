@@ -1,4 +1,4 @@
-import { allLastShow, JRLimitedNumber, allTwoLettersDistance, TrainTypeSet } from "./module/firstDisplayEdit";
+import { NewAllLastShow, JRLimitedNumber, allTwoLettersDistance, TrainTypeSet } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { DetailReplace } from "./module/detailSimpleEdit";
 import { FDetail, LastLetterRemove } from "./module/detailMainPut";
@@ -6,43 +6,42 @@ import { PlusType, PlusDes } from "./main";
 import { whetherStop } from "./module/detailSimpleEdit";
 import { Tobuobj } from "./detailStopData/TobuSet";
 import { trainTables } from "./types/trainTable";
-allLastShow();
+import { DestinationSet } from "./module/firstDisplayEdit";
+import { TDes } from "./types/constants";
+DestinationSet()
 for (var td = 0; td < 2; td++) {
     for (var tr = 0; tr < 4; tr++) {
         if (Type[td][tr] != '') {
             var dName = document.getElementById('TName' + (td + 1) + (tr + 1));
-            var dType = document.getElementById('TType' + (td + 1) + (tr + 1));
             var dNumber = document.getElementById('TNumber' + (td + 1) + (tr + 1));
-            dName!.textContent = document.getElementById('TType' + + (td + 1) + (tr + 1))!.textContent;
-            dType!.textContent = '特急';
             Type[td][tr] = '特急';
-            var number = JRLimitedNumber(td, tr, 'TName');
-            dNumber!.textContent = number + '号';
-            dName!.textContent = dName!.textContent.replace(number + '号', '');
-            if (dName!.textContent.includes('リバティ')) {
-                var Right = dName!.textContent.replace('リバティ', '');
-                dName!.innerHTML = 'リバティ<br>' + '<span class="gou">' + Right + '</span>';
+            trainTables[td].trains[tr].type = '特急';
+            const _LimitedName = trainTables[td].trains[tr].trainName ?? "";
+            if (_LimitedName.includes('リバティ')) {
+                var Right = _LimitedName.replace('リバティ', '');
+                trainTables[td].trains[tr].trainName = 'リバティ<br>' + '<span class="gou">' + Right + '</span>';
                 dName!.style.fontSize = '18px';
                 dName!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
                 dName!.style.fontWeight = '800px';
-            } else if (dName!.textContent.includes('スペーシア')) {
-                var Right = dName!.textContent.replace('スペーシア', '');
-                dName!.innerHTML = 'スペーシア<br>' + '<span class="gou">' + Right + '</span>';
+            } else if (_LimitedName.includes('スペーシア')) {
+                var Right =_LimitedName.replace('スペーシア', '');
+                trainTables[td].trains[tr].trainName = 'スペーシア<br>' + '<span class="gou">' + Right + '</span>';
                 dName!.style.fontSize = '18px';
                 dName!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
                 dName!.style.fontWeight = '800px';
-            } else if (dName!.textContent.includes('スカイツリー')) {
-                var Right = dName!.textContent.replace('スカイツリー', '');
-                dName!.innerHTML = 'スカイツリー<br>' + '<span class="gou">' + Right + '</span>';
+            } else if (_LimitedName.includes('スカイツリー')) {
+                var Right =_LimitedName.replace('スカイツリー', '');
+                trainTables[td].trains[tr].trainName = 'スカイツリー<br>' + '<span class="gou">' + Right + '</span>';
                 dName!.style.fontSize = '18px';
                 dName!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
                 dName!.style.fontWeight = '800px';
             }
+            dName!.innerHTML = trainTables[td].trains[tr].trainName ?? "";
+            dNumber!.textContent = trainTables[td].trains[tr].trainNumber + '号';
         }
     }
 }
 TrainTypeSet(2);
-console.log(trainTables)
 for (var tr = 0; tr < orderNum; tr++) {
     TypeColorChange(2, tr, '区間急行', 'orange');
     document.getElementById('TType1' + (tr + 1))!.style.color = 'red';
@@ -93,4 +92,6 @@ if (station == '浅草駅') {
         }
     }
 }
+NewAllLastShow();
+console.log(trainTables)
 allTwoLettersDistance(Des, TDes, 1, 0.9);
