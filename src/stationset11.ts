@@ -12,8 +12,9 @@ export const TobuStations: StationRegistry = {
             RailNumberDevide(3, 2, 1);
             DestinationDevide(['赤城', '太田', '伊勢崎', '葛生', '館林'], 1, 0);
             limitednumber(TT[0], 1, 'りょうもう');
-            limitednumber(TT[1], 1, 'けごん');
-            limitednumber(TT[1], 1, 'きぬ');
+            limitednumber(TT[1], 1, ['けごん','きぬ','スカイツリーライナー','スペーシアＸ']);
+            //limitednumber(TT[1], 1, 'けごん');
+            //limitednumber(TT[1], 1, 'きぬ');
             limitednumber(TT[1], 1, 'スカイツリーライナー');
             limitednumber(TT[1], 1, 'スペーシアＸ');
         }
