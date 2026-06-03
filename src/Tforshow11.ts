@@ -25,7 +25,13 @@ for (var td = 0; td < 2; td++) {
             const _LimitedName = trainTables[td].trains[tr].trainName ?? "";
             if (_LimitedName == 'リバティけごん会津') {
                 var Right = 'リバティけごん';
-                trainTables[td].trains[tr].trainName = 'リバティ会津<br>'+ Right;
+                trainTables[td].trains[tr].trainName = 'リバティ会津<br>' + Right;
+                dName!.style.fontSize = '18px';
+                dName!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
+                dName!.style.fontWeight = '800px';
+            } else if (_LimitedName == 'リバティけごんき') {
+                var Right = 'リバティけごん';
+                trainTables[td].trains[tr].trainName = 'リバティきぬ<br>' + Right;
                 dName!.style.fontSize = '18px';
                 dName!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
                 dName!.style.fontWeight = '800px';
@@ -50,7 +56,8 @@ for (var td = 0; td < 2; td++) {
             }
             dName!.innerHTML = trainTables[td].trains[tr].trainName ?? "";
             if (_LimitedName == 'リバティけごん会津') {
-                dNumber!.innerHTML = '10' + trainTables[td].trains[tr].trainNumber + '号<br>' + '<span class="gou">' + trainTables[td].trains[tr].trainNumber + '号</span>';
+                const _Number = trainTables[td].trains[tr].trainNumber ?? NaN;
+                dNumber!.innerHTML = Number(100 + _Number) + '号<br>' + '<span class="gou">' + _Number + '号</span>';
                 trainTables[td].trains[tr].destination = '会津田島<br>' + '<span class="gou">' + '東武日光' + '</span>';
                 dNumber!.style.fontSize = '18px';
                 dNumber!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
@@ -58,6 +65,19 @@ for (var td = 0; td < 2; td++) {
                 dDes!.style.fontSize = '18px';
                 dDes!.style.transform = "scaleX(1.20)" + "translate(0%,0%)";
                 dDes!.style.fontWeight = '800px';
+            } else if (_LimitedName == 'リバティけごんき') {
+                const _Number = trainTables[td].trains[tr].trainNumber ?? NaN;
+                dNumber!.innerHTML = Number(100 + _Number) + '号<br>' + '<span class="gou">' + _Number + '号</span>';
+                trainTables[td].trains[tr].destination = '鬼怒川温泉<br>' + '<span class="gou">' + '東武日光' + '</span>';
+                dNumber!.style.fontSize = '18px';
+                dNumber!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
+                dNumber!.style.fontWeight = '800px';
+                dDes!.style.fontSize = '18px';
+                dDes!.style.transform = "scaleX(1.20)" + "translate(0%,0%)";
+                dDes!.style.fontWeight = '800px';
+            } else if (_LimitedName.includes('きぬ')) {
+                trainTables[td].trains[tr].trainNumber = Number(trainTables[td].trains[tr].trainNumber) + 100;
+                dNumber!.textContent = trainTables[td].trains[tr].trainNumber + '号';
             } else {
                 dNumber!.textContent = trainTables[td].trains[tr].trainNumber + '号';
             }
@@ -105,6 +125,10 @@ if (station == '浅草駅') {
     if (_LimitedName == 'リバティ会津<br>' + 'リバティけごん') {
         dDetail2!.textContent = 'リバティけごんの停車駅はとうきょうスカイツリー・北千住・春日部・栃木・新鹿沼・下今市です。'
             + 'リバティ会津の停車駅は新高徳・東武ワールドスクウェア・鬼怒川温泉・鬼怒川公園・新藤原・新藤原から野岩鉄道線に入ります。';
+    }
+    if (_LimitedName == 'リバティきぬ<br>' + 'リバティけごん') {
+        dDetail2!.textContent = 'リバティけごんの停車駅はとうきょうスカイツリー・北千住・春日部・栃木・新鹿沼・下今市です。'
+            + 'リバティきぬの停車駅は新高徳・東武ワールドスクウェアです。';
     }
     if (Type[2][0].includes('区間')) {
         LastLetterRemove(2, 0, '・');

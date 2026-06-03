@@ -171,6 +171,12 @@
                 <td><span style="color:black;">博多駅</span></td>
                 <td>なし</td>
             </tr>
+             <tr>
+                <td>東武線</td>
+                <td><button type="button" onclick="location.href='./index11.php'">移動</button></td>
+                <td><span style="color:blue;">浅草駅</span></td>
+                <td>なし</td>
+            </tr>
         </table>
         <p>JR西日本の選択画面を表示</p>
         <div>
@@ -182,7 +188,7 @@
         <li>新幹線 静岡駅 郡山駅 盛岡駅 新青森駅</li>
         <li>JR北海道 旭川駅 </li>
         <li>JR東日本 郡山駅 小牛田駅 一ノ関駅 盛岡駅</li>
-        <li>東武鉄道 浅草駅 北千住駅</li>
+        <li>東武鉄道 北千住駅</li>
         <li>北陸地方 富山駅</li>
         <li>JR西日本 京都駅 尼崎駅 和歌山駅 新山口駅</li>
         <li>近鉄 宇治山田駅</li>
