@@ -2,7 +2,7 @@ import { swapColumns, FourLetters, JRNameDevide, TwoLetterDistance, NewAllLastSh
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";
 import { CarsDefine, CarsInto } from "./module/carsEdit";
 import { allswitch_UTL } from "./module/displaySwitch";
-import { comment } from "./types/constants";
+import { comment, TDes } from "./types/constants";
 import { plainTrainTables, trainTables } from "./types/trainTable";
 var Mito = ['土浦', '勝田', '水戸', '高萩'];
 var Toride = ['取手', '成田'];
@@ -90,12 +90,12 @@ for (var td = 0; td < Tablenum; td++) {
                 if (station == '上野駅' && (_PlainType.includes('ラビット') || _PlainType.includes('アーバン'))) {
                     trainTables[td].trains[tr].type = '快速';
                     document.getElementById('WType' + (td + 1) + (tr + 1))!.style.color = 'orange';
-                    LName!.textContent = LName!.textContent.replace('快速', '').replace('始発','');
+                    LName!.textContent = LName!.textContent.replace('快速', '').replace('始発', '');
                     trainTables[td].trains[tr].cars = '15両';
                 } else {
                     trainTables[td].trains[tr].type = '特急';
                     document.getElementById('WType' + (td + 1) + (tr + 1))!.style.color = 'red';
-                    LName!.textContent = LName!.textContent.replace('特急', '').replace('始発','');
+                    LName!.textContent = LName!.textContent.replace('特急', '').replace('始発', '');
                 }
             }
             CarsInto(td, tr, 'TCars');

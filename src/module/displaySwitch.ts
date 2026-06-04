@@ -144,11 +144,18 @@ export function allswitchChiba() {
         ATOSShihatsuSwitch(WName[4][tr], 4, tr, '当駅始発', '当駅始発', trainTables[4].trains[tr]?.cars ?? "");
         ATOSShihatsuSwitch(WName[5][tr], 5, tr, '当駅始発', '当駅始発', trainTables[5].trains[tr]?.cars ?? "");
         ChibaSwitch_LiNum(0, tr);
+        ChibaSwitch_LiNum(2, tr);
+        ChibaSwitch_LiNum(3, tr);
         ChibaSwitch_LiNum(4, tr);
         ChibaSwitch_LiNum(5, tr);
         JRE_LimitedSwitch(0, tr, '成田エクスプレス', '特急');
         JRE_LimitedSwitch(5, tr, '成田エクスプレス', '特急');
         JRE_LimitedSwitch(0, tr, 'しおさい', '特急');
+        JRE_LimitedSwitch(0, tr, 'あずさ･富士回遊', '特急');
+        JRE_LimitedSwitch(0, tr, '新宿さざなみ', '特急');
+        JRE_LimitedSwitch(0, tr, '新宿わかしお', '特急');
+        JRE_LimitedSwitch(2, tr, '新宿さざなみ', '特急');
+        JRE_LimitedSwitch(3, tr, '新宿わかしお', '特急');
         JRE_LimitedSwitch(4, tr, 'しおさい', '特急');
         JRE_HoumenSwitch(3, tr, ['成東', '東金'], '大網回り');
         JRE_HoumenSwitch(4, tr, ['銚子'], '八日市場回り');
@@ -160,8 +167,10 @@ export function allswitchChiba() {
             var LType = document.getElementById('WType' + (td + 1) + (tr + 1));
             var LName = document.getElementById('WName' + (td + 1) + (tr + 1));
             var LDes = document.getElementById('WDes' + (td + 1) + (tr + 1));
-            if (LType!.textContent.length > 5) {
+            if (LType!.textContent.length > 6) {
                 LType!.style.transform = "scaleX(0.40)" + "translate(-75%,0%)";
+            } else if (LType!.textContent.length > 5) {
+                LType!.style.transform = "scaleX(0.60)" + "translate(-30%,0%)";
             } else {
                 LType!.style.transform = "scaleX(1.00)" + "translate(0%,0%)";
             }

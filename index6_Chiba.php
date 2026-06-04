@@ -11,15 +11,23 @@
   require_once('PHP/variable.php');
   $files = array();
   $files[0] = 'csv/JRE/Chiba_Tokyo.csv';
-    $files[1] = 'csv/JRE/Chiba_Mitaka.csv';
-    $files[2] = 'csv/JRE/Chiba_Uchibo.csv';
-    $files[3] = 'csv/JRE/Chiba_Sotobo.csv';
-    $files[4] = 'csv/JRE/Chiba_Sakura.csv';
-    $files[5] = 'csv/JRE/Chiba_Sakura.csv';
-    $tablenum = 6;
-    $OrderNum = 3;
-    $column=3;
-    $station = '千葉駅';
+  $files[1] = 'csv/JRE/Chiba_Mitaka.csv';
+  $files[2] = 'csv/JRE/Chiba_Uchibo.csv';
+  $files[3] = 'csv/JRE/Chiba_Sotobo.csv';
+  $files[4] = 'csv/JRE/Chiba_Sakura.csv';
+  $files[5] = 'csv/JRE/Chiba_Sakura.csv';
+  if ($holidayflag == 1) {
+    $files[0] = 'csv/JRE/Chiba_Tokyo_H.csv';
+    $files[1] = 'csv/JRE/Chiba_Mitaka_H.csv';
+    $files[2] = 'csv/JRE/Chiba_Uchibo_H.csv';
+    $files[3] = 'csv/JRE/Chiba_Sotobo_H.csv';
+    $files[4] = 'csv/JRE/Chiba_Sakura_H.csv';
+    $files[5] = 'csv/JRE/Chiba_Sakura_H.csv';
+  }
+  $tablenum = 6;
+  $OrderNum = 3;
+  $column = 3;
+  $station = '千葉駅';
   require('PHP/files6.php');
   require_once('getCSV.php');
   ?>
@@ -38,8 +46,8 @@
   <!--駅選択部分-->
   <form action="PHP/files6.php" method="POST">
     <select name="staselect6">
-    <option value="shinjuku">新宿駅</option>
-    <option value="ueno">上野駅</option>
+      <option value="shinjuku">新宿駅</option>
+      <option value="ueno">上野駅</option>
       <option value="tokyo">東京駅</option>
       <option value="chiba">千葉駅</option>
       <option value="shinagawa">品川駅</option>
@@ -72,7 +80,7 @@
 </caption>
     <tr>
     ');
-        print('
+      print('
         <th width="1%"></th>
       <th width="19%" id="HType' . $i . '"></th>
       <th width="19%" id="HName' . $i . '"></th>
@@ -83,7 +91,7 @@
     </tr>
   ');
       for ($j = 1; $j <= $OrderNum; $j++) {
-        if($j==1){
+        if ($j == 1) {
           print('
     <tr id="TLine' . $i . $j . '">
     <td class="BWhite"></td>
@@ -98,8 +106,8 @@
       <td class="Destination First" id="TDes' . $i . $j . '"colspan="3"><span class="CWDes" id="WDes' . $i . $j . '"></span></td>
       <td class="BWhite"></td>
     </tr>');
-        }else{
-        print('
+        } else {
+          print('
     <tr id="TLine' . $i . $j . '">
     <td class="BWhite"></td>
       <td class="shubetu" id="TType' . $i . $j . '"><span class="CWType" id="WType' . $i . $j . '"></span></td>
@@ -122,16 +130,7 @@
     }
     ?>
   </tableline>
-  <p id="supplement">交互表示や両数など一部表示不正確</p>
-  <?php
-  if ($station == '横浜駅') {
-    print('
-  <h1 class="Cheader">案内</h1>
-    <li>東海道線と横須賀線は熱海・久里浜側が1号車, 4･5号車がグリーン車</li>
-    <li>増結編成は東海道線が高崎・宇都宮側, 横須賀線は逗子・久里浜側(増1~増4)</li>
-    ');
-  }
-  ?>
+  <p id="supplement">交互表示や両数など一部表示不正確<br></p>
 </body>
 <!--ここから内部のこと-->
 <script type="module" src="dist/Time.js"></script>

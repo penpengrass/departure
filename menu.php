@@ -119,7 +119,7 @@
             <tr>
                 <td>JR東日本千葉駅</td>
                 <td><button type="button" onclick="location.href='./index6_Chiba.php'">移動</button></td>
-                <td><span style="color:black;">千葉駅</span></td>
+                <td><span class="orange">千葉駅</span></td>
                 <td>なし</td>
             </tr>
             <tr>
