@@ -39,6 +39,10 @@ if (isset($_GET['station'])) {
     $files[2] = 'csv/Hokuriku/fukui1.csv';
     $files[3] = 'csv/Hokuriku/fukui2.csv';
     $files[4] = 'csv/Hokuriku/fukui3.csv';
+    if ($holidayflag == 0) {
+      $files[3] = 'csv/Hokuriku/fukui2_H.csv';
+      $files[4] = 'csv/Hokuriku/fukui3_H.csv';
+    }
     $tablenum = 5;
     $column = 2;
     $station = '福井駅';

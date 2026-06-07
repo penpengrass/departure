@@ -24,6 +24,12 @@ export const JRHokurikuStations: StationRegistry = {
             limitedjustnumber(TT[3], 2, '特急ｻﾝﾀﾞｰﾊﾞｰﾄﾞ');
             limitedjustnumber2(TT[2], Tshirasagi2, '特急しらさぎ');
             limitedjustnumber(TT[2], 1, '特急ｻﾝﾀﾞｰﾊﾞｰﾄﾞ');
+            if (holidayflag == 1) {
+                TT[1][69].splice(1, 1);
+                TT[1][70].splice(1, 1);
+                TT[1][71].splice(1, 1);
+                TT[1][72].splice(1, 1);
+            }
         },
         onRender: () => {
             //(※バグ未解決!!!)
@@ -70,7 +76,7 @@ export const JRHokurikuStations: StationRegistry = {
         name: '福井駅',
         company: 'JR西日本',
         tableTitles: ['北陸新幹線 金沢 富山方面', '北陸新幹線 敦賀方面', '九頭竜湖方面', '金沢 富山方面', '敦賀 大阪 京都方面'],
-        nonGouFlag:1,
+        nonGouFlag: 1,
         dtype: [1, 0],
         setup: () => {
             DetailLength = [2, 2];
@@ -81,6 +87,12 @@ export const JRHokurikuStations: StationRegistry = {
             limitedjustnumber(TT[1], 1, 'つるぎ');
             limitedjustnumber(TT[1], 561, 'はくたか');
             limitedjustnumber(TT[1], 501, 'かがやき');
+            if (holidayflag == 1) {
+                TT[1][65].splice(1, 1);
+                TT[1][66].splice(1, 1);
+                TT[1][67].splice(1, 1);
+                TT[1][68].splice(1, 1);
+            }
         }
     },
     '金沢駅': {
@@ -88,7 +100,7 @@ export const JRHokurikuStations: StationRegistry = {
         company: 'JR西日本',
         tableTitles: ['北陸新幹線 福井 敦賀方面', '北陸新幹線 富山 東京方面', 'IRいしかわ鉄道線 松任 小松 福井方面', 'IRいしかわ鉄道線 津幡 高岡 富山方面', '七尾線 津幡 七尾 和倉温泉方面'],
         dtype: [0, 0],
-        nonGouFlag:1,
+        nonGouFlag: 1,
         setup: () => {
             DetailLength = [2, 2];
             window.Dtype = [1, 0];
@@ -101,6 +113,12 @@ export const JRHokurikuStations: StationRegistry = {
             limitedjustnumber(TT[0], 501, 'かがやき');
             limitedjustnumber(TT[4], 1, '特急能登かがり火');
             limitedjustnumber(TT[3], 1, '快速あいの風ﾗｲﾅｰ');
+            if (holidayflag == 1) {
+                TT[1][61].splice(1, 1);
+                TT[1][62].splice(1, 1);
+                TT[1][63].splice(1, 1);
+                TT[1][64].splice(1, 1);
+            }
         }
     },
 }

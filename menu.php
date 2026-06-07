@@ -89,8 +89,8 @@
             <tr>
                 <td>JR西日本北陸</td>
                 <td><button type="button" onclick="location.href='./index4_H.php'">移動</button></td>
-                <td><span style="color:red;">敦賀駅</span></td>
-                <td><span style="color:red;">福井駅</span>, <span style="color:red;">金沢駅</span></td>
+                <td><span class="orange">敦賀駅</span></td>
+                <td><span class="orange">福井駅</span>, <span class="orange">金沢駅</span></td>
             </tr>
             <tr>
                 <td>JR西日本新幹線主要駅</td>
