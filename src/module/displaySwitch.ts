@@ -168,7 +168,7 @@ export function allswitchChiba() {
             var LName = document.getElementById('WName' + (td + 1) + (tr + 1));
             var LDes = document.getElementById('WDes' + (td + 1) + (tr + 1));
             if (LType!.textContent.length > 6) {
-                LType!.style.transform = "scaleX(0.40)" + "translate(-75%,0%)";
+                LType!.style.transform = "scaleX(0.40)" + "translate(-70%,0%)";
             } else if (LType!.textContent.length > 5) {
                 LType!.style.transform = "scaleX(0.60)" + "translate(-30%,0%)";
             } else {

@@ -79,9 +79,7 @@
 <span class="Dir" width="50%" id="WDir' . $i . '"></span>
 </caption>
     <tr>
-    ');
-      print('
-        <th width="1%"></th>
+      <th width="1%"></th>
       <th width="19%" id="HType' . $i . '"></th>
       <th width="19%" id="HName' . $i . '"></th>
       <th width="20%" id="HTime' . $i . '"></th>

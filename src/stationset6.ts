@@ -600,7 +600,7 @@ export const JREast6Stations: StationRegistry = {
                             L_WType.style.transform = "scaleX(0.90)" + "translate(-5%,0%)";
                         }
                         if (trainTables[td].trains[tr].type.length > 6) {
-                            L_WType.style.transform = "scaleX(0.40)" + "translate(-75%,0%)";
+                            L_WType.style.transform = "scaleX(0.40)" + "translate(-70%,0%)";
                         } else if (trainTables[td].trains[tr].type.length > 5) {
                             L_WType.style.transform = "scaleX(0.60)" + "translate(-30%,0%)";
                         }

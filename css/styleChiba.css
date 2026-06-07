@@ -20,7 +20,6 @@ table {
 
 th {
     background-color: white;
-    border-spacing: 0px 0px;
     height: 0px;
 }
 
@@ -51,6 +50,7 @@ td::before {
     margin-left:4px;*/
     border-left: 5px black solid;
     border-radius: 5px 0px 0px 5px;
+    text-align:center;
 }
 
 .CName {
@@ -65,6 +65,7 @@ td::before {
 
 .railnumber {
     color: white;
+    border-radius: 0px 5px 5px 0px;
 }
 .CWDes{
     display: inline-block;
