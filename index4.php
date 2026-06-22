@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="css/styleAll.css">
   <link rel="stylesheet" href="css/banner.css">
   <link rel="stylesheet" href="css/styleJRW.css">
+  <link rel="stylesheet" href="css/styleJRW_SZ.css">
   <!--タブのアイコンを変えたいが、公式HPと混同しそうなので保留-->
   <!--<link rel="icon" href="PNG/JR西日本マーク.png" id="favicon">-->
   <?php

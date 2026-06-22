@@ -10,19 +10,20 @@ reverseLine(Sanyo_hikari, 0, 1);
 reverseLine(Amizuho, 0, 1);
 reverseLine(Asakura, 0, 1);
 //下り方面
-export var S_Yamaguchi1 = [401, 541, 545, 551, 563, 565, 573];
-export var S_Tokuyama1 = [401, 543, 553, 555, 557, 559, 561, 569, 571];
-export var S_Tamana1 = [563, 573];
-export var S_Omuta1 = [565, 573];
-export var S_Funakoya1 = [569, 573];
-export var S_Yatsushiro1 = [401, 403, 543, 545, 549, 405, 553, 407, 409, 561, 563, 565, 569];
+export var S_Yamaguchi1 = [401, 741, 745, 751, 763, 765, 773];
+export var S_Tokuyama1 = [401, 743, 753, 755, 757, 759, 761, 769, 771];
+export var S_Kumamoto1 = [773];
+export var S_Tamana1 = [763];
+export var S_Omuta1 = [765];
+export var S_Funakoya1 = [769];
+export var S_Yatsushiro1 = [401, 403, 743, 745, 749, 405, 753, 407, 409, 761, 763, 765, 769];
 export var N_Fukuyama1 = [271, 1, 5, 11, 17, 21, 25, 29, 33, 37, 75, 77, 49, 55, 79, 81, 83, 89];
 export var N_Tokuyama1 = [99, 13, 41, 45, 59];
 export var N_Yamaguchi1 = [273, 3, 9, 15, 19, 23, 27, 31, 35, 39, 43, 47, 53, 57];
 export var M_Fukuyama1 = [603, 607, 611];
 export var M_Yamaguchi1 = [605];
 export var M_Kurume1 = [603, 607, 609, 611, 613];
-export var HS_Shimonoseki1 = [591, 531, 549, 567];
+export var HS_Shimonoseki1 = [791, 731, 749, 767];
 //上り方面
 export var N_Tokuyama2 = [6, 10, 42, 48];
 export var M_Fukuyama2 = [612];
@@ -30,13 +31,13 @@ export var M_Himeji2 = [600, 602, 604, 606, 614];
 export var N_Himeji2 = [68, 70, 72, 76, 78, 82, 84, 88, 90, 92, 94, 96, 98, 100, 40, 46, 52, 58];
 export var N_Fukuyama2 = [12, 16, 20, 24, 28, 32, 36, 54, 60];
 export var N_Yamaguchi2 = [2, 4, 8, 14, 18, 22, 26, 30, 34, 38, 44, 50, 56, 62, 270];
-export var S_Shimonoseki = [540, 542, 562, 568, 572];
-export var S_Tokuyama2 = [542, 544, 546, 550, 552, 554, 556, 558, 562, 566, 406];
-export var S_Yamaguchi2 = [540, 548, 560, 564, 566, 570, 406];
-export var S_Himeji2 = [548, 560, 564, 568, 570, 572];
-export var H_Toyohashi2 = [522];
-export var H_Mishima2 = [502, 506, 510, 514, 518];
-export var H_Atami2 = [500, 504, 516];
+export var S_Shimonoseki = [740, 742, 762, 768, 772];
+export var S_Tokuyama2 = [742, 744, 746, 750, 752, 754, 756, 758, 762, 766, 406];
+export var S_Yamaguchi2 = [740, 748, 760, 764, 766, 770, 406];
+export var S_Himeji2 = [748, 760, 764, 768, 770, 772];
+export var H_Toyohashi2 = [722];
+export var H_Mishima2 = [702, 706, 710, 714, 718];
+export var H_Atami2 = [700, 704, 716];
 
 export var JRSSobj = {//色は文字
     Typea: { type: "のぞみ", Bcolor: 'yellow', color: black, detail: Nozomi, cars: '16両編成', jiyu: '自由席1-2号車' },

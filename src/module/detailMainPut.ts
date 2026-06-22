@@ -218,11 +218,7 @@ export function DetailBanner(td: number, tr: number, Letter: number, flag = 0, t
             .classList.remove("news-banner__content");
     } else {
         //未完成
-        if (
-            flag == 1 &&
-            LDetail!.textContent.length < 48 &&
-            Indexfile == "index2.php"
-        ) {
+        if (flag == 1 && LDetail!.textContent.length < 48 && Indexfile == "index2.php") {
             document
                 .getElementById(tag + (td + 1) + (tr + 1))!
                 .classList.remove("news-banner__content");
@@ -237,6 +233,19 @@ export function DetailBanner(td: number, tr: number, Letter: number, flag = 0, t
                 LDetail!.innerHTML = before;
                 document.getElementById("TDetailD" + (td + 1) + (tr + 1))!.textContent = after;
             }
+        }
+    }
+    if (Indexfile == 'index4_S2.php') {
+        var DetailM = LDetail!.textContent;
+        const targetIndex = DetailM.indexOf("・", Letter);
+        const before = DetailM.substring(0, targetIndex); // n文字目以前
+        const after = DetailM.substring(targetIndex + 1); // 特定文字以降
+        console.log(typeof before);
+        //改行したい
+        if (before == "") {
+            LDetail!.innerHTML = after + '<br>' + '　　';
+        } else {
+            LDetail!.innerHTML = before + '<br>' + after;
         }
     }
 }

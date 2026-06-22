@@ -8,13 +8,14 @@ import { allswitch_detail } from "./module/detailBannerSwitch";
 import { CarsDefine, CarsInto, CarsDevideToLine } from "./module/carsEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
 import { allswitchMihara } from "./module/displaySwitch";
-import { allJRColor, allJRWSZColor } from "./typeColor";
+import { allJRColor, allJRWSZColor, allJRSSColor } from "./typeColor";
 import { getStationConfig } from "./main";
 import { } from "./module/firstDisplayEdit";
 import { TDes } from "./types/constants";
 import { comment } from "./types/constants";
 import { DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
 import { JRobj } from "./detailStopData/JRW_afterset";
+import { trainTables } from "./types/trainTable";
 var Shinkansenflag = 0;
 //特急や快速等の列車名や路線名を表示させたい
 if (Indexfile == 'index4.php') {
@@ -27,6 +28,7 @@ if (Indexfile == 'index4.php') {
         allJRColor();
     } else if (JRShinkansenflag == 1) {
         allJRWSZColor();
+        //allJRSSColor();
     }
     DestinationSet();
     if (TwoLetterDisflag == 1) {
@@ -36,7 +38,9 @@ if (Indexfile == 'index4.php') {
             }
         }
     }
-    NewAllLastShow();
+    if (JRShinkansenflag == 0) {
+        NewAllLastShow();
+    }
     LastShowFlag = 1;
 }
 if (station == "北新地駅") {

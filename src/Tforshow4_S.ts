@@ -7,10 +7,7 @@ import { allSanyoShinkansenSwitch } from "./module/displaySwitch";
 import { trainTables } from "./types/trainTable";
 import { TDes } from "./types/constants";
 var TablenumSub = Tablenum;
-if (station == '博多駅') {
-    var config = getStationConfig(window.station, Indexfile);
-    if (config && config.onRender) config.onRender();
-} else if (station == '岡山駅' && Indexfile == 'index4_S2.php') {
+if (Indexfile == 'index4_S2.php') {
     var config = getStationConfig(window.station, Indexfile);
     if (config && config.onRender) config.onRender();
 }
@@ -41,8 +38,8 @@ if (Indexfile == 'index4_S2.php') {
                 }
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = trainTables[td].trains[tr]?.cars ?? "";
             }
-            if (Type[td][tr] != '' && (station == '博多駅' || station == '岡山駅') && tr < 2) {
-                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = '停車駅';
+            if (Type[td][tr] != '' && tr < 2) {
+                document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.innerHTML = '停車駅:' + '<br>　　';
             }
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         }
@@ -56,6 +53,7 @@ if (Indexfile == 'index4_S2.php') {
         //setInterval(allTsurugaShinkansenSwitch, 5000);
     }
 } else if (JRShinkansenflag == 1) {
+    NonGouflag = 1;
     JRNameDevide(2);
     for (var td = 0; td < 2; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
@@ -73,6 +71,7 @@ if (Indexfile == 'index4_S2.php') {
             }
         }
     }
+    NewAllLastShow();
 }
 
 LastShowFlag = 1;

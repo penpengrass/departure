@@ -138,6 +138,7 @@ export const JRWestStations: StationRegistry = {
         company: 'JR西日本',
         tableTitles: ['山陽・東海道新幹線 新大阪・東京方面', '山陽・九州新幹線 博多・鹿児島中央方面',
             '播但線 寺前 和田山方面', 'JR神戸線 三ノ宮 大阪方面', '姫新線 播磨新宮 佐用方面', '山陽線 相生 播州赤穂 上郡 岡山方面'],
+        nonGouFlag: 1,
         setup: () => {
             TwoLetterDisflag = 1;
             var sakura1 = [541, 543, 545, 549, 551, 553, 555, 565, 569, 571, 573];
