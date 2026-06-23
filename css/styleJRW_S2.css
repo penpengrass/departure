@@ -10,7 +10,7 @@ th{
 td{               /*データ内*/
     /*display: table-cell;*/
     /*font-size:30px;/*元々30px 変更すると25px*/
-    height: 60px;
+    height: 45px;
     color:yellow;
     border: 10px #404040 solid;  /*表の中の枠色 */
     font-family: "MS　ゴシック",monospace;
