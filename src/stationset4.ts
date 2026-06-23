@@ -138,7 +138,7 @@ export const JRWestStations: StationRegistry = {
         company: 'JR西日本',
         tableTitles: ['山陽・東海道新幹線 新大阪・東京方面', '山陽・九州新幹線 博多・鹿児島中央方面',
             '播但線 寺前 和田山方面', 'JR神戸線 三ノ宮 大阪方面', '姫新線 播磨新宮 佐用方面', '山陽線 相生 播州赤穂 上郡 岡山方面'],
-        nonGouFlag: 1,
+        nonGouFlag: 0,
         setup: () => {
             TwoLetterDisflag = 1;
             var sakura1 = [541, 543, 545, 549, 551, 553, 555, 565, 569, 571, 573];
@@ -577,11 +577,12 @@ export const JRWestStations: StationRegistry = {
         name: '徳山駅',
         company: 'JR西日本',
         tableTitles: ['山陽新幹線 博多 鹿児島中央方面', '山陽新幹線 新大阪 東京方面', '山陽線 新山口 下関方面', '山陽線 岩国方面', '岩徳線 岩国方面'],
+        nonGouFlag: 0,
         setup: () => {
-            var sakura1 = [401, 543, 553, 555, 557, 559, 561, 569, 571];
+            var sakura1 = [401, 743, 753, 755, 757, 759, 761, 769, 771];
             var nozomi1 = [99, 13, 41, 45, 59];
-            var kodama1 = [775, 781, 831, 833, 835, 837, 841, 843, 845, 847, 849, 851, 853, 855, 857, 859, 861, 865, 867, 787];
-            var kodama2 = [838, 840, 842, 844, 846, 848, 850, 852, 854, 856, 858, 860, 862, 864, 866, 776, 870, 874, 876];
+            var kodama1 = [875, 881, 931, 933, 935, 937, 941, 943, 945, 947, 949, 951, 953, 955, 957, 959, 961, 965, 967, 887];
+            var kodama2 = [938, 940, 942, 944, 946, 948, 950, 952, 954, 956, 958, 960, 962, 964, 966, 876, 970, 974, 976];
             limitednumber2(TT[0], kodama1, 'こだま');
             limitednumber2(TT[1], kodama2, 'こだま');
             limitednumber2(TT[0], sakura1, 'さくら');
@@ -619,7 +620,7 @@ export const JRWestStations: StationRegistry = {
                     }
                 }
             }
-            //comment!.textContent = "両数や号数, 自由席は不正確";
+            comment!.textContent = "両数や号数, 自由席は不正確";
         }
     },
     '下関駅': {

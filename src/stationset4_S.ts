@@ -5,7 +5,7 @@ import { FDetail, doallDetailShow } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRW_S";
 import { JRSSobj } from "./detailStopData/JRW_S";
 import { TrainNumber } from './main';
-import { trainTables,plainTrainTables } from './types/trainTable';
+import { trainTables, plainTrainTables } from './types/trainTable';
 NonGouflag = 1;
 export const JRSanyoStations: StationRegistry = {
     '新幹線広島駅': {
@@ -18,16 +18,16 @@ export const JRSanyoStations: StationRegistry = {
         setup: () => {
             detailLength_one = 2;
             detailflag = 2;
-            var kodama1 = [775, 781, 831, 833, 835, 837, 841, 843, 845, 847, 849, 851, 853, 855, 857, 859, 861, 865, 867, 787];
+            var kodama1 = [875, 881, 931, 933, 935, 937, 941, 943, 945, 947, 949, 951, 953, 955, 957, 959, 961, 965, 967, 889];
             limitedjustnumber(TT[1], 1, 'のぞみ');
             limitedjustnumber(TT[0], 2, 'のぞみ');
             limitedjustnumber(TT[0], 74, 'のぞみ(当駅始発)');
             limitedjustnumber(TT[0], 600, 'みずほ');
             limitedjustnumber(TT[1], 601, 'みずほ');
-            limitednumber(TT[1], 741, 'さくら');
-            limitednumber(TT[0], 740, 'さくら');
+            limitedjustnumber(TT[1], 741, 'さくら');
+            limitedjustnumber(TT[0], 740, 'さくら');
             limitednumber2(TT[1], kodama1, 'こだま');
-            limitedjustnumber(TT[0], 836, 'こだま');
+            limitedjustnumber(TT[0], 936, 'こだま');
         },
         onRender: () => {
             for (var td = 0; td < 2; td++) {
@@ -38,8 +38,29 @@ export const JRSanyoStations: StationRegistry = {
                     }
                 }
             }
+            for (var tr = 0; tr < 2; tr++) {
+                DetailReplace_Set(0, tr, Stops.M_Fukuyama2, '岡山', '福山・岡山');
+                DetailReplace_Set(1, tr, Stops.M_Kurume1, '熊本', '久留米・熊本');
+                DetailReplace_Set(1, tr, Stops.S_Yatsushiro1, '熊本・川内', '熊本からの各駅');
+                DetailReplace_Set(1, tr, Stops.S_Kumamoto1, '新鳥栖・久留米', '各駅');
+                DetailReplace_Set(1, tr, Stops.S_Tamana1, '久留米', '久留米・新玉名');
+                DetailReplace_Set(1, tr, Stops.S_Omuta1, '久留米', '久留米・新大牟田');
+                DetailReplace_Set(1, tr, Stops.S_Funakoya1, '久留米', '久留米・筑後船小屋');
+                DetailReplace_Set(0, tr, Stops.S_Himeji2, '新神戸', '姫路・新神戸');
+                DetailReplace_Set(0, tr, Stops.N_Tokuyama2, '広島', '徳山・広島');
+                DetailReplace_Set(0, tr, Stops.N_Himeji2, '新神戸', '姫路・新神戸');
+                DetailReplace_Set(0, tr, Stops.M_Himeji2, '新神戸', '姫路・新神戸');
+                DetailReplace_Set(0, tr, Stops.N_Fukuyama2, '岡山', '福山・岡山');
+                DetailReplace_Set(1, tr, Stops.N_Tokuyama1, '小倉', '徳山・小倉');
+                DetailReplace_Set(1, tr, Stops.N_Yamaguchi1, '小倉', '新山口・小倉');
+                DetailReplace_Set(1, tr, Stops.M_Yamaguchi1, '小倉', '新山口・小倉');
+                DetailReplace_Set(1, tr, Stops.S_Tokuyama1, '小倉', '徳山・小倉');
+                DetailReplace_Set(1, tr, Stops.S_Yamaguchi1, '小倉', '新山口・小倉');
+                DetailReplace_Set(1, tr, [731], '新山口・', '');
+                DetailReplace_Set(1, tr, Stops.HS_Shimonoseki1, '小倉', '新下関・小倉');
+            }
             DetailLength = [2, 2];
-            doallDetailShow(25);
+            doallDetailShow(22);
         }
     },
     '新幹線博多駅': {
@@ -56,7 +77,7 @@ export const JRSanyoStations: StationRegistry = {
             limitedjustnumber(TT[0], 2, 'のぞみ');
             limitedjustnumber(TT[0], 600, 'みずほ');
             limitedjustnumber(TT[1], 601, 'みずほ');
-            limitedjustnumber(TT[0], 838, 'こだま');
+            limitedjustnumber(TT[0], 938, 'こだま');
             limitedjustnumber(TT[0], 740, 'さくら');
         },
         onRender: () => {
@@ -94,9 +115,12 @@ export const JRSanyoStations: StationRegistry = {
                 if (Des[0][tr] == '新下関') {
                     trainTables[0].trains[tr].detail = '小倉';
                 }
+                if (trainTables[0].trains[tr].trainNumber == 408) {
+                    trainTables[0].trains[tr].detail = '小倉・新山口・徳山';
+                }
             }
             DetailLength = [2, 2];
-            doallDetailShow(25);
+            doallDetailShow(22);
         }
     },
     '新幹線岡山駅': {
@@ -109,13 +133,13 @@ export const JRSanyoStations: StationRegistry = {
             detailLength_one = 2;
             detailflag = 2;
             let kodama2 = [830, 832, 834, 836, 840, 842, 854, 856, 858, 860, 862, 866, 868, 870];
-            let hikari1 = [591, 531, 533, 535];
+            let hikari1 = [681, 731, 733, 735];
             limitednumber2(TT[1], hikari1, 'ひかり');
             limitednumber2(TT[0], kodama2, 'こだま');
-            limitednumber(TT[1], 831, 'こだま');
+            limitednumber(TT[1], 931, 'こだま');
             limitednumber(TT[1], 741, 'さくら');
             limitednumber(TT[0], 740, 'さくら');
-            limitedjustnumber(TT[0], 500, 'ひかり');
+            limitedjustnumber(TT[0], 700, 'ひかり');
             limitedjustnumber(TT[1], 61, 'のぞみ', '広島');
             limitedjustnumber(TT[1], 1, 'のぞみ', '博多');
             limitedjustnumber(TT[0], 600, 'みずほ');
@@ -140,8 +164,6 @@ export const JRSanyoStations: StationRegistry = {
                 }
                 JRSSobj.Typeb.detail = Stops.Sanyo_hikari;
             }
-            console.log(Detail);
-            console.log(TrainNumber);
             for (var tr = 0; tr < 2; tr++) {
                 DetailReplace_Set(0, tr, Stops.N_Himeji2, '新神戸', '姫路・新神戸');
                 DetailReplace_Set(0, tr, Stops.S_Himeji2, '新神戸', '姫路・新神戸');
@@ -156,12 +178,12 @@ export const JRSanyoStations: StationRegistry = {
                 DetailReplace_Set(1, tr, Stops.M_Yamaguchi1, '小倉', '新山口・小倉');
                 DetailReplace_Set(1, tr, Stops.S_Tokuyama1, '小倉', '徳山・小倉');
                 DetailReplace_Set(1, tr, Stops.S_Yamaguchi1, '小倉', '新山口・小倉');
-                DetailReplace_Set(1, tr, [591], '福山・広島', '新倉敷・福山・三原・東広島・広島・新岩国・徳山');
-                DetailReplace_Set(1, tr, [531], '新山口・', '');
+                DetailReplace_Set(1, tr, [681], '福山・広島', '新倉敷・福山・三原・東広島・広島・新岩国・徳山');
+                DetailReplace_Set(1, tr, [731], '新山口・', '');
                 DetailReplace_Set(1, tr, Stops.HS_Shimonoseki1, '小倉', '新下関・小倉');
                 DetailReplace_Set(1, tr, Stops.S_Kumamoto1, '博多・新鳥栖・久留米', '博多からの各駅');
                 DetailReplace_Set(1, tr, Stops.M_Kurume1, '熊本', '久留米・熊本');
-                DetailReplace_Set(1, tr, Stops.S_Yatsushiro1,'熊本・川内', '熊本からの各駅');
+                DetailReplace_Set(1, tr, Stops.S_Yatsushiro1, '熊本・川内', '熊本からの各駅');
                 DetailReplace_Set(1, tr, Stops.S_Tamana1, '久留米', '久留米・新玉名');
                 DetailReplace_Set(1, tr, Stops.S_Omuta1, '久留米', '久留米・新大牟田');
                 DetailReplace_Set(1, tr, Stops.S_Funakoya1, '久留米', '久留米・筑後船小屋');
@@ -169,13 +191,8 @@ export const JRSanyoStations: StationRegistry = {
                     trainTables[1].trains[tr].detail = Des[1][tr] + "まで止まりません";
                 }
             }
-            /*for (var td = 0; td < TablenumSub; td++) {
-                for (var tr = 0; tr < 2; tr++) {
-                    DetailBanner(td, tr, 25);
-                }
-            }*/
             DetailLength = [2, 2];
-            doallDetailShow(25);
+            doallDetailShow(22);
 
         }
     }

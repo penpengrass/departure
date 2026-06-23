@@ -27,6 +27,11 @@ td{               /*データ内*/
     color:white;
     font-size:1.3vw;
 }
+.CJiyuseki{
+    text-align: left;
+    color:white;
+    font-size:1.3vw;
+}
 table{        /*表全体*/
     border-collapse: collapse;/*文字を縮小してもボーダーが縮まらない*/
     table-layout:fixed;
@@ -39,14 +44,17 @@ table{        /*表全体*/
     border-spacing: 0px;
 }
 p3{
-    font-size:1.5vw;
+    font-size:1.3vw;
 }
 @media(max-width:1199px) {
     .CDetail{
         font-size:20px;
     }
+    .CJiyuseki{
+        font-size:20px;
+    }
     p3{
-        font-size:25px;
+        font-size:20px;
     }
     table{
         width:750px;

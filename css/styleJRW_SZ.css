@@ -125,11 +125,19 @@ table {
         color: white;
         font-size: 1.3vw;
     }
+    .CJiyuseki{
+        text-align: left;
+        color:white;
+        font-size:1.3vw;
+    }
     @media(max-width:1199px) {
         td{
             font-size:30px;
         }
         .CDetail{
+            font-size: 20px;
+        }
+        .CJiyuseki{
             font-size: 20px;
         }
     }

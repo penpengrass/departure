@@ -10,7 +10,7 @@ if (isset($_POST['staselect4'])) {
         exit();
     }
 }
-$detaillength = 0;
+$detaillength = 2;
 if (isset($_GET['station'])) {
     if (Inisset('hiroshima')) {
         $files[0] = 'csv/JRW_S/hiroshima_S1.csv';

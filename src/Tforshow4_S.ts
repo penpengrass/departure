@@ -30,16 +30,15 @@ if (Indexfile == 'index4_S2.php') {
     for (var td = 0; td < 2; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
             //この部分は未完成
-            if (Indexfile == 'index4_S2.php') {
                 ShinDetailSetting(td, tr, Type[td][tr], JRSSobj);
                 if (Type[td][tr].includes('つばめ*') || Type[td][tr].includes('さくら*')) {
                     trainTables[td].trains[tr].cars = '6両編成';
                     trainTables[td].trains[tr].jiyuseki = '自由席1-3,5,6号車';
                 }
                 document.getElementById('TExplain' + (td + 1) + '' + (tr + 1))!.textContent = trainTables[td].trains[tr]?.cars ?? "";
-            }
             if (Type[td][tr] != '' && tr < 2) {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.innerHTML = '停車駅:' + '<br>　　';
+                document.getElementById('TDetail'+ (td + 1) + (tr + 1))!.classList.remove("news-banner__content");
             }
             TwoLetterDistance(td, tr, Des, TDes, 1, 0.9);
         }
@@ -57,16 +56,19 @@ if (Indexfile == 'index4_S2.php') {
     JRNameDevide(2);
     for (var td = 0; td < 2; td++) {
         for (var tr = 0; tr < orderNum; tr++) {
-            if (Type[td][tr] == 'のぞみ' || Type[td][tr] == 'ひかり') {
+            const _Type = trainTables[td].trains[tr].type;
+            if (_Type == 'のぞみ' || _Type == 'ひかり') {
                 document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = '16両';
-            } else if (Type[td][tr] != '') {
+            } else if (_Type != '') {
                 document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = '8両';
             }
-            if (Type[td][tr] == 'のぞみ' || Type[td][tr] == 'さくら' || Type[td][tr] == 'みずほ') {
+            if (_Type == 'のぞみ') {
+                document.getElementById('TJiyuseki' + (td + 1) + '' + (tr + 1))!.textContent = '1-2号車';
+            } else if (_Type == 'さくら' || _Type == 'みずほ') {
                 document.getElementById('TJiyuseki' + (td + 1) + '' + (tr + 1))!.textContent = '1-3号車';
-            } else if (Type[td][tr] == 'ひかり') {
+            } else if (_Type == 'ひかり') {
                 document.getElementById('TJiyuseki' + (td + 1) + '' + (tr + 1))!.textContent = '1-5号車';
-            } else if (Type[td][tr] != '') {
+            } else if (_Type != '') {
                 document.getElementById('TJiyuseki' + (td + 1) + '' + (tr + 1))!.textContent = '1-3,7,8号車';
             }
         }

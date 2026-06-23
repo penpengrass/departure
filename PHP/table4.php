@@ -98,14 +98,14 @@ function JRWSTable2($i, $tablenums, $detaillength, $column = 2)
       <td class="Ctime" id="TTime' . $i . $j . '"><p2 id="THour' . $i . $j . '"></p2>:<p2 id="TMin' . $i . $j . '"></p2></td>
       <td class="Destination" id="TDes' . $i . $j . '"><span id="WDes' . $i . $j . '"></span></td>
       <td class="railnumber" id="TNum' . $i . $j . '"></td>
-      <td class="CDetail" id="TExplain' . $i . $j . '"></td>
+      <td class="CJiyuseki" id="TExplain' . $i . $j . '"></td>
     </tr>
     ');
     if ($detaillength >= $j) {
       print('
     <tr>
     <td colspan="2" class="CDetail" id="TDetailtitle' . $i . $j . '"></td>
-    <td class="CDetail" colspan="5" id="TDetail' . $i . $j . '"></td>
+    <td class="CDetail" colspan="5"><p3 class="news-banner__content" id="TDetail' . $i . $j . '"></p3></td>
     </tr>
     ');
     }
