@@ -168,7 +168,7 @@
             <tr>
                 <td>JR九州LCD</td>
                 <td><button type="button" onclick="location.href='./index10_H.php'">移動</button></td>
-                <td><span style="color:black;">博多駅</span></td>
+                <td><span style="color:blue;">博多駅</span></td>
                 <td>なし</td>
             </tr>
              <tr>

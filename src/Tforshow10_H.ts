@@ -3,7 +3,7 @@ import { TypeColorChange } from "./module/colorSimpleSet";
 import { J_hakataTypeColor } from "./typeColor";
 import { JRSSobj } from "./detailStopData/JRW_S";
 import { plainTrainTables, trainTables } from "./types/trainTable";
-import {TType} from "./types/constants";
+import { TType } from "./types/constants";
 
 NonGouflag = 1;
 JRNameDevide(2);
@@ -54,9 +54,11 @@ for (var td = 0; td < Tablenum; td++) {
     TrainTypeSet(4);
     TrainTypeSet(5)
 }
+DestinationSet();
 for (var tr = 0; tr < 2; tr++) {
     var dName = document.getElementById('TName' + 4 + (tr + 1));
     var dDes = document.getElementById('TDes' + 4 + (tr + 1));
+    const _PDes = plainTrainTables[3].trains[tr]?.destination ?? "";
     var number = JRLimitedNumber(3, tr, 1);
     if (dName!.textContent.includes('みどり(リレーかもめ')) {
         trainTables[3].trains[tr].destination = '佐世保･長崎';
@@ -70,14 +72,13 @@ for (var tr = 0; tr < 2; tr++) {
         dName!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
         dName!.style.fontWeight = '800px';
     }
-    if (dDes!.textContent.includes('･佐世保')) {
-        dDes!.innerHTML = 'ハウステンボス' + '<br>' + '佐世保';
+    if (_PDes.includes('佐世保') && _PDes.includes('ハウステンボス')) {
+        trainTables[3].trains[tr].destination = 'ハウステンボス' + '<br>' + '佐世保';
         dDes!.style.fontSize = '20px';
         dDes!.style.transform = "scaleX(1.10)" + "translate(0%,0%)";
         dDes!.style.fontWeight = '800px';
     }
 }
-DestinationSet();
 flagmarkerase(1, 'TType', '*');
 Bansenshow(2);
 NewAllLastShow();

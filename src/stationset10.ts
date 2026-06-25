@@ -64,16 +64,16 @@ export const JRKyushuStations: StationRegistry = {
     '博多駅': {
         name: '博多駅',
         company: 'JR九州',
-        tableTitles: ['山陽・東海道新幹線 新大阪方面', '九州新幹線 鹿児島中央方面',
-            '鹿児島本線下り 大牟田 久留米方面', '長崎本線 佐賀 佐世保方面', '鹿児島本線上り 小倉方面', '福北ゆたか線 篠栗方面'],
+        tableTitles: ['山陽・東海道新幹線 新大阪･名古屋･東京方面', '九州新幹線 熊本･鹿児島中央方面',
+            '鹿児島本線下り 大牟田･久留米/日田･由布院方面', '長崎本線 佐賀･長崎/佐世保方面', '鹿児島本線上り 香椎･黒崎･小倉･中津･大分方面', '福北ゆたか線 篠栗･新飯塚･直方方面'],
         file: 'index10_H.php',
         setup: () => {
             limitedjustnumber(TT[1], 1, 'のぞみ');
             limitedjustnumber(TT[0], 2, 'のぞみ');
             limitedjustnumber(TT[0], 600, 'みずほ');
             limitedjustnumber(TT[1], 601, 'みずほ');
-            limitedjustnumber(TT[0], 838, 'こだま');
-            limitedjustnumber(TT[0], 540, 'さくら');
+            limitedjustnumber(TT[0], 938, 'こだま');
+            limitedjustnumber(TT[0], 740, 'さくら');
             limitedjustnumber(TT[4], 1, '特急ソニック');
             limitedjustnumber(TT[4], 2, '特急きらめき');
             limitedjustnumber(TT[2], 101, '特急かささぎ');

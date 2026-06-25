@@ -47,7 +47,6 @@ export const JRSanyoStations: StationRegistry = {
                 DetailReplace_Set(1, tr, Stops.S_Omuta1, '久留米', '久留米・新大牟田');
                 DetailReplace_Set(1, tr, Stops.S_Funakoya1, '久留米', '久留米・筑後船小屋');
                 DetailReplace_Set(0, tr, Stops.S_Himeji2, '新神戸', '姫路・新神戸');
-                DetailReplace_Set(0, tr, Stops.N_Tokuyama2, '広島', '徳山・広島');
                 DetailReplace_Set(0, tr, Stops.N_Himeji2, '新神戸', '姫路・新神戸');
                 DetailReplace_Set(0, tr, Stops.M_Himeji2, '新神戸', '姫路・新神戸');
                 DetailReplace_Set(0, tr, Stops.N_Fukuyama2, '岡山', '福山・岡山');
