@@ -39,7 +39,7 @@ for (var tr = 0; tr < orderNum; tr++) {
 //td_detail++;
 for (var tr = 0; tr < orderNum; tr++) {
     var ShinanoNumber = JRLimitedNumber(2, tr);
-    if (Type[2][tr].includes('特急') || Type[2][tr].includes('ﾎｰﾑﾗｲﾅｰ')) {
+    if (Type[2][tr].includes('特急') || Type[2][tr].includes('ホームライナー')) {
         FDetail(Type[2][tr], JRChNobj, Dtype[0], 2, tr, "・");
         if (Detail[2][tr].slice(-1) == '・') {
             console.log(tr + 'は読点で終わる');
@@ -101,7 +101,7 @@ for (var tr = 0; tr < orderNum; tr++) {
 for (var tr = 0; tr < orderNum; tr++) {
     if (Type[1][tr].includes('快速')) {
         trainTables[1].trains[tr].detail = '尾張一宮・岐阜・岐阜から各駅';
-    } else if (Type[1][tr].includes('ﾎｰﾑﾗｲﾅｰ')) {
+    } else if (Type[1][tr].includes('ホームライナー')) {
         trainTables[1].trains[tr].detail = '尾張一宮・岐阜・穂積';
     }
     if (Type[2][tr] == '快速') {
@@ -141,7 +141,7 @@ for (let te = 0; te < Tablenum; te++) {
             document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
             //document.getElementById('IType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.50)" + "translate(-45%,0%)";
         } else if (Type[te][tr].length > 10) {
-            document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.60)" + "translate(-15%,0%)";
+            document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.60)" + "translate(-30%,0%)";
             //document.getElementsByClassName('shubetu' + (te + 1) + (tr + 1))[0].style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
         } else if (Type[te][tr].length > 8) {
             document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.65)" + "translate(-25%,0%)";

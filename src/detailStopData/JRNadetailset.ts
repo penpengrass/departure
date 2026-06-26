@@ -51,7 +51,7 @@ var local = [['各駅にとまります']];
 let Cgreen='#39ff14'
 export var JRCeNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: limited, },
-    Typeb: { type: "ﾎｰﾑﾗｲﾅｰ", Bcolor: red, color: white, detail: Jrapid, },
+    Typeb: { type: "ホームライナー", Bcolor: red, color: white, detail: Jrapid, },
     Typec: { type: "特別快速", Bcolor: 'yellow', color: black, detail: Sperapid, },
     Typed: { type: "新快速", Bcolor: '#fd7e00', color: white, detail: Newrapid, },
     Typee: { type: "快速", Bcolor: blue, color: white, detail: rapid, },
@@ -64,7 +64,7 @@ if (station != '名古屋駅') {
 }
 export var JRChNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: Slimited, },
-    Typeb: { type: "快速みえ", Bcolor: '#fd7e00', color: white, detail: Homerapid, },
+    Typeb: { type: "ホームライナー", Bcolor: red, color: white, detail: Homerapid, },
     Typee: { type: "快速", Bcolor: blue, color: white, detail: Jsubrapid, },
     Typef: { type: "区間快速", Bcolor: Cgreen, color: black, detail: Jsubrapid, },
     Typelocal: { type: "普通", Bcolor: white, color: black, detail: local, }

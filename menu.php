@@ -132,13 +132,13 @@
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
                 <td><span style="color:red;">浜松駅</span></td>
-                <td><span style="color:red;">沼津駅</span>, <span style="color:red;">静岡駅</span>, <span style="color:red;">豊橋駅</span>, 
-                <span style="color:red;">岐阜駅</span>, <span class="orange">大垣駅</span></td>
+                <td><span style="color:red;">沼津駅</span>, <span style="color:red;">静岡駅</span>, <span class="orange">豊橋駅</span>, 
+                <span class="orange">岐阜駅</span>, <span class="orange">大垣駅</span></td>
             </tr>
             <tr>
                 <td>JR東海LCD</td>
                 <td><button type="button" onclick="location.href='./index7_T.php'">移動</button></td>
-                <td><span style="color:red;">名古屋駅</span></td>
+                <td><span class="orange">名古屋駅</span></td>
                 <td>なし</td>
             </tr>
             <tr>
