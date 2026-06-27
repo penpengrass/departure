@@ -65,6 +65,7 @@ if (station != '名古屋駅') {
 export var JRChNobj = {//色は文字
     Typea: { type: "特急", Bcolor: red, color: white, detail: Slimited, },
     Typeb: { type: "ホームライナー", Bcolor: red, color: white, detail: Homerapid, },
+    Typec: { type: "快速みえ", Bcolor: '#fd7e00', color: white, detail: Jsubrapid, },
     Typee: { type: "快速", Bcolor: blue, color: white, detail: Jsubrapid, },
     Typef: { type: "区間快速", Bcolor: Cgreen, color: black, detail: Jsubrapid, },
     Typelocal: { type: "普通", Bcolor: white, color: black, detail: local, }

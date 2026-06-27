@@ -125,31 +125,32 @@ for (let te = 0; te < Tablenum; te++) {
     (Class_Bottm[te] as HTMLElement).style.borderBottomColor = bottom_color[te];
     TrainTypeSet(te);
     for (let tr = 0; tr < orderNum; tr++) {
-        if (Type[te][tr].includes('普通')) {
+        const _Type=trainTables[te].trains[tr].type;
+        if (_Type.includes('普通')) {
             trainTables[te].trains[tr].detail = '各駅にとまります';
         }
-        if (Type[te][tr].includes('快速みえ')) {
+        if (_Type.includes('快速みえ')) {
             trainTables[te].trains[tr].type += '号';
         }
         //console.log(Type[te][tr]);
-        if (Type[te][tr] === 'undefined') {
+        if (_Type === 'undefined') {
             console.log(":");
-        } else if (Type[te][tr].length > 6 && Type[te][tr].length < 8) {
+        } else if (_Type.length > 6 && _Type.length < 8) {
             document.getElementById('WType' + (te + 1) + (tr + 1))!.style.textAlign = "center";
             document.getElementById('TType' + (te + 1) + (tr + 1))!.style.boxSizing = "border-box";
             //document.getElementById('TType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.50)" + "translate(-45%,0%)";
             document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.80)" + "translate(-10%,0%)";
             //document.getElementById('IType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.50)" + "translate(-45%,0%)";
-        } else if (Type[te][tr].length > 10) {
+        } else if (_Type.length > 10) {
             document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.60)" + "translate(-30%,0%)";
             //document.getElementsByClassName('shubetu' + (te + 1) + (tr + 1))[0].style.transform = "scaleX(0.55)" + "translate(-30%,0%)";
-        } else if (Type[te][tr].length > 8) {
+        } else if (_Type.length > 8) {
             document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.65)" + "translate(-25%,0%)";
-        } else if (Type[te][tr].length > 7) {
+        } else if (_Type.length > 7) {
             document.getElementById('WType' + (te + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-12%,0%)";
         }
         //DetailBanner(te, tr, 23);
-        if (Type[te][tr] == '') {
+        if (_Type == '') {
             document.getElementById('TNum' + (te + 1) + (tr + 1))!.style.backgroundColor = 'black';
             document.getElementById('TDetailtitle' + (te + 1) + (tr + 1))!.textContent = '';
         }
