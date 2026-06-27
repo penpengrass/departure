@@ -131,8 +131,8 @@
             <tr>
                 <td>JR東海一般駅</td>
                 <td><button type="button" onclick="location.href='./index7.php'">移動</button></td>
-                <td><span style="color:red;">浜松駅</span></td>
-                <td><span style="color:red;">沼津駅</span>, <span style="color:red;">静岡駅</span>, <span class="orange">豊橋駅</span>, 
+                <td><span class="orange">浜松駅</span></td>
+                <td><span class="orange">沼津駅</span>, <span class="orange">静岡駅</span>, <span class="orange">豊橋駅</span>, 
                 <span class="orange">岐阜駅</span>, <span class="orange">大垣駅</span></td>
             </tr>
             <tr>
@@ -144,8 +144,8 @@
             <tr>
                 <td>東海道新幹線一般駅</td>
                 <td><button type="button" onclick="location.href='./index7_S1.php'">移動</button></td>
-                <td><span style="color:red;">浜松駅</span></td>
-                <td><span style="color:red;">豊橋駅</span></td>
+                <td><span class="orange">浜松駅</span></td>
+                <td><span class="orange">豊橋駅</span></td>
             </tr>
             <tr>
                 <td>JR北海道</td>

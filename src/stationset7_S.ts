@@ -17,10 +17,10 @@ export const JRTokaidouStations: StationRegistry = {
         file: 'index7_S1.php',
         nonGouFlag:1,
         setup: () => {
-            limitedjustnumber(TT[1], 501, 'ひかり');
-            limitedjustnumber(TT[0], 500, 'ひかり');
-            limitedjustnumber(TT[1], 701, 'こだま');
-            limitedjustnumber(TT[0], 700, 'こだま');
+            limitedjustnumber(TT[1], 701, 'ひかり');
+            limitedjustnumber(TT[0], 700, 'ひかり');
+            limitedjustnumber(TT[1], 801, 'こだま');
+            limitedjustnumber(TT[0], 800, 'こだま');
         }
     },
     '豊橋駅': {
@@ -30,12 +30,12 @@ export const JRTokaidouStations: StationRegistry = {
         file: 'index7_S1.php',
         nonGouFlag:1,
         setup: () => {
-            var hikari1 = [630, 632, 638, 644, 648, 652, 656, 660, 522];
-            var hikari2 = [631, 635, 639, 643, 647, 651, 657, 667, 669];
+            var hikari1 = [630, 632, 638, 644, 648, 652, 656, 660, 722];
+            var hikari2 = [631, 635, 639, 643, 647, 651, 657, 669];
             limitednumber2(TT[0], hikari1, 'ひかり');
             limitednumber2(TT[1], hikari2, 'ひかり');
-            limitedjustnumber(TT[1], 701, 'こだま');
-            limitedjustnumber(TT[0], 700, 'こだま');
+            limitedjustnumber(TT[1], 801, 'こだま');
+            limitedjustnumber(TT[0], 800, 'こだま');
         }
     }
 }
