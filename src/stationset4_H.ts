@@ -114,10 +114,10 @@ export const JRHokurikuStations: StationRegistry = {
             limitedjustnumber(TT[4], 1, '特急能登かがり火');
             limitedjustnumber(TT[3], 1, '快速あいの風ﾗｲﾅｰ');
             if (holidayflag == 1) {
-                TT[1][61].splice(1, 1);
-                TT[1][62].splice(1, 1);
-                TT[1][63].splice(1, 1);
-                TT[1][64].splice(1, 1);
+                TT[0][61].splice(1, 1);
+                TT[0][62].splice(1, 1);
+                TT[0][63].splice(1, 1);
+                TT[0][64].splice(1, 1);
             }
         }
     },

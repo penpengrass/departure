@@ -44,12 +44,12 @@
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td><span style="color:black;">武蔵小杉駅</span></td>
                 <td><span style="color:blue;">高崎駅</span>, <span style="color:red;">黒磯駅</span>, <span style="color:black;">宇都宮駅</span>, <span style="color:black;">大宮駅</span>,
-                <span style="color:black;">横浜駅</span>, <span style="color:red;">小田原駅</span>, <span style="color:red;">熱海駅</span></td>
+                <span style="color:blue;">横浜駅</span>, <span class="orange">小田原駅</span>, <span class="orange">熱海駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本新幹線</td>
                 <td><button type="button" onclick="location.href='./index3_S.php'">移動</button></td>
-                <td><span style="color:black;">長野駅</span></td>
+                <td><span style="color:blue;">長野駅</span></td>
                 <td><span style="color:black;">宇都宮駅</span></td>
             </tr>
             <tr>
@@ -71,7 +71,7 @@
                 <td><button type="button" onclick="location.href='./index4.php?station=hiroshima'">移動</button></td>
                 <td><span class="orange">広島駅</span></td>
                 <td><span class="orange">岡山駅</span>, <span class="orange">糸崎駅</span>, 
-                <span class="orange">三原駅</span>, <span style="color:blue;">新見駅</span>, <span style="color:red;">米子駅</span>, 
+                <span class="orange">三原駅</span>, <span style="color:blue;">新見駅</span>, <span class="orange">米子駅</span>, 
                 <span class="orange">岩国駅</span>, <span class="orange">徳山駅</span>, <span class="orange">下関駅</span></td>
             </tr>
             <tr>
@@ -108,7 +108,7 @@
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
                 <td><span style="color:black;">新宿駅</span></td>
-                <td><span style="color:black;">水戸駅</span>, <span style="color:black;">赤羽駅</span>, <span style="color:black;">横浜駅</span>, <span style="color:red;">長野駅</span>, <span style="color:red;">松本駅</span></td>
+                <td><span style="color:black;">水戸駅</span>, <span style="color:black;">赤羽駅</span>, <span style="color:blue;">横浜駅</span>, <span class="orange">長野駅</span>, <span class="orange">松本駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本UTL</td>

@@ -340,6 +340,7 @@ export const JREastStations: StationRegistry = {
                 FourLetters(5, tr, 0.7, 5);
             }
             DestinationSet();
+            allDestinationTwoLettersDistance(TDes, 1, 0.8);
             NameColorchange(4, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
             NameColorchange(5, 'TName', '湘南新宿ﾗｲﾝ', 'orange');
             NewAllLastShow();

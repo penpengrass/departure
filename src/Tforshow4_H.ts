@@ -86,10 +86,10 @@ for (var tr = 0; tr < 2; tr++) {
         Detail[0][tr] = '各駅';
     }
     if (iiyama.includes(_Number0)) {
-        DetailReplace(0, tr, '長野', '飯山　長野');
+        DetailReplace(0, tr, '上越妙高', '上越妙高　飯山');
     }
     if (iiyama.includes(_Number1)) {
-        DetailReplace(1, tr, '長野', '飯山　長野');
+        DetailReplace(1, tr, '上越妙高', '上越妙高　飯山');
     }
 
     if (Stops.ueda.includes(_Number0)) {

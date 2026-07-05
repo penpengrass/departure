@@ -3,13 +3,13 @@ import { TTconnect, makeemptyTable } from './module/connectTable';
 import { StationRegistry, StationConfig } from './types/station';
 import {
     JRNameDevide, NewAllLastShow, TrainTypeWordChange, flagmarkerase, Bansenshow, JRLimitedDevide, JRLimitedNameDevide, rowsize, moveTableColumn, rowremove, FourLetters
-    , allDestinationTwoLettersDistance, swapColumns, DestinationSet,
+    , allDestinationTwoLettersDistance, swapColumns, DestinationSet, TypeTwoLetterDistance,
     TrainTypeSet, holiday_F
 } from "./module/firstDisplayEdit";
 import { CarsDefine, CarsInto } from "./module/carsEdit";
 import { allswitchChiba, allswitch_Akabane } from "./module/displaySwitch";
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";
-import { comment, TDes } from './types/constants';
+import { comment, TDes, TType } from './types/constants';
 import { } from "./module/displaySwitch";
 import { plainTrainTables, trainTables } from './types/trainTable';
 let Saikyo_Color = '#00AC9A';
@@ -121,14 +121,18 @@ export const JREast6Stations: StationRegistry = {
                 TT[3][26][2] = '43';
                 TT[3][27][2] = '南小谷';
                 TT[3][28][2] = '2';
-                TT[2][45][2] = '快速ﾘｿﾞｰﾄﾋﾞｭｰふるさと';
-                TT[2][46][2] = '10';
-                TT[2][47][2] = '長野';
-                TT[2][48][2] = '2';
-                TT[2][45][3] = '普通';
-                TT[2][46][3] = '34';
-                TT[2][47][3] = '長野';
-                TT[2][48][3] = '3';
+                TT[3][33][2] = '特急はくば1号';
+                TT[3][34][2] = '41';
+                TT[3][35][2] = '白馬';
+                TT[3][36][2] = '5';
+                TT[2][41][2] = '快速ﾘｿﾞｰﾄﾋﾞｭｰふるさと';
+                TT[2][42][2] = '10';
+                TT[2][43][2] = '長野';
+                TT[2][44][2] = '2';
+                TT[2][41][3] = '普通';
+                TT[2][42][3] = '34';
+                TT[2][43][3] = '長野';
+                TT[2][44][3] = '1';
             }
         },
         onRender: () => {
@@ -170,6 +174,7 @@ export const JREast6Stations: StationRegistry = {
                 for (var tr = 0; tr < 3; tr++) {
                     TrainTypeSet(td);
                     allDestinationTwoLettersDistance(TDes, 0.5, 0.5);
+                    TypeTwoLetterDistance(td, tr, TType, 1, 0.4);
                     //console.log(document.getElementById('Ttopic'+(tr+1)+(ts+1)));
                     document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.innerHTML += '<span class="bansen">番線</span>';
                     document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.paddingRight = "1em";

@@ -764,6 +764,7 @@ export const JRWestStations: StationRegistry = {
     '米子駅': {
         name: '米子駅',
         company: 'JR西日本',
+        dtype: [0, 0, 0],
         tableTitles: ['伯備線 境線 新見･岡山･境港方面', '山陰線 松江･出雲市･益田方面', '山陰線 倉吉･鳥取方面'],
         setup: () => {
             limitedjustnumber(TT[0], 2, '特急やくも');
@@ -778,7 +779,15 @@ export const JRWestStations: StationRegistry = {
             TT[0] = TT[4];
         },
         onRender: () => {
-            Dtype = [0, 0, 0];
+            for (var td = 0; td < Tablenum; td++) {
+                TrainTypeSet(td)
+                for (var tr = 0; tr < Tablenums[td]; tr++) {
+                    if (trainTables[td].trains[tr].type.includes('特急')) {
+                        trainTables[td].trains[tr].type += '号';
+                    }
+                }
+            }
+            //Dtype = [0, 0, 0];
             //comment!.textContent += "一部表示不正確 ";
             holiday_F(station);
         }
