@@ -113,7 +113,7 @@
             <tr>
                 <td>JR東日本UTL</td>
                 <td><button type="button" onclick="location.href='./index6_U.php'">移動</button></td>
-                <td><span style="color:black;">東京駅</span></td>
+                <td><span style="color:blue;">東京駅</span></td>
                 <td><span style="color:blue;">品川駅</span>, <span style="color:black;">上野駅</span></td>
             </tr>
             <tr>
