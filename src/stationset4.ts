@@ -642,19 +642,38 @@ export const JRWestStations: StationRegistry = {
                 if (Type[0][tr].startsWith('普通')) {
                     CarsDefine(0, tr, "普通", "", 4);
                     CarsDefine(0, tr, "普通*", "", 2);
+                    CarsDefine(0, tr, "普通+", "", 3);
                     Type[0][tr] = Type[0][tr].replace("*", "");
                     CarsInto(0, tr, "TName");
                     document.getElementById("TName" + (0 + 1) + (tr + 1))!.style.color = "#0f0";
+                    trainTables[0].trains[tr].trainName = '山陽線';
                 }
                 if (Type[1][tr] != "") {
                     CarsDefine(1, tr, "普通", "", 4);
                     CarsInto(1, tr, "TName");
+                    trainTables[1].trains[tr].trainName = '九州方面';
                 }
                 if (Type[2][tr] == "普通") {
-                    document.getElementById("TName" + (2 + 1) + (tr + 1))!.textContent = "ワンマン";
+                    CarsDefine(2, tr, "普通", "", 2);
+                    CarsInto(2, tr, "TName");
+                    trainTables[2].trains[tr].trainName = 'ワンマン';
                 }
             }
-            //comment!.innerHTML = "両数は不正確<br>";
+            // 10秒ごとに表示を切り替える
+            setInterval(() => {
+                for (var td = 0; td < Tablenum; td++) {
+                    for (var tr = 0; tr < orderNum; tr++) {
+                        const _Cars = trainTables[td].trains[tr].cars
+                        const _TrainName = trainTables[td].trains[tr].trainName;
+                        const _dName = document.getElementById('TName' + (td + 1) + (tr + 1));
+                        if (_dName && _Cars && _TrainName) {
+                            if (_dName?.textContent == _Cars) _dName.textContent = _TrainName;
+                            else _dName.textContent = _Cars;
+                        }
+                    }
+                }
+            }, 10000);
+            comment!.innerHTML = "両数は不正確<br>";
             if (holidayflag == 1) {
                 document.getElementById("supplement")!.innerHTML +=
                     station + "のみ土休日ダイヤに対応(表示は土休日ダイヤ)<br>" + "〇〇のはなしは一部休日運休";

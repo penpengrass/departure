@@ -59,24 +59,3 @@ if (station == "北新地駅") {
         allswitch_detail(Yonago_Banner);
     }, 20000);
 }
-
-/*function switchTrainInfo() {
-    var SanyoCell = document.getElementById("TName11");
-    var SaninCell = document.getElementById("TName31");
-
-    // 表示を切り替える
-    if (SanyoCell.innerText === "山陽線") {
-        SanyoCell.innerText = "4両"
-    } else {
-        SanyoCell.innerText = "山陽線";
-    }
-    if (SaninCell.innerText === "山陰線") {
-        SaninCell.innerText = "2両";
-    } else {
-        SaninCell.innerText = "山陰線";
-    }
-}
-if (station == '下関駅') {
-    // 10秒ごとに表示を切り替える
-    setInterval(switchTrainInfo, 3000);
-}*/
