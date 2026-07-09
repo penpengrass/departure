@@ -723,6 +723,14 @@ export const JRWestStations: StationRegistry = {
             document.getElementById('HType' + 1)!.style.width = "25%";
             document.getElementById('HName' + 1)!.style.width = "25%";
             for (var tr = 0; tr < Tablenums[1]; tr++) {
+                let _Destination = plainTrainTables[0].trains[tr].destination;
+                let LType1 = document.getElementById('WType' + 1 + (tr + 1));
+                if (_Destination.startsWith('関西空港/') || _Destination.startsWith('関西空港･')) {
+                    trainTables[0].trains[tr].type = '関空/紀州路快速';
+                    LType1!.style.display = 'inline-block';
+                    LType1!.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
+                    LType1!.style.padding = '0px';
+                }
                 let LType = document.getElementById('WType' + 2 + (tr + 1));
                 let LTType = document.getElementById('TType' + 2 + (tr + 1));
                 if (Type[1][tr] == '普通') {
