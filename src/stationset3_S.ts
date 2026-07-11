@@ -208,6 +208,11 @@ export const ShinkansenStations: StationRegistry = {
             limitedjustnumber(window.TT[1], 202, 'やまびこ*');
             limitedjustnumber(window.TT[1], 50, 'やまびこ+');
             limitedjustnumber(window.TT[1], 122, ['やまびこ', 'つばさ', 'やまびこ･つばさ']);
+            TT[0][18][2] = '50';
+            TT[0][17][3] = '';
+            TT[0][18][3] = '';
+            TT[0][19][3] = '';
+            TT[0][20][3] = '';
         },
         onRender: () => {
             JRNewNameNumberDevide(2);

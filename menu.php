@@ -43,7 +43,7 @@
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
                 <td><span style="color:black;">武蔵小杉駅</span></td>
-                <td><span style="color:blue;">高崎駅</span>, <span style="color:red;">黒磯駅</span>, <span style="color:black;">宇都宮駅</span>, <span style="color:black;">大宮駅</span>,
+                <td><span style="color:blue;">高崎駅</span>, <span class="orange">黒磯駅</span>, <span style="color:black;">宇都宮駅</span>, <span style="color:black;">大宮駅</span>,
                 <span style="color:blue;">横浜駅</span>, <span class="orange">小田原駅</span>, <span class="orange">熱海駅</span></td>
             </tr>
             <tr>
@@ -55,8 +55,8 @@
             <tr>
                 <td>JR東日本東北</td>
                 <td><button type="button" onclick="location.href='./index3_T.php'">移動</button></td>
-                <td><span style="color:black;">仙台駅</span></td>
-                <td><span style="color:black;">福島駅</span>, <span style="color:black;">新白河駅</span></td>
+                <td><span style="color:blue;">仙台駅</span></td>
+                <td><span style="color:blue;">福島駅</span>, <span style="color:blue;">新白河駅</span></td>
             </tr>
             <tr>
                 <td>JR西日本</td>
@@ -126,7 +126,7 @@
                 <td>JR東日本新幹線フルカラー</td>
                 <td><button type="button" onclick="location.href='./index6_S.php'">移動</button></td>
                 <td><span style="color:black;">東京駅</span></td>
-                <td><span style="color:black;">仙台駅</span>, <span style="color:blue;">高崎駅</span></td>
+                <td><span style="color:blue;">仙台駅</span>, <span style="color:blue;">高崎駅</span></td>
             </tr>
             <tr>
                 <td>JR東海一般駅</td>
