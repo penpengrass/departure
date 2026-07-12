@@ -17,9 +17,11 @@ export const JREastShinkansenStations: StationRegistry = {
         file: 'index6_S.php',
         nonGouFlag: 0,
         setup: () => {
-            var hayabusa = [1, 101, 5, 103, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 31, 33, 35, 105, 39, 107, 41, 109, 43, 111, 45, 47];
+            var hayabusa = [1, 101, 3, 103, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27,29, 31, 33, 105, 35, 107, 37, 109, 39, 111, 41, 43];
             //hayabusa=[1, 101, 5, 103, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 31, 33, 35, 105, 39, 107, 41, 43, 111, 45, 47];
             limitednumber2(TT[0], hayabusa, 'はやぶさ');
+            //limitedjustnumber(TT[0], 1, ['はやぶさ', 'はやぶさ･こまち'], ['新青森', '新函館北斗', '新青森･秋田', '新函館北斗･秋田']);
+            //limitedjustnumber(TT[0], 101, 'はやぶさ', '盛岡');
             limitedjustnumber(TT[0], 51, 'やまびこ', '盛岡');
             limitedjustnumber(TT[0], 201, 'やまびこ*');
             limitedjustnumber(TT[0], 121, ['やまびこ', 'つばさ', 'やまびこ･つばさ']);

@@ -55,6 +55,9 @@ if (isset($_GET['station'])) {
     $files[1] = 'csv/JRE/utsunomiya2.csv';
     $files[2] = 'csv/JRE/utsunomiya3.csv';
     $files[3] = 'csv/JRE/utsunomiya4.csv';
+    if ($holidayflag == 1) {
+      $files[2] = 'csv/JRE/utsunomiya3_H.csv';
+    }
     $tablenum = 4;
     $OrderNum = 3;
     $station = '宇都宮駅';

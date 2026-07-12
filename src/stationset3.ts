@@ -368,28 +368,27 @@ export const JREastStations: StationRegistry = {
             }
             document.getElementById('HCars' + (2 + 1))!.style.width = "20%";
             document.getElementById('HDes' + (2 + 1))!.style.width = "25%";
+            CarsDevideToLine(1);
+            CarsDevideToLine(2);
             for (var tr = 0; tr < orderNum; tr++) {
                 if (Type[1][tr] != '') {
                     document.getElementById('TCars2' + (tr + 1))!.textContent = '4ﾄﾞｱ';
                 }
-            }
-            CarsDevideToLine(1);
-            CarsDevideToLine(2);
-            CarsDevideToLine(3);
-            for (var tr = 0; tr < orderNum; tr++) {
                 CarsInto(1, tr, 'WName');
                 if (Type[2][tr] != '') {
-                    document.getElementById('TCars3' + (tr + 1))!.textContent = '15両4ﾄﾞｱ';
+                    if (plainTrainTables[2].trains[tr].type.includes('*')) {
+                        document.getElementById('TCars3' + (tr + 1))!.textContent = '10両4ﾄﾞｱ';
+                        trainTables[2].trains[tr].type = trainTables[2].trains[tr].type.replace('*', '');
+                    } else if (trainTables[2].trains[tr].cars?.includes('両')) {
+                        document.getElementById('TCars3' + (tr + 1))!.textContent = trainTables[2].trains[tr].cars + '4ﾄﾞｱ';
+                    } else {
+                        document.getElementById('TCars3' + (tr + 1))!.textContent = '15両4ﾄﾞｱ';
+                    }
                     var Name = document.getElementById('TName3' + (tr + 1));
                     var TypeIn = document.getElementById('WType3' + (tr + 1));
                     if (Name && TypeIn && Name.textContent == '') {
                         if (Des[2][tr] == '上野' || Des[2][tr] == '大宮') {
-                            if (TypeIn.textContent.includes('ﾗﾋﾞｯﾄ')) {
-                                Name.textContent = 'ラビット';
-                                trainTables[1].trains[tr].type = '快速'
-                            } else {
-                                Name.textContent = '宇都宮線';
-                            }
+                            Name.textContent = '宇都宮線';
                         } else if (Des[2][tr] == '大船' || Des[2][tr] == '逗子') {
                             Name.textContent = '湘南新宿ﾗｲﾝ';
                         } else if (Des[2][tr] != '') {
@@ -398,6 +397,8 @@ export const JREastStations: StationRegistry = {
                     }
                     Name!.style.color = 'orange';
                 }
+                TrainTypeSet(2);
+                TrainTypeSet(3);
             }
             DestinationSet();
             for (var tr = 0; tr < orderNum; tr++) {
@@ -418,7 +419,7 @@ export const JREastStations: StationRegistry = {
             if (Type[0][0] == '' && Type[0][1] != '') {
                 BottomBanner("TRow", 1, 1, 3, '烏山方面へは黒磯行きに乗車のうえ宝積寺でのりかえ');
             }
-            comment!.textContent = '上野東京ラインの両数は今後修正予定';
+            comment!.textContent = '両数や烏山線などの表示は不正確';
             allTwoLettersDistance(Des, TDes, 1, 0.8);
             allJRCIncludeColor();
             allTimeMarkErase();

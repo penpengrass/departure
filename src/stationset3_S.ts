@@ -125,11 +125,16 @@ export const ShinkansenStations: StationRegistry = {
             for (var tr = 0; tr < orderNum; tr++) {
                 var _Number0 = trainTables[0].trains[tr]?.trainNumber ?? 0;
                 var _Number1 = trainTables[1].trains[tr]?.trainNumber ?? 0;
+                var LNumber1 = document.getElementById('TName' + (1 + 1) + (tr + 1));
                 if (Type[1][tr] != '') {
                     if (_Number1 > 199 || _Number1 == 68) {
                         trainTables[1].trains[tr].detail = '小山・大宮・上野・東京';
                     } else {
                         trainTables[1].trains[tr].detail = '大宮・上野・東京';
+                    }
+                    if (LNumber1 && _Number1 > 151 && _Number1 < 200) {
+                        _Number1 += 2;
+                        LNumber1.textContent = String(_Number1);
                     }
                 }
                 if (Type[0][tr] != '') {
@@ -137,6 +142,10 @@ export const ShinkansenStations: StationRegistry = {
                     var LDes = Des[0][tr];
                     var LNumber = document.getElementById('TName' + (0 + 1) + (tr + 1));
                     if (LNumber && _Number0 > 130 && _Number0 < 200) {
+                        _Number0 += 2;
+                        LNumber.textContent = String(_Number0);
+                    }
+                    if (LNumber && _Number0 > 214 && _Number0 < 232) {
                         _Number0 += 2;
                         LNumber.textContent = String(_Number0);
                     }
