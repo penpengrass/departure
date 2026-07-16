@@ -57,7 +57,7 @@ function JRS_Connect(td: number, tr: number, Keyword: string, Connect_Station: s
     if (_Des.includes(Keyword)) {
         trainTables[td].trains[tr].destination = _Des.replace(Keyword, "");
         if (tr == 0) {
-            trainTables[td].trains[0].detail =trainTables[td].trains[0].destination + "で<span class='lightgreen'>" + Connect_Station + "</span>行きに接続します";
+            trainTables[td].trains[0].detail = trainTables[td].trains[0].destination + "で<span class='lightgreen'>" + Connect_Station + "</span>行きに接続します";
             document.getElementById('TDetailtitle' + (td + 1))!.textContent = "接続案内";
         }
     }
@@ -93,27 +93,32 @@ for (var td = 0; td < Tablenum; td++) {
     LastLetterRemove(td, 0, '、');
     var _Detail = trainTables[td].trains[0].detail
     if (_Detail != '各駅にとまります' && _Detail != '' && Detail_title!.textContent == "停車駅") {
-        trainTables[td].trains[0].detail += 'に停車します。';
+        trainTables[td].trains[0].detail += "に<font color='red'>停車</font>します。";
     }
 }
 if (station == '高松駅') {
-    if (Type[2][0].startsWith('快速ﾏﾘﾝﾗｲﾅｰ') && TrainNumber[2][0] != 2) {
-        trainTables[2].trains[0].detail += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜５号車は<font color='yellow'>自由席</font>です。";
+    const _Number2 = trainTables[2].trains[0].trainNumber;
+    if (Type[2][0].startsWith('快速ﾏﾘﾝﾗｲﾅｰ')) {
+        if (_Number2 == 8 || _Number2 == 10) {
+            trainTables[2].trains[0].detail += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜７号車は<font color='yellow'>自由席</font>です。";
+        } else if (_Number2 != 2) {
+            trainTables[2].trains[0].detail += "  改札寄りの１号車は<font color='red'>グリーン席</font>・<font color='yellow'>指定席</font>、２〜５号車は<font color='yellow'>自由席</font>です。";
+        }
     }
     for (var td = 0; td < 2; td++) {
         if (Type[td][0].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
             var matches = Type[td][0].match(/(\D+)(\d+)号/);
             var NampuNumber = Number(matches[2]);
             trainTables[td].trains[0].detail += ' <font color="red">丸亀駅</font>で<font color="red">特急南風' + NampuNumber + '号 高知行き</font>に接続します';
-            trainTables[td].trains[0].type='快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
+            trainTables[td].trains[0].type = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
             trainTables[td].trains[0].trainName = 'ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
-            Type[td][0]='快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
+            Type[td][0] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
         }
         for (var tr = 1; tr < 3; tr++) {
             if (Type[td][tr].startsWith('快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ')) {
-                trainTables[td].trains[tr].type='快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
-                 trainTables[td].trains[tr].trainName = 'ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
-                 Type[td][tr]='快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
+                trainTables[td].trains[tr].type = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
+                trainTables[td].trains[tr].trainName = 'ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号';
+                Type[td][tr] = '快速ｻﾝﾎﾟｰﾄ南風ﾘﾚｰ号'
             }
         }
     }
@@ -228,6 +233,14 @@ for (var td = 0; td < Tablenum; td++) {
             } else {
                 dType!.style.color = 'red';
             }
+        } else if (Type[td][tr].startsWith('寝特')) {
+            trainTables[td].trains[tr].type = '寝特';
+            var _Name = Type[td][tr].slice(2);
+            document.getElementById('TName' + (td + 1) + (tr + 1))!.textContent = _Name;
+            document.getElementById('TName' + (td + 1) + (tr + 1))!.style.textAlign = 'left';
+            document.getElementById('TName' + (td + 1) + (tr + 1))!.style.color = 'red';
+            dType!.style.backgroundColor = 'red';
+            dType!.style.color = 'white';
         }
         var dName = document.getElementById('TName' + (td + 1) + (tr + 1));
         if (dName!.textContent.startsWith('しおかぜ･いしづち')) {

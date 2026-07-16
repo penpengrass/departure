@@ -9,19 +9,22 @@ const _Number0 = trainTables[0].trains[0]?.trainNumber ?? NaN;
 const _Number1 = trainTables[1].trains[0]?.trainNumber ?? NaN;
 
 const { _Number2, _Number3 } = station === '高松駅'
-  ? {
-      _Number2: trainTables[2].trains[0]?.trainNumber ?? NaN,
-      _Number3: trainTables[3].trains[0]?.trainNumber ?? NaN,
+    ? {
+        _Number2: trainTables[2].trains[0]?.trainNumber ?? NaN,
+        _Number3: trainTables[3].trains[0]?.trainNumber ?? NaN,
     }
-  : {
-      _Number2: NaN,
-      _Number3: NaN,
+    : {
+        _Number2: NaN,
+        _Number3: NaN,
     };
 if (station == '高松駅') {
     if (time0 != null) {
         if (TableHour[0][0] > 16) {
             AddStopping(Sunport, '端岡', '鴨川');
         }
+    }
+    if (_Number1 > 99) {
+        DeleteStopping(Ishiduti, '宇多津');
     }
     var Houjou = [101, 103, 1, 13, 15, 17, 19, 21, 23, 25, 27];
     for (var line = 0; line < Houjou.length; line++) {
@@ -48,10 +51,34 @@ if (station == '高松駅') {
             AddStopping(Mrapid, '茶屋町', '早島');
         }
     }
-    if (_Number2 == 2 || _Number2 == 70) {
+    var Hayashima_Senoo = [6, 8, 10, 12, 14, 16, 68];
+    for (var line = 0; line < Hayashima_Senoo.length; line++) {
+        if (_Number2 == Hayashima_Senoo[line]) {
+            AddStopping(Mrapid, '茶屋町', '早島');
+        }
+    }
+    var Omoto = [4, 6, 8, 10];
+    for (var line = 0; line < Omoto.length; line++) {
+        if (_Number2 == Omoto[line]) {
+            AddStopping(Mrapid, '妹尾', '大元');
+        }
+    }
+    var Nishiichi = [8, 10];
+    for (var line = 0; line < Nishiichi.length; line++) {
+        if (_Number2 == Nishiichi[line]) {
+            AddStopping(Mrapid, '妹尾', '備前西市');
+        }
+    }
+    if (_Number2 == 2) {
+        Dtype[2]++;
+        AddStopping(Mrapid, '高松', '鬼無', 1);
+        AddStopping(Mrapid, '端岡', '国分', 1);
+        AddStopping(Mrapid, '妹尾', '備前西市', 1);
+    }
+    if (_Number2 == 70) {
         Dtype[2]++;
     }
-    var tsuda = [3, 25, 27, 31, 33];
+    var tsuda = [3, 27, 29, 31, 33];
     for (var line = 0; line < tsuda.length; line++) {
         if (_Number3 == tsuda[line]) {
             AddStopping(Uzushio, '志度', '讃岐津田');
@@ -63,7 +90,7 @@ if (station == '高松駅') {
             AddStopping(Uzushio, '志度', 'オレンジタウン');
         }
     }
-    var sanukishirotori = [3, 5, 25, 27, 31, 33];
+    var sanukishirotori = [3, 5, 25, 29, 31, 33];
     for (var line = 0; line < sanukishirotori.length; line++) {
         if (_Number3 == sanukishirotori[line]) {
             AddStopping(Uzushio, '三本松', '讃岐白鳥');
@@ -75,15 +102,11 @@ if (station == '高松駅') {
             AddStopping(Uzushio, '板野', '勝瑞');
         }
     }
-    var ikenotani = [3, 5, 7, 9, 11, 15, 17, 19, 21, 23, 27, 29, 31];
+    var ikenotani = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 27, 29, 31];
     for (var line = 0; line < ikenotani.length; line++) {
         if (_Number3 == ikenotani[line]) {
             AddStopping(Uzushio, '板野', '池谷');
         }
-    }
-    if (_Number3 == 13) {
-        DeleteStopping(Uzushio, '屋島');
-        DeleteStopping(Uzushio, '引田');
     }
 } else if (station == '松山駅') {
     var iyonakayama = [23, 25, 27, 31];

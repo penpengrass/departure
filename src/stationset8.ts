@@ -248,7 +248,7 @@ export const JRHokkaidouStations: StationRegistry = {
             } else if (Des[0][0] == '室蘭' && Type[0][0] != '普通') {
                 document.getElementById('TDetail' + 1)!.innerHTML = HokkaidoCars('５') + '　全車指定席です。　 '
                     + "<span class='Cstops'>停車駅は新札幌・千歳・南千歳・沼ノ端・苫小牧・白老・登別・幌別・鷲別・東室蘭・輪西・御崎・母恋です。</span>";
-            } else if (Des[0][0] == '東室蘭' && Type[0][0] != '普通') {
+            } else if (Des[0][0] == '東室蘭' && Type[0][0] == '特急') {
                 document.getElementById('TDetail' + 1)!.innerHTML = HokkaidoCars('５') + '　全車指定席です。　 '
                     + "<span class='Cstops'>停車駅は新札幌・千歳・南千歳・沼ノ端・苫小牧・白老・登別・幌別・鷲別です。</span>";
             }
