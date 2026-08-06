@@ -6,7 +6,7 @@ import {
     , allDestinationTwoLettersDistance, swapColumns, DestinationSet, TypeTwoLetterDistance,
     TrainTypeSet, holiday_F
 } from "./module/firstDisplayEdit";
-import { CarsDefine, CarsInto } from "./module/carsEdit";
+import { CarsDefine, CarsInto,CarsDevideToLine } from "./module/carsEdit";
 import { allswitchChiba, allswitch_Akabane } from "./module/displaySwitch";
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";
 import { comment, TDes, TType } from './types/constants';
@@ -677,6 +677,7 @@ export const JREast6Stations: StationRegistry = {
                 ShihatsuMove(0, tr, 'Ttopic');
                 ShihatsuMove(1, tr, 'Ttopic');
                 CarsDefine(0, tr, '普通', '', 5);
+                CarsDefine(0, tr, '普通*', '', 10);
                 CarsDefine(0, tr, '特急', '', '10両');
                 if (Des[1][tr] == '小山' || Des[1][tr] == '下館' || Des[1][tr] == '土浦') {
                     trainTables[1].trains[tr].cars = '5両';
