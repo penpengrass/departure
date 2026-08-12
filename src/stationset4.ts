@@ -723,7 +723,7 @@ export const JRWestStations: StationRegistry = {
             document.getElementById('HType' + 1)!.style.width = "25%";
             document.getElementById('HName' + 1)!.style.width = "25%";
             for (var tr = 0; tr < Tablenums[1]; tr++) {
-                let _Destination = plainTrainTables[0].trains[tr].destination;
+                let _Destination = plainTrainTables[0].trains[tr]?.destination ?? "";
                 let LType1 = document.getElementById('WType' + 1 + (tr + 1));
                 if (_Destination.startsWith('関西空港/') || _Destination.startsWith('関西空港･')) {
                     trainTables[0].trains[tr].type = '関空/紀州路快速';
