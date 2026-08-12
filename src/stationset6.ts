@@ -356,6 +356,11 @@ export const JREast6Stations: StationRegistry = {
                 TrainTypeWordChange(6, tr, '普通', '各駅停車');
                 var yokosuka = ['逗子', '大船'];
                 var utsunomiya = ['宇都宮', '小金井', '古河'];
+                if (Type[3][tr].includes('快速')) {
+                    trainTables[3].trains[tr].type = '快速';
+                } else if (Type[3][tr] != '') {
+                    trainTables[3].trains[tr].type = '特急';
+                }
                 if (Type[6][tr] != '') {
                     document.getElementById('TName7' + (tr + 1))!.textContent = '埼京線';
                     JRE6ColorPlusName(6, tr, '', '#00AC9A');
@@ -363,18 +368,19 @@ export const JREast6Stations: StationRegistry = {
                 if (Type[7][tr] != '') {
                     if (Type[7][tr] != '普通' && Type[7][tr] != '快速' && Type[7][tr] != '特別快速') {
                         document.getElementById('WName8' + (tr + 1))!.textContent = Type[7][tr].replace('始発', '');
-                        Type[7][tr] = '特急';
+                        trainTables[7].trains[tr].type = '特急';
                         JRE6ColorPlusName(7, tr, '', 'red');
                     } else if (utsunomiya.includes(Des[7][tr])) {
                         document.getElementById('TName8' + (tr + 1))!.textContent = '宇都宮線';
                         JRE6ColorPlusName(7, tr, '', 'orange');
                     } else {
                         document.getElementById('TName8' + (tr + 1))!.textContent = '高崎線';
+                        TrainTypeWordChange(7, tr, '快速', '普通');
                         JRE6ColorPlusName(7, tr, '', 'orange');
                     }
                 }
                 if (Type[8][tr] != '') {
-                    document.getElementById('WType9' + (tr + 1))!.textContent = '各駅停車';
+                    trainTables[8].trains[tr].type = '各駅停車';
                     if (Des[8][tr] == '新木場') {
                         document.getElementById('WName9' + (tr + 1))!.textContent = 'りんかい線直通';
                     } else if (Des[8][tr] == '海老名') {
@@ -384,8 +390,8 @@ export const JREast6Stations: StationRegistry = {
                     JRE6ColorPlusName(8, tr, '', '#00AC9A');
                 }
                 if (Type[9][tr] != '') {
-                    if (Type[9][tr].startsWith('湘南')) {
-                        document.getElementById('WType10' + (tr + 1))!.textContent = '特急';
+                    if (Type[9][tr].includes('湘南')) {
+                        trainTables[9].trains[tr].type = '特急';
                         document.getElementById('WName10' + (tr + 1))!.textContent = Type[9][tr];
                         JRE6ColorPlusName(9, tr, '', 'red');
                     } else if (yokosuka.includes(Des[9][tr])) {
@@ -416,13 +422,13 @@ export const JREast6Stations: StationRegistry = {
                     if (LimitedName!.textContent.length > 6 && td == 2) {
                         LimitedName!.style.transform = "scaleX(0.75)" + "translate(-20%,0%)";
                     }
-                    if (Des[td + 2][tr].length > 4) {
+                    if (trainTables[td + 2].trains[tr].destination.length > 4) {
                         LDes!.style.transform = "scaleX(0.70)" + "translate(-20%,0%)";
                     }
-                    if (Des[td + 4][tr].length > 4) {
+                    if (trainTables[td + 4].trains[tr].destination.length > 4) {
                         LDes2!.style.transform = "scaleX(0.90)" + "translate(-5%,0%)";
                     }
-                    FourLetters(td, tr, 0.5, 50, 'TDes', Des, 5);
+                    FourLetters(td, tr, 0.5, 50, 'WDes', Des, 5);
                     FourLetters(td, tr, 0.5, 50, 'WType');
                     FourLetters(td + 4, tr, 0.75, 0, 'WType');
                     FourLetters(td + 6, tr, 0.75, 0, 'WType');
