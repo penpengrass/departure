@@ -1,6 +1,6 @@
 import { limited, rapid, express, subexpress, local } from './detailStopData/JRdetail';
 import { StationRegistry, StationConfig } from './types/station';
-import { DestinationSet, TrainTypeSet, TrainTypeWordChange } from './module/firstDisplayEdit';
+import { DestinationSet, DestinationWordChange, TrainTypeSet, TrainTypeWordChange } from './module/firstDisplayEdit';
 import { allTokyuColor } from './typeColor';
 import { trainTables } from './types/trainTable';
 export var Tokyuobj = {
@@ -60,11 +60,13 @@ export const TokyuStations: StationRegistry = {
             TrainTypeSet(1);
             TrainTypeSet(2);
             TrainTypeSet(3);
-            for (let tr = 0; tr < Type[2].length; tr++) {
-                TrainTypeWordChange(0, tr, 'Ｆライナー', 'Ｆ特急');
-                TrainTypeWordChange(3, tr, 'Ｆライナー', 'Ｆ特急');
-                TrainTypeWordChange(0, tr, '通勤特急', '通特');
-                TrainTypeWordChange(3, tr, '通勤特急', '通特');
+            for (var td = 0; td < 4; td++) {
+                for (var tr = 0; tr < Type[2].length; tr++) {
+                    TrainTypeWordChange(td, tr, 'Ｆライナー', 'F特急');
+                    TrainTypeWordChange(td, tr, '各駅停車', '各停');
+                    TrainTypeWordChange(td, tr, '通勤特急', '通特');
+                    DestinationWordChange(td, tr, '元町・中華街', '元町･中華街')
+                }
             }
             DestinationSet();
             allTokyuColor();
