@@ -302,9 +302,9 @@ export const JREast6Stations: StationRegistry = {
         file: 'index6.php',
         setup: () => {
             TrainNameDevide('特急', 2, 4);
+            var Narita = [1, 3, 5, 7, 9, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49, 51, 53]
             limitednumber(TT[4], 1, ['特急あずさ', '特急かいじ']);
-            limitednumber(TT[4], 1, 'はちおうじ');
-            limitednumber(TT[4], 1, 'おうめ');
+            limitednumber2(TT[5], Narita, '成田ｴｸｽﾌﾟﾚｽ');
             limitednumber(TT[9], 21, '湘南');
         },
         onRender: () => {
@@ -396,6 +396,7 @@ export const JREast6Stations: StationRegistry = {
                         JRE6ColorPlusName(9, tr, '', 'red');
                     } else if (yokosuka.includes(Des[9][tr])) {
                         document.getElementById('WName10' + (tr + 1))!.textContent = '横須賀線';
+                        trainTables[9].trains[tr].type = '普通';
                         JRE6ColorPlusName(9, tr, '', 'blue');
                     } else {
                         document.getElementById('WName10' + (tr + 1))!.textContent = '東海道線';
@@ -403,6 +404,7 @@ export const JREast6Stations: StationRegistry = {
                     }
                 }
             }
+            DestinationSet();
             for (var td = 2; td < 4; td++) {
                 TrainTypeSet(td);
                 for (var tr = 0; tr < 2; tr++) {
@@ -422,13 +424,15 @@ export const JREast6Stations: StationRegistry = {
                     if (LimitedName!.textContent.length > 6 && td == 2) {
                         LimitedName!.style.transform = "scaleX(0.75)" + "translate(-20%,0%)";
                     }
+                    if (trainTables[td].trains[tr].destination.length > 4) {
+                        document.getElementById('TDes' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.65)" + "translate(-25%,0%)";
+                    }
                     if (trainTables[td + 2].trains[tr].destination.length > 4) {
                         LDes!.style.transform = "scaleX(0.70)" + "translate(-20%,0%)";
                     }
                     if (trainTables[td + 4].trains[tr].destination.length > 4) {
                         LDes2!.style.transform = "scaleX(0.90)" + "translate(-5%,0%)";
                     }
-                    FourLetters(td, tr, 0.5, 50, 'WDes', Des, 5);
                     FourLetters(td, tr, 0.5, 50, 'WType');
                     FourLetters(td + 4, tr, 0.75, 0, 'WType');
                     FourLetters(td + 6, tr, 0.75, 0, 'WType');
