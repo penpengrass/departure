@@ -39,11 +39,12 @@ if (isset($_GET['station'])) {
     if (Inisset('nagano')) {
         $files[0] = 'csv/JRE_S/nagano1.csv';
         $files[1] = 'csv/JRE_S/nagano2.csv';
-        $detaillength = 3;
+        $detaillength = 1;
+        $OrderNum = 2;
     } else if (Inisset('utsunomiya')) {
         $files[0] = 'csv/JRE_S/utsunomiya1.csv';
         $files[1] = 'csv/JRE_S/utsunomiya2.csv';
-        $detaillength = 3;
+        $detaillength = 1;
     } else if (Inisset('sendai')) {
         $files[0] = 'csv/JRE_S/sendai1.csv';
         $files[1] = 'csv/JRE_S/sendai2.csv';

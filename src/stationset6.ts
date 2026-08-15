@@ -6,7 +6,7 @@ import {
     , allDestinationTwoLettersDistance, swapColumns, DestinationSet, TypeTwoLetterDistance,
     TrainTypeSet, holiday_F
 } from "./module/firstDisplayEdit";
-import { CarsDefine, CarsInto,CarsDevideToLine } from "./module/carsEdit";
+import { CarsDefine, CarsInto, CarsDevideToLine } from "./module/carsEdit";
 import { allswitchChiba, allswitch_Akabane } from "./module/displaySwitch";
 import { JRE6ColorPlusName, JRE6Color, JRETypeAdd, JRETypeSelectAdd, ShihatsuMove } from "./module/displayEdit6";
 import { comment, TDes, TType } from './types/constants';
@@ -31,10 +31,15 @@ export const JREast6Stations: StationRegistry = {
                 TrainTypeSet(1);
                 TrainTypeSet(2);
                 if (Type[0][tr] == '普通') {
-                    if (['妙高高原', '豊野'].includes(Des[0][tr])) {
+                    if (['妙高高原', '妙高高原*', '豊野'].includes(Des[0][tr])) {
                         //Type[0][tr] += ' 北しなの線';
                         document.getElementById('TName' + 1 + '' + (tr + 1))!.textContent = '北しなの線';
                         JRE6ColorPlusName(0, tr, '普通', '#0000cc');
+                        if (Des[0][tr].includes('*')) {
+                            document.getElementById('Ttopic' + 1 + (tr + 1))!.textContent = '直江津行き接続';
+                            document.getElementById('Ttopic' + 1 + (tr + 1))!.style.transform = "scaleX(0.65)" + "translate(-20%,0%)";
+                            Des[0][tr] = Des[0][tr].replace('*', '');
+                        }
                     } else {
                         document.getElementById('TName' + 1 + '' + (tr + 1))!.textContent = '飯山線';
                         JRE6ColorPlusName(0, tr, '普通', '#009900');
