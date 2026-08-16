@@ -84,11 +84,16 @@ export const JREast6Stations: StationRegistry = {
                 }
                 if (Type[2][tr] == '普通') {
                     document.getElementById('TName' + 3 + '' + (tr + 1))!.textContent = '篠ノ井線';
+                    if (['茅野', '甲府', '飯田', '大月', '上諏訪'].includes(Des[2][tr])) {
+                        document.getElementById('Ttopic' + 3 + (tr + 1))!.textContent = '松本･岡谷経由';
+                    }
                     JRE6ColorPlusName(2, tr, '普通', '#aa5500');
                 } else if (Type[2][tr].includes('特急')) {
                     JRE6ColorPlusName(2, tr, '特急', '#bb0000');
-                } else if (Type[1][tr].startsWith('快速')) {
-                    document.getElementById('TType' + 3 + (tr + 1))!.style.backgroundColor = '#bb0000';
+                } else if (Type[2][tr].startsWith('快速')) {
+                    trainTables[2].trains[tr].type = '快速';
+                    document.getElementById('TName' + 3 + '' + (tr + 1))!.textContent = Type[2][tr].replace('快速', '');
+                    JRE6ColorPlusName(2, tr, '快速', '#aa5500');
                 }
             }
             if (holidayflag == 1) {
