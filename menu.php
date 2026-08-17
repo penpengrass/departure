@@ -163,7 +163,7 @@
                 <td>JR九州</td>
                 <td><button type="button" onclick="location.href='./index10.php'">移動</button></td>
                 <td><span style="color:blue;">小倉駅</span></td>
-                <td><span style="color:black;">鳥栖駅</span>, <span style="color:black;">長崎駅</span></td>
+                <td><span style="color:blue;">鳥栖駅</span>, <span style="color:blue;">長崎駅</span></td>
             </tr>
             <tr>
                 <td>JR九州LCD</td>

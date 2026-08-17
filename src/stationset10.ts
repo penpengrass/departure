@@ -132,6 +132,9 @@ export const JRKyushuStations: StationRegistry = {
                     } else if (TrainNumber[0][tr] > 0) {
                         trainTables[0].trains[tr].cars = '8両';
                     }
+                    if (trainTables[0].trains[tr].type == '特急みどり104号') {
+                        trainTables[0].trains[tr].cars = '6両';
+                    }
                 }
                 if (SixCars.includes(TrainNumber[2][tr])) {
                     trainTables[2].trains[tr].cars = '6両';
@@ -141,7 +144,7 @@ export const JRKyushuStations: StationRegistry = {
                 if (Type[2][tr].includes('みどり(リレーかもめ')) {
                     Des[2][tr] = '佐世保･長崎';
                 }
-                if (Des[2][tr] == '武雄温泉') {
+                if (Des[2][tr] == '武雄温泉' && Type[2][tr].includes('かもめ')) {
                     trainTables[2].trains[tr].destination = '長崎';
                 }
                 DestinationWordChange(2, tr, 'ハウステンボス･佐世保', 'ﾊｳｽﾃﾝﾎﾞｽ･佐世保');
