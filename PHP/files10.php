@@ -41,14 +41,19 @@ if (isset($_GET['station'])) {
         $files[1] = 'csv/JRK/nagasaki2.csv';
         $files[2] = 'csv/JRK/nagasaki2.csv';
         $nishikyushuPlus = array(
-            '2026-01-02',
-            '2026-01-03',
-            '2026-01-04',
-            '2026-01-05',
-            '2026-01-31'
+            '2026-08-22',
+            '2026-08-23',
+            '2026-09-18',
+            '2026-09-19',
+            '2026-09-20',
+            '2026-09-21',
+            '2026-09-22',
+            '2026-09-23',
+            '2026-09-26',
+            '2026-09-27'
             //西九州新幹線の臨時列車の運転日
         );
-        if (($holidayflag == 1 && $month_now != 1) || (in_array($twoHoursAgoDate, $nishikyushuPlus))) {
+        if (in_array($twoHoursAgoDate, $nishikyushuPlus)) {
             $files[0] = 'csv/JRK/nagasaki1_H.csv';
             $holidayflag = 2;
         }
