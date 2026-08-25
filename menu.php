@@ -42,7 +42,7 @@
             <tr>
                 <td>JR東日本ATOS</td>
                 <td><button type="button" onclick="location.href='./index3.php'">移動</button></td>
-                <td><span style="color:black;">武蔵小杉駅</span></td>
+                <td><span style="color:blue;">武蔵小杉駅</span></td>
                 <td><span style="color:blue;">高崎駅</span>, <span class="orange">黒磯駅</span>, <span class="orange">宇都宮駅</span>, <span style="color:black;">大宮駅</span>,
                 <span style="color:blue;">横浜駅</span>, <span class="orange">小田原駅</span>, <span class="orange">熱海駅</span></td>
             </tr>
@@ -101,20 +101,20 @@
             <tr>
                 <td>東急</td>
                 <td><button type="button" onclick="location.href='./index5.php'">移動</button></td>
-                <td><span style="color:black;">二子玉川駅</span></td>
-                <td><span style="color:black;">武蔵小杉駅</span></td>
+                <td><span style="color:blue;">二子玉川駅</span></td>
+                <td><span style="color:blue;">武蔵小杉駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本24ドット</td>
                 <td><button type="button" onclick="location.href='./index6.php'">移動</button></td>
-                <td><span style="color:black;">新宿駅</span></td>
-                <td><span style="color:black;">水戸駅</span>, <span style="color:black;">赤羽駅</span>, <span style="color:blue;">横浜駅</span>, <span class="orange">長野駅</span>, <span class="orange">松本駅</span></td>
+                <td><span style="color:blue;">新宿駅</span></td>
+                <td><span style="color:blue;">水戸駅</span>, <span style="color:black;">赤羽駅</span>, <span style="color:blue;">横浜駅</span>, <span class="orange">長野駅</span>, <span class="orange">松本駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本UTL</td>
                 <td><button type="button" onclick="location.href='./index6_U.php'">移動</button></td>
                 <td><span style="color:blue;">東京駅</span></td>
-                <td><span style="color:blue;">品川駅</span>, <span style="color:black;">上野駅</span></td>
+                <td><span style="color:blue;">品川駅</span>, <span style="color:blue;">上野駅</span></td>
             </tr>
             <tr>
                 <td>JR東日本千葉駅</td>
@@ -163,7 +163,7 @@
                 <td>JR九州</td>
                 <td><button type="button" onclick="location.href='./index10.php'">移動</button></td>
                 <td><span style="color:blue;">小倉駅</span></td>
-                <td><span style="color:black;">鳥栖駅</span>, <span style="color:black;">長崎駅</span></td>
+                <td><span style="color:blue;">鳥栖駅</span>, <span style="color:blue;">長崎駅</span></td>
             </tr>
             <tr>
                 <td>JR九州LCD</td>

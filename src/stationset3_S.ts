@@ -81,12 +81,13 @@ export const ShinkansenStations: StationRegistry = {
                 for (var tr = 0; tr < orderNum; tr++) {
                     const _Des = trainTables[td].trains[tr].destination;
                     if (Type[td][0] == '') {
-                        console.log(td + ':' + tr);
                         document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = 'お知らせ';
-                        Detail[td][0] = '本日の運転は終了しました';
+                        trainTables[td].trains[0].detail = '本日の運転は終了しました';
                         break;
-                    } else if (Type[td][tr] != '') {
-                        document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = '停車駅';
+                    } else {
+                        document.getElementById('TDetailtitle' + (td + 1) + (0 + 1))!.textContent = '停車駅';
+                    }
+                    if (Type[td][tr] != '') {
                         document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.textContent = '１２両編成';
                     }
                     TypeColorChange(td, tr, 'かがやき', 'orange');
@@ -100,6 +101,8 @@ export const ShinkansenStations: StationRegistry = {
                     TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
                 }
             }
+            DetailLength = [1, 1];
+            AllClassSetting('.railnumber', 'color', 'red');
         }
     },
     '宇都宮駅': {
@@ -176,20 +179,21 @@ export const ShinkansenStations: StationRegistry = {
                 }
             }
             for (var td = 0; td < Tablenum; td++) {
+                var _Type0 = plainTrainTables[td].trains[0].type;
+                if (_Type0 != '') {
+                    document.getElementById('TDetailtitle' + (td + 1) + (0 + 1))!.textContent = '停車駅';
+                }
                 for (var tr = 0; tr < orderNum; tr++) {
-                    var _Type0 = plainTrainTables[td].trains[0].type;
                     var _Type = plainTrainTables[td].trains[tr]?.type ?? "";
                     if (_Type0 == '') {
                         document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = 'お知らせ';
-                        Detail[td][0] = '本日の運転は終了しました';
+                        trainTables[td].trains[0].detail = '本日の運転は終了しました';
                         break;
                     } else if (_Type.startsWith('やまびこ･つばさ')) {
                         document.getElementById('TType' + (td + 1) + (tr + 1))!.style.transform = "scaleX(0.6)" + "translate(-30%,0%)";
-                        document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = '停車駅';
                         document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.textContent = '１７両編成';
                     }
                     else if (_Type != '') {
-                        document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = '停車駅';
                         document.getElementById('Ttopic' + (td + 1) + (tr + 1))!.textContent = '１０両編成';
                     }
                     TypeColorChange(td, tr, 'なすの', 'orange');
@@ -199,6 +203,7 @@ export const ShinkansenStations: StationRegistry = {
                     TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
                 }
             }
+            DetailLength = [1, 1];
         }
     },
     '福島駅': {

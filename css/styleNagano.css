@@ -12,7 +12,7 @@ th {
 td {
     /*データ内*/
     /*font-size: 30px;*/
-    height: 30px;
+    height: 35px;
     color: white;
     padding: 0.5px;
     border: 3px black solid;
@@ -43,12 +43,20 @@ table {
     color: white;
     font-size: 1.6vw;
 }
+.topic {
+    font-size: 1.6vw;
+    transform: scaleX(0.90) translate(-5%, 0);
+}
 @media(max-width:1199px) {
     table{   
         width: 750px;
     }
     .Ctitle_P{
         font-size: 25px;
+    }
+    .topic {
+        font-size: 22px;
+        transform: scaleX(0.90) translate(-5%, 0);
     }
 }
 .Ctitle {
@@ -72,9 +80,4 @@ p3 {
 
 .railnumber {
     color: yellow;
-}
-
-.topic {
-    font-size: 25px;
-    transform: scaleX(0.90) translate(-5%, 0);
 }

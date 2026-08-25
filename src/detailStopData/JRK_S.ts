@@ -13,7 +13,7 @@ export var JRK_Nobj = {//色は文字
 var K_Futsukaichi = [48, 52, 65, 56, 58, 60, 62, 64, 66];
 var K_N_Ureshino = [12, 18, 26, 46, 50, 54, 58, 64];
 var K_N_Omura = [12, 18];
-var K_N_Kohoku = [12, 14, 18, 84, 3842, 88, 54, 58];
+var K_N_Kohoku = [12, 14, 18, 92, 38, 96, 54, 58];
 export function NagasakiAddStop(tr: number) {
     DetailReplace_Set(0, tr, K_N_Omura, '、新大村', '');
     DetailReplace_Set(0, tr, K_N_Ureshino, '、嬉野温泉', '');

@@ -13,8 +13,8 @@
   $files[1] = 'csv/JRE_S/nagano2.csv';
   require_once('PHP/variable.php');
   $tablenum = 2;
-  $OrderNum = 3;
-  $detaillength = 3;
+  $OrderNum = 2;
+  $detaillength = 1;
   require('PHP/files3_S.php');
   require('PHP/select3.php');
   require('PHP/table3.php');
