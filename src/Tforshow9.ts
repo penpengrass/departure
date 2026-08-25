@@ -178,6 +178,7 @@ for (var td = 0; td < Tablenum; td++) {
         Tablenums[td] -= 1;
     }
 }
+DestinationSet();
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         var _Type = trainTables[td].trains[tr].type
@@ -254,7 +255,7 @@ for (var td = 0; td < Tablenum; td++) {
         TwoLetterDistance(td, tr, Des, TDes, 1, 0.4);
     }
 }
-DestinationSet();
+
 NewAllLastShow();
 flagmarkerase(0, 'TDes');
 flagmarkerase(1, 'TDes');

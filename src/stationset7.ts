@@ -50,7 +50,7 @@ export const JRTokaiStations: StationRegistry = {
             SpecialStop(1, '(国)(伊)', '豊橋', '伊奈・国府', '・', 0.8);
             SpecialStop(1, '(国)', '豊橋', '国府', '・', 0.8);
             SpecialStop(1, '(伊)', '豊橋', '伊奈', '・', 0.8);
-            SpecialStop(3, '(稲)', '名古屋', '稲沢', '・', 0.8);
+            SpecialStop(3, ' 稲', '名古屋', '稲沢', '・', 0.8);
             SpecialStop(3, ' 幸', '蒲郡', '幸田', '・', 0.8);
             SpecialStop(3, ' 三谷', '豊橋', '三河三谷', '・', 0.8);
             document.getElementById('Detail_Banner1')!.remove();
