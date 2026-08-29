@@ -30,19 +30,22 @@ export const JRSanyoStations: StationRegistry = {
             limitedjustnumber(TT[0], 936, 'こだま');
         },
         onRender: () => {
+            console.log(trainTables)
             for (var td = 0; td < 2; td++) {
                 for (var tr = 0; tr < 2; tr++) {
-                    FDetail(Type[td][tr], JRSSobj, Dtype[td], td, tr, "・");
                     if (Type[td][tr].startsWith('こだま')) {
                         trainTables[td].trains[tr].detail = '各駅';
+                    } else {
+                        FDetail(Type[td][tr], JRSSobj, Dtype[td], td, tr, "・");
                     }
                 }
             }
             for (var tr = 0; tr < 2; tr++) {
+                DetailReplace_Set(0, tr, [700], '福山・岡山・相生・姫路・西明石・新神戸・新大阪・京都', '京都までの各駅');
                 DetailReplace_Set(0, tr, Stops.M_Fukuyama2, '岡山', '福山・岡山');
                 DetailReplace_Set(1, tr, Stops.M_Kurume1, '熊本', '久留米・熊本');
                 DetailReplace_Set(1, tr, Stops.S_Yatsushiro1, '熊本・川内', '熊本からの各駅');
-                DetailReplace_Set(1, tr, Stops.S_Kumamoto1, '新鳥栖・久留米', '各駅');
+                DetailReplace_Set(1, tr, Stops.S_Kumamoto1, '博多・新鳥栖・久留米', '博多からの各駅');
                 DetailReplace_Set(1, tr, Stops.S_Tamana1, '久留米', '久留米・新玉名');
                 DetailReplace_Set(1, tr, Stops.S_Omuta1, '久留米', '久留米・新大牟田');
                 DetailReplace_Set(1, tr, Stops.S_Funakoya1, '久留米', '久留米・筑後船小屋');

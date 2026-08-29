@@ -1,11 +1,13 @@
 import { reverseLine } from "../module/firstTableEdit";
 export var Nozomi = [['東京', '品川', '新横浜', '名古屋', '京都', '新大阪', '新神戸', '岡山', '広島', '小倉', '博多']];
-export var hikari = [['東京', '品川', '新横浜', '静岡', '浜松', '名古屋', '京都', '新大阪', '新神戸', '西明石', '姫路', '相生', '岡山', '広島',]];
+export var hikari = [['新大阪', '新神戸', '姫路', '岡山', '福山', '広島', '新山口', '小倉', '博多'],[],
+['東京', '品川', '新横浜', '静岡', '浜松', '名古屋', '京都', '新大阪', '新神戸', '西明石', '姫路', '相生', '岡山','福山', '広島'],[]];
 export var Sanyo_hikari = [['新大阪', '新神戸', '姫路', '岡山', '福山', '広島', '新山口', '小倉', '博多']];
 export var Amizuho = [['新大阪', '新神戸', '岡山', '広島', '小倉', '博多', '熊本', '鹿児島中央']];
 export var Asakura = [['新大阪', '新神戸', '岡山', '福山', '広島', '小倉', '博多', '新鳥栖', '久留米', '熊本', '川内', '鹿児島中央']];
 reverseLine(Nozomi, 0, 1);
 reverseLine(hikari, 0, 1);
+reverseLine(hikari, 2, 3);
 reverseLine(Sanyo_hikari, 0, 1);
 reverseLine(Amizuho, 0, 1);
 reverseLine(Asakura, 0, 1);
@@ -47,6 +49,3 @@ export var JRSSobj = {//色は文字
     Typee: { type: "さくら", Bcolor: '#FF6FFF', color: white, detail: Asakura, cars: '8両編成', jiyu: '自由席1-3号車' },
     Typef: { type: "つばめ", Bcolor: 'skyblue', color: black, detail: "", cars: '8両編成', jiyu: '自由席1-3号車' }
 };
-if (station != '新神戸駅' && station != '岡山駅') {
-    JRSSobj.Typeb.detail = Sanyo_hikari;
-}

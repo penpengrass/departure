@@ -48,7 +48,7 @@ export function DetailDecide(Type_Line: any, td_detail: number, Des: string, Sen
     /*console.log(td_detail);
     console.log(Dtype);
     console.log(Dtype[td_detail]);*/
-    //console.log(Type_Line);
+    console.log(Type_Line);
     //console.log(StationInLine(stationN, Type_Line, Dtype[td_detail]));
     while (Sentence == '' && _Dtype[td_detail] < 10 && Dflag < 200) {
         DLine_in = 0;
