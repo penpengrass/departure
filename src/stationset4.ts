@@ -548,15 +548,34 @@ export const JRWestStations: StationRegistry = {
             limitednumber(TT[1], 2, '特急くろしお');
         },
         onRender: () => {
+            JRLimitedDevide(0);
+            JRLimitedDevide(1);
+            JRLimitedDevide(4);
             for (var tr = 0; tr < orderNum; tr++) {
-                if (Type[2][tr] != '' && (Des[2][tr] == '' || Des[2][tr] == '大阪' || Des[2][tr] == '天王寺')) {
-                    trainTables[2].trains[tr].destination = '新今宮･西九条方面';
-                    document.getElementById('TDes' + (2 + 1) + (tr + 1))!.style.transform = "scaleX(0.7)" + "translate(-15%,0%)";
+                let _Destination = plainTrainTables[5].trains[tr]?.destination ?? "";
+                let LType3 = document.getElementById('WType' + 3 + (tr + 1));
+                let LType1 = document.getElementById('WType' + 6 + (tr + 1));
+                if (_Destination.startsWith('関西空港/') || _Destination.startsWith('関西空港･')) {
+                    trainTables[5].trains[tr].type = '関空/紀州路快速';
+                    LType1!.style.display = 'inline-block';
+                    LType1!.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
+                    LType1!.style.padding = '0px';
                 }
-                if (Type[3][tr] != '' && Des[3][tr] != '大阪' && Des[3][tr] != '京橋' && Des[3][tr] != '桜島') {
+                if (Type[2][tr] != '' && (Des[2][tr] == '' || Des[2][tr] == '大阪' || Des[2][tr] == '天王寺')) {
+                    trainTables[2].trains[tr].destination = '西九条･大阪方面';
+                    document.getElementById('TDes' + (2 + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-5%,0%)";
+                    if (Type[2][tr] == '区間快速') {
+                        trainTables[2].trains[tr].type = '普通';
+                    } else if (Type[2][tr].length > 7) {
+                        LType3!.style.display = 'inline-block';
+                        LType3!.style.transform = "scaleX(0.75)" + "translate(-15%,0%)";
+                        LType3!.style.padding = '0px';
+                    }
+                }
+                if (Type[3][tr] != '' && Des[3][tr] != '大阪' && Des[3][tr] != '京橋') {
                     trainTables[3].trains[tr].destination = '鶴橋･京橋方面';
                     trainTables[3].trains[tr].type = '普通';
-                    document.getElementById('TDes' + (3 + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-10%,0%)";
+                    document.getElementById('TDes' + (3 + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-5%,0%)";
                 }
                 if (Des[5][tr].length > 7) {
                     document.getElementById('TDes' + (5 + 1) + (tr + 1))!.style.transform = "scaleX(0.75)" + "translate(-10%,0%)";
@@ -568,9 +587,10 @@ export const JRWestStations: StationRegistry = {
                     TypeColorChange(td, tr, '快速', 'orange');
                 }
             }
+            allJRWTrainNameColor("orange", "orange", "red");
             DestinationSet();
             allDestinationTwoLettersDistance(TDes, 1, 0.9);
-            comment!.innerHTML = '番線や一部表示不正確　一部2024年ダイヤのまま';
+            comment!.innerHTML = '番線や一部のレイアウトは不正確';
         }
     },
     '徳山駅': {
