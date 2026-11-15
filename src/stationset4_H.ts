@@ -80,7 +80,6 @@ export const JRHokurikuStations: StationRegistry = {
         dtype: [1, 0],
         setup: () => {
             DetailLength = [2, 2];
-            window.Dtype = [1, 0];
             limitedjustnumber(TT[0], 2, 'つるぎ');
             limitedjustnumber(TT[0], 560, 'はくたか');
             limitedjustnumber(TT[0], 502, 'かがやき');
@@ -99,11 +98,10 @@ export const JRHokurikuStations: StationRegistry = {
         name: '金沢駅',
         company: 'JR西日本',
         tableTitles: ['北陸新幹線 福井 敦賀方面', '北陸新幹線 富山 東京方面', 'IRいしかわ鉄道線 松任 小松 福井方面', 'IRいしかわ鉄道線 津幡 高岡 富山方面', '七尾線 津幡 七尾 和倉温泉方面'],
-        dtype: [0, 0],
+        dtype: [0, 1],
         nonGouFlag: 1,
         setup: () => {
             DetailLength = [2, 2];
-            window.Dtype = [1, 0];
             var TsurugiToToyama = [60, 62, 2, 4, 6, 8, 10, 16, 20, 22, 26, 28, 30, 34, 36, 40, 42, 46, 48, 50];
             limitedjustnumber2(TT[1], TsurugiToToyama, 'つるぎ');
             limitedjustnumber(TT[1], 552, 'はくたか');

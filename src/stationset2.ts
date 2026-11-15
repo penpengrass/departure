@@ -104,7 +104,6 @@ function Kyukokumei(td: number, tr: number, _initial: string) {
         //console.log(td + ':' + tr + word + 'はマッチしない');
     }
 }
-window.Dtype = new Array(2);
 export const KintetsuStations: StationRegistry = {
     '名古屋駅': {
         name: '名古屋駅',

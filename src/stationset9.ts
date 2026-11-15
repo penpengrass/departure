@@ -94,7 +94,6 @@ export const JRShikokuStations: StationRegistry = {
             for (var td = 0; td < Tablenum; td++) {
                 TrainTypeSet(td);
             }
-            window.Dtype = [0, 0, 0, 0];
             DetailShow(ShikokuStops.JRSobj, "、");
             for (var td = 0; td < Tablenum; td++) {
                 LastLetterRemove(td, 0, '、');

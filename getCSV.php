@@ -10,6 +10,7 @@ if ($tableStrange == 0) {
 //echo $files[1];
 //ファイル取り込みのための変数3つ，配列の長さ=ファイルの数
 $json_array = array();
+$timetableData = array();
 $list = array();
 $h = array();
 
@@ -29,6 +30,7 @@ for ($k = 0; $k < count($files); $k++) {
     $h[$k]++;
     //print_r($newarray[$h[$k]]);
   }
+  $timetableData[$k] = $newarray;
   $json_array[$k] = '0';
   $json_array[$k] = json_encode($newarray); //$newarrayはcsvデータをPHP配列に入れたもの
 }
@@ -38,6 +40,8 @@ $ifile = 0;
 if ($filetablegap == 1 || count($files) == 2) {
   $json_array[2] = $json_array[1];
   $json_array[3] = $json_array[1];
+  $timetableData[2] = $timetableData[1];
+  $timetableData[3] = $timetableData[1];
   //echo "if";
 } else if ($filetablegap == 2) {
   //$json_array[4] = $json_array[0];
@@ -53,7 +57,23 @@ for ($i = 0; $i < count($json_array); $i++) {
   $js_array .= json_encode(json_decode($json_array[$i]));
 }
 $js_array .= ']';
+//ここから代替後コード
+$initialData = [
+  'timetableData' => $timetableData,
+  'tableCount' => $tablenum,
+  'orderCount' => $OrderNum,
+  'tableColumnCounts' => $tablenums,
+  'fileName' => $dir
+];
+$initialDataJson = json_encode(
+  $initialData,
+  JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT
+);
+if ($initialDataJson === false) {
+  throw new RuntimeException('初期データのJSON変換に失敗しました: ' . json_last_error_msg());
+}
 ?>
+<script type="application/json" id="php-initial-data"><?= $initialDataJson ?></script>
 <script>
   //PHPの配列をJavaScriptに入れる
   let fileNum = <?php echo count($files); ?>;
