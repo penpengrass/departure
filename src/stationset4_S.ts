@@ -34,7 +34,7 @@ export const JRSanyoStations: StationRegistry = {
             for (var td = 0; td < 2; td++) {
                 for (var tr = 0; tr < 2; tr++) {
                     if (Type[td][tr].startsWith('こだま')) {
-                        trainTables[td].trains[tr].detail = '各駅';
+                        trainTables[td].trains[tr].stops = '各駅';
                     } else {
                         FDetail(Type[td][tr], JRSSobj, Dtype[td], td, tr, "・");
                     }
@@ -74,7 +74,6 @@ export const JRSanyoStations: StationRegistry = {
         setup: () => {
             detailLength_one = 2;
             detailflag = 2;
-            TableTitle = ['山陽・東海道新幹線 新大阪・東京方面', '九州新幹線 熊本・鹿児島中央方面'];
             limitedjustnumber(TT[1], 1, 'のぞみ');
             limitedjustnumber(TT[0], 2, 'のぞみ');
             limitedjustnumber(TT[0], 600, 'みずほ');
@@ -89,10 +88,10 @@ export const JRSanyoStations: StationRegistry = {
                 for (var tr = 0; tr < 2; tr++) {
                     FDetail(Type[td][tr], JRSSobj, Dtype[td], td, tr, "・");
                     if (Type[td][tr].startsWith('こだま') || Type[td][tr].startsWith('つばめ')) {
-                        trainTables[td].trains[tr].detail = '各駅';
+                        trainTables[td].trains[tr].stops = '各駅';
                     }
                     if (Des[td][tr] == '小倉') {
-                        trainTables[td].trains[tr].detail = '小倉までとまりません';
+                        trainTables[td].trains[tr].stops = '小倉までとまりません';
                     }
                     Dtype = [1, 0];
                 }
@@ -115,10 +114,10 @@ export const JRSanyoStations: StationRegistry = {
                 DetailReplace_Set(0, tr, Stops.M_Himeji2, '新神戸', '姫路・新神戸');
                 DetailReplace_Set(0, tr, Stops.N_Fukuyama2, '岡山', '福山・岡山');
                 if (Des[0][tr] == '新下関') {
-                    trainTables[0].trains[tr].detail = '小倉';
+                    trainTables[0].trains[tr].stops = '小倉';
                 }
                 if (trainTables[0].trains[tr].trainNumber == 408) {
-                    trainTables[0].trains[tr].detail = '小倉・新山口・徳山';
+                    trainTables[0].trains[tr].stops = '小倉・新山口・徳山';
                 }
             }
             DetailLength = [2, 2];
@@ -159,7 +158,7 @@ export const JRSanyoStations: StationRegistry = {
                     }
                     FDetail(Type[td][tr], JRSSobj, Dtype[td], td, tr, "・");
                     if (Type[td][tr].startsWith('こだま')) {
-                        trainTables[td].trains[tr].detail = '各駅';
+                        trainTables[td].trains[tr].stops = '各駅';
                     }
                     //DetailBanner(td, tr, 25);
                     Dtype = [1, 0];
@@ -189,8 +188,8 @@ export const JRSanyoStations: StationRegistry = {
                 DetailReplace_Set(1, tr, Stops.S_Tamana1, '久留米', '久留米・新玉名');
                 DetailReplace_Set(1, tr, Stops.S_Omuta1, '久留米', '久留米・新大牟田');
                 DetailReplace_Set(1, tr, Stops.S_Funakoya1, '久留米', '久留米・筑後船小屋');
-                if (Type[1][tr].startsWith("のぞみ") && trainTables[1].trains[tr].detail == "") {
-                    trainTables[1].trains[tr].detail = Des[1][tr] + "まで止まりません";
+                if (Type[1][tr].startsWith("のぞみ") && trainTables[1].trains[tr].stops == "") {
+                    trainTables[1].trains[tr].stops = Des[1][tr] + "まで止まりません";
                 }
             }
             DetailLength = [2, 2];

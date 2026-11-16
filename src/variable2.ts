@@ -4,11 +4,7 @@
 window.Detail = new Array(Tablenum);
 //let TableHour = new Array(Tablenum);
 //let TableMin = new Array(Tablenum);
-const table = new Array(Tablenum);
-var ShinNumber = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
-    ShinNumber[tr] = new Array(Tablenums[tr]);
-    table[tr] = document.getElementById("TTable" + (tr + 1));
     if (company == '近鉄' || detailflag == 2) {
         Detail[tr] = new Array(Tablenums[tr]);
     } else if (detailLength_one == 1 || detailLength_one == 2) {

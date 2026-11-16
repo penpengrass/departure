@@ -155,7 +155,7 @@ export function FDetail(Utype: any, Uobj: any, n: any, td: number, tr: number, d
     //document.getElementById(TType).textContent = Detail[td][tr];
     //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1)).textContent = DetailLine;
     Detail[td][tr] = DetailLine;
-    trainTables[td].trains[tr].detail = DetailLine;
+    trainTables[td].trains[tr].stops = DetailLine;
     LastLetterRemove(td, tr, '・')
     //console.log(Detail);
     //console.log(td + ":" + tr);
@@ -202,7 +202,7 @@ export function doallDetailShow(BannerLength = 1, LLength = Tablenum) {
     for (var td = 0; td < LLength; td++) {
         for (var tr = 0; tr < DetailLength[td]; tr++) {
             LastLetterRemove(td, tr, '・');
-            document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = trainTables[td].trains[tr]?.detail ?? Detail[td][tr];
+            document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = trainTables[td].trains[tr]?.stops ?? Detail[td][tr];
             //document.getElementById('TDetail' + (td + 1) + '' + (tr + 1))!.textContent = Detail[td][tr];
             DetailBanner(td, tr, BannerLength, 1);
         }
@@ -259,11 +259,11 @@ export function DetailBannerOnce(td: number, Letter: number) {
 }
 export function LastLetterRemove(td: number, tr: number, mark: string) {
     //console.log(Detail);
-    var _Detail = trainTables[td].trains[tr].detail;
+    var _Detail = trainTables[td].trains[tr].stops;
     if (_Detail != null && _Detail.slice(-1) == mark) {
         //console.log(tr + 'は読点で終わる');
         Detail[td][tr] = _Detail.slice(0, -1);
-        trainTables[td].trains[tr].detail = Detail[td][tr];
+        trainTables[td].trains[tr].stops = Detail[td][tr];
 
     }
 }

@@ -3,9 +3,8 @@ import { JREScolor } from "./module/colorSimpleSet";
 import { comment } from "./types/constants";
 import { getStationConfig } from "./main";
 import { trainTables } from "./types/trainTable";
-
+import { yellowgreen, pink, orange } from "./types/color";
 JRNameDevide(Tablenum);
-NonGouflag = 0;
 const table1 = document.getElementById("TESTable1");
 const table2 = document.getElementById("TESTable2");
 const table3 = document.getElementById("TESTable3");

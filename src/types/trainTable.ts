@@ -22,7 +22,7 @@ export interface TrainData {
     type_banner?:string;//JR西日本のバナー表示用
     des_banner?:string;//JR西日本のバナー表示用
     cars?: string;
-    detail?: string;
+    stops?: string;
     jiyuseki?: string;
 }
 //表ごとのデータ
@@ -106,7 +106,7 @@ export function initTrainTables(tableNum: number, tableNums: number[]): void {
                     destination: '',
                     hour: 0,
                     minute: '',
-                    detail: '',
+                    stops: '',
                     trackNumber: '',
                 }))
         }));

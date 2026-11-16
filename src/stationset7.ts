@@ -13,13 +13,13 @@ function JRTokaiDetailShow(td: number) {
     TrainTypeSet(td);
     const _Type = trainTables[td].trains[0].type.replace('(当駅始発)', '');
     LastLetterRemove(td, 0, '・');
-    if (trainTables[td].trains[0].detail == '各駅にとまります') {
-        trainTables[td].trains[0].detail = Des[td][0] + 'までの各駅';
+    if (trainTables[td].trains[0].stops == '各駅にとまります') {
+        trainTables[td].trains[0].stops = Des[td][0] + 'までの各駅';
     }
     if (_Type != '') {
         document.getElementById('TDetail' + (td + 1) + '1')!.innerHTML =
             '<span id="Detail_Type' + (td + 1) + '">' + _Type + '</span> ' + Des[td][0] + '行きの停車駅は' +
-            '<span class="orange">' + trainTables[td].trains[0].detail + '</span>です';
+            '<span class="orange">' + trainTables[td].trains[0].stops + '</span>です';
     }
     TypeColorChange2(td, 'Detail_Type', '特急', 'red');
     TypeColorChange2(td, 'Detail_Type', '快速', 'orange');
@@ -69,8 +69,8 @@ export const JRTokaiStations: StationRegistry = {
                 //document.getElementById('TDetail3').innerHTML = '浜松までの所要時間は<span class="orange">およそ35分</span>です';
             }
             LastLetterRemove(3, 0, '・');
-            if (trainTables[3].trains[0].detail == '各駅にとまります') {
-                trainTables[3].trains[0].detail = Des[3][0] + 'までの各駅';
+            if (trainTables[3].trains[0].stops == '各駅にとまります') {
+                trainTables[3].trains[0].stops = Des[3][0] + 'までの各駅';
             }
             JRTokaiDetailShow(3);
         }
@@ -114,7 +114,7 @@ export const JRTokaiStations: StationRegistry = {
                     //DetailReplace(0,'', '米原', '米原・長浜', 3);
                 }
             } else if (Type[0][0] != '') {
-                trainTables[0].trains[0].detail = Des[0][0] + 'までの各駅';
+                trainTables[0].trains[0].stops = Des[0][0] + 'までの各駅';
             }
             var HidaNumber = JRLimitedNumber(1, 0);
             //console.log(HidaNumber);
@@ -122,7 +122,7 @@ export const JRTokaiStations: StationRegistry = {
                 FDetail(Type[1][0], JRKaobj, Dtype[1], 1, 0, "・");
                 console.log(Detail[1][0]);
             } else if (Type[1][0] != '') {
-                trainTables[1].trains[0].detail = Des[1][0] + 'までの各駅';
+                trainTables[1].trains[0].stops = Des[1][0] + 'までの各駅';
             }
             if (HidaNumber == 7 || HidaNumber == 13) {
                 DetailReplace(1, 0, '越中八尾', '越中八尾・速星');
@@ -169,7 +169,7 @@ export const JRTokaiStations: StationRegistry = {
             const _Type = plainTrainTables[1].trains[0]?.type ?? "";
             FDetail(_Type, JRCeNobj, Dtype[1], 1, 0, "・");
             if (_Type.includes('快速')) {
-                trainTables[1].trains[0].detail = '穂積・西岐阜・' + trainTables[1].trains[0].detail;
+                trainTables[1].trains[0].stops = '穂積・西岐阜・' + trainTables[1].trains[0].stops;
             }
             SpecialStop(1, '(幸)', '岡崎', '幸田', '・', 0.8);
             SpecialStop(1, '(三)', '蒲郡', '三河三谷', '・', 0.8);

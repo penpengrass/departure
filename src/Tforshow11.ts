@@ -104,8 +104,8 @@ if (station == '浅草駅') {
     stationN = '北千住';
     FDetail(Type[2][0], Tobuobj, Dtype[0], 2, 0, "・");
     stationN = '浅草';
-    let _Detail0 = trainTables[0].trains[0].detail;
-    let _Detail1 = trainTables[1].trains[0].detail;
+    let _Detail0 = trainTables[0].trains[0].stops;
+    let _Detail1 = trainTables[1].trains[0].stops;
     const _Hour0 = trainTables[0].trains[0].hour;
     const _Hour1 = trainTables[1].trains[0].hour;
     const _Min0 = trainTables[0].trains[0].minute;
@@ -132,7 +132,7 @@ if (station == '浅草駅') {
     }
     if (Type[2][0].includes('区間')) {
         LastLetterRemove(2, 0, '・');
-        dDetail!.textContent = '停車駅は 北千住までの各駅・' + trainTables[2].trains[0].detail;
+        dDetail!.textContent = '停車駅は 北千住までの各駅・' + trainTables[2].trains[0].stops;
     }
     //console.log(PlusType);
     //console.log(PlusDes);
@@ -149,10 +149,10 @@ if (station == '浅草駅') {
         }
     }
     if (_Detail0 != '') {
-        dDetail1!.textContent = '停車駅は ' + trainTables[0].trains[0].detail + 'です';
+        dDetail1!.textContent = '停車駅は ' + trainTables[0].trains[0].stops + 'です';
     }
     if (_Detail1 != '') {
-        dDetail2!.textContent = '停車駅は ' + trainTables[1].trains[0].detail + 'です';
+        dDetail2!.textContent = '停車駅は ' + trainTables[1].trains[0].stops + 'です';
     }
 }
 NewAllLastShow();

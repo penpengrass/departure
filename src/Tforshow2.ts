@@ -3,7 +3,7 @@ import { Kinobj } from "./detailStopData/Kindetailset";
 import { DetailReplace, whetherStop } from "./module/detailSimpleEdit";
 import { NewAllLastShow, DestinationWordChange, LineMarkAdd, DestinationSet, AllTrainTypeReplace, AllDestinationReplace, DestinationTwoLetterDistance, TrainTypeSet } from "./module/firstDisplayEdit";
 import { allKinColor } from "./typeColor";
-import { getStationConfig } from "./main";
+import { getStationConfig,pageFileName } from "./main";
 import { comment, TDes } from "./types/constants";
 import { plainTrainTables, trainTables } from "./types/trainTable";
 document.getElementById('supplement')!.innerHTML = '<p>特急 A:あをによし U:アーバンライナー H:ひのとり I:伊勢志摩ライナー V:ビスタカー</p>';
@@ -58,7 +58,7 @@ for (var td = 0; td < Tablenum; td++) {
 for (var td = 0; td < Tablenum; td++) {
     TrainTypeSet(td);
 }
-var config = getStationConfig(window.station, Indexfile);
+var config = getStationConfig(window.station, pageFileName);
 if (config && config.onRender) config.onRender();
 DestinationSet();
 NewAllLastShow();

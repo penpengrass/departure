@@ -31,13 +31,6 @@ if (Indexfile == 'index4.php') {
         //allJRSSColor();
     }
     DestinationSet();
-    if (TwoLetterDisflag == 1) {
-        for (var td = 0; td < Tablenum; td++) {
-            for (var tr = 0; tr < Tablenums[td]; tr++) {
-                DestinationTwoLetterDistance(td, tr, TDes, 1, 0.9);
-            }
-        }
-    }
     if (JRShinkansenflag == 0) {
         NewAllLastShow();
     }

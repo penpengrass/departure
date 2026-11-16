@@ -15,7 +15,6 @@ DetailShow(JRWSHobj, "　", DetailLength.length);
 JRLimitedDevide(2);
 JRLimitedDevide(3);
 //TablenumSub = 1
-NonGouflag = 1;
 JRNameDevide(2);
 var takefu = [62, 64, 4, 8, 12, 84, 16, 20, 22, 24, 26, 28, 30, 34, 38, 42, 46, 48, 50, 1, 5, 9, 13, 17, 19, 21, 23, 25, 29, 33, 37, 41, 45, 47, 49, 91, 61];
 var iiyama = [552, 554, 556, 558, 560, 564, 568, 572, 574, 576, 578, 590];
@@ -23,7 +22,7 @@ var k_takefu = [[502, 518], [501, 517]];
 var k_onsen = [[506, 510], [507, 509]];
 for (var tr = 0; tr < 2; tr++) {
     if (station == '敦賀駅') {
-        Detail[1][tr] = "";
+        trainTables[1].trains[tr].stops = "";
     }
     if (Type[0][tr] != '') {
         document.getElementById('TDetailtitle' + (0 + 1) + (tr + 1))!.textContent = '停車駅';
@@ -59,9 +58,9 @@ for (var tr = 0; tr < 2; tr++) {
     const _Number1 = trainTables[1].trains[tr]?.trainNumber ?? 0;
     if (takefu.includes(_Number0)) {
         //DetailReplace(0, tr, '福井', '越前たけふ　福井　芦原温泉　加賀温泉　小松');
-        trainTables[0].trains[tr].detail = '各駅';
+        trainTables[0].trains[tr].stops = '各駅';
     } else if (station == '福井駅' && Des[0][tr] == '金沢') {
-        trainTables[0].trains[tr].detail = '次の停車駅は終点金沢です';
+        trainTables[0].trains[tr].stops = '次の停車駅は終点金沢です';
     }
     if (k_onsen[0].includes(_Number0)) {
         DetailReplace(0, tr, '金沢', '芦原温泉　加賀温泉　金沢');
@@ -78,12 +77,12 @@ for (var tr = 0; tr < 2; tr++) {
     }
     if (station == '福井駅') {
         if (takefu.includes(_Number1) || k_takefu[1].includes(_Number1) || Type[1][tr].startsWith('はくたか')) {
-            trainTables[1].trains[tr].detail = '越前たけふ';
+            trainTables[1].trains[tr].stops = '越前たけふ';
         } else if (_Number1 > 0) {
-            trainTables[1].trains[tr].detail = '次の停車駅は終点敦賀です';
+            trainTables[1].trains[tr].stops = '次の停車駅は終点敦賀です';
         }
     } else if (station == '金沢駅' && Type[0][tr].startsWith('はくたか')) {
-        Detail[0][tr] = '各駅';
+        trainTables[0].trains[tr].stops= '各駅';
     }
     if (iiyama.includes(_Number0)) {
         DetailReplace(0, tr, '上越妙高', '上越妙高　飯山');

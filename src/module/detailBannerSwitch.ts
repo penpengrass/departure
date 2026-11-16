@@ -81,7 +81,7 @@ export function switchdetail(Tab: string, td: number, tr: number, colspan: any, 
         }
         BottomBanner(Tab, td, tr, colspan, '<span id="Detail_Type' + td + '">' + trainTables[td - 1].trains[0].type
             + ' ' + TrainName + '</span> ' + _Des_Banner + '行きの停車駅は<span class="orange">'
-            + trainTables[td - 1].trains[0].detail + '</span>です');
+            + trainTables[td - 1].trains[0].stops + '</span>です');
         JTypeColor(trainTables[td - 1].trains[0].type, 'Detail_Type' + td, JRobj);
         //BottomBanner("TTLine" + td + "" + tr, td, tr, colspan);
         switch_detail_flag++;

@@ -66,7 +66,7 @@ for (var tr = 0; tr < orderNum; tr++) {
         document.getElementById('TDetail' + (4) + '' + (tr + 1))!.textContent = Detail[3][tr];
     }
     if (Des[3][tr] == '伊勢市' && Type[3][tr].startsWith('快速みえ')) {
-        trainTables[3].trains[tr].detail += '・多気から各駅';
+        trainTables[3].trains[tr].stops += '・多気から各駅';
         Detail[3][tr] += '・多気から各駅';
     }
 }
@@ -100,14 +100,14 @@ for (var tr = 0; tr < orderNum; tr++) {
 }
 for (var tr = 0; tr < orderNum; tr++) {
     if (Type[1][tr].includes('快速')) {
-        trainTables[1].trains[tr].detail = '尾張一宮・岐阜・岐阜から各駅';
+        trainTables[1].trains[tr].stops = '尾張一宮・岐阜・岐阜から各駅';
     } else if (Type[1][tr].includes('ホームライナー')) {
-        trainTables[1].trains[tr].detail = '尾張一宮・岐阜・穂積';
+        trainTables[1].trains[tr].stops = '尾張一宮・岐阜・穂積';
     }
     if (Type[2][tr] == '快速') {
-        trainTables[2].trains[tr].detail = '金山・鶴舞・千種・大曽根・勝川・春日井・高蔵寺・多治見・多治見から各駅';
+        trainTables[2].trains[tr].stops = '金山・鶴舞・千種・大曽根・勝川・春日井・高蔵寺・多治見・多治見から各駅';
     } else if (Type[2][tr] == '区間快速') {
-        trainTables[2].trains[tr].detail = '金山・鶴舞・千種・大曽根・新守山・勝川・春日井・神領・高蔵寺・多治見・多治見から各駅';
+        trainTables[2].trains[tr].stops = '金山・鶴舞・千種・大曽根・新守山・勝川・春日井・神領・高蔵寺・多治見・多治見から各駅';
     }
     Detail[1][tr] = document.getElementById('TDetail' + 2 + (tr + 1))!.textContent;
     Detail[2][tr] = document.getElementById('TDetail' + 3 + (tr + 1))!.textContent;
@@ -127,7 +127,7 @@ for (let te = 0; te < Tablenum; te++) {
     for (let tr = 0; tr < orderNum; tr++) {
         const _Type=trainTables[te].trains[tr].type;
         if (_Type.includes('普通')) {
-            trainTables[te].trains[tr].detail = '各駅にとまります';
+            trainTables[te].trains[tr].stops = '各駅にとまります';
         }
         if (_Type.includes('快速みえ')) {
             trainTables[te].trains[tr].type += '号';

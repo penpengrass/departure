@@ -1,0 +1,10 @@
+export const red = 'red';
+export const orange = 'orange';
+export const yellowgreen = 'yellowgreen';
+export const greenyellow = 'greenyellow';
+export const green = 'green';
+export const blue = 'blue';
+export const black = 'black';
+export const purple = 'purple';
+export const pink = 'pink';
+export const white = 'white';

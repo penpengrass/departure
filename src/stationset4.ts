@@ -1,3 +1,4 @@
+import { green } from './types/color';
 import { comment, TDes, TType } from './types/constants';
 import { M_Himeji2, S_Himeji2, S_Tokuyama2, N_Tokuyama2, N_Himeji2 } from './detailStopData/JRW_S';
 import { RailNumberDevide, DestinationDevide, TrainNameDevide, limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
@@ -22,7 +23,7 @@ import { TypeColorChange } from "./module/colorSimpleSet";
 import { allswitchMihara } from "./module/displaySwitch";
 import { allJRColor, allJRWSZColor } from "./typeColor";
 import { JRMaibara_Detail } from './detailStopData/JRW_afterset';
-NonGouflag = 0;
+import { orange, red, blue, black, white } from './types/color'
 detailLength_one = 1;
 export var JRWSobj = {//色は文字
     Typea: { type: "のぞみ", color: orange, detail: limited, },
@@ -58,6 +59,13 @@ export var JRWALobj = {//色は文字
     Typef: { type: "普通", color: black, detail: local, },
     Typelocal: { type: "普通", color: white, detail: local, }
 };
+function allJRWDestinationTwoLetterDistance() {
+    for (var td = 0; td < Tablenum; td++) {
+        for (var tr = 0; tr < Tablenums[td]; tr++) {
+            DestinationTwoLetterDistance(td, tr, TDes, 1, 0.9);
+        }
+    }
+}
 var Matsukaze_Masuda = [1, 5, 7, 9];
 export const JRWestStations: StationRegistry = {
     '岡山駅': {
@@ -67,7 +75,6 @@ export const JRWestStations: StationRegistry = {
         tableTitles: ['山陽本線  倉敷 福山方面', '伯備線 倉敷 新見 米子方面', '山陽本線  和気 姫路方面', '赤穂線 西大寺 播州赤穂方面', '瀬戸大橋線 茶屋町 児島 四国方面',
             '津山線 福渡 津山方面', '桃太郎線 備中高松 総社方面'],
         setup: () => {
-            TwoLetterDisflag = 1;
             var selectstation = ['備前片上', '長船', '日生', '播州赤穂', '西大寺'];
             DestinationDevide(selectstation, 2, 3);
             limitednumber(TT[2], 1, 'ｽｰﾊﾟｰいなば');
@@ -131,6 +138,7 @@ export const JRWestStations: StationRegistry = {
                 document.getElementById("supplement")!.textContent =
                     station + "のみ土休日ダイヤに対応(表示は平日ダイヤ)";
             }
+            allJRWDestinationTwoLetterDistance();
         }
     },
     '姫路駅': {
@@ -140,7 +148,6 @@ export const JRWestStations: StationRegistry = {
             '播但線 寺前 和田山方面', 'JR神戸線 三ノ宮 大阪方面', '姫新線 播磨新宮 佐用方面', '山陽線 相生 播州赤穂 上郡 岡山方面'],
         nonGouFlag: 0,
         setup: () => {
-            TwoLetterDisflag = 1;
             var sakura1 = [541, 543, 545, 549, 551, 553, 555, 565, 569, 571, 573];
             var mizuho1 = [601, 609, 613];
             var kodama1 = [837, 839, 841, 845, 847, 849, 861, 865, 867, 869, 871, 873, 875, 877];
@@ -197,6 +204,7 @@ export const JRWestStations: StationRegistry = {
                     trainTables[Shinkansenflag + 3].trains[tr].type = "普通";
                 }
             }
+            allJRWDestinationTwoLetterDistance();
         }
     },
     '在来線広島駅': {
@@ -205,7 +213,7 @@ export const JRWestStations: StationRegistry = {
         file: 'index4.php',
         tableTitles: ['山陽線 宮島口 岩国方面', '可部線 緑井 あき亀山方面', '山陽線 西条 三原方面', '呉線 呉 広方面', '芸備線 下深川 三次方面'],
         setup: () => {
-            TwoLetterDisflag = 1;
+
         },
         onRender: () => {
             for (var tr = 0; tr < 3; tr++) {
@@ -260,6 +268,7 @@ export const JRWestStations: StationRegistry = {
                 document.getElementById("supplement")!.textContent =
                     station + "のみ土休日ダイヤに対応(表示は平日ダイヤ)";
             }
+            allJRWDestinationTwoLetterDistance();
         }
     },
     '新見駅': {
@@ -393,25 +402,25 @@ export const JRWestStations: StationRegistry = {
         company: 'JR西日本',
         tableTitles: ['京橋 四条畷 松井山手方面', '尼崎 宝塚 三ノ宮方面'],
         setup: () => {
-            TwoLetterDisflag = 1;
+
         },
         onRender: () => {
             var Jrapid = LineCopy(Stops.Grapid);
             var _Type = plainTrainTables[0].trains[0].type;
             if (_Type == '快速') {
-                trainTables[0].trains[0].detail = Stops.Hrapid;
+                trainTables[0].trains[0].stops = Stops.Hrapid;
             } else if (_Type == '区快') {
-                trainTables[0].trains[0].detail = Stops.Tsubrapid;
+                trainTables[0].trains[0].stops = Stops.Tsubrapid;
             } else if (_Type == '普通') {
-                trainTables[0].trains[0].detail = Des[0][0] + 'までの各駅';
+                trainTables[0].trains[0].stops = Des[0][0] + 'までの各駅';
             }
             if (Des[1][0] == '塚口' || Des[1][0] == '尼崎') {
-                trainTables[1].trains[0].detail = Des[1][0] + 'までの各駅';
+                trainTables[1].trains[0].stops = Des[1][0] + 'までの各駅';
             } else if (Des[1][0] == '神戸方面西明石') {
                 Des[1][0] == '西明石';
-                trainTables[1].trains[0].detail = '西明石までの各駅';
+                trainTables[1].trains[0].stops = '西明石までの各駅';
             } else if (Type[1][0] == '普通') {
-                trainTables[1].trains[0].detail = Des[1][0] + 'までの各駅';
+                trainTables[1].trains[0].stops = Des[1][0] + 'までの各駅';
             }
             DestinationSet();
             for (var tr = 0; tr < orderNum; tr++) {
@@ -419,20 +428,21 @@ export const JRWestStations: StationRegistry = {
             }
             holiday_F(station);
             NewAllLastShow();
+            allJRWDestinationTwoLetterDistance();
         }
     },
     '三ノ宮駅': {
         name: '三ノ宮駅',
         company: 'JR西日本',
         tableTitles: ['尼崎 大阪 京都方面', '西明石 姫路方面'],
+        nonGouFlag: 0,
         setup: () => {
-            MinIn = 1;
+            ReloadIntervalMinute = 1;
             NonGouflag = 0;
             limitedjustnumber(TT[0], 2, '特急はまかぜ');
             limitedjustnumber(TT[1], 1, '特急はまかぜ');
             limitedjustnumber(TT[0], 2, '特急ｽｰﾊﾟｰはくと');
             limitedjustnumber(TT[1], 1, '特急ｽｰﾊﾟｰはくと');
-            TwoLetterDisflag = 1;
         },
         onRender: () => {
             LineMarkAdd(1, "A", "blue");
@@ -474,6 +484,7 @@ export const JRWestStations: StationRegistry = {
                 DesMiddle(0, tr, "経由");
                 DesMiddle(1, tr, "方面");
             }
+            allJRWDestinationTwoLetterDistance();
         }
     },
     '米原駅': {
@@ -485,7 +496,6 @@ export const JRWestStations: StationRegistry = {
             //var shirasagi = [51, 1, 3, 5, 53, 7, 9, 57, 11, 59, 13, 61, 15, 63, 65];
             limitednumber2(TT[1], shirasagi, 'しらさぎ');
             limitednumber(TT[2], 2, 'しらさぎ');
-            TwoLetterDisflag = 1
         },
         onRender: () => {
             JRMaibara_Detail();
@@ -529,6 +539,7 @@ export const JRWestStations: StationRegistry = {
             }
             document.getElementById("supplement")!.textContent +=
                 " 停車駅表示は一部不正確";
+            allJRWDestinationTwoLetterDistance();
         }
     },
     '天王寺駅': {
@@ -820,7 +831,6 @@ export const JRWestStations: StationRegistry = {
             limitedjustnumber(TT[1], 1, '特急ｽｰﾊﾟｰおき');
             limitedjustnumber(TT[2], 2, '特急ｽｰﾊﾟｰまつかぜ');
             limitedjustnumber(TT[2], 4, '特急ｽｰﾊﾟｰおき');
-            TwoLetterDisflag = 1;
             TT[4] = makeemptyTable(TT[0], TT[3]);
             TTconnect(TT[0], TT[3], TT[4]);
             TT[0] = TT[4];
@@ -837,6 +847,7 @@ export const JRWestStations: StationRegistry = {
             //Dtype = [0, 0, 0];
             //comment!.textContent += "一部表示不正確 ";
             holiday_F(station);
+            allJRWDestinationTwoLetterDistance();
         }
     }
 }

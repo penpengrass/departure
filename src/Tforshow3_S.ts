@@ -9,9 +9,6 @@ import { Seventeen } from "./detailStopData/JRTohokuShinset";
 import { getStationConfig } from "./main";
 import { plainTrainTables, trainTables } from "./types/trainTable";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
-//console.log(JRSBobj);
-//console.log(Dtype);
-NonGouflag = 1;
 JRNewNameNumberDevide(2);
 if (station == '長野駅') {
     var config = getStationConfig(window.station, Indexfile);
@@ -31,7 +28,7 @@ if (JRShinkansenflag > 0 && Indexfile != 'index4_H.php') {
         for (var tr = 0; tr < DetailLength[td]; tr++) {
             if (Type[td][0] == '') {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = 'お知らせ';
-                trainTables[td].trains[tr].detail = '本日の運転は終了しました';
+                trainTables[td].trains[tr].stops = '本日の運転は終了しました';
                 break;
             } else if (Type[td][tr] != '') {
                 document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = '停車駅';

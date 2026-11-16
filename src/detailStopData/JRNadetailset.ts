@@ -1,3 +1,4 @@
+import { white,blue,black,red } from './../types/color';
 import { reverseLine,LineCopy } from "../module/firstTableEdit";
 window.Dtype = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {

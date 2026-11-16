@@ -39,7 +39,7 @@ if (station == '札幌駅') {
 }
 export function JRHokkaidouShinDetailStop() {
     console.log(trainTables[0].trains[0].trainNumber);
-    console.log(trainTables[0].trains[0].detail);
+    console.log(trainTables[0].trains[0].stops);
     const _Number = trainTables[0].trains[0].trainNumber;
     const imabetsu = [10, 16, 24, 32, 44];
     const kikonai = [36];

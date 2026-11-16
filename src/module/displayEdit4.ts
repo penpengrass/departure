@@ -87,9 +87,9 @@ export function Yonago_Banner(td: number) {
     LastLetterRemove(td - 1, 0, '・');
     if (Detail[td - 1][0].includes('各駅')) {
         if (Des[td - 1][0] == '新見') {
-            trainTables[td - 1].trains[0].detail = '備中神代までの各駅';
+            trainTables[td - 1].trains[0].stops = '備中神代までの各駅';
         } else {
-            trainTables[td - 1].trains[0].detail = Des[td - 1][0] + "までの各駅";
+            trainTables[td - 1].trains[0].stops = Des[td - 1][0] + "までの各駅";
         }
     }
 }

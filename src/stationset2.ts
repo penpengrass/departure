@@ -6,12 +6,6 @@ import { Kinobj } from './detailStopData/Kindetailset';
 import { plainTrainTables, trainTables } from './types/trainTable';
 import { DetailDecide, LastLetterRemove } from "./module/detailMainPut";
 import { comment } from './types/constants';
-//近鉄は詳細表示の数=order数
-if (Indexfile == 'index2.php') {
-    for (var td = 0; td < Tablenum; td++) {
-        DetailLength[td] = orderNum;
-    }
-}
 //3つまとめて種別に案内を対応させる　変える余地ありそう(種別ごとに関数を作るとか)
 let AType = "";
 var DetailLine = '';
@@ -41,7 +35,7 @@ function Kintetsu_One_Detail(Utype: any, Uobj: any, n: any, td: number, tr: numb
         console.error("該当する種別がありません。");
         DetailLine = "";
     }
-    trainTables[td].trains[tr].detail = DetailLine;
+    trainTables[td].trains[tr].stops = DetailLine;
     LastLetterRemove(td, tr, '・')
 }
 function AllKintetsuDetailShow(companyObject: any, distance: string, LLength = Tablenum) {
@@ -169,7 +163,7 @@ export const KintetsuStations: StationRegistry = {
                 const _Destination = trainTables[1].trains[tr].destination;
                 console.log(_Type, _Destination)
                 if (_Type == '準急' && _Destination == '高安') {
-                    trainTables[1].trains[tr].detail = '布施 八尾 河内山本';
+                    trainTables[1].trains[tr].stops = '布施 八尾 河内山本';
                 }
                 Kyukokumei(0, tr, '大和');
                 Kyukokumei(1, tr, '大和');
@@ -291,7 +285,7 @@ export const KintetsuStations: StationRegistry = {
  * 近鉄共通の初期化処理
  */
 /*export function initKintetsuCommon(config: StationConfig) {
-    window.MinIn = 1;
+    window.ReloadIntervalMinute = 1;
     window.company = config.company;
 
     for (let td = 0; td < window.Tablenum; td++) {

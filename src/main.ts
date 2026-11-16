@@ -25,8 +25,8 @@ TT = phpInitialData.timetableData;
 Tablenum = phpInitialData.tableCount;
 orderNum = phpInitialData.orderCount;
 Tablenums = phpInitialData.tableColumnCounts;
-TableTitle = new Array(Tablenum);
-Indexfile = phpInitialData.fileName;
+const TableTitle = new Array(Tablenum);
+export const pageFileName = phpInitialData.fileName;
 // --- 新方式の適用チェック ---
 //const config = KintetsuStations[window.station];
 /*if (config) {
@@ -43,11 +43,11 @@ export function registerStations(registry: StationRegistry) {
     main();
 }
 
-export function getStationConfig(stationName: string, indexfile: string): StationConfig | undefined {
+export function getStationConfig(stationName: string, pageFileName: string): StationConfig | undefined {
     //console.log(JSON.stringify(stationRegistries));
     for (const [key, config] of Object.entries(stationRegistries)) {
         if (config.name === stationName) {
-            if (!config.file || config.file.includes(indexfile)) {
+            if (!config.file || config.file.includes(pageFileName)) {
                 return config;
             }
         }
@@ -60,7 +60,6 @@ function initStationCommon(config: StationConfig) {
     for (let td = 0; td < window.Tablenum; td++) {
         window.DetailLength[td] = window.orderNum;
     }
-    window.TableTitle = config.tableTitles;
     if (config.dtype) window.Dtype = config.dtype;
     if (config.setup) config.setup();
 }
@@ -203,7 +202,7 @@ function main() {
     initTrainTables(Tablenum, Tablenums);
     // --- 駅設定の適用 ---
     console.log("getStationConfig開始");
-    let config = getStationConfig(window.station, Indexfile);
+    let config = getStationConfig(window.station, pageFileName);
     if (config) {
         console.log(`${window.station} の設定をmain関数のStationConfig インターフェースから読み込みます。`);
         initStationCommon(config);
@@ -285,9 +284,9 @@ const registryMap: Record<string, StationRegistry> = {
     'index11.php': TobuStations
 };
 
-// Indexfileに対応したregistryだけを登録
-if (registryMap[Indexfile]) {
-    registerStations(registryMap[Indexfile]);
+// pageFileNameに対応したregistryだけを登録
+if (registryMap[pageFileName]) {
+    registerStations(registryMap[pageFileName]);
 }
 //main();
 export var PlusHour = new Array(3);
@@ -304,21 +303,21 @@ if (station == '浅草駅') {
 var testflag = 0;
 if (testflag == 0) {
     //1分ごとに更新するが，先発が切り替わるごとに実行したい
-    //setInterval(koshin,MinIn*60000);
-    if (Indexfile == 'index5.php') {
+    //setInterval(koshin,ReloadIntervalMinute*60000);
+    if (pageFileName == 'index5.php') {
         //間隔(分)
-        MinIn = 1;
+        ReloadIntervalMinute = 1;
         console.log("東急のファイル");
-    } else if (MinIn > 2) {
-        MinIn = 3;
+    } else if (ReloadIntervalMinute > 2) {
+        ReloadIntervalMinute = 3;
     }
-    setInterval(koshin, MinIn * 60000);
+    setInterval(koshin, ReloadIntervalMinute * 60000);
 }
 var Length_Debug = plainTrainTables.length;
 if (Length_Debug == 0) {
     console.error("plainTrainTablesが空です。")
 }
-console.log("MinIn=" + MinIn);
+console.log("ReloadIntervalMinute=" + ReloadIntervalMinute);
 console.log("-------main完了-------");
 document.title = station + "発車標";
 //特急によって停車駅が異なるときの処理

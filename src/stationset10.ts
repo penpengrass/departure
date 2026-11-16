@@ -15,6 +15,7 @@ export const JRKyushuStations: StationRegistry = {
         name: '小倉駅',
         company: 'JR九州',
         tableTitles: ['鹿児島本線 門司港 下関方面', '鹿児島本線 黒崎 博多方面', '日豊本線 行橋 大分方面'],
+        nonGouFlag: 0,
         file: 'index10.php',
         setup: () => {
             detailflag = 2;
@@ -157,13 +158,15 @@ export const JRKyushuStations: StationRegistry = {
     '長崎駅': {
         name: '長崎駅',
         company: 'JR九州',
-        tableTitles: ['西九州新幹線　佐賀・新鳥栖・博多方面', '長与経由 大村線 長崎本線 ', '市布経由 大村線 長崎本線'],
+        tableTitles: ['西九州新幹線　佐賀・新鳥栖・博多方面',
+             '長与経由 大村線 長崎本線 ', '市布経由 大村線 長崎本線'],
         file: 'index10.php',
         dtype: [0],
         setup: () => {
             detailflag = 2;
             TrainNameDevide('長与', 2, 1);
-            var nagasaki = [2, 4, 8, 12, 14, 18, 22, 26, 30, 34, 38, 42, 46, 48, 50, 52, 54, 56, 58, 60, 64, 66, 102];
+            const nagasaki 
+            = [2, 4, 8, 12, 14, 18, 22, 26, 30, 34, 38, 42, 46, 48, 50, 52, 54, 56, 58, 60, 64, 66, 102];
             limitedjustnumber2(TT[0], nagasaki, 'かもめ');
             NonGouflag == 0
         },
@@ -177,16 +180,18 @@ export const JRKyushuStations: StationRegistry = {
                 FDetail(Type[0][tr], JRK_Nobj, Dtype[0], 0, tr, "、");
                 NagasakiAddStop(tr)
                 LastLetterRemove(0, tr, "、");
-                Detail[0][tr] = "停車駅は、<span class='Corange'>" + Detail[0][tr] + "</span>です"
+                let _Detail=trainTables[0].trains[tr].stops;
+                _Detail = "停車駅は、<span class='Corange'>" + _Detail + "</span>です"
                 if (TrainNumber[0][tr] < 99 && TrainNumber[0][tr] > 0) {
                     document.getElementById('TCars' + (1) + (tr + 1))!.textContent = '自由席4-6号車';
                     trainTables[0].trains[tr].type = 'かもめ'
                 } else if (TrainNumber[0][tr] > 99) {
                     document.getElementById('TCars' + (1) + (tr + 1))!.textContent = '全車自由席';
-                    Detail[0][tr] += "　諫早、新大村方面の<span class='Corange'>最終列車</span>です。";
+                   _Detail += "　諫早、新大村方面の<span class='Corange'>最終列車</span>です。";
                     trainTables[0].trains[tr].type = 'かもめ'
                 }
-                if (Type[0][tr] != "") document.getElementById('TDetail1' + (tr + 1))!.innerHTML = Detail[0][tr];
+                if (Type[0][tr] != "") document.getElementById('TDetail1' + (tr + 1))!.innerHTML 
+                = _Detail;
                 if (Type[1][tr] != "") {
                     if (Type[1][tr].includes('*')) trainTables[1].trains[tr].cars = '3両';
                     else if (Type[1][tr].includes('+')) trainTables[1].trains[tr].cars = '4両';
@@ -209,7 +214,8 @@ export const JRKyushuStations: StationRegistry = {
                     TrainTypeSet(2);
                 }
             }
-            if (Type[0][0] != "") document.getElementById('TDetail1' + (3))!.innerHTML = "西九州新幹線では、<span class='Corange'>交通系ICカード</span>のご利用はできません。";
+            if (Type[0][0] != "") document.getElementById('TDetail1' + (3))!.innerHTML 
+            = "西九州新幹線では、<span class='Corange'>交通系ICカード</span>のご利用はできません。";
             if (holidayflag == 2) {
                 comment!.textContent += " 西九州新幹線の臨時列車の運転日です。";
             }

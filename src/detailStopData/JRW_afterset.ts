@@ -1,6 +1,7 @@
 import { reverseLine, LineCopy } from "../module/firstTableEdit";
 import { rapid, Jsubrapid, local } from '../detailStopData/JRdetail';
 import { trainTables } from "../types/trainTable";
+import { red, orange } from "../types/color";
 var Jrapid = "";
 var limited = "";
 export let Grapid = [['北新地', '尼崎までの各駅', '伊丹', '川西池田', '中山寺', '宝塚', '西宮名塩', '三田', '三田から各駅', '新三田', '篠山口']];
@@ -30,31 +31,31 @@ export function JRMaibara_Detail() {
     var Nagahama = [51, 3, 7, 55, 57, 13];
     if (Type[0][0] == '快速') {
         if (Des[0][0] == '大阪') {
-            trainTables[0].trains[0].detail = '高槻までの各駅・茨木・新大阪';
+            trainTables[0].trains[0].stops = '高槻までの各駅・茨木・新大阪';
         } else {
-            trainTables[0].trains[0].detail = '高槻までの各駅・茨木・新大阪・大阪・尼崎・西宮・芦屋・住吉・六甲道・三ノ宮・元町・神戸・兵庫・須磨・垂水・舞子・明石・明石から各駅';
+            trainTables[0].trains[0].stops = '高槻までの各駅・茨木・新大阪・大阪・尼崎・西宮・芦屋・住吉・六甲道・三ノ宮・元町・神戸・兵庫・須磨・垂水・舞子・明石・明石から各駅';
         }
     } else if (Type[0][0] == '快速*') {
-        trainTables[0].trains[0].detail = '京都までの各駅・長岡京・高槻・茨木・新大阪・大阪・尼崎・西宮・芦屋・住吉・六甲道・三ノ宮・元町・神戸・兵庫・須磨・垂水・舞子・明石・明石から各駅';
+        trainTables[0].trains[0].stops = '京都までの各駅・長岡京・高槻・茨木・新大阪・大阪・尼崎・西宮・芦屋・住吉・六甲道・三ノ宮・元町・神戸・兵庫・須磨・垂水・舞子・明石・明石から各駅';
     } else if (Type[0][0] == '普通') {
-        trainTables[0].trains[0].detail = Des[0][0] + 'までの各駅';
+        trainTables[0].trains[0].stops = Des[0][0] + 'までの各駅';
     }
     if (Type[1][0] == '普通' || Type[1][0] == '新快速') {
-        trainTables[1].trains[0].detail = Des[1][0] + 'までの各駅';
+        trainTables[1].trains[0].stops = Des[1][0] + 'までの各駅';
     } else if (Type[1][0].includes('しらさぎ')) {
         if (Nagahama.includes(Number(_TrainNumber_ToTsuruga))) {
-            trainTables[1].trains[0].detail = '長浜';
+            trainTables[1].trains[0].stops = '長浜';
         } else {
-            trainTables[1].trains[0].detail = '敦賀';
+            trainTables[1].trains[0].stops = '敦賀';
         }
     } else if (Type[1][0] == '快速') {
-        trainTables[1].trains[0].detail = '敦賀';
+        trainTables[1].trains[0].stops = '敦賀';
     }
     if (Type[2][0] == '普通') {
-        trainTables[2].trains[0].detail = Des[2][0] + 'までの各駅';
+        trainTables[2].trains[0].stops = Des[2][0] + 'までの各駅';
     } else if (Type[2][0].includes('しらさぎ')) {
-        trainTables[2].trains[0].detail = '大垣・岐阜・尾張一宮';
+        trainTables[2].trains[0].stops = '大垣・岐阜・尾張一宮';
     } else if (Type[2][0].includes('ひだ')) {
-        trainTables[2].trains[0].detail = '大垣・岐阜・美濃太田・下呂';
+        trainTables[2].trains[0].stops = '大垣・岐阜・美濃太田・下呂';
     }
 }

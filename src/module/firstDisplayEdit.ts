@@ -9,31 +9,6 @@ export var LiName = new Array(Tablenum);
 for (var td = 0; td < Tablenum; td++) {
     LiName[td] = "";
 }
-export function LastShows(td: number, tr: number) {
-    //console.log(TableHour);
-    var d_Hour = document.getElementById("THour" + (td + 1) + "" + (tr + 1));
-    if (d_Hour && TableHour[td][tr] !== undefined && TableHour[td][tr] != "") {
-        document.getElementById("THour" + (td + 1) + "" + (tr + 1))!.textContent =
-            TableHour[td][tr];
-        document.getElementById("TMin" + (td + 1) + "" + (tr + 1))!.textContent =
-            TableMin[td][tr];
-    }
-    document.getElementById("WType" + (td + 1) + "" + (tr + 1))!.textContent =
-        Type[td][tr];
-    if (Indexfile == "index6_Chiba.php" || Indexfile == "index4_O.php") {
-        document.getElementById("WDes" + (td + 1) + "" + (tr + 1))!.textContent =
-            Des[td][tr];
-    } else {
-        document.getElementById("TDes" + (td + 1) + "" + (tr + 1))!.textContent =
-            Des[td][tr];
-    }
-    document.getElementById("TNum" + (td + 1) + "" + (tr + 1))!.textContent =
-        TrackNum[td][tr];
-    //ここで次発のために変数に入れる
-    //orders[depnum - 1] = Table_Column;
-    //orders[depnum] = Table_Column + 1;
-    return;
-}
 export function NewLastShows(td: number, tr: number) {
     //(未反映!!!)インタフェースの情報を入れる。ここの動作確認は完了。書き換えが反映されないため保留。
     if (!plainTrainTables[td].trains[tr]) return;
@@ -53,21 +28,6 @@ export function NewLastShows(td: number, tr: number) {
     document.getElementById("TNum" + (td + 1) + "" + (tr + 1))!.innerHTML =
         trainTables[td].trains[tr]?.trackNumber ?? plainTrainTables[td].trains[tr].trackNumber;
 
-}
-export function allLastShow() {
-    console.warn("allLastShow");
-    for (var td = 0; td < Tablenum; td++) {
-        for (var tr = 0; tr < Tablenums[td]; tr++) {
-            LastShows(td, tr);
-            if (company == "JR西日本" && Indexfile != "index4_T.php") {
-                DesMiddle(td, tr, "連絡");
-                DesMiddle(td, tr, "経由");
-                DesMiddle(td, tr, "方面");
-            }
-        }
-    }
-    LastShowFlag = 1;
-    allTimeMarkErase();
 }
 export function NewAllLastShow() {
     console.log(plainTrainTables);

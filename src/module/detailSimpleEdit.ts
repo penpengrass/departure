@@ -15,23 +15,23 @@ export function whetherStop(start_hour: number, start_min: number, hour: number,
 }
 export function DetailReplace(td: number, tr: number, Before: string, After: string) {
   //var LDetail;
-  var _Detail = trainTables[td].trains[tr]?.detail ?? "";
+  var _Detail = trainTables[td].trains[tr]?.stops ?? "";
   if (After.includes(Des[td][tr])) {
     if (_Detail == "") {
-      trainTables[td].trains[tr].detail += Des[td][tr];
+      trainTables[td].trains[tr].stops += Des[td][tr];
     } else if (Indexfile == "index3_S.php" || Indexfile == "index11.php") {
-      trainTables[td].trains[tr].detail += "・" + Des[td][tr];
+      trainTables[td].trains[tr].stops += "・" + Des[td][tr];
     }
   }
   if (stationN == Before) {
     var _NextStop = After.replace(stationN + "・", '');
-    trainTables[td].trains[tr].detail = _NextStop + "・" + trainTables[td].trains[tr].detail;
+    trainTables[td].trains[tr].stops = _NextStop + "・" + trainTables[td].trains[tr].stops;
   }
-  var _Detail2 = trainTables[td].trains[tr]?.detail ?? "";
+  var _Detail2 = trainTables[td].trains[tr]?.stops ?? "";
   if (Detail[td][tr] !== undefined) {
     Detail[td][tr] = Detail[td][tr].replace(Before, After);
   }
-  trainTables[td].trains[tr].detail = _Detail2.replace(Before, After);
+  trainTables[td].trains[tr].stops = _Detail2.replace(Before, After);
 
 }
 //新幹線や有料特急の追加停車
@@ -81,7 +81,7 @@ export function SpecialStop(td: number, last: any, Before_station: string, AddSt
     }
     var LDetail = document.getElementById("TDetail" + (td + 1) + "" + (tr + 1));
     if (_PlainType.endsWith(last)) {
-      var LineDetail = trainTables[td].trains[tr]?.detail ?? "";
+      var LineDetail = trainTables[td].trains[tr]?.stops ?? "";
       console.log(LineDetail + "td=" + td + "tr=" + tr);
       //出発後最初の停車が特別停車の場合 例)豊橋→三河三谷
       if (station == Before_station + "駅") {
@@ -94,7 +94,7 @@ export function SpecialStop(td: number, last: any, Before_station: string, AddSt
       }
       console.log(LineDetail);
       //LDetail!.textContent = LineDetail;
-      trainTables[td].trains[tr].detail = LineDetail;
+      trainTables[td].trains[tr].stops = LineDetail;
       if (LType!.textContent.length == 2) {
         LType!.style.textIndent = Indent + "em";
       }

@@ -1,6 +1,6 @@
 import { NewAllLastShow, TwoLetterDistance, flagmarkerase } from "./module/firstDisplayEdit";
 import { TypeColorChange } from "./module/colorSimpleSet";
-import { FourLetters, swapColumns, NameColorchange, JRLineName, LastShows, rowremove, JRLimitedNameDevide, JRLimitedDevide, AllClassSetting, allTwoLettersDistance } from "./module/firstDisplayEdit";
+import { rowremove, JRLimitedNameDevide, JRLimitedDevide, AllClassSetting, allTwoLettersDistance } from "./module/firstDisplayEdit";
 import { doallDetailShow } from "./module/detailMainPut";
 import { comment,TDes,TType } from "./types/constants";
 import { getStationConfig } from "./main";
