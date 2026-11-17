@@ -1,6 +1,7 @@
 import { limitedjustnumber, limitedjustnumber2, limitednumber, limitednumber2, } from './module/firstTableEdit';
 import { limited, rapid, Jrapid, Jsubrapid, local } from './detailStopData/JRdetail';
 import { StationRegistry, StationConfig } from './types/station';
+import { red, orange, black } from './types/color';
 export var JRCSobj = {//色は文字
     Typea: { type: "のぞみ", color: 'yellow', detail: limited, },
     Typeb: { type: "ひかり", color: red, detail: rapid, },
@@ -15,7 +16,7 @@ export const JRTokaidouStations: StationRegistry = {
         company: '東海道新幹線',
         tableTitles: ['東海道新幹線 静岡・東京方面', '東海道新幹線 名古屋・新大阪方面'],
         file: 'index7_S1.php',
-        nonGouFlag:1,
+        nonGouFlag: 1,
         setup: () => {
             limitedjustnumber(TT[1], 701, 'ひかり');
             limitedjustnumber(TT[0], 700, 'ひかり');
@@ -28,7 +29,7 @@ export const JRTokaidouStations: StationRegistry = {
         company: '東海道新幹線',
         tableTitles: ['東海道新幹線 静岡・東京方面', '東海道新幹線 名古屋・新大阪方面'],
         file: 'index7_S1.php',
-        nonGouFlag:1,
+        nonGouFlag: 1,
         setup: () => {
             var hikari1 = [630, 632, 638, 644, 648, 652, 656, 660, 722];
             var hikari2 = [631, 635, 639, 643, 647, 651, 657, 669];

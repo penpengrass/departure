@@ -34,12 +34,16 @@ export const JRHokurikuStations: StationRegistry = {
         onRender: () => {
             //(※バグ未解決!!!)
             for (var tr = 0; tr < 3; tr++) {
-                if (Type[1][tr] != '' && ((TableMin[1][tr] < L_min && TableHour[1][tr] == L_hour) || TableHour[1][tr] < L_hour)) {
+                const _hour = trainTables[1].trains[tr].hour;
+                const _minute = Number(trainTables[1].trains[tr].minute);
+                if (Type[1][tr] != '' && ((_minute < L_min && _hour == L_hour) || _hour < L_hour)) {
                     document.getElementById('TExplain' + 2 + (tr + 1))!.textContent = '到着済み';
                 }
             }
             for (var tr = 0; tr < 3; tr++) {
-                if (Type[2][tr] != '' && ((TableMin[2][tr] < L_min && TableHour[2][tr] == L_hour) || TableHour[2][tr] < L_hour)) {
+                const _hour = trainTables[2].trains[tr].hour;
+                const _minute = Number(trainTables[2].trains[tr].minute);
+                if (Type[2][tr] != '' && ((_minute < L_min && _hour == L_hour) || _hour < L_hour)) {
                     trainTables[2].trains[tr].destination = '当駅止(到着済み)';
                     document.getElementById('TDes' + 3 + (tr + 1))!.style.transform = "scaleX(0.70)" + "translate(-15%,0%)";
                 }

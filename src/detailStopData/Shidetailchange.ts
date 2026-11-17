@@ -18,8 +18,9 @@ const { _Number2, _Number3 } = station === '高松駅'
         _Number3: NaN,
     };
 if (station == '高松駅') {
+    const _hour=trainTables[0].trains[0].hour;
     if (time0 != null) {
-        if (TableHour[0][0] > 16) {
+        if (_hour > 16) {
             AddStopping(Sunport, '端岡', '鴨川');
         }
     }

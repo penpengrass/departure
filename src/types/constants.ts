@@ -6,7 +6,6 @@ export const TDes = new Array(Tablenum);
 export const TType = new Array(Tablenum);
 export const TName = new Array(Tablenum);
 export const WType = new Array(Tablenum);
-let BType = new Array(Tablenum);
 const table = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
     WName[tr] = new Array(Tablenums[tr]);
@@ -20,7 +19,6 @@ for (let tr = 0; tr < Tablenum; tr++) {
     //TableHour[tr] = new Array(Tablenums[tr]);
     //TableMin[tr] = new Array(Tablenums[tr]);
     WType[tr] = new Array(Tablenums[tr]);
-    BType[tr] = new Array(Tablenums[tr]);
 }
 for (var td = 0; td < Tablenum; td++) {
     for (var tr = 0; tr < Tablenums[td]; tr++) {
@@ -30,7 +28,6 @@ for (var td = 0; td < Tablenum; td++) {
         TName[td][tr] = 'TName' + (td + 1) + '' + (tr + 1);
         TDes[td][tr] = 'TDes' + (td + 1) + '' + (tr + 1);
         WType[td][tr] = 'WType' + (td + 1) + '' + (tr + 1);
-        BType[td][tr] = 'BType' + (td + 1) + '' + (tr + 1);
     }
 }
 export var comment = document.getElementById("supplement");

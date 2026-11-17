@@ -159,13 +159,6 @@ export const JRHokkaidouStations: StationRegistry = {
             FDetail(Type[1][0], JRHSobj, Dtype[0], 1, 0, "・");
             console.log("---2個目の表の詳細表示終了、この後1個目の表の詳細表示完了---");
             FDetail(trainTables[0].trains[0].type, JRHSobj, Dtype[0], 0, 0, "・");
-            //FDetail(Type[3][0], JRHobj, Dtype[1], 3, 0, "・");
-            //末尾の・を取り除く
-            for (var td = 0; td < 2; td++) {
-                if (Detail[td][0].slice(-1) == '・') {
-                    Detail[td][0] = Detail[td][0].slice(0, -1);
-                }
-            }
             for (var td = 0; td < Tablenum; td++) {
                 if (trainTables[td].trains[0].type == '普通') {
                     document.getElementById('TDetail' + (td + 1))!.textContent = HokkaidoCars(String(trainTables[td].trains[0].cars));
@@ -190,9 +183,10 @@ export const JRHokkaidouStations: StationRegistry = {
                     LDes5!.style.transform = "scaleX(0.70)" + "translate(-25%,0%)";
                 }
             }
+            const _chitoseStops = trainTables[1].trains[0].stops;
             if (Type[1][0].includes('快速エアポート')) {
                 document.getElementById('TDetail' + 2)!.innerHTML = HokkaidoCars('６') + '　'
-                    + Useat('４') + "　<span class='Cstops'>停車駅は" + Detail[1][0] + "です。</span>";
+                    + Useat('４') + "　<span class='Cstops'>停車駅は" + _chitoseStops + "です。</span>";
             } else if (Type[1][0] == '普通') {
                 document.getElementById('TDetail' + 2)!.innerHTML = HokkaidoCars('６');
             }
@@ -211,7 +205,6 @@ export const JRHokkaidouStations: StationRegistry = {
                     + "　<span class='Cstops'>停車駅は桑園・琴似・手稲から各駅です。</span>"
             }
             var dToAsahi = document.getElementById('TDetail' + 3);
-            console.log(Detail);
             if (Des[2][0] == '旭川' && Type[2][0].includes('特急')) {
                 var cars = '５';
                 var cardetail = '全車指定席です。';
@@ -238,13 +231,14 @@ export const JRHokkaidouStations: StationRegistry = {
                 dToAsahi!.innerHTML = "<span class='Cstops'>停車駅は岩見沢・美唄・砂川・滝川・深川・旭川・和寒\
         ・士別・名寄・美深・音威子府・天塩中川・幌延・豊富・南稚内です。</span>";
             }
+            const _HakodateStops = trainTables[0].trains[0].stops;
             if (Des[0][0] == '函館') {
-                document.getElementById('TDetail' + 1)!.innerHTML = '全車指定席です。　 ' + "<span class='Cstops'>停車駅は" + Detail[0][0] + "です。</span>";
+                document.getElementById('TDetail' + 1)!.innerHTML = '全車指定席です。　 ' + "<span class='Cstops'>停車駅は" + _HakodateStops + "です。</span>";
             } else if (Des[0][0] == '帯広') {
                 document.getElementById('TDetail' + 1)!.innerHTML = '全車指定席です。　 ' +
                     "<span class='Cstops'>停車駅は新札幌・南千歳・追分・新夕張・占冠・トマム・新得・十勝清水・芽室です。</span>";
             } else if (Des[0][0] == '釧路') {
-                document.getElementById('TDetail' + 1)!.innerHTML = "<span class='Cstops'>停車駅は" + Detail[0][0] + "です。</span>";
+                document.getElementById('TDetail' + 1)!.innerHTML = "<span class='Cstops'>停車駅は" + _HakodateStops + "です。</span>";
             } else if (Des[0][0] == '室蘭' && Type[0][0] != '普通') {
                 document.getElementById('TDetail' + 1)!.innerHTML = HokkaidoCars('５') + '　全車指定席です。　 '
                     + "<span class='Cstops'>停車駅は新札幌・千歳・南千歳・沼ノ端・苫小牧・白老・登別・幌別・鷲別・東室蘭・輪西・御崎・母恋です。</span>";
@@ -290,14 +284,14 @@ export const JRHokkaidouStations: StationRegistry = {
             FDetail(Type[0][0], JRHoobj, Dtype[0], 0, 0, "・");
             LastLetterRemove(0, 0, '・');
             JRHokkaidouShinDetailStop();
-            document.getElementById('TDetail11')!.textContent = Detail[0][0];
+            document.getElementById('TDetail11')!.textContent = trainTables[0].trains[0].stops ?? "";
             if (Des[0][0] != "") {
                 document.getElementById('TDetail11')!.textContent += "・" + Des[0][0];
             } else {
                 document.getElementById('TDetail1')!.textContent = '';
             }
             comment!.textContent = '番線と停車駅は不正確';
-        DestinationSet();
+            DestinationSet();
+        }
     }
-}
 }

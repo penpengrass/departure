@@ -1,4 +1,5 @@
 import { reverseLine, LineCopy } from "../module/firstTableEdit";
+import { red, green, blue } from "../types/color";
 // オブジェクトにした方がよさそう
 var SHexpress = new Array(10);
 SHexpress[2] = ["大阪上本町", "鶴橋", "布施", "河内国分", "五位堂", "大和高田", "大和八木", "桜井", "以遠各駅", "青山町", "五十鈴川"];

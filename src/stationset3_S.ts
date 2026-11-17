@@ -3,7 +3,7 @@ import { DetailShow, doallDetailShow, NewDetailShow } from "./module/detailMainP
 import { DetailReplace } from "./module/detailSimpleEdit";
 import { TypeColorChange, JREScolor } from "./module/colorSimpleSet";
 import { StationRegistry, StationConfig } from './types/station';
-import { FourLetters, TrainNumber, TwoLetterDistance, JRAllShinkansenNumberSet, DestinationSet, swapColumns, AllClassSetting, JRLineName, JRLimitedNameDevide } from "./module/firstDisplayEdit";
+import { FourLetters, TrainNumber, TwoLetterDistance, JRAllShinkansenNumberSet, DestinationSet, swapColumns, AllClassSetting, JRLineName, JRLimitedNameDevide, DestinationTwoLetterDistance } from "./module/firstDisplayEdit";
 import { TrainTypeSet, JRNewNameNumberDevide, NewAllLastShow } from "./module/firstDisplayEdit";
 import { JRSBobj } from "./detailStopData/JREShindetailset";
 import * as Stops from "./detailStopData/JRHokuShindetailset";
@@ -95,11 +95,10 @@ export const ShinkansenStations: StationRegistry = {
                     TypeColorChange(td, tr, 'はくたか', 'orange');
                     TypeColorChange(td, tr, 'あさま', 'red');
                     //DetailBanner(td, tr, 18);
-                    if (Detail[td][tr] != '') {
-                        Detail[td][tr] += "・" + Des[td][tr];
+                    if (trainTables[td].trains[tr].stops != '') {
                         trainTables[td].trains[tr].stops += "・" + _Des;
                     }
-                    TwoLetterDistance(td, tr, Des, TDes, 0.5, 0.7);
+                    DestinationTwoLetterDistance(td, tr,TDes, 0.5, 0.7)
                 }
             }
             DetailLength = [1, 1];
@@ -256,7 +255,6 @@ export const ShinkansenStations: StationRegistry = {
                     trainTables[0].trains[tr].stops = '仙台';
                 }
                 if (Zaou.includes(_Number0)) {
-                    Detail[0][tr] = "";
                     DetailReplace(0, tr, '仙台', '白石蔵王・仙台');
                 }
                 if (trainTables[0].trains[tr].stops == '仙台') {

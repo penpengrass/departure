@@ -45,7 +45,7 @@ export function BottomBanner_Reverse(tag: string, td: number, tr: number) {
         <td class="railnumber" id="TNum' + td + tr + '"></td>';
     var _Name = trainTables[td - 1].trains[tr - 1]?.trainName ?? ""
     document.getElementById('WType' + td + tr)!.textContent = trainTables[td - 1].trains[tr - 1].type;
-    document.getElementById('TTime' + td + tr)!.textContent = TableHour[td - 1][tr - 1] + ':' + TableMin[td - 1][tr - 1];
+    document.getElementById('TTime' + td + tr)!.textContent =trainTables[td-1].trains[tr-1].hour + ':' + trainTables[td-1].trains[tr-1].minute;
     document.getElementById('TDes' + td + tr)!.innerHTML = trainTables[td - 1].trains[tr - 1].destination;
     document.getElementById('TNum' + td + tr)!.textContent = trainTables[td - 1].trains[tr - 1].trackNumber;
     document.getElementById('WName' + td + tr)!.innerHTML = _Name;

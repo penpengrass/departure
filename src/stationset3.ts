@@ -587,9 +587,12 @@ export const JREastStations: StationRegistry = {
         file: 'index3.php',
         setup: () => {
             Tablenum = 5;
+            Tablenums = [3, 3, 3, 3, 3]
             DestinationDevide(['水上', '長野原草津口', '万座・鹿沢口', '大前'], 1, 2);
         },
         onRender: () => {
+            Tablenum = 4;
+            Tablenums = [3, 3, 3, 3]
             rowremove(0, 'HName', 'TName');
             rowremove(1, 'HName', 'TName');
             rowremove(2, 'HName', 'TName');
@@ -602,8 +605,10 @@ export const JREastStations: StationRegistry = {
             document.getElementById('HType2')!.style.width = "53%";
             document.getElementById('HType3')!.style.width = "53%";
             document.getElementById('HType4')!.style.width = "53%";
+            console.log(TT.length);
+            console.log(plainTrainTables);
             FShow(TT[4], 5, Shows);
-            trainTables[0].trains[2].destination = plainTrainTables[4].trains[0].destination ? plainTrainTables[4].trains[0].destination : "";
+            trainTables[0].trains[2].destination = plainTrainTables[4].trains[0].destination ?? "";
             trainTables[0].trains[2].hour = plainTrainTables[4].trains[0].hour;
             trainTables[0].trains[2].minute = plainTrainTables[4].trains[0].minute;
             trainTables[0].trains[2].trackNumber = plainTrainTables[4].trains[0].trackNumber;

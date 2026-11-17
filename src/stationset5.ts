@@ -1,5 +1,6 @@
 import { limited, rapid, express, subexpress, local } from './detailStopData/JRdetail';
 import { StationRegistry, StationConfig } from './types/station';
+import { red, orange, greenyellow, green } from './types/color';
 import { DestinationSet, DestinationWordChange, TrainTypeSet, TrainTypeWordChange } from './module/firstDisplayEdit';
 import { allTokyuColor } from './typeColor';
 import { trainTables } from './types/trainTable';
@@ -38,7 +39,9 @@ export const TokyuStations: StationRegistry = {
                     document.getElementById('TDetail3' + (oi + 1))!.textContent = '二子新地 高津停車';
                 }
             }
-            let Interval = TableMin[0][1] - TableMin[0][0];
+            const _senpatsuMin = Number(trainTables[0].trains[0].minute);
+            const _jihatsuMin = Number(trainTables[0].trains[1].minute);
+            let Interval = _jihatsuMin - _senpatsuMin;
             if (Type[0][0] == '各停' && Type[0][1] == '急行' && Interval < 5) {
                 document.getElementById('TDetail11')!.textContent = '桜新町で急行の通過待ち';
             }

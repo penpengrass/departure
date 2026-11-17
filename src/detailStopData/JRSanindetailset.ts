@@ -1,8 +1,9 @@
-import { reverseLine} from "../module/firstTableEdit";
+import { black, white, red, orange } from './../types/color';
+import { reverseLine } from "../module/firstTableEdit";
 import { DetailReplace_Set_One } from "../module/detailSimpleEdit";
 var yakumo_stop = [['岡山', '倉敷', '備中高梁', '新見', '米子', '安来', '松江', '宍道', '出雲市']];
 var matsukaze_stop = [['鳥取', '鳥取大学前', '倉吉', '米子', '安来', '松江', '宍道', '出雲市', '大田市', '江津', '浜田', '益田', '日原', '津和野', '徳佐', '三谷', '山口', '湯田温泉', '新山口']];
-var sanrise_stop=[['東京','横浜','熱海','沼津','富士','静岡','大阪','三ノ宮','姫路','岡山','倉敷','備中高梁','新見','米子','安来','松江','宍道','出雲市']];
+var sanrise_stop = [['東京', '横浜', '熱海', '沼津', '富士', '静岡', '大阪', '三ノ宮', '姫路', '岡山', '倉敷', '備中高梁', '新見', '米子', '安来', '松江', '宍道', '出雲市']];
 reverseLine(yakumo_stop, 0, 1);
 reverseLine(matsukaze_stop, 0, 1);
 reverseLine(sanrise_stop, 0, 1);
@@ -15,12 +16,12 @@ export var JRSaninObj = {//色は文字
     Typef: { type: "普通", Bcolor: 'skyblue', color: black, detail: "" }
 };
 //山陰地区の追加停車駅がある号数をここに書く
-export function JRSaninAddStop(td:number) {
+export function JRSaninAddStop(td: number) {
     var Shouyama = [2, 6, 10, 14, 18, 22, 26, 30];
     var Neu = [4, 8, 12, 16, 20, 24, 28, 32, 36];
     var Souja = [4, 14, 28];
     var Y_Daisen = [2, 4, 6, 8];
-    var M_Daisen=[2,4];
+    var M_Daisen = [2, 4];
     var Y_Tamatsukuri = [1, 5, 7, 9, 11, 13, 15, 17, 19];
     var M_Tamatsukuri = [1, 7];
     var M_Masuda = [5];
@@ -31,9 +32,9 @@ export function JRSaninAddStop(td:number) {
     var M_Hashi = [1];
     var O_Hashi = [3, 5];
     var M_Mihomisumi = [7];
-    var Y_N_Shinji=[13];
-    var O_N_Shinji=[3,5];
-    var M_Nishiizumo=[9];
+    var Y_N_Shinji = [13];
+    var O_N_Shinji = [3, 5];
+    var M_Nishiizumo = [9];
     //ここより宍道、西出雲の追加停車駅が必要
     if (td == 0) {
         DetailReplace_Set_One(td, Y_Daisen, '米子', '米子・伯耆大山');
@@ -57,7 +58,7 @@ export function JRSaninAddStop(td:number) {
         DetailReplace_Set_One(td, O_Tamatsukuri, '益田', '三保三隅・益田', 'ｽｰﾊﾟｰおき');
         DetailReplace_Set_One(td, M_Mihomisumi, '益田', '三保三隅・益田', 'ｽｰﾊﾟｰまつかぜ');
         DetailReplace_Set_One(td, M_Nishiizumo, '大田市', '西出雲・大田市', 'ｽｰﾊﾟｰまつかぜ');
-    }else if(td==2){
+    } else if (td == 2) {
         DetailReplace_Set_One(td, M_Daisen, '米子', '米子・伯耆大山');
     }
 }

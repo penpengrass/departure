@@ -7,33 +7,21 @@ import { LastLetterRemove, doallDetailShow } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRNadetailset";
 import { allJRNagoyaColor } from "./typeColor";
 import { trainTables } from "./types/trainTable";
-import { TType,TDes } from "./types/constants";
+import { TType, TDes } from "./types/constants";
 Dtype = [0, 0, 0, 0, 0];
 DetailLength = [3, 3, 3, 3, 3];
 DestinationSet();
 for (var tr = 0; tr < orderNum; tr++) {
     FDetail(Type[0][tr], JRCeNobj, Dtype[0], 0, tr, "・");
-    if (Detail[0][tr].slice(-1) == '・') {
-        console.log(tr + 'は読点で終わる');
-        Detail[0][tr] = Detail[0][tr].slice(0, -1);
-        document.getElementById('TDetail' + (1) + '' + (tr + 1))!.textContent = Detail[0][tr];
-    }
 }
-console.log(Detail);
 //td_detail++;
 for (var tr = 0; tr < orderNum; tr++) {
     if (Type[1][tr].includes('特急') || Type[1][tr].includes('ﾎｰﾑﾗｲﾅｰ')) {
         FDetail(Type[1][tr], JRCeNobj, Dtype[0], 1, tr, "・");
-        if (Detail[1][tr].slice(-1) == '・') {
-            console.log(tr + 'は読点で終わる');
-            Detail[1][tr] = Detail[1][tr].slice(0, -1);
-
-        }
         if (Stops.Nagahama.includes(TrainNumber[1][tr])) {
-            console.log(TrainNumber[1][tr]);
             DetailReplace(1, tr, '米原', '米原・長浜');
         }
-        document.getElementById('TDetail' + (2) + '' + (tr + 1))!.textContent = Detail[1][tr];
+        document.getElementById('TDetail' + (2) + '' + (tr + 1))!.textContent = trainTables[1].trains[tr].stops ?? "";
     }
 }
 //td_detail++;
@@ -41,11 +29,6 @@ for (var tr = 0; tr < orderNum; tr++) {
     var ShinanoNumber = JRLimitedNumber(2, tr);
     if (Type[2][tr].includes('特急') || Type[2][tr].includes('ホームライナー')) {
         FDetail(Type[2][tr], JRChNobj, Dtype[0], 2, tr, "・");
-        if (Detail[2][tr].slice(-1) == '・') {
-            console.log(tr + 'は読点で終わる');
-            Detail[2][tr] = Detail[2][tr].slice(0, -1);
-        }
-        //console.log(number);
         //特急しなのの停車駅変更
         DetailReplace_Set(2, tr, Stops.Kanayama, '千種', '金山・千種');
         DetailReplace_Set(2, tr, Stops.Ena, '中津川', '恵那・中津川');
@@ -53,21 +36,14 @@ for (var tr = 0; tr < orderNum; tr++) {
         DetailReplace_Set(2, tr, Stops.Agematsu, '木曽福島', '上松・木曽福島');
         DetailReplace_Set(2, tr, Stops.Akashina, '松本', '松本・明科');
         DetailReplace_Set(2, tr, Stops.Hijirikogen, '篠ノ井', '聖高原・篠ノ井');
-        document.getElementById('TDetail' + (3) + '' + (tr + 1))!.textContent = Detail[2][tr];
+        document.getElementById('TDetail' + (3) + '' + (tr + 1))!.textContent = trainTables[2].trains[tr].stops ?? "";
     }
 }
 //td_detail++;
 for (var tr = 0; tr < orderNum; tr++) {
-    console.log(Type[3][tr]);
     FDetail(Type[3][tr], Stops.JRKaobj, Dtype[0], 3, tr, "・");
-    if (Detail[3][tr].slice(-1) == '・') {
-        console.log(tr + 'は読点で終わる');
-        Detail[3][tr] = Detail[3][tr].slice(0, -1);
-        document.getElementById('TDetail' + (4) + '' + (tr + 1))!.textContent = Detail[3][tr];
-    }
     if (Des[3][tr] == '伊勢市' && Type[3][tr].startsWith('快速みえ')) {
         trainTables[3].trains[tr].stops += '・多気から各駅';
-        Detail[3][tr] += '・多気から各駅';
     }
 }
 //td_detail++;
@@ -75,7 +51,7 @@ var HidaDtype = 0;
 console.log("-----ここから高山方面の詳細表示-----");
 console.log(TrainNumber);
 for (var tr = 0; tr < orderNum; tr++) {
-    var HidaNumber = TrainNumber[4][tr];
+    var HidaNumber = trainTables[4].trains[tr].trainNumber ?? NaN;
     if (HidaNumber == 9) {
         Dtype[4] = 1;
     } else {
@@ -96,7 +72,7 @@ for (var tr = 0; tr < orderNum; tr++) {
     if (HidaNumber == 9) {
         DetailReplace(4, tr, '美濃太田', '美濃太田・飛騨金山');
     }
-    document.getElementById('TDetail5' + (tr + 1))!.textContent = Detail[4][tr];
+    document.getElementById('TDetail5' + (tr + 1))!.textContent = trainTables[4].trains[tr].stops ?? "";
 }
 for (var tr = 0; tr < orderNum; tr++) {
     if (Type[1][tr].includes('快速')) {
@@ -109,8 +85,6 @@ for (var tr = 0; tr < orderNum; tr++) {
     } else if (Type[2][tr] == '区間快速') {
         trainTables[2].trains[tr].stops = '金山・鶴舞・千種・大曽根・新守山・勝川・春日井・神領・高蔵寺・多治見・多治見から各駅';
     }
-    Detail[1][tr] = document.getElementById('TDetail' + 2 + (tr + 1))!.textContent;
-    Detail[2][tr] = document.getElementById('TDetail' + 3 + (tr + 1))!.textContent;
 }
 SpecialStop(0, '(幸)', '岡崎', '幸田', '・', 0.8);
 SpecialStop(0, '(三)', '蒲郡', '三河三谷', '・', 0.8);
@@ -125,7 +99,7 @@ for (let te = 0; te < Tablenum; te++) {
     (Class_Bottm[te] as HTMLElement).style.borderBottomColor = bottom_color[te];
     TrainTypeSet(te);
     for (let tr = 0; tr < orderNum; tr++) {
-        const _Type=trainTables[te].trains[tr].type;
+        const _Type = trainTables[te].trains[tr].type;
         if (_Type.includes('普通')) {
             trainTables[te].trains[tr].stops = '各駅にとまります';
         }

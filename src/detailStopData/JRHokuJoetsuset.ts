@@ -1,13 +1,5 @@
 import { reverseLine, LineCopy } from "../module/firstTableEdit";
-//詳細表示の定義
-let Jrapid = "0";
-let limited = "0";
-let Jsubrapid = "0";
-let rapid = "0";
-let express = "0";
-let subexpress = "0";
-let subsemiexpress = "0";
-let local = "0";
+import { black, red, white } from "../types/color";
 const kagayaki = new Array(2)
 kagayaki[0] = ['東京', '上野', '大宮', '長野', '富山', '金沢', '福井', '敦賀'];
 const hakutaka = new Array(2);
@@ -39,9 +31,9 @@ export var iiyama = [591, 551, 553, 555, 559, 561, 565, 569, 571, 573, 575, 577]
 export var ueda = [552, 554, 556, 558, 568, 570, 572, 574, 576, 578];
 export var sakudaira = [552, 554, 556, 558, 570, 572, 574, 576, 578];
 export var Ntakasaki = [556];
-export var Karuizawa=[569];
-export var Ueda=[559];
-export var Sakudaira=[551,553,555,571,575,577];
+export var Karuizawa = [569];
+export var Ueda = [559];
+export var Sakudaira = [551, 553, 555, 571, 575, 577];
 //上越新幹線
 export var N_Joumou = [307, 313, 317, 329, 333, 335, 337, 339, 341, 343];
 export var N_Echigo = [317, 329, 333];

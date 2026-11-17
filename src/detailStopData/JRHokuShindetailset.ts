@@ -1,13 +1,5 @@
 import { reverseLine, LineCopy } from "../module/firstTableEdit";
-//詳細表示の定義
-let Jrapid = "0";
-let limited = "0";
-let Jsubrapid = "0";
-let rapid = "0";
-let express = "0";
-let subexpress = "0";
-let subsemiexpress = "0";
-let local = "0";
+import { black, white, red } from "../types/color";
 const kagayaki = new Array(2)
 kagayaki[0] = ['東京', '上野', '大宮', '長野', '富山', '金沢', '福井', '敦賀'];
 const hakutaka = new Array(2);

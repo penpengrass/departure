@@ -1,5 +1,5 @@
 import { reverseLine, LineCopy } from "../module/firstTableEdit";
-import { JRNameDevide } from "../module/firstDisplayEdit";
+import { red } from "../types/color";
 const kagayaki = new Array(2)
 kagayaki[0] = ['東京', '上野', '大宮', '長野', '富山', '金沢', '福井', '敦賀'];
 const hakutaka = new Array(2);

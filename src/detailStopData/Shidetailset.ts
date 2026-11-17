@@ -1,7 +1,5 @@
 import { reverseLine } from "../module/firstTableEdit";
-//詳細表示の定義
-let subexpress = "0";
-let subsemiexpress = "0";
+import { red } from "../types/color";
 export var Mrapid = new Array(2);
 export var Ishiduti = new Array(2);
 export var Sunport = new Array(2);

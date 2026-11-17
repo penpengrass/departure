@@ -9,6 +9,7 @@ import { DetailBanner, FDetail } from "./module/detailMainPut";
 import { Shin_DetailReplace_Set_One } from "./module/detailSimpleEdit";
 import * as Stops from "./detailStopData/JRHokuJoetsuset";
 import { comment } from './types/constants';
+import { trainTables } from './types/trainTable';
 export const JREastShinkansenStations: StationRegistry = {
     '新幹線東京駅': {
         name: '東京駅',
@@ -17,7 +18,7 @@ export const JREastShinkansenStations: StationRegistry = {
         file: 'index6_S.php',
         nonGouFlag: 0,
         setup: () => {
-            var hayabusa = [1, 101, 3, 103, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27,29, 31, 33, 105, 35, 107, 37, 109, 39, 111, 41, 43];
+            var hayabusa = [1, 101, 3, 103, 5, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 29, 31, 33, 105, 35, 107, 37, 109, 39, 111, 41, 43];
             //hayabusa=[1, 101, 5, 103, 7, 9, 11, 13, 15, 17, 19, 21, 23, 25, 27, 31, 33, 35, 105, 39, 107, 41, 43, 111, 45, 47];
             limitednumber2(TT[0], hayabusa, 'はやぶさ');
             //limitedjustnumber(TT[0], 1, ['はやぶさ', 'はやぶさ･こまち'], ['新青森', '新函館北斗', '新青森･秋田', '新函館北斗･秋田']);
@@ -100,7 +101,7 @@ export const JREastShinkansenStations: StationRegistry = {
                 for (var tr = 0; tr < orderNum; tr++) {
                     if (Type[td][0] == '') {
                         document.getElementById('TDetailtitle' + (td + 1) + (tr + 1))!.textContent = 'お知らせ';
-                        Detail[td][0] = '本日の運転は終了しました';
+                        trainTables[td].trains[0].stops = '本日の運転は終了しました';
                         break;
                     } else if (Type[td][tr] != '') {
                         if (tr == 0) {
@@ -123,8 +124,8 @@ export const JREastShinkansenStations: StationRegistry = {
             window.Dtype[2] = 1;
             for (var td = 0; td < 3; td++) {
                 FDetail(Type[td][0], Stops.JRSBobj, Dtype[0], td, 0, "・");
-                if (Detail[td][0] != '') {
-                    Detail[td][0] += "・" + Des[td][0];
+                if (trainTables[td].trains[0].stops != '') {
+                    trainTables[td].trains[0].stops += "・" + Des[td][0];
                 }
             }
             Shin_DetailReplace_Set_One(0, Stops.annnaka1, '軽井沢', '安中榛名・軽井沢');
@@ -140,7 +141,7 @@ export const JREastShinkansenStations: StationRegistry = {
             Shin_DetailReplace_Set_One(2, Stops.N_Kumagaya, '熊谷・大宮', '大宮');
             Shin_DetailReplace_Set_One(2, Stops.Kumagaya, '大宮', '熊谷・大宮');
             for (var td = 0; td < 3; td++) {
-                document.getElementById('TDetailtitle' + (td + 1) + '' + (0 + 1))!.textContent = Detail[td][0];
+                document.getElementById('TDetailtitle' + (td + 1) + '' + (0 + 1))!.textContent = trainTables[td].trains[0].stops ?? "";
                 DetailBanner(td, 0, 23, 1, 'TDetailtitle');
             }
             comment!.innerHTML = "臨時列車の有無や停車駅は不正確";

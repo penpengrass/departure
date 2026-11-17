@@ -117,10 +117,10 @@ export const KintetsuStations: StationRegistry = {
                 document.getElementById('supplement')!.innerHTML += '<p>名古屋駅のみ土休日ダイヤに対応(表示は平日ダイヤ)</p>';
             }
             for (var tr = 0; tr < orderNum; tr++) {
-                var LType = Type[1][tr];
-                var LDes = Des[1][tr];
-                var tr_hour = TableHour[1][tr];
-                var tr_min = TableMin[1][tr];
+                const LType = trainTables[1].trains[tr].type;
+                const LDes = trainTables[1].trains[tr].destination;
+                const tr_hour = trainTables[1].trains[tr].hour;
+                const tr_min = Number(trainTables[1].trains[tr].minute);
                 if (LDes != '大阪難波' && whetherStop(17, 40, tr_hour, tr_min, 23, 30)) {
                     DetailReplace(1, tr, '伊勢中川', '久居 伊勢中川');
                 }
@@ -129,9 +129,9 @@ export const KintetsuStations: StationRegistry = {
                     DetailReplace(1, tr, '名張', '伊賀神戸 名張');
                 }
                 if (holidayflag == 0) {
-                    if (LType == '特急H' && (whetherStop(10, 40, tr_hour, tr_min, 16, 4) || tr_min == '17')) {
+                    if (LType == '特急H' && (whetherStop(10, 40, tr_hour, tr_min, 16, 4) || tr_min == 17)) {
                         DetailReplace(1, tr, '大和八木 ', '');
-                        if (tr_min == '17') {
+                        if (tr_min == 17) {
                             DetailReplace(1, tr, '津', '桑名 四日市 白子 津');
                         }
                     }
@@ -189,9 +189,9 @@ export const KintetsuStations: StationRegistry = {
             }
             //高の原駅停車を追加
             for (var tr = 0; tr < orderNum; tr++) {
-                var LType = Type[0][tr];
-                var tr_hour = TableHour[0][tr];
-                var tr_min = TableMin[0][tr];
+                var LType = trainTables[0].trains[tr].type;
+                var tr_hour = trainTables[0].trains[tr].hour;
+                var tr_min = Number(trainTables[0].trains[tr].minute);
                 if (LType.includes('特急')) {
                     if (LType != '特急A' && (tr_hour > 14)) {
                         console.log(tr + "は高の原停車");
@@ -242,9 +242,9 @@ export const KintetsuStations: StationRegistry = {
                 document.getElementById('supplement')!.innerHTML += '<p>奈良駅のみ土休日ダイヤに対応(表示は平日ダイヤ)</p>';
             }
             for (var tr = 0; tr < orderNum; tr++) {
-                var LType = Type[1][tr];
-                var tr_hour = TableHour[1][tr];
-                var tr_min = TableMin[1][tr];
+                var LType = trainTables[1].trains[tr].type;
+                var tr_hour = trainTables[1].trains[tr].hour;
+                var tr_min = Number(trainTables[1].trains[tr].minute);
                 if (LType.includes('特急')) {
                     if (LType != '特急A' && whetherStop(5, 0, tr_hour, tr_min, 12, 3)) {
                         DetailReplace(1, tr, '丹波橋', '高の原 丹波橋');

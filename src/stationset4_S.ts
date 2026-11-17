@@ -4,7 +4,6 @@ import { DetailReplace_Set } from "./module/detailSimpleEdit";
 import { FDetail, doallDetailShow } from "./module/detailMainPut";
 import * as Stops from "./detailStopData/JRW_S";
 import { JRSSobj } from "./detailStopData/JRW_S";
-import { TrainNumber } from './main';
 import { trainTables, plainTrainTables } from './types/trainTable';
 NonGouflag = 1;
 export const JRSanyoStations: StationRegistry = {

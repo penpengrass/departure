@@ -29,13 +29,13 @@ export function DesMiddle(td: number, tr: number, word: string) {
         } else if (station == '糸崎駅' && matches[tr][2].length > 2) {
             desRightStyle = ' style="display:inline-block;transform:scaleX(0.65) translate(-25%,0%)"';
         }
-        
+
         // DesLeftのinlineスタイルを条件に応じて決定
         let desLeftStyle = '';
         if (matches[tr][1].length > 2) {
             desLeftStyle = ' style="display:inline-block;transform:scaleX(0.75) translate(20%,0%)"';
         }
-        
+
         var Des_HTML = '<span class="DesLeft" id="DesLeft' + (td + 1) + (tr + 1) + '"' + desLeftStyle + '>' + matches[tr][1]
             + '</span>' + '<span class="DesMiddle">' + word + '</span>' + '<span id="DesRight' + (td + 1) + (tr + 1) + '"' + desRightStyle + '>' + matches[tr][2] + '</span>';
         document.getElementById('TDes' + (td + 1) + (tr + 1))!.innerHTML = Des_HTML
@@ -52,7 +52,6 @@ export function DesMiddle(td: number, tr: number, word: string) {
 export function Maibara_Banner(td: number) {
     if (td == 1 && (Type[td - 1][0] == '新快速' || Type[td - 1][0] == '特急')) {
         FDetail(Type[td - 1][0], JRobj, Dtype[0], td - 1, 0, "・");
-        Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
         console.log("-----1個目の詳細完了------");
     }
     if (td == 3) {
@@ -63,7 +62,6 @@ export function Maibara_Banner(td: number) {
             FDetail(Type[td - 1][0], JRCeNobj, Dtype[0], td - 1, 0, "・");
             LastLetterRemove(td - 1, 0, '・');
             DetailReplace(2, 0, '岐阜', '岐阜までの各駅');
-            Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
             stationN = '米原';
         }
     }
@@ -74,7 +72,6 @@ export function Kitashinchi_Banner(td: number) {
         if (Des[1][0].includes('新三田')) {
             DetailReplace(1, 0, '・三田から各駅', '');
         }
-        Detail[td - 1][0] = Detail[td - 1][0].slice(0, -1);
     }
 }
 export function Yonago_Banner(td: number) {
@@ -85,7 +82,8 @@ export function Yonago_Banner(td: number) {
     //ここに追加停車駅を入れる必要がある。
     JRSaninAddStop(td - 1);
     LastLetterRemove(td - 1, 0, '・');
-    if (Detail[td - 1][0].includes('各駅')) {
+    const _Stops = trainTables[td - 1].trains[0].stops ?? "";
+    if (_Stops.includes('各駅')) {
         if (Des[td - 1][0] == '新見') {
             trainTables[td - 1].trains[0].stops = '備中神代までの各駅';
         } else {

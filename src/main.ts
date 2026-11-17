@@ -22,7 +22,8 @@ import { readPhpInitialData } from "./bootstrap/phpInitialData";
 
 const phpInitialData = readPhpInitialData();
 TT = phpInitialData.timetableData;
-Tablenum = phpInitialData.tableCount;
+//高崎駅でエラーが発生するため除外
+//Tablenum = phpInitialData.tableCount;
 orderNum = phpInitialData.orderCount;
 Tablenums = phpInitialData.tableColumnCounts;
 const TableTitle = new Array(Tablenum);
@@ -109,16 +110,10 @@ function NotShows(hour: number, Table_Column: number, TT: string[][][], TableNum
     return;
 }
 window.Type = new Array(Tablenum);
-window.TableHour = new Array(Tablenum);
-window.TableMin = new Array(Tablenum);
-window.TrackNum = new Array(Tablenum);
 window.Des = new Array(Tablenum);
 for (let tr = 0; tr < Tablenum; tr++) {
     window.Type[tr] = new Array(Tablenums[tr]);
-    TableHour[tr] = new Array(Tablenums[tr]);
-    TableMin[tr] = new Array(Tablenums[tr]);
     Des[tr] = new Array(Tablenums[tr]);
-    TrackNum[tr] = new Array(Tablenums[tr]);
 }
 function EmptyLine(td: number, tr: number, Line: any) {
     if (Line[td][tr] === undefined) {
@@ -126,11 +121,8 @@ function EmptyLine(td: number, tr: number, Line: any) {
     }
 }
 export function Shows(hour: number, Table_Column: number, TT: string[][], TableNumber: number, depnum: number) {
-    TableHour[TableNumber - 1][depnum - 1] = TT[hour][0];
-    TableMin[TableNumber - 1][depnum - 1] = String(TT[hour + 1][Table_Column]).padStart(2, "0");
     Type[TableNumber - 1][depnum - 1] = TT[hour][Table_Column];
     Des[TableNumber - 1][depnum - 1] = TT[hour + 2][Table_Column];
-    TrackNum[TableNumber - 1][depnum - 1] = TT[hour + 3][Table_Column];
     //(未反映!!!)ここからインタフェース、コメント外してもいいが今は意味なし
     // plainTrainTables の該当要素を更新する
     const plainTrainData = createTrainDataFromGlobal(hour, Table_Column, TT);
@@ -197,7 +189,6 @@ function JRLimitedNameSet(td: number, tr: number) {
 //td_mainは表番号・ONは何番目に出発するか
 function main() {
     // --- plainTrainTables の初期化 ---
-    console.log(Tablenums);
     initPlainTrainTables(Tablenum, Tablenums);
     initTrainTables(Tablenum, Tablenums);
     // --- 駅設定の適用 ---
@@ -249,9 +240,6 @@ function main() {
                 for (var tr = 0; tr < Tablenums[td]; tr++) {
                     EmptyLine(td, tr, Type);
                     EmptyLine(td, tr, Des);
-                    EmptyLine(td, tr, TableHour);
-                    EmptyLine(td, tr, TableMin);
-                    EmptyLine(td, tr, TrackNum);
                 }
             }
         }
@@ -301,6 +289,7 @@ if (station == '浅草駅') {
     FSTShow(TT[3], NotShows, orders[2], 4, 3);
 }
 var testflag = 0;
+let ReloadIntervalMinute = 2;
 if (testflag == 0) {
     //1分ごとに更新するが，先発が切り替わるごとに実行したい
     //setInterval(koshin,ReloadIntervalMinute*60000);
@@ -320,21 +309,14 @@ if (Length_Debug == 0) {
 console.log("ReloadIntervalMinute=" + ReloadIntervalMinute);
 console.log("-------main完了-------");
 document.title = station + "発車標";
-//特急によって停車駅が異なるときの処理
-//numberは号数 Lnameは列車名
-export var TrainNumber = new Array(Tablenum);
-export var Lname = new Array(Tablenum);
-//console.log("detailflag=" + detailflag);
 for (var td = 0; td < Tablenum; td++) {
-    if (detailflag > 1) {
-        TrainNumber[td] = new Array(orderNum);
-        Lname[td] = new Array(orderNum);
-    }
     for (var tr = 0; tr < Tablenums[td]; tr++) {
         trainTables[td].trains[tr].trainNumber = Number.parseInt(JRLimitedNumberSet(td, tr));
-        TrainNumber[td][tr] = Number.parseInt(JRLimitedNumberSet(td, tr));
-        //console.log(typeof number[td][tr]);
         trainTables[td].trains[tr].trainName = JRLimitedNameSet(td, tr);
 
+    }
+    //今後除外する。
+    if (station == '高崎駅' && td == 3) {
+        break;
     }
 }

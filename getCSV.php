@@ -121,7 +121,7 @@ if ($initialDataJson === false) {
   let TableTitle = new Array(Tablenum);
   let dir = title[2].substr(0, 2);
   let dir2 = title2[2].substr(0, 2);
-  let ReloadIntervalMinute = 2;
+  let MinIn = 2;
   let company = '';
   window.NonGouflag = 0;
   window.TwoLetterDisflag = 0;
@@ -130,14 +130,4 @@ if ($initialDataJson === false) {
   console.log(title[2].substr(0, 2));
   console.log(TT[1].length);
   window.LastShowFlag = 0;
-  window.red = 'red';
-  window.orange = 'orange';
-  window.yellowgreen = 'yellowgreen';
-  window.greenyellow = 'greenyellow';
-  window.green = 'green';
-  window.blue = 'blue';
-  window.black = 'black';
-  window.purple = 'purple';
-  window.pink = 'pink';
-  window.white = 'white';
 </script>

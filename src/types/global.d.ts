@@ -7,7 +7,6 @@ declare global {
     var JRShinkansenflag: number;
     var L_hour: number;
     var L_min: number;
-    var Detail: any[];
     var detailflag: number;
     var DetailLength: any[];
     var detailLength_one: number;
@@ -21,12 +20,8 @@ declare global {
     var orders: number[];     // js 内で書き換えるので var/let 相当で宣言
     var next: number;
     var Indexfile: string;
-    var ReloadIntervalMinute: number;
     var Type: any[];
     var Des: any[];
-    var TableHour: any;
-    var TableMin: any;
-    var TrackNum: any; //実質未使用だがTypeやDesと合わせる
     var LastShowFlag = 0;
     function BackTime(): void;
     function Delay(v: number): void;

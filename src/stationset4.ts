@@ -437,7 +437,6 @@ export const JRWestStations: StationRegistry = {
         tableTitles: ['尼崎 大阪 京都方面', '西明石 姫路方面'],
         nonGouFlag: 0,
         setup: () => {
-            ReloadIntervalMinute = 1;
             NonGouflag = 0;
             limitedjustnumber(TT[0], 2, '特急はまかぜ');
             limitedjustnumber(TT[1], 1, '特急はまかぜ');

@@ -28,9 +28,6 @@ export function DetailReplace(td: number, tr: number, Before: string, After: str
     trainTables[td].trains[tr].stops = _NextStop + "・" + trainTables[td].trains[tr].stops;
   }
   var _Detail2 = trainTables[td].trains[tr]?.stops ?? "";
-  if (Detail[td][tr] !== undefined) {
-    Detail[td][tr] = Detail[td][tr].replace(Before, After);
-  }
   trainTables[td].trains[tr].stops = _Detail2.replace(Before, After);
 
 }
@@ -57,7 +54,6 @@ export function DetailReplace_Set_One(td: number, Line: any, Before: string, Aft
 export function SpendingTime(td: number, Destination: string, Minutes: any, className: string) {
   document.getElementById("TDetail" + (td + 1) + (0 + 1))!.innerHTML =
     Destination + "までの所要時間は<span class=" + className + ">" + Minutes + "分</span>です";
-  Detail[td][0] = "";
 }
 //簡易版追加停車駅(表番号,種別の(),前の停車駅,追加停車駅,停車駅間の記号)，名古屋地区の特別停車限定
 export function SpecialStop(td: number, last: any, Before_station: string, AddStation: string, distance: string, Indent: number) {
